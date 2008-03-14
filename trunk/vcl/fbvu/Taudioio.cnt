@@ -1,0 +1,4 @@
+:Base TAUDIOIO.HLP
+1 AudioIO Unit
+1 TAudioIn Component=TAUDIOIN_COMPONENT
+1 TAudioOut Component=TAUDIOOUT_COMPONENT
