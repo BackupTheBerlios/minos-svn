@@ -12,7 +12,7 @@
 
 #include "keyctrl.h"
 #include "vkmixer.h"
-#include "MixerNodes.h"
+//#include "MixerNodes.h"
 #include "keyercontrol.h" 
 //#include "MixerForm.h"
 #include "KeyerAbout.h"
