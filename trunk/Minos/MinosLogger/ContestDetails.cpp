@@ -351,6 +351,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
    QTHField->Checked = true ;
 
    ScoreOptions->ItemIndex = ( ic.ppKmScoring ? 0 : 1 );
+   contest->scoreMode.setValue( ( SCOREMODE ) ScoreOptions->ItemIndex );  // combo
 
 }
 //---------------------------------------------------------------------------
