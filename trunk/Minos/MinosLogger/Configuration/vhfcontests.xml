@@ -10,7 +10,7 @@
 <!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?)>
 <!ELEMENT contest (name, description, short_description?, time_list+, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date)>
 <!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
-<!ELEMENT contest_series (name, description, contest_list+, award_list*)>
+<!ELEMENT contest_series (name, description, contest_list+, section_list*, special_rules_list*, award_list*)>
 <!ELEMENT month_list (#PCDATA)>
 <!ELEMENT start_day (#PCDATA)>
 <!ELEMENT start_week (#PCDATA)>
@@ -49,8 +49,11 @@
 <!-- 08.001 31/12/2007 50MHz & 70MHz UKAC are oneppq scoring added version number-->
 <!-- 08.002 04/01/2008 removed 6 hour sections in 4m trophy contest -->
 <!-- 08.003 16/01/2008 Changed name of 1.2/2.3Ghz UKAC to UHF UKAC -->
+<!-- 08.004 07/03/2008 Added 2m backpackers as a contest series -->
+<!-- 08.005 13/03/2008 Added LP section for the VHF championship.-->
+<!-- 08.005 13/03/2008 Added special rules for VHF Championship-->
 <calendar>
-<version>08.003 16/01/2008</version>
+<version>08.005 13/03/2008</version>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -194,6 +197,13 @@ http://www.vhfcc.org/rules/08rules/BACKPACK.htm
 <description>Special Rules for VHF NFD</description>
 <long_description>
 http://www.vhfcc.org/rules/08rules/VHFNFD.htm
+</long_description>
+</special_rule>
+<special_rule>
+<name>VHF CHAMPIONSHIP</name>
+<description>Special Rules for VHF Championship</description>
+<long_description>
+http://www.vhfcc.org/rules/08rules/championship.htm
 </long_description>
 </special_rule>
 <special_rule>
@@ -376,6 +386,16 @@ Stations not operating as a fixed station must use the /P callsign suffix. Entra
 </long_description>
 <overall_section>yes</overall_section>
 </section>
+<section>
+<name>LP</name>
+<description>Single Operator, Fixed, 25W / Single Antenna</description>
+<long_description>
+This section is open to single operator fixed stations using 25W or less output and a single antenna. 
+When applied to the VHF Championship, if a station enters some contests with high power or extra antennas, and some with low power and a single antenna, only the low power, single antenna scores will count towards the championship.
+</long_description>
+<power>25</power>
+<singleantenna>1</singleantenna>
+</section>
 <band>
 <name>50NFD</name>
 <reg1band>50 MHz</reg1band>
@@ -489,21 +509,20 @@ Stations not operating as a fixed station must use the /P callsign suffix. Entra
 <contest_list>70trophy</contest_list>
 <contest_list>144trophy</contest_list>
 <contest_list>uhftrophy</contest_list>
+<section_list>SF</section_list>
+<section_list>O</section_list>
+<section_list>LP</section_list>
+<special_rules_list>VHF CHAMPIONSHIP</special_rules_list>
 <award_list>Racal Radio Cup is awarded to the overall winner of the Open Section</award_list>
 <award_list>John Pilags Memorial Trophy is awarded to the Leading Single Operator Fixed Station</award_list>
 <award_list>Low Power VHF Championship Trophy is awarded to the 25W or less Single antenna, Single Operator, Fixed Station </award_list>
 </contest_series>
 <contest_series>
-<name>4mContests</name>
-<description>70MHz Contests</description>
-<contest_list>1st70MHz</contest_list>
-<contest_list>2nd70MHz</contest_list>
-</contest_series>
-<contest_series>
-<name>6mContests</name>
-<description>50MHz Contests</description>
-<contest_list>1st50MHz</contest_list>
-<contest_list>2nd50MHz</contest_list>
+<name>144backpackchamp</name>
+<description>144MHz Backpackers Championship</description>
+<contest_list>144backpack</contest_list>
+<special_rules_list>Backpacker</special_rules_list>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
 </contest_series>
 <contest>
   <name>4mcumulatives</name>
