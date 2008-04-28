@@ -403,7 +403,7 @@ void __fastcall TMultDispFrame::LocatorMultTreeGetText(
    else
    {
       String dispLine;
-      for (int i = 0; i < 10; i++)
+      for (int i = 0; ct->locs.llist.size() && i < 10; i++)
       {
          unsigned char *lc = ct->locs.llist[ Node->Parent->Index ] ->map( Node->Index * 10 + i );
          String disp;
