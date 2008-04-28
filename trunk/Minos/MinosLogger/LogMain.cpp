@@ -325,6 +325,73 @@ void TLogContainer::closeSlot( bool addToMRU )
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TLogContainer::FileCloseAction1Execute( TObject */*Sender*/ )
+{
+   TWaitCursor fred;
+   closeSlot( true );
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::CloseAllActionExecute(TObject */*Sender*/)
+{
+   TWaitCursor fred;
+   while ( ContestPageControl->PageCount)
+   {
+      TTabSheet *ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 1 ];
+      int cc = ctab->ControlCount;
+
+      for ( int i = 0; i < cc; i++ )
+      {
+         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( ctab->Controls[ i ] ) )
+         {
+            BaseContestLog * contest = f->getContest();
+            String curPath = contest->cfileName.c_str();
+            ContestMRU->AddItem( curPath );
+
+            f->closeContest();    // which should close the contest
+            ctab->PageControl = 0;
+            delete ctab;
+         }
+      }
+   }
+   ContestPageControlChange( this );
+   enableActions();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::CloseAllButActionExecute(TObject */*Sender*/)
+{
+   TWaitCursor fred;
+   TTabSheet * thisContest = ContestPageControl->ActivePage;
+   while ( ContestPageControl->PageCount > 1)
+   {
+      TTabSheet *ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 1 ];
+      if (ctab == thisContest)
+      {
+         ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 2 ];
+      }
+      int cc = ctab->ControlCount;
+
+      for ( int i = 0; i < cc; i++ )
+      {
+         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( ctab->Controls[ i ] ) )
+         {
+            BaseContestLog * contest = f->getContest();
+            String curPath = contest->cfileName.c_str();
+            ContestMRU->AddItem( curPath );
+
+            f->closeContest();    // which should close the contest
+            ctab->PageControl = 0;
+            delete ctab;
+         }
+      }
+   }
+   ContestPageControlChange( this );
+   enableActions();
+}
+//---------------------------------------------------------------------------
+
 void TLogContainer::enableActions()
 {
    TSingleLogFrame * lf = findCurrentLogFrame();
@@ -337,6 +404,8 @@ void TLogContainer::enableActions()
    NextContactDetailsOnLeftAction->Enabled = true;
 
    FileCloseAction1->Enabled = f;
+   CloseAllAction->Enabled = f;
+   CloseAllButAction->Enabled = f;
    ContestDetailsAction->Enabled = f;
    GoToSerialAction->Enabled = f;
    MakeEntryAction->Enabled = f;
@@ -389,13 +458,6 @@ void __fastcall TLogContainer::ContestPageControlChange( TObject */*Sender*/ )
 void __fastcall TLogContainer::HelpAboutActionExecute( TObject */*Sender*/ )
 {
    TAboutBox::ShowAboutBox( this, false );
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TLogContainer::FileCloseAction1Execute( TObject */*Sender*/ )
-{
-   TWaitCursor fred;
-   closeSlot( true );
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::FileOpen1BeforeExecute( TObject */*Sender*/ )
@@ -1083,5 +1145,4 @@ void __fastcall TLogContainer::ShiftLeftAction( TObject */*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
-
 

@@ -133,6 +133,10 @@ class TLogContainer : public TForm
       TMenuItem *ShiftRight1;
       TAction *ShiftTabLeftAction;
       TAction *ShiftTabRightAction;
+   TMenuItem *CloseAllContest;
+   TAction *CloseAllAction;
+   TAction *CloseAllButAction;
+   TMenuItem *Closeallbutthiscontest1;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -172,6 +176,8 @@ class TLogContainer : public TForm
       void __fastcall ManageListsActionExecute( TObject *Sender );
       void __fastcall ShiftRightAction( TObject *Sender );
       void __fastcall ShiftLeftAction( TObject *Sender );
+   void __fastcall CloseAllActionExecute(TObject *Sender);
+   void __fastcall CloseAllButActionExecute(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );

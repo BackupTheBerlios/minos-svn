@@ -2,7 +2,7 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 536
+  ClientHeight = 636
   ClientWidth = 742
   Color = clBtnFace
   UseDockManager = True
@@ -24,7 +24,7 @@ object LogContainer: TLogContainer
     Left = 0
     Top = 0
     Width = 742
-    Height = 517
+    Height = 617
     Align = alClient
     DockSite = True
     MultiLine = True
@@ -36,11 +36,10 @@ object LogContainer: TLogContainer
     OnChange = ContestPageControlChange
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
-    ExplicitHeight = 427
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 517
+    Top = 617
     Width = 742
     Height = 19
     Panels = <
@@ -57,7 +56,6 @@ object LogContainer: TLogContainer
     ParentFont = True
     UseSystemFont = False
     OnDblClick = StatusBar1DblClick
-    ExplicitTop = 427
   end
   object ActionManager: TActionManager
     ActionBars = <
@@ -315,6 +313,20 @@ object LogContainer: TLogContainer
       Hint = 'Close|Close this contest/list'
       OnExecute = FileCloseAction1Execute
     end
+    object CloseAllAction: TAction
+      Category = 'File'
+      Caption = 'Close All'
+      Enabled = False
+      Hint = 'Close all contests'
+      OnExecute = CloseAllActionExecute
+    end
+    object CloseAllButAction: TAction
+      Category = 'File'
+      Caption = 'Close all but this contest'
+      Enabled = False
+      Hint = 'Close all other contests'
+      OnExecute = CloseAllButActionExecute
+    end
     object FileExit1: TFileExit
       Category = 'File'
       Caption = 'E&xit'
@@ -414,6 +426,12 @@ object LogContainer: TLogContainer
     Top = 72
     object CloseContest1: TMenuItem
       Action = FileCloseAction1
+    end
+    object CloseAllContest: TMenuItem
+      Action = CloseAllAction
+    end
+    object Closeallbutthiscontest1: TMenuItem
+      Action = CloseAllButAction
     end
     object Details1: TMenuItem
       Action = ContestDetailsAction
