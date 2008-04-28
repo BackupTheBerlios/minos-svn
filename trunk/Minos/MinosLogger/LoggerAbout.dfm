@@ -22,15 +22,11 @@ object AboutBox: TAboutBox
     Top = 0
     Width = 487
     Height = 321
-    ActivePage = AutoStartTabSheet
+    ActivePage = AboutTabSheet
     Align = alClient
     TabOrder = 0
     object AboutTabSheet: TTabSheet
       Caption = 'About'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -122,11 +118,11 @@ object AboutBox: TAboutBox
         object WebLabel: TLabel
           Left = 163
           Top = 260
-          Width = 153
+          Width = 131
           Height = 13
           Cursor = crHandPoint
           Anchors = [akLeft, akTop, akBottom]
-          Caption = 'http://www.Goodey.org.uk'
+          Caption = 'http://minos.berlios.de'
           OnClick = WebLabelClick
         end
       end
@@ -134,10 +130,6 @@ object AboutBox: TAboutBox
     object AutoStartTabSheet: TTabSheet
       Caption = 'Auto Start Configuration'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       inline TConfigFrame1: TTConfigFrame
         Left = 0
         Top = 0
@@ -179,10 +171,6 @@ object AboutBox: TAboutBox
     object TabSheet1: TTabSheet
       Caption = 'Why Minos?'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object MinosMemo: TMemo
         Left = 0
         Top = 0
