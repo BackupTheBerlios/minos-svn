@@ -28,13 +28,13 @@ class TConfigElement
       std::string params;
 
       bool run;
-      bool test;
       bool hide;
       bool minimise;
 
       TConfigElement();
       bool initialise( String sect );
 
+      void setRun(bool state);
 };
 class TMConfigDM : public TDataModule
 {

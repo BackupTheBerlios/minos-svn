@@ -15,6 +15,7 @@
 #pragma package(smart_init)
 
 static HANDLE serverEvent = 0;
+static HANDLE serverShowEvent = 0;
 
 std::string makeUuid()
 {
@@ -101,3 +102,53 @@ bool checkServerReady()
    }
    return ret;
 }
+HANDLE makeServerShowEvent( bool create )
+{
+   static std::string serverShowEventName = getServerId() + "Show";
+   if ( create )
+   {
+      if ( !serverShowEvent )
+      {
+         // we should set up th ACLs etc so we could run serevr as a service
+         serverEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
+      }
+   }
+   else
+   {
+      if ( serverShowEvent )
+      {
+         CloseHandle( serverShowEvent );
+         serverShowEvent = 0;
+      }
+   }
+   return serverShowEvent;
+}
+bool getShowServers()
+{
+   static std::string serverShowEventName = getServerId() + "Show";
+
+   bool ret = false;
+   HANDLE serverShowEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
+   if ( serverShowEvent )
+   {
+      if ( GetLastError() == ERROR_ALREADY_EXISTS )
+      {
+         ret = true;
+      }
+      CloseHandle( serverShowEvent );
+   }
+   return ret;
+}
+void setShowServers(bool state)
+{
+   HANDLE sshEvent = makeServerShowEvent(true);
+   if (state)
+   {
+      SetEvent(sshEvent);
+   }
+   else
+   {
+      ResetEvent(sshEvent);
+   }
+}
+

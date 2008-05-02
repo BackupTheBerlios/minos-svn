@@ -84,7 +84,9 @@ void __fastcall TTConfigFrame::SetButtonClick( TObject */*Sender*/ )
 
 void __fastcall TTConfigFrame::HideCheckBoxClick(TObject *Sender)
 {
-   // Make this active
+   // Make this active - need a hide/show event that is signalled for show
+   // and then all "server" apps need to honour this.
+   setShowServers(HideCheckBox->Checked);
 }
 //---------------------------------------------------------------------------
 
@@ -93,7 +95,7 @@ void __fastcall TTConfigFrame::ModifyButtonClick(TObject *Sender)
    // Change the INI file to match what is shown
    for ( std::vector <TConfigElementFrm *>::iterator i = framelist.begin(); i != framelist.end(); i++ )
    {
-      // Do we need to pass this back to the ConfigDM?
+      (*i)->tce->setRun(( *i ) ->RunCheckBox->Checked);
    }
 }
 //---------------------------------------------------------------------------

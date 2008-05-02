@@ -81,28 +81,7 @@ void TGuardianThread::execute()
 {
    if ( ce->run )
    {
-      if ( ce->test )
-      {
-         String progname = ExtractFileName( ce->commandLine.c_str() );
-         // test if already running
-         if ( FindProcess( progname ) == 0 )
-         {
-            // run it - but don't wait
-            runApp( false );
-         }
-         for ( int i = 0; i <= 20; i++ )
-         {
-            if ( checkCloseEvent() )
-            {
-               return ;
-            }
-            Sleep( 500 );
-         }
-      }
-      else
-      {
-         runDirectApp( true );
-      }
+      runDirectApp( true );
    }
 }
 //---------------------------------------------------------------------------

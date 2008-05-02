@@ -14,8 +14,8 @@ object TConfigFrame: TTConfigFrame
     TabOrder = 1
     object HideCheckBox: TCheckBox
       Left = 30
-      Top = 15
-      Width = 107
+      Top = 10
+      Width = 141
       Height = 17
       Caption = 'Hide Server Apps'
       Checked = True
@@ -53,7 +53,7 @@ object TConfigFrame: TTConfigFrame
       OnClick = ClearAllButtonClick
     end
     object StartButton: TButton
-      Left = 152
+      Left = 177
       Top = 6
       Width = 72
       Height = 25

@@ -32,7 +32,7 @@ TMConfigDM *TMConfigDM::getConfigDM( TComponent* Owner )
 }
 //---------------------------------------------------------------------------
 TConfigElement::TConfigElement()
-      : run( false ), hide( false ), test( false ), minimise( false )
+      : run( false ), hide( false ), minimise( false )
 {}
 //---------------------------------------------------------------------------
 bool TConfigElement::initialise( String sect )
@@ -51,17 +51,14 @@ bool TConfigElement::initialise( String sect )
       String S = UpperCase( config->ReadString( sect, "Run", "Yes" ) ).Trim();
       run = !( S[ 1 ] == 'N' || S[ 1 ] == 'F' || S[ 1 ] == '0' );
 
-      if ( S[ 1 ] == 'T' )
-      {
-         run = true;
-         test = true;
-         minimise = true;
-      }
-
       rundir = config->ReadString( sect, "Directory", "" ).Trim().c_str();
       return true;
    }
    return false;
+}
+void TConfigElement::setRun(bool state)
+{
+   config->WriteString(name, "Run", state?"Yes":"No");
 }
 //---------------------------------------------------------------------------
 __fastcall TMConfigDM::TMConfigDM( TComponent* Owner )
