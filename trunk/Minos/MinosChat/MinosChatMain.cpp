@@ -172,15 +172,15 @@ void TMinosChatForm::notifyCallback( bool err, MinosRPCObj *mro, const std::stri
                   (*stat).state = state;
                   std:: string mess = key + " changed state to " + std::string(stateList[state]);
                   addChat( mess );
+                  syncstat = true;
                }
                break;
             }
          }
-         // This isn't really right - we actually want chat to publish its availability
-         // OR do we want to get the server to force chat (or anything else?) to load when it gets a message
-         // for it?
+
          if ( stat == serverList.end() )
          {
+            // We have received notification from a previously unknown station - so report on it
             Server s;
             s.name = key;
             s.ip = value;
