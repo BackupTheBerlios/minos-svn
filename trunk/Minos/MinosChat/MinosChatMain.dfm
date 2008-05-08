@@ -55,6 +55,7 @@ object MinosChatForm: TMinosChatForm
       Lines.Strings = (
         '')
       ReadOnly = True
+      ScrollBars = ssVertical
       TabOrder = 1
     end
   end
