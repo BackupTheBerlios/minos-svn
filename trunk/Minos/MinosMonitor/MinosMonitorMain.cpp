@@ -149,7 +149,7 @@ void __fastcall TMonitorMain::FormClose( TObject *Sender,
 void __fastcall TMonitorMain::LogTimerTimer( TObject *Sender )
 {
    syncStations();
-   // check log queue; if anything on it then log to main window
+   // check log queue; if anything on it then log to disk
    while ( true )
    {
       LogEvent * ev = deQueueLog();
