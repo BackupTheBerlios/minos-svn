@@ -57,6 +57,7 @@ class TContestApp : public MinosParameters
       BaseContestLog * currentContest;
       static TContestApp *contestApp;
       int magneticVariation;
+      ErrorList errs;
    public:
       static TContestApp *getContestApp();
 
@@ -106,12 +107,16 @@ class TContestApp : public MinosParameters
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showErrorList( ErrorList &errs );
+      virtual void showErrorList( );
       virtual void showContestScore( const std::string &score );
       virtual BaseContestLog * getCurrentContest();
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
+      virtual ErrorList &getErrorList();
+      virtual void valtrace( int mess_no, bool flag );
+      virtual bool isErrSet( int mess_no );
+      virtual void clearErrorList();
 
       TContestApp();
       bool initialise();

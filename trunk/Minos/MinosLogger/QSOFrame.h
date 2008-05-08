@@ -89,8 +89,6 @@ class TGJVEditFrame : public TFrame
 
       void setScoreText( int dist, bool partial, bool xband );
       bool dlgForced();
-      void valtrace( int mess_no, bool flag );
-      bool isErrSet( int mess_no );
       bool validateControls( validTypes command );
       void contactValid( void );
    protected: 	// User declarations
@@ -98,7 +96,6 @@ class TGJVEditFrame : public TFrame
       QSOEditScreen *editScreen;
       bool overstrike;
       TWinControl *current;
-      ErrorList errs;
       bool updateTimeAllowed;
 
       bool valid( validTypes command );

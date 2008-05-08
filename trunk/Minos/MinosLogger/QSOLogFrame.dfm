@@ -5,43 +5,43 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
     Width = 576
     ExplicitWidth = 576
     ExplicitHeight = 153
-    inherited DateEdit: TLabeledEdit [3]
+    inherited LocEdit: TLabeledEdit [3]
     end
-    inherited GJVCancelButton: TButton [4]
+    inherited CommentsEdit: TLabeledEdit [4]
     end
-    inherited GJVForceButton: TButton [5]
-    end
-    inherited GJVOKButton: TButton [6]
-    end
-    inherited RSTTXEdit: TLabeledEdit [7]
-    end
-    inherited ModeComboBoxGJV: TComboBox [8]
-    end
-    inherited NonScoreCheckBox: TCheckBox [9]
-    end
-    inherited SerTXEdit: TLabeledEdit [10]
-    end
-    inherited RSTRXEdit: TLabeledEdit [11]
-    end
-    inherited SerRXEdit: TLabeledEdit [12]
-    end
-    inherited LocEdit: TLabeledEdit [13]
-    end
-    inherited CommentsEdit: TLabeledEdit [14]
-    end
-    inherited DeletedCheckBox: TCheckBox [15]
+    inherited DeletedCheckBox: TCheckBox [5]
       TabOrder = 18
     end
-    inherited CallsignEdit: TLabeledEdit [16]
+    inherited CallsignEdit: TLabeledEdit [6]
     end
-    inherited TimeEdit: TLabeledEdit [17]
+    inherited TimeEdit: TLabeledEdit [7]
       Left = 144
       EditLabel.ExplicitLeft = 119
       EditLabel.ExplicitTop = 7
       EditLabel.ExplicitWidth = 22
       ExplicitLeft = 144
     end
-    inherited QTHEdit: TLabeledEdit [18]
+    inherited QTHEdit: TLabeledEdit [8]
+    end
+    inherited SerRXEdit: TLabeledEdit [9]
+    end
+    inherited RSTRXEdit: TLabeledEdit [10]
+    end
+    inherited SerTXEdit: TLabeledEdit [11]
+    end
+    inherited NonScoreCheckBox: TCheckBox [12]
+    end
+    inherited ModeComboBoxGJV: TComboBox [13]
+    end
+    inherited RSTTXEdit: TLabeledEdit [14]
+    end
+    inherited GJVOKButton: TButton [15]
+    end
+    inherited GJVForceButton: TButton [16]
+    end
+    inherited GJVCancelButton: TButton [17]
+    end
+    inherited DateEdit: TLabeledEdit [18]
     end
     object MatchXferButton: TBitBtn
       Left = 321

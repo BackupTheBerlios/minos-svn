@@ -34,7 +34,7 @@
 #pragma resource "*.dfm"
 TMonitorMain *MonitorMain = 0;
 //---------------------------------------------------------------------------
-class MonitorParameters : public MinosParameters
+class MonitorParameters : public MinosParametersAdapter
 {
       int p1;
       int p2;
@@ -43,62 +43,16 @@ class MonitorParameters : public MinosParameters
       {}
       ~MonitorParameters()
       {}
-      virtual bool insertContest( BaseContestLog *p, unsigned int sno );
-      virtual int getMagneticVariation();
-      virtual void getDisplayColumnWidth( const std::string &key, int &val, int def );
-      virtual void setDisplayColumnWidth( const std::string &key, int val );
-      virtual void getBoolDisplayProfile( int enumkey, bool &value );
-      virtual void setBoolDisplayProfile( int enumkey, bool value );
-      virtual void flushDisplayProfile( void );
-      virtual double getBigClockCorrection();
       virtual int getStatsPeriod1();
       virtual int getStatsPeriod2();
       virtual void setStatsPeriod1( int );
       virtual void setStatsPeriod2( int );
-      virtual void addOperator( const std::string &curop );
-      virtual void setError( int err );
-      virtual bool getAllowLoc4();
-      virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showErrorList( ErrorList &errs );
       virtual void showContestScore( const std::string &score );
-      virtual BaseContestLog *getCurrentContest();
-      virtual bool insertList( ContactList *p, unsigned int sno );
-      virtual bool isContestOpen( const std::string fn );
-      virtual bool isListOpen( const std::string fn );
 };
 static MonitorParameters mp;
 
-bool MonitorParameters::insertContest( BaseContestLog */*p*/, unsigned int /*sno*/ )
-{
-   return true;
-}
-int MonitorParameters::getMagneticVariation()
-{
-   return 0;
-}
-void MonitorParameters::getDisplayColumnWidth( const std::string &/*key*/, int &val, int def )
-{
-   val = def;
-}
-void MonitorParameters::setDisplayColumnWidth( const std::string &/*key*/, int /*val*/ )
-{
-}
-void MonitorParameters::getBoolDisplayProfile( int /*enumkey*/, bool &value )
-{
-   value = true;
-}
-void MonitorParameters::setBoolDisplayProfile( int /*enumkey*/, bool /*value*/ )
-{
-}
-void MonitorParameters::flushDisplayProfile( void )
-{
-}
-double MonitorParameters::getBigClockCorrection()
-{
-   return 0.0;
-}
 int MonitorParameters::getStatsPeriod1()
 {
    return p1;
@@ -115,19 +69,6 @@ void MonitorParameters::setStatsPeriod2( int p )
 {
    p2 = p;
 }
-void MonitorParameters::addOperator( const std::string &/*curop*/ )
-{}
-void MonitorParameters::setError( int /*err*/ )
-{
-}
-bool MonitorParameters::getAllowLoc4()
-{
-   return false;
-}
-bool MonitorParameters::getAllowLoc8()
-{
-   return false;
-}
 bool MonitorParameters::yesNoMessage( TComponent* Owner, String mess )
 {
    return mShowYesNoMessage( Owner, mess );
@@ -136,28 +77,9 @@ void MonitorParameters::mshowMessage( String mess, TComponent* Owner )
 {
    mShowMessage( mess, Owner );
 }
-void MonitorParameters::showErrorList( ErrorList &/*errs*/ )
-{
-}
 void MonitorParameters::showContestScore( const std::string &score )
 {
    MonitorMain->ScoreLabel->Caption = score.c_str();
-}
-BaseContestLog * MonitorParameters::getCurrentContest()
-{
-   return 0;
-}
-bool MonitorParameters::insertList( ContactList */*p*/, unsigned int /*sno*/ )
-{
-   return false;
-}
-bool MonitorParameters::isContestOpen( const std::string fn )
-{
-   return false;
-}
-bool MonitorParameters::isListOpen( const std::string fn )
-{
-   return false;
 }
 //---------------------------------------------------------------------------
 /*static*/

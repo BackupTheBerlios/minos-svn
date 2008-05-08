@@ -192,7 +192,7 @@ void TGJVEditFrame::showScreenEntry( void )
 
       SerTXEdit->Color = clBtnFace;
       SerTXEdit->ReadOnly = true;
-      MinosParameters::getMinosParameters() ->showErrorList( errs );
+      MinosParameters::getMinosParameters() ->showErrorList( );
 
    }
 }
@@ -232,7 +232,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
       valid( cmCheckValid ); // make sure all single and cross field
       doAutofill();
    }
-   MinosParameters::getMinosParameters() ->showErrorList( errs );
+   MinosParameters::getMinosParameters() ->showErrorList( );
    editScreen->reportOverstrike( overstrike );
 }
 //---------------------------------------------------------------------------
@@ -485,7 +485,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
             selectField( nextf );
       }
       // Show on errList on multdisp frame
-      MinosParameters::getMinosParameters() ->showErrorList( errs );
+      MinosParameters::getMinosParameters() ->showErrorList( );
       return false ;
    }
    else
@@ -519,8 +519,9 @@ bool TGJVEditFrame::dlgForced()
    std::auto_ptr <TForceLogDlg> ForceDlg( new TForceLogDlg( this ) );
 
    getScreenEntry();
-   valid( cmCheckValid );
+   valid( cmCheckValid );       // This adds errors to the MAIN dialog error list, not our own
 
+   ErrorList &errs = MinosParameters::getMinosParameters() ->getErrorList();
    for ( ErrorIterator i = errs.begin(); i != errs.end(); i++ )
    {
       ForceDlg->ErrList->Items->Add( ( *i ) ->errStr.c_str() );
@@ -543,7 +544,7 @@ bool TGJVEditFrame::dlgForced()
    ForceDlg->CheckBox7->Checked = screenContact.contactFlags & VALID_DISTRICT;
    ForceDlg->CheckBox8->Checked = screenContact.contactFlags & XBAND;
 
-   if ( isErrSet( ERR_12 ) ||
+   if ( MinosParameters::getMinosParameters() ->isErrSet( ERR_12 ) ||
         ( screenContact.contactFlags & ( NON_SCORING | MANUAL_SCORE | DONT_PRINT | VALID_DUPLICATE | TO_BE_ENTERED | XBAND ) ) )
 
    {
@@ -551,7 +552,7 @@ bool TGJVEditFrame::dlgForced()
    }
    else
       if ( errs.size() != 0 )  				// no errors -> OK
-         ForceDlg->CheckBox3->Checked = screenContact.contactFlags & MANUAL_SCORE;
+         ForceDlg->CheckBox4->Checked = screenContact.contactFlags | NON_SCORING;
 
    if ( screenContact.contactFlags & COUNTRY_FORCED )
    {
@@ -680,7 +681,7 @@ bool TGJVEditFrame::doGJVForceButtonClick( TObject */*Sender*/ )
    TimeEdit->ReadOnly = !contest->isPostEntry();
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
-   MinosParameters::getMinosParameters() ->showErrorList( errs );
+   MinosParameters::getMinosParameters() ->showErrorList( );
    return dlgForced();
 }
 //---------------------------------------------------------------------------
@@ -837,7 +838,7 @@ bool TGJVEditFrame::validateControls( validTypes command )   // do control valid
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::valid( validTypes command )
 {
-   valtrace( -1, false ); // clear the error list
+   MinosParameters::getMinosParameters() ->clearErrorList( ); // clear the error list
 
    if ( contest->isReadOnly() )
       return true;
@@ -899,7 +900,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
       v->SetFocus();
       current = v;
    }
-   MinosParameters::getMinosParameters() ->showErrorList( errs );
+   MinosParameters::getMinosParameters() ->showErrorList( );
 }
 //==============================================================================
 // check for embedded space or empty number
@@ -965,7 +966,7 @@ void TGJVEditFrame::doAutofill( void )
 //==============================================================================
 void TGJVEditFrame::lgTraceerr( int err )
 {
-   valtrace( err, true );
+   MinosParameters::getMinosParameters() ->valtrace( err, true );
 }
 //==============================================================================
 void TGJVEditFrame::contactValid( void )
@@ -985,7 +986,7 @@ void TGJVEditFrame::contactValid( void )
 
    if ( vcct->contactFlags & DONT_PRINT )
    {
-      valtrace( -1, false ); // clear the error list
+      MinosParameters::getMinosParameters() ->clearErrorList();
       lgTraceerr( ERR_26 );
    }
    else
@@ -1084,35 +1085,6 @@ void TGJVEditFrame::contactValid( void )
       }
 }
 
-//---------------------------------------------------------------------------
-bool TGJVEditFrame::isErrSet( int mess_no )
-{
-   return errDefs[ mess_no ].flag;
-}
-//---------------------------------------------------------------------------
-void TGJVEditFrame::valtrace( int mess_no, bool flag )
-{
-   // used to control the error list window
-   if ( mess_no == -1 )
-   {
-      // clear down the list
-      errs.clear();
-      int i = 0;
-      while ( errDefs[ i ].priority )
-         errDefs[ i++ ].flag = flag;
-      return ;
-   }
-
-   if ( flag == true )
-   {
-      // add the message into the error list
-      if ( !errDefs[ mess_no ].flag )
-      {
-         errDefs[ mess_no ].flag = true;
-         errs.insert( &errDefs[ mess_no ] );
-      }
-   }
-}
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::checkLogEntry()
 {

@@ -603,12 +603,46 @@ void TContestApp::mshowMessage( String mess, TComponent* Owner )
 {
    mShowMessage( mess, Owner );
 }
-void TContestApp::showErrorList( ErrorList &errs )
-{
-   TLogContainer::showErrorList( errs );
-}
 void TContestApp::showContestScore( const std::string &score )
 {
    TLogContainer::showContestScore( score );
+}
+void TContestApp::showErrorList( )
+{
+   TLogContainer::showErrorList( errs );
+}
+ErrorList &TContestApp::getErrorList()
+{
+   return errs;
+}
+void TContestApp::clearErrorList()
+{
+   errs.clear();
+   int i = 0;
+   while ( errDefs[ i ].priority )
+      errDefs[ i++ ].flag = false;
+}
+void TContestApp::valtrace( int mess_no, bool flag )
+{
+   // used to control the error list window
+   if ( mess_no == -1 )
+   {
+      clearErrorList();
+      return ;
+   }
+
+   if ( flag == true )
+   {
+      // add the message into the error list
+      if ( !errDefs[ mess_no ].flag )
+      {
+         errDefs[ mess_no ].flag = true;
+         errs.insert( &errDefs[ mess_no ] );
+      }
+   }
+}
+bool TContestApp::isErrSet( int mess_no )
+{
+   return errDefs[ mess_no ].flag;
 }
 

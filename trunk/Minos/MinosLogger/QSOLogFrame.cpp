@@ -235,7 +235,7 @@ bool TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
    if ( temp )
       partialContact = temp;
 
-   MinosParameters::getMinosParameters() ->showErrorList( errs );
+   MinosParameters::getMinosParameters() ->showErrorList( );
    return true;
 }
 //==============================================================================
