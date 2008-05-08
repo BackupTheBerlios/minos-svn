@@ -221,7 +221,8 @@ void __fastcall TMinosChatForm::SendButtonClick( TObject */*Sender*/ )
       rpc.getCallArgs() ->addParam( st );
       rpc.queueCall( "chat@" + ( (*i).name ) );
    }
-
+   ChatEdit->Text = ""; // otherwise it is a pain!
+   ActiveControl = ChatEdit;
 }
 //---------------------------------------------------------------------------
 void TMinosChatForm::chatClientCallback( bool /*err*/, MinosRPCObj */*mro*/, const std::string &/*from*/ )
