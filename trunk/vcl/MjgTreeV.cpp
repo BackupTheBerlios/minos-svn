@@ -400,10 +400,10 @@ void __fastcall MjgTreeView::DoStartDrag(Controls::TDragObject* &DragObject)
 {
 	inherited::DoStartDrag(DragObject);
 }
-void __fastcall MjgTreeView::Edit(const TV_ITEMA &Item)
-{
-	inherited::Edit(Item);
-}
+//void __fastcall MjgTreeView::Edit(const TV_ITEMA &Item)
+//{
+//	inherited::Edit(Item);
+//}
 void __fastcall MjgTreeView::Expand(TTreeNode* Node)
 {
 	inherited::Expand(Node);

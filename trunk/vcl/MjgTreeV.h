@@ -253,7 +253,7 @@ protected:
 	DYNAMIC void __fastcall Delete(TTreeNode* Node);
    DYNAMIC void __fastcall DoEndDrag(System::TObject* Target, int X, int Y);
 	DYNAMIC void __fastcall DoStartDrag(Controls::TDragObject* &DragObject);
-	DYNAMIC void __fastcall Edit(const tagTVITEMA &Item);
+//	DYNAMIC void __fastcall Edit(const tagTVITEMA &Item);
 	DYNAMIC void __fastcall Expand(TTreeNode* Node);
 	virtual Controls::TDragImageList* __fastcall GetDragImages(void);
 	virtual void __fastcall GetImageIndex(TTreeNode* Node);
