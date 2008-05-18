@@ -52,16 +52,19 @@
 <!-- 08.004 07/03/2008 Added 2m backpackers as a contest series -->
 <!-- 08.005 13/03/2008 Added LP section for the VHF championship.-->
 <!-- 08.005 13/03/2008 Added special rules for VHF Championship-->
+<!-- 08.006 16/05/2008 Added added link to postcodes page-->
 <calendar>
-<version>08.005 13/03/2008</version>
+<version>08.006 16/05/2008</version>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
+A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
-<scoring_description> multiplied by the number of Countries plus Postcodes </scoring_description>
+<scoring_description> multiplied by the number of Countries plus Postcodes 
+</scoring_description>
 </mult_type>
 <mult_type>
 <name>M2</name>
@@ -76,6 +79,7 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <description>Post Codes, Countries and Locators</description>
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
+A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
