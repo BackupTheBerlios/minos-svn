@@ -23,7 +23,7 @@ __fastcall TOperatorFrame::TOperatorFrame( TComponent* Owner )
 //---------------------------------------------------------------------------
 void __fastcall TOperatorFrame::MainOpComboBoxChange( TObject */*Sender*/ )
 {
-   if ( op1Value->getValue() != MainOpComboBox->Text.c_str() )
+   if ( op1Value && op1Value->getValue() != MainOpComboBox->Text.c_str() )
    {
       op1Value->setValue( MainOpComboBox->Text.c_str() );
    }
@@ -32,7 +32,7 @@ void __fastcall TOperatorFrame::MainOpComboBoxChange( TObject */*Sender*/ )
 
 void __fastcall TOperatorFrame::SecondOpComboBoxChange( TObject */*Sender*/ )
 {
-   if ( op2Value->getValue() != SecondOpComboBox->Text.c_str() )
+   if ( op2Value && op2Value->getValue() != SecondOpComboBox->Text.c_str() )
    {
       op2Value->setValue( SecondOpComboBox->Text.c_str() );
    }
