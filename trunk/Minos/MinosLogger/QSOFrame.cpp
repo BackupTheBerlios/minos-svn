@@ -890,7 +890,41 @@ void TGJVEditFrame::selectField( TWinControl *v )
       doAutofill();
    }
 
-   if ( v == TimeEdit || v == DateEdit || v == SerTXEdit )
+   if ( v == TimeEdit )
+   {
+      ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
+      ( ( TLabeledEdit * ) v ) ->Color = clWindow;
+      if (dtgne == 0 || dtgne == 1)
+      {
+         if (pe)
+         {
+#warning get start time from either of previous contact OR contest start time
+         }
+         else
+         {
+            TimeEdit->SelStart = 0;
+            TimeEdit->SelLength = 1;
+         }
+      }
+   }
+   if ( v == DateEdit )
+   {
+      ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
+      ( ( TLabeledEdit * ) v ) ->Color = clWindow;
+      if (dtgne == 0 || dtgne == 2)
+      {
+         if (pe)
+         {
+#warning get start date from either of previous contact OR contest start date
+         }
+         else
+         {
+            DateEdit->SelStart = 0;
+            DateEdit->SelLength = 1;
+         }
+      }
+   }
+   if ( v == SerTXEdit )
    {
       ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
       ( ( TLabeledEdit * ) v ) ->Color = clWindow;
