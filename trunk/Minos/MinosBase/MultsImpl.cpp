@@ -655,6 +655,16 @@ void CountryList::loadEntries( const std::string &fname, const std::string &fmes
             cte = 0;
          }
       }
+   /*
+      CTY.dat cty-1805 1/6/2008
+
+      IMPORTANT: This release represents a change in the file format.
+      Starting with this release, a '=' character will prefix full callsigns
+      in CTY.DAT, CTY_WT.DAT, CTY_WT_MOD.DAT and WL_CTY.DAT.
+      This is necessary to differentiate a full callsign like K7A
+      in Alaska from the prefix K7A (i.e. K7ABC should still be
+      United States, not Alaska).
+   */
       // now we go through following lines up to a semicolon terminator
       sep2seen = false;
       while ( !sep2seen && istr.getline( countrybuff, 255 ) )
@@ -670,7 +680,7 @@ void CountryList::loadEntries( const std::string &fname, const std::string &fmes
 
          parseLine( countrybuff, ',', b, 99, ';', sep2seen );
          int i = 0;
-         while ( !skip && i < 99 && b[ i ] && b[ i ][ 0 ] )
+         while ( !skip && i < 99 && b[ i ] && b[ i ][ 0 ]  && b[ i ][ 0 ] != '=')
          {
             int bracket = strcspn( b[ i ], "({[<" );
             if ( bracket )
@@ -702,7 +712,7 @@ void CountrySynonymList::load( void )
 }
 bool CountrySynonymList::procLine( char **a )
 {
-   for ( int i = 1; i < 255 && a[ i ] && a[ i ][ 0 ]; i++ )
+   for ( int i = 1; i < 255 && a[ i ] && a[ i ][ 0 ] ; i++ )
    {
       makeCountrySynonym( a[ i ], a[ 0 ] );
    }
