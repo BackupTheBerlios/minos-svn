@@ -1,0 +1,22 @@
+/////////////////////////////////////////////////////////////////////////////
+// $Id: MinosVer.in 937 2008-02-27 20:58:03Z mjg $
+//
+// PROJECT NAME 		Minos Amateur Radio Control and Logging System
+//
+// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2008
+//
+/////////////////////////////////////////////////////////////////////////////
+#define MINOSWCREV $WCREV$
+
+#define MINOSVERSIONMAJ 1
+#define MINOSVERSIONMIN 1
+#define MINOSINCREMENT 11
+#define MINOSVERSION "1.1"
+#define MINOSFILEDESCRIPTION "Minos\0"
+#define MINOSINTERNALNAME "Minos\0"
+#define MINOSORIGINALFILENAME "Minos~.exe\0"
+
+#define MINOSBUILD "$WCREV$"
+#define MINOSBUILDNO $WCREV$
+#define MINOSVERSIONBUILD "1.1.11 build $WCREV$"
+#define MINOSRCVERSION "1.1.11.$WCREV$\0"

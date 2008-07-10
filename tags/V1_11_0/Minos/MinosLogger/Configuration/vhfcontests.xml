@@ -1,0 +1,1397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE calendar [
+<!ELEMENT calendar (version, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
+<!ELEMENT mult_type (name, description, long_description, exchange?, scoring_description?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT long_description (#PCDATA)>
+<!ELEMENT band_list (#PCDATA)>
+<!ELEMENT special_rule (name, description, long_description)>
+<!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?)>
+<!ELEMENT contest (name, description, short_description?, time_list+, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?)>
+<!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
+<!ELEMENT contest_series (name, description, contest_list+, section_list*, special_rules_list*, award_list*)>
+<!ELEMENT month_list (#PCDATA)>
+<!ELEMENT start_day (#PCDATA)>
+<!ELEMENT start_week (#PCDATA)>
+<!ELEMENT start_time (#PCDATA)>
+<!ELEMENT duration (#PCDATA)>
+<!ELEMENT section_list (#PCDATA)>
+<!ELEMENT scoring ((perkms) | (oneppq))>
+<!ELEMENT scoring_description (#PCDATA)>
+<!ELEMENT perkms (#PCDATA)>
+<!ELEMENT special_rules_list (#PCDATA)>
+<!ELEMENT reg1band (#PCDATA)>
+<!ELEMENT band (name,  reg1band, wavelength, time_list?)>
+<!ELEMENT freq (#PCDATA)>
+<!ELEMENT power (#PCDATA)>
+<!ELEMENT wavelength (#PCDATA)>
+<!ELEMENT iaru (#PCDATA)>
+<!ELEMENT mult (#PCDATA)>
+<!ELEMENT mode (#PCDATA)>
+<!ELEMENT contest_list (#PCDATA)>
+<!ELEMENT height (#PCDATA)>
+<!ELEMENT singleantenna (#PCDATA)>
+<!ELEMENT exchange (#PCDATA)>
+<!ELEMENT championship (#PCDATA)>
+<!ELEMENT time_type (#PCDATA)>
+<!ELEMENT oneppq (#PCDATA)>
+<!ELEMENT award_list (#PCDATA)>
+<!ELEMENT override (#PCDATA)>
+<!ELEMENT entry_date (#PCDATA)>
+<!ELEMENT start_date_list (#PCDATA)>
+<!ELEMENT short_description (#PCDATA)>
+<!ELEMENT overall_section (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+]>
+<!-- RSGB VHF contest calendar and rules-->
+<!-- Version 1 Initial version 21 Nov 2008 -->
+<!-- 23/11/2007 typo spelling of Backpacker -->
+<!-- 08.001 31/12/2007 50MHz & 70MHz UKAC are oneppq scoring added version number-->
+<!-- 08.002 04/01/2008 removed 6 hour sections in 4m trophy contest -->
+<!-- 08.003 16/01/2008 Changed name of 1.2/2.3Ghz UKAC to UHF UKAC -->
+<!-- 08.004 07/03/2008 Added 2m backpackers as a contest series -->
+<!-- 08.005 13/03/2008 Added LP section for the VHF championship.-->
+<!-- 08.005 13/03/2008 Added special rules for VHF Championship-->
+<!-- 08.006 16/05/2008 Added link to postcodes page-->
+<!-- 08.007 17/06/2008 Changed 144 backpackers to individual contests-->
+<!-- 08.008 17/06/2008 Added override flag for xmas contest -->
+<calendar>
+<version>08.008 18/06/2008</version>
+<mult_type>
+<name>M1</name>
+<description>Post Codes and Countries</description>
+<long_description>
+Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
+A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+</long_description>
+<exchange>first 2 letters of your Postcode</exchange>
+<scoring_description> multiplied by the number of Countries plus Postcodes 
+</scoring_description>
+</mult_type>
+<mult_type>
+<name>M2</name>
+<description>QTH Locators</description>
+<long_description>
+QTH Locator Multiplier. The multiplier for a band is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band
+</long_description>
+<scoring_description> multiplied by the number of Locator Squares</scoring_description>
+</mult_type>
+<mult_type>
+<name>M3</name>
+<description>Post Codes, Countries and Locators</description>
+<long_description>
+Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
+A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+</long_description>
+<exchange>first 2 letters of your Postcode</exchange>
+<scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
+</mult_type>
+<mult_type>
+<name>M4</name>
+<description>Countries and Locators</description>
+<long_description>
+Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band
+</long_description>
+<scoring_description> multiplied by the number of Countries plus QTH locator squares</scoring_description>
+</mult_type>
+<special_rule>
+<name>S1</name>
+<description>1 Point per QSO</description>
+<long_description>
+Instead of 1 point / km scoring (rule 5a), scores will be calculated at 1 point / QSO.
+</long_description>
+</special_rule>
+<special_rule>
+<name>S2</name>
+<description>Deleted</description>
+<long_description>
+No longer used
+</long_description>
+</special_rule>
+<special_rule>
+<name>S3</name>
+<description>Affiliated Societies contest </description>
+<long_description>
+This is an Affiliated Societies contest and is open to both individual entrants (who must be RSGB members), and to teams made up of a number of operators who must all be members of the same affiliated society, but not necessarily RSGB members themselves.
+
+a. All members of the team must operate from within 50 miles of the normal meeting place of the society. No station may represent more than one society. No operator is allowed to use more than one callsign during the contest. In the case of national societies, each team must define a separate meeting place , and each team member must operate within 50 miles of that designated meeting place.
+
+b. QSOs with other members of your team will count for points.
+
+c. Each AFS member will be allocated to one or more teams in descending order of adjudicated score. For the purpose of calculating the overall AFS team score, each member of each team will be placed in one of 5 sections (3 for the 432MHz contest) Sections A, B, C etc. The highest placed member of each team will be placed in Section A, the second highest in Section B etc. All stations in each of the sections will have their score normalised against the highest score in that section, with the highest score gaining 1000 points. The final AFS team score will be the sum of the team members individual normalised scores.
+
+d. Logs should be sent as a single package for each club and should include a declaration by a club official that all operators are members of the Affiliated Society, and listing the QTH locator of the normal meeting place of the club.
+
+</long_description>
+</special_rule>
+<special_rule>
+<name>S4</name>
+<description>Runs concurrently with a backpackers contest</description>
+<long_description>
+This contest runs concurrently with a backpackers contest. Stations entering the backpackers contest only may be worked once from a fixed location and once from their portable location for points.
+</long_description>
+</special_rule>
+<special_rule>
+<name>S5</name>
+<description>Cumulative contest</description>
+<long_description>
+Scores will be normalised for each band/session as follows. 
+Score for each band/session = (Score achieved x 1000) divded by (Band/session leader score).
+For cumulative contests the overall score will normally be calculated from the best 3 normalised session scores 
+It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
+
+Stations may move location between individual cumulative activity periods
+</long_description>
+</special_rule>
+<special_rule>
+<name>S6</name>
+<description>Runs concurrently with the first few hours of an RSGB 24 hour event</description>
+<long_description>
+This contest runs concurrently with the first few hours of an RSGB 24 hour event. You may submit entries to both contests with a single set of logs, but please include 2 cover sheets - one for the shorter contest and one for the 24 hour event. Entries may be automatically submitted into the 24 hour event unless you specifically request otherwise
+</long_description>
+</special_rule>
+<special_rule>
+<name>S7</name>
+<description>Runs concurrently with all or part of an IARU co-ordinated contest</description>
+<long_description>
+This contest runs concurrently with all or part of an IARU co-ordinated contest. You may submit a single set of logs for entry to both the RSGB and IARU events. Entries will be submitted to the IARU event unless you specifically request otherwise but please note that electronic logs not in REG1TEST EDI format may be rejected  by the IARU adjudicators.
+For IARU organised VHF/UHF contests, overseas stations are expected to enter via their own IARU society and the RSGB will not accept overseas entries for these contests.
+</long_description>
+</special_rule>
+<special_rule>
+<name>S8</name>
+<description>Activity contest</description>
+<long_description>
+These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
+
+Please submit an entry after each session in which you are active. In order to speed adjudication entries will only be accepted by e-mail or web entry and must be sent within 10 days of the contest.
+
+Scores will be normalised for each session as follows. 
+Score for each session = (Score achieved x 1000) divded by (Session leaders score).
+At the end of the year, on each band an overall score will be calculated from the best 8 normalised session scores.
+It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
+
+Stations may move location between individual activity periods.
+
+Certificates will be awarded to the overall winners and runners-up in each section and on each band in the same way as per the general rules. No certificates will be awarded for the individual events.
+</long_description>
+</special_rule>
+<special_rule>
+<name>S9</name>
+<description>Club Championship</description>
+<long_description>
+a.        The individual entries by a club's members to the 2m UK activity contests which take place on 2m from 2000-2230 LOCAL time on the 1st Tuesday in every month all count towards a society's overall score for the year. The 2m UKACs are short contests with a straightforward scoring scheme which are simple enough for beginners and have high activity to keep more experienced contesters interested. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the VHFCC web site www.vhfcc.org
+
+b.        Stations enter the 2m UKAC contest in the normal way, but need to include an AFS (affiliated society) name in the cover sheet of their entry. Entries to all sections of the UKAC count towards the overall club score which is the simple sum of the scores of each team member operating that month.
+
+c.       To determine the winner at the end of the year, the leading club each month will be awarded 1000 points, and all other club scores for that month will be normalised by the formula
+
+Normalised score for each session = (Total club score x 1000)/ (Leading club score)
+
+d.        The G6NB Trophy will be awarded to the club with the highest score at the end of the year. All 12 sessions will count towards the total club score.
+</long_description>
+</special_rule>
+<special_rule>
+<name>Backpacker</name>
+<description>Special Backpackers Rules</description>
+<long_description>
+http://www.vhfcc.org/rules/08rules/BACKPACK.htm
+</long_description>
+</special_rule>
+<special_rule>
+<name>VHFNFD</name>
+<description>Special Rules for VHF NFD</description>
+<long_description>
+http://www.vhfcc.org/rules/08rules/VHFNFD.htm
+</long_description>
+</special_rule>
+<special_rule>
+<name>VHF CHAMPIONSHIP</name>
+<description>Special Rules for VHF Championship</description>
+<long_description>
+http://www.vhfcc.org/rules/08rules/championship.htm
+</long_description>
+</special_rule>
+<special_rule>
+<name>Low Power Contest</name>
+<description>25W max. transmit o/p power,</description>
+<long_description>
+Maximum output Power 25W at the TX.
+</long_description>
+</special_rule>
+<section>
+<name>SF</name>
+<description>Single Op Fixed</description>
+<long_description> Stations must operate from permanent and substantial buildings located at the main station address as shown on the licence validation document. The spirit of the contest will be paramount.
+</long_description>
+</section>
+<section>
+<name>SO</name>
+<description>Single Op Others</description>
+<long_description> Single Operators not located at a fixed station address as defined in the SF section.
+Stations not operating as a fixed station must use the /P callsign suffix. This does not preclude the use of /A or /M where appropriate.
+</long_description>
+</section>
+<section>
+<name>O</name>
+<description>Open</description>
+<long_description> This section is for portable stations and multi-operator fixed stations
+Stations not operating as a fixed station must use the /P callsign suffix. Entrants may omit the /P suffix if using a special contest callsign, that is callsigns consisting of a single 'G' or 'M', a regional locator (if operating outside England) and a single suffix letter. This does not preclude the use of /A or /M where appropriate.
+</long_description>
+</section>
+<section>
+<name>A</name>
+<description>All</description>
+<long_description> This contest has a single section for all stations, single or multi-operator, fixed or portable in any combination
+</long_description>
+</section>
+<section>
+<name>6S</name>
+<description>6 hours Single Op Fixed</description>
+<long_description> Rules as per section "SF" except stations may choose any continuous 6 hour period in which to operate (e.g. 1500-2100, or 1917-0117). Alternatively you may split the 6 hour period into two segments separated by at least 1 hour off time. Serial numbers must start at 001 for this 6 hour period, and you cannot enter both this section and the full contest. In multi-band contests the same single 6 hour period must be used on all bands.
+</long_description>
+</section>
+<section>
+<name>6O</name>
+<description>6 hours others</description>
+<long_description> Rules as per section "O" except stations may choose any continuous 6 hour period in which to operate (e.g. 1500-2100, or 1917-0117). Alternatively you may split the 6 hour period into two segments separated by at least 1 hour off time. Serial numbers must start at 001 for this 6 hour period, and you cannot enter both this section and the full contest. In multi-band contests the same single 6 hour period must be used on all bands.
+</long_description>
+</section>
+<section>
+<name>3S</name>
+<description>3W Single Op Portable</description>
+<long_description> Backpacker Contest. 3w Single-operator.
+</long_description>
+<power>3</power>
+<height>9</height>
+</section>
+<section>
+<name>3M</name>
+<description>3W Multi-Op Portable</description>
+<long_description> Backpacker Contest. 3w Multi-operator.
+</long_description>
+<power>3</power>
+<height>9</height>
+</section>
+<section>
+<name>10S</name>
+<description>10W Single-Op Portable</description>
+<long_description> Backpacker Contest. 10w Single-operator.
+</long_description>
+<power>10</power>
+<height>9</height>
+</section>
+<section>
+<name>10M</name>
+<description>10W Multi-Op Portable</description>
+<long_description> Backpacker Contest. 10w Multi-operator.
+</long_description>
+<power>10</power>
+<height>9</height>
+</section>
+<section>
+<name>Open</name>
+<description>Open section of VHF NFD</description>
+<long_description>
+(i) Maximum output power as permitted by standard licence conditions.
+
+(ii) General rules apply
+
+(iii) Operate on any bands from the following list, but only the best 4 normalised scores will count to the final total:
+
+50MHz (6m) 1400 to 2200 Saturday (all mode)
+
+70MHz (4m) 0800 to 1400 Sunday (all mode)
+
+144MHz (2m) 1400 Saturday to 1400 Sunday (all mode)
+
+432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
+
+1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+</long_description>
+</section>
+<section>
+<name>R</name>
+<description>Restricted Section of VHF NFD</description>
+<long_description>
+(i) The power output of any band must not exceed 100W PEP at the transmitter.
+
+(ii) The height of any part of the antenna's driven element must not exceed 10 metres above ground level.
+
+(iii) Only one antenna per band may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter.
+
+(iv) Operate on up to 4 bands from the following list:
+
+50MHz (6m) 1400 to 2200 Saturday (all mode)
+
+70MHz (4m) 0800 to 1400 Sunday (all mode)
+
+144MHz (2m) 1400 Saturday to 1400 Sunday (all mode)
+
+432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
+
+1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+</long_description>
+<power>100</power>
+<height>10</height>
+<singleantenna>1</singleantenna>
+</section>
+<section>
+<name>L</name>
+<description>Low Power Section of VHF NFD</description>
+<long_description>
+(i) The power output of any band must not exceed 25W PEP at the transmitter.
+
+(ii) The height of any part of the antenna's driven element must not exceed 10 metres above ground level.
+
+(iii) Only one antenna per band may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter.
+
+(iv) Operate on up to 3 bands from the following list:
+
+50MHz (6m) 1400 to 2200 Saturday (all mode)
+
+70MHz (4m) 0800 to 1400 Sunday (all mode)
+
+144MHz (2m) 1400 Saturday to 1400 Sunday (all mode)
+
+432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
+
+1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+
+(v) Each band may be operated for no more than 16 hours (except for 6m and 4m: see 7.3 (iv) above) during the contest period. Each rest period must last at least 1 hour.
+</long_description>
+<power>25</power>
+<height>10</height>
+<singleantenna>1</singleantenna>
+</section>
+<section>
+<name>M</name>
+<description>Mix and Match Section of VHF NFD</description>
+<long_description>
+7.4 Mix and Match (M)
+
+(i) A group can elect to place different bands into Restricted, Low-Power or Open sections. E.g. 4m in Restricted, 2m and 70cm in Open, and 23cm in Low Power. This decision must be made at registration time and the details shown on the site registration form. At least one station must be in a different section to the other stations (e.g. 6m, 4m and 2m in the Open section, 70cm in the Restricted section)
+
+(ii) Individual band entry will be tabulated in the appropriate main section, and a normalised score for the band produced on this basis.
+
+(iii) The sum of the normalised scores will appear in a separate Mix and Match section table.
+
+(iv) Operate on up to 4 bands from the following list:
+
+50MHz (6m) 1400 to 2200 Saturday (all mode)
+
+70MHz (4m) 0800 to 1400 Sunday (all mode)
+
+144MHz (2m) 1400 Saturday to 1400 Sunday (all mode)
+
+432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
+
+1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+
+(v) Note that 2m, 70cm or 23cm stations entered in the Low Power section may be operated for no more than 16 hours during the contest period. Each rest period must last at least 1 hour.
+</long_description>
+<overall_section>yes</overall_section>
+</section>
+<section>
+<name>LP</name>
+<description>Single Operator, Fixed, 25W / Single Antenna</description>
+<long_description>
+This section is open to single operator fixed stations using 25W or less output and a single antenna. 
+When applied to the VHF Championship, if a station enters some contests with high power or extra antennas, and some with low power and a single antenna, only the low power, single antenna scores will count towards the championship.
+</long_description>
+<power>25</power>
+<singleantenna>1</singleantenna>
+</section>
+<band>
+<name>50NFD</name>
+<reg1band>50 MHz</reg1band>
+<wavelength>6</wavelength>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+    <time_type>GMT</time_type>
+    <duration>8</duration>
+  </time_list>
+</band>
+<band>
+<name>50</name>
+<reg1band>50 MHz</reg1band>
+<wavelength>6</wavelength>
+</band>
+<band>
+<name>70NFD</name>
+<reg1band>70 MHz</reg1band>
+<wavelength>4</wavelength>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>7</start_day>
+    <start_week>1</start_week>
+    <start_time>0800</start_time>
+    <time_type>GMT</time_type>
+    <duration>6</duration>
+  </time_list>
+</band>
+<band>
+<name>70</name>
+<reg1band>70 MHz</reg1band>
+<wavelength>4</wavelength>
+</band>
+<band>
+<name>144</name>
+<reg1band>145 MHz</reg1band>
+<wavelength>2</wavelength>
+</band>
+<band>
+<name>432</name>
+<reg1band>435 MHz</reg1band>
+<wavelength>70cms</wavelength>
+</band>
+<band>
+<name>1296</name>
+<reg1band>1,2 Ghz</reg1band>
+<wavelength>23cms</wavelength>
+</band>
+<band>
+<name>2320</name>
+<reg1band>2,3 Ghz</reg1band>
+<wavelength>13cms</wavelength>
+</band>
+<band>
+<name>3400</name>
+<reg1band>3,4 Ghz</reg1band>
+<wavelength>9cms</wavelength>
+</band>
+<band>
+<name>5760</name>
+<reg1band>5,7 Ghz</reg1band>
+<wavelength>6cms</wavelength>
+</band>
+<band>
+<name>10368</name>
+<reg1band>10 Ghz</reg1band>
+<wavelength>3cms</wavelength>
+</band>
+<band>
+<name>24GHz</name>
+<reg1band>24 Ghz</reg1band>
+<wavelength>12mm</wavelength>
+</band>
+<band>
+<name>47GHz</name>
+<reg1band>47 Ghz</reg1band>
+<wavelength>6mm</wavelength>
+</band>
+<band>
+<name>76GHz</name>
+<reg1band>76 Ghz</reg1band>
+<wavelength>4mm</wavelength>
+</band>
+<band>
+<name>120GHz</name>
+<reg1band>120 Ghz</reg1band>
+<wavelength>2.5mm</wavelength>
+</band>
+<band>
+<name>144GHz</name>
+<reg1band>144 Ghz</reg1band>
+<wavelength>2mm</wavelength>
+</band>
+<band>
+<name>248GHz</name>
+<reg1band>248 Ghz</reg1band>
+<wavelength>1.2mm</wavelength>
+</band>
+<contest_series>
+<name>vhfchampionship</name>
+<description>VHF Championship</description>
+<contest_list>mar144432</contest_list>
+<contest_list>70cmstrophy</contest_list>
+<contest_list>may144</contest_list>
+<contest_list>50trophy</contest_list>
+<contest_list>lp144</contest_list>
+<contest_list>lp432</contest_list>
+<contest_list>70trophy</contest_list>
+<contest_list>144trophy</contest_list>
+<contest_list>uhftrophy</contest_list>
+<section_list>SF</section_list>
+<section_list>O</section_list>
+<section_list>LP</section_list>
+<special_rules_list>VHF CHAMPIONSHIP</special_rules_list>
+<award_list>Racal Radio Cup is awarded to the overall winner of the Open Section</award_list>
+<award_list>John Pilags Memorial Trophy is awarded to the Leading Single Operator Fixed Station</award_list>
+<award_list>Low Power VHF Championship Trophy is awarded to the 25W or less Single antenna, Single Operator, Fixed Station </award_list>
+</contest_series>
+<contest_series>
+<name>144backpackchamp</name>
+<description>144MHz Backpackers Championship</description>
+<contest_list>144backpack</contest_list>
+<special_rules_list>Backpacker</special_rules_list>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+</contest_series>
+<contest>
+  <name>4mcumulatives</name>
+  <description>70MHz Cumulatives #</description>
+  <short_description>70MHz Cumulatives</short_description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <start_day>7</start_day>
+    <start_week>2</start_week>
+    <start_time>1000</start_time>
+    <time_type>GMT</time_type>
+    <duration>2</duration>
+  </time_list>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <start_day>7</start_day>
+    <start_week>4</start_week>
+    <start_time>1000</start_time>
+    <time_type>GMT</time_type>
+    <duration>2</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S5</special_rules_list>
+  <band_list>70</band_list>
+  <entry_date>16 days after the last activity period</entry_date>
+</contest>
+<contest>
+  <name>afs432MHz</name>
+  <description>432MHz Affiliated Societies Contest</description>
+  <short_description>432MHz AFS</short_description>
+  <time_list>
+    <month_list>Feb</month_list>
+    <start_day>7</start_day>
+    <start_week>1</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S3</special_rules_list>
+  <band_list>432</band_list>
+<award_list>The G0ODQ Trophy will awarded to the winning AFS entry</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>1st70MHz</name>
+  <description>First 70MHz Contest</description>
+  <time_list>
+    <month_list>Apr</month_list>
+    <start_day>7</start_day>
+    <start_week>1</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>3</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <band_list>70</band_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>2nd70MHz</name>
+  <description>Second 70MHz Contest</description>
+  <time_list>
+    <month_list>Sep</month_list>
+    <start_day>7</start_day>
+    <start_week>2</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>3</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <band_list>70</band_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>1st50MHz</name>
+  <description>First 50MHz Contest</description>
+  <time_list>
+    <month_list>Apr</month_list>
+    <start_day>6+1</start_day>
+    <start_week>3</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>3</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <band_list>50</band_list>
+  <mult>M3</mult>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>mayuhf</name>
+  <description>432MHz-248GHz Contest</description>
+  <short_description>May UHF</short_description>
+  <time_list>
+    <month_list>May</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+      <time_type>GMT</time_type>
+      <duration>24</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+    <band_list>432</band_list>
+    <band_list>1296</band_list>
+    <band_list>2320</band_list>
+    <band_list>3400</band_list>
+    <band_list>5760</band_list>
+    <band_list>10368</band_list>
+    <band_list>24GHz</band_list>
+    <band_list>47GHz</band_list>
+    <band_list>76GHz</band_list>
+    <band_list>120GHz</band_list>
+    <band_list>144GHz</band_list>
+    <band_list>248GHz</band_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>octuhf</name>
+  <description>432MHz-248GHz IARU</description>
+  <short_description>Oct UHF</short_description>
+  <time_list>
+    <month_list>Oct</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+    <time_type>GMT</time_type>
+    <duration>24</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S7</special_rules_list>
+    <band_list>432</band_list>
+    <band_list>1296</band_list>
+    <band_list>2320</band_list>
+    <band_list>3400</band_list>
+    <band_list>5760</band_list>
+    <band_list>10368</band_list>
+    <band_list>24GHz</band_list>
+    <band_list>47GHz</band_list>
+    <band_list>76GHz</band_list>
+    <band_list>120GHz</band_list>
+    <band_list>144GHz</band_list>
+    <band_list>248GHz</band_list>
+<iaru>1</iaru>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>70cmstrophy</name>
+  <description>432MHz Trophy Contest</description>
+  <short_description>432MHz Trophy</short_description>
+  <time_list>
+    <month_list>May</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+    <time_type>GMT</time_type>
+    <duration>8</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S6</special_rules_list>
+  <band_list>432</band_list>
+<award_list>1951 Council Cup is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>uhftrophy</name>
+  <description>1.2GHz Trophy / 2.3Ghz Trophy</description>
+  <short_description>23/13cms Trophy</short_description>
+  <time_list>
+    <month_list>Oct</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+    <time_type>GMT</time_type>
+    <duration>8</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S6</special_rules_list>
+  <band_list>1296</band_list>
+  <band_list>2320</band_list>
+<award_list>VHF Contest Committee Cup is awarded to the overall winner on 23cms</award_list>
+<award_list>G6ZR Memorial Trophy is awarded to the overall winner on 13cms</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>3cmstrophy</name>
+  <description>10GHz Trophy Contest</description>
+  <short_description>10GHz Trophy</short_description>
+  <time_list>
+    <month_list>May</month_list>
+    <start_day>6</start_day>
+    <start_week>1</start_week>
+    <start_time>1400</start_time>
+    <time_type>GMT</time_type>
+    <duration>8</duration>
+  </time_list>
+  <section_list>A</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S6</special_rules_list>
+  <band_list>10368</band_list>
+  <mult>M4</mult>
+<award_list>10GHz Contest Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>2nd50MHz</name>
+  <description>Second 50MHz Contest</description>
+  <time_list>
+    <month_list>Oct</month_list>
+    <start_day>7</start_day>
+    <start_week>2</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>3</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <band_list>50</band_list>
+  <mult>M3</mult>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>2mukac</name>
+  <description>144MHz UK Activity Contest and Club Championship</description>
+  <short_description>144MHz UKAC</short_description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>1</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.5</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <oneppq>1</oneppq>
+  </scoring>
+  <special_rules_list>S1</special_rules_list>
+  <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
+  <band_list>144</band_list>
+  <mult>M2</mult>
+<award_list>G6NB Trophy will be awarded to the winner of the Club Championship.</award_list>
+<award_list>The Foundation Shield will be awarded to the leading Foundation Licensee</award_list>
+<award_list>The Intermediate Shield will be awarded to the leading Intermediate Licensee</award_list>
+<entry_date>10 days after each activity period</entry_date>
+</contest>
+<contest>
+  <name>70cmsukac</name>
+  <description>432MHz UKAC</description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>2</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.5</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+   <special_rules_list>S8</special_rules_list>
+  <band_list>432</band_list>
+  <mult>M2</mult>
+<entry_date>10 days after each activity period</entry_date>
+</contest>
+<contest>
+  <name>uhfukac</name>
+  <description>UHF UKAC</description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>3</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.5</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S8</special_rules_list>
+  <band_list>1296</band_list>
+  <band_list>2320</band_list>
+  <mult>M2</mult>
+<entry_date>10 days after each activity period</entry_date>
+</contest>
+<contest>
+  <name>6mukac</name>
+  <description>50MHz UKAC</description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>4</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.5</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <oneppq>1</oneppq>
+  </scoring>
+  <special_rules_list>S1</special_rules_list>
+  <special_rules_list>S8</special_rules_list>
+  <band_list>50</band_list>
+  <mult>M2</mult>
+<entry_date>10 days after each activity period</entry_date>
+</contest>
+<contest>
+  <name>4mukac</name>
+  <description>70MHz UKAC</description>
+  <time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>5</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.5</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <oneppq>1</oneppq>
+  </scoring>
+  <special_rules_list>S1</special_rules_list>
+  <special_rules_list>S8</special_rules_list>
+  <band_list>70</band_list>
+  <mult>M2</mult>
+<entry_date>10 days after each activity period</entry_date>
+</contest>
+<contest>
+<name>VHFNFD</name>
+<description>VHF NFD</description>
+<time_list>
+<month_list>Jul</month_list>
+<start_day>6</start_day>
+<start_week>1</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>Open</section_list>
+<section_list>R</section_list>
+<section_list>L</section_list>
+<section_list>M</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>VHFNFD</special_rules_list>
+<band_list>50NFD</band_list>
+<band_list>70NFD</band_list>
+<band_list>144</band_list>
+<band_list>432</band_list>
+<band_list>1296</band_list>
+<award_list>Surrey Trophy is awarded to the winner of the Open Section</award_list>
+<award_list>Martlesham Trophy is awarded to the winner of the Restricted Section</award_list>
+<award_list>Arthur Watts Trophy is awarded to the winner of the Low Power Section</award_list>
+<award_list>G5BY Trophy is awarded to the winner of the Mix and Match Section</award_list>
+<award_list>Scottish Trophy Leading GM station in the Low Power section </award_list>
+<award_list>Tartan Trophy goes to the Leading resident GM station.
+(All operators to have been resident in GM for at least six months prior to the contest)</award_list>
+<award_list> Cockenzie Quaich Leading resident GM station in the Restricted section 
+(All operators to have been resident in GM for at least six months prior to the contest)</award_list>
+<entry_date>21 days</entry_date>
+</contest>
+<contest>
+<name>mar144432</name>
+<description>March 144/432MHz</description>
+<time_list>
+<month_list>Mar</month_list>
+<start_day>6</start_day>
+<start_week>1</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<section_list>6S</section_list>
+<section_list>6O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<band_list>144</band_list>
+<band_list>432</band_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>may144</name>
+<description>144MHz May Contest</description>
+
+<time_list>
+<month_list>May</month_list>
+<start_day>6</start_day>
+<start_week>3</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<section_list>6S</section_list>
+<section_list>6O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<band_list>144</band_list>
+<mult>M1</mult>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack1</name>
+  <description>1st 144MHz Backpackers</description>
+  <short_description>1st 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>May</month_list>
+    <start_day>6+1</start_day>
+    <start_week>3</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M3</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack2</name>
+  <description>2nd 144MHz Backpackers</description>
+  <short_description>2nd 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jun</month_list>
+    <start_day>7</start_day>
+    <start_week>2</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack3</name>
+  <description>3rd 144MHz Backpackers</description>
+  <short_description>3rd 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>6+1</start_day>
+    <start_week>1</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack4</name>
+  <description>4th 144MHz Backpackers</description>
+  <short_description>4th 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>6+1</start_day>
+    <start_week>3</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M3</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack5</name>
+  <description>5th 144MHz Backpackers</description>
+  <short_description>5th 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Sep</month_list>
+    <start_day>6+1</start_day>
+    <start_week>1</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>50backpack</name>
+  <description>50MHz Backpackers</description>
+  <time_list>
+    <month_list>Jun</month_list>
+    <start_day>6+1</start_day>
+    <start_week>3</start_week>
+    <start_time>1000</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>10S</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>50</band_list>
+    <mult>M4</mult>
+<award_list>50MHz Backpackers Trophy </award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>lp144</name>
+<description>144MHz Low Power Contest</description>
+<short_description>144MHz Low Power</short_description>
+<time_list>
+<month_list>Aug</month_list>
+<start_day>6</start_day>
+<start_week>1</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>6</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>Low Power Contest</special_rules_list>
+<band_list>144</band_list>
+<mult>M3</mult>
+<power>25</power>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>lp432</name>
+<description>432MHz Low Power Contest</description>
+<short_description>432MHz Low Power</short_description>
+<time_list>
+<month_list>Aug</month_list>
+<start_day>6+1</start_day>
+<start_week>1</start_week>
+<start_time>0800</start_time>
+<time_type>GMT</time_type>
+<duration>4</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>Low Power Contest</special_rules_list>
+<band_list>432</band_list>
+<mult>M3</mult>
+<power>25</power>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>70trophy</name>
+<description>70MHz Trophy Contest</description>
+<short_description>70MHz Trophy</short_description>
+<time_list>
+<month_list>Aug</month_list>
+<start_day>6+1</start_day>
+<start_week>3</start_week>
+<start_time>0900</start_time>
+<time_type>GMT</time_type>
+<duration>6</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<band_list>70</band_list>
+<mult>M1</mult>
+<award_list>VHF Managers Trophy is awarded to the winner of the Open Section</award_list>
+<award_list>4 Metre Cup is awarded to the highest scoring Single Operator entry</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>50trophy</name>
+<description>50MHz Trophy Contest</description>
+<short_description>50MHz Trophy</short_description>
+<time_list>
+<month_list>Jun</month_list>
+<start_day>6</start_day>
+<start_week>3</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<section_list>6S</section_list>
+<section_list>6O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>S7</special_rules_list>
+<band_list>50</band_list>
+<mult>M4</mult>
+<iaru>1</iaru>
+<award_list>The Telford Trophy is awarded to the winner of the Open Section</award_list>
+<award_list>The Six Metre Cup is awarded to the highest scoring UK Single Operator entry</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>144trophy</name>
+<description>144MHz Trophy Contest</description>
+<short_description>144MHz Trophy</short_description>
+<time_list>
+<month_list>Sep</month_list>
+<start_day>6</start_day>
+<start_week>1</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<section_list>O</section_list>
+<section_list>6S</section_list>
+<section_list>6O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>S7</special_rules_list>
+<band_list>144</band_list>
+<iaru>1</iaru>
+<award_list>Mitchell-Milling Trophy is awarded to the winner of the Open Section</award_list>
+<award_list>Thorogood Trophy is awarded to the highest scoring Single Operator entry</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>144marconi</name>
+<description>144MHz CW Marconi</description>
+<time_list>
+<month_list>Nov</month_list>
+<start_day>6</start_day>
+<start_week>1</start_week>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>24</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>O</section_list>
+<section_list>6S</section_list>
+<section_list>6O</section_list>
+<scoring>
+<perkms>1</perkms>
+</scoring>
+<special_rules_list>S7</special_rules_list>
+<band_list>144</band_list>
+<mode>CW</mode>
+<iaru>1</iaru>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>afs144MHz</name>
+  <description>144MHz Affiliated Societies Contest</description>
+  <short_description>144MHz AFS</short_description>
+  <time_list>
+    <month_list>Dec</month_list>
+    <start_day>7</start_day>
+    <start_week>1</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>8</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S3</special_rules_list>
+  <band_list>144</band_list>
+<award_list>The G3MEH Trophy will awarded to the winning AFS entry</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+<name>xmasfun</name>
+<description>50/70/144/432MHz Christmas Cumulatives Contest</description>
+<short_description>Christmas Cumulatives</short_description>
+<time_list>
+<month_list>Dec</month_list>
+<start_date_list>26</start_date_list>
+<start_date_list>27</start_date_list>
+<start_date_list>28</start_date_list>
+<start_date_list>29</start_date_list>
+<start_time>1400</start_time>
+<time_type>GMT</time_type>
+<duration>2</duration>
+</time_list>
+<section_list>SF</section_list>
+<section_list>SO</section_list>
+<scoring>
+<oneppq>1</oneppq>
+</scoring>
+<special_rules_list>S1</special_rules_list>
+<special_rules_list>S5</special_rules_list>
+<band_list>50</band_list>
+<band_list>70</band_list>
+<band_list>144</band_list>
+<band_list>432</band_list>
+<mult>M4</mult>
+<entry_date>16 days after the last activity period</entry_date>
+<override>1</override>
+</contest>
+</calendar>
