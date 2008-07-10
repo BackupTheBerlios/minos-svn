@@ -14,7 +14,6 @@ object GJVEditFrame: TGJVEditFrame
     BevelKind = bkFlat
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 112
     object ModeLabel: TLabel
       Left = 196
       Top = 45
@@ -294,7 +293,7 @@ object GJVEditFrame: TGJVEditFrame
       Top = 0
       Width = 541
       Height = 35
-      Caption = 'Band'
+      Caption = 'This will give a band choice sometime'
       TabOrder = 16
     end
   end
