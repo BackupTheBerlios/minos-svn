@@ -18,7 +18,7 @@
     <Projects Include="MinosDisplay\MinosDisplay.cbproj" />
     <Projects Include="MinosKeyer\MinosKeyer.cbproj" />
     <Projects Include="MinosLogger\MinosLogger.cbproj">
-      <Dependencies>Versioning.cbproj;Versioning2.cbproj;XMPPLib\XMPPClientLib.cbproj;MinosBase\MinosBase.cbproj;MinosDisplay\MinosDisplay.cbproj</Dependencies>
+      <Dependencies>Versioning.cbproj;Versioning2.cbproj;XMPPLib\XMPPLib.cbproj;XMPPLib\XMPPClientLib.cbproj;MinosBase\MinosBase.cbproj;MinosDisplay\MinosDisplay.cbproj</Dependencies>
     </Projects>
     <Projects Include="MinosMonitor\MinosMonitor.cbproj">
       <Dependencies>MinosDisplay\MinosDisplay.cbproj;MinosBase\MinosBase.cbproj;XMPPLib\XMPPClientLib.cbproj;Versioning2.cbproj;Versioning.cbproj</Dependencies>
@@ -141,13 +141,13 @@
   <Target Name="MinosKeyer:Make">
     <MSBuild Projects="MinosKeyer\MinosKeyer.cbproj" Targets="Make" />
   </Target>
-  <Target Name="MinosLogger" DependsOnTargets="Versioning;Versioning2;XMPPClientLib;MinosBase;MinosDisplay">
+  <Target Name="MinosLogger" DependsOnTargets="Versioning;Versioning2;XMPPLib;XMPPClientLib;MinosBase;MinosDisplay">
     <MSBuild Projects="MinosLogger\MinosLogger.cbproj" Targets="" />
   </Target>
-  <Target Name="MinosLogger:Clean" DependsOnTargets="Versioning:Clean;Versioning2:Clean;XMPPClientLib:Clean;MinosBase:Clean;MinosDisplay:Clean">
+  <Target Name="MinosLogger:Clean" DependsOnTargets="Versioning:Clean;Versioning2:Clean;XMPPLib:Clean;XMPPClientLib:Clean;MinosBase:Clean;MinosDisplay:Clean">
     <MSBuild Projects="MinosLogger\MinosLogger.cbproj" Targets="Clean" />
   </Target>
-  <Target Name="MinosLogger:Make" DependsOnTargets="Versioning:Make;Versioning2:Make;XMPPClientLib:Make;MinosBase:Make;MinosDisplay:Make">
+  <Target Name="MinosLogger:Make" DependsOnTargets="Versioning:Make;Versioning2:Make;XMPPLib:Make;XMPPClientLib:Make;MinosBase:Make;MinosDisplay:Make">
     <MSBuild Projects="MinosLogger\MinosLogger.cbproj" Targets="Make" />
   </Target>
   <Target Name="MinosMonitor" DependsOnTargets="MinosDisplay;MinosBase;XMPPClientLib;Versioning2;Versioning">

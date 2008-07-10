@@ -8,7 +8,7 @@
 <!ELEMENT band_list (#PCDATA)>
 <!ELEMENT special_rule (name, description, long_description)>
 <!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?)>
-<!ELEMENT contest (name, description, short_description?, time_list+, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date)>
+<!ELEMENT contest (name, description, short_description?, time_list+, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?)>
 <!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
 <!ELEMENT contest_series (name, description, contest_list+, section_list*, special_rules_list*, award_list*)>
 <!ELEMENT month_list (#PCDATA)>
@@ -37,6 +37,7 @@
 <!ELEMENT time_type (#PCDATA)>
 <!ELEMENT oneppq (#PCDATA)>
 <!ELEMENT award_list (#PCDATA)>
+<!ELEMENT override (#PCDATA)>
 <!ELEMENT entry_date (#PCDATA)>
 <!ELEMENT start_date_list (#PCDATA)>
 <!ELEMENT short_description (#PCDATA)>
@@ -52,9 +53,11 @@
 <!-- 08.004 07/03/2008 Added 2m backpackers as a contest series -->
 <!-- 08.005 13/03/2008 Added LP section for the VHF championship.-->
 <!-- 08.005 13/03/2008 Added special rules for VHF Championship-->
-<!-- 08.006 16/05/2008 Added added link to postcodes page-->
+<!-- 08.006 16/05/2008 Added link to postcodes page-->
+<!-- 08.007 17/06/2008 Changed 144 backpackers to individual contests-->
+<!-- 08.008 17/06/2008 Added override flag for xmas contest -->
 <calendar>
-<version>08.006 16/05/2008</version>
+<version>08.008 18/06/2008</version>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -1044,9 +1047,9 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
-  <name>144backpack</name>
-  <description>144MHz Backpackers #</description>
-  <short_description>144MHz Backpackers</short_description>
+  <name>144backpack1</name>
+  <description>1st 144MHz Backpackers</description>
+  <short_description>1st 144MHz Backpackers</short_description>
   <time_list>
     <month_list>May</month_list>
     <start_day>6+1</start_day>
@@ -1054,43 +1057,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <start_time>1100</start_time>
     <time_type>GMT</time_type>
     <duration>4</duration>
-    <mult>M3</mult>
-  </time_list>
-  <time_list>
-    <month_list>Jun</month_list>
-    <start_day>7</start_day>
-    <start_week>2</start_week>
-    <start_time>0900</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
-    <mult>M4</mult>
-  </time_list>
-  <time_list>
-    <month_list>Jul</month_list>
-    <start_day>6+1</start_day>
-    <start_week>1</start_week>
-    <start_time>1100</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
-    <mult>M4</mult>
-  </time_list>
-  <time_list>
-    <month_list>Jul</month_list>
-    <start_day>6+1</start_day>
-    <start_week>3</start_week>
-    <start_time>1100</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
-    <mult>M3</mult>
-  </time_list>
-  <time_list>
-    <month_list>Sep</month_list>
-    <start_day>6+1</start_day>
-    <start_week>1</start_week>
-    <start_time>1100</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
-    <mult>M4</mult>
   </time_list>
   <section_list>3S</section_list>
   <section_list>3M</section_list>
@@ -1101,6 +1067,107 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </scoring>
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
+    <mult>M3</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack2</name>
+  <description>2nd 144MHz Backpackers</description>
+  <short_description>2nd 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jun</month_list>
+    <start_day>7</start_day>
+    <start_week>2</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack3</name>
+  <description>3rd 144MHz Backpackers</description>
+  <short_description>3rd 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>6+1</start_day>
+    <start_week>1</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack4</name>
+  <description>4th 144MHz Backpackers</description>
+  <short_description>4th 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Jul</month_list>
+    <start_day>6+1</start_day>
+    <start_week>3</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M3</mult>
+<award_list>Backpackers Trophy is awarded to the overall winner</award_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>144backpack5</name>
+  <description>5th 144MHz Backpackers</description>
+  <short_description>5th 144MHz Backpackers</short_description>
+  <time_list>
+    <month_list>Sep</month_list>
+    <start_day>6+1</start_day>
+    <start_week>1</start_week>
+    <start_time>1100</start_time>
+    <time_type>GMT</time_type>
+    <duration>4</duration>
+  </time_list>
+  <section_list>3S</section_list>
+  <section_list>3M</section_list>
+  <section_list>10S</section_list>
+  <section_list>10M</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>Backpacker</special_rules_list>
+  <band_list>144</band_list>
+    <mult>M4</mult>
 <award_list>Backpackers Trophy is awarded to the overall winner</award_list>
 <entry_date>16 days</entry_date>
 </contest>
@@ -1325,5 +1392,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <band_list>432</band_list>
 <mult>M4</mult>
 <entry_date>16 days after the last activity period</entry_date>
+<override>1</override>
 </contest>
 </calendar>
