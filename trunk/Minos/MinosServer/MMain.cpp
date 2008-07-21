@@ -66,11 +66,16 @@ void __fastcall TMinosMainForm::LogTimerTimer( TObject *Sender )
       PubLabel->Caption = pubCount;
    }
 
-   if ( Application->MainForm->Visible && ParamCount() >= 1 )
+   bool show = getShowServers();
+   if ( !Application->MainForm->Visible && show )
    {
-      String p = ParamStr( 1 );
-      if ( p.UpperCase().Pos( "/H" ) )
-         Application->MainForm->Visible = false;
+      logMessage( "Log : Showing main form" );
+      Application->MainForm->Visible = true;
+   }
+   if ( Application->MainForm->Visible && !show )
+   {
+      logMessage( "Log : Hiding main form" );
+      Application->MainForm->Visible = false;
    }
 
    while ( true )

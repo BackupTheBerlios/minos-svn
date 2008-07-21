@@ -65,7 +65,7 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
    Copyright->Caption = RCVersion.LegalCopyright;
    Comments->Caption = ( Beta ? "Beta version - use at your own risk!\r\n\r\n\r\n" : "" ) + RCVersion.Comments;
 
-   if ( !FileExists( ".\\Configuration\\MinosConfig.ini" ) || !onStartup || checkServerReady() )
+   if ( !FileExists( ".\\Configuration\\MinosConfig.ini" ) /*|| !onStartup || checkServerReady()*/ )
    {
       AutoStartTabSheet->TabVisible = false;
       LoggerOnlyButton->Visible = false;
@@ -74,7 +74,14 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
    {
       TConfigFrame1->StartButton->Enabled = !started;
       TConfigFrame1->StopButton->Visible = false;
-      doStartup = true;
+      if (  !onStartup || checkServerReady() )
+      {
+         LoggerOnlyButton->Visible = false; // as we are started we cannot now be logger only
+      }
+      else
+      {
+         doStartup = true; // click the start button on form close
+      }
    }
 
 }
@@ -145,5 +152,6 @@ void __fastcall TAboutBox::TConfigFrame1CancelButtonClick( TObject */*Sender*/ )
    ModalResult = mrCancel;
 }
 //---------------------------------------------------------------------------
+
 
 

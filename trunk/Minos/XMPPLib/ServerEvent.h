@@ -15,7 +15,7 @@ extern std::string makeUuid();
 extern std::string getServerId();
 extern HANDLE makeServerEvent( bool create );
 extern bool checkServerReady();
-extern HANDLE makeServerShowEvent( bool create );
+extern HANDLE makeServerShowEvent( );
 extern bool getShowServers();
 extern void setShowServers(bool state);
 #endif

@@ -25,7 +25,7 @@
     </Projects>
     <Projects Include="MinosRigCtl\MinosRigCtl.cbproj" />
     <Projects Include="MinosServer\MinosServer.cbproj">
-      <Dependencies>Versioning2.cbproj;Versioning.cbproj</Dependencies>
+      <Dependencies>Versioning.cbproj;Versioning2.cbproj;XMPPLib\XMPPLib.cbproj</Dependencies>
     </Projects>
     <Projects Include="MinosTestClient\MinosTestClient.cbproj" />
     <Projects Include="MinosUnitTests\MinosUnitTest.cbproj" />
@@ -168,13 +168,13 @@
   <Target Name="MinosRigCtl:Make">
     <MSBuild Projects="MinosRigCtl\MinosRigCtl.cbproj" Targets="Make" />
   </Target>
-  <Target Name="MinosServer" DependsOnTargets="Versioning2;Versioning">
+  <Target Name="MinosServer" DependsOnTargets="Versioning;Versioning2;XMPPLib">
     <MSBuild Projects="MinosServer\MinosServer.cbproj" Targets="" />
   </Target>
-  <Target Name="MinosServer:Clean" DependsOnTargets="Versioning2:Clean;Versioning:Clean">
+  <Target Name="MinosServer:Clean" DependsOnTargets="Versioning:Clean;Versioning2:Clean;XMPPLib:Clean">
     <MSBuild Projects="MinosServer\MinosServer.cbproj" Targets="Clean" />
   </Target>
-  <Target Name="MinosServer:Make" DependsOnTargets="Versioning2:Make;Versioning:Make">
+  <Target Name="MinosServer:Make" DependsOnTargets="Versioning:Make;Versioning2:Make;XMPPLib:Make">
     <MSBuild Projects="MinosServer\MinosServer.cbproj" Targets="Make" />
   </Target>
   <Target Name="MinosTestClient">

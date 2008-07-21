@@ -22,7 +22,7 @@ object AboutBox: TAboutBox
     Top = 0
     Width = 487
     Height = 321
-    ActivePage = AboutTabSheet
+    ActivePage = AutoStartTabSheet
     Align = alClient
     TabOrder = 0
     object AboutTabSheet: TTabSheet
