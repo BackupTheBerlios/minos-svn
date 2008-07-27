@@ -21,6 +21,7 @@
 #include "mtrace.h"
 #include "GJVThreads.h"
 #include "LogEvents.h"
+#include "ServerEvent.h"
 #include "XMPPRPCParams.h"
 #include "XMPPStanzas.h"
 #include "Dispatcher.h"
@@ -56,11 +57,14 @@ void __fastcall TRigCtlMain::logMessage( std::string s )
 
 void __fastcall TRigCtlMain::LogTimerTimer( TObject *Sender )
 {
-   if ( Visible && ParamCount() >= 1 )
+   bool show = getShowServers();
+   if ( !Application->MainForm->Visible && show )
    {
-      String p = ParamStr( 1 );
-      if ( p.UpperCase().Pos( "/H" ) )
-         Visible = false;
+      Application->MainForm->Visible = true;
+   }
+   if ( Application->MainForm->Visible && !show )
+   {
+      Application->MainForm->Visible = false;
    }
    // check log queue; if anything on it then log to main window
    while ( true )

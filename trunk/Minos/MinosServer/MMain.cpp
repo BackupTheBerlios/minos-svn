@@ -69,12 +69,10 @@ void __fastcall TMinosMainForm::LogTimerTimer( TObject *Sender )
    bool show = getShowServers();
    if ( !Application->MainForm->Visible && show )
    {
-      logMessage( "Log : Showing main form" );
       Application->MainForm->Visible = true;
    }
    if ( Application->MainForm->Visible && !show )
    {
-      logMessage( "Log : Hiding main form" );
       Application->MainForm->Visible = false;
    }
 

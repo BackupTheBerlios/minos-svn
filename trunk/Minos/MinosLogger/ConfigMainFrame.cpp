@@ -86,7 +86,7 @@ void __fastcall TTConfigFrame::HideCheckBoxClick(TObject *Sender)
 {
    // Make this active - need a hide/show event that is signalled for show
    // and then all "server" apps need to honour this.
-   setShowServers(HideCheckBox->Checked);
+   setShowServers(!HideCheckBox->Checked);
 }
 //---------------------------------------------------------------------------
 

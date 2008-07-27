@@ -108,7 +108,7 @@ HANDLE makeServerShowEvent( )
    if ( !serverShowEvent )
    {
       // we should set up th ACLs etc so we could run serevr as a service
-      serverEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
+      serverShowEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
    }
    return serverShowEvent;
 }
@@ -120,7 +120,7 @@ bool getShowServers()
    HANDLE serverShowEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
    if ( serverShowEvent )
    {
-      if (WaitForSingleObject(serverShowEvent, 0))
+      if (WaitForSingleObject(serverShowEvent, 0) == WAIT_OBJECT_0)
       {
          ret = true;
       }

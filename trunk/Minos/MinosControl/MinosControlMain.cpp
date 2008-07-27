@@ -95,11 +95,14 @@ void __fastcall TMinosControlForm::FormClose( TObject *Sender,
 
 void __fastcall TMinosControlForm::LogTimerTimer( TObject */*Sender*/ )
 {
-   if ( Visible && ParamCount() >= 1 )
+   bool show = getShowServers();
+   if ( !Application->MainForm->Visible && show )
    {
-      String p = ParamStr( 1 );
-      if ( p.UpperCase().Pos( "/H" ) )
-         Visible = false;
+      Application->MainForm->Visible = true;
+   }
+   if ( Application->MainForm->Visible && !show )
+   {
+      Application->MainForm->Visible = false;
    }
    // check log queue; if anything on it then log to main window
    while ( true )
