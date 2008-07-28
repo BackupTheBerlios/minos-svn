@@ -615,6 +615,7 @@ void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender
    {
       CalendarDlg = new TCalendarForm( this ) ;
       CalendarDlg->Caption = "VHF Calendar";
+      CalendarDlg->description = ContestNameSelected->Text;
    }
    if ( CalendarDlg->ShowModal() == mrOk )
    {

@@ -48,6 +48,7 @@ class TCalendarForm : public TForm
       __fastcall TCalendarForm( TComponent* Owner );
       Calendar vhf;
       IndividualContest ic;
+      String description;
 };
 //---------------------------------------------------------------------------
 #endif

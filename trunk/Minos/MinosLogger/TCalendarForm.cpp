@@ -60,8 +60,24 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    CalendarGrid->Cells[ 6 ][ 0 ] = "Sections";
    CalendarGrid->Cells[ 7 ][ 0 ] = "Special Rules";
    int row = 1;
+   int nextContest = 0;
+   TDateTime now = TDateTime::CurrentDateTime();
    for ( std::vector<IndividualContest>::iterator i = vhf.calendar.begin(); i != vhf.calendar.end(); i++ )
    {
+      if (!description.IsEmpty())
+      {
+         if (nextContest == 0 && description == (*i).description.c_str())
+         {
+            nextContest = row;
+         }
+      }
+      else
+      {
+         if (nextContest == 0 && now <= (*i).start)
+         {
+            nextContest = row;
+         }
+      }
       CalendarGrid->Cells[ 0 ][ row ] = ( *i ).description.c_str();
       CalendarGrid->Cells[ 1 ][ row ] = ( *i ).bands.c_str();
       CalendarGrid->Cells[ 2 ][ row ] = ( *i ).start.FormatString( "dd/mm/yyyy hh:mm" );
@@ -71,6 +87,10 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
       CalendarGrid->Cells[ 6 ][ row ] = ( *i ).sections.c_str();
       CalendarGrid->Cells[ 7 ][ row ] = ( *i ).specialRules.c_str();
       row++;
+   }
+   if (nextContest)
+   {
+      CalendarGrid->Row = nextContest;   
    }
 }
 //---------------------------------------------------------------------------
