@@ -493,7 +493,7 @@ bool Calendar::parseFile( const std::string &fname )
                   {
                      ic.start = TDateTime( curYear, sm, istartDate );
                      ic.start += atoi( startTime.c_str() ) / 2400.0;
-                     ic.duration = ( *tl ).duration;
+                     ic.duration = duration;
                      ic.finish = ic.start + atof( ic.duration.c_str() ) / 24;
                      if ( timeType == "local" )
                      {
