@@ -31,7 +31,7 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
          break;
       case egBrg:
          {
-            String brgbuff;
+			AnsiString brgbuff;
             double lon = 0.0;
             double lat = 0.0;
             int brg;
@@ -65,7 +65,7 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
 
       case egScore:
          {
-            String scorebuff;
+            AnsiString scorebuff;
 
             // we don't have it worked out already...
             double lon = 0.0;
@@ -77,7 +77,7 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
             {
                curcon->disbear( lon, lat, dist, brg );
             }
-            scorebuff.printf( "%d", ( int ) dist );
+			scorebuff.printf( "%d", ( int ) dist );
             res = scorebuff.c_str();
          }
          break;

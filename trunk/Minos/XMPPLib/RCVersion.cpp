@@ -29,7 +29,7 @@ void __fastcall TMyRCVersion::setValue( String )
    ::MessageBeep( 0 );
 }
 //---------------------------------------------------------------------------
-void __fastcall TMyRCVersion::SetInstance( int n )
+void __fastcall TMyRCVersion::SetInstance( HINSTANCE n )
 {
    FhInstance = n;
    if ( FhInstance )
@@ -48,17 +48,17 @@ void __fastcall TMyRCVersion::initialise( void )
    unsigned int vSize;
    char appFName[ 255 ];
    char * subBlockName = new char[ 255 ];
-   int hInstance = 0; // default to application
+   HINSTANCE hInstance = 0; // default to application
    switch ( FInfoFrom )
    {
       case ifDLL:
          hInstance = FhInstance;
          break;
       case ifPackage:
-         hInstance = ( int ) HInstance; // DLL Module Instance for package
+         hInstance = HInstance; // DLL Module Instance for package
          break;
    }
-   int nLen = ::GetModuleFileName( ( void* ) hInstance, appFName, 255 );
+   int nLen = ::GetModuleFileName( hInstance, appFName, 255 );
    appFName[ nLen ] = '\0';
    OemToChar( appFName, appFName );
    DWORD dwSize = ::GetFileVersionInfoSize( appFName, &fvHandle );

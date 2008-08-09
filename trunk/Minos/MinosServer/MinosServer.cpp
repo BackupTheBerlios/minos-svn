@@ -21,7 +21,7 @@ WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
    {
       Application->Initialize();
       Application->CreateForm(__classid(TMinosMainForm), &MinosMainForm);
-       Application->Run();
+		Application->Run();
    }
    catch ( Exception & exception )
    {

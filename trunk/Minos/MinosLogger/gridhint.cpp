@@ -44,12 +44,13 @@ bool TGridHint::GetShowing( void )
 }
 
 /*Windows::*/TRect __fastcall TGridHint::CalcHintRect(  int /*MaxWidth*/,
-      const System::AnsiString AHint,
+      const System::String AHint,
       void * /*AData*/ )
 {
+   String temp = AHint;
    RECT r = Bounds( 0, 0, HintControl->Width, 0 );
    // need a TCustomControl to get a Canvas
-   DrawText( ( HDC ) Canvas->Handle, AHint.c_str(), -1, &r,
+   DrawText( ( HDC ) Canvas->Handle, temp.c_str(), -1, &r,
              DT_CALCRECT | DT_LEFT | DT_WORDBREAK | DT_NOPREFIX );
    OffsetRect( &r, XPos + 10, YPos + 10 );
    r.right += 6;
@@ -58,7 +59,7 @@ bool TGridHint::GetShowing( void )
 }
 void TGridHint::Appear( void )
 {
-   AnsiString Hint;
+   String Hint;
    TRect HintRect;
 
    //   Hint = GetShortHint(HintControl->Hint);   // this splits on | character

@@ -984,9 +984,9 @@ static double raddeg( double x )
    return ( y );
 
 }
-static String kmloutput( Location *outgrid )
+static AnsiString kmloutput( Location *outgrid )
 {
-   String kml;
+   AnsiString kml;
    kml.printf(
       "%3.8f,"
       "%3.8f",

@@ -34,7 +34,7 @@ std::ostream & MLogFile::createLogFile( const std::string & prefix, int keepDays
 
    unsigned short h, m, s, ms;
    dt.DecodeTime( &h, &m, &s, &ms );
-   String sdt;
+   AnsiString sdt;
    sdt.printf( "%s.%04.4d", dt.FormatString( "yyyy mmm dd hh:nn:ss" ), ms );
 
    //   getLogFile().open( fLogFileName.c_str() );
@@ -53,7 +53,7 @@ std::ostream & MLogFile::logT( void )
    TDateTime dt = TDateTime::CurrentDateTime();
    unsigned short h, m, s, ms;
    dt.DecodeTime( &h, &m, &s, &ms );
-   String sdt;
+   AnsiString sdt;
    DWORD id = GetCurrentThreadId();
    sdt.printf( "%s.%04.4d <%4.4d>", dt.FormatString( "hh:nn:ss" ), ms, id );
    return log() << sdt.c_str();

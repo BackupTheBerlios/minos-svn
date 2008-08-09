@@ -23,34 +23,34 @@
 class TMyRCVersion
 {
    public:
-      enum eInfoFrom { ifEXE, ifDLL, ifPackage };
+	  enum eInfoFrom { ifEXE, ifDLL, ifPackage };
    private:
 
-      DWORD * TransBlock;
-      void * FVData;
-      String __fastcall GetCompanyName();
-      String __fastcall GetFileDescription();
-      String __fastcall GetFileVersion();
-      String __fastcall GetInternalName();
-      String __fastcall GetLegalCopyright();
-      String __fastcall GetLegalTrademarks();
-      String __fastcall GetOriginalFilename();
-      String __fastcall GetProductName();
-      String __fastcall GetProductVersion();
-      String __fastcall GetMajorVersion();
-      String __fastcall GetMinorVersion();
-      String __fastcall GetRelease();
-      String __fastcall GetComments();
+	  DWORD * TransBlock;
+	  void * FVData;
+	  String __fastcall GetCompanyName();
+	  String __fastcall GetFileDescription();
+	  String __fastcall GetFileVersion();
+	  String __fastcall GetInternalName();
+	  String __fastcall GetLegalCopyright();
+	  String __fastcall GetLegalTrademarks();
+	  String __fastcall GetOriginalFilename();
+	  String __fastcall GetProductName();
+	  String __fastcall GetProductVersion();
+	  String __fastcall GetMajorVersion();
+	  String __fastcall GetMinorVersion();
+	  String __fastcall GetRelease();
+	  String __fastcall GetComments();
 
-      String __fastcall GetSpecialBuild( void );
+	  String __fastcall GetSpecialBuild( void );
 
-      void __fastcall setValue( String );
-      void __fastcall SetInfoFrom( eInfoFrom e );
-      void __fastcall SetInstance( int );
+	  void __fastcall setValue( String );
+	  void __fastcall SetInfoFrom( eInfoFrom e );
+	  void __fastcall SetInstance( HINSTANCE );
 
       eInfoFrom FInfoFrom;
 
-      int FhInstance;
+	  HINSTANCE FhInstance;
 
    protected:
 
@@ -76,7 +76,7 @@ class TMyRCVersion
       __property String MinorVersion = {write = setValue, read = GetMinorVersion};
       __property String Release = {write = setValue, read = GetRelease};
       __property String SpecialBuild = {write = setValue, read = GetSpecialBuild};
-      __property int Instance = {write = SetInstance};
+      __property HINSTANCE Instance = {write = SetInstance};
 };
 //---------------------------------------------------------------------------
 #endif

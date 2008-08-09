@@ -592,7 +592,7 @@ bool COMPort::Initialise( const std::string &PortName )
    CancelOverlappedhEvent = CreateEvent( NULL, FALSE, FALSE, NULL );
 
    Success = OpenPort( PortName );
-   trace( "OpenPort result = " + IntToStr( Success ) );
+   trace( "OpenPort result = " + IntToStr( (int)Success ) );
    if ( Success )
    {
       WaitSpinning( 1000 );     // allow time to clear the buffers - and maybe see a packet start
@@ -617,7 +617,7 @@ bool COMPort::CloseDown()
    ReadOverlapped.hEvent = 0;
    WriteOverlapped.hEvent = 0;
    CancelOverlappedhEvent = 0;
-   trace( "ClosePort result = " + IntToStr( Success ) );
+   trace( "ClosePort result = " + IntToStr( (int)Success ) );
    RxGuard::clear();
    TxGuard::clear();
    return Success;

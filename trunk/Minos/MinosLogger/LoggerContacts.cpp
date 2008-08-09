@@ -394,7 +394,7 @@ void ContestContact::getReg1TestText( std::string &sdest )
    sdest += reps.getValue();   // TX RST
    sdest += ';';
 
-   String ssbuff;
+   AnsiString ssbuff;
    int ss = atoi( serials.getValue().c_str() );
    if ( ss )
       ssbuff.printf( "%03.3d", ss );
@@ -404,7 +404,7 @@ void ContestContact::getReg1TestText( std::string &sdest )
    sdest += repr.getValue();   // RX RST
    sdest += ';';
 
-   String srbuff;
+   AnsiString srbuff;
    int sr = atoi( serialr.getValue().c_str() );
    if ( sr )
       srbuff.printf( "%03.3d", sr );

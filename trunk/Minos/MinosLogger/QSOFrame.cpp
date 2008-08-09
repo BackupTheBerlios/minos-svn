@@ -531,7 +531,7 @@ bool TGJVEditFrame::dlgForced()
    int s = screenContact.contactScore;
    if ( s < 0 )
       s = 0;
-   String temp;
+   AnsiString temp;
    temp.printf( "%d", s );
    ForceDlg->ScoreIl->Text = temp;
 
@@ -720,8 +720,8 @@ void __fastcall TGJVEditFrame::SerTXEditChange( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void TGJVEditFrame::setScoreText( int dist, bool partial, bool xband )
 {
-   String b;
-   String s;
+   AnsiString b;
+   AnsiString s;
    s.printf( "%d", dist );
 
    if ( partial )
@@ -787,10 +787,10 @@ void TGJVEditFrame::calcLoc( )
                strcat( rev, "R" );
             }
             setScoreText( ( int ) dist, ( locValres == LOC_PARTIAL ), sct.contactFlags & XBAND );
-            String brgbuff;
+			AnsiString brgbuff;
             if ( locValres == LOC_PARTIAL )
             {
-               brgbuff.printf( "(%d\xB0%s)", vb, rev );
+			   brgbuff.printf( "(%d\xB0%s)", vb, rev );
             }
             else
             {

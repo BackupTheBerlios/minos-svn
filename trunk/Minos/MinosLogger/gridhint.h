@@ -25,7 +25,7 @@ class TGridHint : public THintWindow
    public:
       virtual void __fastcall TGridHint::NCPaint( HDC DC );
 
-      virtual /*Windows::*/TRect __fastcall CalcHintRect( int MaxWidth, const System::AnsiString AHint, void * AData );
+      virtual /*Windows::*/TRect __fastcall CalcHintRect( int MaxWidth, const System::String AHint, void * AData );
 
       void Appear( void );
       void Disappear( void );

@@ -423,7 +423,7 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
          case egSNTx:
             {
                int ss = atoi( serials.getValue().c_str() );
-               String ssbuff;
+			   AnsiString ssbuff;
                if ( ss )
                   ssbuff.printf( "%03.3d", ss );
                res = ssbuff.c_str();
@@ -435,9 +435,9 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
          case egSNRx:
             {
                int sr = atoi( serialr.getValue().c_str() );
-               String srbuff;
+			   AnsiString srbuff;
                if ( sr )
-                  srbuff.printf( "%03.3d", sr );
+				  srbuff.printf( "%03.3d", sr );
                res = srbuff.c_str();
             }
             break;
@@ -446,7 +446,7 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
             break;
          case egBrg:
             {
-               String brgbuff;
+			   AnsiString brgbuff;
 
                if ( contactFlags.getValue() & MANUAL_SCORE )
                   brgbuff = "MAN";
@@ -457,7 +457,7 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
                      if ( contest == curcon )
                      {
                         // use the existing data
-                        brgbuff.printf( "%03.3d\xB0", varBrg( bearing ) );
+						brgbuff.printf( "%03.3d\xB0", varBrg( bearing ) );
                      }
                      else
                      {
@@ -482,32 +482,32 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
                         }
                      }
                   }
-               }
-               res = brgbuff.c_str();
-            }
-            break;
+			   }
+			   res = brgbuff.c_str();
+			}
+			break;
 
-         case egScore:
-            {
-               String scorebuff;
+		 case egScore:
+			{
+			   AnsiString scorebuff;
 
-               if ( contactFlags.getValue() & DONT_PRINT )
-                  scorebuff = "DEL";
-               else
-                  if ( contactFlags.getValue() & NON_SCORING )
-                     scorebuff = "N/S";
-                  else
-                  {
-                     if ( contest == curcon )
-                     {
-                        // use the existing data
-                        if ( ( cs.valRes == ERR_DUPCS ) && ( curcon == clp ) )
-                           scorebuff = "DUP";
-                        else
-                        {
-                           int temp = contactScore.getValue();
-                           if ( temp <= 0 )
-                              temp = 0;
+			   if ( contactFlags.getValue() & DONT_PRINT )
+				  scorebuff = "DEL";
+			   else
+				  if ( contactFlags.getValue() & NON_SCORING )
+					 scorebuff = "N/S";
+				  else
+				  {
+					 if ( contest == curcon )
+					 {
+						// use the existing data
+						if ( ( cs.valRes == ERR_DUPCS ) && ( curcon == clp ) )
+						   scorebuff = "DUP";
+						else
+						{
+						   int temp = contactScore.getValue();
+						   if ( temp <= 0 )
+							  temp = 0;
 
                            switch ( contest->scoreMode.getValue() )
                            {
@@ -523,7 +523,7 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
                                  {
                                     if ( contactFlags.getValue() & XBAND )
                                     {
-                                       scorebuff.printf( "%4dXB", temp );
+									   scorebuff.printf( "%4dXB", temp );
                                     }
                                     else
                                        scorebuff.printf( "%4d", temp );
