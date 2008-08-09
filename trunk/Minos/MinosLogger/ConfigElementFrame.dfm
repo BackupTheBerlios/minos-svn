@@ -19,5 +19,6 @@ object ConfigElementFrm: TConfigElementFrm
     Height = 17
     Caption = 'Run'
     TabOrder = 0
+    OnClick = RunCheckBoxClick
   end
 end

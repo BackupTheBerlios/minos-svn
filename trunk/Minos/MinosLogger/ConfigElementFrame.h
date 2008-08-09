@@ -22,6 +22,7 @@ class TConfigElementFrm : public TFrame
    __published:  	// IDE-managed Components
       TCheckBox *RunCheckBox;
       TLabel *AppNameLabel;
+   void __fastcall RunCheckBoxClick(TObject *Sender);
    private:  	// User declarations
    public:  		// User declarations
       TConfigElement *tce;

@@ -30,10 +30,12 @@ bool TConfigElementFrm::initialise( String sect )
    Name = sect;
    AppNameLabel->Caption = sect;
    RunCheckBox->Checked = tce->run;
-   if ( tce->minimise )
-   {
-      RunCheckBox->Caption = "Test Running";
-   }
    return true;
 }
 //---------------------------------------------------------------------------
+void __fastcall TConfigElementFrm::RunCheckBoxClick(TObject *Sender)
+{
+   // action it instantly?   
+}
+//---------------------------------------------------------------------------
+

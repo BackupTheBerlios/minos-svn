@@ -10,5 +10,5 @@
 #ifndef RunAppH
 #define RunAppH 
 //---------------------------------------------------------------------------
-bool baseRunApp( const std::string &commandLine, const std::string &params, const std::string &rundir, std::string &outfname, bool wait, bool minimise, bool hide );
+bool baseRunApp( const std::string &commandLine, const std::string &params, const std::string &rundir, std::string &outfname, bool wait, bool minimise );
 #endif

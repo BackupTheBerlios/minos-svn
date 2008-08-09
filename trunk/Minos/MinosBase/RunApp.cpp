@@ -9,7 +9,7 @@
 #include "base_pch.h"
 #pragma hdrstop
 
-bool baseRunApp( const std::string &commandLine, const std::string &params, const std::string &rundir, std::string &outfname, bool wait, bool minimise, bool hide )
+bool baseRunApp( const std::string &commandLine, const std::string &params, const std::string &rundir, std::string &outfname, bool wait, bool minimise )
 {
    STARTUPINFO StartInfo;
 
@@ -110,9 +110,6 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
       return false;
    }
    cline[ cnt ] = 0;
-
-   if ( hide )
-      strcat( cline, " /h" );
 
    // All of our handles get passed on.
 

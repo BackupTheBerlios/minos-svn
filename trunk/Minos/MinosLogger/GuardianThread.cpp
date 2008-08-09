@@ -18,7 +18,7 @@
 //============================================================================
 bool TGuardianThread::runApp( bool wait )
 {
-   return baseRunApp( ce->commandLine, ce->params, ce->rundir, ce->outfname, wait, ce->minimise, ce->hide );
+   return baseRunApp( ce->commandLine, ce->params, ce->rundir, ce->outfname, wait, false );
 }
 //---------------------------------------------------------------------------
 void TGuardianThread::runDirectApp( bool wait )

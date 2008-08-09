@@ -53,10 +53,6 @@ void __fastcall TTConfigFrame::StartButtonClick( TObject *Sender )
    for ( std::vector <TConfigElementFrm *>::iterator i = framelist.begin(); i != framelist.end(); i++ )
    {
       ( *i ) ->tce->run = ( *i ) ->RunCheckBox->Checked;
-      if ( ( *i ) ->RunCheckBox->Checked )
-      {
-         ( *i ) ->tce->hide = HideCheckBox->Checked;
-      }
    }
 
    TMConfigDM::getConfigDM( 0 ) ->start();
@@ -92,6 +88,7 @@ void __fastcall TTConfigFrame::HideCheckBoxClick(TObject *Sender)
 
 void __fastcall TTConfigFrame::ModifyButtonClick(TObject *Sender)
 {
+   // we really need to have accumulated changes, so that we can cancel - or we action them instantly
    // Change the INI file to match what is shown
    for ( std::vector <TConfigElementFrm *>::iterator i = framelist.begin(); i != framelist.end(); i++ )
    {

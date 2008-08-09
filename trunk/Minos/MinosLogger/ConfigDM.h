@@ -28,8 +28,6 @@ class TConfigElement
       std::string params;
 
       bool run;
-      bool hide;
-      bool minimise;
 
       TConfigElement();
       bool initialise( String sect );

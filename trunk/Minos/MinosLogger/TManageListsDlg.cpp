@@ -83,7 +83,7 @@ void __fastcall TManageListsDlg::EditListButtonClick( TObject *Sender )
       TContestApp::getContestApp() ->displayBundle.getStringProfile( edpEditor, editor );
 
       std::string outfname;
-      baseRunApp( editor, fname, "", outfname, true, false, false );
+      baseRunApp( editor, fname, "", outfname, true, false );
 
       TContestApp::getContestApp() ->openListFile( fname, slotno );
    }

@@ -32,7 +32,7 @@ TMConfigDM *TMConfigDM::getConfigDM( TComponent* Owner )
 }
 //---------------------------------------------------------------------------
 TConfigElement::TConfigElement()
-      : run( false ), hide( false ), minimise( false )
+      : run( false )
 {}
 //---------------------------------------------------------------------------
 bool TConfigElement::initialise( String sect )
@@ -59,6 +59,7 @@ bool TConfigElement::initialise( String sect )
 void TConfigElement::setRun(bool state)
 {
    config->WriteString(name, "Run", state?"Yes":"No");
+   //and if we are started, modify this elements state
 }
 //---------------------------------------------------------------------------
 __fastcall TMConfigDM::TMConfigDM( TComponent* Owner )
