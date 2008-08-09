@@ -140,8 +140,8 @@ void __fastcall TSPanel::Resize(void)
         }
         catch ( EMathError & e )
         {
-        		String ExceptionName = e.ClassName();
-				Application->MessageBox(e.Message.c_str(),ExceptionName.c_str(),MB_OK | MB_APPLMODAL | MB_ICONERROR);
+//				String ExceptionName = e.ClassName();
+//				Application->MessageBox(e.Message.c_str(),e.ClassName().c_str(),MB_OK | MB_APPLMODAL | MB_ICONERROR);
         }
 
         if (!ComponentState.Contains(csDesigning) && fLimitSize)
@@ -154,7 +154,7 @@ void __fastcall TSPanel::Resize(void)
            {
                yscale = 1.0;
            }
-        }
+		}
 
         for (int i = 0; i < ControlCount; i++)
         {
