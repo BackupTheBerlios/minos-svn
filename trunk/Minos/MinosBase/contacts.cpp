@@ -29,7 +29,7 @@ BaseContact::BaseContact( BaseContestLog * contest, bool time_now ) :
       contactFlags( 0 ), multCount( 0 ),
       bearing( -1 ),
       districtMult( 0 ), ctryMult( 0 ),
-      valid( false ),
+      QSOValid( false ),
       newLoc( false ), newDistrict( false ), newCtry( false )
 {
 }

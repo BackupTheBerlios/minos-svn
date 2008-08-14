@@ -692,7 +692,7 @@ void LoggerContestLog::procUnknown( BaseContact *cct, writer &wr )
 {
    String lbuff;
 
-   if ( cct->valid
+   if ( cct->QSOValid
         && !( ( cct->cs.valRes == ERR_DUPCS )
               || ( cct->contactFlags.getValue() & NON_SCORING )
               || ( cct->contactScore.getValue() <= 0 )
@@ -1010,7 +1010,7 @@ bool LoggerContestLog::exportKML( HANDLE expfd )
          ( countries[ ct->ctryMult->basePrefix ] ) [ ct->cs.fullCall.getValue() ] = ct;
       }
       else
-         if ( ct->valid )
+         if ( ct->QSOValid )
          {
             ( countries[ "unknown" ] ) [ ct->cs.fullCall.getValue() ] = ct;
          }

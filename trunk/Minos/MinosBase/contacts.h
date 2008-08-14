@@ -113,7 +113,7 @@ class BaseContact
 
       int bearing;
 
-      bool valid;
+      bool QSOValid;
       bool newDistrict;
       bool newCtry;
       bool newLoc;

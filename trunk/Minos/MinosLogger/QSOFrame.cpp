@@ -1099,7 +1099,7 @@ void TGJVEditFrame::contactValid( void )
 
    vcct->check( );  // check multiplier, don't log it yet!
 
-   if ( contest->districtMult.getValue() && !vcct->valid )
+   if ( contest->districtMult.getValue() && !vcct->QSOValid )
    {
       // no district when required
       // No CS means we should go to QTH, as its likely to be needed
@@ -1108,6 +1108,8 @@ void TGJVEditFrame::contactValid( void )
          lgTraceerr( ERR_20 );    // "Invalid district multiplier"
          qthIl->tIfValid = false;
       }
+      #warning we also need to check for district out of country
+      // What do we allow as valid? Should we error wrong postcode/country combination?
    }
    else
       if ( contest->otherExchange .getValue() && !contest->districtMult.getValue() && ( trim( vcct->extraText ).size() == 0 ) )

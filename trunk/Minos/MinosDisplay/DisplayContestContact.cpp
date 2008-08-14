@@ -58,7 +58,7 @@ void DisplayContestContact::copyFromArg( ScreenContact &cct )
    repr.setValue( cct.repr );
    serialr.setValue( cct.serialr );
 
-   valid = cct.valid;
+   QSOValid = cct.QSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -158,7 +158,7 @@ void DisplayContestContact::check( )
    if ( contactFlags.getValue() & NON_SCORING )
       return ;
 
-   valid = false;             // initially, anyway
+   QSOValid = false;             // initially, anyway
    int csret = cs.validate( );
    if ( csret != CS_OK )
       checkret = ERR_13;
@@ -261,7 +261,7 @@ void DisplayContestContact::check( )
    if ( checkret )
       return ;
 
-   valid = true;        // for now
+   QSOValid = true;        // for now
 
    // same as ScreenContact::Check up to here
 
@@ -366,7 +366,7 @@ void DisplayContestContact::check( )
       unsigned char * npt = ls->map( numbers );
       if ( npt )
       {
-         if ( valid && ( *npt < 255 ) )
+         if ( QSOValid && ( *npt < 255 ) )
          {
             if ( ( *npt ) ++ == 0 )
             {

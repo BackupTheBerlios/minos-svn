@@ -52,7 +52,7 @@ class ScreenContact
       MinosItem<std::string> op2;
       //------------------
 
-      bool valid;
+      bool QSOValid;
       bool newCtry;
       bool newDistrict;
       bool newLoc;

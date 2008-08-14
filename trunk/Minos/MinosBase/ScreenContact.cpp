@@ -40,7 +40,7 @@ void ScreenContact::initialise( BaseContestLog *ct )
    comments = "";
    contactFlags = 0;
    forcedMult = "";
-   valid = false;
+   QSOValid = false;
    newCtry = false;
    newDistrict = false;
    newLoc = false ;
@@ -77,7 +77,7 @@ void ScreenContact::copyFromArg( BaseContact &cct )
    repr = cct.repr.getValue();
    serialr = cct.serialr.getValue();
 
-   valid = cct.valid;
+   QSOValid = cct.QSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -121,7 +121,7 @@ void ScreenContact::copyFromArg( ScreenContact &cct )
    repr = cct.repr;
    serialr = cct.serialr;
 
-   valid = cct.valid;
+   QSOValid = cct.QSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -157,7 +157,7 @@ void ScreenContact::check( )
    if ( contactFlags & NON_SCORING )
       return ;
 
-   valid = false;             // initially, anyway
+   QSOValid = false;             // initially, anyway
    int csret = cs.validate( );
    if ( csret != CS_OK )
       checkret = ERR_13;
@@ -243,7 +243,7 @@ void ScreenContact::check( )
    if ( checkret )
       return ;
 
-   valid = true;        // for now
+   QSOValid = true;        // for now
 
 }
 bool ScreenContact::isNextContact( void ) const
