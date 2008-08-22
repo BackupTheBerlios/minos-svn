@@ -270,12 +270,17 @@ void procLineEvents( void *p )
 
 void __fastcall TMinosControlForm::FormShow( TObject */*Sender*/ )
 {
-   configurePorts( monitor );
-   // and now we wish to set up our line monitor(s) and attach their ports
-   monitor.initialise();
+	static bool shown = false;
+	if (!shown)
+	{
+		shown = true;
+		configurePorts( monitor );
+		// and now we wish to set up our line monitor(s) and attach their ports
+		monitor.initialise();
 
-   controlLineEventThread = new GJV_thread( "controlLineEventThread", procLineEvents, ( void * ) this, true ) ;
-   ConnectTimer->Enabled = true;
+		controlLineEventThread = new GJV_thread( "controlLineEventThread", procLineEvents, ( void * ) this, true ) ;
+		ConnectTimer->Enabled = true;
+	}
 }
 //---------------------------------------------------------------------------
 void setLines( bool PTTOut, bool PTTIn, bool L1, bool L2 )
