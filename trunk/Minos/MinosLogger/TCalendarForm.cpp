@@ -97,7 +97,7 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 {
    TWaitCursor fred;
-   String calendarURL = "http://www.vhfcc.org/vhfcontests.xml";
+   AnsiString calendarURL = "http://www.vhfcc.org/vhfcontests.xml";
    try
    {
       String cal = IdHTTP1->Get( calendarURL );
