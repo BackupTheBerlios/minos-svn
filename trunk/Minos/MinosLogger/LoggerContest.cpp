@@ -1054,7 +1054,7 @@ bool LoggerContestLog::exportKML( HANDLE expfd )
             kml->Add( "<Placemark><visibility>0</visibility>" );
             kml->Add( ( "<description><![CDATA[" + ct->cs.fullCall.getValue() + " " + ct->loc.loc.getValue() + "]]></description>" ).c_str() );
             kml->Add( ( "<name><![CDATA[" + ct->cs.fullCall.getValue() + "]]></name>" ).c_str() );
-            kml->Add( String( "<Point><coordinates>" + kmloutput( &l2 ) + ",0</coordinates></Point>" ) );
+            kml->Add( "<Point><coordinates>" + kmloutput( &l2 ) + ",0</coordinates></Point>"  );
             kml->Add( "</Placemark>" );
          }
       }
