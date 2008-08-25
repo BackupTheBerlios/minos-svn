@@ -21,10 +21,4 @@ object DMK8055: TDMK8055
     Left = 112
     Top = 16
   end
-  object JvHidDeviceController1: TJvHidDeviceController
-    OnEnumerate = JvHidDeviceController1Enumerate
-    OnDeviceChange = JvHidDeviceController1DeviceChange
-    Left = 24
-    Top = 16
-  end
 end

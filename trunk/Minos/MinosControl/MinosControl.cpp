@@ -13,10 +13,11 @@
 #pragma hdrstop
 #include "GJVThreads.h" 
 //---------------------------------------------------------------------------
-USEFORM( "K8055Container.cpp", DMK8055 );
-USEFORM( "MinosControlMain.cpp", MinosControlForm );
-USEFORM( "WindowsMonitor.cpp", WindowsMonitorForm );
-USEFORM( "UBWContainer.cpp", UBWDM );
+USEFORM("UBWContainer.cpp", UBWDM);
+USEFORM("WindowsMonitor.cpp", WindowsMonitorForm);
+USEFORM("MinosControlMain.cpp", MinosControlForm);
+USEFORM("K8055Container.cpp", DMK8055);
+USEFORM("HidControl.cpp", HidControlFM);
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {
@@ -24,8 +25,8 @@ WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
    try
    {
       Application->Initialize();
-      Application->CreateForm( __classid( TMinosControlForm ), &MinosControlForm );
-      Application->Run();
+      Application->CreateForm(__classid(TMinosControlForm), &MinosControlForm);
+		Application->Run();
    }
    catch ( Exception & exception )
    {

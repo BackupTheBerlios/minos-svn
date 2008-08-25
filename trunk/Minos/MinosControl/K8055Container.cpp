@@ -10,6 +10,7 @@
 #include "MinosControl_pch.h"
 #pragma hdrstop
 
+#include "HIDControl.h"
 
 #include "tinyxml.h"
 #include "controlport.h"
@@ -24,11 +25,15 @@ TDMK8055 *DMK8055;
 //---------------------------------------------------------------------------
 __fastcall TDMK8055::TDMK8055( TComponent* Owner )
       : TForm( Owner ),
-      theDev( 0 ), timed( false ), viewed( false ), deviceFound( false )
+		timed( false ), viewed( false ), deviceFound( false )
       , deviceNo( 0 )
 
 {
-   for ( int i = 0; i < 10; i++ )
+	HidControlFM = new THidControlFM(this);
+	HidControlFM->Show();
+	HidControlFM->Visible = false;
+
+	for ( int i = 0; i < 10; i++ )
       bufTx[ i ] = 0;
    for ( int i = 0; i < 10; i++ )
       bufRx[ i ] = 0;
@@ -37,75 +42,42 @@ __fastcall TDMK8055::TDMK8055( TComponent* Owner )
 }
 __fastcall TDMK8055::~TDMK8055()
 {
-   for ( unsigned int i = 0; i < devList.size(); i++ )
-   {
-      theDev = devList[ i ];
-      JvHidDeviceController1->CheckIn( theDev );
-      delete theDev;
-   }
-   devList.clear();
-}
-//---------------------------------------------------------------------------
-void __fastcall TDMK8055::JvHidDeviceController1DeviceChange(
-   TObject */*Sender*/ )
-{
-   if ( devList.size() )
-   {
-      for ( unsigned int i = 0; i < devList.size(); i++ )
-      {
-         theDev = devList[ i ];
-         delete theDev;
-      }
-      devList.clear();
-   }
-
-   JvHidDeviceController1->Enumerate();
-
-   if ( devList.size() > 0 )
-   {
-      theDev = devList[ 0 ];
-   }
-}
-//---------------------------------------------------------------------------
-bool __fastcall TDMK8055::JvHidDeviceController1Enumerate(
-   TJvHidDevice *HidDev, const int Idx )
-{
-   TJvHidDevice * Dev;
-   if ( HidDev->Attributes.VendorID == 0x10CF &&
-        ( HidDev->Attributes.ProductID == ( 0x5500 | deviceNo )    // we need to set devno...
-        ) )
-   {
-      JvHidDeviceController1->CheckOutByIndex( Dev, Idx );
-      devList.push_back( Dev );
-   }
-   return true;
+/*
+	for ( unsigned int i = 0; i < devList.size(); i++ )
+	{
+		theDev = devList[ i ];
+//      JvHidDeviceController1->CheckIn( theDev );
+		delete theDev;
+	}
+	devList.clear();
+	*/
+	delete HidControlFM;
 }
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 void __fastcall TDMK8055::doRead()
 {
-   unsigned int toRead;
-   unsigned int read;
+	unsigned long toRead;
+	unsigned long read;
 
-   if ( theDev )
+	if ( HidControlFM )
    {
-      toRead = theDev->Caps.InputReportByteLength;    // tests give this as 9
-      theDev->ReadFile( bufRx, toRead, read );
+		toRead = /*HidControlFM->Caps.InputReportByteLength*/9;    // tests give this as 9
+		HidControlFM->ReadFile( bufRx, toRead, read );
    }
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TDMK8055::doWrite()
 {
-   unsigned int written;
-   unsigned int toWrite;
-   if ( theDev )
+	unsigned long written;
+   unsigned long toWrite;
+	if ( HidControlFM )
    {
       bufTx[ 0 ] = 0;
       toWrite = 9;
-      theDev = devList[ 0 ];
-      written = 0;
-      theDev->WriteFile( bufTx, toWrite, written );
+		written = 0;
+		HidControlFM->WriteFile( bufTx, toWrite, written );
    }
 }
 void __fastcall TDMK8055::setShareData ( unsigned int address, unsigned int data )
@@ -266,7 +238,7 @@ namespace K8055
    bool readDigitalChannel( long Channel )
    {
       DMK8055->doAction( 6, 0, 0 );
-      unsigned int n1 = DMK8055->shared[ 10 ];
+		unsigned int n1 = DMK8055->shared[ 10 ];
       unsigned int k = ( unsigned int ) ( ( n1 & 16 ) > 0 ) * 1 +
                        ( unsigned int ) ( ( n1 & 32 ) > 0 ) * 2 +
                        ( unsigned int ) ( ( n1 & 1 ) > 0 ) * 4 +

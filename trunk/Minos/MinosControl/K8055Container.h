@@ -14,26 +14,19 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include "JvComponent.hpp"
-#include "JvHidControllerClass.hpp"
 #include <ExtCtrls.hpp>
-#include "JvComponentBase.hpp"
 #include <vector> 
 //---------------------------------------------------------------------------
 class TDMK8055 : public TForm
 {
    __published:  	// IDE-managed Components
       TTimer *Timer1;
-      TJvHidDeviceController *JvHidDeviceController1;
-      void __fastcall JvHidDeviceController1DeviceChange( TObject *Sender );
-      bool __fastcall JvHidDeviceController1Enumerate( TJvHidDevice *HidDev,
-            const int Idx );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall Timer1Timer( TObject *Sender );
    private:  	// User declarations
    public:  		// User declarations
-      std::vector <TJvHidDevice *> devList;
-      TJvHidDevice *theDev;
+//      std::vector <TJvHidDevice *> devList;
+//      TJvHidDevice *theDev;
       bool timed;
       bool viewed;
       bool deviceFound;
