@@ -21,35 +21,35 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Base)'!=''">
     <OutputExt>exe</OutputExt>
-    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
     <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-    <BCC_OutputDir>obj</BCC_OutputDir>
+    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
     <DCC_ObjPath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat</DCC_ObjPath>
+    <BCC_OutputDir>obj</BCC_OutputDir>
     <DynamicRTL>true</DynamicRTL>
     <OptPCH>"vcl.h"="vcl3.h"</OptPCH>
     <ILINK_AppType>Windows</ILINK_AppType>
-    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
-    <ILINK_ObjectSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat;..\XMPPLib</ILINK_ObjectSearchPath>
     <UsePackages>true</UsePackages>
+    <ILINK_ObjectSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat;..\XMPPLib</ILINK_ObjectSearchPath>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;Jcl.bpi;JvAppFrmD11R.bpi;JvCoreD11R.bpi;JvBandsD11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDlgsD11R.bpi;JvDockingD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvStdCtrlsD11R.bpi;JvSystemD11R.bpi;JvTimeFrameworkD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
-    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <PackageLibs>JclVcl.lib</PackageLibs>
-    <IncludePath>$(TINYXML);..\XMPPLib</IncludePath>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <BCC_PCHCache>true</BCC_PCHCache>
-    <BCC_IncludePath>$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;$(BDS)\include\dinkumware;..\minosdisplay;..\minosbase;$(GJVVCL);$(BOOST)\include;$(VTV)\Source;$(TINYXML)</BCC_IncludePath>
-    <DCC_IncludePath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-    <BRCC_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware;C:\ThirdParty\TinyXML;C:\Boost\include;..\minosdisplay;..\minosbase</BRCC_IncludePath>
-    <TASM_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware;C:\ThirdParty\TinyXML;C:\Boost\include;..\minosdisplay;..\minosbase</TASM_IncludePath>
+    <IncludePath>$(TINYXML);..\XMPPLib</IncludePath>
     <AllPackageLibs>rtl.lib;vcl.lib;JvCoreD11R.lib;vcldb.lib;dbrtl.lib;vclx.lib;Jcl.lib;JclVcl.lib;JvSystemD11R.lib</AllPackageLibs>
-    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <TASM_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware;C:\ThirdParty\TinyXML;C:\Boost\include;..\minosdisplay;..\minosbase</TASM_IncludePath>
+    <BRCC_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware;C:\ThirdParty\TinyXML;C:\Boost\include;..\minosdisplay;..\minosbase</BRCC_IncludePath>
+    <DCC_IncludePath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_IncludePath>$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;$(BDS)\include\dinkumware;..\minosdisplay;..\minosbase;$(GJVVCL);$(BOOST)\include;$(VTV)\Source;$(TINYXML)</BCC_IncludePath>
     <ILINK_LibraryPath>..\XMPPLib;c:\vcl;$(BDS)\lib\obj;$(BDS)\lib;C:\Boost\lib;$(JVCL)\jcl\lib\d11;$(JVCL)\jvcl\lib\d11</ILINK_LibraryPath>
-    <BCC_Defines>HAV_CONFIG_H;TIXML_USE_STL</BCC_Defines>
-    <BRCC_Defines>HAV_CONFIG_H;TIXML_USE_STL</BRCC_Defines>
-    <TASM_Defines>HAV_CONFIG_H;TIXML_USE_STL</TASM_Defines>
+    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
     <Multithreaded>true</Multithreaded>
+    <TASM_Defines>HAV_CONFIG_H;TIXML_USE_STL</TASM_Defines>
+    <BRCC_Defines>HAV_CONFIG_H;TIXML_USE_STL</BRCC_Defines>
+    <BCC_Defines>HAV_CONFIG_H;TIXML_USE_STL</BCC_Defines>
     <DCC_ResourcePath>C:\ThirdParty\TinyXML;C:\Minos\MinosChat</DCC_ResourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -63,8 +63,8 @@
     <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
     <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
     <BCC_StackFrames>true</BCC_StackFrames>
-    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
     <TASM_Debugging>Full</TASM_Debugging>
     <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
@@ -91,7 +91,7 @@
     </CppCompile>
     <CppCompile Include="CommonMonitor.cpp">
       <DependentOn>CommonMonitor.h</DependentOn>
-      <BuildOrder>14</BuildOrder>
+      <BuildOrder>15</BuildOrder>
     </CppCompile>
     <CppCompile Include="COMPORT.cpp">
       <DependentOn>COMPORT.h</DependentOn>
@@ -102,12 +102,17 @@
     </CppCompile>
     <CppCompile Include="FindUSBComPort.cpp">
       <DependentOn>FindUSBComPort.h</DependentOn>
-      <BuildOrder>15</BuildOrder>
+      <BuildOrder>16</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="HidControl.cpp">
+      <Form>HidControlFM</Form>
+      <DependentOn>HidControl.h</DependentOn>
+      <BuildOrder>10</BuildOrder>
     </CppCompile>
     <CppCompile Include="K8055Container.cpp">
       <Form>DMK8055</Form>
       <DependentOn>K8055Container.h</DependentOn>
-      <BuildOrder>10</BuildOrder>
+      <BuildOrder>11</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosControl.cpp">
       <BuildOrder>0</BuildOrder>
@@ -115,20 +120,20 @@
     <CppCompile Include="MinosControlMain.cpp">
       <Form>MinosControlForm</Form>
       <DependentOn>MinosControlMain.h</DependentOn>
-      <BuildOrder>11</BuildOrder>
+      <BuildOrder>12</BuildOrder>
     </CppCompile>
     <CppCompile Include="portconf.cpp">
-      <BuildOrder>13</BuildOrder>
+      <BuildOrder>14</BuildOrder>
     </CppCompile>
     <CppCompile Include="UBWContainer.cpp">
       <Form>UBWDM</Form>
       <DependentOn>UBWContainer.h</DependentOn>
-      <BuildOrder>16</BuildOrder>
+      <BuildOrder>17</BuildOrder>
     </CppCompile>
     <CppCompile Include="WindowsMonitor.cpp">
       <Form>WindowsMonitorForm</Form>
       <DependentOn>WindowsMonitor.h</DependentOn>
-      <BuildOrder>12</BuildOrder>
+      <BuildOrder>13</BuildOrder>
     </CppCompile>
     <ResFiles Include="..\MinosVer.RES">
       <BuildOrder>5</BuildOrder>
@@ -148,6 +153,10 @@
     <LibFiles Include="..\XMPPLib\XMPPLib.lib">
       <BuildOrder>2</BuildOrder>
     </LibFiles>
+    <LibFiles Include="hid.lib">
+      <BuildOrder>18</BuildOrder>
+    </LibFiles>
+    <FormResources Include="HidControl.dfm" />
     <FormResources Include="K8055Container.dfm" />
     <FormResources Include="MinosControlMain.dfm" />
     <FormResources Include="UBWContainer.dfm" />
