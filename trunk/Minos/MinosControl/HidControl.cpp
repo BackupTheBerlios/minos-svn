@@ -5,8 +5,8 @@
 #include <setupapi.h>
 #include <dbt.h>
 extern "C" {
-#include <C:\Tiburon\HID\ddk/hidsdi.h>	/* note: part of Windows DDK */
-#include <C:\Tiburon\HID\ddk/hidpi.h>	/* note: also part of Windows DDK */
+#include "hidsdi.h"	/* note: part of Windows DDK */
+#include "hidpi.h"	/* note: also part of Windows DDK */
 }
 
 #include "HIDControl.h"
