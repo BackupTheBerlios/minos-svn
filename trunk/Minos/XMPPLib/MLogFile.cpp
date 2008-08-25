@@ -35,27 +35,29 @@ std::ostream & MLogFile::createLogFile( const std::string & prefix, int keepDays
    unsigned short h, m, s, ms;
    dt.DecodeTime( &h, &m, &s, &ms );
    AnsiString sdt;
-   sdt.printf( "%s.%04.4d", dt.FormatString( "yyyy mmm dd hh:nn:ss" ), ms );
+	AnsiString dtg = dt.FormatString( "yyyy mmm dd hh:nn:ss" );
+	sdt.printf( "%s.%04.4d", dtg.c_str(), ms );
 
-   //   getLogFile().open( fLogFileName.c_str() );
-   getLogFile( fLogFileName );
-   return log() << sdt.c_str() << std::endl;
+	//   getLogFile().open( fLogFileName.c_str() );
+	getLogFile( fLogFileName );
+	return log() << sdt.c_str() << std::endl;
 }
 //---------------------------------------------------------------------------
 std::ostream & MLogFile::log( void )
 {
-   return getLogFile( "" );
+	return getLogFile( "" );
 }
 //---------------------------------------------------------------------------
 std::ostream & MLogFile::logT( void )
 {
-   GJV_scoped_lock scoped_lock;
-   TDateTime dt = TDateTime::CurrentDateTime();
-   unsigned short h, m, s, ms;
-   dt.DecodeTime( &h, &m, &s, &ms );
-   AnsiString sdt;
-   DWORD id = GetCurrentThreadId();
-   sdt.printf( "%s.%04.4d <%4.4d>", dt.FormatString( "hh:nn:ss" ), ms, id );
+	GJV_scoped_lock scoped_lock;
+	TDateTime dt = TDateTime::CurrentDateTime();
+	unsigned short h, m, s, ms;
+	dt.DecodeTime( &h, &m, &s, &ms );
+	AnsiString sdt;
+	DWORD id = GetCurrentThreadId();
+	AnsiString time = dt.FormatString( "hh:nn:ss" );
+	sdt.printf( "%s.%04.4d <%4.4d>", time.c_str(), ms, id );
    return log() << sdt.c_str();
 }
 //---------------------------------------------------------------------------
