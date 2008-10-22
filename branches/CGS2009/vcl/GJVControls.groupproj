@@ -1,0 +1,64 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{e67e208b-11b0-4706-9caf-b6723f17158f}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="GJVAudio.cbproj" />
+    <Projects Include="GJVControls.cbproj" />
+    <Projects Include="VTV_SVN\VTV.cbproj" />
+    <Projects Include="VTV_SVN\VTVD.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="GJVControls">
+    <MSBuild Projects="GJVControls.cbproj" Targets="" />
+  </Target>
+  <Target Name="GJVControls:Clean">
+    <MSBuild Projects="GJVControls.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="GJVControls:Make">
+    <MSBuild Projects="GJVControls.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="GJVAudio">
+    <MSBuild Projects="GJVAudio.cbproj" Targets="" />
+  </Target>
+  <Target Name="GJVAudio:Clean">
+    <MSBuild Projects="GJVAudio.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="GJVAudio:Make">
+    <MSBuild Projects="GJVAudio.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="VTV">
+    <MSBuild Projects="VTV_SVN\VTV.cbproj" Targets="" />
+  </Target>
+  <Target Name="VTV:Clean">
+    <MSBuild Projects="VTV_SVN\VTV.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="VTV:Make">
+    <MSBuild Projects="VTV_SVN\VTV.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="VTVD">
+    <MSBuild Projects="VTV_SVN\VTVD.cbproj" Targets="" />
+  </Target>
+  <Target Name="VTVD:Clean">
+    <MSBuild Projects="VTV_SVN\VTVD.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="VTVD:Make">
+    <MSBuild Projects="VTV_SVN\VTVD.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="GJVControls;GJVAudio;VTV;VTVD" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="GJVControls:Clean;GJVAudio:Clean;VTV:Clean;VTVD:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="GJVControls:Make;GJVAudio:Make;VTV:Make;VTVD:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>
