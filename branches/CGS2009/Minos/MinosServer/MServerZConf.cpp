@@ -350,7 +350,7 @@ void TZConf::readServerList()
          port == String(ServerPort);
       }
 
-      publishServer( uuid.c_str(), station.c_str(), host.c_str(), port.ToIntDef( ServerPort ), true );
+      publishServer( uuid.t_str(), station.t_str(), host.t_str(), port.ToIntDef( ServerPort ), true );
 
    }
    delete params;

@@ -172,7 +172,7 @@ bool reg1test::exportTest( HANDLE expfd )
    String Version = RCVersion.FileVersion;
 
    String pver = "Produced by " + ProductName + " version " + Version;
-   wr.lwrite( pver.c_str() );
+	wr.lwrite( pver.t_str() );
 
    /*
       [QSORecords;Number of QSO records following]QSO records identifier;number of QSO records following
@@ -211,7 +211,7 @@ bool reg1test::parseHeader( String line )
 {
    // break line at semicolons
    char buff[ 1024 ];
-   strncpy( buff, line.c_str(), 1023 );
+	strncpy( buff, line.t_str(), 1023 );
    buff[ 1023 ] = 0;
    bool sep2seen;
    char *a[ 2 ];
@@ -475,7 +475,7 @@ bool reg1test::parseHeader( String line )
 bool reg1test::parseRemark( String line )
 {
    // free form lines
-   remarks.push_back( line.c_str() );
+	remarks.push_back( line.t_str() );
    return true;
 }
 //====================================================================
@@ -485,7 +485,7 @@ bool reg1test::parseQSO( String line )
    //060701;1408;M3MQR;;59;001;59;001;;IO80OU;24;;;;
    char * a[ 20 ];
    char buff[ 1024 ];
-   strncpy( buff, line.c_str(), 1023 );
+   strncpy( buff, line.t_str(), 1023 );
    buff[ 1023 ] = 0;
    bool sep2seen;
    int scnt = parseLine( buff, ';', a, 20, 0, sep2seen );   // BAD - parseLine writes to buffer

@@ -29,10 +29,16 @@
   	<Line name="L1" direction = "in" port="K8055" line="10" />
   	<Line name="L2" direction = "in" port="K8055" line="4" />
 -->
+<!--
   	<Line name="PTTIn" direction = "in" port="WindowsMonitor" line="PTTIn" />
   	<Line name="PTTOut" direction = "out" port="WindowsMonitor" line="PTTOut" />
   	<Line name="L1" direction = "in" port="WindowsMonitor" line="L1" />
   	<Line name="L2" direction = "in" port="WindowsMonitor" line="L2" />
+-->
+  	<Line name="PTTOut" direction = "out" port="K8055" line="7" />
+  	<Line name="PTTIn" direction = "in" port="K8055" line="17" />
+  	<Line name="L1" direction = "in" port="K8055" line="10" />
+  	<Line name="L2" direction = "in" port="K8055" line="4" />
   </Lines>
 <!--
    <Enable port="Serial1"/>
@@ -40,5 +46,5 @@
    <Enable port="K8055"/>
    <Enable port="UBW"/>
 -->
-   <Enable port="WindowsMonitor"/>
+   <Enable port="K8055"/>
 </PortConfig>

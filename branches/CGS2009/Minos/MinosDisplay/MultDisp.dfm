@@ -162,10 +162,6 @@ object MultDispFrame: TMultDispFrame
     object ErrTab: TTabSheet
       Caption = 'Errors'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ErrList: TListBox
         Left = 0
         Top = 0

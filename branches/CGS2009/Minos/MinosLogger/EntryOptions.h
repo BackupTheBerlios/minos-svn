@@ -38,7 +38,7 @@ class TEntryOptionsForm : public TForm
       bool minosSave;
    public:  		// User declarations
       __fastcall TEntryOptionsForm( TComponent* Owner, LoggerContestLog * , bool minosSave );
-      String doFileSave( );
+      std::string doFileSave( );
 };
 //---------------------------------------------------------------------------
 #endif

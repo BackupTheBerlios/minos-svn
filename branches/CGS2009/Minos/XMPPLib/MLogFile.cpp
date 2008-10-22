@@ -25,10 +25,10 @@ std::ostream & MLogFile::createLogFile( const std::string & prefix, int keepDays
    //Close();
    TDateTime dt = TDateTime::CurrentDateTime();
    String tidyPrefix = prefix.c_str() + String( "*" );
-   tidyFiles( tidyPrefix.c_str(), keepDays );
-   fLogFileName = generateLogFileName( prefix ).c_str();
+	tidyFiles( tidyPrefix.t_str(), keepDays );
+	fLogFileName = generateLogFileName( prefix ).t_str();
 
-   std::string sDir = ExtractFileDir( fLogFileName.c_str() ).c_str();
+   std::string sDir = ExtractFileDir( fLogFileName.c_str() ).t_str();
    if ( !DirectoryExists( sDir.c_str() ) )
       CreateDir( sDir.c_str() );
 

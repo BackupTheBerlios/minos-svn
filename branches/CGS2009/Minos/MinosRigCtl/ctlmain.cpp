@@ -394,7 +394,7 @@ void __fastcall TRigCtlMain::RigSelectButtonClick( TObject *Sender )
    }
 
    int rig_model = ( int ) RigCombo->Items->Objects[ RigCombo->ItemIndex ];
-   String port = PortCombo->Text;
+   std::string port = PortCombo->Text.t_str();
    //  	my_rig = rig_init(RIG_MODEL_FT1000MP);
    my_rig = rig_init( rig_model );
    if ( !my_rig )

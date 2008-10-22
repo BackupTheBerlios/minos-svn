@@ -234,7 +234,7 @@ void TBandMapForm::showBM()
 
 void __fastcall TBandMapForm::BMTreeGetText( TBaseVirtualTree */*Sender*/,
       PVirtualNode Node, TColumnIndex Column, TVSTTextType /*TextType*/,
-      WideString &CellText )
+	  UnicodeString &CellText )
 {
    if ( Node->Index >= bmlist.size() )
    {

@@ -46,9 +46,9 @@ void __fastcall TLogMonitorFrame::QSOTreeColumnResize( TVTHeader *Sender,
       TColumnIndex Column )
 {
    // preserve the column size in the ini file
-   MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumn" + String( Column ) ).c_str(), - 1 );
-   MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumnWidth" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
-   //   TContestApp::getContestApp() ->displayBundle.setIntProfile( ( "LogColumn" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
+	MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumn" + makeStr( Column ) ), - 1 );
+	MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumnWidth" + makeStr( Column ) ), Sender->Columns->Items[ Column ] ->Width );
+	//   TContestApp::getContestApp() ->displayBundle.setIntProfile( ( "LogColumn" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
 
 }
 //---------------------------------------------------------------------------
@@ -65,7 +65,7 @@ void __fastcall TLogMonitorFrame::QSOTreeGetNodeDataSize( TBaseVirtualTree */*Se
 //---------------------------------------------------------------------------
 void __fastcall TLogMonitorFrame::QSOTreeGetText( TBaseVirtualTree */*Sender*/,
       PVirtualNode Node, TColumnIndex Column, TVSTTextType /*TextType*/,
-      WideString &CellText )
+      UnicodeString &CellText )
 {
    BaseContact * cont = contest->pcontactAt( Node->Index );
    if ( cont && Column >= 0 )
@@ -132,7 +132,7 @@ void TLogMonitorFrame::showQSOs()
 
       int temp = -1;
       String key = "LogColumnWidth" + String( i );
-      MinosParameters::getMinosParameters() ->getDisplayColumnWidth( key.c_str(), temp, -1 );
+      MinosParameters::getMinosParameters() ->getDisplayColumnWidth( key.t_str(), temp, -1 );
 
       if ( temp > 0 )
          NewColumn->Width = temp;

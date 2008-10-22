@@ -125,9 +125,6 @@ object AboutBox: TAboutBox
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 72
-    ExplicitTop = 299
-    ExplicitWidth = 219
     object OKButton: TButton
       Left = 212
       Top = 4

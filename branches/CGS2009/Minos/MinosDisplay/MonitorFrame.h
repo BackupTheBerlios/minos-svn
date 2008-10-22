@@ -35,7 +35,7 @@ class TMonitoringFrame : public TFrame
          TBaseVirtualTree *Sender, int &NodeDataSize );
       void __fastcall LogMonitorFrameQSOTreeGetText( TBaseVirtualTree *Sender,
             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-            WideString &CellText );
+            UnicodeString &CellText );
       void __fastcall LogMonitorFrameQSOTreeColumnResize( TVTHeader *Sender,
             TColumnIndex Column );
       void __fastcall LogMonitorFrameQSOTreeBeforeItemErase(

@@ -168,7 +168,7 @@ void TClientMain::notifyCallback( bool err, MinosRPCObj */*mro*/, const std::str
 void __fastcall TClientMain::FormShow( TObject */*Sender*/ )
 {
    StartupTimer->Enabled = true;
-   XMPPInitialise( FromUser->Text.c_str() );
+   XMPPInitialise( FromUser->Text.t_str() );
 }
 //---------------------------------------------------------------------------
 void TClientMain::controlClientCallback( bool err, MinosRPCObj *mro, const std::string &from )

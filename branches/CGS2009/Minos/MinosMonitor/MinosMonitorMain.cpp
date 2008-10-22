@@ -485,16 +485,20 @@ char *stateList[] =
 };
 void __fastcall TMonitorMain::MonitorTreeGetText( TBaseVirtualTree *Sender,
       PVirtualNode Node, TColumnIndex /*Column*/, TVSTTextType /*TextType*/,
-      WideString &CellText )
+      UnicodeString &CellText )
 {
-   #warning if the state is not published we need to change the font, or colour
-   if ( *( int * ) Sender->GetNodeData( Node ) == 0 )
-      CellText = (stationList[ Node->Index ] ->stationName + " " + stateList[stationList[ Node->Index ] ->state]).c_str();
-   else
-   {
-      CellText = (std::string(stateList[stationList[ Node->Parent->Index ] ->slotList[ Node->Index ] ->getState()])
-                  + " " + stationList[ Node->Parent->Index ] ->slotList[ Node->Index ] ->getPublishedName()).c_str();
-   }
+	#warning if the state is not published we need to change the font, or colour
+	std::string text;
+	if ( *( int * ) Sender->GetNodeData( Node ) == 0 )
+	{
+		text =  stationList[ Node->Index ] ->stationName + " " + stateList[stationList[ Node->Index ] ->state];
+	}
+	else
+	{
+		text = std::string(stateList[stationList[ Node->Parent->Index ] ->slotList[ Node->Index ] ->getState()])
+						+ " " + stationList[ Node->Parent->Index ] ->slotList[ Node->Index ] ->getPublishedName();
+	}
+	CellText = text.c_str();
 }
 //---------------------------------------------------------------------------
 

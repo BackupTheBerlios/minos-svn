@@ -80,7 +80,7 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
          // here need to pre-open the contest list
          char * conarg = 0;
          if ( ParamCount() >= 2 )
-            conarg = ParamStr( 1 ).c_str();
+				conarg = ParamStr( 1 ).t_str();
          preloadFiles( conarg );
          enableActions();
       }
@@ -221,11 +221,11 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
 
          if ( contest->needsExport() )      // imported from an alien format (e.g. .log)
          {
-            String expName = f->makeEntry( true );
-            if ( expName.Length() )
+				std::string expName = f->makeEntry( true );
+				if ( expName.size() )
             {
                closeSlot( true );
-               addSlot( 0, expName.c_str(), false, false, -1 );
+					addSlot( 0, expName, false, false, -1 );
             }
          }
          ContestMRU->RemoveItem( fname.c_str() );
@@ -476,7 +476,7 @@ void __fastcall TLogContainer::FileOpen1Accept( TObject */*Sender*/ )
 {
    TWaitCursor fred;
    std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-   addSlot( pced.get(), FileOpen1->Dialog->FileName.c_str(), false, false, -1 );   // not automatically read only
+	addSlot( pced.get(), FileOpen1->Dialog->FileName.t_str(), false, false, -1 );   // not automatically read only
 }
 //---------------------------------------------------------------------------
 
@@ -498,7 +498,7 @@ void __fastcall TLogContainer::ListOpen1Accept( TObject */*Sender*/ )
 {
    TWaitCursor fred;
    std::auto_ptr <TContactListDetails> pced( new TContactListDetails( this ) );
-   addListSlot( pced.get(), ListOpen1->Dialog->FileName.c_str(), -1 );
+	addListSlot( pced.get(), ListOpen1->Dialog->FileName.t_str(), -1 );
 }
 //---------------------------------------------------------------------------
 
@@ -551,7 +551,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
    while ( nfileName[ 7 ] < 'Z' )
    {
       TEMPBUFF( fileNameBuff, MAXPATH + 10 );
-      strcpy( fileNameBuff, InitialDir.c_str() );
+		strcpy( fileNameBuff, InitialDir.t_str() );
       strcat( fileNameBuff, "\\" );
       strcat( fileNameBuff, nfileName );
       struct stat sbuf;
@@ -563,7 +563,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
          break;
    }
 
-   String initName = InitialDir + "\\" + nfileName;
+   AnsiString initName = InitialDir + "\\" + nfileName;
    std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
    BaseContestLog * c = addSlot( pced.get(), initName.c_str(), true, false, -1 );
 
@@ -606,7 +606,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
          }
 
          // we want to (re)open it WITHOUT using the dialog!
-         addSlot( 0, suggestedfName.c_str(), false, false, -1 );   // not automatically read only
+			addSlot( 0, suggestedfName.t_str(), false, false, -1 );   // not automatically read only
       }
       else
       {
@@ -834,17 +834,17 @@ void __fastcall TLogContainer::AnalyseMinosLogActionExecute( TObject */*Sender*/
    }
    if ( OpenDialog1->Execute() )
    {
-      HANDLE contestFile = CreateFile( OpenDialog1->FileName.c_str(),
-                                       GENERIC_READ,
-                                       FILE_SHARE_READ | FILE_SHARE_WRITE,
-                                       0,                  // security
-                                       OPEN_EXISTING,
-                                       0,
-                                       0 );               // template handle
+		HANDLE contestFile = CreateFile( OpenDialog1->FileName.t_str(),
+													GENERIC_READ,
+													FILE_SHARE_READ | FILE_SHARE_WRITE,
+													0,                  // security
+													OPEN_EXISTING,
+													0,
+													0 );               // template handle
       if ( contestFile == INVALID_HANDLE_VALUE )
       {
          std::string lerr = lastError();
-         std::string emess = std::string( "Failed to open ContestLog file " ) + OpenDialog1->FileName.c_str() + " : " + lerr;
+			std::string emess = std::string( "Failed to open ContestLog file " ) + OpenDialog1->FileName.t_str() + " : " + lerr;
          MinosParameters::getMinosParameters() ->mshowMessage( emess.c_str() );
          return ;
       }
@@ -885,13 +885,14 @@ void __fastcall TLogContainer::ContestPageControlMouseDown( TObject */*Sender*/,
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestMRUClick( TObject */*Sender*/,
-      const AnsiString FileName )
+      const UnicodeString FileName )
 {
-   TWaitCursor fred;
+	TWaitCursor fred;
    if ( FileExists( FileName ) )
    {
-      std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-      addSlot( pced.get(), FileName.c_str(), false, false, -1 );   // not automatically read only
+		std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
+		String fn = FileName;
+		addSlot( pced.get(), fn.t_str(), false, false, -1 );   // not automatically read only
    }
    else
    {
@@ -902,7 +903,7 @@ void __fastcall TLogContainer::ContestMRUClick( TObject */*Sender*/,
 
 void __fastcall TLogContainer::File1Click( TObject */*Sender*/ )
 {
-   ReopenMenu->Enabled = ( ContestMRU->Items->Count != 0 );
+	ReopenMenu->Enabled = ( ContestMRU->Items->Count != 0 );
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::GridHintTimerTimer( TObject */*Sender*/ )
@@ -925,7 +926,7 @@ void __fastcall TLogContainer::GridHintTimerTimer( TObject */*Sender*/ )
          if ( lf )
          {
             mpos2 = lf->ScreenToClient( mpos );
-            if ( PtInRect( &( lf->ClientRect ), mpos2 ) )
+				if ( PtInRect( &( lf->ClientRect ), mpos2 ) )
             {
                GridHintWindow->Showing = false;
                return ;
@@ -1145,4 +1146,5 @@ void __fastcall TLogContainer::ShiftLeftAction( TObject */*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
+
 

@@ -56,7 +56,7 @@ class TMonitorMain : public TForm
             PVirtualNode Node, DWORD &ChildCount );
       void __fastcall MonitorTreeGetText( TBaseVirtualTree *Sender,
                                           PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                          WideString &CellText );
+                                          UnicodeString &CellText );
       void __fastcall MonitorTreeDblClick( TObject *Sender );
       void __fastcall MonitorTreeMouseDown( TObject *Sender, TMouseButton Button,
                                             TShiftState Shift, int X, int Y );

@@ -205,7 +205,7 @@ void __fastcall TMinosMainForm::ApplicationEvents1Exception(
    TObject * /*Sender*/, Exception *E )
 {
    // Trap any application level exceptions; log and continue
-   logMessage( ( String( "Application Event Exception : " ) + E->Message ).c_str() );
+   logMessage( ( String( "Application Event Exception : " ) + E->Message ).t_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMinosMainForm::ScanTimerTimer( TObject * /*Sender*/ )

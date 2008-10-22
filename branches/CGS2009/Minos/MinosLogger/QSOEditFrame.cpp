@@ -198,8 +198,8 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
    if (tne < 0)
    {
       dtg time(false);
-      time.setDate( DateEdit->Text.c_str(), DTGDISP );
-      time.setTime( TimeEdit->Text.SubString(1, 5).c_str(), DTGDISP );
+		time.setDate( DateEdit->Text.t_str(), DTGDISP );
+		time.setTime( TimeEdit->Text.SubString(1, 5).t_str(), DTGDISP );
 
       timeOK = contest->checkTime(time);
    }
@@ -311,7 +311,7 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxChange( TObject */*Sender*/ )
 {
    if ( op1Value )
    {
-      op1Value->setValue( MainOpComboBox->Text.c_str() );
+		op1Value->setValue( MainOpComboBox->Text.t_str() );
    }
 }
 //---------------------------------------------------------------------------
@@ -320,7 +320,7 @@ void __fastcall TGJVQSOEditFrame::SecondOpComboBoxChange( TObject */*Sender*/ )
 {
    if ( op2Value )
    {
-      op2Value->setValue( SecondOpComboBox->Text.c_str() );
+      op2Value->setValue( SecondOpComboBox->Text.t_str() );
    }
 }
 //---------------------------------------------------------------------------

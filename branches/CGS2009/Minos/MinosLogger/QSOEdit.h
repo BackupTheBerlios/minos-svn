@@ -30,7 +30,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
             int &NodeDataSize );
       void __fastcall QSOHistoryTreeGetText( TBaseVirtualTree *Sender,
                                              PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                             WideString &CellText );
+                                             UnicodeString &CellText );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall QSOHistoryTreeInitNode( TBaseVirtualTree *Sender,
                                               PVirtualNode ParentNode, PVirtualNode Node,

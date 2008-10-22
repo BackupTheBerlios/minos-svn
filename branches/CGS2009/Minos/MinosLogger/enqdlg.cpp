@@ -36,10 +36,10 @@ bool enquireDialog( TComponent* Owner, const String &prompt, String &Value, int 
 //---------------------------------------------------------------------------
 bool enquireDialog( TComponent* Owner, const String &prompt, std::string &Value, int limit )
 {
-   String sv = Value.c_str();
-   if ( enquireDialog( Owner, prompt, sv, limit ) )
-   {
-      Value = sv.c_str();
+	String sv = Value.c_str();
+	if ( enquireDialog( Owner, prompt, sv, limit ) )
+	{
+      Value = sv.t_str();
       return true;
    }
    return false;

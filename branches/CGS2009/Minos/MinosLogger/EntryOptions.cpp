@@ -179,36 +179,36 @@ void __fastcall TEntryOptionsForm::CloseButtonClick( TObject */*Sender*/ )
 {
    int r = 1;
    r++;  // date range not editable
-   ct->name.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->band.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entrant.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->sqth1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->sqth2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entSect.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->mycall.fullCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->myloc.loc.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->location.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entTx.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->power.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entRx.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAnt.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAGL.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entASL.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->ops1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->ops2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx3.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx4.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entName.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAddr1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAddr2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCity.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCountry.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entPostCode.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entPhone.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entEMail.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
+	ct->name.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->band.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entrant.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->sqth1.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->sqth2.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entSect.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->mycall.fullCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->myloc.loc.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->location.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entTx.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->power.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entRx.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entAnt.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entAGL.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entASL.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->ops1.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->ops2.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCondx1.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCondx2.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCondx3.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCondx4.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entName.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entAddr1.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entAddr2.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCity.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entCountry.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entPostCode.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entPhone.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
+	ct->entEMail.setValue( DetailGrid->Cells[ 1 ][ r++ ].t_str() );
 
    //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML, ESUMMARY };
    expformat = ( ExportType ) EntryGroup->ItemIndex;
@@ -222,7 +222,7 @@ void __fastcall TEntryOptionsForm::CancelButtonClick( TObject */*Sender*/ )
    ModalResult = mrCancel;
 }
 //---------------------------------------------------------------------------
-String TEntryOptionsForm::doFileSave( )
+std::string TEntryOptionsForm::doFileSave( )
 {
    SaveDialog->InitialDir = ExtractFilePath( ct->cfileName.c_str() );
 
@@ -277,7 +277,7 @@ String TEntryOptionsForm::doFileSave( )
 
       // open the export file
       struct stat sbuf;
-      if ( stat( expName.c_str(), &sbuf ) == 0 )
+		if ( stat( expName.t_str(), &sbuf ) == 0 )
       {
          if ( !( sbuf.st_mode & S_IWRITE ) )
          {
@@ -285,19 +285,19 @@ String TEntryOptionsForm::doFileSave( )
             return "";
          }
       }
-      if ( MinosParameters::getMinosParameters() ->isContestOpen( expName.c_str() ) )
+		if ( MinosParameters::getMinosParameters() ->isContestOpen( expName.t_str() ) )
       {
          // then try again...
          continue;
       }
 
-      HANDLE expfd = CreateFile( expName.c_str(),
+		HANDLE expfd = CreateFile( expName.t_str(),
                                  GENERIC_READ | GENERIC_WRITE,
                                  FILE_SHARE_READ,
                                  0,                  // security
                                  CREATE_ALWAYS,
                                  FILE_ATTRIBUTE_NORMAL,
-                                 0 );               // template handle
+											0 );               // template handle
       if ( expfd == INVALID_HANDLE_VALUE )
       {
          char * emess = _strerror( "Failed to create export file" );
@@ -310,12 +310,12 @@ String TEntryOptionsForm::doFileSave( )
 
       if ( ret == -1 )
       {
-         unlink( expName.c_str() );		// failure response, so delete file again
+         unlink( expName.t_str() );		// failure response, so delete file again
          expName = "";
       }
       break;
    }
-   return expName;
+   return expName.t_str();
 }
 //---------------------------------------------------------------------------
 

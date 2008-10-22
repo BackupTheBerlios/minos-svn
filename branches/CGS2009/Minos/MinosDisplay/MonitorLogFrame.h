@@ -28,7 +28,7 @@ class TLogMonitorFrame : public TFrame
       void __fastcall QSOTreeGetNodeDataSize( TBaseVirtualTree *Sender,
                                               int &NodeDataSize );
       void __fastcall QSOTreeGetText( TBaseVirtualTree *Sender, PVirtualNode Node,
-                                      TColumnIndex Column, TVSTTextType TextType, WideString &CellText );
+                                      TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText );
       void __fastcall QSOTreePaintText( TBaseVirtualTree *Sender,
                                         const TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
                                         TVSTTextType TextType );

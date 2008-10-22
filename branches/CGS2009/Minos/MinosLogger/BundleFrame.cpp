@@ -86,7 +86,7 @@ void __fastcall TSettingBundleFrame::BundleSectionChange( TObject */*Sender*/ )
 {
    if ( bundle )
    {
-      bundle->openSection( BundleSection->Text.c_str() );
+      bundle->openSection( BundleSection->Text.t_str() );
       bname->setValue( bundle->getSection() );
    }
 }

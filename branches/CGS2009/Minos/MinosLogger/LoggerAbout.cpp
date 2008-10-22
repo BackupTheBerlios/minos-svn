@@ -108,7 +108,7 @@ void __fastcall TAboutBox::FormShow( TObject */*Sender*/ )
 
 void __fastcall TAboutBox::WebLabelClick( TObject */*Sender*/ )
 {
-   ShellExecute( Handle, "open", WebLabel->Caption.c_str(), 0, 0, SW_SHOWNORMAL );   //The home page for this program
+   ShellExecute( Handle, "open", WebLabel->Caption.t_str(), 0, 0, SW_SHOWNORMAL );   //The home page for this program
 }
 //---------------------------------------------------------------------------
 

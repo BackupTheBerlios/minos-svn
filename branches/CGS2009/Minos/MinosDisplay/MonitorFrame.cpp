@@ -56,7 +56,7 @@ void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreeGetNodeDataSize(
 
 void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreeGetText(
    TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
-   TVSTTextType TextType, WideString &CellText )
+   TVSTTextType TextType, UnicodeString &CellText )
 {
    LogMonitorFrame->QSOTreeGetText( Sender, Node, Column, TextType, CellText );
 

@@ -110,8 +110,8 @@ dtg::dtg( bool now )
    if ( now )
    {
       TDateTime tdt = dtg::getUTC();
-      setDate( tdt.FormatString( "dd/mm/yy" ).c_str(), DTGDISP );
-      setTime( tdt.FormatString( "hh:nn:ss" ).c_str(), DTGDISP );
+		setDate( tdt.FormatString( "dd/mm/yy" ).t_str(), DTGDISP );
+      setTime( tdt.FormatString( "hh:nn:ss" ).t_str(), DTGDISP );
    }
    else
    {

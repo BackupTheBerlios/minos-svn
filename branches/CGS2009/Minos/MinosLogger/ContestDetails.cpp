@@ -357,16 +357,16 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
 //---------------------------------------------------------------------------
 bool TContestEntryDetails::getDetails( )
 {
-   contest->name.setValue( ContestNameEdit->Text.c_str() );
-   contest->band.setValue( BandComboBox->Text.c_str() );
-   contest->entSect.setValue( SectionComboBox->Text.c_str() );
+	contest->name.setValue( ContestNameEdit->Text.t_str() );
+	contest->band.setValue( BandComboBox->Text.t_str() );
+	contest->entSect.setValue( SectionComboBox->Text.t_str() );
 
 
    try
    {
       if ( ( int ) StartDateEdit->Date > 0 )
          contest->DTGStart.setValue(
-            TDTToCanonical( StartDateEdit->Date.DateString() + " " + StartTimeCombo->Text ).c_str() );
+				TDTToCanonical( StartDateEdit->Date.DateString() + " " + StartTimeCombo->Text ).t_str() );
       else
          contest->DTGStart.setValue( "" );
    }
@@ -385,7 +385,7 @@ bool TContestEntryDetails::getDetails( )
    try
    {
       if ( ( int ) EndDateEdit->Date > 0 )
-         contest->DTGEnd.setValue( TDTToCanonical( EndDateEdit->Date.DateString() + " " + EndTimeCombo->Text ).c_str() );
+			contest->DTGEnd.setValue( TDTToCanonical( EndDateEdit->Date.DateString() + " " + EndTimeCombo->Text ).t_str() );
       else
          contest->DTGEnd.setValue( "" );
    }
@@ -397,8 +397,8 @@ bool TContestEntryDetails::getDetails( )
    }
 
 
-   contest->mycall.fullCall.setValue( CallsignEdit->Text.c_str() );
-   contest->myloc.loc.setValue( LocatorEdit->Text.c_str() );
+	contest->mycall.fullCall.setValue( CallsignEdit->Text.t_str() );
+	contest->myloc.loc.setValue( LocatorEdit->Text.t_str() );
    contest->myloc.validate();
    if ( contest->myloc.valRes != LOC_OK )
    {
@@ -407,7 +407,7 @@ bool TContestEntryDetails::getDetails( )
    }
    contest->allowLoc4.setValue( AllowLoc4CB->Checked );    // bool
    contest->allowLoc8.setValue( AllowLoc8CB->Checked );    // bool
-   contest->location.setValue( ExchangeEdit->Text.c_str() );
+	contest->location.setValue( ExchangeEdit->Text.t_str() );
    contest->scoreMode.setValue( ( SCOREMODE ) ScoreOptions->ItemIndex );  // combo
    contest->countryMult.setValue( DXCCMult->Checked );   // bool
 
@@ -451,7 +451,7 @@ bool TContestEntryDetails::getDetails( )
    contest->locatorField.setValue( LocatorField->Checked ) ;   // bool
    contest->QTHField.setValue( QTHField->Checked ) ;   // bool
 
-   contest->power.setValue( PowerEdit->Text.c_str() );
+   contest->power.setValue( PowerEdit->Text.t_str() );
 
    contest->validateLoc();
 

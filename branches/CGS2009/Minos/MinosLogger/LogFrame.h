@@ -91,7 +91,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       TMenuItem *Shifttabright1;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                            WideString &CellText );
+											UnicodeString &CellText );
       void __fastcall ThisMatchTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
       void __fastcall QSOTreeColumnResize( TVTHeader *Sender,
@@ -111,9 +111,9 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall OtherMatchTreeEnter( TObject *Sender );
       void __fastcall OtherMatchTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
-      void __fastcall OtherMatchTreeGetText( TBaseVirtualTree *Sender,
+	  void __fastcall OtherMatchTreeGetText( TBaseVirtualTree *Sender,
                                              PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                             WideString &CellText );
+											 UnicodeString &CellText );
       void __fastcall OtherMatchTreeKeyDown( TObject *Sender, WORD &Key,
                                              TShiftState Shift );
       void __fastcall OtherMatchTreeMouseDown( TObject *Sender,
@@ -122,9 +122,9 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall ArchiveMatchTreeEnter( TObject *Sender );
       void __fastcall ArchiveMatchTreeGetNodeDataSize(
          TBaseVirtualTree *Sender, int &NodeDataSize );
-      void __fastcall ArchiveMatchTreeGetText( TBaseVirtualTree *Sender,
+	  void __fastcall ArchiveMatchTreeGetText( TBaseVirtualTree *Sender,
             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-            WideString &CellText );
+            UnicodeString &CellText );
       void __fastcall ArchiveMatchTreeKeyDown( TObject *Sender, WORD &Key,
             TShiftState Shift );
       void __fastcall ArchiveMatchTreeMouseDown( TObject *Sender,
@@ -186,7 +186,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void replaceContestList( TMatchCollection *matchCollection );
       void replaceListList( TMatchCollection *matchCollection );
       void setActiveControl( WORD &Key );
-      String makeEntry( bool saveMinos );
+      std::string makeEntry( bool saveMinos );
       void exportContest();
       void EditContact( BaseContact *lct );
 

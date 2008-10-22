@@ -119,7 +119,7 @@ object KeyControlForm: TKeyControlForm
           Width = 49
           Height = 21
           Style = csDropDownList
-          ItemHeight = 0
+          ItemHeight = 13
           ItemIndex = 0
           TabOrder = 0
           Text = '1'
@@ -248,10 +248,6 @@ object KeyControlForm: TKeyControlForm
     object CWTab: TTabSheet
       Caption = 'CW'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label13: TLabel
         Left = 8
         Top = 8
@@ -352,6 +348,10 @@ object KeyControlForm: TKeyControlForm
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label18: TLabel
         Left = 16
         Top = 74
@@ -386,7 +386,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -396,7 +396,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -406,7 +406,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -416,7 +416,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 3
         OnChange = DestinationComboBoxChange
       end

@@ -23,18 +23,18 @@ __fastcall TOperatorFrame::TOperatorFrame( TComponent* Owner )
 //---------------------------------------------------------------------------
 void __fastcall TOperatorFrame::MainOpComboBoxChange( TObject */*Sender*/ )
 {
-   if ( op1Value && op1Value->getValue() != MainOpComboBox->Text.c_str() )
+	if ( op1Value && op1Value->getValue() != MainOpComboBox->Text.t_str() )
    {
-      op1Value->setValue( MainOpComboBox->Text.c_str() );
-   }
+		op1Value->setValue( MainOpComboBox->Text.t_str() );
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TOperatorFrame::SecondOpComboBoxChange( TObject */*Sender*/ )
 {
-   if ( op2Value && op2Value->getValue() != SecondOpComboBox->Text.c_str() )
+	if ( op2Value && op2Value->getValue() != SecondOpComboBox->Text.t_str() )
    {
-      op2Value->setValue( SecondOpComboBox->Text.c_str() );
+		op2Value->setValue( SecondOpComboBox->Text.t_str() );
    }
 }
 //---------------------------------------------------------------------------
@@ -74,13 +74,13 @@ void __fastcall TOperatorFrame::OpChangeTimerTimer( TObject */*Sender*/ )
       // Need to update main contest
       BaseContestLog * contest = TContestApp::getContestApp() ->getCurrentContest();
 
-      std::string op1 = trim( MainOpComboBox->Text.c_str() );
+		std::string op1 = trim( MainOpComboBox->Text.t_str() );
       contest->op1.setValue( op1 );
       if ( op1.size() )
       {
          contest->oplist.insert( op1 );
       }
-      std::string op2 = trim( SecondOpComboBox->Text.c_str() );
+      std::string op2 = trim( SecondOpComboBox->Text.t_str() );
       contest->op2.setValue( op2 );
       if ( op2.size() )
       {

@@ -31,12 +31,12 @@ bool TUBWDM::openPort()
       String portName;
       if ( !FindUSBComPort( key, portName ) )
       {
-         trace( ( "No COM port found for " + key ).c_str() );
+			trace( ( "No COM port found for " + key ).t_str() );
          return false;
       }
 
-      trace( ( "COM port found for " + key + " at " + portName ).c_str() );
-      if ( !aPort.Initialise ( portName.c_str() ) )
+		trace( ( "COM port found for " + key + " at " + portName ).t_str() );
+      if ( !aPort.Initialise ( portName.t_str() ) )
          return false;
 
       unsigned long written = 0;

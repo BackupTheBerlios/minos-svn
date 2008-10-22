@@ -153,7 +153,7 @@ void __fastcall TQSOEditDlg::QSOHistoryTreeGetNodeDataSize(
 
 void __fastcall TQSOEditDlg::QSOHistoryTreeGetText( TBaseVirtualTree *Sender,
       PVirtualNode Node, TColumnIndex /*Column*/, TVSTTextType /*TextType*/,
-      WideString &CellText )
+      UnicodeString &CellText )
 {
    CellText = "";
    QSOHistoryNode * qn = ( QSOHistoryNode * ) Sender->GetNodeData( Node );

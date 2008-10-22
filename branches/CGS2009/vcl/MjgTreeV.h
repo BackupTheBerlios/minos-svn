@@ -93,7 +93,7 @@ class PACKAGE MjgTreeNode
 		virtual void NodeDeleted(void);
 
       // get the name of the node - used to give string for display
-      virtual AnsiString Name(void) = 0;
+		virtual UnicodeString Name(void) = 0;
 
 		//-----------------------------------------------------------------------
       // if node is expandable return true

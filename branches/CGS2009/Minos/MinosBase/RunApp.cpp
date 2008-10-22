@@ -26,7 +26,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
    fname += "TraceLog\\Runapp_";
    String progname = ExtractFileName( commandLine.c_str() );
    progname = progname.SubString( 1, progname.Pos( "." ) - 1 );
-   std::string outFileName = ( fname + progname + ".log" ).c_str() ;
+	std::string outFileName = ( fname + progname + ".log" ).t_str() ;
 
    // use the system defined TEMP directory
    std::string inFileName = "%TEMP%\\NullInput.txt";
@@ -34,7 +34,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
    DWORD cnt = ExpandEnvironmentStrings( inFileName.c_str(), cline, 1023 );
    if ( !cnt )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error Expanding Environment Strings in " ) + inFileName + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error Expanding Environment Strings in " ) + inFileName + lastError() );
       outfname = outFileName.c_str();
       return false;
    }
@@ -57,12 +57,12 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
 
    if ( StartInfo.hStdOutput == INVALID_HANDLE_VALUE )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error opening output file " ) + outFileName.c_str() + " : " + lastError() );
-      logMessage( std::string( fname.c_str() ), std::string( "Current directory is " ) + GetCurrentDir().c_str() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error opening output file " ) + outFileName.c_str() + " : " + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Current directory is " ) + GetCurrentDir().t_str() );
       outfname = outFileName.c_str();
       return false;
    }
-   logMessage( std::string( fname.c_str() ), std::string( "Output file is " ) + outFileName );
+	logMessage( std::string( fname.t_str() ), std::string( "Output file is " ) + outFileName );
    SECURITY_ATTRIBUTES insa;
    insa.nLength = sizeof( insa );
    insa.lpSecurityDescriptor = 0;
@@ -73,8 +73,8 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
 
    if ( StartInfo.hStdInput == INVALID_HANDLE_VALUE )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error opening input file " ) + inFileName.c_str() + " : " + lastError() );
-      logMessage( std::string( fname.c_str() ), std::string( "Current directory is " ) + GetCurrentDir().c_str() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error opening input file " ) + inFileName.c_str() + " : " + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Current directory is " ) + GetCurrentDir().t_str() );
       outfname = outFileName.c_str();
       return false;
    }
@@ -92,7 +92,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
                );
    if ( !cret )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error duplicating handle for StdErr : " ) + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error duplicating handle for StdErr : " ) + lastError() );
       outfname = outFileName.c_str();
       return false;
    }
@@ -105,7 +105,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
    cnt = ExpandEnvironmentStrings( cmdl.c_str(), cline, 1023 );
    if ( !cnt )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error Expanding Environment Strings in " ) + cmdl + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error Expanding Environment Strings in " ) + cmdl + lastError() );
       outfname = outFileName.c_str();
       return false;
    }
@@ -138,7 +138,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
 
    if ( !cret )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Error running <" ) + commandLine + "> : " + lastError() );
+		logMessage( std::string( fname.t_str() ), std::string( "Error running <" ) + commandLine + "> : " + lastError() );
       outfname = outFileName.c_str();
       return false;
    }
@@ -161,7 +161,7 @@ bool baseRunApp( const std::string &commandLine, const std::string &params, cons
 
    if ( wait )
    {
-      logMessage( std::string( fname.c_str() ), std::string( "Exit status was " ) + makeStr( exitstat ) );
+      logMessage( std::string( fname.t_str() ), std::string( "Exit status was " ) + makeStr( exitstat ) );
    }
    outfname = outFileName.c_str();
    return true;

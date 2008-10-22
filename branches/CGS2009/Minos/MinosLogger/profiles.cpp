@@ -216,7 +216,7 @@ bool INIEntry::isValidEntry( void )
 INIFile::INIFile( const std::string &name ) : fileLoaded( false ),   /*invalid( true ),*/ fileDirty( false )
 {
    memset( &statbuf, 0, sizeof( struct stat ) );
-   loadedFileName = ExpandFileName( trim( name ).c_str() ).c_str() ;
+   loadedFileName = ExpandFileName( trim( name ).c_str() ).t_str() ;
    if ( !FileExists( loadedFileName.c_str() ) )
    {
       ForceDirectories( ExtractFilePath( loadedFileName.c_str() ).c_str() );

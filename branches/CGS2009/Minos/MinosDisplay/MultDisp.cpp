@@ -260,7 +260,7 @@ void __fastcall TMultDispFrame::CountryMultTreeGetNodeDataSize(
 
 void __fastcall TMultDispFrame::CountryMultTreeGetText(
    TBaseVirtualTree */*Sender*/, PVirtualNode Node, TColumnIndex Column,
-   TVSTTextType /*TextType*/, WideString &CellText )
+   TVSTTextType /*TextType*/, UnicodeString &CellText )
 {
    if ( Column >= 0 )
    {
@@ -316,7 +316,7 @@ void __fastcall TMultDispFrame::DistrictMultTreeGetNodeDataSize(
 
 void __fastcall TMultDispFrame::DistrictMultTreeGetText(
    TBaseVirtualTree */*Sender*/, PVirtualNode Node, TColumnIndex Column,
-   TVSTTextType /*TextType*/, WideString &CellText )
+   TVSTTextType /*TextType*/, UnicodeString &CellText )
 {
    if ( Column >= 0 )
    {
@@ -396,7 +396,7 @@ void __fastcall TMultDispFrame::LocatorMultTreeInitChildren(
 
 void __fastcall TMultDispFrame::LocatorMultTreeGetText(
    TBaseVirtualTree */*Sender*/, PVirtualNode Node, TColumnIndex /*Column*/,
-   TVSTTextType /*TextType*/, WideString &CellText )
+   TVSTTextType /*TextType*/, UnicodeString &CellText )
 {
    if ( Node->States.Contains( vsHasChildren ) )
       CellText = ct->locs.llist[ Node->Index ] ->loc;

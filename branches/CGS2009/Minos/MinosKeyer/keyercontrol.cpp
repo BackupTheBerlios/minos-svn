@@ -112,7 +112,7 @@ void __fastcall TKeyControlForm::RecordButtonClick( TObject */*Sender*/ )
    {
       startRecordDVPFile( fno );
       recind->Caption = "Push PTT to Commence Recording";
-      KeyerServer::publishCommand( recind->Caption.c_str() );
+		KeyerServer::publishCommand( recind->Caption.t_str() );
       recordWait = true;
    }
 }
@@ -139,19 +139,19 @@ void __fastcall TKeyControlForm::StopButtonClick( TObject */*Sender*/ )
    }
    else
       stopKeyer();
-   KeyerServer::publishCommand( recind->Caption.c_str() );
+	KeyerServer::publishCommand( recind->Caption.t_str() );
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TKeyControlForm::PlayButtonClick( TObject */*Sender*/ )
 {
-   int fno = KeyCombo->Text.ToIntDef( 1 );
-   if ( fno >= 1 && fno <= 12 )
-   {
-      recind->Caption = "";
-      playKeyerFile( fno, false );
-   }
-   KeyerServer::publishCommand( recind->Caption.c_str() );
+	int fno = KeyCombo->Text.ToIntDef( 1 );
+	if ( fno >= 1 && fno <= 12 )
+	{
+		recind->Caption = "";
+		playKeyerFile( fno, false );
+	}
+	KeyerServer::publishCommand( recind->Caption.t_str() );
 }
 //---------------------------------------------------------------------------
 
@@ -203,7 +203,7 @@ void __fastcall TKeyControlForm::LineTimerTimer( TObject */*Sender*/ )
          recordWait = false;
          recording = false;
       }
-   KeyerServer::publishCommand( recind->Caption.c_str() );
+	KeyerServer::publishCommand( recind->Caption.t_str() );
    eMixerSets m = GetCurrentMixerSet();
 
    std::string astate;
@@ -481,7 +481,7 @@ void __fastcall TKeyControlForm::PipCheckBoxClick( TObject */*Sender*/ )
 
 void __fastcall TKeyControlForm::SendButtonClick( TObject */*Sender*/ )
 {
-   sendCW( AnsiUpperCase( Memo1->Lines->Text.Trim() ).c_str(), SpeedControl->Value, ToneEdit->Text.ToIntDef( 1000 ) );
+	sendCW( AnsiUpperCase( Memo1->Lines->Text.Trim() ).t_str(), SpeedControl->Value, ToneEdit->Text.ToIntDef( 1000 ) );
 }
 //---------------------------------------------------------------------------
 
@@ -673,7 +673,7 @@ void __fastcall TKeyControlForm::WmMove( TMessage &/*Msg*/ )
 void __fastcall TKeyControlForm::CaptionTimerTimer( TObject */*Sender*/ )
 {
    CaptionTimer->Enabled = false;
-   KeyerServer::publishState( Caption.c_str() );
+	KeyerServer::publishState( Caption.t_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TKeyControlForm::SpeedControlChange( TObject */*Sender*/ )
@@ -708,7 +708,7 @@ void __fastcall TKeyControlForm::SourceLineComboBoxChange( TObject */*Sender*/ )
 {
    std::auto_ptr<TIniFile> iniFile( new TIniFile( "Configuration\\MinosKeyer.ini" ) );
    iniFile->WriteString( "Mixers", "InputLine", SourceComboBox->Text );
-   VKMixer::GetInputVKMixer() ->setInputMixerLine( SourceComboBox->Text.c_str() );
+	VKMixer::GetInputVKMixer() ->setInputMixerLine( SourceComboBox->Text.t_str() );
    TMessage msg;
    MMMixControlChange( msg );
 }
@@ -732,7 +732,7 @@ void __fastcall TKeyControlForm::DestinationComboBoxChange( TObject */*Sender*/ 
 {
    std::auto_ptr<TIniFile> iniFile( new TIniFile( "Configuration\\MinosKeyer.ini" ) );
    iniFile->WriteString( "Mixers", "OutputLine", DestinationComboBox->Text );
-   VKMixer::GetOutputVKMixer() ->setOutputMixerLine( DestinationComboBox->Text.c_str() );
+	VKMixer::GetOutputVKMixer() ->setOutputMixerLine( DestinationComboBox->Text.t_str() );
    TMessage msg;
    MMMixControlChange( msg );
 }
@@ -768,20 +768,20 @@ void TKeyControlForm::populateMixerList()
    InputMixerComboBox->ItemIndex = InputMixerComboBox->Items->IndexOf( inputMixer );
    OutputMixerComboBox->ItemIndex = OutputMixerComboBox->Items->IndexOf( outputMixer );
 
-   VKMixer *inMix = VKMixer::setInputMixer( inputMixer.c_str() );
-   if ( inMix )
-   {
-      populateInputMixer();
-      String inputMixerLine = iniFile->ReadString( "Mixers", "InputLine", SourceComboBox->Text );
-      inMix->setInputMixerLine( inputMixerLine.c_str() );
-   }
+	VKMixer *inMix = VKMixer::setInputMixer( inputMixer.t_str() );
+	if ( inMix )
+	{
+		populateInputMixer();
+		String inputMixerLine = iniFile->ReadString( "Mixers", "InputLine", SourceComboBox->Text );
+		inMix->setInputMixerLine( inputMixerLine.t_str() );
+	}
 
-   VKMixer *outMix = VKMixer::setOutputMixer( outputMixer.c_str() );
-   if ( outMix )
-   {
-      populateOutputMixer();
-      String outputMixerLine = iniFile->ReadString( "Mixers", "OutputLine", DestinationComboBox->Text );
-      outMix->setOutputMixerLine( outputMixerLine.c_str() );
+	VKMixer *outMix = VKMixer::setOutputMixer( outputMixer.t_str() );
+	if ( outMix )
+	{
+		populateOutputMixer();
+		String outputMixerLine = iniFile->ReadString( "Mixers", "OutputLine", DestinationComboBox->Text );
+		outMix->setOutputMixerLine( outputMixerLine.t_str() );
    }
 
 }
@@ -810,7 +810,7 @@ void TKeyControlForm::populateInputMixer()
          ip = 0;
          inputMixerLine = SourceComboBox->Items->Strings[ 0 ].c_str();
       }
-      VKMixer::GetInputVKMixer() ->setInputMixerLine( inputMixerLine.c_str() );
+		VKMixer::GetInputVKMixer() ->setInputMixerLine( inputMixerLine.t_str() );
       SourceComboBox->ItemIndex = ip;
 
       TMessage msg;
@@ -844,7 +844,7 @@ void TKeyControlForm::populateOutputMixer()
          op = 0;
          outputMixerLine = DestinationComboBox->Items->Strings[ 0 ].c_str();
       }
-      VKMixer::GetOutputVKMixer() ->setOutputMixerLine( outputMixerLine.c_str() );
+      VKMixer::GetOutputVKMixer() ->setOutputMixerLine( outputMixerLine.t_str() );
       DestinationComboBox->ItemIndex = op;
 
       TMessage msg;

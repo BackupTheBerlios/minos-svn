@@ -4,44 +4,43 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
   inherited G0GJVPanel: TPanel
     Width = 576
     ExplicitWidth = 576
-    ExplicitHeight = 153
-    inherited LocEdit: TLabeledEdit [3]
+    inherited ModeComboBoxGJV: TComboBox [3]
     end
-    inherited CommentsEdit: TLabeledEdit [4]
+    inherited RSTTXEdit: TLabeledEdit [4]
     end
-    inherited DeletedCheckBox: TCheckBox [5]
-      TabOrder = 18
+    inherited GJVOKButton: TButton [5]
     end
-    inherited CallsignEdit: TLabeledEdit [6]
+    inherited GJVForceButton: TButton [6]
     end
-    inherited TimeEdit: TLabeledEdit [7]
+    inherited GJVCancelButton: TButton [7]
+    end
+    inherited DateEdit: TLabeledEdit [8]
+    end
+    inherited NonScoreCheckBox: TCheckBox [9]
+    end
+    inherited SerTXEdit: TLabeledEdit [10]
+    end
+    inherited RSTRXEdit: TLabeledEdit [11]
+    end
+    inherited SerRXEdit: TLabeledEdit [12]
+    end
+    inherited QTHEdit: TLabeledEdit [13]
+    end
+    inherited TimeEdit: TLabeledEdit [14]
       Left = 144
       EditLabel.ExplicitLeft = 119
       EditLabel.ExplicitTop = 7
       EditLabel.ExplicitWidth = 22
       ExplicitLeft = 144
     end
-    inherited QTHEdit: TLabeledEdit [8]
+    inherited CallsignEdit: TLabeledEdit [15]
     end
-    inherited SerRXEdit: TLabeledEdit [9]
+    inherited DeletedCheckBox: TCheckBox [16]
+      TabOrder = 18
     end
-    inherited RSTRXEdit: TLabeledEdit [10]
+    inherited CommentsEdit: TLabeledEdit [17]
     end
-    inherited SerTXEdit: TLabeledEdit [11]
-    end
-    inherited NonScoreCheckBox: TCheckBox [12]
-    end
-    inherited ModeComboBoxGJV: TComboBox [13]
-    end
-    inherited RSTTXEdit: TLabeledEdit [14]
-    end
-    inherited GJVOKButton: TButton [15]
-    end
-    inherited GJVForceButton: TButton [16]
-    end
-    inherited GJVCancelButton: TButton [17]
-    end
-    inherited DateEdit: TLabeledEdit [18]
+    inherited LocEdit: TLabeledEdit [18]
     end
     object MatchXferButton: TBitBtn
       Left = 321
@@ -50,7 +49,9 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
       Height = 25
       Hint = 'Get fields from current matching QSO'
       Caption = 'Match &Xfer'
+      DoubleBuffered = True
       Enabled = False
+      ParentDoubleBuffered = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 15

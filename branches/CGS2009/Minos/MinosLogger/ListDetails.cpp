@@ -25,7 +25,7 @@ void __fastcall TContactListDetails::CloseButtonClick( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 bool TContactListDetails::getDetails( ContactList * ct )
 {
-   ct->name = ListNameEdit->Text.c_str();
+   ct->name = ListNameEdit->Text.t_str();
    //   ct->loc.loc.setValue(LocatorEdit->Text.c_str());
    //   ct->loc.validate();
    return true;

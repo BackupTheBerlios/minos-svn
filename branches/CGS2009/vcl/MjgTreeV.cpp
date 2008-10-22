@@ -94,7 +94,7 @@ void MjgTreeNode::AddBefore(MjgTreeNode *base)
    if (Parent || PriorSibling || NextSibling)
    	ShowMessage(Name() + " is already in a structure!");
    if (base == this)
-   	ShowMessage(AnsiString("You cannot chain ") + Name() + " to itself!");
+   	ShowMessage(String("You cannot chain ") + Name() + " to itself!");
 	if (base)
    {
    	MjgTreeNode *temp = base->PriorSibling;
@@ -121,7 +121,7 @@ void MjgTreeNode::AddLastSibling(MjgTreeNode *base)
    if (Parent || PriorSibling || NextSibling)
    	ShowMessage(Name() + " is already in a structure!");
    if (base == this)
-   	ShowMessage(AnsiString("You cannot chain ") + Name() + " to itself!");
+   	ShowMessage(String("You cannot chain ") + Name() + " to itself!");
 	if (base)
    {
    	MjgTreeNode *ls = base;
@@ -141,7 +141,7 @@ void MjgTreeNode::AddAfter(MjgTreeNode *base)
    if (Parent || PriorSibling || NextSibling)
    	ShowMessage(Name() + " is already in a structure!");
    if (base == this)
-   	ShowMessage(AnsiString("You cannot chain ") + Name() + " to itself!");
+   	ShowMessage(String("You cannot chain ") + Name() + " to itself!");
 	if (base)
    {
    	MjgTreeNode *temp = base->NextSibling;
@@ -162,7 +162,7 @@ void MjgTreeNode::AddAsChild(MjgTreeNode *base)
    if (Parent || PriorSibling || NextSibling)
    	ShowMessage(Name() + " is already in a structure!");
    if (base == this)
-   	ShowMessage(AnsiString("You cannot chain ") + Name() + " to itself!");
+   	ShowMessage(String("You cannot chain ") + Name() + " to itself!");
 
 	if (base)
    {
@@ -512,7 +512,7 @@ void __fastcall MjgTreeView::CreateTree(MjgTreeNode *root, bool ExpandAll)
    {
       if (n->PriorSibling == n)
       {
-	   	AnsiString nam = n->Name();
+	   	String nam = n->Name();
          ShowMessage(nam);
       }
    	n = n->PriorSibling;

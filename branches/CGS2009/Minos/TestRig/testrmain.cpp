@@ -279,7 +279,7 @@ void __fastcall TTestRigMain::RigSelectButtonClick( TObject */*Sender*/ )
       Label1->Caption = "rig_init failed";
       return ;
    }
-   strncpy( my_rig->state.rigport.pathname, port.c_str(), FILPATHLEN );
+   strncpy( my_rig->state.rigport.pathname, port.t_str(), FILPATHLEN );
    int retcode = rig_open( my_rig );
    char buff[ 1024 ];
    if ( retcode != RIG_OK )

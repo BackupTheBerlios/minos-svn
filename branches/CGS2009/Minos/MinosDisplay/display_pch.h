@@ -11,6 +11,8 @@
 
 #include "base_pch.h"
 
+#define VTVStringType UnicodeString
+
 #include "MShowMessageDlg.h"
 #include "MMessageDialog.h"
 

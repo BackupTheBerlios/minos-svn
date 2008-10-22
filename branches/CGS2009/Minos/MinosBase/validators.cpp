@@ -65,10 +65,10 @@ bool Validator::validate( String str )
          return true;
 
       case vtNotEmpty:
-         return !allSpaces( str.c_str() );
+			return !allSpaces( str.t_str() );
 
       case vtNumeric:
-         return validNumber( str.c_str(), false, true );
+			return validNumber( str.t_str(), false, true );
 
       case vtDate:
          {
@@ -141,7 +141,7 @@ bool Validator::validate( String str )
          }
 
       case vtCallsign:
-         if ( allSpaces( str.c_str() ) )
+			if ( allSpaces( str.t_str() ) )
          {
             setError( ERR_11 ); // No CS
             return false;
@@ -149,7 +149,7 @@ bool Validator::validate( String str )
          return true;
 
       case vtSN:
-         if ( validNumber( str.c_str(), false, true ) )
+			if ( validNumber( str.t_str(), false, true ) )
          {
             return true;
          }
@@ -175,11 +175,11 @@ bool Validator::validate( String str )
             double longitude = 0.0;
             double latitude = 0.0;
 
-            if ( PXret && lonlat( loc.c_str(), longitude, latitude ) != LOC_OK )
+				if ( PXret && lonlat( loc.t_str(), longitude, latitude ) != LOC_OK )
                PXret = false;
 
             if ( PXret == false )
-               setError( allSpaces( str.c_str() ) ? ERR_18 : ERR_4 );
+					setError( allSpaces( str.t_str() ) ? ERR_18 : ERR_4 );
             return PXret;
          }
       case vtQTH:
@@ -274,17 +274,17 @@ bool Validator::validNumber( const char *str, bool zallowed, bool zerror )
       }
    }
    if ( picvalid )
-      picvalid = validNumber( t.c_str(), false, true );
+		picvalid = validNumber( t.t_str(), false, true );
    if ( picvalid )
    {
       // must be more than one digit in a RST
-      int rst = atoi( t.c_str() );
+		int rst = atoi( t.t_str() );
       if ( rst < 10 )
          picvalid = false;
 
       // allow strength 0 to be typed, but it is still an error!
 
-      if ( t[ 2 ] == '0' )
+		if ( t[ 2 ] == '0' )
          picvalid = false;
    }
    return picvalid;

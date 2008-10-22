@@ -23,10 +23,10 @@ bool TGuardianThread::runApp( bool wait )
 //---------------------------------------------------------------------------
 void TGuardianThread::runDirectApp( bool wait )
 {
-   logMessage( std::string( "Guardian" ), std::string( "[" ) + ce->name.c_str() + "] " + "Running  : " + ce->commandLine );
+	logMessage( std::string( "Guardian" ), std::string( "[" ) + ce->name.t_str() + "] " + "Running  : " + ce->commandLine );
    bool ret = runApp( wait );
    if ( ret )
-      logMessage( std::string( "Guardian" ), std::string( "[" ) + ce->name.c_str() + "] " + "Program <" + ce->commandLine + "> logged in " + ce->outfname );
+      logMessage( std::string( "Guardian" ), std::string( "[" ) + ce->name.t_str() + "] " + "Program <" + ce->commandLine + "> logged in " + ce->outfname );
 }
 //---------------------------------------------------------------------------
 DWORD TGuardianThread::FindProcess( String ptf )

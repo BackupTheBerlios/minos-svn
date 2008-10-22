@@ -1,145 +1,228 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <ProjectGuid>{38c2f326-e781-43b5-9f7d-08627c39ad69}</ProjectGuid>
-    <Config Condition="'$(Config)'==''">Debug</Config>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
-    <Base>true</Base>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
-    <Base>true</Base>
-    <Cfg_1>true</Cfg_1>
-    <CfgParent>Base</CfgParent>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
-    <Base>true</Base>
-    <Cfg_2>true</Cfg_2>
-    <CfgParent>Base</CfgParent>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Base)'!=''">
-    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
-    <OutputExt>exe</OutputExt>
-    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-    <Defines>TIXML_USE_STL</Defines>
-    <DynamicRTL>true</DynamicRTL>
-    <UsePackages>true</UsePackages>
-    <ILINK_ObjectSearchPath>C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</ILINK_ObjectSearchPath>
-    <ProjectType>CppConsoleApplication</ProjectType>
-    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
-    <PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;teedb.bpi;tee.bpi;adortl.bpi;vclib.bpi;ibxpress.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;GJVControls.bpi;GJVAudio.bpi;VTVD.bpi;VTV.bpi;Jcl.bpi;JclVcl.bpi;JvCoreD11R.bpi;JvSystemD11R.bpi;JvStdCtrlsD11R.bpi;JvAppFrmD11R.bpi;JvBandsD11R.bpi;JvDBD11R.bpi;JvDlgsD11R.bpi;JvBDED11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDockingD11R.bpi;JvDotNetCtrlsD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvTimeFrameworkD11R.bpi;JvUIBD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi</PackageImports>
-    <BCC_wpar>false</BCC_wpar>
-    <IncludePath>$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml;CppUnit\cppunit-1.12.0\include;$(BOOST)\include</IncludePath>
-    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
-    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</ILINK_LibraryPath>
-    <Multithreaded>true</Multithreaded>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Cfg_1)'!=''">
-    <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
-    <DCC_Optimize>false</DCC_Optimize>
-    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
-    <Defines>_DEBUG;$(Defines)</Defines>
-    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
-    <BCC_MonitorThis>true</BCC_MonitorThis>
-    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
-    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
-    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
-    <DCC_Define>DEBUG</DCC_Define>
-    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
-    <BCC_MonitorGlobalAndStackData>true</BCC_MonitorGlobalAndStackData>
-    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
-    <IntermediateOutputDir>Debug</IntermediateOutputDir>
-    <BCC_AllCodeguardOptions>true</BCC_AllCodeguardOptions>
-    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
-    <BCC_StackFrames>true</BCC_StackFrames>
-    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-    <TASM_Debugging>Full</TASM_Debugging>
-    <BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
-    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Cfg_2)'!=''">
-    <Defines>NDEBUG;$(Defines)</Defines>
-    <IntermediateOutputDir>Release</IntermediateOutputDir>
-    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-    <TASM_Debugging>None</TASM_Debugging>
-  </PropertyGroup>
-  <ProjectExtensions>
-    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
-    <Borland.ProjectType>CppConsoleApplication</Borland.ProjectType>
-    <BorlandProject>
-<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">True</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">2</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml;CppUnit\cppunit-1.12.0\include;$(BOOST)\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\debug;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlDefines><HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item0">_DEBUG;TIXML_USE_STL</HistoryLists_hlDefines></HistoryLists_hlDefines><HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Item0">Debug</HistoryLists_hlIntermediateOutputDir></HistoryLists_hlIntermediateOutputDir></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
-  </ProjectExtensions>
-  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
-  <ItemGroup>
-    <CppCompile Include="..\MinosBase\BandList.cpp">
-      <DependentOn>..\MinosBase\BandList.h</DependentOn>
-      <BuildOrder>7</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\MinosBase\cutils.cpp">
-      <DependentOn>..\MinosBase\cutils.h</DependentOn>
-      <BuildOrder>6</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\MinosBase\VHFList.cpp">
-      <DependentOn>..\MinosBase\VHFList.h</DependentOn>
-      <BuildOrder>5</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\XMPPLib\Dispatcher.cpp">
-      <DependentOn>..\XMPPLib\Dispatcher.h</DependentOn>
-      <BuildOrder>0</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\XMPPLib\stringcast.cpp">
-      <DependentOn>..\XMPPLib\stringcast.h</DependentOn>
-      <BuildOrder>3</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\XMPPLib\TinyUtils.cpp">
-      <DependentOn>..\XMPPLib\TinyUtils.h</DependentOn>
-      <BuildOrder>4</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\XMPPLib\XMPPRPCParams.cpp">
-      <DependentOn>..\XMPPLib\XMPPRPCParams.h</DependentOn>
-      <BuildOrder>1</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\XMPPLib\XMPPStanzas.cpp">
-      <DependentOn>..\XMPPLib\XMPPStanzas.h</DependentOn>
-      <BuildOrder>2</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="C:\ThirdParty\tinyxml\tinyxml.cpp">
-      <BuildOrder>9</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlerror.cpp">
-      <BuildOrder>10</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlparser.cpp">
-      <BuildOrder>8</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="MinosTestBandList.cpp">
-      <DependentOn>MinosTestBandList.h</DependentOn>
-      <BuildOrder>16</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="MinosTestCalendar.cpp">
-      <DependentOn>MinosTestCalendar.h</DependentOn>
-      <BuildOrder>13</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="MinosTestRPCParams.cpp">
-      <DependentOn>MinosTestRPCParams.h</DependentOn>
-      <BuildOrder>15</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="MinosTestRPCStanzas.cpp">
-      <DependentOn>MinosTestRPCStanzas.h</DependentOn>
-      <BuildOrder>14</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="MinosUnitTestMain.cpp">
-      <BuildOrder>11</BuildOrder>
-    </CppCompile>
-    <LibFiles Include="CppUnit\cppunit-1.12.0\BDS2006\Debug_Build\cppunit_bds.lib">
-      <BuildOrder>12</BuildOrder>
-    </LibFiles>
-    <BuildConfiguration Include="Debug">
-      <Key>Cfg_1</Key>
-    </BuildConfiguration>
-    <BuildConfiguration Include="Release">
-      <Key>Cfg_2</Key>
-    </BuildConfiguration>
-  </ItemGroup>
-</Project>
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{38c2f326-e781-43b5-9f7d-08627c39ad69}</ProjectGuid>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+			<OutputExt>exe</OutputExt>
+			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+			<Defines>TIXML_USE_STL</Defines>
+			<DynamicRTL>true</DynamicRTL>
+			<UsePackages>true</UsePackages>
+			<ILINK_ObjectSearchPath>C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</ILINK_ObjectSearchPath>
+			<ProjectType>CppConsoleApplication</ProjectType>
+			<BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;teedb.bpi;tee.bpi;adortl.bpi;vclib.bpi;ibxpress.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;GJVControls.bpi;GJVAudio.bpi;VTVD.bpi;VTV.bpi;Jcl.bpi;JclVcl.bpi;JvCoreD11R.bpi;JvSystemD11R.bpi;JvStdCtrlsD11R.bpi;JvAppFrmD11R.bpi;JvBandsD11R.bpi;JvDBD11R.bpi;JvDlgsD11R.bpi;JvBDED11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDockingD11R.bpi;JvDotNetCtrlsD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvTimeFrameworkD11R.bpi;JvUIBD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi</PackageImports>
+			<BCC_wpar>false</BCC_wpar>
+			<IncludePath>$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml;CppUnit\cppunit-1.12.0\include;$(BOOST)</IncludePath>
+			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+			<ILINK_LibraryPath>CppUnit\cppunit-1.12.0\BDS2006\Debug_Build;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</ILINK_LibraryPath>
+			<Multithreaded>true</Multithreaded>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<Defines>_DEBUG;$(Defines)</Defines>
+			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+			<BCC_MonitorThis>true</BCC_MonitorThis>
+			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+			<ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+			<DCC_Define>DEBUG</DCC_Define>
+			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+			<BCC_MonitorGlobalAndStackData>true</BCC_MonitorGlobalAndStackData>
+			<BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+			<IntermediateOutputDir>Debug</IntermediateOutputDir>
+			<BCC_AllCodeguardOptions>true</BCC_AllCodeguardOptions>
+			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+			<BCC_StackFrames>true</BCC_StackFrames>
+			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+			<ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<TASM_Debugging>Full</TASM_Debugging>
+			<BCC_MonitorInlinePtrAccess>true</BCC_MonitorInlinePtrAccess>
+			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Defines>NDEBUG;$(Defines)</Defines>
+			<IntermediateOutputDir>Release</IntermediateOutputDir>
+			<ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<TASM_Debugging>None</TASM_Debugging>
+		</PropertyGroup>
+		<ItemGroup>
+			<CppCompile Include="..\MinosBase\BandList.cpp">
+				<DependentOn>..\MinosBase\BandList.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\MinosBase\cutils.cpp">
+				<DependentOn>..\MinosBase\cutils.h</DependentOn>
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\MinosBase\VHFList.cpp">
+				<DependentOn>..\MinosBase\VHFList.h</DependentOn>
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\XMPPLib\Dispatcher.cpp">
+				<DependentOn>..\XMPPLib\Dispatcher.h</DependentOn>
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\XMPPLib\stringcast.cpp">
+				<DependentOn>..\XMPPLib\stringcast.h</DependentOn>
+				<BuildOrder>3</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\XMPPLib\TinyUtils.cpp">
+				<DependentOn>..\XMPPLib\TinyUtils.h</DependentOn>
+				<BuildOrder>4</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\XMPPLib\XMPPRPCParams.cpp">
+				<DependentOn>..\XMPPLib\XMPPRPCParams.h</DependentOn>
+				<BuildOrder>1</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\XMPPLib\XMPPStanzas.cpp">
+				<DependentOn>..\XMPPLib\XMPPStanzas.h</DependentOn>
+				<BuildOrder>2</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="C:\ThirdParty\tinyxml\tinyxml.cpp">
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlerror.cpp">
+				<BuildOrder>10</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlparser.cpp">
+				<BuildOrder>8</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinosTestBandList.cpp">
+				<DependentOn>MinosTestBandList.h</DependentOn>
+				<BuildOrder>16</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinosTestCalendar.cpp">
+				<DependentOn>MinosTestCalendar.h</DependentOn>
+				<BuildOrder>13</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinosTestRPCParams.cpp">
+				<DependentOn>MinosTestRPCParams.h</DependentOn>
+				<BuildOrder>15</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinosTestRPCStanzas.cpp">
+				<DependentOn>MinosTestRPCStanzas.h</DependentOn>
+				<BuildOrder>14</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinosUnitTestMain.cpp">
+				<BuildOrder>11</BuildOrder>
+			</CppCompile>
+			<LibFiles Include="CppUnit\cppunit-1.12.0\BDS2006\Debug_Build\cppunit_bds.lib">
+				<BuildOrder>12</BuildOrder>
+			</LibFiles>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+			<Borland.ProjectType>CppConsoleApplication</Borland.ProjectType>
+			<BorlandProject>
+				<CPlusPlusBuilder.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Debugging>
+						<Debugging Name="DebugSourceDirs"/>
+					</Debugging>
+					<Parameters>
+						<Parameters Name="RunParams"/>
+						<Parameters Name="Launcher"/>
+						<Parameters Name="UseLauncher">True</Parameters>
+						<Parameters Name="DebugCWD"/>
+						<Parameters Name="HostApplication"/>
+						<Parameters Name="RemoteHost"/>
+						<Parameters Name="RemotePath"/>
+						<Parameters Name="RemoteParams"/>
+						<Parameters Name="RemoteLauncher"/>
+						<Parameters Name="UseRemoteLauncher">False</Parameters>
+						<Parameters Name="RemoteCWD"/>
+						<Parameters Name="RemoteDebug">False</Parameters>
+						<Parameters Name="Debug Symbols Search Path"/>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<Linker>
+						<Linker Name="LibPrefix"/>
+						<Linker Name="LibSuffix"/>
+						<Linker Name="LibVersion"/>
+					</Linker>
+					<ProjectProperties>
+						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+					</ProjectProperties>
+					<HistoryLists_hlIncludePath>
+						<HistoryLists_hlIncludePath Name="Count">2</HistoryLists_hlIncludePath>
+						<HistoryLists_hlIncludePath Name="Item0">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml;CppUnit\cppunit-1.12.0\include;$(BOOST)\include</HistoryLists_hlIncludePath>
+						<HistoryLists_hlIncludePath Name="Item1">$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</HistoryLists_hlIncludePath>
+					</HistoryLists_hlIncludePath>
+					<HistoryLists_hlILINK_LibraryPath>
+						<HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath>
+						<HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\debug;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\Minos\MinosUnitTests;..\XMPPLib;..\MinosBase;C:\ThirdParty\tinyxml</HistoryLists_hlILINK_LibraryPath>
+					</HistoryLists_hlILINK_LibraryPath>
+					<HistoryLists_hlDefines>
+						<HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines>
+						<HistoryLists_hlDefines Name="Item0">_DEBUG;TIXML_USE_STL</HistoryLists_hlDefines>
+					</HistoryLists_hlDefines>
+					<HistoryLists_hlIntermediateOutputDir>
+						<HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir>
+						<HistoryLists_hlIntermediateOutputDir Name="Item0">Debug</HistoryLists_hlIntermediateOutputDir>
+					</HistoryLists_hlIntermediateOutputDir>
+				</CPlusPlusBuilder.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

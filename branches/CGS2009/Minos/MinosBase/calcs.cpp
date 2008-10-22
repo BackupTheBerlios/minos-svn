@@ -137,16 +137,16 @@ std::string WtodbW( const std::string &W )
    if ( watts != 0 )
    {
       double dbWatts = 10.0 * log10( watts );
-      res = ( boost::format( "%.2f%" ) % dbWatts ).str();
-   }
-   return res;
+		res = ( boost::format( "%.2f%" ) % dbWatts ).str();
+	}
+	return res;
 }
 
 std::string dbWtoW( const std::string &dbW )
 {
-   double dbWatts = atof( dbW.c_str() );
-   double watts = pow( 10.0, dbWatts / 10.0 ) + 0.05;
-   std::string res = ( boost::format( "%.2f%" ) % watts ).str();
+	double dbWatts = atof( dbW.c_str() );
+	double watts = pow( 10.0, dbWatts / 10.0 ) + 0.05;
+	std::string res = ( boost::format( "%.2f%" ) % watts ).str();
    return res;
 }
 

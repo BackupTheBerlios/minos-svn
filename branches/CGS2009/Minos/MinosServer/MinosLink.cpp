@@ -20,12 +20,12 @@ xperror( int test_val, char *mesg, bool endit = true )
    DWORD lerrno = GetLastError();
    if ( test_val )
    {
-      String s = String( mesg ) + " : error number " + String( lerrno );
-      logMessage( "xperror", s.c_str() );
+		std::string s = std::string( mesg ) + " : error number " + makeStr( lerrno );
+		logMessage( "xperror", s );
 
       if ( endit )
       {
-         throw Exception( "JServer error: " + s );
+			throw Exception( ("JServer error: " + s ).c_str());
       }
    }
 }
@@ -304,7 +304,7 @@ void MinosListener::processSockets( void )
             }
             catch ( Exception & e )
             {
-               logMessage( "process_sockets", std::string( "Exception processing socket : " ) + e.Message.c_str() );
+					logMessage( "process_sockets", std::string( "Exception processing socket : " ) + e.Message.t_str() );
                closeApp = true;
                break;
             }
@@ -332,7 +332,7 @@ void MinosListener::processSockets( void )
          }
          catch ( Exception & e )
          {
-            logMessage( "process_sockets", std::string( "Exception tidying socket : " ) + e.Message.c_str() );
+				logMessage( "process_sockets", std::string( "Exception tidying socket : " ) + e.Message.t_str() );
             closeApp = true;
             break;
          }
@@ -350,7 +350,7 @@ void MinosListener::processSockets( void )
    }
    catch ( Exception & e )
    {
-      logMessage( "process_sockets", std::string( "Exception while processing: " ) + e.Message.c_str() );
+		logMessage( "process_sockets", std::string( "Exception while processing: " ) + e.Message.t_str() );
       closeApp = true;
    }
 }
@@ -371,7 +371,7 @@ void MinosListener::clearSockets()
    }
    catch ( Exception & e )
    {
-      logMessage( "clear_sockets", std::string( "Exception while closing sockets: " ) + e.Message.c_str() );
+      logMessage( "clear_sockets", std::string( "Exception while closing sockets: " ) + e.Message.t_str() );
    }
 }
 bool MinosListener::checkServerConnection( const std::string &sname )

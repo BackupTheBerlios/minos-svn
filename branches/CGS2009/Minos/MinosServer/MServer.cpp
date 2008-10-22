@@ -35,7 +35,7 @@ MinosServer::MinosServer() : serverName( DEFAULT_SERVER_NAME )
 {
    TIniFile * config = new TIniFile( ".\\Configuration\\MinosConfig.ini" );
    String circleOfHell = config->ReadString( "Circle Of Hell", "Name", "No_name_in_config" ).Trim();
-   serverName = circleOfHell.c_str();
+   serverName = circleOfHell.t_str();
    if ( serverName.size() == 0 )
    {
       char buff[ 256 ];

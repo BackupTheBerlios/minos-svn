@@ -74,11 +74,11 @@ void __fastcall TTConfigFrame::ClearAllButtonClick( TObject */*Sender*/ )
 
 void __fastcall TTConfigFrame::SetButtonClick( TObject */*Sender*/ )
 {
-   TMConfigDM::getConfigDM( 0 ) ->setCircleOfHell( StationIdEdit->Text.c_str() );
+   TMConfigDM::getConfigDM( 0 ) ->setCircleOfHell( StationIdEdit->Text.t_str() );
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TTConfigFrame::HideCheckBoxClick(TObject *Sender)
+void __fastcall TTConfigFrame::HideCheckBoxClick(TObject */*Sender*/)
 {
    // Make this active - need a hide/show event that is signalled for show
    // and then all "server" apps need to honour this.
@@ -86,7 +86,7 @@ void __fastcall TTConfigFrame::HideCheckBoxClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TTConfigFrame::ModifyButtonClick(TObject *Sender)
+void __fastcall TTConfigFrame::ModifyButtonClick(TObject */*Sender*/)
 {
    // we really need to have accumulated changes, so that we can cancel - or we action them instantly
    // Change the INI file to match what is shown

@@ -130,7 +130,7 @@ void TMinosChatForm::addChat(const std::string &mess)
    unsigned short h, m, s, ms;
    dt.DecodeTime( &h, &m, &s, &ms );
    String sdt = dt.FormatString( "hh:nn:ss " ) + mess.c_str();
-   chatQueue.push_back(sdt.c_str());
+	chatQueue.push_back(sdt.t_str());
 }
 void TMinosChatForm::syncChat()
 {
@@ -215,7 +215,7 @@ void __fastcall TMinosChatForm::SendButtonClick( TObject */*Sender*/ )
       RPCChatControlClient rpc( 0 );
       boost::shared_ptr<RPCParam>st(new RPCParamStruct);
       boost::shared_ptr<RPCParam>sName(new RPCStringParam( "SendChatMessage" ));
-      boost::shared_ptr<RPCParam>sValue(new RPCStringParam( ChatEdit->Text.c_str() ));
+      boost::shared_ptr<RPCParam>sValue(new RPCStringParam( ChatEdit->Text.t_str() ));
       st->addMember( sName, "Name" );
       st->addMember( sValue, "Value" );
       rpc.getCallArgs() ->addParam( st );

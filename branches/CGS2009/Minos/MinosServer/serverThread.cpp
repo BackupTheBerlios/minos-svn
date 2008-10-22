@@ -31,7 +31,7 @@ void runServerThread( void * )
    }
    catch ( Exception & e )
    {
-      logMessage( "Exception", std::string( "Exception while setting up Server listener: " ) + e.Message.c_str() );
+		logMessage( "Exception", std::string( "Exception while setting up Server listener: " ) + e.Message.t_str() );
       return ;
    }
    try
@@ -43,7 +43,7 @@ void runServerThread( void * )
    }
    catch ( Exception & e )
    {
-      logMessage( "Exception", std::string( "Exception while running Server listener: " ) + e.Message.c_str() );
+		logMessage( "Exception", std::string( "Exception while running Server listener: " ) + e.Message.t_str() );
       return ;
    }
    try
@@ -53,7 +53,7 @@ void runServerThread( void * )
    }
    catch ( Exception & e )
    {
-      logMessage( "Exception", std::string( "Exception while closing Server listener: " ) + e.Message.c_str() );
+      logMessage( "Exception", std::string( "Exception while closing Server listener: " ) + e.Message.t_str() );
       return ;
    }
 }

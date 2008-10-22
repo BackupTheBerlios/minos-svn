@@ -112,39 +112,39 @@ void TGJVEditFrame::setActiveControl( WORD &Key )
 //---------------------------------------------------------------------------
 void TGJVEditFrame::getScreenEntry()
 {
-   screenContact.time.setDate( DateEdit->Text.c_str(), DTGDISP );
-   screenContact.time.setTime( TimeEdit->Text.c_str(), DTGDISP );
+	screenContact.time.setDate( DateEdit->Text.t_str(), DTGDISP );
+	screenContact.time.setTime( TimeEdit->Text.t_str(), DTGDISP );
 
-   screenContact.cs.fullCall.setValue( CallsignEdit->Text.Trim().c_str() );
-   screenContact.cs.valRes = CS_NOT_VALIDATED;
-   screenContact.cs.validate( );
+	screenContact.cs.fullCall.setValue( CallsignEdit->Text.Trim().t_str() );
+	screenContact.cs.valRes = CS_NOT_VALIDATED;
+	screenContact.cs.validate( );
 
-   screenContact.reps = RSTTXEdit->Text.Trim().c_str();
-   screenContact.serials = SerTXEdit->Text.Trim().c_str();
-   screenContact.repr = RSTRXEdit->Text.Trim().c_str();
-   screenContact.serialr = SerRXEdit->Text.Trim().c_str();
+	screenContact.reps = RSTTXEdit->Text.Trim().t_str();
+	screenContact.serials = SerTXEdit->Text.Trim().t_str();
+	screenContact.repr = RSTRXEdit->Text.Trim().t_str();
+	screenContact.serialr = SerRXEdit->Text.Trim().t_str();
 
-   screenContact.loc.loc.setValue( LocEdit->Text.Trim().c_str() );
-   screenContact.bearing = -1;		// force a recalc
-   screenContact.loc.validate();
-   screenContact.extraText = QTHEdit->Text.Trim().c_str();
-   screenContact.comments = CommentsEdit->Text.Trim().c_str();
+	screenContact.loc.loc.setValue( LocEdit->Text.Trim().t_str() );
+	screenContact.bearing = -1;		// force a recalc
+	screenContact.loc.validate();
+	screenContact.extraText = QTHEdit->Text.Trim().t_str();
+	screenContact.comments = CommentsEdit->Text.Trim().t_str();
 
-   screenContact.mode = ModeComboBoxGJV->Text.Trim().c_str();
-   screenContact.contactFlags &= ~NON_SCORING;
+	screenContact.mode = ModeComboBoxGJV->Text.Trim().t_str();
+	screenContact.contactFlags &= ~NON_SCORING;
 
-   // op1/op2 get set when the attached combos change - I hope :)
+	// op1/op2 get set when the attached combos change - I hope :)
 
-   if ( NonScoreCheckBox->Checked )
-   {
-      screenContact.contactFlags |= NON_SCORING;
-   }
-   screenContact.contactFlags &= ~DONT_PRINT;
-   if ( DeletedCheckBox->Checked )
-   {
-      screenContact.contactFlags |= DONT_PRINT;
-   }
-   editScreen->getScreenEntry( screenContact );
+	if ( NonScoreCheckBox->Checked )
+	{
+		screenContact.contactFlags |= NON_SCORING;
+	}
+	screenContact.contactFlags &= ~DONT_PRINT;
+	if ( DeletedCheckBox->Checked )
+	{
+		screenContact.contactFlags |= DONT_PRINT;
+	}
+	editScreen->getScreenEntry( screenContact );
 }
 //---------------------------------------------------------------------------
 void TGJVEditFrame::showScreenEntry( void )
@@ -323,8 +323,8 @@ void __fastcall TGJVEditFrame::TimeEditKeyPress( TObject *Sender, char &Key )
    if ( Key == '+' || Key == '-' )
    {
       dtg thisdtg( false );
-      thisdtg.setDate( DateEdit->Text.c_str(), DTGDISP );
-      thisdtg.setTime( TimeEdit->Text.c_str(), DTGDISP );
+		thisdtg.setDate( DateEdit->Text.t_str(), DTGDISP );
+		thisdtg.setTime( TimeEdit->Text.t_str(), DTGDISP );
       time_t contactTime;
       thisdtg.getDtg( contactTime );
       if ( Key == '+' )
@@ -738,7 +738,7 @@ void TGJVEditFrame::calcLoc( )
 {
    String gridref = LocEdit->Text.Trim();
 
-   if ( stricmp( gridref.c_str(), oldloc.c_str() ) != 0 )
+	if ( stricmp( gridref.t_str(), oldloc.t_str() ) != 0 )
    {
       oldloc = gridref;
       locValid = true;
@@ -747,7 +747,7 @@ void TGJVEditFrame::calcLoc( )
       double dist;
       int brg;
 
-      int locValres = lonlat( gridref.c_str(), longitude, latitude );
+      int locValres = lonlat( gridref.t_str(), longitude, latitude );
       if ( ( locValres ) != LOC_OK )
          locValid = false;
 

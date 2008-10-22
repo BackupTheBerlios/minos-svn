@@ -50,7 +50,7 @@ bool TGridHint::GetShowing( void )
    String temp = AHint;
    RECT r = Bounds( 0, 0, HintControl->Width, 0 );
    // need a TCustomControl to get a Canvas
-   DrawText( ( HDC ) Canvas->Handle, temp.c_str(), -1, &r,
+   DrawText( ( HDC ) Canvas->Handle, temp.t_str(), -1, &r,
              DT_CALCRECT | DT_LEFT | DT_WORDBREAK | DT_NOPREFIX );
    OffsetRect( &r, XPos + 10, YPos + 10 );
    r.right += 6;

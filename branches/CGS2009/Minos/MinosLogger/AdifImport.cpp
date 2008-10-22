@@ -71,12 +71,12 @@ void ADIFImport::ADIFImportFieldDecode(
       {
          int srx = FieldContent.ToIntDef(0);
 
-         aqso->serialr.setInitialValue( String(srx).c_str() );
-      }
-      if ( Fieldname.UpperCase() == "STX" || Fieldname.UpperCase() == "NO_SENT" )
-      {
-         int stx = FieldContent.ToIntDef(0);
-         aqso->serials.setInitialValue( String(stx).c_str() );
+			aqso->serialr.setInitialValue( makeStr(srx) );
+		}
+		if ( Fieldname.UpperCase() == "STX" || Fieldname.UpperCase() == "NO_SENT" )
+		{
+			int stx = FieldContent.ToIntDef(0);
+         aqso->serials.setInitialValue( makeStr(stx) );
          if ( stx > acontest->maxSerial )
             acontest->maxSerial = stx;
       }

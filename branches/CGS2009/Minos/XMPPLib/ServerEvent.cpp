@@ -43,7 +43,7 @@ std::string getServerId()
    Reg->RootKey = HKEY_CURRENT_USER;
    if ( Reg->OpenKeyReadOnly( "SOFTWARE\\G0GJV\\Minos\\Server" ) )
    {
-      myUuid = Reg->ReadString( key ).c_str();
+      myUuid = Reg->ReadString( key ).t_str();
    }
    if ( myUuid.size() == 0 )
    {

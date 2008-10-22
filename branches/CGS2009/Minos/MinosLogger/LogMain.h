@@ -159,7 +159,7 @@ class TLogContainer : public TForm
       void __fastcall AnalyseMinosLogActionExecute( TObject *Sender );
       void __fastcall ContestPageControlMouseDown( TObject *Sender,
             TMouseButton Button, TShiftState Shift, int X, int Y );
-      void __fastcall ContestMRUClick( TObject *Sender, const AnsiString FileName );
+		void __fastcall ContestMRUClick( TObject *Sender, const UnicodeString FileName );
       void __fastcall File1Click( TObject *Sender );
       void __fastcall GridHintTimerTimer( TObject *Sender );
       void __fastcall ApplicationEvents1Deactivate( TObject *Sender );

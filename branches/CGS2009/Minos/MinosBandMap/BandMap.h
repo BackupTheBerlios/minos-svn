@@ -60,17 +60,16 @@ class TBandMapForm : public TForm
       TTimer *StartupTimer;
       void __fastcall Timer1Timer( TObject *Sender );
       void __fastcall LogTimerTimer( TObject *Sender );
-      void __fastcall BMTreeGetText( TBaseVirtualTree *Sender,
-                                     PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                     WideString &CellText );
-      void __fastcall BMTreeGetNodeDataSize( TBaseVirtualTree *Sender,
-                                             int &NodeDataSize );
-      void __fastcall FormShow( TObject *Sender );
-      void __fastcall StartupTimerTimer( TObject *Sender );
-      void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
-      void __fastcall FormResize( TObject *Sender );
+	  void __fastcall BMTreeGetNodeDataSize( TBaseVirtualTree *Sender,
+											 int &NodeDataSize );
+	  void __fastcall FormShow( TObject *Sender );
+	  void __fastcall StartupTimerTimer( TObject *Sender );
+	  void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
+	  void __fastcall FormResize( TObject *Sender );
+	void __fastcall BMTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
+		  TVSTTextType TextType, UnicodeString &CellText);
    private:  	// User declarations
-      bool connected;
+	  bool connected;
       bool subscribed;
       bool saveResize;
       static void makeRPCObjects();

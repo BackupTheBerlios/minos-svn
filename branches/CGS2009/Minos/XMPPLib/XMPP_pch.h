@@ -30,6 +30,7 @@
 
 #include <process.h>
 #include <stdio.h>
+#include "boost\format.hpp"
 #include "boost\shared_ptr.hpp"
 
 #include "tinyxml.h"

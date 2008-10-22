@@ -133,15 +133,15 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
    // open the LoggerContestLog file
 
    cfileName = fn;
-   String ext = ExtractFileExt( fn.c_str() );
-   publishedName = ExtractFileName( fn.c_str() ).c_str();
-   if ( stricmp( ext.c_str(), ".gjv" ) == 0 )
+	std::string ext = ExtractFileExt( fn.c_str() ).t_str();
+	publishedName = ExtractFileName( fn.c_str() ).t_str();
+	if ( stricmp( ext.c_str(), ".gjv" ) == 0 )
    {
-      GJVFile = true;
-      setReadOnly();
+		GJVFile = true;
+		setReadOnly();
    }
    else
-      if ( stricmp( ext.c_str(), ".minos" ) == 0 )
+		if ( stricmp( ext.c_str(), ".minos" ) == 0 )
       {
          minosFile = true;
       }
@@ -165,11 +165,11 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
                }
                else
                {
-                  MinosParameters::getMinosParameters() ->mshowMessage( "Not a known file type! (" + ext + ")" );
+						MinosParameters::getMinosParameters() ->mshowMessage( ("Not a known file type! (" + ext + ")").c_str() );
                   return false;
                }
    if ( !newFile )
-   {
+	{
 
       struct stat sbuf;
       if ( stat( fn.c_str(), &sbuf ) == 0 )
@@ -690,7 +690,7 @@ static bool uhNeeded = false;
 static bool utNeeded = false;
 void LoggerContestLog::procUnknown( BaseContact *cct, writer &wr )
 {
-   String lbuff;
+	std::string lbuff;
 
    if ( cct->QSOValid
         && !( ( cct->cs.valRes == ERR_DUPCS )
@@ -724,7 +724,7 @@ void LoggerContestLog::procUnknown( BaseContact *cct, writer &wr )
          utNeeded = true;
          wr.lwrite( "\r\n\r\n    Contacts with Unknown Country/District\r\n" );
       }
-      wr.lwrite( lbuff.c_str() );
+		wr.lwrite( lbuff.c_str() );
    }
 }
 bool LoggerContestLog::exportSummary( HANDLE expfd )
@@ -939,7 +939,7 @@ bool LoggerContestLog::exportREG1TEST( HANDLE expfd )
 
       mshowMessage->ShowModal();
 
-      band.setValue( mshowMessage->BandCombo->Text.c_str() );
+		band.setValue( mshowMessage->BandCombo->Text.t_str() );
    }
 
 
@@ -1108,7 +1108,7 @@ bool LoggerContestLog::importLOG( HANDLE hLogFile )
    {
       // skip new format header information, until we can cope
       // properly with it
-      std::string stemp = trimr( ls->Strings[ lineNo ].c_str() );
+      std::string stemp = trimr( ls->Strings[ lineNo ].t_str() );
       if ( stemp.length() == 0 || ( !started && !isdigit( ls->Strings[ lineNo ][ 1 ] ) ) )
       {
          // GJV.LOG

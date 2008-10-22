@@ -42,7 +42,7 @@ bool ContactList::initialise( const std::string &fn, int slotno )
    cfileName = fn;
    String ext = ExtractFileExt( fn.c_str() );
 
-   if ( stricmp( ext.c_str(), ".csl" ) == 0 )
+	if ( stricmp( ext.t_str(), ".csl" ) == 0 )
    {
       cslFile = true;
    }
@@ -78,7 +78,7 @@ bool ContactList::cslLoad( void )
       return false;
    }
    String fn = ExtractFileName( cfileName.c_str() );
-   name = fn.c_str();
+   name = fn.t_str();
 
    while ( istr.getline( buff, 255 ) )
    {

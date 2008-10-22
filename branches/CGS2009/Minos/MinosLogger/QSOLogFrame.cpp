@@ -349,7 +349,7 @@ void __fastcall TGJVQSOLogFrame::BandMapButtonClick( TObject *Sender )
    std::string loc = screenContact.loc.loc.getValue();
    std::string utc = dtg( true ).getIsoDTG();
    std::string qth = screenContact.extraText;
-   std::string freq = sCurrFreq.c_str();
+	std::string freq = sCurrFreq.t_str();
 
    if ( call.size() || loc.size() || qth.size() )
    {
@@ -385,8 +385,8 @@ void TGJVQSOLogFrame::updateQSOTime()
       TimeEdit->Color = clWindow;
    }
    dtg time(false);
-   time.setDate( DateEdit->Text.c_str(), DTGDISP );
-   time.setTime( TimeEdit->Text.SubString(1, 5).c_str(), DTGDISP );
+	time.setDate( DateEdit->Text.t_str(), DTGDISP );
+   time.setTime( TimeEdit->Text.SubString(1, 5).t_str(), DTGDISP );
 
    bool timeOK = contest->checkTime(time);
 

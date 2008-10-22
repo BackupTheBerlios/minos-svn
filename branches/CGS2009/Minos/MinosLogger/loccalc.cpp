@@ -120,7 +120,7 @@ bool __fastcall TLocCalcForm::handleExit( TEdit *Edit )
    inputbuff = Edit->Text.Trim().UpperCase();
 
    l1.gridstyle = gstyle;
-   l1.datastring = inputbuff.c_str();
+	l1.datastring = inputbuff.t_str();
    l1.datalength = inputbuff.Length() + 1;
    l1.dataoffset = 0;
 
@@ -173,10 +173,10 @@ void __fastcall TLocCalcForm::CalcButtonClick( TObject */*Sender*/ )
    if ( handleExit( S1Loc ) && handleExit( S2Loc ) )
    {
       BaseContestLog cnt;
-      cnt.myloc.loc.setValue( S1Loc->Text.UpperCase().c_str() );
+		cnt.myloc.loc.setValue( S1Loc->Text.UpperCase().t_str() );
       cnt.validateLoc();
 
-      if ( lonlat( S2Loc->Text.UpperCase().c_str(), longitude, latitude ) == LOC_OK )
+      if ( lonlat( S2Loc->Text.UpperCase().t_str(), longitude, latitude ) == LOC_OK )
       {
          cnt.disbear( longitude, latitude, dist, brg );
          if ( Modal )

@@ -50,10 +50,10 @@ class TMultDispFrame : public TFrame
             int &NodeDataSize );
       void __fastcall CountryMultTreeGetText( TBaseVirtualTree *Sender,
                                               PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                              WideString &CellText );
+											  UnicodeString &CellText );
       void __fastcall DistrictMultTreeGetText( TBaseVirtualTree *Sender,
             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-            WideString &CellText );
+			UnicodeString &CellText );
       void __fastcall DistrictMultTreeGetNodeDataSize(
          TBaseVirtualTree *Sender, int &NodeDataSize );
       void __fastcall LocatorMultTreeGetNodeDataSize( TBaseVirtualTree *Sender,
@@ -73,9 +73,9 @@ class TMultDispFrame : public TFrame
             PVirtualNode Node, DWORD &ChildCount );
       void __fastcall DistrictMultTreeInitChildren( TBaseVirtualTree *Sender,
             PVirtualNode Node, DWORD &ChildCount );
-      void __fastcall LocatorMultTreeGetText( TBaseVirtualTree *Sender,
+	  void __fastcall LocatorMultTreeGetText( TBaseVirtualTree *Sender,
                                               PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
-                                              WideString &CellText );
+                                              UnicodeString &CellText );
       void __fastcall FilterClick( TObject *Sender );
       void __fastcall FilterTimerTimer( TObject *Sender );
    private:  	// User declarations

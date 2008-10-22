@@ -41,8 +41,8 @@ bool TConfigElement::initialise( String sect )
    {
       name = sect;
       std::string noprog = "nOpRoGrAm";
-      commandLine = config->ReadString( sect, "program", noprog.c_str() ).c_str();
-      params = config->ReadString( sect, "params", "" ).c_str();
+		commandLine = config->ReadString( sect, "program", noprog.c_str() ).t_str();
+		params = config->ReadString( sect, "params", "" ).t_str();
       if ( commandLine == noprog )
       {
          //      ConfigForm->logMessage( ("No program configured ([" + sect + "]program=xxxx)").c_str() );
@@ -51,7 +51,7 @@ bool TConfigElement::initialise( String sect )
       String S = UpperCase( config->ReadString( sect, "Run", "Yes" ) ).Trim();
       run = !( S[ 1 ] == 'N' || S[ 1 ] == 'F' || S[ 1 ] == '0' );
 
-      rundir = config->ReadString( sect, "Directory", "" ).Trim().c_str();
+		rundir = config->ReadString( sect, "Directory", "" ).Trim().t_str();
       return true;
    }
    return false;
@@ -136,7 +136,7 @@ void TMConfigDM::start()
    {
       if ( ( *i ) ->run )
       {
-         GJV_thread * GThreadObj = new GJV_thread( ( ( *i ) ->name + " Guardian" ).c_str(), &GuardianThreadExecute, ( *i ) );
+			GJV_thread * GThreadObj = new GJV_thread( ( ( *i ) ->name + " Guardian" ).t_str(), &GuardianThreadExecute, ( *i ) );
          guardv.push_back( GThreadObj );
       }
    }
@@ -178,7 +178,7 @@ std::string TMConfigDM::getCircleOfHell()
    {
       return "";
    }
-   circleOfHell = config->ReadString( "Circle Of Hell", "Name", "" ).Trim().c_str();
+	circleOfHell = config->ReadString( "Circle Of Hell", "Name", "" ).Trim().t_str();
    return circleOfHell;
 }
 

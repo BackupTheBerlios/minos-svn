@@ -30,7 +30,7 @@ void enableTrace( const std::string &where )
 {
    if ( !logEnabled )
    {
-      String path = GetCurrentDir();
+      std::string path = GetCurrentDir().t_str();
       if ( where[ 0 ] == '.' )
       {
          path += where.substr( 1, where.size() - 1 ).c_str();

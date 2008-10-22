@@ -599,8 +599,8 @@ void __fastcall TSingleLogFrame::QSOTreeColumnResize( TVTHeader *Sender,
             if ( Column < THISMATCHTREECOLS )
             {
                int temp = -1;
-               String key = "LogColumn" + String( Column );
-               TContestApp::getContestApp() ->displayBundle.getIntProfile( key.c_str(), temp, -1 );
+					std::string key = "LogColumn" + makeStr( Column );
+					TContestApp::getContestApp() ->displayBundle.getIntProfile( key.c_str(), temp, -1 );
                TVirtualTreeColumn *CurColumn = LogMonitor->QSOTree->Header->Columns->Items[ Column ];
                if ( CurColumn->Width != temp )
                {
@@ -731,7 +731,7 @@ void __fastcall TSingleLogFrame::ThisMatchTreeKeyDown( TObject */*Sender*/,
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::ThisMatchTreeGetText( TBaseVirtualTree *Sender,
       PVirtualNode Node, TColumnIndex Column, TVSTTextType /*TextType*/,
-      WideString &CellText )
+	  UnicodeString &CellText )
 {
    CellText = "";
    MatchNodeData * pc = ( MatchNodeData * ) Sender->GetNodeData( Node );
@@ -826,7 +826,7 @@ void __fastcall TSingleLogFrame::OtherMatchTreeGetNodeDataSize(
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::OtherMatchTreeGetText(
    TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
-   TVSTTextType /*TextType*/, WideString &CellText )
+   TVSTTextType /*TextType*/, UnicodeString &CellText )
 {
    CellText = "";
    MatchNodeData * pc = ( MatchNodeData * ) Sender->GetNodeData( Node );
@@ -893,7 +893,7 @@ void __fastcall TSingleLogFrame::ArchiveMatchTreeGetNodeDataSize(
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::ArchiveMatchTreeGetText(
    TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
-   TVSTTextType /*TextType*/, WideString &CellText )
+   TVSTTextType /*TextType*/, UnicodeString &CellText )
 {
    CellText = "";
    MatchNodeListData * pc = ( MatchNodeListData * ) Sender->GetNodeData( Node );
@@ -991,7 +991,7 @@ void TSingleLogFrame::doNextContactDetailsOnLeftClick( TObject */*Sender*/ )
       }
 }
 //---------------------------------------------------------------------------
-String TSingleLogFrame::makeEntry( bool saveMinos )
+std::string TSingleLogFrame::makeEntry( bool saveMinos )
 {
    LoggerContestLog * ct = dynamic_cast<LoggerContestLog *>( contest );
    if ( !ct )
@@ -1006,7 +1006,7 @@ String TSingleLogFrame::makeEntry( bool saveMinos )
    if ( EntryDlg->ShowModal() == mrOk )
    {
       ct->commonSave( false );
-      String expName = EntryDlg->doFileSave( );
+      std::string expName = EntryDlg->doFileSave( );
       return expName;
    }
    return "";
@@ -1022,7 +1022,7 @@ void TSingleLogFrame::setFreq( String f )
    // If freq has moved "enough" then send current QSO details to bandmap
    long long freq = 0;
 
-   int nscan = sscanf( f.c_str(), "%lld", &freq );
+   int nscan = sscanf( f.t_str(), "%lld", &freq );
    if ( nscan == 1 && ( abs( ( long double ) ( freq - oldFreq ) ) > freqdelta ) )
    {
       oldFreq = currFreq;
