@@ -716,7 +716,7 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          break;
       case epENTRYPROFILE:
          entries.push_back( ProfileEntry( eepCall, "Call", "", "Call sign used" ) );
-         entries.push_back( ProfileEntry( eepEntrant, "Entrant", "", "Mame of club/group" ) );
+         entries.push_back( ProfileEntry( eepEntrant, "Entrant", "", "Name of club/group" ) );
          entries.push_back( ProfileEntry( eepMyName, "MyName", "", "Name of responsible operator" ) );
          entries.push_back( ProfileEntry( eepMyCall, "MyCall", "", "Callsign of responsible operator" ) );
 
