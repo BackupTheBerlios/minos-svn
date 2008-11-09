@@ -44,6 +44,7 @@ class TCalendarForm : public TForm
    void __fastcall YearSpinEditBottomClick(TObject *Sender);
    void __fastcall YearSpinEditTopClick(TObject *Sender);
    private: 	// User declarations
+      bool downloadCalendar(String URL, String dest);
    public: 		// User declarations
       __fastcall TCalendarForm( TComponent* Owner );
       Calendar vhf;

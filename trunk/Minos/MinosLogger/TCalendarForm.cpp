@@ -31,8 +31,17 @@ void __fastcall TCalendarForm::Button1Click( TObject * /*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 {
-   vhf = Calendar(YearSpinEdit->Text.ToIntDef(2000));
-   bool loaded = vhf.parseFile( ".\\configuration\\vhfContests.xml" );
+   int year = YearSpinEdit->Text.ToIntDef(2000);
+   vhf = Calendar(year);
+   bool loaded = false;
+   if (year >= 2009)
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests09.xml" );
+   }
+   else
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests.xml" );
+   }
    if ( !loaded )
    {
       ShowMessage( "Failed to load the calendar file" );
@@ -94,32 +103,39 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
+bool TCalendarForm::downloadCalendar(String calendarURL, String dest)
 {
-   TWaitCursor fred;
-   AnsiString calendarURL = "http://www.vhfcc.org/vhfcontests.xml";
    try
    {
       String cal = IdHTTP1->Get( calendarURL );
       // and write it out
 
-      char appFName[ 255 ];
-      int nLen = 0;
-      nLen = ::GetModuleFileName( HInstance, appFName, 255 );
-      appFName[ nLen ] = '\0';
-
-      String fpath = ExtractFilePath( appFName );
-
       TStringList *sl = new TStringList();
       sl->Text = cal;
-      sl->SaveToFile( fpath + "Configuration\\vhfcontests.xml" );
+      sl->SaveToFile( dest );
       delete sl;
-      FormShow( Sender );
+      return true;
    }
    catch ( Exception & e )
    {
       ShowMessage( "HTPP Get of " + calendarURL + " failed: " + e.Message );
    }
+   return false;
+}
+void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
+{
+   TWaitCursor fred;
+
+   char appFName[ 255 ];
+   int nLen = 0;
+   nLen = ::GetModuleFileName( HInstance, appFName, 255 );
+   appFName[ nLen ] = '\0';
+
+   String fpath = ExtractFilePath( appFName );
+
+   downloadCalendar("http://www.vhfcc.org/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
+   downloadCalendar("http://www.vhfcc.org/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
+   FormShow( Sender );
 }
 //---------------------------------------------------------------------------
 
