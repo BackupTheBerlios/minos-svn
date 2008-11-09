@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE calendar [
-<!ELEMENT calendar (version, icalurl?, googleurl?, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
+<!ELEMENT calendar (version, icalurl?, googleurl?, notes_list+, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
 <!ELEMENT mult_type (name, description, long_description, exchange?, scoring_description?)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT description (#PCDATA)>
@@ -44,6 +44,7 @@
 <!ELEMENT overall_section (#PCDATA)>
 <!ELEMENT icalurl (#PCDATA)>
 <!ELEMENT googleurl (#PCDATA)>
+<!ELEMENT notes_list (#PCDATA)>
 <!ELEMENT version (#PCDATA)>
 ]>
 <!-- RSGB VHF contest calendar and rules-->
@@ -58,17 +59,24 @@
 <!-- 08.006 16/05/2008 Added link to postcodes page-->
 <!-- 08.007 17/06/2008 Changed 144 backpackers to individual contests-->
 <!-- 08.008 17/06/2008 Added override flag for xmas contest -->
-<!-- 08.009 18/09/2008 Added icalurl and googleurl -->
+<!-- 09.001 23/06/2008 first version for 2009 -->
+<!-- 09.002 03/08/2008 Changed REG1TEST freq for 23cms from 1,2 Ghz to 1,3 Ghz -->
+<!-- 09.003 18/09/2008 Added icalurl and googleurl -->
+<!-- 09.004 19/09/2008 changed the names of AO and AR UKAC sections -->
+<!-- 09.005 07/10/2008 changed dates of 70cms AFS and 70MHz cumulatives -->
+<!-- 09.006 07/11/2008 added new backpacker sections -->
 <calendar>
-<version>08.009 18/09/2008</version>
-<icalurl>http://www.google.com/calendar/ical/3sjit671vtqtuomsgvuaj4b0ig%40group.calendar.google.com/public/basic.ics</icalurl>
-<googleurl>http://www.google.com/calendar/render?cid=3sjit671vtqtuomsgvuaj4b0ig%40group.calendar.google.com</googleurl>
+<version>09.006 07/11/2008</version>
+<icalurl>http://www.google.com/calendar/ical/5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com/public/basic.ics</icalurl>
+<googleurl>http://www.google.com/calendar/embed?src=5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
+<notes_list>Calendar amended 07/10/08, 432MHz AFS and 70MHz Cumulatives dates changed</notes_list>
+<notes_list>Calendar amended 06/11/08, Backpacker Rules changed</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+A full list of Postcodes can be found here www.vhfcc.org/rules/09rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
@@ -87,7 +95,7 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <description>Post Codes, Countries and Locators</description>
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+A full list of Postcodes can be found here www.vhfcc.org/rules/09rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
@@ -172,12 +180,12 @@ These contests are timed to co-incide with the last two hours of a number of Eur
 
 Please submit an entry after each session in which you are active. In order to speed adjudication entries will only be accepted by e-mail or web entry and must be sent within 10 days of the contest.
 
-Scores will be normalised for each session as follows. 
-Score for each session = (Score achieved x 1000) divded by (Session leaders score).
+Scores will be normalised for each section in each session as follows. 
+Score for each section/session = (Score achieved x 1000) divded by (Session/section leaders score).
 At the end of the year, on each band an overall score will be calculated from the best 8 normalised session scores.
 It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
 
-Stations may move location between individual activity periods.
+Stations may change section and move location between individual activity periods.
 
 Certificates will be awarded to the overall winners and runners-up in each section and on each band in the same way as per the general rules. No certificates will be awarded for the individual events.
 </long_description>
@@ -186,36 +194,35 @@ Certificates will be awarded to the overall winners and runners-up in each secti
 <name>S9</name>
 <description>Club Championship</description>
 <long_description>
-a.        The individual entries by a club's members to the 2m UK activity contests which take place on 2m from 2000-2230 LOCAL time on the 1st Tuesday in every month all count towards a society's overall score for the year. The 2m UKACs are short contests with a straightforward scoring scheme which are simple enough for beginners and have high activity to keep more experienced contesters interested. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the VHFCC web site www.vhfcc.org
+a.        The individual entries by a club's members to the UK activity contests which take place on from 2000-2230 LOCAL time on each Tuesday in every month all count towards a society's overall score for the year for each UKAC. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the Contest Committee web site www.vhfcc.org for each band.
 
-b.        Stations enter the 2m UKAC contest in the normal way, but need to include an AFS (affiliated society) name in the cover sheet of their entry. Entries to all sections of the UKAC count towards the overall club score which is the simple sum of the scores of each team member operating that month.
+b.        Stations enter the UKAC contests in the normal way, but need to include an AFS (affiliated society) name in the cover sheet of their entry. Entries to all sections of the UKAC count towards the overall club score which is the simple sum of the normalised scores of each team member operating that month. 
 
-c.       To determine the winner at the end of the year, the leading club each month will be awarded 1000 points, and all other club scores for that month will be normalised by the formula
+c.        Stations who enter on behalf of an affiliated society must be members of the affiliated society, but not necessarily RSGB members themselves.
 
-Normalised score for each session = (Total club score x 1000)/ (Leading club score)
+d.        The G6NB Trophy will be awarded to the club with the highest score in the 2m UKAC at the end of the year. All 12 sessions will count towards the total club score.
 
-d.        The G6NB Trophy will be awarded to the club with the highest score at the end of the year. All 12 sessions will count towards the total club score.
 </long_description>
 </special_rule>
 <special_rule>
 <name>Backpacker</name>
 <description>Special Backpackers Rules</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/BACKPACK.htm
+http://www.vhfcc.org/rules/09rules/BACKPACK.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHFNFD</name>
 <description>Special Rules for VHF NFD</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/VHFNFD.htm
+http://www.vhfcc.org/rules/09rules/VHFNFD.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHF CHAMPIONSHIP</name>
 <description>Special Rules for VHF Championship</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/championship.htm
+http://www.vhfcc.org/rules/09rules/championship.htm
 </long_description>
 </special_rule>
 <special_rule>
@@ -225,6 +232,24 @@ http://www.vhfcc.org/rules/08rules/championship.htm
 Maximum output Power 25W at the TX.
 </long_description>
 </special_rule>
+<section>
+<name>AO</name>
+<description>UKAC Open </description>
+<long_description> 
+Maximum output power as permitted by standard licence conditions.
+No antenna restrictions.
+</long_description>
+</section>
+<section>
+<name>AR</name>
+<description>UKAC Restricted</description>
+<long_description> 
+The power output must not exceed 100W PEP at the transmitter.
+Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter. 
+</long_description>
+<power>100</power>
+<singleantenna>1</singleantenna>
+</section>
 <section>
 <name>SF</name>
 <description>Single Op Fixed</description>
@@ -264,6 +289,22 @@ Stations not operating as a fixed station must use the /P callsign suffix. Entra
 </long_description>
 </section>
 <section>
+<name>3B</name>
+<description>3W Backpacker</description>
+<long_description> 
+a) Duration: 4 hours.  See Contest Calendar for individual session dates and start time 
+b) Mode: All Mode 
+c) 3W maximum output from the transmitter 
+d) Single antenna with no more than 20 half-wave elements (or equivalent)
+e) Antenna height: Driven element no more than 4m above the ground
+f) No operation from a motor vehicle. The vehicle supply must not be used to power any equipment used during the contest or to recharge batteries for the equipment.
+g) All equipment used during the contest must be battery, wind or solar powered.
+h) Equipment must be carried and operated at least 100m from the transportation vehicle. 
+</long_description>
+<power>3</power>
+<height>4</height>
+</section>
+<section>
 <name>3S</name>
 <description>3W Single Op Portable</description>
 <long_description> Backpacker Contest. 3w Single-operator.
@@ -278,6 +319,21 @@ Stations not operating as a fixed station must use the /P callsign suffix. Entra
 </long_description>
 <power>3</power>
 <height>9</height>
+</section>
+<section>
+<name>10H</name>
+<description>10W Hill Toppers</description>
+<long_description> 
+a) Duration: 4 hours.  See Contest Calendar for individual session dates and start time
+b) Mode: All Mode
+c) 10W maximum output from the transmitter.
+d) One or more antennas with no more than 20 half-wave elements (or equivalent) in total.
+e) Antenna height: Driven element no more than 6m above the ground
+f) Operation from a motor vehicle permitted.  
+g) All equipment used during the contest must be battery, wind or solar powered.  If equipment is powered from a vehicle supply, the engine must be switched off for the duration of the contest.
+</long_description>
+<power>10</power>
+<height>6</height>
 </section>
 <section>
 <name>10S</name>
@@ -544,7 +600,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <month_list>Jan</month_list>
     <month_list>Feb</month_list>
     <month_list>Mar</month_list>
-    <start_day>7</start_day>
+    <start_day>6+1</start_day>
     <start_week>2</start_week>
     <start_time>1000</start_time>
     <time_type>GMT</time_type>
@@ -574,7 +630,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <short_description>432MHz AFS</short_description>
   <time_list>
     <month_list>Feb</month_list>
-    <start_day>7</start_day>
+    <start_day>6+1</start_day>
     <start_week>1</start_week>
     <start_time>0900</start_time>
     <time_type>GMT</time_type>
@@ -823,12 +879,11 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>local</time_type>
     <duration>2.5</duration>
   </time_list>
-  <section_list>O</section_list>
-  <section_list>SF</section_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
   <scoring>
-    <oneppq>1</oneppq>
+    <perkms>1</perkms>
   </scoring>
-  <special_rules_list>S1</special_rules_list>
   <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>144</band_list>
@@ -860,12 +915,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>local</time_type>
     <duration>2.5</duration>
   </time_list>
-  <section_list>O</section_list>
-  <section_list>SF</section_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
    <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
   <band_list>432</band_list>
   <mult>M2</mult>
 <entry_date>10 days after each activity period</entry_date>
@@ -892,12 +948,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>local</time_type>
     <duration>2.5</duration>
   </time_list>
-  <section_list>O</section_list>
-  <section_list>SF</section_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
   <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
   <band_list>1296</band_list>
   <band_list>2320</band_list>
   <mult>M2</mult>
@@ -925,13 +982,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>local</time_type>
     <duration>2.5</duration>
   </time_list>
-  <section_list>O</section_list>
-  <section_list>SF</section_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
   <scoring>
-    <oneppq>1</oneppq>
+    <perkms>1</perkms>
   </scoring>
-  <special_rules_list>S1</special_rules_list>
   <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
   <band_list>50</band_list>
   <mult>M2</mult>
 <entry_date>10 days after each activity period</entry_date>
@@ -958,13 +1015,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>local</time_type>
     <duration>2.5</duration>
   </time_list>
-  <section_list>O</section_list>
-  <section_list>SF</section_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
   <scoring>
-    <oneppq>1</oneppq>
+    <perkms>1</perkms>
   </scoring>
-  <special_rules_list>S1</special_rules_list>
   <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
   <band_list>70</band_list>
   <mult>M2</mult>
 <entry_date>10 days after each activity period</entry_date>
@@ -1063,10 +1120,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>3S</section_list>
-  <section_list>3M</section_list>
-  <section_list>10S</section_list>
-  <section_list>10M</section_list>
+  <section_list>3B</section_list>
+  <section_list>10H</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1088,10 +1143,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>3S</section_list>
-  <section_list>3M</section_list>
-  <section_list>10S</section_list>
-  <section_list>10M</section_list>
+  <section_list>3B</section_list>
+  <section_list>10H</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1113,10 +1166,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>3S</section_list>
-  <section_list>3M</section_list>
-  <section_list>10S</section_list>
-  <section_list>10M</section_list>
+  <section_list>3B</section_list>
+  <section_list>10H</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1138,10 +1189,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>3S</section_list>
-  <section_list>3M</section_list>
-  <section_list>10S</section_list>
-  <section_list>10M</section_list>
+  <section_list>3B</section_list>
+  <section_list>10H</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1163,10 +1212,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>3S</section_list>
-  <section_list>3M</section_list>
-  <section_list>10S</section_list>
-  <section_list>10M</section_list>
+  <section_list>3B</section_list>
+  <section_list>10H</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1187,7 +1234,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>4</duration>
   </time_list>
-  <section_list>10S</section_list>
+  <section_list>3B</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
