@@ -13,6 +13,7 @@
 #include "MatchThread.h"
 #include "MultDisp.h"
 #include "StatsDisp.h"
+#include "shbrowse.h"
 
 //---------------------------------------------------------------------------
 
@@ -87,6 +88,42 @@ static void initClock( void )
 }
 bool TContestApp::initialise()
 {
+
+   // Under Linux/Wine (in particular) the current working directory may not
+   // be where expected. So reset it to where it should be
+
+   // Eventually, we should have an installation system so that e.g. under Vista
+   // we can put things like config under the user directory
+
+   if (!DirectoryExists(".\\Configuration"))
+   {
+      // try for executable directory
+      char appFName[ 255 ];
+      int nLen = 0;
+      nLen = ::GetModuleFileName( HInstance, appFName, 255 );
+      appFName[ nLen ] = '\0';
+
+      String fpath = ExtractFilePath( appFName );
+
+      if (DirectoryExists(fpath + "\\Configuration"))
+      {
+         chdir(fpath.c_str());
+      }
+      while (!DirectoryExists(".\\Configuration"))
+      {
+         std::string destDir;
+         if (SimpleBrowseDirectory( destDir,
+                                    LogContainer,
+                                    "Set Minos Working Directory" ) )
+         {
+            if (strupr(destDir).find("\\CONFIGURATION") == destDir.size() - std::string("\\configuration").size())
+            {
+               destDir = destDir.substr(0, destDir.size() - std::string("\\configuration").size());
+            }
+            chdir(destDir.c_str());
+         }
+      }
+   }
    // we need to open our bundles...
    // and we need to discover the defaults from the initial splash screen
 

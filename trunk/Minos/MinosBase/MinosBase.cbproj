@@ -21,27 +21,27 @@
   <PropertyGroup Condition="'$(Base)'!=''">
     <OutputExt>lib</OutputExt>
     <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-    <BCC_OutputDir>obj</BCC_OutputDir>
     <DCC_ObjPath>C:\Minos\MinosBase</DCC_ObjPath>
+    <BCC_OutputDir>obj</BCC_OutputDir>
     <DynamicRTL>true</DynamicRTL>
     <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;Jcl.bpi;JvAppFrmD11R.bpi;JvCoreD11R.bpi;JvBandsD11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDlgsD11R.bpi;JvDockingD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvStdCtrlsD11R.bpi;JvSystemD11R.bpi;JvTimeFrameworkD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
-    <IncludePath>C:\ThirdParty\tinyxml</IncludePath>
     <BCC_PCHCache>true</BCC_PCHCache>
-    <BCC_IncludePath>..\XMPPLib;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include</BCC_IncludePath>
-    <DCC_IncludePath>C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
-    <BRCC_IncludePath>..\XMPPLib;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;..\iksemel\include;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include</BRCC_IncludePath>
+    <IncludePath>C:\ThirdParty\tinyxml</IncludePath>
     <TASM_IncludePath>..\XMPPLib;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;..\iksemel\include;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include</TASM_IncludePath>
-    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
-    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <BRCC_IncludePath>..\XMPPLib;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;..\iksemel\include;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include</BRCC_IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+    <DCC_IncludePath>C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_IncludePath>..\XMPPLib;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include</BCC_IncludePath>
     <TLIB_PageSize>256</TLIB_PageSize>
+    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <Multithreaded>true</Multithreaded>
     <DCC_ResourcePath>C:\Minos\MinosBase</DCC_ResourcePath>
   </PropertyGroup>
@@ -146,6 +146,10 @@
     <CppCompile Include="ScreenContact.cpp">
       <DependentOn>ScreenContact.h</DependentOn>
       <BuildOrder>15</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="shbrowse.cpp">
+      <DependentOn>shbrowse.h</DependentOn>
+      <BuildOrder>19</BuildOrder>
     </CppCompile>
     <CppCompile Include="validators.cpp">
       <DependentOn>validators.h</DependentOn>
