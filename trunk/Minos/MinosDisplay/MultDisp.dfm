@@ -29,17 +29,13 @@ object MultDispFrame: TMultDispFrame
     Top = 0
     Width = 300
     Height = 190
-    ActivePage = ErrTab
+    ActivePage = DistrictTab
     Align = alClient
     MultiLine = True
     TabOrder = 0
     TabPosition = tpRight
     object CountriesTab: TTabSheet
       Caption = 'Countries'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object CountryMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -53,7 +49,7 @@ object MultDispFrame: TMultDispFrame
         Header.Font.Name = 'Verdana'
         Header.Font.Style = []
         Header.MainColumn = -1
-        Header.Options = [hoColumnResize, hoDrag]
+        Header.Options = [hoColumnResize, hoDblClickResize, hoDrag]
         TabOrder = 0
         TabStop = False
         TreeOptions.AutoOptions = [toAutoScrollOnExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
@@ -70,10 +66,6 @@ object MultDispFrame: TMultDispFrame
     object DistrictTab: TTabSheet
       Caption = 'Districts'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -87,7 +79,7 @@ object MultDispFrame: TMultDispFrame
         Header.Font.Name = 'Verdana'
         Header.Font.Style = []
         Header.MainColumn = -1
-        Header.Options = [hoColumnResize, hoDrag]
+        Header.Options = [hoColumnResize, hoDblClickResize, hoDrag]
         TabOrder = 0
         TreeOptions.AutoOptions = [toAutoScrollOnExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
         TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
@@ -103,10 +95,6 @@ object MultDispFrame: TMultDispFrame
     object LocatorsTab: TTabSheet
       Caption = 'Locators'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LocatorMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -162,10 +150,6 @@ object MultDispFrame: TMultDispFrame
     object ErrTab: TTabSheet
       Caption = 'Errors'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ErrList: TListBox
         Left = 0
         Top = 0

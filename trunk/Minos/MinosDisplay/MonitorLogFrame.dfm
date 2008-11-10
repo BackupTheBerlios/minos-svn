@@ -17,7 +17,7 @@ object LogMonitorFrame: TLogMonitorFrame
     Header.Font.Height = -11
     Header.Font.Name = 'Tahoma'
     Header.Font.Style = []
-    Header.Options = [hoColumnResize, hoDrag, hoVisible]
+    Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoVisible]
     Header.ParentFont = True
     TabOrder = 0
     TabStop = False
