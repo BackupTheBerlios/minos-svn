@@ -74,10 +74,6 @@ int getDayOfWeek( TDateTime dtg )
 }
 int getDate( int month, int day, int week )
 {
-   if ( month == 6 && day == 2 && week == 5 )
-   {
-      //      ShowMessage("now");
-   }
    // day 6 week 1 means "first Saturday of the month"
    // and day 2 week 1 means "first Tuesday of the month".
    // week 2 day 2 would mean "2nd Tuesday of the month".
@@ -129,7 +125,7 @@ TDateTime localToUTC( TDateTime t )
            month, unsigned short* day) const;
       void __fastcall DecodeTime(unsigned short* hour, unsigned short*
            min, unsigned short* sec, unsigned short* msec) const;
-    
+
    */
    unsigned short year;
    unsigned short month;
