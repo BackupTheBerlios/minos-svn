@@ -65,8 +65,10 @@
 <!-- 09.004 19/09/2008 changed the names of AO and AR UKAC sections -->
 <!-- 09.005 07/10/2008 changed dates of 70cms AFS and 70MHz cumulatives -->
 <!-- 09.006 07/11/2008 added new backpacker sections -->
+<!-- 09.007 25/11/2008 added DXCC url-->
+<!-- 09.008 08/12/2008 Changed AFS rules -->
 <calendar>
-<version>09.006 07/11/2008</version>
+<version>09.008 08/12/2008</version>
 <icalurl>http://www.google.com/calendar/ical/5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>Calendar amended 07/10/08, 432MHz AFS and 70MHz Cumulatives dates changed</notes_list>
@@ -76,7 +78,8 @@
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/09rules/postcode.htm
+A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
+A full list of Postcodes can be found here http://www.vhfcc.org/rules/09rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
@@ -95,7 +98,8 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <description>Post Codes, Countries and Locators</description>
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/09rules/postcode.htm
+A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
+A full list of Postcodes can be found here http://www.vhfcc.org/rules/09rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
@@ -105,6 +109,7 @@ A full list of Postcodes can be found here www.vhfcc.org/rules/09rules/postcode.
 <description>Countries and Locators</description>
 <long_description>
 Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band
+A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
 </long_description>
 <scoring_description> multiplied by the number of Countries plus QTH locator squares</scoring_description>
 </mult_type>
@@ -134,7 +139,7 @@ b. QSOs with other members of your team will count for points.
 
 c. Each AFS member will be allocated to one or more teams in descending order of adjudicated score. For the purpose of calculating the overall AFS team score, each member of each team will be placed in one of 5 sections (3 for the 432MHz contest) Sections A, B, C etc. The highest placed member of each team will be placed in Section A, the second highest in Section B etc. All stations in each of the sections will have their score normalised against the highest score in that section, with the highest score gaining 1000 points. The final AFS team score will be the sum of the team members individual normalised scores.
 
-d. Logs should be sent as a single package for each club and should include a declaration by a club official that all operators are members of the Affiliated Society, and listing the QTH locator of the normal meeting place of the club.
+d. Logs must be sent individually using the same Club Name. One log entry for each club should include a declaration in the soapbox/remarks that all operators are members of the Affiliated Society, and listing the QTH locator of the normal meeting place of the club.
 
 </long_description>
 </special_rule>
@@ -456,7 +461,7 @@ g) All equipment used during the contest must be battery, wind or solar powered.
 </section>
 <section>
 <name>LP</name>
-<description>Single Operator, Fixed, 25W / Single Antenna</description>
+<description>Single Operator, Fixed, 25W - Single Antenna</description>
 <long_description>
 This section is open to single operator fixed stations using 25W or less output and a single antenna. 
 When applied to the VHF Championship, if a station enters some contests with high power or extra antennas, and some with low power and a single antenna, only the low power, single antenna scores will count towards the championship.
