@@ -19,6 +19,7 @@ copy ..\MinosLogger\Configuration\cty.syn Configuration
 copy ..\MinosLogger\Configuration\district.ctl Configuration
 copy ..\MinosLogger\Configuration\district.syn Configuration
 copy ..\MinosLogger\Configuration\prefix.syn Configuration
+copy ..\MinosLogger\Configuration\bandlist.xml Configuration
 
 copy %SystemRoot%\system32\cc3280mt.dll
 REM copy "C:\Program Files\CodeGear\RAD Studio\5.0\bin"\IndyCore100.bpl
@@ -65,4 +66,12 @@ copy "C:\Program Files\CodeGear\RAD Studio\5.0\bin"\bcbsmp100.bpl
 
 
 copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\GJVAudio.bpl
+
+REM we need extra config files as well
+
+REM MinosConfig.ini
+REM keyerConfig.xml
+REM portConfig.xml
+
+
 cd ..
