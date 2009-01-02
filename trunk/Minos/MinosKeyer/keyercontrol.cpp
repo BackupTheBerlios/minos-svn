@@ -163,7 +163,7 @@ void __fastcall TKeyControlForm::FormClose( TObject *Sender, TCloseAction &/*Act
    VKMixer::closeMixer();
 
    {
-      disableInterrupts guard;
+//      disableInterrupts guard;	// unloadKeyers killed the critical section
       LineSet *ls = LineSet::GetLineSet();
       delete ls;
       ls = 0;
