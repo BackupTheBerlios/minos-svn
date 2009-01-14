@@ -47,7 +47,7 @@
 <!ELEMENT notes_list (#PCDATA)>
 <!ELEMENT version (#PCDATA)>
 ]>
-<!-- RSGB VHF contest calendar and rules-->
+<!-- RSGB VHF contest calendar and rules by G4CLA-->
 <!-- Version 1 Initial version 21 Nov 2008 -->
 <!-- 23/11/2007 typo spelling of Backpacker -->
 <!-- 08.001 31/12/2007 50MHz & 70MHz UKAC are oneppq scoring added version number-->
@@ -67,12 +67,15 @@
 <!-- 09.006 07/11/2008 added new backpacker sections -->
 <!-- 09.007 25/11/2008 added DXCC url-->
 <!-- 09.008 08/12/2008 Changed AFS rules -->
+<!-- 09.009 22/12/2008 removed old backpacker sections -->
+<!-- 09.010 24/12/2008 Change to the registration words for MM section of NFD -->
+<!-- 09.011 28/12/2008 Change Ghz to GHz and change Chirstmas cumulatives section to SF and O -->
+<!-- 09.012 05/01/2009 removed the override flag for xmas so adding the Dec 70MHz UKAC -->
 <calendar>
-<version>09.008 08/12/2008</version>
+<version>09.012 05/01/2009</version>
 <icalurl>http://www.google.com/calendar/ical/5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
-<notes_list>Calendar amended 07/10/08, 432MHz AFS and 70MHz Cumulatives dates changed</notes_list>
-<notes_list>Calendar amended 06/11/08, Backpacker Rules changed</notes_list>
+<notes_list>Calendar amended 05/01/09, Dec 70MHz UKAC added</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -310,22 +313,6 @@ h) Equipment must be carried and operated at least 100m from the transportation 
 <height>4</height>
 </section>
 <section>
-<name>3S</name>
-<description>3W Single Op Portable</description>
-<long_description> Backpacker Contest. 3w Single-operator.
-</long_description>
-<power>3</power>
-<height>9</height>
-</section>
-<section>
-<name>3M</name>
-<description>3W Multi-Op Portable</description>
-<long_description> Backpacker Contest. 3w Multi-operator.
-</long_description>
-<power>3</power>
-<height>9</height>
-</section>
-<section>
 <name>10H</name>
 <description>10W Hill Toppers</description>
 <long_description> 
@@ -339,22 +326,6 @@ g) All equipment used during the contest must be battery, wind or solar powered.
 </long_description>
 <power>10</power>
 <height>6</height>
-</section>
-<section>
-<name>10S</name>
-<description>10W Single-Op Portable</description>
-<long_description> Backpacker Contest. 10w Single-operator.
-</long_description>
-<power>10</power>
-<height>9</height>
-</section>
-<section>
-<name>10M</name>
-<description>10W Multi-Op Portable</description>
-<long_description> Backpacker Contest. 10w Multi-operator.
-</long_description>
-<power>10</power>
-<height>9</height>
 </section>
 <section>
 <name>Open</name>
@@ -437,7 +408,7 @@ g) All equipment used during the contest must be battery, wind or solar powered.
 <long_description>
 7.4 Mix and Match (M)
 
-(i) A group can elect to place different bands into Restricted, Low-Power or Open sections. E.g. 4m in Restricted, 2m and 70cm in Open, and 23cm in Low Power. This decision must be made at registration time and the details shown on the site registration form. At least one station must be in a different section to the other stations (e.g. 6m, 4m and 2m in the Open section, 70cm in the Restricted section)
+(i) A group can elect to place different bands into Restricted, Low-Power or Open sections. E.g. 4m in Restricted, 2m and 70cm in Open, and 23cm in Low Power. This decision must be made at registration time. At least one station must be in a different section to the other stations (e.g. 6m, 4m and 2m in the Open section, 70cm in the Restricted section)
 
 (ii) Individual band entry will be tabulated in the appropriate main section, and a normalised score for the band produced on this basis.
 
@@ -517,57 +488,57 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </band>
 <band>
 <name>1296</name>
-<reg1band>1,2 Ghz</reg1band>
+<reg1band>1,2 GHz</reg1band>
 <wavelength>23cms</wavelength>
 </band>
 <band>
 <name>2320</name>
-<reg1band>2,3 Ghz</reg1band>
+<reg1band>2,3 GHz</reg1band>
 <wavelength>13cms</wavelength>
 </band>
 <band>
 <name>3400</name>
-<reg1band>3,4 Ghz</reg1band>
+<reg1band>3,4 GHz</reg1band>
 <wavelength>9cms</wavelength>
 </band>
 <band>
 <name>5760</name>
-<reg1band>5,7 Ghz</reg1band>
+<reg1band>5,7 GHz</reg1band>
 <wavelength>6cms</wavelength>
 </band>
 <band>
 <name>10368</name>
-<reg1band>10 Ghz</reg1band>
+<reg1band>10 GHz</reg1band>
 <wavelength>3cms</wavelength>
 </band>
 <band>
 <name>24GHz</name>
-<reg1band>24 Ghz</reg1band>
+<reg1band>24 GHz</reg1band>
 <wavelength>12mm</wavelength>
 </band>
 <band>
 <name>47GHz</name>
-<reg1band>47 Ghz</reg1band>
+<reg1band>47 GHz</reg1band>
 <wavelength>6mm</wavelength>
 </band>
 <band>
 <name>76GHz</name>
-<reg1band>76 Ghz</reg1band>
+<reg1band>76 GHz</reg1band>
 <wavelength>4mm</wavelength>
 </band>
 <band>
 <name>120GHz</name>
-<reg1band>120 Ghz</reg1band>
+<reg1band>120 GHz</reg1band>
 <wavelength>2.5mm</wavelength>
 </band>
 <band>
 <name>144GHz</name>
-<reg1band>144 Ghz</reg1band>
+<reg1band>144 GHz</reg1band>
 <wavelength>2mm</wavelength>
 </band>
 <band>
 <name>248GHz</name>
-<reg1band>248 Ghz</reg1band>
+<reg1band>248 GHz</reg1band>
 <wavelength>1.2mm</wavelength>
 </band>
 <contest_series>
@@ -797,7 +768,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </contest>
 <contest>
   <name>uhftrophy</name>
-  <description>1.2GHz Trophy / 2.3Ghz Trophy</description>
+  <description>1.2GHz Trophy / 2.3GHz Trophy</description>
   <short_description>23/13cms Trophy</short_description>
   <time_list>
     <month_list>Oct</month_list>
@@ -1437,7 +1408,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <duration>2</duration>
 </time_list>
 <section_list>SF</section_list>
-<section_list>SO</section_list>
+<section_list>O</section_list>
 <scoring>
 <oneppq>1</oneppq>
 </scoring>
@@ -1449,6 +1420,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <band_list>432</band_list>
 <mult>M4</mult>
 <entry_date>16 days after the last activity period</entry_date>
-<override>1</override>
+<override>0</override>
 </contest>
 </calendar>

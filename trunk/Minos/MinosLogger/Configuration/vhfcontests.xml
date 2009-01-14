@@ -46,7 +46,7 @@
 <!ELEMENT googleurl (#PCDATA)>
 <!ELEMENT version (#PCDATA)>
 ]>
-<!-- RSGB VHF contest calendar and rules-->
+<!-- RSGB VHF contest calendar and rules by G4CLA-->
 <!-- Version 1 Initial version 21 Nov 2008 -->
 <!-- 23/11/2007 typo spelling of Backpacker -->
 <!-- 08.001 31/12/2007 50MHz & 70MHz UKAC are oneppq scoring added version number-->
