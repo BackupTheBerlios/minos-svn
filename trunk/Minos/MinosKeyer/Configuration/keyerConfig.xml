@@ -20,9 +20,10 @@
    </Keyers>
 
 <!--
+   <Enable keyer="VoiceKeyer" port="MinosControl"/>
    <Enable keyer="VoiceKeyer" port="WindowsMonitor"/>
 -->
-   <Enable keyer="VoiceKeyer" port="MinosControl"/>
+   <Enable keyer="VoiceKeyer" port="WindowsMonitor"/>
 
 <!--This is the morse code table for the CW keyer. If you want to define your own
    version of morse code, then this is the place to do it! Otherwise, leave well alone. Field 
