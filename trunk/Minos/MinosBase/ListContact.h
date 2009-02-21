@@ -18,6 +18,7 @@ class ListContact
       callsign cs;   //CONTAIN MinosItem
       locator loc;   //CONTAIN MinosItem
       std::string extraText;
+      std::string comments;
       virtual std::string getField( int ACol, const BaseContestLog * const curcon ) const;
 };
 #endif

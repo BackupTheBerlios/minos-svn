@@ -81,9 +81,16 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
             res = scorebuff.c_str();
          }
          break;
+
       case egExchange:
          {
             res = extraText;
+         }
+         break;
+
+      case egComments:
+         {
+            res = comments;
          }
          break;
    }

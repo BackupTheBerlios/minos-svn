@@ -34,7 +34,7 @@ enum eLogGridCols {egTime,
 //---------------------------------------------------------------------------
 #define THISMATCHTREECOLS egLogMaxCol
 #define OTHERMATCHTREECOLS egLogMaxCol - 5
-#define ARCHIVEMATCHTREECOLS egLogMaxCol - 6
+#define ARCHIVEMATCHTREECOLS egLogMaxCol - 5
 extern GridColumn QSOTreeColumns[ THISMATCHTREECOLS ];
 
 #endif

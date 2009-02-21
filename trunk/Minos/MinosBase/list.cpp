@@ -8,6 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 #include "base_pch.h"
 #pragma hdrstop 
+#include<boost/tokenizer.hpp>
 //---------------------------------------------------------------------------
 
 #pragma package(smart_init)
@@ -72,74 +73,77 @@ bool ContactList::cslLoad( void )
    ifstream istr( cfileName.c_str() ); // should close when it goes out of scope
    if ( !istr )
    {
-      std::string lerr = lastError();
-      std::string emess = "Failed to open ContactList file " + cfileName + " : " + lerr;
-      MinosParameters::getMinosParameters() ->mshowMessage( emess.c_str() );
-      return false;
+	  std::string lerr = lastError();
+	  std::string emess = "Failed to open ContactList file " + cfileName + " : " + lerr;
+	  MinosParameters::getMinosParameters() ->mshowMessage( emess.c_str() );
+	  return false;
    }
    String fn = ExtractFileName( cfileName.c_str() );
    name = fn.c_str();
 
    while ( istr.getline( buff, 255 ) )
    {
-      char * a[ 3 ];
-      int i = 0;
-
       buff[ 254 ] = 0;
 
       int len = strlen( buff );
 
+      int i;
       for ( i = 0; i < len; i++ )
       {
-         if ( !isspace( buff[ i ] ) )
-            break;
+       if ( !isspace( buff[ i ] ) )
+         break;
       }
       if ( i == len )
-         continue;				// blank line
+       continue;				// blank line
 
       if ( buff[ 0 ] == '#' )
-         continue;   // skip comment lines
+       continue;   // skip comment lines
 
-      i = 0;
 
-      for ( int j = 0; j < 3; j++ )
+      std::vector<std::string> parts;
+
+      std::string sbuff = std::string(buff);
+      try
       {
-         if ( j != 0 )
+         typedef boost::tokenizer< boost::escaped_list_separator<char> > tokenizer ;
+         tokenizer toker(sbuff);
+         tokenizer::iterator iterator = toker.begin() ;
+
+         for( tokenizer::iterator beg=toker.begin(); beg!=toker.end();++beg)
          {
-            // terminate the previous entry on a ','
-            while ( ( i < len ) && buff[ i ] && ( ( buff[ i ] != ',' ) && ( buff[ i ] != '\t' ) ) )
-               i++;
-
-            if ( ( buff[ i ] == ',' ) || ( buff[ i ] == '\t' ) )
-               buff[ i++ ] = 0;
+            parts.push_back((*beg));
          }
-         while ( ( i < len ) && buff[ i ] && ( buff[ i ] == ' ' ) )
-            i++;
+         while (parts.size() < 6)
+         {
+            parts.push_back("");
+         }
 
-         a[ j ] = &buff[ i ];
+         if ( ++nextBlock == 1 && parts[0].size() == 0 && parts[1].size() == 0 )
+         {
+            name = parts[ 2 ];              // first line of file gives the list name
+         }
+         else
+         {
+            rct = new ListContact();
+
+            // a1, a2, a3 will all be set - but may point to null terminator!
+
+            rct->cs.fullCall.setValue( strupr( parts[0] ) );
+
+            rct->loc.loc.setValue( strupr( parts[ 1 ] ) );
+            rct->loc.valRes = LOC_NOT_VALIDATED;
+
+            rct->extraText = parts[ 2 ];
+            rct->comments = parts[ 3 ];
+
+            ctList.push_back( rct );
+         }
       }
-
-      if ( ++nextBlock == 1 && a[ 0 ][ 0 ] == 0 && a[ 1 ][ 0 ] == 0 )
+      catch (boost::escaped_list_error &err)
       {
-         name = a[ 2 ];              // first line of file gives the list name
-      }
-      else
-      {
-         rct = new ListContact();
-
-         // a1, a2, a3 will all be set - but may point to null terminator!
-
-         rct->cs.fullCall.setValue( strupr( a[ 0 ] ) );
-
-         rct->loc.loc.setValue( strupr( a[ 1 ] ) );
-         rct->loc.valRes = LOC_NOT_VALIDATED;
-
-         rct->extraText = a[ 2 ];
-
-         ctList.push_back( rct );
+         ShowMessage(("Error in " + sbuff + " : " + err.what()).c_str());
       }
    }
-
    return true;
 }
 bool ContactList::cslLoadContacts( void )
@@ -149,7 +153,7 @@ bool ContactList::cslLoadContacts( void )
 void ContactList::freeAll()
 {
    for ( ListIterator i = ctList.begin(); i != ctList.end(); i++ )
-      delete ( *i );
+	  delete ( *i );
    ctList.clear();
 }
 void ContactList::getMatchText( ListContact *, std::string &disp, const BaseContestLog *const /*ct*/ ) const

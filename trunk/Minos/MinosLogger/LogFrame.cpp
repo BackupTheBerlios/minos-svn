@@ -263,7 +263,8 @@ static GridColumn ArchiveMatchTreeColumns[ ARCHIVEMATCHTREECOLS ] =
       GridColumn( egLoc, "MM00MM00X", "Loc", taLeftJustify ),            // LOC
       GridColumn( egBrg, "3601X", "brg", taLeftJustify ),                // bearing
       GridColumn( egScore, "12345XX", "dist", taLeftJustify /*taRightJustify*/ ),  // score
-      GridColumn( egExchange, "XXXXXXXXXXXXXXXX", "Exchange", taLeftJustify )     // comments
+      GridColumn( egExchange, "XXXXXX", "Exchange", taLeftJustify ),     // exchange
+      GridColumn( egComments, "XXXX", "Comments", taLeftJustify )     // comments
    };
 //---------------------------------------------------------------------------
 void TSingleLogFrame::showMatchHeaders( )
