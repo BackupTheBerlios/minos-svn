@@ -388,7 +388,16 @@ void ContestContact::getReg1TestText( std::string &sdest )
    sdest += cs.fullCall.getValue();
    sdest += ';';
 
-   sdest += "";   // Mode code - always blank (not important) for now
+   if ( stricmp( mode.getValue(), "A1A" ) == 0 )
+      sdest += "2";
+   else
+      if ( stricmp( mode.getValue(), "J3E" ) == 0 )
+         sdest += "1";
+      else
+         if ( stricmp( mode.getValue(), "F3E" ) == 0 )
+            sdest += "6";
+         else
+            sdest += "0";
    sdest += ';';
 
    sdest += reps.getValue();   // TX RST
