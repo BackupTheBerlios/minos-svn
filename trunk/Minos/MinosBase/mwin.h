@@ -17,7 +17,7 @@
 /*
 std::string lastError( DWORD erno );
 std::string lastError( void );
-*/ 
+*/
 // GJVVERSION is definition for the .GJV file format
 
 #define GJVVERSION "0.41" 
@@ -81,6 +81,8 @@ class GJVParams
 
 // templated class for items in contest and contact
 class RPCParamStruct;
+//extern std::string trim( const std::string & );
+
 template < class itemtype >
 class MinosItem
 {
@@ -88,6 +90,20 @@ class MinosItem
       bool dirty;
       itemtype val;
       itemtype operator = ( const itemtype& ); // make it inaccessible
+
+      std::string miTrim(const std::string & s)
+      {
+         return trim(s);
+      }
+      int miTrim(const int & s)
+      {
+         return s;
+      }
+      bool miTrim(const bool & s)
+      {
+         return s;
+      }
+
    public:
 
       itemtype getValue() const
@@ -104,7 +120,7 @@ class MinosItem
          if ( val != t )        // so all item classes need != operator
          {
             dirty = true;
-            val = t;
+            val = miTrim(t);
          }
       }
       void setValue( MinosItem<itemtype> t )
