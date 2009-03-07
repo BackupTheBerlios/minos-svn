@@ -136,18 +136,25 @@ std::string dtg::getIsoDTG( bool &d ) const
    bool dateDirty = false;
    bool timeDirty = false;
 
-   if ( sdate.getValue( dateDirty ) [ 0 ] >= '8' )
+   std::string dateValue = sdate.getValue( dateDirty );
+   dateValue += "            ";
+
+   std::string timeValue = stime.getValue( timeDirty );
+   timeValue += "            ";
+
+   if ( dateValue [ 0 ] >= '8' )
       prefix = "19";
+
    temp_date = prefix + sdate.getValue();
    temp_date += "T";
-   temp_date += stime.getValue( timeDirty ) [ 0 ];
-   temp_date += stime.getValue() [ 1 ];
+   temp_date += timeValue [ 0 ];
+   temp_date += timeValue [ 1 ];
    temp_date += ':';
-   temp_date += stime.getValue() [ 2 ];
-   temp_date += stime.getValue() [ 3 ];
+   temp_date += timeValue [ 2 ];
+   temp_date += timeValue [ 3 ];
    temp_date += ':';
-   temp_date += stime.getValue() [ 4 ];
-   temp_date += stime.getValue() [ 5 ];
+   temp_date += timeValue [ 4 ];
+   temp_date += timeValue [ 5 ];
 
    for ( int i = 0; i < 17; i++ )
       if ( temp_date[ i ] == 0 )
@@ -164,34 +171,36 @@ std::string dtg::getIsoDTG( ) const
 std::string dtg::getDate( DTG dstyle, bool &d ) const
 {
    std::string temp_date;
+   std::string dateValue = sdate.getValue( d );
+   dateValue += "            ";
    if ( dstyle == DTGFULL )
    {
       std::string prefix = "20";
 
-      if ( sdate.getValue( d ) [ 0 ] >= '8' )
+      if ( dateValue [ 0 ] >= '8' )
          prefix = "19";
-      temp_date = prefix + sdate.getValue();
+      temp_date = prefix + dateValue;
    }
    else
       if ( dstyle == DTGLOG )
       {
-         temp_date = sdate.getValue( d );
+         temp_date = dateValue;
       }
       else
          if ( dstyle == DTGReg1Test )
          {
-            temp_date = sdate.getValue( d );
+            temp_date = dateValue;
          }
          else
          {
-            temp_date += sdate.getValue( d ) [ 4 ];
-            temp_date += sdate.getValue() [ 5 ];
+            temp_date += dateValue [ 4 ];
+            temp_date += dateValue [ 5 ];
             temp_date += '/';
-            temp_date += sdate.getValue() [ 2 ];
-            temp_date += sdate.getValue() [ 3 ];
+            temp_date += dateValue [ 2 ];
+            temp_date += dateValue [ 3 ];
             temp_date += '/';
-            temp_date += sdate.getValue() [ 0 ];
-            temp_date += sdate.getValue() [ 1 ];
+            temp_date += dateValue [ 0 ];
+            temp_date += dateValue [ 1 ];
 
             for ( int i = 0; i < 8; i++ )
                if ( temp_date[ i ] == 0 )
@@ -207,25 +216,28 @@ std::string dtg::getDate( DTG dstyle ) const
 std::string dtg::getTime( DTG dstyle, bool &d ) const
 {
    std::string temp_time;
+   std::string timeValue = stime.getValue( d );
+   timeValue += "            ";
+
    if ( dstyle == DTGLOG )
    {
-      temp_time = stime.getValue( d );
+      temp_time = timeValue;
    }
    else
       if ( dstyle == DTGReg1Test )
       {
-         temp_time += stime.getValue( d ) [ 0 ];
-         temp_time += stime.getValue() [ 1 ];
-         temp_time += stime.getValue() [ 2 ];
-         temp_time += stime.getValue() [ 3 ];
+         temp_time += timeValue [ 0 ];
+         temp_time += timeValue [ 1 ];
+         temp_time += timeValue [ 2 ];
+         temp_time += timeValue [ 3 ];
       }
       else
       {
-         temp_time += stime.getValue( d ) [ 0 ];
-         temp_time += stime.getValue() [ 1 ];
+         temp_time += timeValue [ 0 ];
+         temp_time += timeValue [ 1 ];
          temp_time += ':';
-         temp_time += stime.getValue() [ 2 ];
-         temp_time += stime.getValue() [ 3 ];
+         temp_time += timeValue [ 2 ];
+         temp_time += timeValue [ 3 ];
 
          for ( int i = 0; i < 5; i++ )
             if ( temp_time[ i ] == 0 )
@@ -240,21 +252,27 @@ std::string dtg::getTime( DTG dstyle ) const
 }
 bool dtg::getDtg( time_t &cttime, bool &d ) const
 {
+   std::string dateValue = sdate.getValue( d );
+   dateValue += "            ";
+
+   std::string timeValue = stime.getValue( d );
+   timeValue += "            ";
+
    struct tm tmstr;
    for ( int i = 0; i < 6; i++ )
-      if ( !isdigit( sdate.getValue( d ) [ i ] ) )
+      if ( !isdigit( dateValue [ i ] ) )
          return false;
    for ( int i = 0; i < 4; i++ )
-      if ( !isdigit( stime.getValue( d ) [ i ] ) )
+      if ( !isdigit( timeValue [ i ] ) )
          return false;
 
-   tmstr.tm_sec = ( stime.getValue() [ 4 ] - '0' ) * 10 + ( stime.getValue() [ 5 ] - '0' );
-   tmstr.tm_min = ( stime.getValue() [ 2 ] - '0' ) * 10 + ( stime.getValue() [ 3 ] - '0' );
-   tmstr.tm_hour = ( stime.getValue() [ 0 ] - '0' ) * 10 + ( stime.getValue() [ 1 ] - '0' );
+   tmstr.tm_sec = ( timeValue [ 4 ] - '0' ) * 10 + ( timeValue [ 5 ] - '0' );
+   tmstr.tm_min = ( timeValue [ 2 ] - '0' ) * 10 + ( timeValue [ 3 ] - '0' );
+   tmstr.tm_hour = ( timeValue [ 0 ] - '0' ) * 10 + ( timeValue [ 1 ] - '0' );
 
-   tmstr.tm_mday = ( sdate.getValue() [ 4 ] - '0' ) * 10 + ( sdate.getValue() [ 5 ] - '0' );
-   tmstr.tm_mon = ( sdate.getValue() [ 2 ] - '0' ) * 10 + ( sdate.getValue() [ 3 ] - '0' ) - 1;	// month is 0-11
-   tmstr.tm_year = ( sdate.getValue() [ 0 ] - '0' ) * 10 + ( sdate.getValue() [ 1 ] - '0' );
+   tmstr.tm_mday = ( dateValue [ 4 ] - '0' ) * 10 + ( dateValue [ 5 ] - '0' );
+   tmstr.tm_mon = ( dateValue [ 2 ] - '0' ) * 10 + ( dateValue [ 3 ] - '0' ) - 1;	// month is 0-11
+   tmstr.tm_year = ( dateValue [ 0 ] - '0' ) * 10 + ( dateValue [ 1 ] - '0' );
 
    if ( tmstr.tm_year < 80 )
       tmstr.tm_year += 100;	// Y2K windowing
