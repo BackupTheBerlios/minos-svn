@@ -355,7 +355,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
    time_t t = ::time( 0 ) + MinosParameters::getMinosParameters() ->getBigClockCorrection() * dtg::daySecs;
 
    time_t tdiff = t - cttime;
-   if ( t < 0 )
+   if ( tdiff < 0 )
       return true;
 
    long thisscore = cct->contactScore.getValue();
@@ -376,6 +376,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
    if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod1() * 60L )
    {
       // need a common routine
+      // This period
       QSO1++;
       kms1 += thisscore;
       mults1 += cct->multCount;
@@ -385,6 +386,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
       if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod1() * 60L * 2 )
       {
          // need a common routine
+         // previous period
          QSO1p++;
          kms1p += thisscore;
          mults1p += cct->multCount;
@@ -394,6 +396,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
    if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod2() * 60L )
    {
       // need a common routine
+      // this period
       QSO2++;
       kms2 += thisscore;
       mults2 += cct->multCount;
@@ -403,6 +406,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
       if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod2() * 60L * 2 )
       {
          // need a common routine
+         // previous period
          QSO2p++;
          kms2p += thisscore;
          mults2p += cct->multCount;
