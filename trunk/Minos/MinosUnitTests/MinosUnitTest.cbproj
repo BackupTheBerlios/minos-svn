@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{38c2f326-e781-43b5-9f7d-08627c39ad69}</ProjectGuid>
@@ -74,15 +74,23 @@
   <ItemGroup>
     <CppCompile Include="..\MinosBase\BandList.cpp">
       <DependentOn>..\MinosBase\BandList.h</DependentOn>
-      <BuildOrder>7</BuildOrder>
+      <BuildOrder>5</BuildOrder>
     </CppCompile>
     <CppCompile Include="..\MinosBase\cutils.cpp">
       <DependentOn>..\MinosBase\cutils.h</DependentOn>
       <BuildOrder>6</BuildOrder>
     </CppCompile>
+    <CppCompile Include="..\MinosBase\MinosParameters.cpp">
+      <DependentOn>..\MinosBase\MinosParameters.h</DependentOn>
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="..\MinosBase\mwin.cpp">
+      <DependentOn>..\MinosBase\mwin.h</DependentOn>
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
     <CppCompile Include="..\MinosBase\VHFList.cpp">
       <DependentOn>..\MinosBase\VHFList.h</DependentOn>
-      <BuildOrder>5</BuildOrder>
+      <BuildOrder>9</BuildOrder>
     </CppCompile>
     <CppCompile Include="..\XMPPLib\Dispatcher.cpp">
       <DependentOn>..\XMPPLib\Dispatcher.h</DependentOn>
@@ -90,50 +98,58 @@
     </CppCompile>
     <CppCompile Include="..\XMPPLib\stringcast.cpp">
       <DependentOn>..\XMPPLib\stringcast.h</DependentOn>
-      <BuildOrder>3</BuildOrder>
+      <BuildOrder>1</BuildOrder>
     </CppCompile>
     <CppCompile Include="..\XMPPLib\TinyUtils.cpp">
       <DependentOn>..\XMPPLib\TinyUtils.h</DependentOn>
-      <BuildOrder>4</BuildOrder>
+      <BuildOrder>2</BuildOrder>
     </CppCompile>
     <CppCompile Include="..\XMPPLib\XMPPRPCParams.cpp">
       <DependentOn>..\XMPPLib\XMPPRPCParams.h</DependentOn>
-      <BuildOrder>1</BuildOrder>
+      <BuildOrder>3</BuildOrder>
     </CppCompile>
     <CppCompile Include="..\XMPPLib\XMPPStanzas.cpp">
       <DependentOn>..\XMPPLib\XMPPStanzas.h</DependentOn>
-      <BuildOrder>2</BuildOrder>
+      <BuildOrder>4</BuildOrder>
     </CppCompile>
     <CppCompile Include="C:\ThirdParty\tinyxml\tinyxml.cpp">
-      <BuildOrder>9</BuildOrder>
+      <BuildOrder>11</BuildOrder>
     </CppCompile>
     <CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlerror.cpp">
-      <BuildOrder>10</BuildOrder>
+      <BuildOrder>12</BuildOrder>
     </CppCompile>
     <CppCompile Include="C:\ThirdParty\tinyxml\tinyxmlparser.cpp">
-      <BuildOrder>8</BuildOrder>
+      <BuildOrder>10</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosTestBandList.cpp">
       <DependentOn>MinosTestBandList.h</DependentOn>
-      <BuildOrder>16</BuildOrder>
+      <BuildOrder>18</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosTestCalendar.cpp">
       <DependentOn>MinosTestCalendar.h</DependentOn>
-      <BuildOrder>13</BuildOrder>
+      <BuildOrder>15</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosTestRPCParams.cpp">
       <DependentOn>MinosTestRPCParams.h</DependentOn>
-      <BuildOrder>15</BuildOrder>
+      <BuildOrder>17</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosTestRPCStanzas.cpp">
       <DependentOn>MinosTestRPCStanzas.h</DependentOn>
-      <BuildOrder>14</BuildOrder>
+      <BuildOrder>16</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="MinosTestTimes.cpp">
+      <DependentOn>MinosTestTimes.h</DependentOn>
+      <BuildOrder>19</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosUnitTestMain.cpp">
-      <BuildOrder>11</BuildOrder>
+      <BuildOrder>13</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="UnitTestParameters.cpp">
+      <DependentOn>UnitTestParameters.h</DependentOn>
+      <BuildOrder>20</BuildOrder>
     </CppCompile>
     <LibFiles Include="CppUnit\cppunit-1.12.0\BDS2006\Debug_Build\cppunit_bds.lib">
-      <BuildOrder>12</BuildOrder>
+      <BuildOrder>14</BuildOrder>
     </LibFiles>
     <BuildConfiguration Include="Debug">
       <Key>Cfg_1</Key>

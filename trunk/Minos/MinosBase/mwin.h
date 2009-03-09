@@ -14,37 +14,19 @@
 // Remove the next line before issue!
 #define BETA 1
 
-/*
-std::string lastError( DWORD erno );
-std::string lastError( void );
-*/
 // GJVVERSION is definition for the .GJV file format
 
-#define GJVVERSION "0.41" 
-//#define VERLENGTH (strlen(GJVVERSION))
+#define GJVVERSION "0.41"
 #define VERLENGTH (4)
-
-//#define ILX 3
-
-//#define BLOCKNOLENGTH 5
-//#define LOGCOUNTLENGTH 4
 
 #define DATELENGTH 8
 #define TIMELENGTH 5
 #define CALLSIGNLENGTH 15
-#define LOCLENGTH 8 
-//#define MULTLENGTH 10
+#define LOCLENGTH 8
 #define COMMENTLENGTH 27
 #define EXTRALENGTH 50
 #define RSTLENGTH 3
 #define SERIALLENGTH 4
-
-//#define BANDLENGTH 13
-//#define MYQTHLENGTH 50
-//#define CONTESTNAMELENGTH 37
-//#define MODELENGTH 3
-
-//#define OPERATORLENGTH 10
 
 #define INISECTLENGTH 40
 
@@ -81,7 +63,6 @@ class GJVParams
 
 // templated class for items in contest and contact
 class RPCParamStruct;
-//extern std::string trim( const std::string & );
 
 template < class itemtype >
 class MinosItem
@@ -174,7 +155,8 @@ class dtg
    public:
       static const double daySecs;
 
-      static TDateTime getUTC( double correction = 0 );
+      static TDateTime getRawUTC( );
+      static TDateTime getCorrectedUTC( );
 
       std::string getDate( DTG, bool &d ) const;
       std::string getDate( DTG ) const;

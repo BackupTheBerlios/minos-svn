@@ -33,7 +33,7 @@ bool TConfigElementFrm::initialise( String sect )
    return true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TConfigElementFrm::RunCheckBoxClick(TObject *Sender)
+void __fastcall TConfigElementFrm::RunCheckBoxClick(TObject */*Sender*/)
 {
    // action it instantly?   
 }

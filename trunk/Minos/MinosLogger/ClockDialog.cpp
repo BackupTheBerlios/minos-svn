@@ -16,8 +16,9 @@
 TClockDlg *ClockDlg;
 //---------------------------------------------------------------------------
 __fastcall TClockDlg::TClockDlg( TComponent* Owner )
-      : TForm( Owner ), correction( bigClockCorr ), initialised( false )
+      : TForm( Owner ), initialCorrection( bigClockCorr ), initialised( false )
 {}
+
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::FormShow( TObject */*Sender*/ )
 {
@@ -30,12 +31,12 @@ void __fastcall TClockDlg::FormShow( TObject */*Sender*/ )
 void TClockDlg::setEdits()
 {
    initialised = false;
-   TDateTime corr = dtg::getUTC( correction );
+   TDateTime corr = dtg::getCorrectedUTC( );
    DayEdit->Text = corr.FormatString( "dd" );
    MonthEdit->Text = corr.FormatString( "mm" );
    YearEdit->Text = corr.FormatString( "yyyy" );
 
-   TDateTime dtt = TDateTime( correction );
+   TDateTime dtt = TDateTime( bigClockCorr );
    HoursEdit->Text = dtt.FormatString( "h" );
    MinutesEdit->Text = dtt.FormatString( "n" );
    SecondsEdit->Text = dtt.FormatString( "s" );
@@ -44,7 +45,6 @@ void TClockDlg::setEdits()
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::OKButtonClick( TObject */*Sender*/ )
 {
-   bigClockCorr = correction;
    // and save the correction to the correction file
    std::ofstream strm( ".\\Configuration\\time.correction", std::ios::trunc | std::ios::binary );
    if ( strm )
@@ -58,7 +58,7 @@ void __fastcall TClockDlg::OKButtonClick( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::ClearButtonClick( TObject *Sender )
 {
-   correction = 0;
+   bigClockCorr = 0;
    setEdits();
    Timer1Timer( Sender );
 }
@@ -66,14 +66,13 @@ void __fastcall TClockDlg::ClearButtonClick( TObject *Sender )
 void __fastcall TClockDlg::ApplyButtonClick( TObject *Sender )
 {
    setEdits();
-   bigClockCorr = correction;
    Timer1Timer( Sender );
 }
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::Timer1Timer( TObject */*Sender*/ )
 {
-   String rawdisp = dtg::getUTC( 0 ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC";
-   String disp = dtg::getUTC( correction ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC";
+   String rawdisp = dtg::getRawUTC( ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC";
+   String disp = dtg::getCorrectedUTC( ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC";
 
    RawTime->Caption = rawdisp;
    CorrectedTime->Caption = disp;
@@ -105,7 +104,7 @@ void __fastcall TClockDlg::ClockEditChange( TObject *Sender )
       clock_correction += MinutesEdit->Text.ToIntDef( 0 ) * 60;
       clock_correction += SecondsEdit->Text.ToIntDef( 0 );
 
-      correction = ( clock_correction + date_correction ) / dtg::daySecs;
+      bigClockCorr = ( clock_correction + date_correction ) / dtg::daySecs;
 
       Timer1Timer( Sender );
    }
@@ -113,6 +112,7 @@ void __fastcall TClockDlg::ClockEditChange( TObject *Sender )
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::CancelButtonClick( TObject */*Sender*/ )
 {
+   bigClockCorr = initialCorrection;
    Close();
 }
 //---------------------------------------------------------------------------

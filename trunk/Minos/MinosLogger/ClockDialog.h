@@ -51,9 +51,9 @@ class TClockDlg : public TForm
       void __fastcall ClockEditChange( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
    private:  	// User declarations
-      double correction;
       void setEdits();
       bool initialised;
+      double initialCorrection;
    public:  		// User declarations
       __fastcall TClockDlg( TComponent* Owner );
 };

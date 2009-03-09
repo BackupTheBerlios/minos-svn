@@ -11,33 +11,6 @@
 
 const double dtg::daySecs = 86400.0;	// 24 * 60 * 60
 //---------------------------------------------------------------------------
-/*
-std::string lastError( DWORD erno )
-{
-   LPVOID lpMsgBuf;
- 
-   FormatMessage(
-      FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-      NULL,
-      erno,
-      MAKELANGID( LANG_NEUTRAL, SUBLANG_DEFAULT ),  // Default language
-      ( LPTSTR ) & lpMsgBuf,
-      0,
-      NULL
-   );
-   std::string s;
-   s = reinterpret_cast<const char*>( lpMsgBuf );
- 
-   // Free the buffer.
-   LocalFree( lpMsgBuf );
-   return s;
-}
-std::string lastError( void )
-{
-   return lastError( GetLastError() );
-}
-*/ 
-//---------------------------------------------------------------------------
 GJVParams::GJVParams( HANDLE f )
       : diskBlock( 1 ), fd( f ), count( 0 )
 {}
@@ -73,7 +46,7 @@ char locator::validate( void )
 }
 //============================================================
 //---------------------------------------------------------------------------
-/*static*/TDateTime dtg::getUTC(  double correction )
+/*static*/TDateTime dtg::getRawUTC( )
 {
    // TDateTime(0) is 12/30/1899
    SYSTEMTIME syst;
@@ -100,6 +73,12 @@ char locator::validate( void )
 
    TDateTime tdt( t / daySecs );
    tdt += TDateTime( 1970, 1, 1 );
+   return tdt;
+}
+/*static*/TDateTime dtg::getCorrectedUTC(  )
+{
+   TDateTime tdt = getRawUTC();
+   double correction = MinosParameters::getMinosParameters() ->getBigClockCorrection();
    if ( correction )
       tdt += TDateTime( correction );
    return tdt;
@@ -109,7 +88,7 @@ dtg::dtg( bool now )
 {
    if ( now )
    {
-      TDateTime tdt = dtg::getUTC();
+      TDateTime tdt = dtg::getCorrectedUTC();
       setDate( tdt.FormatString( "dd/mm/yy" ).c_str(), DTGDISP );
       setTime( tdt.FormatString( "hh:nn:ss" ).c_str(), DTGDISP );
    }

@@ -347,12 +347,15 @@ bool BaseContestLog::updateStat( BaseContact *cct )
 {
    // need to check if a valid DTG
    bool acted = false;
+   dtg tnow( true );
 
-
+   time_t nowTime;
    time_t cttime;
-   if ( ( cct->contactScore.getValue() <= 0 ) || !cct->time.getDtg( cttime ) )
+
+   if ( ( cct->contactScore.getValue() <= 0 ) || !cct->time.getDtg( cttime ) || ! tnow.getDtg( nowTime) )
       return true;
-   time_t t = ::time( 0 ) + MinosParameters::getMinosParameters() ->getBigClockCorrection() * dtg::daySecs;
+
+   time_t t = nowTime + MinosParameters::getMinosParameters() ->getBigClockCorrection() * dtg::daySecs;
 
    time_t tdiff = t - cttime;
    if ( tdiff < 0 )

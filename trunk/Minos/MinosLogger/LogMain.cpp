@@ -645,7 +645,7 @@ void __fastcall TLogContainer::ContestDetailsActionExecute( TObject */*Sender*/ 
 
 void __fastcall TLogContainer::TimeDisplayTimerTimer( TObject */*Sender*/ )
 {
-   String disp = dtg::getUTC( bigClockCorr ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC       ";
+   String disp = dtg::getCorrectedUTC( ).FormatString( "dd/mm/yyyy hh:nn:ss" ) + " UTC       ";
 
    LogContainer->StatusBar1->Panels->Items[ 2 ] ->Text = disp;
 
