@@ -115,7 +115,7 @@ class MinosItem
       void setInitialValue( itemtype t )
       {
          dirty = false;
-         val = t;
+         val = miTrim(t);
       }
       bool isDirty() const
       {

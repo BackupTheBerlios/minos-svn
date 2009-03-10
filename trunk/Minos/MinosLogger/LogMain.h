@@ -137,6 +137,13 @@ class TLogContainer : public TForm
    TAction *CloseAllAction;
    TAction *CloseAllButAction;
    TMenuItem *Closeallbutthiscontest1;
+   TMenuItem *N1;
+   TMenuItem *N2;
+   TMenuItem *N3;
+   TMenuItem *N4;
+   TMenuItem *N5;
+   TMenuItem *N6;
+   TMenuItem *N7;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );

@@ -876,9 +876,10 @@ void __fastcall TSingleLogFrame::OtherMatchTreeMouseDown( TObject */*Sender*/,
    GJVQSOLogFrame->MatchXferButton->Enabled = true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::ArchiveMatchTreeDblClick( TObject */*Sender*/ )
+void __fastcall TSingleLogFrame::ArchiveMatchTreeDblClick( TObject *Sender )
 {
    //   archiveMatchTreeSelect( matchTreeClickNode );
+   GJVQSOLogFrame1MatchXferButtonClick(Sender);
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::ArchiveMatchTreeEnter( TObject */*Sender*/ )
@@ -1144,20 +1145,20 @@ void __fastcall TSingleLogFrame::GJVQSOLogFrame1MatchXferButtonClick(
       return ;
 
    // copy relevant parts of match contact to screen contact
-   if ( otherTreeClickNode && ( xferTree == 0 || xferTree == OtherMatchTree ) )
+   if ( archiveTreeClickNode && ( xferTree == 0 || xferTree == ArchiveMatchTree ) )
    {
-      MatchNodeData * MatchTreeIndex = ( MatchNodeData * ) ( OtherMatchTree->GetNodeData( otherTreeClickNode ) );
-      BaseContestLog *clp = MatchTreeIndex->matchedContest;
+      MatchNodeListData * MatchTreeIndex = ( MatchNodeListData * ) ( ArchiveMatchTree->GetNodeData( archiveTreeClickNode ) );
+      ContactList *clp = MatchTreeIndex->matchedList;
       if ( MatchTreeIndex && clp && MatchTreeIndex->matchedContact )
       {
          transferDetails( MatchTreeIndex );
       }
    }
    else
-      if ( archiveTreeClickNode && ( xferTree == 0 || xferTree == ArchiveMatchTree ) )
+      if ( otherTreeClickNode && ( xferTree == 0 || xferTree == OtherMatchTree ) )
       {
-         MatchNodeListData * MatchTreeIndex = ( MatchNodeListData * ) ( ArchiveMatchTree->GetNodeData( archiveTreeClickNode ) );
-         ContactList *clp = MatchTreeIndex->matchedList;
+         MatchNodeData * MatchTreeIndex = ( MatchNodeData * ) ( OtherMatchTree->GetNodeData( otherTreeClickNode ) );
+         BaseContestLog *clp = MatchTreeIndex->matchedContest;
          if ( MatchTreeIndex && clp && MatchTreeIndex->matchedContact )
          {
             transferDetails( MatchTreeIndex );

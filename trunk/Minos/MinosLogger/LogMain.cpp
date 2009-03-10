@@ -188,7 +188,7 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
             }
             else
             {
-               ContestMRU->AddItem( fname.c_str() );
+//               ContestMRU->AddItem( fname.c_str() );
                TContestApp::getContestApp() ->closeFile( contest );
                contest = 0;
             }
@@ -567,7 +567,8 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
    std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
    BaseContestLog * c = addSlot( pced.get(), initName.c_str(), true, false, -1 );
 
-   if ( c )
+   bool repeatDialog = (c != 0);
+   while ( repeatDialog )
    {
       String suggestedfName;
       c->mycall.validate();
@@ -607,13 +608,20 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
 
          // we want to (re)open it WITHOUT using the dialog!
          addSlot( 0, suggestedfName.c_str(), false, false, -1 );   // not automatically read only
+         repeatDialog = false;
       }
       else
       {
-         if ( !DeleteFile( initName ) )
-         {
-            ShowMessage( String( "Failed to delete " ) + initName );
-         }
+            std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
+            c = addSlot( pced.get(), initName.c_str(), false, false, -1 );
+            repeatDialog = (c != 0);
+      }
+   }
+   if (!c)
+   {
+      if ( !DeleteFile( initName ) )
+      {
+         ShowMessage( String( "Failed to delete " ) + initName );
       }
    }
 }

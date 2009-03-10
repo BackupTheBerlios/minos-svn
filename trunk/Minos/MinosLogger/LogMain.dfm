@@ -2,7 +2,7 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 636
+  ClientHeight = 656
   ClientWidth = 742
   Color = clBtnFace
   UseDockManager = True
@@ -24,7 +24,7 @@ object LogContainer: TLogContainer
     Left = 0
     Top = 0
     Width = 742
-    Height = 617
+    Height = 637
     Align = alClient
     DockSite = True
     MultiLine = True
@@ -39,7 +39,7 @@ object LogContainer: TLogContainer
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 617
+    Top = 637
     Width = 742
     Height = 19
     Panels = <
@@ -71,7 +71,6 @@ object LogContainer: TLogContainer
               end
               item
                 Action = ContestDetailsAction
-                Caption = '&Details...'
               end
               item
                 Caption = '&Reopen...'
@@ -82,7 +81,6 @@ object LogContainer: TLogContainer
               end
               item
                 Action = FileCloseAction1
-                Caption = '&Close'
               end
               item
                 Action = FileExit1
@@ -301,21 +299,21 @@ object LogContainer: TLogContainer
     end
     object ContestDetailsAction: TAction
       Category = 'File'
-      Caption = 'Details...'
+      Caption = 'Contest Details...'
       Enabled = False
       Hint = 'Details|Show contest details'
       OnExecute = ContestDetailsActionExecute
     end
     object FileCloseAction1: TAction
       Category = 'File'
-      Caption = 'Close'
+      Caption = 'Close Contest'
       Enabled = False
       Hint = 'Close|Close this contest/list'
       OnExecute = FileCloseAction1Execute
     end
     object CloseAllAction: TAction
       Category = 'File'
-      Caption = 'Close All'
+      Caption = 'Close All Contests'
       Enabled = False
       Hint = 'Close all contests'
       OnExecute = CloseAllActionExecute
@@ -329,7 +327,7 @@ object LogContainer: TLogContainer
     end
     object FileExit1: TFileExit
       Category = 'File'
-      Caption = 'E&xit'
+      Caption = 'E&xit Minos'
       Hint = 'Exit|Quits the application'
       ImageIndex = 43
     end
@@ -371,7 +369,7 @@ object LogContainer: TLogContainer
     end
     object FileNewAction: TAction
       Category = 'File'
-      Caption = 'New...'
+      Caption = 'Create New Contest...'
       OnExecute = FileNewActionExecute
     end
     object SetTimeNowAction: TAction
@@ -433,8 +431,20 @@ object LogContainer: TLogContainer
     object Closeallbutthiscontest1: TMenuItem
       Action = CloseAllButAction
     end
+    object N4: TMenuItem
+      Caption = '-'
+    end
     object Details1: TMenuItem
       Action = ContestDetailsAction
+    end
+    object ProduceEntryExportFile1: TMenuItem
+      Action = MakeEntryAction
+    end
+    object N5: TMenuItem
+      Caption = '-'
+    end
+    object SetTimeToNow1: TMenuItem
+      Action = SetTimeNowAction
     end
     object GoToSerial1: TMenuItem
       Action = GoToSerialAction
@@ -442,23 +452,23 @@ object LogContainer: TLogContainer
     object GotoNextUnfilled2: TMenuItem
       Action = NextUnfilledAction
     end
-    object AnalyseMinosLog2: TMenuItem
-      Action = AnalyseMinosLogAction
+    object N7: TMenuItem
+      Caption = '-'
     end
     object AnalyseMinosLog3: TMenuItem
       Action = NextContactDetailsOnLeftAction
-    end
-    object ProduceEntryExportFile1: TMenuItem
-      Action = MakeEntryAction
-    end
-    object SetTimeToNow1: TMenuItem
-      Action = SetTimeNowAction
     end
     object ShiftLeft1: TMenuItem
       Action = ShiftTabLeftAction
     end
     object ShiftRight1: TMenuItem
       Action = ShiftTabRightAction
+    end
+    object N6: TMenuItem
+      Caption = '-'
+    end
+    object AnalyseMinosLog2: TMenuItem
+      Action = AnalyseMinosLogAction
     end
     object Cancel1: TMenuItem
       Caption = 'Cancel'
@@ -473,26 +483,35 @@ object LogContainer: TLogContainer
       object Open1: TMenuItem
         Action = FileOpen1
       end
+      object ReopenMenu: TMenuItem
+        Caption = 'Reopen Contest'
+      end
+      object New1: TMenuItem
+        Action = FileNewAction
+      end
+      object Close1: TMenuItem
+        Action = FileCloseAction1
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object Deta1: TMenuItem
+        Action = ContestDetailsAction
+      end
+      object ProduceEntryExportFile2: TMenuItem
+        Action = MakeEntryAction
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
       object OpenList1: TMenuItem
         Action = ListOpen1
       end
       object ManageLists1: TMenuItem
         Action = ManageListsAction
       end
-      object Deta1: TMenuItem
-        Action = ContestDetailsAction
-      end
-      object New1: TMenuItem
-        Action = FileNewAction
-      end
-      object ReopenMenu: TMenuItem
-        Caption = 'Reopen'
-      end
-      object ProduceEntryExportFile2: TMenuItem
-        Action = MakeEntryAction
-      end
-      object Close1: TMenuItem
-        Action = FileCloseAction1
+      object N1: TMenuItem
+        Caption = '-'
       end
       object Exit1: TMenuItem
         Action = FileExit1

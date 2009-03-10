@@ -396,8 +396,16 @@ bool TContestEntryDetails::getDetails( )
       return false;
    }
 
+   #warning why don't we use getNextFocus here? If the answer is 0 all is OK?
 
    contest->mycall.fullCall.setValue( CallsignEdit->Text.c_str() );
+   contest->mycall.valRes = CS_NOT_VALIDATED;
+   contest->mycall.validate();
+   if ( contest->mycall.valRes != CS_OK )
+   {
+      CallsignEdit->SetFocus();
+      return false;
+   }
    contest->myloc.loc.setValue( LocatorEdit->Text.c_str() );
    contest->myloc.validate();
    if ( contest->myloc.valRes != LOC_OK )
