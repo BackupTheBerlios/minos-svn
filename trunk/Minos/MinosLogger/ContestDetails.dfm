@@ -156,7 +156,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 249
     Height = 97
     Caption = 'Multipliers and Exchange'
-    TabOrder = 16
+    TabOrder = 17
     object DXCCMult: TCheckBox
       Left = 16
       Top = 19
@@ -196,7 +196,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 225
     Height = 105
     Caption = 'Options'
-    TabOrder = 17
+    TabOrder = 18
     object ReadOnlyOption: TCheckBox
       Left = 6
       Top = 25
@@ -228,7 +228,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 249
     Height = 105
     Caption = 'Optional Fields'
-    TabOrder = 18
+    TabOrder = 19
     Visible = False
     object RSTField: TCheckBox
       Left = 8
@@ -286,7 +286,7 @@ object ContestEntryDetails: TContestEntryDetails
       Top = 32
       Width = 333
       Height = 23
-      TabOrder = 2
+      TabOrder = 4
       TabStop = True
       ExplicitLeft = 344
       ExplicitTop = 32
@@ -298,7 +298,7 @@ object ContestEntryDetails: TContestEntryDetails
         OnChange = BundleFrameBundleSectionChange
       end
       inherited BundleEdit: TButton
-        OnClick = StationBundleFrameBundleEditClick
+        OnClick = BundleFrameBundleEditClick
       end
     end
     inline StationBundleFrame: TSettingBundleFrame
@@ -306,7 +306,7 @@ object ContestEntryDetails: TContestEntryDetails
       Top = 32
       Width = 333
       Height = 23
-      TabOrder = 1
+      TabOrder = 3
       TabStop = True
       ExplicitLeft = 6
       ExplicitTop = 32
@@ -319,7 +319,7 @@ object ContestEntryDetails: TContestEntryDetails
       end
       inherited BundleEdit: TButton
         Left = 264
-        OnClick = StationBundleFrameBundleEditClick
+        OnClick = BundleFrameBundleEditClick
         ExplicitLeft = 264
       end
     end
@@ -328,7 +328,7 @@ object ContestEntryDetails: TContestEntryDetails
       Top = 4
       Width = 333
       Height = 23
-      TabOrder = 0
+      TabOrder = 2
       TabStop = True
       ExplicitLeft = 344
       ExplicitTop = 4
@@ -340,7 +340,7 @@ object ContestEntryDetails: TContestEntryDetails
         OnChange = BundleFrameBundleSectionChange
       end
       inherited BundleEdit: TButton
-        OnClick = StationBundleFrameBundleEditClick
+        OnClick = BundleFrameBundleEditClick
       end
     end
     object BSHelpButton: TButton
@@ -348,8 +348,8 @@ object ContestEntryDetails: TContestEntryDetails
       Top = 59
       Width = 202
       Height = 25
-      Caption = 'What are bundled settings?'
-      TabOrder = 3
+      Caption = 'How to use these settings?'
+      TabOrder = 5
       OnClick = BSHelpButtonClick
     end
     object VHFCalendarButton: TButton
@@ -364,7 +364,7 @@ object ContestEntryDetails: TContestEntryDetails
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 1
       OnClick = VHFCalendarButtonClick
     end
     object ContestNameSelected: TEdit
@@ -372,8 +372,9 @@ object ContestEntryDetails: TContestEntryDetails
       Top = 5
       Width = 225
       Height = 21
+      TabStop = False
       ReadOnly = True
-      TabOrder = 5
+      TabOrder = 0
     end
   end
   object SectionComboBox: TComboBox
@@ -434,28 +435,28 @@ object ContestEntryDetails: TContestEntryDetails
     ItemHeight = 13
     TabOrder = 14
   end
-  object GroupBox1: TGroupBox
+  object LocatorGroupBox: TGroupBox
     Left = 241
     Top = 264
     Width = 187
     Height = 82
     Caption = 'Locator Length'
-    TabOrder = 19
+    TabOrder = 16
     object AllowLoc8CB: TCheckBox
       Left = 10
       Top = 52
       Width = 167
       Height = 17
       Caption = 'Allow 8 char Locators'
-      TabOrder = 0
+      TabOrder = 1
     end
     object AllowLoc4CB: TCheckBox
       Left = 10
-      Top = 20
+      Top = 24
       Width = 167
       Height = 17
       Caption = 'Allow 4 char Locators'
-      TabOrder = 1
+      TabOrder = 0
     end
   end
 end

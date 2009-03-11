@@ -75,7 +75,7 @@ class TContestEntryDetails : public TForm
       TComboBox *ExchangeComboBox;
       TButton *VHFCalendarButton;
       TEdit *ContestNameSelected;
-   TGroupBox *GroupBox1;
+   TGroupBox *LocatorGroupBox;
    TCheckBox *AllowLoc8CB;
    TCheckBox *AllowLoc4CB;
    TCheckBox *MultiBandCheckBox4;
@@ -88,7 +88,7 @@ class TContestEntryDetails : public TForm
       void __fastcall DateEditKeyPress( TObject *Sender, char &Key );
       void __fastcall VHFCalendarButtonClick( TObject *Sender );
    void __fastcall BundleFrameBundleSectionChange(TObject *Sender);
-   void __fastcall StationBundleFrameBundleEditClick(TObject *Sender);
+   void __fastcall BundleFrameBundleEditClick(TObject *Sender);
    private:   	// User declarations
       TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;
@@ -96,7 +96,7 @@ class TContestEntryDetails : public TForm
       TWinControl * getNextFocus();
       void setDetails( const IndividualContest &ic );
       void setDetails( );
-      bool getDetails( );
+      TWinControl * getDetails( );
    public:   		// User declarations
       __fastcall TContestEntryDetails( TComponent* Owner );
       __fastcall ~TContestEntryDetails( );

@@ -355,8 +355,10 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
 
 }
 //---------------------------------------------------------------------------
-bool TContestEntryDetails::getDetails( )
+TWinControl * TContestEntryDetails::getDetails( )
 {
+   TWinControl *nextD = getNextFocus();
+
    contest->name.setValue( ContestNameEdit->Text.c_str() );
    contest->band.setValue( BandComboBox->Text.c_str() );
    contest->entSect.setValue( SectionComboBox->Text.c_str() );
@@ -375,11 +377,10 @@ bool TContestEntryDetails::getDetails( )
       MinosParameters::getMinosParameters() ->mshowMessage
       (
          StartDateEdit->Date.DateString() + " " + StartTimeCombo->Text +
-         " is not a good date/time (DD/HH/CCYY HH:MM)"
+                     " is not a good date/time (DD/HH/CCYY HH:MM)"
          , this
       );
-      StartDateEdit->SetFocus();
-      return false;
+      nextD = (nextD?nextD:StartDateEdit);
    }
 
    try
@@ -392,26 +393,21 @@ bool TContestEntryDetails::getDetails( )
    catch ( EConvertError & )
    {
       MinosParameters::getMinosParameters() ->mshowMessage( EndDateEdit->Date.DateString() + " " + EndTimeCombo->Text + " is not a good date/time (DD/HH/CCYY HH:MM)", this );
-      EndDateEdit->SetFocus();
-      return false;
+      nextD = (nextD?nextD:EndDateEdit);
    }
-
-   #warning why don't we use getNextFocus here? If the answer is 0 all is OK?
 
    contest->mycall.fullCall.setValue( CallsignEdit->Text.c_str() );
    contest->mycall.valRes = CS_NOT_VALIDATED;
    contest->mycall.validate();
    if ( contest->mycall.valRes != CS_OK )
    {
-      CallsignEdit->SetFocus();
-      return false;
+      nextD = (nextD?nextD:CallsignEdit);
    }
    contest->myloc.loc.setValue( LocatorEdit->Text.c_str() );
    contest->myloc.validate();
    if ( contest->myloc.valRes != LOC_OK )
    {
-      LocatorEdit->SetFocus();
-      return false;
+      nextD = (nextD?nextD:LocatorEdit);
    }
    contest->allowLoc4.setValue( AllowLoc4CB->Checked );    // bool
    contest->allowLoc8.setValue( AllowLoc8CB->Checked );    // bool
@@ -463,7 +459,7 @@ bool TContestEntryDetails::getDetails( )
 
    contest->validateLoc();
 
-   return true;
+   return nextD;
 }
 //---------------------------------------------------------------------------
 TWinControl * TContestEntryDetails::getNextFocus()
@@ -493,14 +489,13 @@ TWinControl * TContestEntryDetails::getNextFocus()
 void __fastcall TContestEntryDetails::OKButtonClick( TObject * /*Sender*/ )
 {
    // make sure we have the minimum required information
-   if ( getDetails( ) )
+   TWinControl *nextD = getDetails( );
+   if ( nextD )
    {
-      TWinControl * next = getNextFocus();
-      if ( next )
-      {
-         next->SetFocus();
-         return ;
-      }
+      nextD->SetFocus();
+   }
+   else
+   {
       *inputcontest = *contest;
       ModalResult = mrOk;
    }
@@ -536,13 +531,10 @@ void __fastcall TContestEntryDetails::FormShow( TObject * /*Sender*/ )
       EndTimeCombo->Items->Add( hour.c_str() );
       EndTimeCombo->Items->Add( halfhour.c_str() );
    }
-   if ( getDetails( ) )
+   TWinControl *nextD = getDetails( );
+   if ( nextD )
    {
-      TWinControl *next = getNextFocus();
-      if ( next )
-      {
-         next->SetFocus();
-      }
+      nextD->SetFocus();
    }
 }
 //---------------------------------------------------------------------------
@@ -563,38 +555,37 @@ void __fastcall TContestEntryDetails::BundleOverrideButtonClick( TObject * /*Sen
 
    contest->setINIDetails();
    setDetails( );
-   if ( bool( CalendarDlg ) )
+   if ( CalendarDlg )
    {
       setDetails( CalendarDlg->ic );
    }
 }
 //---------------------------------------------------------------------------
 String BSHelpText =
-   "A \"Settings Bundle\" is a group (or bundle) of settings that can "
-   "be applied to a contest all in one go. Each of the individual settings "
-   "in a bundle is a \"bundled setting\"\r\n"
-   "\r\n"
-   "There are four basic bundles - \r\n"
+   "These settings are groups of settings that can "
+   "be applied to a contest all in one go."
+   "\r\n\r\n"
+   "There are four basic groups: - \r\n\r\n"
    "Contest - for the description, bands, multipliers and time of a contest\r\n"
-   "Station - Rig details, antenna.\r\n"
-   "QTH - where the station is, Locator.\r\n"
    "Entry - all the extra bits for a real entry - callsign, group, contact details.\r\n"
+   "Station - Rig details, antenna, antenna height.\r\n"
+   "QTH - where the station is, height above sea level, Locator.\r\n"
    "\r\n"
    "To use them select from the drop down lists, or for Contest, use the "
-   "\"VHFCalendar\" button.\r\n"
-   "Any bundles set to \"<none>\" will be ignored.\r\n"
+   "\"VHF Calendar\" button.\r\n"
+   "Any group set to \"<none>\" will be ignored.\r\n"
    "\r\n"
    "If the setting you want isn't there, press the \"Edit\" "
-   "button for the bundle.\r\n"
+   "button for the group.\r\n"
    "\r\n"
    "This brings up a dialog where you can define a new setting, "
    "copy an existing setting, or delete an existing setting\r\n"
    "\r\n"
    "Click on the setting name on the left to select an existing setting "
-   "and then its comp[onents are shown in the right hand pane, and "
+   "and then its components are shown in the right hand pane, and "
    "can be editted individually.\r\n"
    "\r\n"
-   "Move between components using the mouse or up/down arrow keys.\r\n"
+   "Move between components of a group using the mouse or up/down arrow keys.\r\n"
    ;
 
 void __fastcall TContestEntryDetails::BSHelpButtonClick( TObject */*Sender*/ )
@@ -631,6 +622,15 @@ void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender
       ContestNameSelected->Text = CalendarDlg->ic.description.c_str();
       setDetails( CalendarDlg->ic );
    }
+   TWinControl *next = getNextFocus();
+   if (next)
+   {
+      next->SetFocus();
+   }
+   else
+   {
+      OKButton->SetFocus();
+   }
 }
 //---------------------------------------------------------------------------
 
@@ -647,10 +647,19 @@ void __fastcall TContestEntryDetails::BundleFrameBundleSectionChange(
 
    contest->setINIDetails();
    setDetails( );
+   TWinControl *next = getNextFocus();
+   if (next)
+   {
+      next->SetFocus();
+   }
+   else
+   {
+      OKButton->SetFocus();
+   }
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TContestEntryDetails::StationBundleFrameBundleEditClick(
+void __fastcall TContestEntryDetails::BundleFrameBundleEditClick(
       TObject *Sender)
 {
    TButton *cb = dynamic_cast<TButton *>(Sender );
@@ -663,6 +672,15 @@ void __fastcall TContestEntryDetails::StationBundleFrameBundleEditClick(
 
    contest->setINIDetails();
    setDetails( );
+   TWinControl *next = getNextFocus();
+   if (next)
+   {
+      next->SetFocus();
+   }
+   else
+   {
+      OKButton->SetFocus();
+   }
 }
 //---------------------------------------------------------------------------
 
