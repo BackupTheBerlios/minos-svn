@@ -159,16 +159,19 @@ std::string dtg::getDate( DTG dstyle, bool &d ) const
       if ( dateValue [ 0 ] >= '8' )
          prefix = "19";
       temp_date = prefix + dateValue;
+      temp_date = temp_date.substr(0, 8);
    }
    else
       if ( dstyle == DTGLOG )
       {
          temp_date = dateValue;
+         temp_date = temp_date.substr(0, 8);
       }
       else
          if ( dstyle == DTGReg1Test )
          {
             temp_date = dateValue;
+            temp_date = temp_date.substr(0, 8);
          }
          else
          {
@@ -184,6 +187,7 @@ std::string dtg::getDate( DTG dstyle, bool &d ) const
             for ( int i = 0; i < 8; i++ )
                if ( temp_date[ i ] == 0 )
                   temp_date[ i ] = ' ';
+            temp_date = temp_date.substr(0, 8);
          }
    return temp_date;
 }
@@ -200,7 +204,7 @@ std::string dtg::getTime( DTG dstyle, bool &d ) const
 
    if ( dstyle == DTGLOG )
    {
-      temp_time = timeValue;
+      temp_time = timeValue.substr(0, 6);
    }
    else
       if ( dstyle == DTGReg1Test )
