@@ -171,7 +171,7 @@ std::string dtg::getDate( DTG dstyle, bool &d ) const
          if ( dstyle == DTGReg1Test )
          {
             temp_date = dateValue;
-            temp_date = temp_date.substr(0, 8);
+            temp_date = temp_date.substr(0, 6);
          }
          else
          {
