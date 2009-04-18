@@ -218,8 +218,9 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject */*Sender*/ )
 void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 {
    // proxied?
-   DateEdit->ReadOnly = !contest->isPostEntry();
-   TimeEdit->ReadOnly = !contest->isPostEntry();
+   bool tbe = screenContact.contactFlags & TO_BE_ENTERED;
+   DateEdit->ReadOnly = !contest->isPostEntry() && !tbe;
+   TimeEdit->ReadOnly = !contest->isPostEntry() && !tbe;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );

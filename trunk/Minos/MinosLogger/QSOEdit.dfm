@@ -38,7 +38,6 @@ object QSOEditDlg: TQSOEditDlg
     OnGetNodeDataSize = QSOHistoryTreeGetNodeDataSize
     OnInitChildren = QSOHistoryTreeInitChildren
     OnInitNode = QSOHistoryTreeInitNode
-    ExplicitHeight = 296
     Columns = <>
   end
   inline GJVQSOEditFrame: TGJVQSOEditFrame
@@ -54,7 +53,6 @@ object QSOEditDlg: TQSOEditDlg
     inherited G0GJVPanel: TPanel
       Width = 566
       ExplicitWidth = 566
-      ExplicitHeight = 219
       inherited GJVOKButton: TButton
         OnClick = GJVQSOEditFrame1GJVOKButtonClick
       end

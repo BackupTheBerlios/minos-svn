@@ -167,20 +167,31 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
          {
             screenContact.time = lct->time;
             DateEdit->Text = screenContact.time.getDate( DTGDISP ).c_str();
-            int selpt = DateEdit->Text.Length();
-            if ( selpt > 2 )
-            {
-               DateEdit->SelStart = 1;
-               DateEdit->SelLength = 1;
-            }
-
             TimeEdit->Text = screenContact.time.getTime( DTGDISP ).c_str();
-            selpt = TimeEdit->Text.Length();
-            if ( selpt > 0 )
-            {
-               TimeEdit->SelStart = selpt - 1;
-               TimeEdit->SelLength = 1;
-            }
+         }
+         else
+         {
+            // use contest start time
+            TDateTime DTGStart = CanonicalToTDT(contest->DTGStart.getValue().c_str());
+            DateEdit->Text = DTGStart.FormatString("dd/mm/yy");
+            TimeEdit->Text = DTGStart.FormatString("hh:nn");
+            dtg time(false);
+            time.setDate( DateEdit->Text.c_str(), DTGDISP );
+            time.setTime( TimeEdit->Text.SubString(1, 5).c_str(), DTGDISP );
+            screenContact.time = time;
+         }
+         int selpt = DateEdit->Text.Length();
+         if ( selpt > 2 )
+         {
+            DateEdit->SelStart = 1;
+            DateEdit->SelLength = 1;
+         }
+
+         selpt = TimeEdit->Text.Length();
+         if ( selpt > 0 )
+         {
+            TimeEdit->SelStart = selpt - 1;
+            TimeEdit->SelLength = 1;
          }
       }
    }

@@ -54,7 +54,6 @@ void __fastcall TQSOEditDlg::FormShow( TObject */*Sender*/ )
    GJVQSOEditFrame->initialise( contest, this );
    selectEntry( firstContact );
    firstContact = 0;
-   GJVQSOEditFrame->CallsignEdit->SetFocus();
 }
 //---------------------------------------------------------------------------
 TWinControl *TQSOEditDlg::getActiveControl()
