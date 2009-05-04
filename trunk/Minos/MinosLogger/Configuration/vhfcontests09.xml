@@ -71,11 +71,13 @@
 <!-- 09.010 24/12/2008 Change to the registration words for MM section of NFD -->
 <!-- 09.011 28/12/2008 Change Ghz to GHz and change Chirstmas cumulatives section to SF and O -->
 <!-- 09.012 05/01/2009 removed the override flag for xmas so adding the Dec 70MHz UKAC -->
+<!-- 09.013 24/02/2009 Changed the date of the 1st 50MHz contest and wording for normalised scores in S8-->
 <calendar>
-<version>09.012 05/01/2009</version>
+<version>09.013 24/02/2009</version>
 <icalurl>http://www.google.com/calendar/ical/5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=5cpj6pguhmkhg1otcsdmsvhtdg%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>Calendar amended 05/01/09, Dec 70MHz UKAC added</notes_list>
+<notes_list>Calendar amended 24/02/09, 1st 50MHz - date changed</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -189,7 +191,7 @@ These contests are timed to co-incide with the last two hours of a number of Eur
 Please submit an entry after each session in which you are active. In order to speed adjudication entries will only be accepted by e-mail or web entry and must be sent within 10 days of the contest.
 
 Scores will be normalised for each section in each session as follows. 
-Score for each section/session = (Score achieved x 1000) divded by (Session/section leaders score).
+Score for each section/session = ((number of entrants+1)-(position of entrant))*1000/(number of entrants)
 At the end of the year, on each band an overall score will be calculated from the best 8 normalised session scores.
 It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
 
@@ -666,7 +668,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <time_list>
     <month_list>Apr</month_list>
     <start_day>6+1</start_day>
-    <start_week>3</start_week>
+    <start_week>2</start_week>
     <start_time>0900</start_time>
     <time_type>GMT</time_type>
     <duration>3</duration>
