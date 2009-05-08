@@ -401,6 +401,10 @@ bool Calendar::parseFile( const std::string &fname )
                      ic.power = ( *i ).second.power;
 
                      ic.reg1band = bands[ ic.bands ].reg1band.c_str();
+                     if (ic.reg1band == "1,2 GHz")
+                     {
+                        ic.reg1band = "1,3 GHz";
+                     }
 
                      calendar.push_back( ic );
                   }
@@ -521,6 +525,10 @@ bool Calendar::parseFile( const std::string &fname )
                   ic.power = ( *i ).second.power;
 
                   ic.reg1band = bands[ ic.bands ].reg1band.c_str();
+                  if (ic.reg1band == "1,2 GHz")
+                  {
+                     ic.reg1band = "1,3 GHz";
+                  }
 
                   calendar.push_back( ic );
                }
@@ -664,6 +672,10 @@ bool Calendar::parseBand( TiXmlElement * tix )
          if ( checkElementName( e, "reg1band" ) )
          {
             b.reg1band = e->GetText();
+            if (b.reg1band == "1,2 GHz")
+            {
+               b.reg1band = "1,3 GHz";
+            }
          }
          else
             if ( checkElementName( e, "wavelength" ) )
