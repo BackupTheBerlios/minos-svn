@@ -15,7 +15,7 @@
 void mShowMessage( String mess, TComponent* Owner )
 {
    std::auto_ptr<TMinosShowMessage> mshowMessage( new TMinosShowMessage( Owner ) );
-   mshowMessage->Label1->Caption = mess;
+   mshowMessage->Memo1->Text = mess;
    mshowMessage->ShowModal();
 }
 //---------------------------------------------------------------------------

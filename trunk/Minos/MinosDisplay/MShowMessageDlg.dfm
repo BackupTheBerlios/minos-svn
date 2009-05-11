@@ -14,26 +14,6 @@ object MinosShowMessage: TMinosShowMessage
   Position = poOwnerFormCenter
   PixelsPerInch = 96
   TextHeight = 25
-  object Label1: TLabel
-    Left = 0
-    Top = 0
-    Width = 604
-    Height = 241
-    Align = alTop
-    Alignment = taCenter
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    AutoSize = False
-    Caption = 'Label1'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
-    Layout = tlCenter
-    WordWrap = True
-    ExplicitWidth = 551
-  end
   object Button1: TButton
     Left = 264
     Top = 256
@@ -44,5 +24,15 @@ object MinosShowMessage: TMinosShowMessage
     Default = True
     TabOrder = 0
     OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 0
+    Top = 0
+    Width = 604
+    Height = 225
+    Align = alTop
+    Enabled = False
+    ReadOnly = True
+    TabOrder = 1
   end
 end
