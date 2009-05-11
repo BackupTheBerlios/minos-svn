@@ -32,7 +32,10 @@ class MLogFile
       // Generates a suffix of the form yyyyddmmhhmmss
       static String generateLogFileName( const std::string &prefix );
       static void tidyFiles( const std::string &prefix, int keepDays );
-
+      std::string getTraceFileName()
+      {
+         return fLogFileName;
+      }
 };
 //---------------------------------------------------------------------------
 #endif

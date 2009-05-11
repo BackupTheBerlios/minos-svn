@@ -13,7 +13,7 @@
 
 #pragma package(smart_init)
 
-ContactList::ContactList() : slotno( -1 ), cslFile( false )
+ContactList::ContactList() : slotno( -1 ), cslFile( false ), errMessShown(false)
 {
 }
 ContactList::~ContactList()
@@ -141,7 +141,15 @@ bool ContactList::cslLoad( void )
       }
       catch (boost::escaped_list_error &err)
       {
-         ShowMessage(("Error in " + sbuff + " : " + err.what()).c_str());
+         if (!errMessShown)
+         {
+            errMessShown = true;
+            std::string err = "Errors in " + cfileName ;
+            trace(err);
+            err += (std::string("; see ") + getTraceFileName() + " for details.");
+            MinosParameters::getMinosParameters() ->mshowMessage(err.c_str());
+         }
+         trace("Error in " + sbuff + " : " + err.what());
       }
    }
    return true;

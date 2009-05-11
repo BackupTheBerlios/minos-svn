@@ -18,4 +18,5 @@ void trace( char *mess );
 void trace( const std::string & mess );
 void enableTrace( const std::string &where );
 void disableTrace( );
+std::string getTraceFileName();
 #endif

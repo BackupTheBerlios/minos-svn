@@ -3,7 +3,7 @@ object MessageDialog: TMessageDialog
   Top = 188
   Caption = 'Minos Logger'
   ClientHeight = 211
-  ClientWidth = 404
+  ClientWidth = 515
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,7 +17,7 @@ object MessageDialog: TMessageDialog
   object MessageLabel: TLabel
     Left = 0
     Top = 0
-    Width = 404
+    Width = 515
     Height = 137
     Align = alTop
     Alignment = taCenter
@@ -25,6 +25,7 @@ object MessageDialog: TMessageDialog
     Caption = 'Error/Message label'
     Layout = tlCenter
     WordWrap = True
+    ExplicitWidth = 404
   end
   object Button1: TButton
     Left = 52
@@ -37,7 +38,7 @@ object MessageDialog: TMessageDialog
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 260
+    Left = 357
     Top = 152
     Width = 93
     Height = 41

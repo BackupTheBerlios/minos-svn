@@ -26,6 +26,7 @@ class ContactList
    private:
       bool cslFile;
       int slotno;
+      bool errMessShown;
       bool cslLoad();
       bool cslLoadContacts();
       void freeAll();

@@ -76,5 +76,9 @@ std::string lastError( void )
 {
    return lastError( GetLastError() );
 }
+std::string getTraceFileName()
+{
+   return mLogFile.getTraceFileName();
+}
 //---------------------------------------------------------------------------
 
