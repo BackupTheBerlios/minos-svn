@@ -1097,6 +1097,11 @@ void TSingleLogFrame::setActiveControl( WORD &Key )
          LogContainer->ActiveControl = ThisMatchTree;
          Key = 0;
       }
+      else
+         if (Key == VK_F12 && GJVQSOLogFrame->MatchXferButton->Enabled)
+         {
+            GJVQSOLogFrame1MatchXferButtonClick(this);
+         }
 }
 //-------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::GJVQSOLogFrame1GJVOKButtonClick(

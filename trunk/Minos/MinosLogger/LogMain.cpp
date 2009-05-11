@@ -728,7 +728,7 @@ void __fastcall TLogContainer::FormKeyUp( TObject */*Sender*/, WORD &Key,
    else
       if ( Shift.Empty() )
       {
-         if ( ( Key == VK_F1 || Key == VK_F2 || Key == VK_F3 || Key == VK_F5 || Key == VK_PRIOR || Key == VK_NEXT ) )
+         if ( ( Key == VK_F1 || Key == VK_F2 || Key == VK_F3 || Key == VK_F5 || Key == VK_F12 || Key == VK_PRIOR || Key == VK_NEXT ) )
          {
             TSingleLogFrame * cf = findCurrentLogFrame();
             if ( cf )
