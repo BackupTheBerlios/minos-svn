@@ -11,9 +11,6 @@
 #define MwinH 
 //----------------------------------------------------------------------------
 
-// Remove the next line before issue!
-#define BETA 1
-
 // GJVVERSION is definition for the .GJV file format
 
 #define GJVVERSION "0.41"
