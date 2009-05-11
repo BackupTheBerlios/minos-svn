@@ -19,6 +19,9 @@
 
 #pragma package(smart_init)
 
+#define INITIAL_CONTEST_SLOTS 2
+#define INITIAL_LIST_SLOTS 10
+
 double bigClockCorr = 0;
 TContestApp *TContestApp::contestApp = 0;
 
@@ -229,14 +232,14 @@ TContestApp::TContestApp() : MinosParameters(), magneticVariation( 0 ), period1(
    sysfont->Name = "Verdana";
    sysfont->Size = 8;
 
-   for ( int i = 0; i < 10; i++ )
+   for ( int i = 0; i < INITIAL_CONTEST_SLOTS; i++ )
    {
       ContestSlot *cs = new ContestSlot;
       cs->slotno = i + 1;
       //      contestSlotList.push_back( cs );
       contestSlotList.insert( cs );
    }
-   for ( int i = 0; i < 10; i++ )
+   for ( int i = 0; i < INITIAL_LIST_SLOTS; i++ )
    {
       ListSlot *cs = new ListSlot;
       cs->slotno = i + 1;
@@ -292,7 +295,7 @@ bool TContestApp::insertContest( BaseContestLog * p, unsigned int sno )
    }
    ContestSlot *cs = new ContestSlot;
    cs->slot = p;
-   cs->slotno = contestSlotList.size();
+   cs->slotno = contestSlotList.size() + 1;
    //   contestSlotList.push_back( cs );
    contestSlotList.insert( cs );
    return true;
@@ -333,7 +336,7 @@ bool TContestApp::insertList( ContactList * p, unsigned int sno )
    }
    ListSlot *cs = new ListSlot;
    cs->slot = p;
-   cs->slotno = listSlotList.size();
+   cs->slotno = listSlotList.size() + 1;
    //   contestSlotList.push_back( cs );
    listSlotList.insert( cs );
    return true;
