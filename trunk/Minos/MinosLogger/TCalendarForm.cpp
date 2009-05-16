@@ -82,7 +82,7 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
       }
       else
       {
-         if (nextContest == 0 && now <= (*i).start)
+         if (nextContest == 0 && now <= (*i).finish)
          {
             nextContest = row;
          }
