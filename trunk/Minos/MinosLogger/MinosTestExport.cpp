@@ -94,6 +94,7 @@ void MinosTestExport::exportContest( HANDLE expfd )
    ct->name.addIfDirty( st, "name", dirty );
    ct->band.addIfDirty( st, "band", dirty );
    ct->entSect.addIfDirty( st, "section", dirty );
+   ct->sectionList.addIfDirty( st, "sectionList", dirty );
    if ( ct->scoreMode.isDirty() )
    {
       st->addMember( ( ct->scoreMode.getValue( dirty ) == PPKM ), "scoreKms" );

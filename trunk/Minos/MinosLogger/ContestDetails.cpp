@@ -18,7 +18,7 @@
 #include "reg1test.h"
 #include "VHFList.h"
 #include "BandList.h"
-#include "TCalendarForm.h" 
+#include "TCalendarForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "Hstcbo"
@@ -31,25 +31,6 @@
 #pragma link "JvMaskEdit"
 #pragma link "JvToolEdit"
 #pragma resource "*.dfm"
-
-#define nSections 13
-std::string DefaultSectionList[ nSections ] =
-   {
-      std::string( "SF" ),
-      std::string( "SO" ),
-      std::string( "M" ),
-      std::string( "6S" ),
-      std::string( "6O" ),
-      std::string( "O" ),
-      std::string( "OPEN" ),
-      std::string( "RESTRICTED" ),
-      std::string( "LOW POWER" ),
-      std::string( "3W SINGLE" ),
-      std::string( "10W SINGLE" ),
-      std::string( "3W MULTI" ),
-      std::string( "10W MULTI" )
-   };
-
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
       : TForm( Owner ), CalendarDlg( 0 ), contest(0), inputcontest(0)
@@ -78,6 +59,7 @@ void TContestEntryDetails::setDetails( LoggerContestLog * pcont )
    inputcontest = pcont;
    contest = new LoggerContestLog();
    *contest = *pcont;                // is this safe? not with the QSO vector... although it won't get changed!
+   sectionList = contest->sectionList.getValue().c_str(); // the combo will then be properly set up in setDetails()
    setDetails();
 }
 void TContestEntryDetails::setDetails(  )
@@ -121,20 +103,12 @@ void TContestEntryDetails::setDetails(  )
       BandComboBox->Text = contest->band.getValue().c_str();
    }
 
-   if ( contest->sections.size() )
+   if ( sectionList.Length() )
    {
       TStringList * sl = new TStringList;
-      // need to get legal sections from ContestLog
-      sl->CommaText = contest->sections.c_str();
+      sl->CommaText = sectionList.c_str();
       SectionComboBox->Items = sl;
       delete sl;
-   }
-   else
-   {
-      for ( int i = 0; i < nSections; i++ )
-      {
-         SectionComboBox->Items->Add( DefaultSectionList[ i ].c_str() );
-      }
    }
 
    int s = SectionComboBox->Items->IndexOf( contest->entSect.getValue().c_str() );        // contest
@@ -145,7 +119,6 @@ void TContestEntryDetails::setDetails(  )
    }
    else
    {
-      //SectionComboBox->ItemIndex = 0;
       SectionComboBox->Style = Stdctrls::csDropDown;    // was csDropDownList
       SectionComboBox->Text = contest->entSect.getValue().c_str();
    }
@@ -269,19 +242,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
    BandComboBox->Items->Add( ic.reg1band.c_str() );
    BandComboBox->ItemIndex = 0;
 
-   TStringList *sl = new TStringList;
-   // need to get legal sections from ContestLog
-   sl->CommaText = ic.sections.c_str();
-   SectionComboBox->Items = sl;
-   SectionComboBox->ItemIndex = 0;
-
-
-   // start/end of ContestLog
-   // if attempt to log QSO BEFORE, complain (but allow) (give set time offset option)
-   // if AFTER at load time, set "post entry"
-   // if attempt to log QSO AFTER and NOT post entry, complain (give set time offset option, post entry option)
-   //      std::string contest->DTGStart;  //ccccmmsshhmm
-   //      std::string contest->DTGEnd;    //ccccmmsshhmm
+   sectionList = ic.sections.c_str(); // the combo will then be properly set up in setDetails()
 
    StartDateEdit->Date = ic.start.DateString();
    StartTimeCombo->Text = ic.start.FormatString( "hh:mm" );
@@ -353,6 +314,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
    ScoreOptions->ItemIndex = ( ic.ppKmScoring ? 0 : 1 );
    contest->scoreMode.setValue( ( SCOREMODE ) ScoreOptions->ItemIndex );  // combo
 
+   setDetails();
 }
 //---------------------------------------------------------------------------
 TWinControl * TContestEntryDetails::getDetails( )
@@ -362,6 +324,7 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->name.setValue( ContestNameEdit->Text.c_str() );
    contest->band.setValue( BandComboBox->Text.c_str() );
    contest->entSect.setValue( SectionComboBox->Text.c_str() );
+   contest->sectionList.setValue( sectionList.c_str() );
 
 
    try
@@ -549,18 +512,6 @@ void __fastcall TContestEntryDetails::EntDetailButtonClick( TObject * /*Sender*/
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TContestEntryDetails::BundleOverrideButtonClick( TObject * /*Sender*/ )
-{
-   getDetails( );   // override from the window
-
-   contest->setINIDetails();
-   setDetails( );
-   if ( CalendarDlg )
-   {
-      setDetails( CalendarDlg->ic );
-   }
-}
-//---------------------------------------------------------------------------
 String BSHelpText =
    "These settings are groups of settings that can "
    "be applied to a contest all in one go."
@@ -592,7 +543,7 @@ void __fastcall TContestEntryDetails::BSHelpButtonClick( TObject */*Sender*/ )
 {
    // Put up the help text on bundled settings
    std::auto_ptr <TMinosHelpForm> HelpForm( new TMinosHelpForm( this ) );
-   HelpForm->Caption = "Bundled Settings";
+   HelpForm->Caption = "Settings";
    HelpForm->HelpMemo->Text = BSHelpText;
    HelpForm->ShowModal();
 }

@@ -103,6 +103,7 @@ class LoggerContestLog : public BaseContestLog
       MinosItem<std::string> entCountry;
       MinosItem<std::string> entPhone;
       MinosItem<std::string> entEMail;
+      MinosItem<std::string> sectionList; // needed to be carried forward
 
       // dirty info is only relevant when it is being editted
       // but needs to stay with the data

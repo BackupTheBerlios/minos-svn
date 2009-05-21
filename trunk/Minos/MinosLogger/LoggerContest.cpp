@@ -72,6 +72,7 @@ void LoggerContestLog::clearDirty()
    entCountry.clearDirty();
    entPhone.clearDirty();
    entEMail.clearDirty();
+   sectionList.clearDirty();
    BaseContestLog::clearDirty();
 }
 void LoggerContestLog::setDirty()
@@ -88,6 +89,7 @@ void LoggerContestLog::setDirty()
    entAnt.setDirty();
    entAGL.setDirty();
    entASL.setDirty();
+   sectionList.setDirty();
    ops1.setDirty();
    ops2.setDirty();
    entCondx1.setDirty();
@@ -1325,6 +1327,7 @@ void LoggerContestLog::processMinosStanza( const std::string &methodName, MinosT
    if ( methodName == "MinosLogContest" )
    {
       mt->getStructArgMemberValue( "section", entSect );
+      mt->getStructArgMemberValue( "sectionList", sectionList );
    }
    else
       if ( methodName == "MinosLogMode" )

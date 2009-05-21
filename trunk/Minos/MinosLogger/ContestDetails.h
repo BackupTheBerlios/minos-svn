@@ -83,7 +83,6 @@ class TContestEntryDetails : public TForm
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall EntDetailButtonClick( TObject *Sender );
-      void __fastcall BundleOverrideButtonClick( TObject *Sender );
       void __fastcall BSHelpButtonClick( TObject *Sender );
       void __fastcall DateEditKeyPress( TObject *Sender, char &Key );
       void __fastcall VHFCalendarButtonClick( TObject *Sender );
@@ -93,6 +92,7 @@ class TContestEntryDetails : public TForm
       TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;
       LoggerContestLog * inputcontest;
+      String sectionList;
       TWinControl * getNextFocus();
       void setDetails( const IndividualContest &ic );
       void setDetails( );
