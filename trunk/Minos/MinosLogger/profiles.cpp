@@ -656,7 +656,6 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          entries.push_back( ProfileEntry( elpLogDirectory, "Log Directory", ".\\Logs", "hint" ) );
 
          entries.push_back( ProfileEntry( elpEntryFile, "EntryFile", ".\\Configuration\\Entry.ini", "hint" ) );
-         entries.push_back( ProfileEntry( elpContestFile, "ContestsFile", ".\\Configuration\\Contests.ini", "hint" ) );
          entries.push_back( ProfileEntry( elpStationFile, "StationFile", ".\\Configuration\\Station.ini", "hint" ) );
          entries.push_back( ProfileEntry( elpQTHFile, "QTHFile", ".\\Configuration\\QTH.ini", "hint" ) );
          break;
@@ -710,21 +709,6 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          entries.push_back( ProfileEntry( eepMyPostCode, "MyPostCode", "", "Post Code of responsible operator" ) );
          entries.push_back( ProfileEntry( eepMyPhone, "MyPhone", "", "Phone no. of responsible operator" ) );
          entries.push_back( ProfileEntry( eepMyEmail, "MyEmail", "", "eMail address of responsible operator" ) );
-         break;
-      case epCONTESTPROFILE:
-         entries.push_back( ProfileEntry( ecpName, "ContestName", "", "Contest name" ) );
-         entries.push_back( ProfileEntry( ecpBands, "Bands", "", "List of Contest Bands" ) );
-         entries.push_back( ProfileEntry( ecpSections, "Sections", "", "List of Contest sections" ) );
-         entries.push_back( ProfileEntry( ecpScoreKmQSO, "ScoreKms", true, "0 = pt/QSO, 1 = Score pt/Km" ) );
-         entries.push_back( ProfileEntry( ecpStart, "Start", "", "Date/time of contest start" ) );
-         entries.push_back( ProfileEntry( ecpEnd, "End", "", "Date/time of contest start" ) );
-         entries.push_back( ProfileEntry( ecpDistrictMult, "DistrictMult", false, "1 = District Mult" ) );
-         entries.push_back( ProfileEntry( ecpDXCCMult, "DXCCMult", false, "1 = DXCC Mult" ) );
-         entries.push_back( ProfileEntry( ecpLocMult, "LocMult", false, "1 = LOC Mult" ) );
-         entries.push_back( ProfileEntry( ecpQTHReq, "QTHReq", false, "1 = QTH Required" ) );
-         entries.push_back( ProfileEntry( ecpAllowLoc4, "allowLoc4", false, "1 = Short (4 char) locators allowed" ) );
-         entries.push_back( ProfileEntry( ecpAllowLoc8, "allowLoc8", false, "1 = Long (8 char) locators allowed" ) );
-
          break;
       case epQTHPROFILE:
          entries.push_back( ProfileEntry( eqpLocator, "Locator", "", "Locator" ) );

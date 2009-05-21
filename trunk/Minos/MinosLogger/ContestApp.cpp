@@ -140,7 +140,6 @@ bool TContestApp::initialise()
    BundleFile::bundleFiles[ epPRELOADPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epPRELOADPROFILE ) );
    BundleFile::bundleFiles[ epDISPLAYPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epDISPLAYPROFILE ) );
    BundleFile::bundleFiles[ epENTRYPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epENTRYPROFILE ) );
-   BundleFile::bundleFiles[ epCONTESTPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epCONTESTPROFILE ) );
    BundleFile::bundleFiles[ epQTHPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epQTHPROFILE ) );
    BundleFile::bundleFiles[ epSTATIONPROFILE ] = boost::shared_ptr<BundleFile>( new BundleFile( epSTATIONPROFILE ) );
 
@@ -175,11 +174,6 @@ bool TContestApp::initialise()
    std::string entfile;
    loggerBundle.getStringProfile( elpEntryFile, entfile );
    BundleFile::bundleFiles[ epENTRYPROFILE ] ->openProfile( entfile, "Contest Entry details" );
-   //----------------------------------
-
-   std::string contfile;
-   loggerBundle.getStringProfile( elpContestFile, contfile );
-   BundleFile::bundleFiles[ epCONTESTPROFILE ] ->openProfile( contfile, "Contest Entry details" );
    //----------------------------------
 
    std::string qthfile;
