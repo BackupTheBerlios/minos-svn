@@ -61,7 +61,7 @@ struct INIEntryCmp
       return stricmp( s1->name.c_str(), cmpstr.c_str() ) == 0;
    }
 };
-class INISection //: public NameChain
+class INISection
 {
    private:
       bool entryValid;
@@ -70,14 +70,14 @@ class INISection //: public NameChain
       std::string name;
 
       INISection( INIFile *cb,
-                  const std::string &name, bool Valid ); // Constructor.
+                  const std::string &name, bool Valid );
 
       ~INISection();   // Destructor.
 
       bool isValidSection( void );
 
       std::vector <IniEntryPtr> entries;
-      //      NameChain_base EntryList;
+
       bool isDirty();
       void setClean();
 
@@ -119,13 +119,12 @@ class INIFile
                                       const char *Buffer );
 
       bool dupSection( const std::string &oldname, const std::string &newname );
-      //      NameChain_base SectionList;
 
       std::vector <IniSectionPtr> sections;
       bool fileLoaded;
       bool isDirty();
       void setClean();
-      //      bool invalid;
+
       struct stat statbuf;
 
       std::string loadedFileName;
@@ -300,9 +299,6 @@ bool INIFile::writeINIFile( void )
    if ( !isDirty() )
       return true;
 
-   //   if ( invalid )
-   //      return false;
-
    FILE *inf;
 
    // here we need to stat the file to see if it has changed
@@ -364,7 +360,6 @@ bool INIFile::loadINIFile()
    if ( ( inf = fopen( loadedFileName.c_str(), "rt" ) ) == 0 )
    {
       MinosParameters::getMinosParameters() ->mshowMessage( String( "Initialisation file \"" ) + loadedFileName.c_str() + "\" not found." );
-      //      invalid = false;
       return false;
    }
 
@@ -415,17 +410,6 @@ bool INIFile::loadINIFile()
    // now stat the file so we can check for changes
    checkStat();
 
-   /*
-      if ( !realSections )
-      {
-         mshowMessage( String( "Initialisation file \"" ) + loadedFileName.c_str() + "\" invalid (no sections)." );
-         invalid = true;
-      }
-      else
-      {
-         invalid = false;
-      }
-   */ 
    return realSections;
 }
 
@@ -626,7 +610,6 @@ bool INIFile::writePrivateProfileString( const char *Section,
       }
    }
 
-   //      return writeINIFile();
    return true;
 }
 
@@ -770,7 +753,6 @@ bool BundleFile::openProfile( const std::string &fname, const std::string &bname
 }
 BundleFile::~BundleFile()
 {
-   //delete iniFile;
 }
 /*static*/
 boost::shared_ptr<BundleFile>BundleFile::bundleFiles[ epSTATIONPROFILE + 1 ]; //  =  {0};
@@ -794,7 +776,7 @@ ProfileEntry &BundleFile::GetKey( int p )
    return NullEntry;
 }
 //=============================================================================
-SettingsBundle::SettingsBundle() //:bundleFile(0)
+SettingsBundle::SettingsBundle()
 {}
 
 SettingsBundle::~SettingsBundle()
