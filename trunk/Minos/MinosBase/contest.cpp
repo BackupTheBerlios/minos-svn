@@ -499,22 +499,29 @@ void BaseContestLog::setScore( std::string &buff )
    char brloc1 = '(';
    char brloc2 = ')';
 
-
+   int mults = 0;
    if ( countryMult.getValue() )
    {
       brcc1 = brcc2 = ' ';
+      mults += nctry;
    }
    if ( districtMult.getValue() )
    {
       brcc3 = brcc4 = ' ';
+      mults += ndistrict;
    }
    if ( locMult.getValue() )
    {
       brloc1 = brloc2 = ' ';
+      mults += nlocs;
    }
-   buff = ( boost::format( "Score: %ld pts :%c%d countries%c:%c%d districts%c:%c%d locators%c" )
+   mults = std::max(mults, 1);
+
+   long totalScore = contestScore*mults;
+
+   buff = ( boost::format( "Score: %ld pts :%c%d countries%c:%c%d districts%c:%c%d locators%c = %ld" )
             % contestScore % brcc1 % nctry % brcc2 % brcc3 % ndistrict %
-            brcc4 % brloc1 % nlocs % brloc2 ).str();
+            brcc4 % brloc1 % nlocs % brloc2 % totalScore ).str();
 
 }
 void BaseContestLog::startScan( void )
