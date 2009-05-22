@@ -560,7 +560,14 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
          case egExchange:
             if ( districtMult )
             {
-               res = districtMult->districtCode + "(" + extraText.getValue() + ")";
+               if (stricmp(districtMult->districtCode, extraText.getValue()) == 0)
+               {
+                  res = districtMult->districtCode;
+               }
+               else
+               {
+                  res = districtMult->districtCode + "(" + extraText.getValue() + ")";
+               }
             }
             else
             {
