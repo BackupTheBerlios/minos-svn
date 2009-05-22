@@ -144,6 +144,8 @@ class TLogContainer : public TForm
    TMenuItem *N5;
    TMenuItem *N6;
    TMenuItem *N7;
+   TMenuItem *Correctdatetime1;
+   TAction *CorrectDateTimeAction;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -154,7 +156,6 @@ class TLogContainer : public TForm
       void __fastcall ContestPageControlChange( TObject *Sender );
       void __fastcall ContestDetailsActionExecute( TObject *Sender );
       void __fastcall TimeDisplayTimerTimer( TObject *Sender );
-      void __fastcall StatusBar1DblClick( TObject *Sender );
       void __fastcall FormKeyUp( TObject *Sender, WORD &Key,
                                  TShiftState Shift );
       void __fastcall LocCalcActionExecute( TObject *Sender );
@@ -185,6 +186,7 @@ class TLogContainer : public TForm
       void __fastcall ShiftLeftAction( TObject *Sender );
    void __fastcall CloseAllActionExecute(TObject *Sender);
    void __fastcall CloseAllButActionExecute(TObject *Sender);
+   void __fastcall CorrectDateTimeActionExecute(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );

@@ -2,7 +2,7 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 656
+  ClientHeight = 696
   ClientWidth = 742
   Color = clBtnFace
   UseDockManager = True
@@ -24,7 +24,7 @@ object LogContainer: TLogContainer
     Left = 0
     Top = 0
     Width = 742
-    Height = 637
+    Height = 677
     Align = alClient
     DockSite = True
     MultiLine = True
@@ -36,12 +36,15 @@ object LogContainer: TLogContainer
     OnChange = ContestPageControlChange
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
+    ExplicitHeight = 637
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 637
+    Top = 677
     Width = 742
     Height = 19
+    Hint = 'Click to correct date/time'
+    Action = CorrectDateTimeAction
     Panels = <
       item
         Width = 450
@@ -54,8 +57,12 @@ object LogContainer: TLogContainer
         Width = 50
       end>
     ParentFont = True
+    ParentShowHint = False
+    PopupMenu = TabPopup
+    ShowHint = True
     UseSystemFont = False
-    OnDblClick = StatusBar1DblClick
+    OnDblClick = CorrectDateTimeActionExecute
+    ExplicitTop = 637
   end
   object ActionManager: TActionManager
     ActionBars = <
@@ -395,6 +402,11 @@ object LogContainer: TLogContainer
       Caption = 'Shift Tab Right'
       OnExecute = ShiftRightAction
     end
+    object CorrectDateTimeAction: TAction
+      Category = 'Tools'
+      Caption = 'Correct Date/Time'
+      OnExecute = CorrectDateTimeActionExecute
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
@@ -463,6 +475,9 @@ object LogContainer: TLogContainer
     end
     object ShiftRight1: TMenuItem
       Action = ShiftTabRightAction
+    end
+    object Correctdatetime1: TMenuItem
+      Action = CorrectDateTimeAction
     end
     object N6: TMenuItem
       Caption = '-'
