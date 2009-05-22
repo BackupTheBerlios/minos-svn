@@ -573,8 +573,9 @@ object LogContainer: TLogContainer
         Action = SearchFindFirst1
       end
     end
-    object ools1: TMenuItem
+    object Tools1: TMenuItem
       Caption = 'Tools'
+      OnClick = Tools1Click
       object LocatorCalculator1: TMenuItem
         Action = LocCalcAction
       end

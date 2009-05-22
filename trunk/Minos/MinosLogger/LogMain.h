@@ -108,7 +108,7 @@ class TLogContainer : public TForm
       TMenuItem *FindNext1;
       TMenuItem *Replace1;
       TMenuItem *FindFirst1;
-      TMenuItem *ools1;
+   TMenuItem *Tools1;
       TMenuItem *LocatorCalculator1;
       TMenuItem *Logger1;
       TMenuItem *AnalyseMinosLog1;
@@ -188,6 +188,7 @@ class TLogContainer : public TForm
    void __fastcall CloseAllButActionExecute(TObject *Sender);
    void __fastcall CorrectDateTimeActionExecute(TObject *Sender);
    void __fastcall StatusBar1Resize(TObject *Sender);
+   void __fastcall Tools1Click(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );

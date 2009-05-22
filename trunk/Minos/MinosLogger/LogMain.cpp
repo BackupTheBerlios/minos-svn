@@ -1166,3 +1166,9 @@ void __fastcall TLogContainer::StatusBar1Resize(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TLogContainer::Tools1Click(TObject *Sender)
+{
+   AnalyseMinosLog1->Visible = IsDebuggerPresent();
+}
+//---------------------------------------------------------------------------
+
