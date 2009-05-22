@@ -187,6 +187,7 @@ class TLogContainer : public TForm
    void __fastcall CloseAllActionExecute(TObject *Sender);
    void __fastcall CloseAllButActionExecute(TObject *Sender);
    void __fastcall CorrectDateTimeActionExecute(TObject *Sender);
+   void __fastcall StatusBar1Resize(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
