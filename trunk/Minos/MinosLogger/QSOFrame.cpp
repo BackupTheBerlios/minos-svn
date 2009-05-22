@@ -103,8 +103,16 @@ void TGJVEditFrame::setActiveControl( WORD &Key )
          selectField( RSTRXEdit );
          Key = 0;
          break;
+      case VK_F4:
+         selectField( SerRXEdit );
+         Key = 0;
+         break;
       case VK_F5:
          selectField( LocEdit );
+         Key = 0;
+         break;
+      case VK_F6:
+         selectField( QTHEdit );
          Key = 0;
          break;
    }
