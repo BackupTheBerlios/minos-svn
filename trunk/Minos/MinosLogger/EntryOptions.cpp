@@ -210,7 +210,7 @@ void __fastcall TEntryOptionsForm::CloseButtonClick( TObject */*Sender*/ )
    ct->entPhone.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
    ct->entEMail.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
 
-   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML, ESUMMARY };
+   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML};
    expformat = ( ExportType ) EntryGroup->ItemIndex;
 
    ModalResult = mrOk;
@@ -231,15 +231,11 @@ String TEntryOptionsForm::doFileSave( )
    String ext = ExtractFileExt( ct->cfileName.c_str() );
    fname = fname.SubString( 1, fname.Length() - ext.Length() );
 
-   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML, ESUMMARY };
+   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML };
    String defext;
    String filter;
    switch ( expformat )
    {
-      case ESUMMARY:
-         defext = "TXT";
-         filter = "Summary file (*.txt)|*.TXT|All Files (*.*)|*.*" ;
-         break;
       case EG0GJV:
          defext = "GJV";
          filter = "GJV ContestLog files (*.gjv)|*.GJV|All Files (*.*)|*.*" ;

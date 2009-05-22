@@ -31,8 +31,7 @@ object EntryOptionsForm: TEntryOptionsForm
       'ADIF(export)'
       'G0GJV(export)'
       'Minos(export)'
-      'KML(GoogleEarth)'
-      'Summary')
+      'KML(GoogleEarth)')
     TabOrder = 0
   end
   object CloseButton: TButton

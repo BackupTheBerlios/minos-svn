@@ -656,11 +656,7 @@ bool LoggerContestLog::export_contest( HANDLE expfd, ExportType exptype )
    setDirty();                // We always need to export everything
    switch ( exptype )
    {
-         //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, ESUMMARY };
-
-      case ESUMMARY:
-         ret = exportSummary( expfd );
-         break;
+         //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS };
 
       case EG0GJV:
          ret = exportGJV( expfd );
@@ -729,77 +725,6 @@ void LoggerContestLog::procUnknown( BaseContact *cct, writer &wr )
       wr.lwrite( lbuff.c_str() );
    }
 }
-bool LoggerContestLog::exportSummary( HANDLE expfd )
-{
-   writer wr( expfd );
-   char lbuff[ 256 ];
-
-   sprintf( lbuff, "\r\n    SUMMARY OF CONTEST for Contest %-37.37s" , name.getValue().c_str() );
-   wr.lwrite( lbuff );
-
-   sprintf( lbuff, "    Band %s MHz Call %s LOC %s QTH %s\r\n",
-            band.getValue().c_str(), mycall.fullCall.getValue().c_str(), myloc.loc.getValue().c_str(), location.getValue().c_str() );
-   wr.lwrite( lbuff );
-
-   wr.lwriteNl();
-   wr.lwriteLine();			// line of underscores
-   wr.lwriteNl();
-
-   sprintf( lbuff, "\r\n    Number of QSOs made %d; Claimed Points %ld\r\n",
-            maxSerial, contestScore );
-   wr.lwrite( lbuff );
-
-   std::string sbuff;
-   setScore( sbuff );
-   sbuff = sbuff.substr( 6, sbuff.size() );
-   sbuff = "      " + sbuff;
-   wr.lwrite( sbuff.c_str() );
-   wr.lwriteNl();
-
-   int ltot = 0;
-   if ( countryMult.getValue() )
-      ltot += nctry ;
-   if ( districtMult.getValue() )
-      ltot += ndistrict;
-   if ( locMult.getValue() )
-      ltot += nlocs;
-
-   if ( ltot )
-   {
-      sprintf( lbuff, "    Overall score (Total (%ld) *Multipliers (%d)) is %ld\r\n", contestScore, ltot, contestScore * ltot );
-   }
-   else
-   {
-      sprintf( lbuff, "    Overall score %ld\r\n", contestScore );
-   }
-   wr.lwrite( lbuff );
-
-   BaseContact *bestdx = getBestDX();
-   if ( bestdx )
-   {
-      sprintf( lbuff, "    Best DX was serial %s Callsign %s Distance %d in Locator %s\r\n",
-               bestdx->serials.getValue().c_str(), bestdx->cs.fullCall.getValue().c_str(),
-               bestdx->contactScore.getValue(), bestdx->loc.loc.getValue().c_str() );
-      wr.lwrite( lbuff );
-   }
-
-   if ( countryMult.getValue() || districtMult.getValue() )
-   {
-      uhNeeded = true;
-      utNeeded = false;
-
-      for ( LogIterator i = ctList.begin(); i != ctList.end(); i++ )
-      {
-         procUnknown( ( *i ), wr );
-      }
-
-      if ( utNeeded )
-         wr.lwrite( "\r\n    End of Contacts with Unknown Country/District\r\n" );
-   }
-   wr.lwriteFf();
-   return true;
-}
-
 
 bool LoggerContestLog::exportGJV( HANDLE fd )
 {

@@ -143,20 +143,14 @@ class LoggerContestLog : public BaseContestLog
       virtual bool minosSaveContestContact( const ContestContact *lct );
       // Import/export etc
 
-      //void pheader( writer &wr, int page_no, int maxpage, bool headings, const std::string &header );
-      //void psubtotal( HANDLE expfd, long pscore );
       bool export_contest( HANDLE, ExportType );
       bool exportGJV( HANDLE );
       void procUnknown( BaseContact *cct, writer &wr );
-      bool exportSummary( HANDLE );
-      //bool exportEFile( HANDLE );
       bool exportADIF( HANDLE expfd );
       bool exportKML( HANDLE expfd );
       bool exportREG1TEST( HANDLE expfd );
       bool exportMinos( HANDLE expfd );
 
-      //      virtual void makeContact( bool time_now, DisplayContestContact *&);
-      //      virtual void makeContact( bool time_now, ContestContact *&);
       virtual void makeContact( bool time_now, BaseContact *& );
       DisplayContestContact *addContact( int newctno, int extra_flags, bool save_new );
 
