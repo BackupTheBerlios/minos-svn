@@ -42,7 +42,6 @@ __fastcall TLogContainer::TLogContainer( TComponent* Owner )
       : TForm( Owner ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
       syncCaption( false ), syncMode( false ), saveResize( false )
 {
-   enableTrace( ".\\TraceLog\\MinosLogger_" );
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
 }
@@ -78,9 +77,11 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
       if ( contestAppLoadFiles() )
       {
          // here need to pre-open the contest list
-         char * conarg = 0;
-         if ( ParamCount() >= 2 )
+         std::string conarg;
+         if ( ParamCount() >= 1 )
+         {
             conarg = ParamStr( 1 ).c_str();
+         }
          preloadFiles( conarg );
          enableActions();
       }
@@ -89,7 +90,7 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
       Close();
 }
 //---------------------------------------------------------------------------
-void TLogContainer::preloadFiles( char *conarg )
+void TLogContainer::preloadFiles( const std::string &conarg )
 {
    // and here we want to pre-load lists and contests from the INI file
    // based on what was last open
@@ -137,7 +138,7 @@ void TLogContainer::preloadFiles( char *conarg )
 
    TContestApp::getContestApp() ->writeContestList();	// to clear the unopened and changed ones
 
-   if ( conarg )
+   if ( conarg.size() )
    {
       // open the "argument" one last - which will make it current
       ct = addSlot( 0, conarg, false, false, -1 );
@@ -1166,7 +1167,7 @@ void __fastcall TLogContainer::StatusBar1Resize(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TLogContainer::Tools1Click(TObject *Sender)
+void __fastcall TLogContainer::Tools1Click(TObject */*Sender*/)
 {
    AnalyseMinosLog1->Visible = IsDebuggerPresent();
 }

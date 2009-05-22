@@ -193,7 +193,7 @@ class TLogContainer : public TForm
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
       void closeSlot( bool addToMRU );
-      void preloadFiles( char *conarg );
+      void preloadFiles( const std::string &conarg );
       void enableActions();
       String getDefaultDirectory( bool IsList );
 
