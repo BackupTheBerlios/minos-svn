@@ -209,7 +209,7 @@ class BaseContestLog
       {
          return countryWorked[ item ];
       }
-
+      int getValidQSOs();
 
       // stats data
 

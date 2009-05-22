@@ -438,6 +438,21 @@ void BaseContestLog::updateStats( void )
          break;
    }
 }
+int BaseContestLog::getValidQSOs()
+{
+   int nvalid = 0;
+   for ( unsigned int i = 0; i < ctList.size(); i++ )
+   {
+      BaseContact *dct = ctList[ i ];
+
+      if ( dct->contactFlags.getValue() & ( LOCAL_COMMENT | COMMENT_ONLY | DONT_PRINT ) )
+         continue;
+
+      if ( dct->contactScore.getValue() > 0 )
+         nvalid++;
+   }
+   return nvalid;
+}
 
 static void isBestDX( BaseContact *cct, BaseContact **bestDX )
 {
