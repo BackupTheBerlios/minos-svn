@@ -32,7 +32,8 @@
 #include "XMPPEvents.h"
 #include "XMPPRPCObj.h"
 #include "RPCPubSub.h"
-#include "SendRPCDM.h" 
+#include "SendRPCDM.h"
+#include "bandlist.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "BundleFrame"
@@ -1316,6 +1317,17 @@ void __fastcall TSingleLogFrame::OnShowTimerTimer( TObject */*Sender*/ )
    MultDispFrame->TabStop = false;
    LogMonitor->TabStop = false;
    GJVQSOLogFrame->TabStop = false;
+
+   BandInfo bi;
+   int freq = atoi(contest->band.getValue().c_str());
+   bool res = (BandList::getBandList().findBand(freq * 1000000, bi)
+      || BandList::getBandList().findBand(freq * 1000000000, bi)
+      || BandList::getBandList().findBand(freq, bi))
+   ;
+   if (res)
+   {
+      GJVQSOLogFrame->BandChoiceRadioGroup->Caption = bi.uk.c_str();
+   }
 }
 //---------------------------------------------------------------------------
 bool TSingleLogFrame::getStanza( unsigned int stanza, std::string &stanzaData )
