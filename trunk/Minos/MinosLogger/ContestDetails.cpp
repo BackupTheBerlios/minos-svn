@@ -243,6 +243,25 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
    BandComboBox->ItemIndex = 0;
 
    sectionList = ic.sections.c_str(); // the combo will then be properly set up in setDetails()
+   if ( sectionList.Length() )
+   {
+      TStringList * sl = new TStringList;
+      sl->CommaText = sectionList.c_str();
+      SectionComboBox->Items = sl;
+      delete sl;
+   }
+
+   int s = SectionComboBox->Items->IndexOf( contest->entSect.getValue().c_str() );        // contest
+
+   if ( s >= 0 )
+   {
+      SectionComboBox->ItemIndex = s;
+   }
+   else
+   {
+      SectionComboBox->Style = Stdctrls::csDropDown;    // was csDropDownList
+      SectionComboBox->Text = contest->entSect.getValue().c_str();
+   }
 
    StartDateEdit->Date = ic.start.DateString();
    StartTimeCombo->Text = ic.start.FormatString( "hh:mm" );
@@ -314,7 +333,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
    ScoreOptions->ItemIndex = ( ic.ppKmScoring ? 0 : 1 );
    contest->scoreMode.setValue( ( SCOREMODE ) ScoreOptions->ItemIndex );  // combo
 
-   setDetails();
+//   setDetails();
 }
 //---------------------------------------------------------------------------
 TWinControl * TContestEntryDetails::getDetails( )
