@@ -553,7 +553,7 @@ String BSHelpText =
    "\r\n"
    "Click on the setting name on the left to select an existing setting "
    "and then its components are shown in the right hand pane, and "
-   "can be editted individually.\r\n"
+   "can be edited individually.\r\n"
    "\r\n"
    "Move between components of a group using the mouse or up/down arrow keys.\r\n"
    ;
