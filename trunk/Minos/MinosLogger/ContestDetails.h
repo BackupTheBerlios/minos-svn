@@ -89,7 +89,7 @@ class TContestEntryDetails : public TForm
    void __fastcall BundleFrameBundleSectionChange(TObject *Sender);
    void __fastcall BundleFrameBundleEditClick(TObject *Sender);
    private:   	// User declarations
-      TCalendarForm *CalendarDlg;
+//      TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;
       LoggerContestLog * inputcontest;
       String sectionList;

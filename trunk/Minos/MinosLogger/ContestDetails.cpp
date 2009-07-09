@@ -33,13 +33,13 @@
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
-      : TForm( Owner ), CalendarDlg( 0 ), contest(0), inputcontest(0)
+      : TForm( Owner ), /*CalendarDlg( 0 ),*/ contest(0), inputcontest(0)
 {
 }
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::~TContestEntryDetails( )
 {
-   delete CalendarDlg;
+//   delete CalendarDlg;
 }
 //---------------------------------------------------------------------------
 /*
@@ -278,27 +278,33 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       contest->countryMult.setValue( true );
       contest->locMult.setValue( false );
    }
-   if ( ic.mults == "M2" )
+   else if ( ic.mults == "M2" )
    {
       // Loc
       contest->districtMult.setValue( false );
       contest->countryMult.setValue( false );
       contest->locMult.setValue( true );
    }
-   if ( ic.mults == "M3" )
+   else if ( ic.mults == "M3" )
    {
       // PC, DXCC, LOC
       contest->districtMult.setValue( true );
       contest->countryMult.setValue( true );
       contest->locMult.setValue( true );
    }
-   if ( ic.mults == "M4" )
+   else if ( ic.mults == "M4" )
    {
       // DXCC, LOC
       contest->districtMult.setValue( false );
       contest->countryMult.setValue( true );
       contest->locMult.setValue( true );
 
+   }
+   else
+   {
+      contest->districtMult.setValue( false );
+      contest->countryMult.setValue( false );
+      contest->locMult.setValue( false );
    }
    /*
       ExchangeComboBox:
@@ -580,9 +586,10 @@ void __fastcall TContestEntryDetails::DateEditKeyPress( TObject * /*Sender*/,
 
 void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender*/ )
 {
-   if ( !CalendarDlg )
+   std::auto_ptr <TCalendarForm> CalendarDlg(new TCalendarForm(this));
+//   if ( !CalendarDlg )
    {
-      CalendarDlg = new TCalendarForm( this ) ;
+//      CalendarDlg = new TCalendarForm( this ) ;
       CalendarDlg->Caption = "VHF Calendar";
       CalendarDlg->description = ContestNameSelected->Text;
    }
