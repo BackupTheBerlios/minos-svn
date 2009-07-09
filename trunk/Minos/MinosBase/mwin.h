@@ -22,10 +22,10 @@
 #define LOCLENGTH 8
 #define COMMENTLENGTH 27
 #define EXTRALENGTH 50
-#define RSTLENGTH 3
+//#define RSTLENGTH 3
 #define SERIALLENGTH 4
 
-#define INISECTLENGTH 40
+//#define INISECTLENGTH 40
 
 #define CS_OK 0
 #define CS_NOT_VALIDATED -1
@@ -199,8 +199,8 @@ class dtg
 //---------------------------------------------------------------------------
 class callsign
 {
-#define BITLENGTH 4
-	#define NUMBITLENGTH 3
+   #define BITLENGTH 4
+	#define NUMBITLENGTH 4
 	#define TRAILBITLENGTH 3
    public:
       MinosItem<std::string> fullCall; // full call
