@@ -79,9 +79,9 @@ object SingleLogFrame: TSingleLogFrame
           TabOrder = 0
           object NextContactDetailsLabel: TLabel
             Left = 3
-            Top = 3
+            Top = 38
             Width = 149
-            Height = 148
+            Height = 113
             Hint = 
               'Next contact details (use Right Mouse Button if you want to move' +
               ' it)'
@@ -101,8 +101,35 @@ object SingleLogFrame: TSingleLogFrame
             Layout = tlCenter
             WordWrap = True
             ExplicitLeft = 6
+            ExplicitTop = 43
             ExplicitWidth = 146
             ExplicitHeight = 110
+          end
+          object BandPanel: TPanel
+            Left = 3
+            Top = 3
+            Width = 149
+            Height = 35
+            Align = alTop
+            BevelOuter = bvNone
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlue
+            Font.Height = -19
+            Font.Name = 'Verdana'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            object BandCombo: TComboBox
+              Left = 0
+              Top = 0
+              Width = 149
+              Height = 31
+              Align = alClient
+              Style = csDropDownList
+              ItemHeight = 23
+              TabOrder = 0
+              TabStop = False
+            end
           end
         end
         inline GJVQSOLogFrame: TGJVQSOLogFrame
@@ -133,122 +160,65 @@ object SingleLogFrame: TSingleLogFrame
               Width = 14
               ExplicitWidth = 14
             end
-            inherited DateEdit: TLabeledEdit [3]
-              EditLabel.Width = 27
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 7
-              EditLabel.ExplicitWidth = 27
-              TabOrder = 12
-            end
-            inherited CallsignEdit: TLabeledEdit [4]
-              EditLabel.Width = 72
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 29
-              EditLabel.ExplicitWidth = 72
-              TabOrder = 0
-            end
-            inherited MatchXferButton: TBitBtn [5]
-              TabOrder = 11
-              OnClick = GJVQSOLogFrame1MatchXferButtonClick
-            end
-            inherited ModeComboBoxGJV: TComboBox [6]
-              TabOrder = 14
-            end
-            inherited NonScoreCheckBox: TCheckBox [7]
-              TabOrder = 18
-            end
-            inherited GJVForceButton: TButton [8]
-              TabOrder = 9
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited CommentsEdit: TLabeledEdit [9]
-              Top = 118
-              EditLabel.Width = 62
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 102
-              EditLabel.ExplicitWidth = 62
-              TabOrder = 7
-              ExplicitTop = 118
-            end
-            inherited BandChoiceRadioGroup: TRadioGroup [10]
-            end
-            inherited GJVCancelButton: TButton [11]
-              TabOrder = 10
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited SerTXEdit: TLabeledEdit [12]
-              Left = 170
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 170
-              EditLabel.ExplicitTop = 29
-              EditLabel.ExplicitWidth = 52
-              TabOrder = 2
-              ExplicitLeft = 170
-            end
-            inherited QTHEdit: TLabeledEdit
-              Left = 489
-              EditLabel.Width = 55
-              EditLabel.ExplicitLeft = 489
-              EditLabel.ExplicitTop = 29
-              EditLabel.ExplicitWidth = 55
-              TabOrder = 6
-              ExplicitLeft = 489
-            end
-            inherited GJVOKButton: TButton [14]
-              TabOrder = 8
-              OnClick = GJVQSOLogFrame1GJVOKButtonClick
-            end
-            inherited SerRXEdit: TLabeledEdit [15]
-              EditLabel.Width = 53
-              EditLabel.ExplicitLeft = 316
-              EditLabel.ExplicitTop = 29
-              EditLabel.ExplicitWidth = 53
-              TabOrder = 4
-            end
-            inherited LocEdit: TLabeledEdit [16]
-              EditLabel.Width = 46
-              EditLabel.ExplicitLeft = 395
-              EditLabel.ExplicitTop = 29
-              EditLabel.ExplicitWidth = 46
-              TabOrder = 5
-            end
-            inherited RSTTXEdit: TLabeledEdit [17]
+            inherited RSTTXEdit: TLabeledEdit
               EditLabel.Width = 56
               EditLabel.ExplicitLeft = 109
-              EditLabel.ExplicitTop = 29
+              EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 56
-              TabOrder = 1
             end
-            inherited RSTRXEdit: TLabeledEdit [18]
-              Left = 237
+            inherited DateEdit: TLabeledEdit
+              EditLabel.Width = 27
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 27
+            end
+            inherited SerTXEdit: TLabeledEdit
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 163
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
+            end
+            inherited RSTRXEdit: TLabeledEdit
               EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 237
-              EditLabel.ExplicitTop = 29
+              EditLabel.ExplicitLeft = 239
+              EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 56
-              TabOrder = 3
-              ExplicitLeft = 237
             end
-            inherited DeletedCheckBox: TCheckBox [19]
-              TabOrder = 17
+            inherited SerRXEdit: TLabeledEdit
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 316
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 53
             end
-            inherited TimeEdit: TLabeledEdit [20]
+            inherited QTHEdit: TLabeledEdit
+              EditLabel.Width = 55
+              EditLabel.ExplicitLeft = 483
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 55
+            end
+            inherited TimeEdit: TLabeledEdit
               EditLabel.Width = 28
-              EditLabel.ExplicitLeft = 108
+              EditLabel.ExplicitLeft = 113
               EditLabel.ExplicitTop = 45
               EditLabel.ExplicitWidth = 28
-              TabOrder = 13
             end
-            inherited BandMapPanel: TPanel
-              TabOrder = 15
-              inherited BandMapButton: TButton
-                TabOrder = 2
-              end
-              inherited AutoBandmapTune: TCheckBox
-                TabOrder = 0
-              end
-              inherited AutoBandmapTime: TCheckBox
-                TabOrder = 1
-              end
+            inherited CallsignEdit: TLabeledEdit
+              EditLabel.Width = 72
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 72
+            end
+            inherited CommentsEdit: TLabeledEdit
+              EditLabel.Width = 62
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 104
+              EditLabel.ExplicitWidth = 62
+            end
+            inherited LocEdit: TLabeledEdit
+              EditLabel.Width = 46
+              EditLabel.ExplicitLeft = 395
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 46
             end
           end
         end

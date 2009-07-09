@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 // $Id$
 //
 // PROJECT NAME 		Minos Amateur Radio Control and Logging System
@@ -1326,8 +1326,13 @@ void __fastcall TSingleLogFrame::OnShowTimerTimer( TObject */*Sender*/ )
    ;
    if (res)
    {
-      GJVQSOLogFrame->BandChoiceRadioGroup->Caption = bi.uk.c_str();
+      BandCombo->Items->Add(bi.uk.c_str());
    }
+   else
+   {
+      BandCombo->Items->Add(contest->band.getValue().c_str());
+   }
+   BandCombo->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 bool TSingleLogFrame::getStanza( unsigned int stanza, std::string &stanzaData )

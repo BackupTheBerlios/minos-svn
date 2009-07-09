@@ -89,6 +89,8 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       TTimer *OnShowTimer;
       TMenuItem *Shifttableft1;
       TMenuItem *Shifttabright1;
+   TPanel *BandPanel;
+   TComboBox *BandCombo;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );
