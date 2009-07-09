@@ -236,6 +236,55 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
    {
       tle->EditLabel->Font->Color = clWindowText;
    }
+   if ( current == LocEdit )
+   {
+      // do any required character substitutions, but only when we have a full
+      // locator
+
+      // This does something to correct sloppy typing
+
+      String loc = LocEdit->Text.Trim();
+      if (loc.Length() == 6 || loc.Length() == 8)
+      {
+         if (loc[1] == '1')
+         {
+            loc[1] = 'I';
+         }
+         if (loc[1] == '0')
+         {
+            loc[1] = 'O';
+         }
+         if (loc[2] == '1')
+         {
+            loc[2] = 'I';
+         }
+         if (loc[2] == '0')
+         {
+            loc[2] = 'O';
+         }
+
+         if (loc[5] == '1')
+         {
+            loc[5] = 'I';
+         }
+         if (loc[5] == '0')
+         {
+            loc[5] = 'O';
+         }
+         if (loc[6] == '1')
+         {
+            loc[6] = 'I';
+         }
+         if (loc[6] == '0')
+         {
+            loc[6] = 'O';
+         }
+         if (loc != LocEdit->Text.Trim())
+         {
+            LocEdit->Text = loc;
+         }
+      }
+   }
    if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
    {
       valid( cmCheckValid ); // make sure all single and cross field
@@ -243,6 +292,14 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
    }
    MinosParameters::getMinosParameters() ->showErrorList( );
    editScreen->reportOverstrike( overstrike );
+   if (ModeComboBoxGJV->Text == "A1A")
+   {
+      ModeButton->Caption = "J3E";
+   }
+   else
+   {
+      ModeButton->Caption = "A1A";
+   }
 }
 //---------------------------------------------------------------------------
 
@@ -1203,4 +1260,18 @@ void TGJVEditFrame::updateQSODisplay()
       QTHEdit->CharCase = ecNormal;
    }
 }
+
+void __fastcall TGJVEditFrame::TimeNowButtonClick(TObject *Sender)
+{
+   setTimeNow();
+   EditControlExit(Sender);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVEditFrame::ModeButtonClick(TObject *Sender)
+{
+   ModeComboBoxGJV->Text = ModeButton->Caption;
+   EditControlExit(Sender);
+}
+//---------------------------------------------------------------------------
 

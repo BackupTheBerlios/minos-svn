@@ -49,9 +49,6 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     inherited DateEdit: TLabeledEdit
       Hint = 'Date/Time is read only - double click to modify'
     end
-    inherited BandChoiceRadioGroup: TRadioGroup
-      TabOrder = 23
-    end
     object InsertBeforeButton: TButton
       Left = 8
       Top = 194

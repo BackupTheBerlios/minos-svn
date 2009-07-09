@@ -52,7 +52,8 @@ class TGJVEditFrame : public TFrame
       TLabeledEdit *DateEdit;
       TCheckBox *NonScoreCheckBox;
       TCheckBox *DeletedCheckBox;
-   TRadioGroup *BandChoiceRadioGroup;
+   TButton *TimeNowButton;
+   TButton *ModeButton;
       void __fastcall EditControlEnter( TObject *Sender );
       void __fastcall EditControlExit( TObject *Sender );
       void __fastcall EditKeyDown( TObject *Sender, WORD &Key,
@@ -67,6 +68,8 @@ class TGJVEditFrame : public TFrame
       void __fastcall TimeEditChange( TObject *Sender );
       void __fastcall SerTXEditChange( TObject *Sender );
       void __fastcall LocEditChange( TObject *Sender );
+   void __fastcall TimeNowButtonClick(TObject *Sender);
+   void __fastcall ModeButtonClick(TObject *Sender);
    private: 	// User declarations
 
       ValidatedControl *dateIl;
