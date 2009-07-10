@@ -1,14 +1,14 @@
 object GJVEditFrame: TGJVEditFrame
   Left = 0
   Top = 0
-  Width = 556
+  Width = 577
   Height = 153
   TabOrder = 0
   TabStop = True
   object G0GJVPanel: TPanel
     Left = 0
     Top = 0
-    Width = 556
+    Width = 577
     Height = 153
     Align = alClient
     BevelKind = bkFlat
@@ -271,16 +271,16 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object NonScoreCheckBox: TCheckBox
-      Left = 383
+      Left = 380
       Top = 43
-      Width = 77
+      Width = 94
       Height = 17
       TabStop = False
       Caption = 'Non Scoring'
       TabOrder = 5
     end
     object DeletedCheckBox: TCheckBox
-      Left = 470
+      Left = 480
       Top = 43
       Width = 65
       Height = 17

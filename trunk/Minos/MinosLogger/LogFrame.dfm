@@ -160,65 +160,93 @@ object SingleLogFrame: TSingleLogFrame
               Width = 14
               ExplicitWidth = 14
             end
-            inherited RSTTXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 109
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited DateEdit: TLabeledEdit
-              EditLabel.Width = 27
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 45
-              EditLabel.ExplicitWidth = 27
-            end
-            inherited SerTXEdit: TLabeledEdit
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 163
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 52
-            end
-            inherited RSTRXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 239
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited SerRXEdit: TLabeledEdit
-              EditLabel.Width = 53
-              EditLabel.ExplicitLeft = 316
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 53
-            end
-            inherited QTHEdit: TLabeledEdit
+            inherited QTHEdit: TLabeledEdit [3]
               EditLabel.Width = 55
               EditLabel.ExplicitLeft = 483
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 55
+              TabOrder = 11
             end
-            inherited TimeEdit: TLabeledEdit
+            inherited TimeEdit: TLabeledEdit [4]
               EditLabel.Width = 28
               EditLabel.ExplicitLeft = 113
               EditLabel.ExplicitTop = 45
               EditLabel.ExplicitWidth = 28
             end
-            inherited CallsignEdit: TLabeledEdit
+            inherited CallsignEdit: TLabeledEdit [5]
               EditLabel.Width = 72
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 72
+              TabOrder = 5
             end
-            inherited CommentsEdit: TLabeledEdit
+            inherited DeletedCheckBox: TCheckBox [6]
+            end
+            inherited CommentsEdit: TLabeledEdit [7]
               EditLabel.Width = 62
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 104
               EditLabel.ExplicitWidth = 62
+              TabOrder = 12
             end
-            inherited LocEdit: TLabeledEdit
+            inherited LocEdit: TLabeledEdit [8]
               EditLabel.Width = 46
               EditLabel.ExplicitLeft = 395
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 46
+              TabOrder = 6
+            end
+            inherited TimeNowButton: TButton [9]
+            end
+            inherited ModeButton: TButton [10]
+            end
+            inherited MatchXferButton: TBitBtn [11]
+              TabOrder = 13
+            end
+            inherited BandMapPanel: TPanel [12]
+              TabOrder = 15
+            end
+            inherited SerRXEdit: TLabeledEdit [13]
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 316
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 53
+            end
+            inherited RSTRXEdit: TLabeledEdit [14]
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 239
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited SerTXEdit: TLabeledEdit [15]
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 163
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
+            end
+            inherited NonScoreCheckBox: TCheckBox [16]
+              TabOrder = 16
+            end
+            inherited ModeComboBoxGJV: TComboBox [17]
+            end
+            inherited RSTTXEdit: TLabeledEdit [18]
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 109
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited GJVOKButton: TButton [19]
+            end
+            inherited GJVForceButton: TButton [20]
+              TabOrder = 14
+            end
+            inherited GJVCancelButton: TButton [21]
+            end
+            inherited DateEdit: TLabeledEdit [22]
+              EditLabel.Width = 27
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 27
             end
           end
         end
@@ -577,31 +605,43 @@ object SingleLogFrame: TSingleLogFrame
     object Details1: TMenuItem
       Action = LogContainer.ContestDetailsAction
     end
+    object ProduceEntryExportFile1: TMenuItem
+      Action = LogContainer.MakeEntryAction
+    end
+    object Details2: TMenuItem
+      Action = LogContainer.AnalyseMinosLogAction
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object SetTimeNow: TMenuItem
+      Caption = 'Set Time to Now'
+      OnClick = SetTimeNowClick
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
     object Go1: TMenuItem
       Action = LogContainer.GoToSerialAction
     end
     object GotoNextUnfilled1: TMenuItem
       Action = LogContainer.NextUnfilledAction
     end
-    object Details2: TMenuItem
-      Action = LogContainer.AnalyseMinosLogAction
+    object N4: TMenuItem
+      Caption = '-'
     end
     object NextContactDetailsOnLeft: TMenuItem
       Caption = 'Next Contact Details On Left'
       OnClick = NextContactDetailsOnLeftClick
-    end
-    object ProduceEntryExportFile1: TMenuItem
-      Action = LogContainer.MakeEntryAction
-    end
-    object SetTimeNow: TMenuItem
-      Caption = 'Set Time to Now'
-      OnClick = SetTimeNowClick
     end
     object Shifttableft1: TMenuItem
       Action = LogContainer.ShiftTabLeftAction
     end
     object Shifttabright1: TMenuItem
       Action = LogContainer.ShiftTabRightAction
+    end
+    object N1: TMenuItem
+      Caption = '-'
     end
     object Cancel1: TMenuItem
       Caption = 'Cancel'
