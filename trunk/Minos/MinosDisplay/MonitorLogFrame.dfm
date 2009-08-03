@@ -25,7 +25,6 @@ object LogMonitorFrame: TLogMonitorFrame
     TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
     TreeOptions.PaintOptions = [toHideFocusRect, toShowButtons, toShowDropmark, toShowHorzGridLines, toThemeAware, toUseBlendedImages]
     TreeOptions.SelectionOptions = [toExtendedFocus, toFullRowSelect]
-    OnBeforeCellPaint = QSOTreeBeforeCellPaint
     OnBeforeItemErase = QSOTreeBeforeItemErase
     OnColumnResize = QSOTreeColumnResize
     OnDblClick = QSOTreeDblClick

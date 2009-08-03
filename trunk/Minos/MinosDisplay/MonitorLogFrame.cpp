@@ -146,21 +146,4 @@ void TLogMonitorFrame::showQSOs()
    QSOTree->Header->Options = ( QSOTree->Header->Options << hoVisible );
 }
 
-void __fastcall TLogMonitorFrame::QSOTreeBeforeCellPaint(
-   TBaseVirtualTree */*Sender*/, TCanvas */*TargetCanvas*/, PVirtualNode /*Node*/,
-   TColumnIndex /*Column*/, TRect &/*CellRect*/ )
-{
-   /*
-      BaseContact *ct = contest->pcontactAt( Node->Index );
-      if (  Column == 1 && ct )
-      {
-   	  if (ct->getModificationCount() > 1)
-         {
-   		 TargetCanvas->Brush->Color = 0x00C080FF;     //pale pink
-   		 TargetCanvas->FillRect(CellRect);
-   	  }
-      }
-   */
-}
-//---------------------------------------------------------------------------
 

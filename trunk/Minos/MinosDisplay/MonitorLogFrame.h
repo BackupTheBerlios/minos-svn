@@ -32,9 +32,6 @@ class TLogMonitorFrame : public TFrame
       void __fastcall QSOTreePaintText( TBaseVirtualTree *Sender,
                                         const TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
                                         TVSTTextType TextType );
-      void __fastcall QSOTreeBeforeCellPaint( TBaseVirtualTree *Sender,
-                                              TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
-                                              TRect &CellRect );
    private: 	// User declarations
       BaseContestLog * contest;
    public: 		// User declarations
