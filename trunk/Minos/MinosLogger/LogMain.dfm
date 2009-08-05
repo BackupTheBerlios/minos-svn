@@ -2,8 +2,8 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 696
-  ClientWidth = 742
+  ClientHeight = 386
+  ClientWidth = 744
   Color = clBtnFace
   UseDockManager = True
   Font.Charset = DEFAULT_CHARSET
@@ -23,8 +23,8 @@ object LogContainer: TLogContainer
   object ContestPageControl: TPageControl
     Left = 0
     Top = 0
-    Width = 742
-    Height = 677
+    Width = 744
+    Height = 367
     Align = alClient
     DockSite = True
     MultiLine = True
@@ -36,11 +36,13 @@ object LogContainer: TLogContainer
     OnChange = ContestPageControlChange
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
+    ExplicitWidth = 742
+    ExplicitHeight = 677
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 677
-    Width = 742
+    Top = 367
+    Width = 744
     Height = 19
     Hint = 'Click to correct date/time'
     Action = CorrectDateTimeAction
@@ -62,6 +64,8 @@ object LogContainer: TLogContainer
     UseSystemFont = False
     OnDblClick = CorrectDateTimeActionExecute
     OnResize = StatusBar1Resize
+    ExplicitTop = 677
+    ExplicitWidth = 742
   end
   object ActionManager: TActionManager
     ActionBars = <
