@@ -126,7 +126,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end
@@ -160,96 +160,96 @@ object SingleLogFrame: TSingleLogFrame
               Width = 14
               ExplicitWidth = 14
             end
-            inherited SerRXEdit: TLabeledEdit [3]
-              EditLabel.Width = 53
-              EditLabel.ExplicitLeft = 316
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 53
-            end
-            inherited RSTRXEdit: TLabeledEdit [4]
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 239
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited SerTXEdit: TLabeledEdit [5]
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 163
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 52
-            end
-            inherited NonScoreCheckBox: TCheckBox [6]
-              TabOrder = 16
-            end
-            inherited ModeComboBoxGJV: TComboBox [7]
-            end
-            inherited RSTTXEdit: TLabeledEdit [8]
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 109
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited GJVOKButton: TButton [9]
-              OnClick = GJVQSOLogFrame1GJVOKButtonClick
-            end
-            inherited GJVForceButton: TButton [10]
-              TabOrder = 14
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited GJVCancelButton: TButton [11]
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited DateEdit: TLabeledEdit [12]
-              EditLabel.Width = 27
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 45
-              EditLabel.ExplicitWidth = 27
-            end
-            inherited BandMapPanel: TPanel [13]
+            inherited BandMapPanel: TPanel [3]
               TabOrder = 15
             end
-            inherited MatchXferButton: TBitBtn [14]
+            inherited MatchXferButton: TBitBtn [4]
               TabOrder = 13
             end
-            inherited ModeButton: TButton [15]
+            inherited ModeButton: TButton [5]
             end
-            inherited TimeNowButton: TButton [16]
+            inherited TimeNowButton: TButton [6]
             end
-            inherited LocEdit: TLabeledEdit [17]
+            inherited LocEdit: TLabeledEdit [7]
               EditLabel.Width = 46
               EditLabel.ExplicitLeft = 395
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 46
               TabOrder = 6
             end
-            inherited CommentsEdit: TLabeledEdit [18]
+            inherited CommentsEdit: TLabeledEdit [8]
               EditLabel.Width = 62
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 104
               EditLabel.ExplicitWidth = 62
               TabOrder = 12
             end
-            inherited DeletedCheckBox: TCheckBox [19]
+            inherited DeletedCheckBox: TCheckBox [9]
             end
-            inherited CallsignEdit: TLabeledEdit [20]
+            inherited CallsignEdit: TLabeledEdit [10]
               EditLabel.Width = 72
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 72
               TabOrder = 5
             end
-            inherited TimeEdit: TLabeledEdit [21]
+            inherited TimeEdit: TLabeledEdit [11]
               EditLabel.Width = 28
               EditLabel.ExplicitLeft = 113
               EditLabel.ExplicitTop = 45
               EditLabel.ExplicitWidth = 28
             end
-            inherited QTHEdit: TLabeledEdit [22]
+            inherited QTHEdit: TLabeledEdit [12]
               EditLabel.Width = 55
               EditLabel.ExplicitLeft = 483
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 55
               TabOrder = 11
+            end
+            inherited DateEdit: TLabeledEdit [13]
+              EditLabel.Width = 27
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 27
+            end
+            inherited GJVCancelButton: TButton [14]
+              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
+            end
+            inherited GJVForceButton: TButton [15]
+              TabOrder = 14
+              OnClick = GJVQSOLogFrame1GJVForceButtonClick
+            end
+            inherited GJVOKButton: TButton [16]
+              OnClick = GJVQSOLogFrame1GJVOKButtonClick
+            end
+            inherited RSTTXEdit: TLabeledEdit [17]
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 109
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited ModeComboBoxGJV: TComboBox [18]
+            end
+            inherited NonScoreCheckBox: TCheckBox [19]
+              TabOrder = 16
+            end
+            inherited SerTXEdit: TLabeledEdit [20]
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 163
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
+            end
+            inherited RSTRXEdit: TLabeledEdit [21]
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 239
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited SerRXEdit: TLabeledEdit [22]
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 316
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 53
             end
           end
         end
