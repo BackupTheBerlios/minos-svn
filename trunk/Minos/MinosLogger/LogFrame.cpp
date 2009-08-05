@@ -277,7 +277,6 @@ void TSingleLogFrame::showMatchHeaders( )
    ThisMatchTree->Header->Options = ( ThisMatchTree->Header->Options >> hoVisible );
    ThisMatchTree->Header->Columns->Clear();
    // Setting header visibility BEFORE setting columns seems to work...
-   ThisMatchTree->Header->Options = ( ThisMatchTree->Header->Options << hoVisible );
    for ( int i = 0; i < THISMATCHTREECOLS; i++ )
    {
       TVirtualTreeColumn *NewColumn = ThisMatchTree->Header->Columns->Add();
@@ -291,10 +290,10 @@ void TSingleLogFrame::showMatchHeaders( )
    }
    ThisMatchTree->Margin = 0;
    ThisMatchTree->TextMargin = 4;
+   ThisMatchTree->Header->Options = ( ThisMatchTree->Header->Options << hoVisible );
 
    OtherMatchTree->Header->Options = ( OtherMatchTree->Header->Options >> hoVisible );
    OtherMatchTree->Header->Columns->Clear();
-   OtherMatchTree->Header->Options = ( OtherMatchTree->Header->Options << hoVisible );
    for ( int i = 0; i < OTHERMATCHTREECOLS; i++ )
    {
       TVirtualTreeColumn *NewColumn = OtherMatchTree->Header->Columns->Add();
@@ -308,10 +307,10 @@ void TSingleLogFrame::showMatchHeaders( )
    }
    OtherMatchTree->Margin = 0;
    OtherMatchTree->TextMargin = 4;
+   OtherMatchTree->Header->Options = ( OtherMatchTree->Header->Options << hoVisible );
 
    ArchiveMatchTree->Header->Options = ( ArchiveMatchTree->Header->Options >> hoVisible );
    ArchiveMatchTree->Header->Columns->Clear();
-   ArchiveMatchTree->Header->Options = ( ArchiveMatchTree->Header->Options << hoVisible );
    for ( int i = 0; i < ARCHIVEMATCHTREECOLS; i++ )
    {
       TVirtualTreeColumn *NewColumn = ArchiveMatchTree->Header->Columns->Add();
@@ -325,6 +324,7 @@ void TSingleLogFrame::showMatchHeaders( )
    }
    ArchiveMatchTree->Margin = 0;
    ArchiveMatchTree->TextMargin = 4;
+   ArchiveMatchTree->Header->Options = ( ArchiveMatchTree->Header->Options << hoVisible );
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
