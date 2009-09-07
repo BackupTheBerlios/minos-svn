@@ -77,52 +77,76 @@
     <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
     <Borland.ProjectType>CppPackage</Borland.ProjectType>
     <BorlandProject>
-<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><Source><Source Name="MainSource">GJVControls.cpp</Source></Source><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><Source><Source Name="MainSource">GJVControls.cpp</Source></Source><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><Excluded_Packages>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\Bin\dclIndyCore100.bpl">Indy 10 Core Design Time</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\Bin\dclIndyProtocols100.bpl">Indy 10 Protocols Design Time</Excluded_Packages>
+    </Excluded_Packages></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
   </ProjectExtensions>
   <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
   <ItemGroup>
-    <PackageImport Include="rtl.bpi">
+    <PackageImport Include="bcbsmp.bpi">
       <BuildOrder>0</BuildOrder>
     </PackageImport>
-    <PackageImport Include="vcl.bpi">
+    <PackageImport Include="rtl.bpi">
       <BuildOrder>1</BuildOrder>
     </PackageImport>
-    <DelphiCompile Include="..\adpMRU.pas">
+    <PackageImport Include="vcl.bpi">
       <BuildOrder>2</BuildOrder>
-    </DelphiCompile>
-    <DelphiCompile Include="..\Hstcbo.pas">
+    </PackageImport>
+    <PackageImport Include="vclx.bpi">
+      <BuildOrder>3</BuildOrder>
+    </PackageImport>
+    <DelphiCompile Include="..\adpMRU.pas">
       <BuildOrder>4</BuildOrder>
     </DelphiCompile>
+    <DelphiCompile Include="..\Hstcbo.pas">
+      <BuildOrder>6</BuildOrder>
+    </DelphiCompile>
     <DelphiCompile Include="..\Sasg.pas">
-      <BuildOrder>9</BuildOrder>
+      <BuildOrder>11</BuildOrder>
     </DelphiCompile>
     <None Include="..\Hstcbo.dcr">
-      <BuildOrder>3</BuildOrder>
+      <BuildOrder>5</BuildOrder>
     </None>
     <None Include="..\MjgTreeV.dcr">
-      <BuildOrder>6</BuildOrder>
-    </None>
-    <None Include="..\Sasg.dcr">
       <BuildOrder>8</BuildOrder>
     </None>
+    <None Include="..\Sasg.dcr">
+      <BuildOrder>10</BuildOrder>
+    </None>
     <None Include="..\tspanel.dcr">
-      <BuildOrder>11</BuildOrder>
+      <BuildOrder>13</BuildOrder>
     </None>
     <CppCompile Include="..\MjgTreeV.cpp">
-      <BuildOrder>5</BuildOrder>
-    </CppCompile>
-    <CppCompile Include="..\RCVersion.cpp">
       <BuildOrder>7</BuildOrder>
     </CppCompile>
-    <CppCompile Include="..\tspanel.cpp">
-      <BuildOrder>10</BuildOrder>
+    <CppCompile Include="..\RCVersion.cpp">
+      <BuildOrder>9</BuildOrder>
     </CppCompile>
-    <CppCompile Include="GJVControls.cpp">
+    <CppCompile Include="..\tspanel.cpp">
       <BuildOrder>12</BuildOrder>
     </CppCompile>
+    <CppCompile Include="GJVControls.cpp">
+      <BuildOrder>14</BuildOrder>
+    </CppCompile>
     <ResFiles Include="GJVControls.res">
-      <ModuleName>GJVControls.res</ModuleName>
-      <BuildOrder>13</BuildOrder>
+      <BuildOrder>15</BuildOrder>
     </ResFiles>
     <BuildConfiguration Include="Debug Build">
       <Key>Cfg_1</Key>
