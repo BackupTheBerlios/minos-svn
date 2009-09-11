@@ -1,0 +1,74 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{e67e208b-11b0-4706-9caf-b6723f17158f}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="GJVControls140.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="GJVAudio140.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="VTV140.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="VTVD140.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<BorlandProject>
+					<Default.Personality/>
+				</BorlandProject>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="GJVControls140">
+			<MSBuild Projects="GJVControls140.cbproj"/>
+		</Target>
+		<Target Name="GJVControls140:Clean">
+			<MSBuild Targets="Clean" Projects="GJVControls140.cbproj"/>
+		</Target>
+		<Target Name="GJVControls140:Make">
+			<MSBuild Targets="Make" Projects="GJVControls140.cbproj"/>
+		</Target>
+		<Target Name="GJVAudio140">
+			<MSBuild Projects="GJVAudio140.cbproj"/>
+		</Target>
+		<Target Name="GJVAudio140:Clean">
+			<MSBuild Targets="Clean" Projects="GJVAudio140.cbproj"/>
+		</Target>
+		<Target Name="GJVAudio140:Make">
+			<MSBuild Targets="Make" Projects="GJVAudio140.cbproj"/>
+		</Target>
+		<Target Name="VTV140">
+			<MSBuild Projects="VTV140.cbproj"/>
+		</Target>
+		<Target Name="VTV140:Clean">
+			<MSBuild Targets="Clean" Projects="VTV140.cbproj"/>
+		</Target>
+		<Target Name="VTV140:Make">
+			<MSBuild Targets="Make" Projects="VTV140.cbproj"/>
+		</Target>
+		<Target Name="VTVD140">
+			<MSBuild Projects="VTVD140.cbproj"/>
+		</Target>
+		<Target Name="VTVD140:Clean">
+			<MSBuild Targets="Clean" Projects="VTVD140.cbproj"/>
+		</Target>
+		<Target Name="VTVD140:Make">
+			<MSBuild Targets="Make" Projects="VTVD140.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="GJVControls140;GJVAudio140;VTV140;VTVD140"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="GJVControls140:Clean;GJVAudio140:Clean;VTV140:Clean;VTVD140:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="GJVControls140:Make;GJVAudio140:Make;VTV140:Make;VTVD140:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
