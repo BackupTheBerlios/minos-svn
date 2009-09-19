@@ -32,7 +32,8 @@ class BandList
       ~BandList();
       std::vector<BandInfo> bandList;
       bool parseFile(const std::string &bandFile);
-      int findBand(int freq, BandInfo &);
+      bool findBand(int freq, BandInfo &);
+      bool findBand(const std::string &cb, BandInfo &bi);
 
       static BandList &getBandList();
 

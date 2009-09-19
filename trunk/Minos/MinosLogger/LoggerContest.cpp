@@ -826,21 +826,13 @@ bool LoggerContestLog::exportREG1TEST( HANDLE expfd )
 
    // band
 
-   bool bandOK = false;
    std::string cb = trim(band.getValue());
    BandList &blist = BandList::getBandList();
-   for (unsigned int i = 0; i < blist.bandList.size(); i++)
+   BandInfo bi;
+   bool bandOK = blist.findBand(cb, bi);
+   if (bandOK)
    {
-      if (stricmp(cb, blist.bandList[ i ].uk) == 0
-            || stricmp(cb, blist.bandList[ i ].wlen) == 0
-            || stricmp(cb, blist.bandList[ i ].adif) == 0
-            || stricmp(cb, blist.bandList[ i ].cabrillo) == 0
-            || stricmp(cb, blist.bandList[ i ].reg1test) == 0)
-      {
-         cb = blist.bandList[ i ].reg1test;
-         bandOK = true;
-         break;
-      }
+      cb = bi.reg1test;
    }
 
    if ( !bandOK )

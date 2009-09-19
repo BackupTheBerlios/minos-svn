@@ -163,7 +163,7 @@ bool BandList::parseBand(TiXmlElement * e)
 
    return true;
 }
-int BandList::findBand(int freq, BandInfo &bi)
+bool BandList::findBand(int freq, BandInfo &bi)
 {
    for (std::vector<BandInfo>::iterator i = bandList.begin(); i != bandList.end(); i++)
    {
@@ -174,5 +174,25 @@ int BandList::findBand(int freq, BandInfo &bi)
       }
    }
    return false;
+}
+
+bool BandList::findBand(const std::string &cb, BandInfo &bi)
+{
+   for (std::vector<BandInfo>::iterator i = bandList.begin(); i != bandList.end(); i++)
+   {
+      if (stricmp(cb, (*i).uk) == 0
+            || stricmp(cb, (*i).wlen) == 0
+            || stricmp(cb, (*i).adif) == 0
+            || stricmp(cb, (*i).cabrillo) == 0
+            || stricmp(cb, (*i).reg1test) == 0)
+      {
+         bi = (*i);
+         return true;
+      }
+   }
+   int freq = atoi(cb.c_str());
+   bool res = findBand(freq, bi);
+
+   return res;
 }
 

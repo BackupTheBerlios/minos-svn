@@ -1249,6 +1249,21 @@ void TSingleLogFrame::updateQSOTime()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSODisplay()
 {
+   BandCombo->Clear();
+   std::string cb = trim(contest->band.getValue());
+   BandList &blist = BandList::getBandList();
+   BandInfo bi;
+   bool bandOK = blist.findBand(cb, bi);
+   if (bandOK)
+   {
+      BandCombo->Items->Add(bi.uk.c_str());
+   }
+   else
+   {
+      BandCombo->Items->Add(contest->band.getValue().c_str());
+   }
+   BandCombo->ItemIndex = 0;
+
    GJVQSOLogFrame->updateQSODisplay();
 }
 //---------------------------------------------------------------------------
@@ -1318,21 +1333,7 @@ void __fastcall TSingleLogFrame::OnShowTimerTimer( TObject */*Sender*/ )
    LogMonitor->TabStop = false;
    GJVQSOLogFrame->TabStop = false;
 
-   BandInfo bi;
-   int freq = atoi(contest->band.getValue().c_str());
-   bool res = (BandList::getBandList().findBand(freq * 1000000, bi)
-      || BandList::getBandList().findBand(freq * 1000000000, bi)
-      || BandList::getBandList().findBand(freq, bi))
-   ;
-   if (res)
-   {
-      BandCombo->Items->Add(bi.uk.c_str());
-   }
-   else
-   {
-      BandCombo->Items->Add(contest->band.getValue().c_str());
-   }
-   BandCombo->ItemIndex = 0;
+   updateQSODisplay();
 }
 //---------------------------------------------------------------------------
 bool TSingleLogFrame::getStanza( unsigned int stanza, std::string &stanzaData )
