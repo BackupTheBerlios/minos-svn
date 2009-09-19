@@ -19,6 +19,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_HppOutput>.</DCC_HppOutput>
 			<OutputExt>bpl</OutputExt>
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -161,34 +163,33 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<LibFiles Include="C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk\oleacc.lib">
-				<BuildOrder>6</BuildOrder>
-			</LibFiles>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibilityFactory.pas">
-				<BuildOrder>4</BuildOrder>
-			</DelphiCompile>
-			<ResFiles Include="VTV140.res">
-				<ModuleName>VTV140.res</ModuleName>
-				<BuildOrder>8</BuildOrder>
-			</ResFiles>
-			<CppCompile Include="VTV140.cpp">
-				<BuildOrder>7</BuildOrder>
-			</CppCompile>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibility.pas">
-				<BuildOrder>3</BuildOrder>
-			</DelphiCompile>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>1</BuildOrder>
-			</PackageImport>
 			<PackageImport Include="rtl.bpi">
 				<BuildOrder>0</BuildOrder>
 			</PackageImport>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VirtualTrees.pas">
-				<BuildOrder>2</BuildOrder>
-			</DelphiCompile>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>1</BuildOrder>
+			</PackageImport>
 			<DelphiCompile Include="C:\ThirdParty\VTV\Common\MSAAIntf.pas">
 				<BuildOrder>5</BuildOrder>
 			</DelphiCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VirtualTrees.pas">
+				<BuildOrder>2</BuildOrder>
+			</DelphiCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibility.pas">
+				<BuildOrder>3</BuildOrder>
+			</DelphiCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibilityFactory.pas">
+				<BuildOrder>4</BuildOrder>
+			</DelphiCompile>
+			<LibFiles Include="C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk\oleacc.lib">
+				<BuildOrder>6</BuildOrder>
+			</LibFiles>
+			<CppCompile Include="VTV140.cpp">
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="VTV140.res">
+				<BuildOrder>8</BuildOrder>
+			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

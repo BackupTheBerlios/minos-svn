@@ -19,6 +19,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DesignOnlyPackage>false</DesignOnlyPackage>
+			<DCC_HppOutput>.</DCC_HppOutput>
 			<OutputExt>bpl</OutputExt>
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 			<Defines>NO_STRICT</Defines>
@@ -163,40 +165,39 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Design\VirtualTreesReg.pas">
-				<BuildOrder>7</BuildOrder>
-			</DelphiCompile>
-			<PackageImport Include="xmlrtl.bpi">
-				<BuildOrder>6</BuildOrder>
-			</PackageImport>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTHeaderPopup.pas">
-				<BuildOrder>8</BuildOrder>
-			</DelphiCompile>
-			<ResFiles Include="VTVD140.res">
-				<ModuleName>VTVD140.res</ModuleName>
-				<BuildOrder>10</BuildOrder>
-			</ResFiles>
-			<CppCompile Include="VTVD140.cpp">
-				<BuildOrder>9</BuildOrder>
-			</CppCompile>
-			<PackageImport Include="rtl.bpi">
-				<BuildOrder>1</BuildOrder>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>2</BuildOrder>
 			</PackageImport>
 			<PackageImport Include="designide.bpi">
 				<BuildOrder>0</BuildOrder>
 			</PackageImport>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>2</BuildOrder>
-			</PackageImport>
 			<PackageImport Include="vclx.bpi">
 				<BuildOrder>4</BuildOrder>
-			</PackageImport>
-			<PackageImport Include="vclactnband.bpi">
-				<BuildOrder>3</BuildOrder>
 			</PackageImport>
 			<PackageImport Include="VTV140.bpi">
 				<BuildOrder>10</BuildOrder>
 			</PackageImport>
+			<PackageImport Include="vclactnband.bpi">
+				<BuildOrder>3</BuildOrder>
+			</PackageImport>
+			<PackageImport Include="rtl.bpi">
+				<BuildOrder>1</BuildOrder>
+			</PackageImport>
+			<PackageImport Include="xmlrtl.bpi">
+				<BuildOrder>6</BuildOrder>
+			</PackageImport>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Design\VirtualTreesReg.pas">
+				<BuildOrder>7</BuildOrder>
+			</DelphiCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTHeaderPopup.pas">
+				<BuildOrder>8</BuildOrder>
+			</DelphiCompile>
+			<CppCompile Include="VTVD140.cpp">
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="VTVD140.res">
+				<BuildOrder>10</BuildOrder>
+			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

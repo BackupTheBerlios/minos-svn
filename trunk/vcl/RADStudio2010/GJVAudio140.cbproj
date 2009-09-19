@@ -20,6 +20,8 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_HppOutput>.</DCC_HppOutput>
+			<DesignOnlyPackage>false</DesignOnlyPackage>
 			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
 			<OutputExt>bpl</OutputExt>
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
@@ -143,31 +145,30 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<CppCompile Include="..\xtrackkbar\xTrackBar.cpp">
-				<BuildOrder>5</BuildOrder>
-			</CppCompile>
-			<None Include="..\fbvu\FBVUMeter.dcr">
-				<BuildOrder>3</BuildOrder>
-			</None>
-			<ResFiles Include="GJVAudio140.res">
-				<ModuleName>GJVAudio140.res</ModuleName>
-				<BuildOrder>7</BuildOrder>
-			</ResFiles>
-			<CppCompile Include="GJVAudio140.cpp">
-				<BuildOrder>6</BuildOrder>
-			</CppCompile>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>1</BuildOrder>
-			</PackageImport>
 			<PackageImport Include="rtl.bpi">
 				<BuildOrder>0</BuildOrder>
 			</PackageImport>
-			<DelphiCompile Include="..\fbvu\FBVUMeter.pas">
-				<BuildOrder>2</BuildOrder>
-			</DelphiCompile>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>1</BuildOrder>
+			</PackageImport>
 			<DelphiCompile Include="..\fbvu\DrawBox.pas">
 				<BuildOrder>4</BuildOrder>
 			</DelphiCompile>
+			<DelphiCompile Include="..\fbvu\FBVUMeter.pas">
+				<BuildOrder>2</BuildOrder>
+			</DelphiCompile>
+			<None Include="..\fbvu\FBVUMeter.dcr">
+				<BuildOrder>3</BuildOrder>
+			</None>
+			<CppCompile Include="..\xtrackkbar\xTrackBar.cpp">
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="GJVAudio140.cpp">
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="GJVAudio140.res">
+				<BuildOrder>7</BuildOrder>
+			</ResFiles>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
