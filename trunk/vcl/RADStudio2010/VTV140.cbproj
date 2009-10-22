@@ -31,9 +31,9 @@
 			<ILINK_ObjectSearchPath>C:\vcl\VTV_SVN;C:\ThirdParty\VTV\Source;C:\ThirdParty\VTV\Common;..\RADStudio2007;..\RADStudio2010</ILINK_ObjectSearchPath>
 			<ProjectType>CppPackage</ProjectType>
 			<BCC_wpar>false</BCC_wpar>
-			<IncludePath>C:\ThirdParty\VTV\Common\;C:\ThirdParty\VTV\Source\;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\vcl\VTV_SVN;C:\ThirdParty\VTV\Source;C:\ThirdParty\VTV\Common;..\RADStudio2007;..\RADStudio2010</IncludePath>
+			<IncludePath>C:\ThirdParty\VTV\Common\;C:\ThirdParty\VTV\Source\;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\RADStudio2010;$(IncludePath)</IncludePath>
 			<DCC_IncludePath>$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-			<ILINK_LibraryPath>C:\ThirdParty\VTV\Common\;C:\ThirdParty\VTV\Source\;C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\vcl\VTV_SVN;C:\ThirdParty\VTV\Source;C:\ThirdParty\VTV\Common;..\RADStudio2007;..\RADStudio2010</ILINK_LibraryPath>
+			<ILINK_LibraryPath>C:\ThirdParty\VTV\Common\;C:\ThirdParty\VTV\Source\;C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk\;C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk;$(BDS)\lib\obj;..\RADStudio2007;..\RADStudio2010;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<Multithreaded>true</Multithreaded>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -163,33 +163,33 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<PackageImport Include="rtl.bpi">
-				<BuildOrder>0</BuildOrder>
-			</PackageImport>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>1</BuildOrder>
-			</PackageImport>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Common\MSAAIntf.pas">
-				<BuildOrder>5</BuildOrder>
-			</DelphiCompile>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VirtualTrees.pas">
-				<BuildOrder>2</BuildOrder>
-			</DelphiCompile>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibility.pas">
-				<BuildOrder>3</BuildOrder>
-			</DelphiCompile>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibilityFactory.pas">
-				<BuildOrder>4</BuildOrder>
-			</DelphiCompile>
 			<LibFiles Include="C:\Program Files\CodeGear\RAD Studio\5.0\lib\psdk\oleacc.lib">
 				<BuildOrder>6</BuildOrder>
 			</LibFiles>
-			<CppCompile Include="VTV140.cpp">
-				<BuildOrder>7</BuildOrder>
-			</CppCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibilityFactory.pas">
+				<BuildOrder>4</BuildOrder>
+			</DelphiCompile>
 			<ResFiles Include="VTV140.res">
 				<BuildOrder>8</BuildOrder>
 			</ResFiles>
+			<CppCompile Include="VTV140.cpp">
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTAccessibility.pas">
+				<BuildOrder>3</BuildOrder>
+			</DelphiCompile>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>1</BuildOrder>
+			</PackageImport>
+			<PackageImport Include="rtl.bpi">
+				<BuildOrder>0</BuildOrder>
+			</PackageImport>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VirtualTrees.pas">
+				<BuildOrder>2</BuildOrder>
+			</DelphiCompile>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Common\MSAAIntf.pas">
+				<BuildOrder>5</BuildOrder>
+			</DelphiCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

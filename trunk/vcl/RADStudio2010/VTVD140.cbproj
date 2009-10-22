@@ -31,9 +31,9 @@
 			<ILINK_ObjectSearchPath>C:\vcl\VTV_SVN;C:\ThirdParty\VTV\Design;C:\ThirdParty\VTV\Source;..\RADStudio2007;..\RADStudio2010</ILINK_ObjectSearchPath>
 			<ProjectType>CppPackage</ProjectType>
 			<BCC_wpar>false</BCC_wpar>
-			<IncludePath>C:\ThirdParty\VTV\Design\;C:\ThirdParty\VTV\Source\;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;C:\ThirdParty\VTV\Design;C:\ThirdParty\VTV\Source;C:\ThirdParty\VTV\Common;..\RADStudio2007;..\RADStudio2010</IncludePath>
+			<IncludePath>C:\ThirdParty\VTV\Design\;C:\ThirdParty\VTV\Source\;C:\ThirdParty\VTV\Common;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\RADStudio2010;$(IncludePath)</IncludePath>
 			<DCC_IncludePath>$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-			<ILINK_LibraryPath>C:\ThirdParty\VTV\Design\;C:\ThirdParty\VTV\Source\;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\vcl\VTV_SVN;C:\ThirdParty\VTV\Design;C:\ThirdParty\VTV\Source;..\RADStudio2007;..\RADStudio2010</ILINK_LibraryPath>
+			<ILINK_LibraryPath>C:\ThirdParty\VTV\Design\;C:\ThirdParty\VTV\Source\;$(BDS)\lib\obj;..\RADStudio2010;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<Multithreaded>true</Multithreaded>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -165,39 +165,39 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>2</BuildOrder>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Design\VirtualTreesReg.pas">
+				<BuildOrder>7</BuildOrder>
+			</DelphiCompile>
+			<PackageImport Include="xmlrtl.bpi">
+				<BuildOrder>6</BuildOrder>
+			</PackageImport>
+			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTHeaderPopup.pas">
+				<BuildOrder>8</BuildOrder>
+			</DelphiCompile>
+			<ResFiles Include="VTVD140.res">
+				<BuildOrder>10</BuildOrder>
+			</ResFiles>
+			<CppCompile Include="VTVD140.cpp">
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
+			<PackageImport Include="rtl.bpi">
+				<BuildOrder>1</BuildOrder>
 			</PackageImport>
 			<PackageImport Include="designide.bpi">
 				<BuildOrder>0</BuildOrder>
 			</PackageImport>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>2</BuildOrder>
+			</PackageImport>
 			<PackageImport Include="vclx.bpi">
 				<BuildOrder>4</BuildOrder>
-			</PackageImport>
-			<PackageImport Include="VTV140.bpi">
-				<BuildOrder>10</BuildOrder>
 			</PackageImport>
 			<PackageImport Include="vclactnband.bpi">
 				<BuildOrder>3</BuildOrder>
 			</PackageImport>
-			<PackageImport Include="rtl.bpi">
-				<BuildOrder>1</BuildOrder>
-			</PackageImport>
-			<PackageImport Include="xmlrtl.bpi">
-				<BuildOrder>6</BuildOrder>
-			</PackageImport>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Design\VirtualTreesReg.pas">
-				<BuildOrder>7</BuildOrder>
-			</DelphiCompile>
-			<DelphiCompile Include="C:\ThirdParty\VTV\Source\VTHeaderPopup.pas">
-				<BuildOrder>8</BuildOrder>
-			</DelphiCompile>
-			<CppCompile Include="VTVD140.cpp">
-				<BuildOrder>9</BuildOrder>
-			</CppCompile>
-			<ResFiles Include="VTVD140.res">
+			<PackageImport Include="VTV140.bpi">
 				<BuildOrder>10</BuildOrder>
-			</ResFiles>
+			</PackageImport>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
