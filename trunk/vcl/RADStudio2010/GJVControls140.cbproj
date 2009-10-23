@@ -145,48 +145,48 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 		<ItemGroup>
-			<None Include="..\MjgTreeV.dcr">
-				<BuildOrder>6</BuildOrder>
-			</None>
-			<None Include="..\Hstcbo.dcr">
-				<BuildOrder>3</BuildOrder>
-			</None>
-			<PackageImport Include="rtl.bpi">
-				<BuildOrder>0</BuildOrder>
-			</PackageImport>
-			<DelphiCompile Include="..\Hstcbo.pas">
-				<BuildOrder>4</BuildOrder>
-			</DelphiCompile>
-			<DelphiCompile Include="..\Sasg.pas">
-				<BuildOrder>9</BuildOrder>
-			</DelphiCompile>
-			<PackageImport Include="vcl.bpi">
-				<BuildOrder>1</BuildOrder>
-			</PackageImport>
-			<None Include="..\Sasg.dcr">
-				<BuildOrder>8</BuildOrder>
-			</None>
-			<CppCompile Include="..\RCVersion.cpp">
-				<BuildOrder>7</BuildOrder>
-			</CppCompile>
-			<CppCompile Include="..\MjgTreeV.cpp">
-				<BuildOrder>5</BuildOrder>
-			</CppCompile>
 			<None Include="..\tspanel.dcr">
 				<BuildOrder>11</BuildOrder>
 			</None>
+			<CppCompile Include="..\MjgTreeV.cpp">
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\RCVersion.cpp">
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
 			<CppCompile Include="..\tspanel.cpp">
 				<BuildOrder>10</BuildOrder>
 			</CppCompile>
-			<DelphiCompile Include="..\adpMRU.pas">
-				<BuildOrder>2</BuildOrder>
-			</DelphiCompile>
-			<ResFiles Include="GJVControls140.res">
-				<BuildOrder>13</BuildOrder>
-			</ResFiles>
 			<CppCompile Include="GJVControls140.cpp">
 				<BuildOrder>12</BuildOrder>
 			</CppCompile>
+			<ResFiles Include="GJVControls140.res">
+				<BuildOrder>13</BuildOrder>
+			</ResFiles>
+			<DelphiCompile Include="..\adpMRU.pas">
+				<BuildOrder>2</BuildOrder>
+			</DelphiCompile>
+			<PackageImport Include="rtl.bpi">
+				<BuildOrder>0</BuildOrder>
+			</PackageImport>
+			<None Include="..\Hstcbo.dcr">
+				<BuildOrder>3</BuildOrder>
+			</None>
+			<None Include="..\MjgTreeV.dcr">
+				<BuildOrder>6</BuildOrder>
+			</None>
+			<DelphiCompile Include="..\Hstcbo.pas">
+				<BuildOrder>4</BuildOrder>
+			</DelphiCompile>
+			<None Include="..\Sasg.dcr">
+				<BuildOrder>8</BuildOrder>
+			</None>
+			<PackageImport Include="vcl.bpi">
+				<BuildOrder>1</BuildOrder>
+			</PackageImport>
+			<DelphiCompile Include="..\Sasg.pas">
+				<BuildOrder>9</BuildOrder>
+			</DelphiCompile>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
