@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef TCalendarFormH
-#define TCalendarFormH 
+#define TCalendarFormH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -21,16 +21,13 @@
 #include <IdHTTP.hpp>
 #include <IdTCPClient.hpp>
 #include <IdTCPConnection.hpp>
-#include "JvExMask.hpp"
-#include "JvSpin.hpp"
-#include <Mask.hpp>
 //---------------------------------------------------------------------------
 class TCalendarForm : public TForm
 {
    __published: 	// IDE-managed Components
       TStringGrid *CalendarGrid;
       TPanel *Panel1;
-      TButton *Button1;
+   TButton *CloseButton;
       TButton *SelectButton;
       TButton *GetCalendarButton;
       TIdHTTP *IdHTTP1;
@@ -38,8 +35,7 @@ class TCalendarForm : public TForm
    TEdit *YearSpinEdit;
    TButton *YearDownButton;
    TButton *YearUpButton;
-   TJvSpinEdit *JvSpinEdit1;
-      void __fastcall Button1Click( TObject *Sender );
+      void __fastcall CloseButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall GetCalendarButtonClick( TObject *Sender );
       void __fastcall SelectButtonClick( TObject *Sender );

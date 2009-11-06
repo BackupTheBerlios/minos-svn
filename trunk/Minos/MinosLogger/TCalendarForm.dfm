@@ -43,7 +43,7 @@ object CalendarForm: TCalendarForm
       Height = 13
       Caption = 'CalendarVersionLabel'
     end
-    object Button1: TButton
+    object CloseButton: TButton
       Left = 653
       Top = 6
       Width = 75
@@ -53,7 +53,7 @@ object CalendarForm: TCalendarForm
       Caption = 'Close'
       ModalResult = 2
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = CloseButtonClick
     end
     object SelectButton: TButton
       Left = 14
@@ -100,13 +100,6 @@ object CalendarForm: TCalendarForm
       Caption = '>>'
       TabOrder = 5
       OnClick = YearUpButtonClick
-    end
-    object JvSpinEdit1: TJvSpinEdit
-      Left = 344
-      Top = 8
-      Width = 121
-      Height = 21
-      TabOrder = 6
     end
   end
   object IdHTTP1: TIdHTTP

@@ -10,13 +10,9 @@
 #pragma hdrstop
 
 #include "VHFList.h"
-#include "TCalendarForm.h" 
+#include "TCalendarForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "JvExMask"
-#pragma link "JvSpin"
-#pragma link "JvExMask"
-#pragma link "JvSpin"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
@@ -26,7 +22,7 @@ __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
    YearSpinEdit->Text = tnow.FormatString("yyyy");
 }
 //---------------------------------------------------------------------------
-void __fastcall TCalendarForm::Button1Click( TObject * /*Sender*/ )
+void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
 {
    ModalResult = mrCancel;
 }
@@ -101,7 +97,7 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    }
    if (nextContest)
    {
-      CalendarGrid->Row = nextContest;   
+      CalendarGrid->Row = nextContest;
    }
 }
 //---------------------------------------------------------------------------
