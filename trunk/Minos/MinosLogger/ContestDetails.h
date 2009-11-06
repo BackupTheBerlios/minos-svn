@@ -14,20 +14,9 @@
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
-#include <Forms.hpp>
-#include "VirtualTrees.hpp"
 #include <ExtCtrls.hpp>
-#include <Dialogs.hpp>
+#include <Forms.hpp>
 #include "BundleFrame.h"
-#include "JvDateTimePicker.hpp"
-#include "JvExComCtrls.hpp"
-#include <ComCtrls.hpp>
-#include "JvCheckedMaskEdit.hpp"
-#include "JvDatePickerEdit.hpp"
-#include "JvExMask.hpp"
-#include "JvMaskEdit.hpp"
-#include "JvToolEdit.hpp"
-#include <Mask.hpp> 
 //---------------------------------------------------------------------------
 class Calendar;
 class IndividualContest;
@@ -64,10 +53,6 @@ class TContestEntryDetails : public TForm
       TComboBox *SectionComboBox;
       TLabeledEdit *PowerEdit;
       TButton *BSHelpButton;
-      TLabel *Label1;
-      TLabel *Label2;
-      TJvDatePickerEdit *StartDateEdit;
-      TJvDatePickerEdit *EndDateEdit;
       TComboBox *StartTimeCombo;
       TComboBox *EndTimeCombo;
       TLabel *StartTimeLabel;
@@ -79,6 +64,10 @@ class TContestEntryDetails : public TForm
    TCheckBox *AllowLoc8CB;
    TCheckBox *AllowLoc4CB;
    TCheckBox *MultiBandCheckBox4;
+   TLabeledEdit *StartDateEdit;
+   TLabeledEdit *EndDateEdit;
+   TButton *StartDateButton;
+   TButton *EndDateButton;
       void __fastcall OKButtonClick( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
@@ -88,6 +77,8 @@ class TContestEntryDetails : public TForm
       void __fastcall VHFCalendarButtonClick( TObject *Sender );
    void __fastcall BundleFrameBundleSectionChange(TObject *Sender);
    void __fastcall BundleFrameBundleEditClick(TObject *Sender);
+   void __fastcall EndDateButtonClick(TObject *Sender);
+   void __fastcall StartDateButtonClick(TObject *Sender);
    private:   	// User declarations
 //      TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;

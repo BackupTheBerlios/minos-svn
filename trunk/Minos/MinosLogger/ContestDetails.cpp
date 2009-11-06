@@ -19,17 +19,10 @@
 #include "VHFList.h"
 #include "BandList.h"
 #include "TCalendarForm.h"
+#include "MDateSelectForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "Hstcbo"
 #pragma link "BundleFrame"
-#pragma link "JvDateTimePicker"
-#pragma link "JvExComCtrls"
-#pragma link "JvCheckedMaskEdit"
-#pragma link "JvDatePickerEdit"
-#pragma link "JvExMask"
-#pragma link "JvMaskEdit"
-#pragma link "JvToolEdit"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
@@ -40,6 +33,46 @@ __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
 __fastcall TContestEntryDetails::~TContestEntryDetails( )
 {
 //   delete CalendarDlg;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TContestEntryDetails::StartDateButtonClick(TObject */*Sender*/)
+{
+   std::auto_ptr <TDateSelectForm> DateSelectDlg( new TDateSelectForm( this ) );
+   TDateTime test;
+   try
+   {
+	test = TDateTime( StartDateEdit->Text, TDateTime::Date );
+   }
+   catch(...)
+   {
+	   test = TDateTime::CurrentDate();
+   }
+   DateSelectDlg->CalendarDate = test;
+   if ( DateSelectDlg->ShowModal() == mrOk )
+   {
+	   StartDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yy" );
+   }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TContestEntryDetails::EndDateButtonClick(TObject */*Sender*/)
+{
+   std::auto_ptr <TDateSelectForm> DateSelectDlg( new TDateSelectForm( this ) );
+   TDateTime test;
+   try
+   {
+	test = TDateTime( EndDateEdit->Text, TDateTime::Date );
+   }
+   catch(...)
+   {
+	   test = TDateTime::CurrentDate();
+   }
+   DateSelectDlg->CalendarDate = test;
+   if ( DateSelectDlg->ShowModal() == mrOk )
+   {
+	   EndDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yy" );
+   }
 }
 //---------------------------------------------------------------------------
 /*
@@ -132,8 +165,8 @@ void TContestEntryDetails::setDetails(  )
 
    if ( contest->DTGStart.getValue().size() )
    {
-      StartDateEdit->Date = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).DateString();
-      StartTimeCombo->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString( "hh:mm" );
+      StartDateEdit->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString("dd/mm/yy");
+      StartTimeCombo->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString( "hh:nn" );
    }
    else
    {
@@ -142,8 +175,8 @@ void TContestEntryDetails::setDetails(  )
    }
    if ( contest->DTGEnd.getValue().size() )
    {
-      EndDateEdit->Date = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).DateString(); // short date format, hours:minutes
-      EndTimeCombo->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString( "hh:mm" ); // short date format, hours:minutes
+      EndDateEdit->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString("dd/mm/yy"); // short date format, hours:minutes
+      EndTimeCombo->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString( "hh:nn" ); // short date format, hours:minutes
    }
    else
    {
@@ -263,11 +296,11 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       SectionComboBox->Text = contest->entSect.getValue().c_str();
    }
 
-   StartDateEdit->Date = ic.start.DateString();
-   StartTimeCombo->Text = ic.start.FormatString( "hh:mm" );
+   StartDateEdit->Text = ic.start.DateString();
+   StartTimeCombo->Text = ic.start.FormatString( "hh:nn" );
 
-   EndDateEdit->Date = ic.finish.DateString(); // short date format, hours:minutes
-   EndTimeCombo->Text = ic.finish.FormatString( "hh:mm" ); // short date format, hours:minutes
+   EndDateEdit->Text = ic.finish.DateString(); // short date format, hours:minutes
+   EndTimeCombo->Text = ic.finish.FormatString( "hh:nn" ); // short date format, hours:minutes
 
    ScoreOptions->ItemIndex = ( int ) contest->scoreMode.getValue();  // combo     // contest
 
@@ -354,9 +387,10 @@ TWinControl * TContestEntryDetails::getDetails( )
 
    try
    {
-      if ( ( int ) StartDateEdit->Date > 0 )
+   	TDateTime test = TDateTime( StartDateEdit->Text, TDateTime::Date );
+      if ( ( int ) test > 0 )
          contest->DTGStart.setValue(
-            TDTToCanonical( StartDateEdit->Date.DateString() + " " + StartTimeCombo->Text ).c_str() );
+            TDTToCanonical( StartDateEdit->Text + " " + StartTimeCombo->Text ).c_str() );
       else
          contest->DTGStart.setValue( "" );
    }
@@ -364,8 +398,8 @@ TWinControl * TContestEntryDetails::getDetails( )
    {
       MinosParameters::getMinosParameters() ->mshowMessage
       (
-         StartDateEdit->Date.DateString() + " " + StartTimeCombo->Text +
-                     " is not a good date/time (DD/HH/CCYY HH:MM)"
+         StartDateEdit->Text + " " + StartTimeCombo->Text +
+                     " is not a good date/time (DD/MM/CCYY HH:NN)"
          , this
       );
       nextD = (nextD?nextD:StartDateEdit);
@@ -373,14 +407,15 @@ TWinControl * TContestEntryDetails::getDetails( )
 
    try
    {
-      if ( ( int ) EndDateEdit->Date > 0 )
-         contest->DTGEnd.setValue( TDTToCanonical( EndDateEdit->Date.DateString() + " " + EndTimeCombo->Text ).c_str() );
+   	TDateTime test = TDateTime( EndDateEdit->Text, TDateTime::Date );
+      if ( ( int ) test > 0 )
+         contest->DTGEnd.setValue( TDTToCanonical( EndDateEdit->Text + " " + EndTimeCombo->Text ).c_str() );
       else
          contest->DTGEnd.setValue( "" );
    }
    catch ( EConvertError & )
    {
-      MinosParameters::getMinosParameters() ->mshowMessage( EndDateEdit->Date.DateString() + " " + EndTimeCombo->Text + " is not a good date/time (DD/HH/CCYY HH:MM)", this );
+      MinosParameters::getMinosParameters() ->mshowMessage( EndDateEdit->Text + " " + EndTimeCombo->Text + " is not a good date/time (DD/HH/CCYY HH:NN)", this );
       nextD = (nextD?nextD:EndDateEdit);
    }
 
@@ -586,6 +621,7 @@ void __fastcall TContestEntryDetails::DateEditKeyPress( TObject * /*Sender*/,
 
 void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender*/ )
 {
+/*
    std::auto_ptr <TCalendarForm> CalendarDlg(new TCalendarForm(this));
 //   if ( !CalendarDlg )
    {
@@ -608,6 +644,7 @@ void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender
    {
       OKButton->SetFocus();
    }
+   */
 }
 //---------------------------------------------------------------------------
 
@@ -660,4 +697,5 @@ void __fastcall TContestEntryDetails::BundleFrameBundleEditClick(
    }
 }
 //---------------------------------------------------------------------------
+
 

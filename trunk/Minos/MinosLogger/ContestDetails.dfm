@@ -29,30 +29,16 @@ object ContestEntryDetails: TContestEntryDetails
     Height = 13
     Caption = 'Section'
   end
-  object Label1: TLabel
-    Left = 8
-    Top = 195
-    Width = 59
-    Height = 13
-    Caption = 'Start Date'
-  end
-  object Label2: TLabel
-    Left = 216
-    Top = 195
-    Width = 52
-    Height = 13
-    Caption = 'End Date'
-  end
   object StartTimeLabel: TLabel
-    Left = 117
-    Top = 195
+    Left = 127
+    Top = 197
     Width = 60
     Height = 13
     Caption = 'Start Time'
   end
   object EndTimeLabel: TLabel
-    Left = 328
-    Top = 195
+    Left = 340
+    Top = 197
     Width = 53
     Height = 13
     Caption = 'End Time'
@@ -148,7 +134,7 @@ object ContestEntryDetails: TContestEntryDetails
     Items.Strings = (
       'Commenced Kilometer'
       'Point per QSO')
-    TabOrder = 15
+    TabOrder = 13
   end
   object MultGroupBox: TGroupBox
     Left = 434
@@ -156,7 +142,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 249
     Height = 97
     Caption = 'Multipliers and Exchange'
-    TabOrder = 17
+    TabOrder = 15
     object DXCCMult: TCheckBox
       Left = 16
       Top = 19
@@ -196,7 +182,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 225
     Height = 105
     Caption = 'Options'
-    TabOrder = 18
+    TabOrder = 16
     object ReadOnlyOption: TCheckBox
       Left = 6
       Top = 25
@@ -228,7 +214,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 249
     Height = 105
     Caption = 'Optional Fields'
-    TabOrder = 19
+    TabOrder = 17
     Visible = False
     object RSTField: TCheckBox
       Left = 8
@@ -397,43 +383,21 @@ object ContestEntryDetails: TContestEntryDetails
     EditLabel.Caption = 'Power'
     TabOrder = 10
   end
-  object StartDateEdit: TJvDatePickerEdit
-    Left = 8
-    Top = 214
-    Width = 97
-    Height = 21
-    AllowNoDate = True
-    Checked = True
-    EnableValidation = False
-    TabOrder = 11
-    OnKeyPress = DateEditKeyPress
-  end
-  object EndDateEdit: TJvDatePickerEdit
-    Left = 216
-    Top = 214
-    Width = 97
-    Height = 21
-    AllowNoDate = True
-    Checked = True
-    EnableValidation = False
-    TabOrder = 13
-    OnKeyPress = DateEditKeyPress
-  end
   object StartTimeCombo: TComboBox
-    Left = 116
+    Left = 124
+    Top = 214
+    Width = 74
+    Height = 21
+    ItemHeight = 0
+    TabOrder = 11
+  end
+  object EndTimeCombo: TComboBox
+    Left = 337
     Top = 214
     Width = 74
     Height = 21
     ItemHeight = 0
     TabOrder = 12
-  end
-  object EndTimeCombo: TComboBox
-    Left = 328
-    Top = 214
-    Width = 74
-    Height = 21
-    ItemHeight = 0
-    TabOrder = 14
   end
   object LocatorGroupBox: TGroupBox
     Left = 241
@@ -441,7 +405,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 187
     Height = 82
     Caption = 'Locator Length'
-    TabOrder = 16
+    TabOrder = 14
     object AllowLoc8CB: TCheckBox
       Left = 10
       Top = 52
@@ -458,5 +422,45 @@ object ContestEntryDetails: TContestEntryDetails
       Caption = 'Allow 4 char Locators'
       TabOrder = 0
     end
+  end
+  object StartDateEdit: TLabeledEdit
+    Left = 15
+    Top = 214
+    Width = 72
+    Height = 21
+    EditLabel.Width = 59
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Start Date'
+    TabOrder = 18
+    OnKeyPress = DateEditKeyPress
+  end
+  object EndDateEdit: TLabeledEdit
+    Left = 229
+    Top = 214
+    Width = 72
+    Height = 21
+    EditLabel.Width = 52
+    EditLabel.Height = 13
+    EditLabel.Caption = 'End Date'
+    TabOrder = 19
+    OnKeyPress = DateEditKeyPress
+  end
+  object StartDateButton: TButton
+    Left = 95
+    Top = 214
+    Width = 21
+    Height = 20
+    Caption = '...'
+    TabOrder = 20
+    OnClick = StartDateButtonClick
+  end
+  object EndDateButton: TButton
+    Left = 308
+    Top = 214
+    Width = 21
+    Height = 20
+    Caption = '...'
+    TabOrder = 21
+    OnClick = EndDateButtonClick
   end
 end
