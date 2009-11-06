@@ -23,7 +23,7 @@
 #include <IdTCPConnection.hpp>
 #include "JvExMask.hpp"
 #include "JvSpin.hpp"
-#include <Mask.hpp> 
+#include <Mask.hpp>
 //---------------------------------------------------------------------------
 class TCalendarForm : public TForm
 {
@@ -35,14 +35,17 @@ class TCalendarForm : public TForm
       TButton *GetCalendarButton;
       TIdHTTP *IdHTTP1;
    TLabel *CalendarVersionLabel;
-   TJvSpinEdit *YearSpinEdit;
+   TEdit *YearSpinEdit;
+   TButton *YearDownButton;
+   TButton *YearUpButton;
+   TJvSpinEdit *JvSpinEdit1;
       void __fastcall Button1Click( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall GetCalendarButtonClick( TObject *Sender );
       void __fastcall SelectButtonClick( TObject *Sender );
       void __fastcall CalendarGridDblClick( TObject *Sender );
-   void __fastcall YearSpinEditBottomClick(TObject *Sender);
-   void __fastcall YearSpinEditTopClick(TObject *Sender);
+   void __fastcall YearDownButtonClick(TObject *Sender);
+   void __fastcall YearUpButtonClick(TObject *Sender);
    private: 	// User declarations
       bool downloadCalendar(String URL, String dest);
    public: 		// User declarations

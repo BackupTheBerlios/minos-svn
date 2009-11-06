@@ -15,6 +15,8 @@
 #pragma package(smart_init)
 #pragma link "JvExMask"
 #pragma link "JvSpin"
+#pragma link "JvExMask"
+#pragma link "JvSpin"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
@@ -153,13 +155,15 @@ void __fastcall TCalendarForm::CalendarGridDblClick( TObject * /*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalendarForm::YearSpinEditBottomClick(TObject *Sender)
+
+
+void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 {
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCalendarForm::YearSpinEditTopClick(TObject *Sender)
+void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
    FormShow( Sender );
 }

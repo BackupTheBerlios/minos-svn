@@ -75,26 +75,48 @@ object CalendarForm: TCalendarForm
       TabOrder = 2
       OnClick = GetCalendarButtonClick
     end
-    object YearSpinEdit: TJvSpinEdit
-      Left = 502
-      Top = 11
+    object YearSpinEdit: TEdit
+      Left = 469
+      Top = 10
       Width = 121
       Height = 21
-      EditorEnabled = False
-      MaxValue = 2020.000000000000000000
-      MinValue = 2000.000000000000000000
-      Value = 2000.000000000000000000
-      OnBottomClick = YearSpinEditBottomClick
-      OnTopClick = YearSpinEditTopClick
-      Anchors = [akTop, akRight]
       TabOrder = 3
+      Text = 'YearSpinEdit'
+    end
+    object YearDownButton: TButton
+      Left = 432
+      Top = 8
+      Width = 26
+      Height = 25
+      Caption = '<<'
+      TabOrder = 4
+      OnClick = YearDownButtonClick
+    end
+    object YearUpButton: TButton
+      Left = 605
+      Top = 8
+      Width = 31
+      Height = 25
+      Caption = '>>'
+      TabOrder = 5
+      OnClick = YearUpButtonClick
+    end
+    object JvSpinEdit1: TJvSpinEdit
+      Left = 344
+      Top = 8
+      Width = 121
+      Height = 21
+      TabOrder = 6
     end
   end
   object IdHTTP1: TIdHTTP
+    MaxLineAction = maException
     AllowCookies = True
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
     Request.ContentLength = -1
+    Request.ContentRangeEnd = 0
+    Request.ContentRangeStart = 0
     Request.Accept = 'text/html, */*'
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
