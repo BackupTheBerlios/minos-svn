@@ -13,8 +13,6 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "StatsDisp"
-#pragma link "JvExExtCtrls"
-#pragma link "JvNetscapeSplitter"
 #pragma resource "*.dfm"
 const CONTINENTS = 6;
 struct ContList
@@ -93,6 +91,9 @@ __fastcall TMultDispFrame::TMultDispFrame( TComponent* Owner )
 
    // This should work - it draws it, but doesn't position it
    // FilterSplitter->Maximized = true;
+	WFilterSplitter = new TWhisperSplitter(FilterSplitter, FilterPanel);
+	WFilterSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WFilterSplitter->HighlightColor = clSkyBlue;
 }
 void TMultDispFrame::setContest( BaseContestLog *pct )
 {
@@ -479,7 +480,7 @@ void __fastcall TMultDispFrame::FilterClick( TObject */*Sender*/ )
 void __fastcall TMultDispFrame::FilterTimerTimer( TObject */*Sender*/ )
 {
    // Use a timer so that it can all get constructed and sorted out
-   FilterSplitter->Maximized = true;
+//   FilterSplitter->Maximized = true;
    FilterTimer->Enabled = false;
 }
 //---------------------------------------------------------------------------
@@ -493,4 +494,10 @@ void TMultDispFrame::showErrorList( ErrorList &errs )
    ErrList->ItemIndex = 0;
 }
 
+
+void __fastcall TMultDispFrame::FilterSplitterMoved(TObject *Sender)
+{
+//   
+}
+//---------------------------------------------------------------------------
 

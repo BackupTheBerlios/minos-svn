@@ -2,7 +2,7 @@ object MinosChatForm: TMinosChatForm
   Left = 0
   Top = 0
   Caption = 'Minos Logging Inter Station Chat'
-  ClientHeight = 286
+  ClientHeight = 200
   ClientWidth = 426
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,41 +16,59 @@ object MinosChatForm: TMinosChatForm
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
+  object Splitter_Image: TImage
+    Left = 60
+    Top = 100
+    Width = 4
+    Height = 4
+    AutoSize = True
+    Picture.Data = {
+      07544269746D617066000000424D660000000000000036000000280000000400
+      000004000000010018000000000030000000C40E0000C40E0000000000000000
+      0000FF00FFFF00FFFFFFFFFFFFFFFF00FF000000C0C0C0FFFFFFFF00FF000000
+      000000FF00FFFF00FFFF00FFFF00FFFF00FF}
+    Transparent = True
+    Visible = False
+  end
   object Panel2: TPanel
     Left = 0
     Top = 0
     Width = 426
-    Height = 260
+    Height = 174
     Align = alClient
     Caption = 'Panel2'
     TabOrder = 0
-    object JvNetscapeSplitter1: TJvNetscapeSplitter
-      Left = 123
+    object Splitter1: TSplitter
+      Left = 186
       Top = 1
-      Height = 258
-      Align = alLeft
-      MinSize = 1
-      Maximized = False
-      Minimized = False
-      ButtonCursor = crDefault
-      ExplicitLeft = 117
-      ExplicitTop = -3
-      ExplicitHeight = 134
+      Width = 10
+      Height = 172
+      OnMoved = Splitter1Moved
+      ExplicitLeft = 123
+      ExplicitHeight = 258
     end
-    object StationList: TListBox
+    object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 122
-      Height = 258
+      Width = 185
+      Height = 172
       Align = alLeft
-      ItemHeight = 13
       TabOrder = 0
+      object StationList: TListBox
+        Left = 1
+        Top = 1
+        Width = 183
+        Height = 170
+        Align = alClient
+        ItemHeight = 13
+        TabOrder = 0
+      end
     end
     object ChatMemo: TMemo
-      Left = 133
+      Left = 196
       Top = 1
-      Width = 292
-      Height = 258
+      Width = 229
+      Height = 172
       Align = alClient
       Lines.Strings = (
         '')
@@ -61,7 +79,7 @@ object MinosChatForm: TMinosChatForm
   end
   object Panel1: TPanel
     Left = 0
-    Top = 260
+    Top = 174
     Width = 426
     Height = 26
     Align = alBottom

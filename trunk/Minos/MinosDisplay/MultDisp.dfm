@@ -1,14 +1,14 @@
 object MultDispFrame: TMultDispFrame
   Left = 0
   Top = 0
-  Width = 300
+  Width = 296
   Height = 300
   TabOrder = 0
   TabStop = True
-  object FilterSplitter: TJvNetscapeSplitter
+  object FilterSplitter: TSplitter
     Left = 0
     Top = 190
-    Width = 300
+    Width = 296
     Height = 10
     Cursor = crVSplit
     Hint = 'Click here to show/hide the multiplier filtering controls'
@@ -16,18 +16,28 @@ object MultDispFrame: TMultDispFrame
     Color = clBtnFace
     MinSize = 1
     ParentColor = False
-    Maximized = False
-    Minimized = False
-    ButtonCursor = crDefault
-    ButtonColor = clSkyBlue
-    ShowHint = True
+    OnMoved = FilterSplitterMoved
     ExplicitTop = 0
     ExplicitWidth = 259
+  end
+  object Splitter_Image: TImage
+    Left = 60
+    Top = 100
+    Width = 4
+    Height = 4
+    AutoSize = True
+    Picture.Data = {
+      07544269746D617066000000424D660000000000000036000000280000000400
+      000004000000010018000000000030000000C40E0000C40E0000000000000000
+      0000FF00FFFF00FFFFFFFFFFFFFFFF00FF000000C0C0C0FFFFFFFF00FF000000
+      000000FF00FFFF00FFFF00FFFF00FFFF00FF}
+    Transparent = True
+    Visible = False
   end
   object MultPages: TPageControl
     Left = 0
     Top = 0
-    Width = 300
+    Width = 296
     Height = 190
     ActivePage = DistrictTab
     Align = alClient
@@ -36,13 +46,18 @@ object MultDispFrame: TMultDispFrame
     TabPosition = tpRight
     object CountriesTab: TTabSheet
       Caption = 'Countries'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object CountryMultTree: TVirtualStringTree
         Left = 0
         Top = 0
-        Width = 252
+        Width = 248
         Height = 182
         Align = alClient
         Header.AutoSizeIndex = 0
+        Header.DefaultHeight = 17
         Header.Font.Charset = DEFAULT_CHARSET
         Header.Font.Color = clWindowText
         Header.Font.Height = -11
@@ -69,10 +84,11 @@ object MultDispFrame: TMultDispFrame
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0
-        Width = 252
+        Width = 248
         Height = 182
         Align = alClient
         Header.AutoSizeIndex = 0
+        Header.DefaultHeight = 17
         Header.Font.Charset = DEFAULT_CHARSET
         Header.Font.Color = clWindowText
         Header.Font.Height = -11
@@ -95,13 +111,18 @@ object MultDispFrame: TMultDispFrame
     object LocatorsTab: TTabSheet
       Caption = 'Locators'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LocatorMultTree: TVirtualStringTree
         Left = 0
         Top = 0
-        Width = 252
+        Width = 248
         Height = 182
         Align = alClient
         Header.AutoSizeIndex = 0
+        Header.DefaultHeight = 17
         Header.Font.Charset = DEFAULT_CHARSET
         Header.Font.Color = clWindowText
         Header.Font.Height = -11
@@ -125,24 +146,24 @@ object MultDispFrame: TMultDispFrame
       inline StatsDispFrame: TStatsDispFrame
         Left = 0
         Top = 0
-        Width = 252
+        Width = 248
         Height = 182
         Align = alClient
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 252
+        ExplicitWidth = 248
         ExplicitHeight = 182
         inherited SLabel1: TLabel
-          Width = 252
+          Width = 248
           Height = 136
         end
         inherited Panel1: TPanel
           Top = 136
-          Width = 252
+          Width = 248
           ExplicitTop = 136
-          ExplicitWidth = 252
+          ExplicitWidth = 248
           DesignSize = (
-            252
+            248
             46)
         end
       end
@@ -150,10 +171,14 @@ object MultDispFrame: TMultDispFrame
     object ErrTab: TTabSheet
       Caption = 'Errors'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object ErrList: TListBox
         Left = 0
         Top = 0
-        Width = 252
+        Width = 248
         Height = 182
         Align = alClient
         ItemHeight = 13
@@ -164,7 +189,7 @@ object MultDispFrame: TMultDispFrame
   object FilterPanel: TPanel
     Left = 0
     Top = 200
-    Width = 300
+    Width = 296
     Height = 100
     Align = alBottom
     TabOrder = 1

@@ -38,13 +38,6 @@ copy %SystemRoot%\system32\dbrtl100.bpl
 copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\GJVControls.bpl
 copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\VTV.bpl
 
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\Jcl110.bpl
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\JclVcl110.bpl
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\JvCoreD11R.bpl
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\JvCtrlsD11R.bpl
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\JvStdCtrlsD11R.bpl
-copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\JvSystemD11R.bpl
-
 echo Only continue if you want all the networking components as well
 pause
 

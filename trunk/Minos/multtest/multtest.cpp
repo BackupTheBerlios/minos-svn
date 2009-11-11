@@ -11,17 +11,17 @@
 #include <vcl.h>
 #pragma hdrstop 
 //---------------------------------------------------------------------------
-USEFORM( "multtestmain.cpp", Form1 );
-USEFORM( "..\MinosDisplay\MMessageDialog.cpp", MessageDialog );
-USEFORM( "..\MinosDisplay\MShowMessageDlg.cpp", MinosShowMessage );
+USEFORM("multtestmain.cpp", Form1);
+USEFORM("..\MinosDisplay\MMessageDialog.cpp", MessageDialog);
+USEFORM("..\MinosDisplay\MShowMessageDlg.cpp", MinosShowMessage);
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {
    try
    {
       Application->Initialize();
-      Application->CreateForm( __classid( TForm1 ), &Form1 );
-      Application->Run();
+      Application->CreateForm(__classid(TForm1), &Form1);
+       Application->Run();
    }
    catch ( Exception & exception )
    {

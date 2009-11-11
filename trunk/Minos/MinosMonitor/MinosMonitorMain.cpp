@@ -25,12 +25,10 @@
 #include "XMPPRPCObj.h"
 #include "RPCPubSub.h"
 #include "LoggerRPCObj.h"
-#include "MinosMonitorMain.h" 
+#include "MinosMonitorMain.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "VirtualTrees"
-#pragma link "JvExExtCtrls"
-#pragma link "JvNetscapeSplitter"
 #pragma resource "*.dfm"
 TMonitorMain *MonitorMain = 0;
 //---------------------------------------------------------------------------

@@ -18,6 +18,7 @@
 #include <vector>
 #include <inifiles.hpp>
 #include <boost\shared_ptr.hpp>
+#include "UWhisperSplitter.hpp"
 
 #include "ServerEvent.h"
 #include "GJVThreads.h"
@@ -36,8 +37,6 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "JvExExtCtrls"
-#pragma link "JvNetscapeSplitter"
 #pragma resource "*.dfm"
 TMinosChatForm *MinosChatForm = 0;
 //---------------------------------------------------------------------------
@@ -59,6 +58,10 @@ __fastcall TMinosChatForm::TMinosChatForm( TComponent* Owner )
       : TForm( Owner ), subscribed( false ), saveResize( false )
 {
    enableTrace( ".\\TraceLog\\MinosChat_" );
+
+	WSplitter1 = new TWhisperSplitter(Splitter1, Panel3);
+	WSplitter1->Bitmap = Splitter_Image->Picture->Bitmap;
+	WSplitter1->HighlightColor = clSkyBlue;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMinosChatForm::FormClose( TObject *Sender,
@@ -304,6 +307,12 @@ void __fastcall TMinosChatForm::FormResize( TObject */*Sender*/ )
 void __fastcall TMinosChatForm::WmMove( TMessage &/*Msg*/ )
 {
    FormResize( this );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMinosChatForm::Splitter1Moved(TObject *Sender)
+{
+// Just needs to be here...
 }
 //---------------------------------------------------------------------------
 

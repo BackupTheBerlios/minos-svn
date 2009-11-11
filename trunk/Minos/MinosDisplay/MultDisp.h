@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef MultDispH
-#define MultDispH 
+#define MultDispH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -18,8 +18,8 @@
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include "StatsDisp.h"
-#include "JvExExtCtrls.hpp"
-#include "JvNetscapeSplitter.hpp" 
+#include "UWhisperSplitter.hpp"
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class TMultDispFrame : public TFrame
 {
@@ -36,7 +36,7 @@ class TMultDispFrame : public TFrame
       TTabSheet *ErrTab;
       TListBox *ErrList;
       TPanel *FilterPanel;
-      TJvNetscapeSplitter *FilterSplitter;
+      TSplitter *FilterSplitter;
       TCheckBox *UnworkedCB;
       TCheckBox *ContEU;
       TCheckBox *ContAS;
@@ -46,6 +46,7 @@ class TMultDispFrame : public TFrame
       TCheckBox *ContNA;
       TTimer *FilterTimer;
       TCheckBox *WorkedCB;
+   TImage *Splitter_Image;
       void __fastcall CountryMultTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
       void __fastcall CountryMultTreeGetText( TBaseVirtualTree *Sender,
@@ -78,8 +79,10 @@ class TMultDispFrame : public TFrame
                                               WideString &CellText );
       void __fastcall FilterClick( TObject *Sender );
       void __fastcall FilterTimerTimer( TObject *Sender );
+   void __fastcall FilterSplitterMoved(TObject *Sender);
    private:  	// User declarations
       BaseContestLog *ct;
+      TWhisperSplitter *WFilterSplitter;
       void initFilters();
       bool filterClickEnabled;
       void saveFilters();

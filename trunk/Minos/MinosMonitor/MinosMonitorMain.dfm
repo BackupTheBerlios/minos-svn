@@ -16,19 +16,26 @@ object MonitorMain: TMonitorMain
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object JvNetscapeSplitter1: TJvNetscapeSplitter
+  object Splitter1: TSplitter
     Left = 153
     Top = 0
+    Width = 14
     Height = 361
-    Align = alLeft
     MinSize = 1
-    Maximized = False
-    Minimized = False
-    ButtonCursor = crDefault
-    ButtonColor = clAqua
-    ExplicitLeft = 248
-    ExplicitTop = 96
-    ExplicitHeight = 100
+  end
+  object Splitter_Image: TImage
+    Left = 60
+    Top = 100
+    Width = 4
+    Height = 4
+    AutoSize = True
+    Picture.Data = {
+      07544269746D617066000000424D660000000000000036000000280000000400
+      000004000000010018000000000030000000C40E0000C40E0000000000000000
+      0000FF00FFFF00FFFFFFFFFFFFFFFF00FF000000C0C0C0FFFFFFFF00FF000000
+      000000FF00FFFF00FFFF00FFFF00FFFF00FF}
+    Transparent = True
+    Visible = False
   end
   object Panel1: TPanel
     Left = 0
@@ -77,11 +84,7 @@ object MonitorMain: TMonitorMain
     Align = alLeft
     AutoExpandDelay = 100
     Header.AutoSizeIndex = -1
-    Header.Font.Charset = DEFAULT_CHARSET
-    Header.Font.Color = clWindowText
-    Header.Font.Height = -11
-    Header.Font.Name = 'MS Sans Serif'
-    Header.Font.Style = []
+    Header.DefaultHeight = 17
     Header.Options = [hoColumnResize, hoDrag]
     Header.ParentFont = True
     TabOrder = 1
@@ -102,9 +105,9 @@ object MonitorMain: TMonitorMain
       end>
   end
   object ContestPageControl: TPageControl
-    Left = 163
+    Left = 167
     Top = 0
-    Width = 437
+    Width = 433
     Height = 361
     Align = alClient
     PopupMenu = PopupMenu1

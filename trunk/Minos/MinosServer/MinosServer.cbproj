@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{9736bb43-d541-45a8-a24b-adfc49721da4}</ProjectGuid>
@@ -38,7 +38,7 @@
     <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;Jcl.bpi;JvAppFrmD11R.bpi;JvCoreD11R.bpi;JvBandsD11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDlgsD11R.bpi;JvDockingD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvStdCtrlsD11R.bpi;JvSystemD11R.bpi;JvTimeFrameworkD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>..\XMPPLib;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
@@ -52,7 +52,7 @@
     <DCC_IncludePath>..\XMPPLib;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
     <BCC_IncludePath>..\MinosLogger;..\XMPPLib;$(GJVVCL);$(BOOST)\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;..\minosbase</BCC_IncludePath>
     <AllPackageLibs>vcl.lib;rtl.lib</AllPackageLibs>
-    <ILINK_LibraryPath>..\XMPPLib;..\MinosLogger;..\MinosServer;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BOOST)\lib;$(JVCL)\jcl\lib\d11;$(JVCL)\jvcl\lib\d11;$(TINYXML)</ILINK_LibraryPath>
+    <ILINK_LibraryPath>..\XMPPLib;..\MinosLogger;..\MinosServer;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BOOST)\lib;$(TINYXML)</ILINK_LibraryPath>
     <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
     <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <Multithreaded>true</Multithreaded>

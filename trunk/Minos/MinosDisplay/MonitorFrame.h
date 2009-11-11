@@ -9,25 +9,23 @@
 //---------------------------------------------------------------------------
 
 #ifndef MonitorFrameH
-#define MonitorFrameH 
+#define MonitorFrameH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include "JvExExtCtrls.hpp"
-#include "JvNetscapeSplitter.hpp"
 #include "MonitorLogFrame.h"
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include "MultDisp.h" 
+#include "MultDisp.h"
 //---------------------------------------------------------------------------
 class TMonitoringFrame : public TFrame
 {
    __published: 	// IDE-managed Components
       TStatusBar *MonitorStatusBar;
       TLogMonitorFrame *LogMonitorFrame;
-      TJvNetscapeSplitter *MultSplitter;
+      TSplitter *MultSplitter;
       TMultDispFrame *MultDispFrame;
       TTimer *InitTimer;
       void __fastcall LogMonitorFrameQSOTreeDblClick( TObject *Sender );

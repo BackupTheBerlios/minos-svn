@@ -10,18 +10,16 @@
 //---------------------------------------------------------------------------
 
 #ifndef MinosMonitorMainH
-#define MinosMonitorMainH 
+#define MinosMonitorMainH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "VirtualTrees.hpp"
-#include "JvExExtCtrls.hpp"
-#include "JvNetscapeSplitter.hpp"
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include <Menus.hpp> 
+#include <Menus.hpp>
 //---------------------------------------------------------------------------
 class TMonitorMain : public TForm
 {
@@ -33,13 +31,14 @@ class TMonitorMain : public TForm
       TButton *CloseButton;
       TVirtualStringTree *MonitorTree;
       TTimer *MonitorTimer;
-      TJvNetscapeSplitter *JvNetscapeSplitter1;
+      TSplitter *Splitter1;
       TPageControl *ContestPageControl;
       TLabel *ScoreLabel;
       TPopupMenu *PopupMenu1;
       TMenuItem *Close1;
       TMenuItem *Cancel1;
    TButton *FocusCurrentButton;
+   TImage *Splitter_Image;
       void __fastcall CloseButtonClick( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall LogTimerTimer( TObject *Sender );

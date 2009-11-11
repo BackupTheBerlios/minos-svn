@@ -38,8 +38,6 @@
 #pragma package(smart_init)
 #pragma link "BundleFrame"
 #pragma link "MultDisp"
-#pragma link "JvExExtCtrls"
-#pragma link "JvNetscapeSplitter"
 #pragma link "QSOFrame"
 #pragma link "QSOLogFrame"
 #pragma link "MonitorLogFrame"
@@ -75,9 +73,29 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 
    OperatorFrame->refreshOps();
 
-   MultSplitter->Maximized = true;  // hide the mults/stats display
-   Splitter1->Maximized = true;     // hide the other list
-   Splitter3->Maximized = true;     // hide the archive list
+   WLogAreaSplitter = new TWhisperSplitter(LogAreaSplitter, MatchPanel);
+	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WLogAreaSplitter->HighlightColor = clSkyBlue;
+
+   WMultSplitter = new TWhisperSplitter(MultSplitter, MultPanel);
+	WMultSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WMultSplitter->HighlightColor = clSkyBlue;
+
+   WNextContactDetailsSplitter = new TWhisperSplitter(NextContactDetailsSplitter, NextContactDetailsPanel);
+	WNextContactDetailsSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WNextContactDetailsSplitter->HighlightColor = clSkyBlue;
+
+   WMatchSplitter = new TWhisperSplitter(MatchSplitter, OtherMatchPanel);
+	WMatchSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WMatchSplitter->HighlightColor = clSkyBlue;
+
+   WArchiveMatchSplitter = new TWhisperSplitter(ArchiveMatchSplitter, ArchiveMatchPanel);
+	WArchiveMatchSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WArchiveMatchSplitter->HighlightColor = clSkyBlue;
+
+   WMultSplitter->Minimize();  // hide the mults/stats display
+   WMatchSplitter->Minimize();     // hide the other list
+   WArchiveMatchSplitter->Minimize();     // hide the archive list
 
    showMatchHeaders();
    OnShowTimer->Enabled = true;
@@ -357,7 +375,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
       pc->matchedContest = 0;
       pc->matchedContact = 0;
 
-      Splitter1->Maximized = true;     // hide the archive list
+//      Splitter1->Maximized = true;     // hide the archive list
       return ;
    }
 
@@ -408,7 +426,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
             thispc->matchedContest = pc->getContactLog();
             thispc->matchedContact = 0;
             thispc->top = true;
-            Splitter1->Maximized = false;     // hide the archive list
+//            Splitter1->Maximized = false;     // hide the archive list
          }
          last_pc = clp;
          if ( pc )
@@ -476,10 +494,10 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
       pc->matchedList = 0;
       pc->matchedContact = 0;
 
-      Splitter3->Maximized = true;     // hide the archive list
+//      Splitter3->Maximized = true;     // hide the archive list
       return ;
    }
-   Splitter3->Maximized = false;     // expose the archive list
+//   Splitter3->Maximized = false;     // expose the archive list
 
    ArchiveMatchTree->BeginUpdate();
 
@@ -1350,4 +1368,30 @@ void TSingleLogFrame::showErrorList( ErrorList &errs )
 
 
 
+
+
+void __fastcall TSingleLogFrame::MatchSplitterMoved(TObject *Sender)
+{
+//
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSingleLogFrame::ArchiveMatchSplitterMoved(TObject *Sender)
+{
+//
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSingleLogFrame::NextContactDetailsSplitterMoved(
+      TObject *Sender)
+{
+//
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSingleLogFrame::MultSplitterMoved(TObject *Sender)
+{
+//
+}
+//---------------------------------------------------------------------------
 

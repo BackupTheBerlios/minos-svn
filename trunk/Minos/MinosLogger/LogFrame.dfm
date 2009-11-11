@@ -12,6 +12,20 @@ object SingleLogFrame: TSingleLogFrame
   TabOrder = 0
   TabStop = True
   OnMouseMove = FrameMouseMove
+  object Splitter_Image: TImage
+    Left = 60
+    Top = 100
+    Width = 4
+    Height = 4
+    AutoSize = True
+    Picture.Data = {
+      07544269746D617066000000424D660000000000000036000000280000000400
+      000004000000010018000000000030000000C40E0000C40E0000000000000000
+      0000FF00FFFF00FFFFFFFFFFFFFFFF00FF000000C0C0C0FFFFFFFF00FF000000
+      000000FF00FFFF00FFFF00FFFF00FFFF00FF}
+    Transparent = True
+    Visible = False
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -24,32 +38,212 @@ object SingleLogFrame: TSingleLogFrame
     TabOrder = 0
     object LogAreaSplitter: TSplitter
       Left = 0
-      Top = 273
+      Top = 431
       Width = 750
-      Height = 2
+      Height = 8
       Cursor = crVSplit
       Align = alBottom
       Color = clBlack
       ParentColor = False
       OnMoved = LogAreaSplitterMoved
-      ExplicitTop = 280
+      ExplicitTop = 273
     end
-    object DetailAndMatchPanel: TPanel
+    object TopPanel: TPanel
       Left = 0
-      Top = 275
+      Top = 0
       Width = 750
-      Height = 275
-      Align = alBottom
+      Height = 431
+      Align = alClient
+      Caption = 'TopPanel'
+      ParentColor = True
       TabOrder = 0
-      object LogDetailPanel: TPanel
+      object MultSplitter: TSplitter
+        Left = 430
+        Top = 1
+        Width = 9
+        Height = 275
+        Hint = 'Click here to show/hide stats and multipliers'
+        Align = alRight
+        Color = clBtnFace
+        MinSize = 1
+        ParentColor = False
+        OnMoved = MultSplitterMoved
+        ExplicitLeft = 429
+        ExplicitHeight = 300
+      end
+      object MultPanel: TPanel
+        Left = 439
+        Top = 1
+        Width = 310
+        Height = 275
+        Align = alRight
+        BevelOuter = bvNone
+        Caption = 'MultPanel'
+        TabOrder = 0
+        inline MultDispFrame: TMultDispFrame
+          Left = 0
+          Top = 0
+          Width = 310
+          Height = 275
+          Align = alClient
+          TabOrder = 0
+          TabStop = True
+          ExplicitWidth = 310
+          ExplicitHeight = 275
+          inherited FilterSplitter: TSplitter
+            Top = 165
+            Width = 310
+            ExplicitTop = 161
+            ExplicitWidth = 310
+          end
+          inherited MultPages: TPageControl
+            Width = 310
+            Height = 165
+            ActivePage = MultDispFrame.StatsTab
+            TabStop = False
+            ExplicitWidth = 310
+            ExplicitHeight = 165
+            inherited CountriesTab: TTabSheet
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
+            end
+            inherited DistrictTab: TTabSheet
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
+              inherited DistrictMultTree: TVirtualStringTree
+                TabStop = False
+              end
+            end
+            inherited LocatorsTab: TTabSheet
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
+              inherited LocatorMultTree: TVirtualStringTree
+                TabStop = False
+              end
+            end
+            inherited StatsTab: TTabSheet
+              ExplicitWidth = 262
+              ExplicitHeight = 157
+              inherited StatsDispFrame: TStatsDispFrame
+                Width = 262
+                Height = 157
+                TabStop = False
+                ExplicitWidth = 262
+                ExplicitHeight = 157
+                inherited SLabel1: TLabel
+                  Width = 262
+                  Height = 111
+                  ExplicitWidth = 4
+                end
+                inherited Panel1: TPanel
+                  Top = 111
+                  Width = 262
+                  ExplicitTop = 111
+                  ExplicitWidth = 262
+                  inherited PeriodSetButton: TButton
+                    TabStop = False
+                  end
+                  inherited P1Edit: TLabeledEdit
+                    TabStop = False
+                    EditLabel.Width = 59
+                    EditLabel.ExplicitLeft = 2
+                    EditLabel.ExplicitTop = 7
+                    EditLabel.ExplicitWidth = 59
+                  end
+                  inherited P2Edit: TLabeledEdit
+                    TabStop = False
+                    EditLabel.Width = 55
+                    EditLabel.ExplicitLeft = 61
+                    EditLabel.ExplicitTop = 7
+                    EditLabel.ExplicitWidth = 55
+                  end
+                end
+                inherited RecheckTimer: TTimer
+                  Top = 40
+                end
+              end
+            end
+            inherited ErrTab: TTabSheet
+              inherited ErrList: TListBox
+                TabStop = False
+              end
+            end
+          end
+          inherited FilterPanel: TPanel
+            Top = 175
+            Width = 310
+            ExplicitTop = 175
+            ExplicitWidth = 310
+            inherited UnworkedCB: TCheckBox
+              Width = 121
+              TabStop = False
+              ExplicitWidth = 121
+            end
+            inherited ContEU: TCheckBox
+              TabStop = False
+            end
+            inherited ContAS: TCheckBox
+              TabStop = False
+            end
+            inherited ContAF: TCheckBox
+              TabStop = False
+            end
+            inherited ContOC: TCheckBox
+              TabStop = False
+            end
+            inherited ContSA: TCheckBox
+              TabStop = False
+            end
+            inherited ContNA: TCheckBox
+              TabStop = False
+            end
+            inherited WorkedCB: TCheckBox
+              TabStop = False
+            end
+          end
+          inherited FilterTimer: TTimer
+            Left = 12
+          end
+        end
+      end
+      inline LogMonitor: TLogMonitorFrame
         Left = 1
         Top = 1
+        Width = 429
+        Height = 275
+        Align = alClient
+        TabOrder = 1
+        TabStop = True
+        ExplicitLeft = 1
+        ExplicitTop = 1
+        ExplicitWidth = 429
+        ExplicitHeight = 275
+        inherited QSOTree: TVirtualStringTree
+          Width = 429
+          Height = 275
+          OnDblClick = LogMonitorQSOTreeDblClick
+          OnEnter = LogMonitorQSOTreeEnter
+          OnKeyDown = LogMonitorQSOTreeKeyDown
+          OnMouseDown = LogMonitorQSOTreeMouseDown
+          ExplicitWidth = 429
+          ExplicitHeight = 275
+        end
+      end
+      object LogDetailPanel: TPanel
+        Left = 1
+        Top = 276
         Width = 748
         Height = 154
-        Align = alTop
+        Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 0
-        object NextContactDetailsSplitter: TJvNetscapeSplitter
+        TabOrder = 2
+        object NextContactDetailsSplitter: TSplitter
           Left = 584
           Top = 0
           Width = 9
@@ -59,12 +253,7 @@ object SingleLogFrame: TSingleLogFrame
           Color = clBtnFace
           MinSize = 1
           ParentColor = False
-          Maximized = False
-          Minimized = False
-          ButtonCursor = crDefault
-          ButtonWidth = 50
-          ButtonColor = clSkyBlue
-          ShowHint = True
+          OnMoved = NextContactDetailsSplitterMoved
           ExplicitLeft = 583
           ExplicitHeight = 112
         end
@@ -246,65 +435,131 @@ object SingleLogFrame: TSingleLogFrame
           end
         end
       end
-      object MatchPanel: TPanel
+    end
+    object MatchPanel: TPanel
+      Left = 0
+      Top = 439
+      Width = 750
+      Height = 111
+      Align = alBottom
+      Caption = 'MatchPanel'
+      TabOrder = 1
+      object MatchSplitter: TSplitter
+        Left = 351
+        Top = 1
+        Width = 9
+        Height = 109
+        Hint = 'Click here to show/hide other contest matches'
+        Align = alRight
+        Color = clBtnFace
+        MinSize = 1
+        ParentColor = False
+        OnMoved = MatchSplitterMoved
+        ExplicitLeft = 402
+      end
+      object ThisMatchTree: TVirtualStringTree
         Left = 1
-        Top = 155
-        Width = 748
-        Height = 119
+        Top = 1
+        Width = 350
+        Height = 109
+        Hint = 'Matching QSOs in current contest'
         Align = alClient
-        Caption = 'MatchPanel'
+        BevelKind = bkFlat
+        Header.AutoSizeIndex = 0
+        Header.DefaultHeight = 17
+        Header.Font.Charset = DEFAULT_CHARSET
+        Header.Font.Color = clWindowText
+        Header.Font.Height = -11
+        Header.Font.Name = 'Verdana'
+        Header.Font.Style = []
+        Header.MainColumn = -1
+        Header.Options = [hoColumnResize, hoDrag]
+        ParentShowHint = False
+        PopupMenu = EntryChoiceMenu
+        ShowHint = True
+        TabOrder = 0
+        TabStop = False
+        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
+        TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
+        TreeOptions.SelectionOptions = [toFullRowSelect]
+        OnDblClick = ThisMatchTreeDblClick
+        OnEnter = ThisMatchTreeEnter
+        OnGetText = ThisMatchTreeGetText
+        OnPaintText = ThisMatchTreePaintText
+        OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
+        OnKeyDown = ThisMatchTreeKeyDown
+        OnMouseDown = ThisMatchTreeMouseDown
+        ExplicitWidth = 408
+        Columns = <>
+      end
+      object OtherMatchPanel: TPanel
+        Left = 360
+        Top = 1
+        Width = 389
+        Height = 109
+        Align = alRight
         TabOrder = 1
-        object Splitter3: TJvNetscapeSplitter
-          Left = 530
+        object ArchiveMatchSplitter: TSplitter
+          Left = 191
           Top = 1
           Width = 9
-          Height = 117
+          Height = 107
           Hint = 'Click here to show/hide archive matches'
           Align = alRight
           Color = clBtnFace
           MinSize = 1
           ParentColor = False
-          Maximized = False
-          Minimized = False
-          ButtonCursor = crDefault
-          ButtonWidth = 50
-          ButtonColor = clSkyBlue
-          ShowHint = True
-          ExplicitLeft = 529
-          ExplicitHeight = 130
+          OnMoved = ArchiveMatchSplitterMoved
+          ExplicitLeft = 160
+          ExplicitHeight = 105
         end
-        object Panel5: TPanel
+        object OtherMatchTree: TVirtualStringTree
           Left = 1
           Top = 1
-          Width = 529
-          Height = 117
+          Width = 190
+          Height = 107
+          Hint = 'Matching QSOs in any other loaded contests'
           Align = alClient
+          BevelKind = bkFlat
+          Header.AutoSizeIndex = 0
+          Header.DefaultHeight = 17
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Verdana'
+          Header.Font.Style = []
+          Header.MainColumn = -1
+          Header.Options = [hoColumnResize, hoDrag]
+          ParentShowHint = False
+          PopupMenu = EntryChoiceMenu
+          ShowHint = True
           TabOrder = 0
-          object Splitter1: TJvNetscapeSplitter
-            Left = 315
-            Top = 1
-            Width = 9
-            Height = 115
-            Hint = 'Click here to show/hide other contest matches'
-            Align = alRight
-            Color = clBtnFace
-            MinSize = 1
-            ParentColor = False
-            Maximized = False
-            Minimized = False
-            ButtonCursor = crDefault
-            ButtonWidth = 50
-            ButtonColor = clSkyBlue
-            ShowHint = True
-            ExplicitLeft = 314
-            ExplicitHeight = 128
-          end
-          object ThisMatchTree: TVirtualStringTree
+          TabStop = False
+          TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
+          TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
+          TreeOptions.SelectionOptions = [toFullRowSelect]
+          OnDblClick = OtherMatchTreeDblClick
+          OnEnter = OtherMatchTreeEnter
+          OnGetText = OtherMatchTreeGetText
+          OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
+          OnKeyDown = OtherMatchTreeKeyDown
+          OnMouseDown = OtherMatchTreeMouseDown
+          ExplicitWidth = 112
+          Columns = <>
+        end
+        object ArchiveMatchPanel: TPanel
+          Left = 200
+          Top = 1
+          Width = 188
+          Height = 107
+          Align = alRight
+          TabOrder = 1
+          object ArchiveMatchTree: TVirtualStringTree
             Left = 1
             Top = 1
-            Width = 314
-            Height = 115
-            Hint = 'Matching QSOs in current contest'
+            Width = 186
+            Height = 105
+            Hint = 'Matching archive entries'
             Align = alClient
             BevelKind = bkFlat
             Header.AutoSizeIndex = 0
@@ -321,274 +576,17 @@ object SingleLogFrame: TSingleLogFrame
             ShowHint = True
             TabOrder = 0
             TabStop = False
-            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
-            TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
             TreeOptions.SelectionOptions = [toFullRowSelect]
-            OnDblClick = ThisMatchTreeDblClick
-            OnEnter = ThisMatchTreeEnter
-            OnGetText = ThisMatchTreeGetText
-            OnPaintText = ThisMatchTreePaintText
-            OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
-            OnKeyDown = ThisMatchTreeKeyDown
-            OnMouseDown = ThisMatchTreeMouseDown
+            OnDblClick = ArchiveMatchTreeDblClick
+            OnEnter = ArchiveMatchTreeEnter
+            OnGetText = ArchiveMatchTreeGetText
+            OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
+            OnKeyDown = ArchiveMatchTreeKeyDown
+            OnMouseDown = ArchiveMatchTreeMouseDown
+            ExplicitWidth = 206
+            ExplicitHeight = 103
             Columns = <>
           end
-          object OtherMatchTree: TVirtualStringTree
-            Left = 324
-            Top = 1
-            Width = 204
-            Height = 115
-            Hint = 'Matching QSOs in any other loaded contests'
-            Align = alRight
-            BevelKind = bkFlat
-            Header.AutoSizeIndex = 0
-            Header.DefaultHeight = 17
-            Header.Font.Charset = DEFAULT_CHARSET
-            Header.Font.Color = clWindowText
-            Header.Font.Height = -11
-            Header.Font.Name = 'Verdana'
-            Header.Font.Style = []
-            Header.MainColumn = -1
-            Header.Options = [hoColumnResize, hoDrag]
-            ParentShowHint = False
-            PopupMenu = EntryChoiceMenu
-            ShowHint = True
-            TabOrder = 1
-            TabStop = False
-            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
-            TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
-            TreeOptions.SelectionOptions = [toFullRowSelect]
-            OnDblClick = OtherMatchTreeDblClick
-            OnEnter = OtherMatchTreeEnter
-            OnGetText = OtherMatchTreeGetText
-            OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
-            OnKeyDown = OtherMatchTreeKeyDown
-            OnMouseDown = OtherMatchTreeMouseDown
-            Columns = <>
-          end
-        end
-        object ArchiveMatchTree: TVirtualStringTree
-          Left = 539
-          Top = 1
-          Width = 208
-          Height = 117
-          Hint = 'Matching archive entries'
-          Align = alRight
-          BevelKind = bkFlat
-          Header.AutoSizeIndex = 0
-          Header.DefaultHeight = 17
-          Header.Font.Charset = DEFAULT_CHARSET
-          Header.Font.Color = clWindowText
-          Header.Font.Height = -11
-          Header.Font.Name = 'Verdana'
-          Header.Font.Style = []
-          Header.MainColumn = -1
-          Header.Options = [hoColumnResize, hoDrag]
-          ParentShowHint = False
-          PopupMenu = EntryChoiceMenu
-          ShowHint = True
-          TabOrder = 1
-          TabStop = False
-          TreeOptions.SelectionOptions = [toFullRowSelect]
-          OnDblClick = ArchiveMatchTreeDblClick
-          OnEnter = ArchiveMatchTreeEnter
-          OnGetText = ArchiveMatchTreeGetText
-          OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
-          OnKeyDown = ArchiveMatchTreeKeyDown
-          OnMouseDown = ArchiveMatchTreeMouseDown
-          Columns = <>
-        end
-      end
-    end
-    object TopPanel: TPanel
-      Left = 0
-      Top = 0
-      Width = 750
-      Height = 273
-      Align = alClient
-      Caption = 'TopPanel'
-      ParentColor = True
-      TabOrder = 1
-      object MultSplitter: TJvNetscapeSplitter
-        Left = 430
-        Top = 1
-        Width = 9
-        Height = 271
-        Hint = 'Click here to show/hide stats and multipliers'
-        Align = alRight
-        Color = clBtnFace
-        MinSize = 1
-        ParentColor = False
-        Maximized = False
-        Minimized = False
-        ButtonCursor = crDefault
-        ButtonColor = clSkyBlue
-        ShowHint = True
-        ExplicitLeft = 429
-        ExplicitHeight = 300
-      end
-      object MultPanel: TPanel
-        Left = 439
-        Top = 1
-        Width = 310
-        Height = 271
-        Align = alRight
-        BevelOuter = bvNone
-        Caption = 'MultPanel'
-        TabOrder = 0
-        inline MultDispFrame: TMultDispFrame
-          Left = 0
-          Top = 0
-          Width = 310
-          Height = 271
-          Align = alClient
-          TabOrder = 0
-          TabStop = True
-          ExplicitWidth = 310
-          ExplicitHeight = 271
-          inherited FilterSplitter: TJvNetscapeSplitter
-            Top = 161
-            Width = 310
-            ExplicitTop = 161
-            ExplicitWidth = 310
-          end
-          inherited MultPages: TPageControl
-            Width = 310
-            Height = 161
-            ActivePage = MultDispFrame.StatsTab
-            TabStop = False
-            ExplicitWidth = 310
-            ExplicitHeight = 161
-            inherited CountriesTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
-              ExplicitWidth = 252
-              ExplicitHeight = 182
-            end
-            inherited DistrictTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
-              ExplicitWidth = 252
-              ExplicitHeight = 182
-              inherited DistrictMultTree: TVirtualStringTree
-                TabStop = False
-              end
-            end
-            inherited LocatorsTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
-              ExplicitWidth = 252
-              ExplicitHeight = 182
-              inherited LocatorMultTree: TVirtualStringTree
-                TabStop = False
-              end
-            end
-            inherited StatsTab: TTabSheet
-              ExplicitWidth = 262
-              ExplicitHeight = 153
-              inherited StatsDispFrame: TStatsDispFrame
-                Width = 262
-                Height = 153
-                TabStop = False
-                ExplicitWidth = 262
-                ExplicitHeight = 153
-                inherited SLabel1: TLabel
-                  Width = 262
-                  Height = 107
-                  ExplicitWidth = 4
-                end
-                inherited Panel1: TPanel
-                  Top = 107
-                  Width = 262
-                  ExplicitTop = 107
-                  ExplicitWidth = 262
-                  inherited PeriodSetButton: TButton
-                    TabStop = False
-                  end
-                  inherited P1Edit: TLabeledEdit
-                    TabStop = False
-                    EditLabel.Width = 59
-                    EditLabel.ExplicitLeft = 2
-                    EditLabel.ExplicitTop = 7
-                    EditLabel.ExplicitWidth = 59
-                  end
-                  inherited P2Edit: TLabeledEdit
-                    TabStop = False
-                    EditLabel.Width = 55
-                    EditLabel.ExplicitLeft = 61
-                    EditLabel.ExplicitTop = 7
-                    EditLabel.ExplicitWidth = 55
-                  end
-                end
-                inherited RecheckTimer: TTimer
-                  Top = 40
-                end
-              end
-            end
-            inherited ErrTab: TTabSheet
-              inherited ErrList: TListBox
-                TabStop = False
-              end
-            end
-          end
-          inherited FilterPanel: TPanel
-            Top = 171
-            Width = 310
-            ExplicitTop = 171
-            ExplicitWidth = 310
-            inherited UnworkedCB: TCheckBox
-              Width = 121
-              TabStop = False
-              ExplicitWidth = 121
-            end
-            inherited ContEU: TCheckBox
-              TabStop = False
-            end
-            inherited ContAS: TCheckBox
-              TabStop = False
-            end
-            inherited ContAF: TCheckBox
-              TabStop = False
-            end
-            inherited ContOC: TCheckBox
-              TabStop = False
-            end
-            inherited ContSA: TCheckBox
-              TabStop = False
-            end
-            inherited ContNA: TCheckBox
-              TabStop = False
-            end
-            inherited WorkedCB: TCheckBox
-              TabStop = False
-            end
-          end
-          inherited FilterTimer: TTimer
-            Left = 12
-          end
-        end
-      end
-      inline LogMonitor: TLogMonitorFrame
-        Left = 1
-        Top = 1
-        Width = 429
-        Height = 271
-        Align = alClient
-        TabOrder = 1
-        TabStop = True
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 429
-        ExplicitHeight = 271
-        inherited QSOTree: TVirtualStringTree
-          Width = 429
-          Height = 271
-          OnDblClick = LogMonitorQSOTreeDblClick
-          OnEnter = LogMonitorQSOTreeEnter
-          OnKeyDown = LogMonitorQSOTreeKeyDown
-          OnMouseDown = LogMonitorQSOTreeMouseDown
-          ExplicitWidth = 429
-          ExplicitHeight = 271
         end
       end
     end

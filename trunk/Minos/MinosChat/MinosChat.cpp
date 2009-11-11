@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include "GJVThreads.h" 
 //---------------------------------------------------------------------------
-USEFORM( "MinosChatMain.cpp", MinosChatForm );
+USEFORM("MinosChatMain.cpp", MinosChatForm);
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {
@@ -12,8 +12,8 @@ WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
    try
    {
       Application->Initialize();
-      Application->CreateForm( __classid( TMinosChatForm ), &MinosChatForm );
-      Application->Run();
+      Application->CreateForm(__classid(TMinosChatForm), &MinosChatForm);
+       Application->Run();
    }
    catch ( Exception & exception )
    {

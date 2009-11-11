@@ -12,7 +12,7 @@
 #pragma hdrstop
 #include "GJVThreads.h" 
 //---------------------------------------------------------------------------
-USEFORM( "MinosMonitorMain.cpp", MonitorMain );
+USEFORM("MinosMonitorMain.cpp", MonitorMain);
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {
@@ -20,8 +20,8 @@ WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
    try
    {
       Application->Initialize();
-      Application->CreateForm( __classid( TMonitorMain ), &MonitorMain );
-      Application->Run();
+      Application->CreateForm(__classid(TMonitorMain), &MonitorMain);
+       Application->Run();
    }
    catch ( Exception & exception )
    {

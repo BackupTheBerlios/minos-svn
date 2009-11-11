@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{5bfdb147-eb42-443d-a8f8-c98f031eb1a7}</ProjectGuid>
@@ -28,7 +28,7 @@
     <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
     <UsePackages>true</UsePackages>
     <ILINK_ObjectSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosBase</ILINK_ObjectSearchPath>
-    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;vclib.bpi;xmlrtl.bpi;vclie.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;indy.bpi;vclactnband.bpi;bcbsmp.bpi;soaprtl.bpi;dsnap.bpi;bcbie.bpi;bdertl.bpi;teeui.bpi;teedb.bpi;tee.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi;Jcl.bpi;JclVcl.bpi;JvCoreD11R.bpi;JvSystemD11R.bpi;JvStdCtrlsD11R.bpi;JvAppFrmD11R.bpi;JvBandsD11R.bpi;JvDBD11R.bpi;JvDlgsD11R.bpi;JvBDED11R.bpi;JvCmpD11R.bpi;JvCryptD11R.bpi;JvCtrlsD11R.bpi;JvCustomD11R.bpi;JvDockingD11R.bpi;JvDotNetCtrlsD11R.bpi;JvEDID11R.bpi;JvGlobusD11R.bpi;JvHMID11R.bpi;JvInterpreterD11R.bpi;JvJansD11R.bpi;JvManagedThreadsD11R.bpi;JvMMD11R.bpi;JvNetD11R.bpi;JvPageCompsD11R.bpi;JvPluginD11R.bpi;JvPrintPreviewD11R.bpi;JvRuntimeDesignD11R.bpi;JvTimeFrameworkD11R.bpi;JvValidatorsD11R.bpi;JvWizardD11R.bpi;JvXPCtrlsD11R.bpi</PackageImports>
+    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;vclib.bpi;xmlrtl.bpi;vclie.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;indy.bpi;vclactnband.bpi;bcbsmp.bpi;soaprtl.bpi;dsnap.bpi;bcbie.bpi;bdertl.bpi;teeui.bpi;teedb.bpi;tee.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <ILINK_WinAppType>DLL</ILINK_WinAppType>
@@ -41,7 +41,7 @@
     <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
     <DCC_IncludePath>C:\ThirdParty\TinyXML;C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
     <BCC_IncludePath>$(TINYXML);..\XMPPLib;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include</BCC_IncludePath>
-    <ILINK_LibraryPath>..\MinosBase;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\ThirdParty\tinyxml;$(JVCL)\jcl\lib\d11;$(JVCL)\jvcl\lib\d11</ILINK_LibraryPath>
+    <ILINK_LibraryPath>..\MinosBase;$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;C:\ThirdParty\tinyxml</ILINK_LibraryPath>
     <Multithreaded>true</Multithreaded>
     <TASM_Defines>_RTLDLL;USEPACKAGES;NO_STRICT;BUILD_DLL;TIXML_USE_STL</TASM_Defines>
     <BRCC_Defines>_RTLDLL;USEPACKAGES;NO_STRICT;BUILD_DLL;TIXML_USE_STL</BRCC_Defines>

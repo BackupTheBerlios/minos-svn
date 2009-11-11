@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #ifndef MinosChatMainH
-#define MinosChatMainH 
+#define MinosChatMainH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -9,8 +9,7 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include "JvExExtCtrls.hpp"
-#include "JvNetscapeSplitter.hpp" 
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class Server
 {
@@ -28,10 +27,12 @@ class TMinosChatForm : public TForm
    TPanel *Panel2;
    TListBox *StationList;
    TMemo *ChatMemo;
-   TJvNetscapeSplitter *JvNetscapeSplitter1;
+   TSplitter *Splitter1;
    TPanel *Panel1;
    TLabeledEdit *ChatEdit;
    TButton *SendButton;
+   TPanel *Panel3;
+   TImage *Splitter_Image;
       void __fastcall LogTimerTimer( TObject *Sender );
       void __fastcall ConnectTimerTimer( TObject *Sender );
       void __fastcall SendButtonClick( TObject *Sender );
@@ -39,7 +40,9 @@ class TMinosChatForm : public TForm
       void __fastcall StartUpTimerTimer( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormResize( TObject *Sender );
+   void __fastcall Splitter1Moved(TObject *Sender);
    private: 	// User declarations
+      TWhisperSplitter *WSplitter1;
       bool connected;
       bool subscribed;
       bool saveResize;

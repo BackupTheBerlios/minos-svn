@@ -7,7 +7,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////
 #ifndef LogFrameH
-#define LogFrameH 
+#define LogFrameH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -20,11 +20,11 @@
 #include "BundleFrame.h"
 #include <ComCtrls.hpp>
 #include "MultDisp.h"
-#include "JvExExtCtrls.hpp"
-#include "JvNetscapeSplitter.hpp"
 #include "QSOFrame.h"
 #include "QSOLogFrame.h"
-#include "MonitorLogFrame.h" 
+#include "MonitorLogFrame.h"
+#include <Graphics.hpp>
+#include "UWhisperSplitter.hpp"
 //---------------------------------------------------------------------------
 class TMatchCollection;
 class MatchNodeData;
@@ -55,7 +55,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
 {
    __published:  	// IDE-managed Components
       TPanel *Panel1;
-      TPanel *DetailAndMatchPanel;
       TSplitter *LogAreaSplitter;
       TPanel *NextContactDetailsPanel;
       TPopupMenu *EntryChoiceMenu;
@@ -65,22 +64,21 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       TPanel *MatchPanel;
       TVirtualStringTree *ThisMatchTree;
       TVirtualStringTree *OtherMatchTree;
-      TPanel *Panel5;
       TVirtualStringTree *ArchiveMatchTree;
       TMenuItem *NextContactDetailsOnLeft;
       TPanel *MultPanel;
       TMultDispFrame *MultDispFrame;
       TPanel *TopPanel;
-      TJvNetscapeSplitter *MultSplitter;
+      TSplitter *MultSplitter;
       TPanel *LogDetailPanel;
       TLabel *NextContactDetailsLabel;
       TMenuItem *Details1;
       TMenuItem *Close1;
       TMenuItem *Details2;
       TMenuItem *ProduceEntryExportFile1;
-      TJvNetscapeSplitter *NextContactDetailsSplitter;
-      TJvNetscapeSplitter *Splitter1;
-      TJvNetscapeSplitter *Splitter3;
+      TSplitter *NextContactDetailsSplitter;
+   TSplitter *MatchSplitter;
+   TSplitter *ArchiveMatchSplitter;
       TGJVQSOLogFrame *GJVQSOLogFrame;
       TMenuItem *GotoNextUnfilled1;
       TMenuItem *Cancel1;
@@ -95,6 +93,9 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
    TMenuItem *N2;
    TMenuItem *N3;
    TMenuItem *N4;
+   TImage *Splitter_Image;
+   TPanel *ArchiveMatchPanel;
+   TPanel *OtherMatchPanel;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );
@@ -155,9 +156,19 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
             TMouseButton Button, TShiftState Shift, int X, int Y );
       void __fastcall PublishTimerTimer( TObject *Sender );
       void __fastcall OnShowTimerTimer( TObject *Sender );
+   void __fastcall MatchSplitterMoved(TObject *Sender);
+   void __fastcall ArchiveMatchSplitterMoved(TObject *Sender);
+   void __fastcall NextContactDetailsSplitterMoved(TObject *Sender);
+   void __fastcall MultSplitterMoved(TObject *Sender);
    private:  	// User declarations
 
       TOperatorFrame *OperatorFrame;
+      TWhisperSplitter *WLogAreaSplitter;
+      TWhisperSplitter *WMultSplitter;
+      TWhisperSplitter *WNextContactDetailsSplitter;
+      TWhisperSplitter *WMatchSplitter;
+      TWhisperSplitter *WArchiveMatchSplitter;
+
       BaseContestLog * contest;
       int lastStanzaCount;
       //       boost::shared_ptr<LoggerContestLog> contest;

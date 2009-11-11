@@ -11,6 +11,9 @@
 //---------------------------------------------------------------------------
 USEFORM("BundleFrame.cpp", SettingBundleFrame);
 USEFORM("ClockDialog.cpp", ClockDlg);
+USEFORM("ConfigDM.cpp", MConfigDM); /* TDataModule: File Type */
+USEFORM("ConfigElementFrame.cpp", ConfigElementFrm); /* TFrame: File Type */
+USEFORM("ConfigMainFrame.cpp", TConfigFrame); /* TFrame: File Type */
 USEFORM("ContestDetails.cpp", ContestEntryDetails);
 USEFORM("enqdlg.cpp", EnquireDlg);
 USEFORM("EntryOptions.cpp", EntryOptionsForm);
@@ -31,9 +34,6 @@ USEFORM("ListDetails.cpp", ContactListDetails);
 USEFORM("TMinosBandChooser.cpp", MinosBandChooser);
 USEFORM("TManageListsDlg.cpp", ManageListsDlg);
 USEFORM("TCalendarForm.cpp", CalendarForm);
-USEFORM("ConfigDM.cpp", MConfigDM); /* TDataModule: File Type */
-USEFORM("ConfigElementFrame.cpp", ConfigElementFrm); /* TFrame: File Type */
-USEFORM("ConfigMainFrame.cpp", TConfigFrame); /* TFrame: File Type */
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {

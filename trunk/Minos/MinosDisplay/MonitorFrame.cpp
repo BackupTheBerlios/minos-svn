@@ -10,11 +10,9 @@
 //---------------------------------------------------------------------------
 
 #include "display_pch.h"
-#pragma hdrstop 
+#pragma hdrstop
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "JvExExtCtrls"
-#pragma link "JvNetscapeSplitter"
 #pragma link "MonitorLogFrame"
 #pragma link "MultDisp"
 #pragma resource "*.dfm"
@@ -93,7 +91,7 @@ void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreePaintText(
 
 void __fastcall TMonitoringFrame::InitTimerTimer( TObject */*Sender*/ )
 {
-   MultSplitter->Maximized = true;
+//   MultSplitter->Maximized = true;
    InitTimer->Enabled = false;
    MultDispFrame->setContest( contest );
    MultDispFrame->ErrTab->TabVisible = false;

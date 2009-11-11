@@ -1,8 +1,8 @@
 // CodeGear C++Builder
-// Copyright (c) 1995, 2009 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2007 by CodeGear
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'Uwhispersplitter.pas' rev: 21.00
+// (DO NOT EDIT: machine generated header) 'Uwhispersplitter.pas' rev: 11.00
 
 #ifndef UwhispersplitterHPP
 #define UwhispersplitterHPP
@@ -26,25 +26,29 @@ namespace Uwhispersplitter
 {
 //-- type declarations -------------------------------------------------------
 class DELPHICLASS TExtSplitter;
-class PASCALIMPLEMENTATION TExtSplitter : public Extctrls::TSplitter
+class PASCALIMPLEMENTATION TExtSplitter : public Extctrls::TSplitter 
 {
 	typedef Extctrls::TSplitter inherited;
 	
 __published:
-	__property OnClick;
-	__property OnMouseEnter;
-	__property OnMouseLeave;
-	__property OnMoved;
-	__property OnPaint;
+	__property OnClick ;
+	__property OnMouseEnter ;
+	__property OnMouseLeave ;
+	__property OnMoved ;
+	__property OnPaint ;
 public:
+	#pragma option push -w-inl
 	/* TSplitter.Create */ inline __fastcall virtual TExtSplitter(Classes::TComponent* AOwner) : Extctrls::TSplitter(AOwner) { }
+	#pragma option pop
+	#pragma option push -w-inl
 	/* TSplitter.Destroy */ inline __fastcall virtual ~TExtSplitter(void) { }
+	#pragma option pop
 	
 };
 
 
 class DELPHICLASS TWhisperSplitter;
-class PASCALIMPLEMENTATION TWhisperSplitter : public System::TObject
+class PASCALIMPLEMENTATION TWhisperSplitter : public System::TObject 
 {
 	typedef System::TObject inherited;
 	
@@ -79,7 +83,9 @@ public:
 	void __fastcall Minimize(void);
 	__fastcall TWhisperSplitter(Extctrls::TSplitter* pSplitter, Extctrls::TPanel* pPanel);
 public:
+	#pragma option push -w-inl
 	/* TObject.Destroy */ inline __fastcall virtual ~TWhisperSplitter(void) { }
+	#pragma option pop
 	
 };
 
@@ -93,4 +99,4 @@ using namespace Uwhispersplitter;
 
 #pragma delphiheader end.
 //-- end unit ----------------------------------------------------------------
-#endif	// UwhispersplitterHPP
+#endif	// Uwhispersplitter

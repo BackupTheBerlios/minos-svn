@@ -5,18 +5,13 @@ object MonitoringFrame: TMonitoringFrame
   Height = 307
   TabOrder = 0
   TabStop = True
-  object MultSplitter: TJvNetscapeSplitter
-    Left = 279
+  object MultSplitter: TSplitter
+    Left = 280
     Top = 0
+    Width = 9
     Height = 288
     Align = alRight
     MinSize = 1
-    Maximized = False
-    Minimized = False
-    ButtonCursor = crDefault
-    ExplicitLeft = 384
-    ExplicitTop = 104
-    ExplicitHeight = 100
   end
   object MonitorStatusBar: TStatusBar
     Left = 0
@@ -28,15 +23,15 @@ object MonitoringFrame: TMonitoringFrame
   inline LogMonitorFrame: TLogMonitorFrame
     Left = 0
     Top = 0
-    Width = 279
+    Width = 280
     Height = 288
     Align = alClient
     TabOrder = 1
     TabStop = True
-    ExplicitWidth = 279
+    ExplicitWidth = 286
     ExplicitHeight = 288
     inherited QSOTree: TVirtualStringTree
-      Width = 279
+      Width = 280
       Height = 288
       OnBeforeItemErase = LogMonitorFrameQSOTreeBeforeItemErase
       OnColumnResize = LogMonitorFrameQSOTreeColumnResize
@@ -44,7 +39,7 @@ object MonitoringFrame: TMonitoringFrame
       OnGetText = LogMonitorFrameQSOTreeGetText
       OnPaintText = LogMonitorFrameQSOTreePaintText
       OnGetNodeDataSize = LogMonitorFrameQSOTreeGetNodeDataSize
-      ExplicitWidth = 279
+      ExplicitWidth = 286
       ExplicitHeight = 288
     end
   end
@@ -57,50 +52,72 @@ object MonitoringFrame: TMonitoringFrame
     TabOrder = 2
     TabStop = True
     ExplicitLeft = 289
+    ExplicitWidth = 300
     ExplicitHeight = 288
-    inherited FilterSplitter: TJvNetscapeSplitter
+    inherited FilterSplitter: TSplitter
       Top = 178
+      Width = 300
       ExplicitTop = 178
+      ExplicitWidth = 300
     end
     inherited MultPages: TPageControl
+      Width = 300
       Height = 178
       ActivePage = MultDispFrame.StatsTab
       ExplicitHeight = 178
       inherited CountriesTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
-        ExplicitWidth = 252
+        ExplicitWidth = 248
         ExplicitHeight = 182
+        inherited CountryMultTree: TVirtualStringTree
+          Width = 248
+          ExplicitWidth = 248
+        end
       end
       inherited DistrictTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
-        ExplicitWidth = 252
+        ExplicitWidth = 248
         ExplicitHeight = 182
+        inherited DistrictMultTree: TVirtualStringTree
+          ExplicitWidth = 248
+        end
       end
       inherited LocatorsTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
-        ExplicitWidth = 252
+        ExplicitWidth = 248
         ExplicitHeight = 182
+        inherited LocatorMultTree: TVirtualStringTree
+          Width = 248
+          ExplicitWidth = 248
+        end
       end
       inherited StatsTab: TTabSheet
+        ExplicitWidth = 252
         ExplicitHeight = 170
         inherited StatsDispFrame: TStatsDispFrame
+          Width = 252
           Height = 170
+          ExplicitWidth = 252
           ExplicitHeight = 170
           inherited SLabel1: TLabel
+            Width = 252
             Height = 124
           end
           inherited Panel1: TPanel
             Top = 124
+            Width = 252
             ExplicitTop = 124
+            ExplicitWidth = 252
           end
         end
       end
     end
     inherited FilterPanel: TPanel
       Top = 188
+      Width = 300
       ExplicitTop = 188
     end
   end
