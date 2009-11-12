@@ -18,6 +18,7 @@ USEFORM("ContestDetails.cpp", ContestEntryDetails);
 USEFORM("enqdlg.cpp", EnquireDlg);
 USEFORM("EntryOptions.cpp", EntryOptionsForm);
 USEFORM("ForceLog.cpp", ForceLogDlg);
+USEFORM("ListDetails.cpp", ContactListDetails);
 USEFORM("loccalc.cpp", LocCalcForm);
 USEFORM("LogFrame.cpp", SingleLogFrame);
 USEFORM("LoggerAbout.cpp", AboutBox);
@@ -30,10 +31,9 @@ USEFORM("QSOLogFrame.cpp", GJVQSOLogFrame);
 USEFORM("QSOFrame.cpp", GJVEditFrame);
 USEFORM("SendRPCDM.cpp", SendDM);
 USEFORM("SettingsEditor.cpp", SettingsEditDlg);
-USEFORM("ListDetails.cpp", ContactListDetails);
+USEFORM("TCalendarForm.cpp", CalendarForm);
 USEFORM("TMinosBandChooser.cpp", MinosBandChooser);
 USEFORM("TManageListsDlg.cpp", ManageListsDlg);
-USEFORM("TCalendarForm.cpp", CalendarForm);
 //---------------------------------------------------------------------------
 WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 {

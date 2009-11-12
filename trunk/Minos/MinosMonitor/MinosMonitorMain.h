@@ -17,9 +17,10 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "VirtualTrees.hpp"
-#include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include <Menus.hpp>
+#include <ComCtrls.hpp>
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class TMonitorMain : public TForm
 {

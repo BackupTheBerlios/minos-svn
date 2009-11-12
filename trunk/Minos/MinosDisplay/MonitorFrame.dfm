@@ -64,35 +64,25 @@ object MonitoringFrame: TMonitoringFrame
       Width = 300
       Height = 178
       ActivePage = MultDispFrame.StatsTab
+      ExplicitWidth = 300
       ExplicitHeight = 178
       inherited CountriesTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
         ExplicitWidth = 248
         ExplicitHeight = 182
-        inherited CountryMultTree: TVirtualStringTree
-          Width = 248
-          ExplicitWidth = 248
-        end
       end
       inherited DistrictTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
         ExplicitWidth = 248
         ExplicitHeight = 182
-        inherited DistrictMultTree: TVirtualStringTree
-          ExplicitWidth = 248
-        end
       end
       inherited LocatorsTab: TTabSheet
         ExplicitLeft = 4
         ExplicitTop = 4
         ExplicitWidth = 248
         ExplicitHeight = 182
-        inherited LocatorMultTree: TVirtualStringTree
-          Width = 248
-          ExplicitWidth = 248
-        end
       end
       inherited StatsTab: TTabSheet
         ExplicitWidth = 252
@@ -119,6 +109,7 @@ object MonitoringFrame: TMonitoringFrame
       Top = 188
       Width = 300
       ExplicitTop = 188
+      ExplicitWidth = 300
     end
   end
   object InitTimer: TTimer

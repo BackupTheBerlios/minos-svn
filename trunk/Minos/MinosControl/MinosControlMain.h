@@ -15,7 +15,6 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <ComCtrls.hpp>
 #include <ExtCtrls.hpp> 
 //---------------------------------------------------------------------------
 class MinosRPCObj;

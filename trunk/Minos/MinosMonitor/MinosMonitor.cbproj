@@ -20,52 +20,52 @@
     <CfgParent>Base</CfgParent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Base)'!=''">
-    <DCC_Optimize>false</DCC_Optimize>
     <OutputExt>exe</OutputExt>
-    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
-    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <DCC_Optimize>false</DCC_Optimize>
     <Defines>TIXML_USE_STL</Defines>
-    <BCC_OutputDir>obj\</BCC_OutputDir>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
     <DCC_ObjPath>..\MinosLogger</DCC_ObjPath>
-    <DynamicRTL>true</DynamicRTL>
+    <BCC_OutputDir>obj\</BCC_OutputDir>
     <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
-    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <DynamicRTL>true</DynamicRTL>
     <BRCC_OutputDir>obj\</BRCC_OutputDir>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
     <OptPCH>"vcl.h"="vcl1.h"</OptPCH>
-    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
     <ILINK_AppType>Windows</ILINK_AppType>
-    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
-    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
-    <ILINK_ObjectSearchPath>..\MinosLogger;..\WhisperSplitter</ILINK_ObjectSearchPath>
+    <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
     <UsePackages>true</UsePackages>
+    <ILINK_ObjectSearchPath>..\MinosLogger;..\WhisperSplitter</ILINK_ObjectSearchPath>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
-    <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
     <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
+    <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>..\MinosLogger;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <BRCC_UserSuppliedOptions> ..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <PackageLibs>
     </PackageLibs>
-    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
-    <BRCC_UserSuppliedOptions> ..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
-    <IncludePath>$(VTV)\Source;$(TINYXML);..\..\vcl\RADStudio2007;..\WhisperSplitter</IncludePath>
-    <BCC_PCHCache>true</BCC_PCHCache>
     <DCC_DcuOutput>obj\</DCC_DcuOutput>
-    <AllPackageLibs>vcl.lib;rtl.lib;VTV.lib;vcldb.lib;dbrtl.lib;vclx.lib</AllPackageLibs>
-    <BCC_IncludePath>..\XMPPLib;$(GJVVCL);$(BOOST)\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;..\minoslogger;..\minosbase;..\minosdisplay</BCC_IncludePath>
-    <DCC_IncludePath>..\MinosLogger;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-    <TASM_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <IncludePath>$(VTV)\Source;$(TINYXML);..\..\vcl\RADStudio2007;..\WhisperSplitter</IncludePath>
     <BRCC_IncludePath>C:\Program Files\Soft Gems\Virtual Treeview\Source;..\iksemel;..\iksemel\include;..\iksemel\src;..\XMPPLib;c:\vcl;C:\Boost\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;..\minoslogger;..\minosbase;..\minosdisplay</BRCC_IncludePath>
-    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <TASM_IncludePath>..\iksemel\src;c:\vcl;..\iksemel;$(BDS)\include;$(BDS)\include\vcl;..\XMPPLib;..\iksemel\include;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <DCC_IncludePath>..\MinosLogger;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_IncludePath>..\XMPPLib;$(GJVVCL);$(BOOST)\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;..\minoslogger;..\minosbase;..\minosdisplay</BCC_IncludePath>
+    <AllPackageLibs>vcl.lib;rtl.lib;VTV.lib;vcldb.lib;dbrtl.lib;vclx.lib</AllPackageLibs>
     <ILINK_LibraryPath>..\MinosLogger;..\XMPPLib;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib\psdk;$(BDS)\lib;$(BOOST)\lib;..\minosbase;..\minosdisplay;$(TINYXML);..\WhisperSplitter</ILINK_LibraryPath>
-    <BCC_Defines>HAVE_CONFIG_H</BCC_Defines>
-    <DCC_ObjOutput>obj\</DCC_ObjOutput>
-    <BRCC_Defines>_DEBUG;HAVE_CONFIG_H</BRCC_Defines>
-    <TASM_Defines>_DEBUG HAVE_CONFIG_H</TASM_Defines>
+    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <Multithreaded>true</Multithreaded>
+    <TASM_Defines>_DEBUG HAVE_CONFIG_H</TASM_Defines>
+    <BRCC_Defines>_DEBUG;HAVE_CONFIG_H</BRCC_Defines>
+    <DCC_ObjOutput>obj\</DCC_ObjOutput>
+    <BCC_Defines>HAVE_CONFIG_H</BCC_Defines>
     <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
-    <DCC_ResourcePath>..\MinosLogger</DCC_ResourcePath>
     <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+    <DCC_ResourcePath>..\MinosLogger</DCC_ResourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Cfg_1)'!=''">
     <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
@@ -79,8 +79,8 @@
     <TASM_Debugging>Full</TASM_Debugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Cfg_2)'!=''">
-    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
     <DCC_Optimize>true</DCC_Optimize>
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
     <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
     <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
     <DCC_DebugInformation>false</DCC_DebugInformation>
@@ -123,9 +123,6 @@
     <LibFiles Include="..\XMPPLib\XMPPLib.lib">
       <BuildOrder>3</BuildOrder>
     </LibFiles>
-    <DelphiCompile Include="..\WhisperSplitter\UWhisperSplitter.pas">
-      <BuildOrder>8</BuildOrder>
-    </DelphiCompile>
     <FormResources Include="MinosMonitorMain.dfm" />
     <BuildConfiguration Include="Debug Build">
       <Key>Cfg_1</Key>

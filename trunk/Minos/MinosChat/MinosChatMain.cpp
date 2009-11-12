@@ -310,7 +310,7 @@ void __fastcall TMinosChatForm::WmMove( TMessage &/*Msg*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMinosChatForm::Splitter1Moved(TObject *Sender)
+void __fastcall TMinosChatForm::Splitter1Moved(TObject */*Sender*/)
 {
 // Just needs to be here...
 }

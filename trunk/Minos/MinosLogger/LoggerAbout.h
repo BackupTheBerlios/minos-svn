@@ -21,7 +21,7 @@
 #include <vcl\System.hpp>
 #include "RCVersion.h"
 #include "ConfigMainFrame.h"
-#include <ComCtrls.hpp> 
+#include <ComCtrls.hpp>
 //----------------------------------------------------------------------------
 class TAboutBox : public TForm
 {

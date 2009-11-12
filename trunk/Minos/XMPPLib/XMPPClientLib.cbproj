@@ -48,7 +48,6 @@
     <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
     <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
     <TLIB_PageSize>32</TLIB_PageSize>
-    <BCC_Defines>HAVE_CONFIG_H</BCC_Defines>
     <DCC_ObjOutput>cobj\</DCC_ObjOutput>
     <BRCC_Defines>_DEBUG;HAVE_CONFIG_H</BRCC_Defines>
     <TASM_Defines>_DEBUG HAVE_CONFIG_H</TASM_Defines>

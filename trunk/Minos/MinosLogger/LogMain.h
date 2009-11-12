@@ -16,34 +16,23 @@
 #include <ActnMenus.hpp>
 #include <BandActn.hpp>
 #include <Classes.hpp>
-#include <ComCtrls.hpp>
 #include <Controls.hpp>
 #include <ExtCtrls.hpp>
-#include <StdActns.hpp>
 #include <ToolWin.hpp>
 #include <XPStyleActnCtrls.hpp>
 #include <Dialogs.hpp>
 #include <Menus.hpp>
 #include "adpMRU.hpp"
-#include <AppEvnts.hpp> 
-//---------------------------------------------------------------------------
-#include <string>
-#include <Classes.hpp>
-#include <Controls.hpp>
+#include <AppEvnts.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <ActnCtrls.hpp>
-#include <ActnList.hpp>
-#include <ActnMan.hpp>
-#include <ComCtrls.hpp>
 #include <ToolWin.hpp>
-#include <ExtCtrls.hpp>
-#include <Grids.hpp>
 #include <Menus.hpp>
-#include <ActnMenus.hpp>
-#include <BandActn.hpp>
 #include <ExtActns.hpp>
-#include <StdActns.hpp> 
+#include <StdActns.hpp>
+#include <ComCtrls.hpp>
+//---------------------------------------------------------------------------
+#include <string>
 //---------------------------------------------------------------------------
 class TContactListDetails;
 class TContestEntryDetails;

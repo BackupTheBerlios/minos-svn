@@ -16,9 +16,9 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "MonitorLogFrame.h"
-#include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include "MultDisp.h"
+#include <ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TMonitoringFrame : public TFrame
 {

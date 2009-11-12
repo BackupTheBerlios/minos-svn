@@ -15,7 +15,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
-#include <ComCtrls.hpp> 
+#include <ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TClockDlg : public TForm
 {

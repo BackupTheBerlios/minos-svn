@@ -18,7 +18,7 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include "xTrackBar.h"
-#include <ComCtrls.hpp> 
+#include <ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TTestRigMain : public TForm
 {
