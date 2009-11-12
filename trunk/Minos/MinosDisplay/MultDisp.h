@@ -15,11 +15,11 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "VirtualTrees.hpp"
-#include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include "StatsDisp.h"
 #include "UWhisperSplitter.hpp"
 #include <Graphics.hpp>
+#include <ComCtrls.hpp>
 //---------------------------------------------------------------------------
 class TMultDispFrame : public TFrame
 {

@@ -81,6 +81,10 @@ object MultDispFrame: TMultDispFrame
     object DistrictTab: TTabSheet
       Caption = 'Districts'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0

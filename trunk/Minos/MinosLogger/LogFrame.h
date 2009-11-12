@@ -18,7 +18,6 @@
 #include <Menus.hpp>
 #include "VirtualTrees.hpp"
 #include "BundleFrame.h"
-#include <ComCtrls.hpp>
 #include "MultDisp.h"
 #include "QSOFrame.h"
 #include "QSOLogFrame.h"
@@ -96,6 +95,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
    TImage *Splitter_Image;
    TPanel *ArchiveMatchPanel;
    TPanel *OtherMatchPanel;
+   TPanel *ContestMatchPanel;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );

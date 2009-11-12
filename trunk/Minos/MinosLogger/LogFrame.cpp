@@ -77,6 +77,12 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
 	WLogAreaSplitter->HighlightColor = clSkyBlue;
 
+   int iTemp;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "LogSplitterPosition", iTemp, MatchPanel->Height );
+   MatchPanel->Height = iTemp;
+
+   WLogAreaSplitter->Restore();
+
    WMultSplitter = new TWhisperSplitter(MultSplitter, MultPanel);
 	WMultSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
 	WMultSplitter->HighlightColor = clSkyBlue;
@@ -138,9 +144,6 @@ void TSingleLogFrame::showQSOs()
 
    NextContactDetailsTimerTimer( this );
 
-   int iTemp;
-   TContestApp::getContestApp() ->displayBundle.getIntProfile( "LogSplitterPosition", iTemp, LogAreaSplitter->Height );
-   LogAreaSplitter->Height = iTemp;
 
    LogMonitor->showQSOs();
    logColumnsChanged = false;
@@ -375,7 +378,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
       pc->matchedContest = 0;
       pc->matchedContact = 0;
 
-//      Splitter1->Maximized = true;     // hide the archive list
+      WMatchSplitter->Minimize();     // hide the archive list
       return ;
    }
 
@@ -426,7 +429,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
             thispc->matchedContest = pc->getContactLog();
             thispc->matchedContact = 0;
             thispc->top = true;
-//            Splitter1->Maximized = false;     // hide the archive list
+            WMatchSplitter->Restore();     // hide the other list
          }
          last_pc = clp;
          if ( pc )
@@ -494,10 +497,10 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
       pc->matchedList = 0;
       pc->matchedContact = 0;
 
-//      Splitter3->Maximized = true;     // hide the archive list
+      WArchiveMatchSplitter->Minimize();          /// hide the archive list
       return ;
    }
-//   Splitter3->Maximized = false;     // expose the archive list
+   WArchiveMatchSplitter->Restore();
 
    ArchiveMatchTree->BeginUpdate();
 
@@ -637,8 +640,10 @@ void __fastcall TSingleLogFrame::QSOTreeColumnResize( TVTHeader *Sender,
 
 void __fastcall TSingleLogFrame::LogAreaSplitterMoved( TObject */*Sender*/ )
 {
-   // preserve size of "bottom" Panel2
-   TContestApp::getContestApp() ->displayBundle.setIntProfile( "LogSplitterPosition", LogAreaSplitter->Height );
+   if (!WLogAreaSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "LogSplitterPosition", MatchPanel->Height );
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::goSerial( )
@@ -1358,40 +1363,47 @@ bool TSingleLogFrame::getStanza( unsigned int stanza, std::string &stanzaData )
 {
    return contest->getStanza( stanza, stanzaData );
 }
+//---------------------------------------------------------------------------
+
 void TSingleLogFrame::showErrorList( ErrorList &errs )
 {
    MultDispFrame->showErrorList( errs );
 }
+//---------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-void __fastcall TSingleLogFrame::MatchSplitterMoved(TObject *Sender)
+void __fastcall TSingleLogFrame::MatchSplitterMoved(TObject */*Sender*/)
 {
-//
+   if (!WMatchSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MatchSplitterPosition", LogAreaSplitter->Height );
+   }
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TSingleLogFrame::ArchiveMatchSplitterMoved(TObject *Sender)
+void __fastcall TSingleLogFrame::ArchiveMatchSplitterMoved(TObject */*Sender*/)
 {
-//
+   if (!WArchiveMatchSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "ArchiveMatchSplitterPosition", LogAreaSplitter->Height );
+   }
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TSingleLogFrame::NextContactDetailsSplitterMoved(
-      TObject *Sender)
+void __fastcall TSingleLogFrame::NextContactDetailsSplitterMoved( TObject */*Sender*/)
 {
-//
+   if (!WNextContactDetailsSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "NextContactDetailsSplitterPosition", LogAreaSplitter->Height );
+   }
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TSingleLogFrame::MultSplitterMoved(TObject *Sender)
+void __fastcall TSingleLogFrame::MultSplitterMoved(TObject */*Sender*/)
 {
-//
+   if (!WMultSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MultSplitterPosition", LogAreaSplitter->Height );
+   }
 }
 //---------------------------------------------------------------------------
 

@@ -43,7 +43,8 @@ object SingleLogFrame: TSingleLogFrame
       Height = 8
       Cursor = crVSplit
       Align = alBottom
-      Color = clBlack
+      Color = clBtnFace
+      MinSize = 1
       ParentColor = False
       OnMoved = LogAreaSplitterMoved
       ExplicitTop = 273
@@ -315,7 +316,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end
@@ -444,81 +445,91 @@ object SingleLogFrame: TSingleLogFrame
       Align = alBottom
       Caption = 'MatchPanel'
       TabOrder = 1
-      object MatchSplitter: TSplitter
-        Left = 351
+      object ArchiveMatchSplitter: TSplitter
+        Left = 576
         Top = 1
         Width = 9
         Height = 109
-        Hint = 'Click here to show/hide other contest matches'
+        Hint = 'Click here to show/hide archive matches'
         Align = alRight
         Color = clBtnFace
         MinSize = 1
         ParentColor = False
-        OnMoved = MatchSplitterMoved
-        ExplicitLeft = 402
+        OnMoved = ArchiveMatchSplitterMoved
+        ExplicitLeft = 552
       end
-      object ThisMatchTree: TVirtualStringTree
-        Left = 1
+      object ArchiveMatchPanel: TPanel
+        Left = 585
         Top = 1
-        Width = 350
-        Height = 109
-        Hint = 'Matching QSOs in current contest'
-        Align = alClient
-        BevelKind = bkFlat
-        Header.AutoSizeIndex = 0
-        Header.DefaultHeight = 17
-        Header.Font.Charset = DEFAULT_CHARSET
-        Header.Font.Color = clWindowText
-        Header.Font.Height = -11
-        Header.Font.Name = 'Verdana'
-        Header.Font.Style = []
-        Header.MainColumn = -1
-        Header.Options = [hoColumnResize, hoDrag]
-        ParentShowHint = False
-        PopupMenu = EntryChoiceMenu
-        ShowHint = True
-        TabOrder = 0
-        TabStop = False
-        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
-        TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
-        TreeOptions.SelectionOptions = [toFullRowSelect]
-        OnDblClick = ThisMatchTreeDblClick
-        OnEnter = ThisMatchTreeEnter
-        OnGetText = ThisMatchTreeGetText
-        OnPaintText = ThisMatchTreePaintText
-        OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
-        OnKeyDown = ThisMatchTreeKeyDown
-        OnMouseDown = ThisMatchTreeMouseDown
-        ExplicitWidth = 408
-        Columns = <>
-      end
-      object OtherMatchPanel: TPanel
-        Left = 360
-        Top = 1
-        Width = 389
+        Width = 164
         Height = 109
         Align = alRight
+        TabOrder = 0
+        object ArchiveMatchTree: TVirtualStringTree
+          Left = 1
+          Top = 1
+          Width = 162
+          Height = 107
+          Hint = 'Matching archive entries'
+          Align = alClient
+          BevelKind = bkFlat
+          Header.AutoSizeIndex = 0
+          Header.DefaultHeight = 17
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Verdana'
+          Header.Font.Style = []
+          Header.MainColumn = -1
+          Header.Options = [hoColumnResize, hoDrag]
+          ParentShowHint = False
+          PopupMenu = EntryChoiceMenu
+          ShowHint = True
+          TabOrder = 0
+          TabStop = False
+          TreeOptions.SelectionOptions = [toFullRowSelect]
+          OnDblClick = ArchiveMatchTreeDblClick
+          OnEnter = ArchiveMatchTreeEnter
+          OnGetText = ArchiveMatchTreeGetText
+          OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
+          OnKeyDown = ArchiveMatchTreeKeyDown
+          OnMouseDown = ArchiveMatchTreeMouseDown
+          ExplicitWidth = 186
+          ExplicitHeight = 429
+          Columns = <>
+        end
+      end
+      object ContestMatchPanel: TPanel
+        Left = 1
+        Top = 1
+        Width = 575
+        Height = 109
+        Align = alClient
+        Caption = 'ContestMatchPanel'
         TabOrder = 1
-        object ArchiveMatchSplitter: TSplitter
-          Left = 191
+        ExplicitLeft = 232
+        ExplicitTop = 40
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object MatchSplitter: TSplitter
+          Left = 395
           Top = 1
           Width = 9
           Height = 107
-          Hint = 'Click here to show/hide archive matches'
+          Hint = 'Click here to show/hide other contest matches'
           Align = alRight
           Color = clBtnFace
           MinSize = 1
           ParentColor = False
-          OnMoved = ArchiveMatchSplitterMoved
-          ExplicitLeft = 160
-          ExplicitHeight = 105
+          OnMoved = MatchSplitterMoved
+          ExplicitLeft = 152
         end
-        object OtherMatchTree: TVirtualStringTree
+        object ThisMatchTree: TVirtualStringTree
           Left = 1
           Top = 1
-          Width = 190
+          Width = 394
           Height = 107
-          Hint = 'Matching QSOs in any other loaded contests'
+          Hint = 'Matching QSOs in current contest'
           Align = alClient
           BevelKind = bkFlat
           Header.AutoSizeIndex = 0
@@ -538,28 +549,31 @@ object SingleLogFrame: TSingleLogFrame
           TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
           TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
           TreeOptions.SelectionOptions = [toFullRowSelect]
-          OnDblClick = OtherMatchTreeDblClick
-          OnEnter = OtherMatchTreeEnter
-          OnGetText = OtherMatchTreeGetText
-          OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
-          OnKeyDown = OtherMatchTreeKeyDown
-          OnMouseDown = OtherMatchTreeMouseDown
-          ExplicitWidth = 112
+          OnDblClick = ThisMatchTreeDblClick
+          OnEnter = ThisMatchTreeEnter
+          OnGetText = ThisMatchTreeGetText
+          OnPaintText = ThisMatchTreePaintText
+          OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
+          OnKeyDown = ThisMatchTreeKeyDown
+          OnMouseDown = ThisMatchTreeMouseDown
+          ExplicitWidth = 153
+          ExplicitHeight = 109
           Columns = <>
         end
-        object ArchiveMatchPanel: TPanel
-          Left = 200
+        object OtherMatchPanel: TPanel
+          Left = 404
           Top = 1
-          Width = 188
+          Width = 170
           Height = 107
           Align = alRight
           TabOrder = 1
-          object ArchiveMatchTree: TVirtualStringTree
+          ExplicitLeft = 380
+          object OtherMatchTree: TVirtualStringTree
             Left = 1
             Top = 1
-            Width = 186
+            Width = 168
             Height = 105
-            Hint = 'Matching archive entries'
+            Hint = 'Matching QSOs in any other loaded contests'
             Align = alClient
             BevelKind = bkFlat
             Header.AutoSizeIndex = 0
@@ -576,15 +590,17 @@ object SingleLogFrame: TSingleLogFrame
             ShowHint = True
             TabOrder = 0
             TabStop = False
+            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScrollOnExpand, toAutoSpanColumns, toAutoTristateTracking, toAutoDeleteMovedNodes]
+            TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
             TreeOptions.SelectionOptions = [toFullRowSelect]
-            OnDblClick = ArchiveMatchTreeDblClick
-            OnEnter = ArchiveMatchTreeEnter
-            OnGetText = ArchiveMatchTreeGetText
-            OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
-            OnKeyDown = ArchiveMatchTreeKeyDown
-            OnMouseDown = ArchiveMatchTreeMouseDown
-            ExplicitWidth = 206
-            ExplicitHeight = 103
+            OnDblClick = OtherMatchTreeDblClick
+            OnEnter = OtherMatchTreeEnter
+            OnGetText = OtherMatchTreeGetText
+            OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
+            OnKeyDown = OtherMatchTreeKeyDown
+            OnMouseDown = OtherMatchTreeMouseDown
+            ExplicitWidth = 387
+            ExplicitHeight = 107
             Columns = <>
           end
         end

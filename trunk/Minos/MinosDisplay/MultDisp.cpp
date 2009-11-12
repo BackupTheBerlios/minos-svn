@@ -89,11 +89,11 @@ __fastcall TMultDispFrame::TMultDispFrame( TComponent* Owner )
    //   DistrictMultTree->Canvas->Font->Assign(Parent->Font);
 
 
-   // This should work - it draws it, but doesn't position it
-   // FilterSplitter->Maximized = true;
 	WFilterSplitter = new TWhisperSplitter(FilterSplitter, FilterPanel);
 	WFilterSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
 	WFilterSplitter->HighlightColor = clSkyBlue;
+
+   WFilterSplitter->Minimize();
 }
 void TMultDispFrame::setContest( BaseContestLog *pct )
 {
@@ -495,7 +495,7 @@ void TMultDispFrame::showErrorList( ErrorList &errs )
 }
 
 
-void __fastcall TMultDispFrame::FilterSplitterMoved(TObject *Sender)
+void __fastcall TMultDispFrame::FilterSplitterMoved(TObject */*Sender*/)
 {
 //   
 }
