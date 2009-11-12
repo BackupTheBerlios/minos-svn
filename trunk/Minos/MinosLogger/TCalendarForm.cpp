@@ -151,16 +151,28 @@ void __fastcall TCalendarForm::CalendarGridDblClick( TObject * /*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-
-
 void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 {
+   int year = YearSpinEdit->Text.ToIntDef(2010);
+   year -= 1;
+   if (year < 2008)
+   {
+      year = 2008;
+   }
+   YearSpinEdit->Text = String(year);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
+   int year = YearSpinEdit->Text.ToIntDef(2010);
+   year += 1;
+   if (year > 2012)
+   {
+      year = 2012;
+   }
+   YearSpinEdit->Text = String(year);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------

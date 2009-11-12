@@ -76,7 +76,7 @@ object CalendarForm: TCalendarForm
       OnClick = GetCalendarButtonClick
     end
     object YearSpinEdit: TEdit
-      Left = 469
+      Left = 472
       Top = 10
       Width = 121
       Height = 21
