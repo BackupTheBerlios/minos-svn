@@ -59,8 +59,9 @@
 <!-- 08.007 17/06/2008 Changed 144 backpackers to individual contests-->
 <!-- 08.008 17/06/2008 Added override flag for xmas contest -->
 <!-- 08.009 18/09/2008 Added icalurl and googleurl -->
+<!-- 08.010 03/10/2009 changed vhfcc.org domain to rsgbcc.org-->
 <calendar>
-<version>08.009 18/09/2008</version>
+<version>08.010 03/20/2009</version>
 <icalurl>http://www.google.com/calendar/ical/3sjit671vtqtuomsgvuaj4b0ig%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/render?cid=3sjit671vtqtuomsgvuaj4b0ig%40group.calendar.google.com</googleurl>
 <mult_type>
@@ -68,7 +69,7 @@
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+A full list of Postcodes can be found here www.rsgbcc.org/vhf/rules/08rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
@@ -87,7 +88,7 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <description>Post Codes, Countries and Locators</description>
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
-A full list of Postcodes can be found here www.vhfcc.org/rules/08rules/postcode.htm
+A full list of Postcodes can be found here www.rsgbcc.org/vhf/rules/08rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
@@ -186,7 +187,7 @@ Certificates will be awarded to the overall winners and runners-up in each secti
 <name>S9</name>
 <description>Club Championship</description>
 <long_description>
-a.        The individual entries by a club's members to the 2m UK activity contests which take place on 2m from 2000-2230 LOCAL time on the 1st Tuesday in every month all count towards a society's overall score for the year. The 2m UKACs are short contests with a straightforward scoring scheme which are simple enough for beginners and have high activity to keep more experienced contesters interested. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the VHFCC web site www.vhfcc.org
+a.        The individual entries by a club's members to the 2m UK activity contests which take place on 2m from 2000-2230 LOCAL time on the 1st Tuesday in every month all count towards a society's overall score for the year. The 2m UKACs are short contests with a straightforward scoring scheme which are simple enough for beginners and have high activity to keep more experienced contesters interested. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the VHFCC web site www.rsgbcc.org
 
 b.        Stations enter the 2m UKAC contest in the normal way, but need to include an AFS (affiliated society) name in the cover sheet of their entry. Entries to all sections of the UKAC count towards the overall club score which is the simple sum of the scores of each team member operating that month.
 
@@ -201,21 +202,21 @@ d.        The G6NB Trophy will be awarded to the club with the highest score at 
 <name>Backpacker</name>
 <description>Special Backpackers Rules</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/BACKPACK.htm
+http://www.rsgbcc.org/vhf/rules/08rules/BACKPACK.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHFNFD</name>
 <description>Special Rules for VHF NFD</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/VHFNFD.htm
+http://www.rsgbcc.org/vhf/rules/08rules/VHFNFD.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHF CHAMPIONSHIP</name>
 <description>Special Rules for VHF Championship</description>
 <long_description>
-http://www.vhfcc.org/rules/08rules/championship.htm
+http://www.rsgbcc.org/vhf/rules/08rules/championship.htm
 </long_description>
 </special_rule>
 <special_rule>
