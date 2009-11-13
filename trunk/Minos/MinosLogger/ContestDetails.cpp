@@ -621,14 +621,11 @@ void __fastcall TContestEntryDetails::DateEditKeyPress( TObject * /*Sender*/,
 
 void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender*/ )
 {
-/*
    std::auto_ptr <TCalendarForm> CalendarDlg(new TCalendarForm(this));
-//   if ( !CalendarDlg )
-   {
-//      CalendarDlg = new TCalendarForm( this ) ;
-      CalendarDlg->Caption = "VHF Calendar";
-      CalendarDlg->description = ContestNameSelected->Text;
-   }
+
+   CalendarDlg->Caption = "VHF Calendar";
+   CalendarDlg->description = ContestNameSelected->Text;
+
    if ( CalendarDlg->ShowModal() == mrOk )
    {
       // set up all the details that we can from the calendar
@@ -644,7 +641,6 @@ void __fastcall TContestEntryDetails::VHFCalendarButtonClick( TObject * /*Sender
    {
       OKButton->SetFocus();
    }
-   */
 }
 //---------------------------------------------------------------------------
 

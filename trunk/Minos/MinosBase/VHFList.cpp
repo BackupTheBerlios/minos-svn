@@ -114,9 +114,9 @@ last Sundays in March and October respectively. These dates are in line with
 those already operating in the United Kingdom. The 9th Directive provides
 that these start and end dates should apply indefinitely.
 */
-// years 2006, 7, 8, 9, 10, 11
-int DSTStart[ 6 ] = {26, 25, 30, 29, 28, 27};
-int DSTEnd[ 6 ] = {29, 28, 26, 25, 31, 30};
+// years 2006, 7, 8, 9, 10, 11, 12
+int DSTStart[ 7 ] = {26, 25, 30, 29, 28, 27, 25};
+int DSTEnd[ 7 ] = {29, 28, 26, 25, 31, 30, 28};
 
 TDateTime localToUTC( TDateTime t )
 {
@@ -146,7 +146,7 @@ TDateTime localToUTC( TDateTime t )
    {
       static dstShown = 0;
       if (dstShown != calendarYear)
-         ShowMessage( "DST conversions only defined from 2006 until 2011!" );
+         ShowMessage( "DST conversions only currently defined from 2006 until 2012!" );
       dstShown = calendarYear;
       return t;
    }
