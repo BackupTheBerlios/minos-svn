@@ -185,12 +185,14 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall thisMatchTreeSelect( PVirtualNode sel );
       void __fastcall otherMatchTreeSelect( PVirtualNode sel );
       void __fastcall archiveMatchTreeSelect( PVirtualNode sel );
+      void SplittersChanged();
 
    public:  		// User declarations
       __fastcall TSingleLogFrame( TComponent* Owner, BaseContestLog * contest );
       __fastcall TSingleLogFrame::~TSingleLogFrame();
       void drawWrapText( TCanvas *c, TRect &CellRect, const String & CellText, int baseline = -1 );
       void showQSOs();
+      void getSplitters();
       void goSerial( );
       BaseContestLog * getContest();
       void closeContest();
@@ -208,6 +210,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void EditContact( BaseContact *lct );
 
       bool logColumnsChanged;
+      bool splittersChanged;
 
       void lgTraceerr( int err );
 

@@ -51,6 +51,7 @@ MatchNodeData::MatchNodeData() : top( false ), matchedContact( 0 )
 __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog * contest )
       : TFrame( Owner ), contest( contest ),
       logColumnsChanged( false ),
+      splittersChanged(false),
       currFreq( 0 ), oldFreq( 0 ),
       lastStanzaCount( 0 ),
       matchTreeClickNode( 0 ),
@@ -77,11 +78,6 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
 	WLogAreaSplitter->HighlightColor = clSkyBlue;
 
-   int iTemp;
-   TContestApp::getContestApp() ->displayBundle.getIntProfile( "LogSplitterPosition", iTemp, MatchPanel->Height );
-   MatchPanel->Height = iTemp;
-
-   WLogAreaSplitter->Restore();
 
    WMultSplitter = new TWhisperSplitter(MultSplitter, MultPanel);
 	WMultSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
@@ -102,6 +98,10 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
    WMultSplitter->Minimize();  // hide the mults/stats display
    WMatchSplitter->Minimize();     // hide the other list
    WArchiveMatchSplitter->Minimize();     // hide the archive list
+
+   getSplitters();
+
+   WLogAreaSplitter->Restore();
 
    showMatchHeaders();
    OnShowTimer->Enabled = true;
@@ -152,6 +152,7 @@ void TSingleLogFrame::showQSOs()
    GJVQSOLogFrame->selectEntry( 0 );
 
 }
+
 //---------------------------------------------------------------------------
 void TSingleLogFrame::EditContact( BaseContact *lct )
 {
@@ -634,15 +635,6 @@ void __fastcall TSingleLogFrame::QSOTreeColumnResize( TVTHeader *Sender,
             break;
          }
       }
-   }
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TSingleLogFrame::LogAreaSplitterMoved( TObject */*Sender*/ )
-{
-   if (!WLogAreaSplitter->Minimized)
-   {
-      TContestApp::getContestApp() ->displayBundle.setIntProfile( "LogSplitterPosition", MatchPanel->Height );
    }
 }
 //---------------------------------------------------------------------------
@@ -1371,11 +1363,22 @@ void TSingleLogFrame::showErrorList( ErrorList &errs )
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TSingleLogFrame::LogAreaSplitterMoved( TObject */*Sender*/ )
+{
+   if (!WLogAreaSplitter->Minimized)
+   {
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "LogSplitterPosition", MatchPanel->Height );
+      SplittersChanged();
+   }
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TSingleLogFrame::MatchSplitterMoved(TObject */*Sender*/)
 {
    if (!WMatchSplitter->Minimized)
    {
-      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MatchSplitterPosition", LogAreaSplitter->Height );
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MatchSplitterPosition", OtherMatchPanel->Width );
+      SplittersChanged();
    }
 }
 //---------------------------------------------------------------------------
@@ -1384,7 +1387,8 @@ void __fastcall TSingleLogFrame::ArchiveMatchSplitterMoved(TObject */*Sender*/)
 {
    if (!WArchiveMatchSplitter->Minimized)
    {
-      TContestApp::getContestApp() ->displayBundle.setIntProfile( "ArchiveMatchSplitterPosition", LogAreaSplitter->Height );
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "ArchiveMatchSplitterPosition", ArchiveMatchPanel->Width );
+      SplittersChanged();
    }
 }
 //---------------------------------------------------------------------------
@@ -1393,7 +1397,8 @@ void __fastcall TSingleLogFrame::NextContactDetailsSplitterMoved( TObject */*Sen
 {
    if (!WNextContactDetailsSplitter->Minimized)
    {
-      TContestApp::getContestApp() ->displayBundle.setIntProfile( "NextContactDetailsSplitterPosition", LogAreaSplitter->Height );
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "NextContactDetailsSplitterPosition", NextContactDetailsPanel->Width );
+      SplittersChanged();
    }
 }
 //---------------------------------------------------------------------------
@@ -1402,8 +1407,75 @@ void __fastcall TSingleLogFrame::MultSplitterMoved(TObject */*Sender*/)
 {
    if (!WMultSplitter->Minimized)
    {
-      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MultSplitterPosition", LogAreaSplitter->Height );
+      TContestApp::getContestApp() ->displayBundle.setIntProfile( "MultSplitterPosition", MultPanel->Width );
+      SplittersChanged();
    }
+}
+
+//---------------------------------------------------------------------------
+void TSingleLogFrame::SplittersChanged()
+{
+   int cf = LogContainer->ContestPageControl->PageCount;
+   for ( int j = 0; j < cf; j++ )
+   {
+      int cc = LogContainer->ContestPageControl->Pages[ j ] ->ControlCount;
+      for ( int i = 0; i < cc; i++ )
+      {
+         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( LogContainer->ContestPageControl->Pages[ j ] ->Controls[ i ] ) )
+         {
+            f->splittersChanged = true;
+         }
+      }
+   }
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::getSplitters()
+{
+   int iTemp;
+   bool minimised;
+
+   minimised = WLogAreaSplitter->Minimized;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "LogSplitterPosition", iTemp, MatchPanel->Height );
+   MatchPanel->Height = iTemp;
+   if (minimised)
+   {
+      WLogAreaSplitter->Minimize();
+   }
+
+   minimised = WNextContactDetailsSplitter->Minimized;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "NextContactDetailsSplitterPosition", iTemp, NextContactDetailsPanel->Width );
+   NextContactDetailsPanel->Width = iTemp;
+   if (minimised)
+   {
+      WNextContactDetailsSplitter->Minimize();
+   }
+
+   minimised = WMultSplitter->Minimized;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "MultSplitterPosition", iTemp, MultPanel->Width );
+   MultPanel->Width = iTemp;
+   if (minimised)
+   {
+      WMultSplitter->Minimize();
+   }
+
+   minimised = WMatchSplitter->Minimized;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "MatchSplitterPosition", iTemp, OtherMatchPanel->Width );
+   OtherMatchPanel->Width = iTemp;
+   if (minimised)
+   {
+      WMatchSplitter->Minimize();
+   }
+
+   minimised = WArchiveMatchSplitter->Minimized;
+   TContestApp::getContestApp() ->displayBundle.getIntProfile( "ArchiveMatchSplitterPosition", iTemp, ArchiveMatchPanel->Width );
+   ArchiveMatchPanel->Width = iTemp;
+   if (minimised)
+   {
+      WArchiveMatchSplitter->Minimize();
+   }
+
+
+   splittersChanged = false;
 }
 //---------------------------------------------------------------------------
 

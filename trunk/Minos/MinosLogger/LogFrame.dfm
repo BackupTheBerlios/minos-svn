@@ -316,7 +316,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -494,8 +494,6 @@ object SingleLogFrame: TSingleLogFrame
           OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
           OnKeyDown = ArchiveMatchTreeKeyDown
           OnMouseDown = ArchiveMatchTreeMouseDown
-          ExplicitWidth = 186
-          ExplicitHeight = 429
           Columns = <>
         end
       end
@@ -507,10 +505,6 @@ object SingleLogFrame: TSingleLogFrame
         Align = alClient
         Caption = 'ContestMatchPanel'
         TabOrder = 1
-        ExplicitLeft = 232
-        ExplicitTop = 40
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object MatchSplitter: TSplitter
           Left = 395
           Top = 1
@@ -556,8 +550,6 @@ object SingleLogFrame: TSingleLogFrame
           OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
           OnKeyDown = ThisMatchTreeKeyDown
           OnMouseDown = ThisMatchTreeMouseDown
-          ExplicitWidth = 153
-          ExplicitHeight = 109
           Columns = <>
         end
         object OtherMatchPanel: TPanel
@@ -567,7 +559,6 @@ object SingleLogFrame: TSingleLogFrame
           Height = 107
           Align = alRight
           TabOrder = 1
-          ExplicitLeft = 380
           object OtherMatchTree: TVirtualStringTree
             Left = 1
             Top = 1
@@ -599,8 +590,6 @@ object SingleLogFrame: TSingleLogFrame
             OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
             OnKeyDown = OtherMatchTreeKeyDown
             OnMouseDown = OtherMatchTreeMouseDown
-            ExplicitWidth = 387
-            ExplicitHeight = 107
             Columns = <>
           end
         end

@@ -448,6 +448,11 @@ void __fastcall TLogContainer::ContestPageControlChange( TObject */*Sender*/ )
       if ( f->logColumnsChanged )
          f->showQSOs();
 
+      if (f->splittersChanged)
+      {
+         f->getSplitters();
+      }
+
       f->OnShowTimer->Enabled = true;
       f->GJVQSOLogFrame->CallsignEdit->SetFocus();
    }
