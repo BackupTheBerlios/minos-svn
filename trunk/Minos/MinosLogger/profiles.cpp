@@ -677,7 +677,7 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          //         entries.push_back( ProfileEntry( edpFontSize, "FontSize", 8, "Font Size (points)" ) );
          entries.push_back( ProfileEntry( edpTop, "Top", 10, "Top of Logger window" ) );
          entries.push_back( ProfileEntry( edpLeft, "Left", 25, "Left of Logger window" ) );
-         entries.push_back( ProfileEntry( edpWidth, "Width", 750, "Width of Logger window" ) );
+         entries.push_back( ProfileEntry( edpWidth, "Width", 780, "Width of Logger window" ) );
          entries.push_back( ProfileEntry( edpHeight, "Height", 590, "Height of Logger window" ) );
          entries.push_back( ProfileEntry( edpShowContinentEU, "ShowContinentEU", true, "hint" ) );
          entries.push_back( ProfileEntry( edpShowContinentAS, "ShowContinentAS", false, "hint" ) );
