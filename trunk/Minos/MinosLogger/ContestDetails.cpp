@@ -387,6 +387,10 @@ TWinControl * TContestEntryDetails::getDetails( )
 
    try
    {
+      if (StartDateEdit->Text.IsEmpty())
+      {
+         StartDateEdit->Text = TDateTime::CurrentDate();
+      }
    	TDateTime test = TDateTime( StartDateEdit->Text, TDateTime::Date );
       if ( ( int ) test > 0 )
          contest->DTGStart.setValue(
@@ -407,6 +411,10 @@ TWinControl * TContestEntryDetails::getDetails( )
 
    try
    {
+      if (EndDateEdit->Text.IsEmpty())
+      {
+         EndDateEdit->Text = TDateTime::CurrentDate();
+      }
    	TDateTime test = TDateTime( EndDateEdit->Text, TDateTime::Date );
       if ( ( int ) test > 0 )
          contest->DTGEnd.setValue( TDTToCanonical( EndDateEdit->Text + " " + EndTimeCombo->Text ).c_str() );
