@@ -79,7 +79,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object RSTTXEdit: TLabeledEdit
-      Left = 109
+      Left = 108
       Top = 83
       Width = 36
       Height = 21
@@ -94,7 +94,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object SerTXEdit: TLabeledEdit
-      Left = 163
+      Left = 170
       Top = 83
       Width = 54
       Height = 21
@@ -116,7 +116,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object RSTRXEdit: TLabeledEdit
-      Left = 239
+      Left = 254
       Top = 83
       Width = 54
       Height = 21
@@ -131,7 +131,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object SerRXEdit: TLabeledEdit
-      Left = 316
+      Left = 337
       Top = 83
       Width = 54
       Height = 21
@@ -146,7 +146,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object LocEdit: TLabeledEdit
-      Left = 395
+      Left = 420
       Top = 83
       Width = 65
       Height = 21
@@ -163,7 +163,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object QTHEdit: TLabeledEdit
-      Left = 483
+      Left = 504
       Top = 83
       Width = 62
       Height = 21
@@ -271,7 +271,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object NonScoreCheckBox: TCheckBox
-      Left = 380
+      Left = 401
       Top = 43
       Width = 94
       Height = 17
@@ -280,7 +280,7 @@ object GJVEditFrame: TGJVEditFrame
       TabOrder = 5
     end
     object DeletedCheckBox: TCheckBox
-      Left = 480
+      Left = 504
       Top = 43
       Width = 65
       Height = 17

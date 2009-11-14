@@ -15,11 +15,6 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
     inherited CallsignEdit: TLabeledEdit [6]
     end
     inherited TimeEdit: TLabeledEdit [7]
-      Left = 144
-      EditLabel.ExplicitLeft = 119
-      EditLabel.ExplicitTop = 7
-      EditLabel.ExplicitWidth = 22
-      ExplicitLeft = 144
     end
     inherited QTHEdit: TLabeledEdit [8]
     end
