@@ -32,7 +32,11 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    int year = YearSpinEdit->Text.ToIntDef(2000);
    vhf = Calendar(year);
    bool loaded = false;
-   if (year >= 2009)
+   if (year > 2009)
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests10.xml" );
+   }
+   else if (year == 2009)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests09.xml" );
    }
@@ -131,8 +135,9 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 
    String fpath = ExtractFilePath( appFName );
 
-   downloadCalendar("http://www.vhfcc.org/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
-   downloadCalendar("http://www.vhfcc.org/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml");
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
