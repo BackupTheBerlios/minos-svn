@@ -4,21 +4,26 @@
 //================================================================
 Bugs, etc to fix
 
-Ken's duplicate bug
 
 Sticky splitters in monitor and chat
 
-Remove spinners from keyer - use sliders?
-
 Check tab orders (again) - to make sure!
 
-What to do with spare space in log details?
+What to do with spare space in log details? (not all spare!)
 
 Auto copy MinosLines on compilation
 
 Can we get nice direction arrows on the splitters, or are the dots enough?
+
+Some form of log printing?
+
+Post event and Uri mode simplification
+
+Read only simplification
 //================================================================
 Next version - 1.3.0 - new features etc
+
+Duplicate bug when coming off the QSO Edit dialog
 
 Uses rsgbcc URL for contest files
 
