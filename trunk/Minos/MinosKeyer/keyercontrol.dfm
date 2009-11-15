@@ -25,7 +25,7 @@ object KeyControlForm: TKeyControlForm
     Top = 0
     Width = 256
     Height = 336
-    ActivePage = CWTab
+    ActivePage = VoiceTab
     Align = alClient
     TabOrder = 0
     object VoiceTab: TTabSheet
@@ -362,6 +362,10 @@ object KeyControlForm: TKeyControlForm
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label18: TLabel
         Left = 16
         Top = 74
@@ -396,7 +400,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -406,7 +410,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -416,7 +420,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -426,7 +430,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 3
         OnChange = DestinationComboBoxChange
       end
