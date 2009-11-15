@@ -32,7 +32,7 @@ class TCalendarForm : public TForm
       TButton *GetCalendarButton;
       TIdHTTP *IdHTTP1;
    TLabel *CalendarVersionLabel;
-   TEdit *YearSpinEdit;
+   TEdit *YearEdit;
    TButton *YearDownButton;
    TButton *YearUpButton;
       void __fastcall CloseButtonClick( TObject *Sender );

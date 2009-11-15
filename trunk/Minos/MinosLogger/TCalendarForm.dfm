@@ -25,7 +25,6 @@ object CalendarForm: TCalendarForm
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowSelect, goThumbTracking]
     TabOrder = 0
     OnDblClick = CalendarGridDblClick
-    ExplicitWidth = 750
   end
   object Panel1: TPanel
     Left = 0
@@ -34,7 +33,6 @@ object CalendarForm: TCalendarForm
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 750
     DesignSize = (
       748
       41)
@@ -56,7 +54,6 @@ object CalendarForm: TCalendarForm
       ModalResult = 2
       TabOrder = 0
       OnClick = CloseButtonClick
-      ExplicitLeft = 653
     end
     object SelectButton: TButton
       Left = 14
@@ -78,13 +75,13 @@ object CalendarForm: TCalendarForm
       TabOrder = 2
       OnClick = GetCalendarButtonClick
     end
-    object YearSpinEdit: TEdit
+    object YearEdit: TEdit
       Left = 472
       Top = 10
       Width = 121
       Height = 21
       TabOrder = 3
-      Text = 'YearSpinEdit'
+      Text = 'YearEdit'
     end
     object YearDownButton: TButton
       Left = 432

@@ -19,7 +19,7 @@ __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
       : TForm( Owner ), vhf(2000)
 {
    TDateTime tnow = TDateTime::CurrentDateTime();
-   YearSpinEdit->Text = tnow.FormatString("yyyy");
+   YearEdit->Text = tnow.FormatString("yyyy");
 }
 //---------------------------------------------------------------------------
 void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
@@ -29,7 +29,7 @@ void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 {
-   int year = YearSpinEdit->Text.ToIntDef(2000);
+   int year = YearEdit->Text.ToIntDef(2000);
    vhf = Calendar(year);
    bool loaded = false;
    if (year > 2009)
@@ -158,26 +158,26 @@ void __fastcall TCalendarForm::CalendarGridDblClick( TObject * /*Sender*/ )
 
 void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 {
-   int year = YearSpinEdit->Text.ToIntDef(2010);
+   int year = YearEdit->Text.ToIntDef(2010);
    year -= 1;
    if (year < 2008)
    {
       year = 2008;
    }
-   YearSpinEdit->Text = String(year);
+   YearEdit->Text = String(year);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
-   int year = YearSpinEdit->Text.ToIntDef(2010);
+   int year = YearEdit->Text.ToIntDef(2010);
    year += 1;
    if (year > 2012)
    {
       year = 2012;
    }
-   YearSpinEdit->Text = String(year);
+   YearEdit->Text = String(year);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
