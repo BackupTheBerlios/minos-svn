@@ -60,7 +60,7 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
    RCVersion.initialise();
    ProductName->Caption = RCVersion.ProductName;
    String minor = RCVersion.MinorVersion;
-   bool Beta = true/*( minor.ToIntDef( 1 ) % 2 == 1 )*/;
+   bool Beta = false/*( minor.ToIntDef( 1 ) % 2 == 1 )*/;
    Version->Caption = "Version " + RCVersion.FileVersion + ( Beta ? " BETA" : "" );
    Copyright->Caption = RCVersion.LegalCopyright;
    Comments->Caption = ( Beta ? "Beta version - use at your own risk!\r\n\r\n\r\n" : "" ) + RCVersion.Comments;
