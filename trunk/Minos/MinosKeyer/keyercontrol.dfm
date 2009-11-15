@@ -25,15 +25,11 @@ object KeyControlForm: TKeyControlForm
     Top = 0
     Width = 256
     Height = 336
-    ActivePage = Mixer
+    ActivePage = CWTab
     Align = alClient
     TabOrder = 0
     object VoiceTab: TTabSheet
       Caption = 'Voice'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object SPanel1: TSPanel
         Left = 0
         Top = 0
@@ -234,24 +230,29 @@ object KeyControlForm: TKeyControlForm
           TabOrder = 14
           OnClick = AutoRepeatCheckBoxClick
         end
-        object DelaySpinEdit: TCSpinEdit
+        object DelayEdit: TEdit
           Left = 174
           Top = 166
           Width = 49
-          Height = 22
-          MaxValue = 100
+          Height = 21
           TabOrder = 15
-          OnChange = DelaySpinEditChange
+          Text = '6'
+          OnChange = DelayEditChange
+        end
+        object DelayUpDown: TUpDown
+          Left = 223
+          Top = 166
+          Width = 16
+          Height = 21
+          Associate = DelayEdit
+          Position = 6
+          TabOrder = 16
         end
       end
     end
     object CWTab: TTabSheet
       Caption = 'CW'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label13: TLabel
         Left = 8
         Top = 8
@@ -301,15 +302,13 @@ object KeyControlForm: TKeyControlForm
         TabOrder = 3
         OnClick = ClearButtonClick
       end
-      object SpeedControl: TCSpinEdit
+      object SpeedControl: TEdit
         Left = 80
         Top = 6
-        Width = 49
-        Height = 22
-        MaxValue = 30
-        MinValue = 5
+        Width = 38
+        Height = 21
         TabOrder = 4
-        Value = 12
+        Text = '12'
         OnChange = SpeedControlChange
         OnKeyPress = ToneEditKeyPress
       end
@@ -348,14 +347,21 @@ object KeyControlForm: TKeyControlForm
         TabOrder = 8
         OnClick = SendFileButtonClick
       end
+      object SpeedUpDown: TUpDown
+        Left = 118
+        Top = 6
+        Width = 16
+        Height = 21
+        Associate = SpeedControl
+        Min = 5
+        Max = 30
+        Position = 12
+        TabOrder = 9
+      end
     end
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label18: TLabel
         Left = 16
         Top = 74
@@ -390,7 +396,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -400,7 +406,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -410,7 +416,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -420,7 +426,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 3
         OnChange = DestinationComboBoxChange
       end

@@ -20,9 +20,7 @@
 #include "FBVUMeter.hpp"
 #include "xTrackBar.h"
 #include "tspanel.h"
-#include "CSPIN.h"
 #include <ImgList.hpp>
-#include "cspin.h"
 #include <Dialogs.hpp>
 #include <ComCtrls.hpp>
 
@@ -72,7 +70,7 @@ class TKeyControlForm : public TForm
       TButton *SendButton;
       TButton *CWStopButton;
       TButton *ClearButton;
-      TCSpinEdit *SpeedControl;
+      TEdit *SpeedControl;
       TLabel *Label13;
       TEdit *ToneEdit;
       TLabel *Label14;
@@ -93,7 +91,7 @@ class TKeyControlForm : public TForm
       TTimer *StartupTimer;
       TTimer *CaptionTimer;
       TCheckBox *AutoRepeatCheckBox;
-      TCSpinEdit *DelaySpinEdit;
+      TEdit *DelayEdit;
       TLabel *Label17;
       TComboBox *InputMixerComboBox;
       TComboBox *OutputMixerComboBox;
@@ -105,6 +103,8 @@ class TKeyControlForm : public TForm
       TLabel *Label21;
       TLabel *MUXSelection;
       TCheckBox *LockMixersCB;
+   TUpDown *DelayUpDown;
+   TUpDown *SpeedUpDown;
       void __fastcall RecordButtonClick( TObject *Sender );
       void __fastcall StopButtonClick( TObject *Sender );
       void __fastcall PlayButtonClick( TObject *Sender );
@@ -136,7 +136,7 @@ class TKeyControlForm : public TForm
       void __fastcall FormResize( TObject *Sender );
       void __fastcall CaptionTimerTimer( TObject *Sender );
       void __fastcall AutoRepeatCheckBoxClick( TObject *Sender );
-      void __fastcall DelaySpinEditChange( TObject *Sender );
+      void __fastcall DelayEditChange( TObject *Sender );
       void __fastcall SpeedControlChange( TObject *Sender );
       void __fastcall ToneEditChange( TObject *Sender );
       void __fastcall InputMixerComboBoxChange( TObject *Sender );

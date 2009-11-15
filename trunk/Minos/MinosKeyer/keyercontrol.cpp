@@ -24,7 +24,6 @@
 #pragma link "FBVUMeter"
 #pragma link "xTrackBar" 
 #pragma link "tspanel"
-#pragma link "CSPIN"
 #pragma resource "*.dfm" 
 //---------------------------------------------------------------------------
 TKeyControlForm *KeyControlForm = 0;
@@ -454,10 +453,10 @@ void __fastcall TKeyControlForm::FormShow( TObject */*Sender*/ )
    PipCheckBox->Checked = getPipEnabled();
    PageControl1->ActivePage = VoiceTab;
 
-   DelaySpinEdit->Value = getAutoRepeatDelay();
+   DelayEdit->Text = String(getAutoRepeatDelay());
    AutoRepeatCheckBox->Checked = getEnableAutoRepeat();
 
-   SpeedControl->Value = getCWSpeed();
+   SpeedControl->Text = String(getCWSpeed());
    ToneEdit->Text = getCWTone();
 }
 //---------------------------------------------------------------------------
@@ -468,9 +467,9 @@ void __fastcall TKeyControlForm::AutoRepeatCheckBoxClick( TObject */*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TKeyControlForm::DelaySpinEditChange( TObject */*Sender*/ )
+void __fastcall TKeyControlForm::DelayEditChange( TObject */*Sender*/ )
 {
-   setAutoRepeatDelay( DelaySpinEdit->Value );
+   setAutoRepeatDelay( DelayEdit->Text.ToIntDef(6) );
 }
 //---------------------------------------------------------------------------
 void __fastcall TKeyControlForm::PipCheckBoxClick( TObject */*Sender*/ )
@@ -481,7 +480,7 @@ void __fastcall TKeyControlForm::PipCheckBoxClick( TObject */*Sender*/ )
 
 void __fastcall TKeyControlForm::SendButtonClick( TObject */*Sender*/ )
 {
-   sendCW( AnsiUpperCase( Memo1->Lines->Text.Trim() ).c_str(), SpeedControl->Value, ToneEdit->Text.ToIntDef( 1000 ) );
+   sendCW( AnsiUpperCase( Memo1->Lines->Text.Trim() ).c_str(), SpeedControl->Text.ToIntDef(12), ToneEdit->Text.ToIntDef( 1000 ) );
 }
 //---------------------------------------------------------------------------
 
@@ -679,7 +678,7 @@ void __fastcall TKeyControlForm::CaptionTimerTimer( TObject */*Sender*/ )
 void __fastcall TKeyControlForm::SpeedControlChange( TObject */*Sender*/ )
 {
    // write to CWSpeed
-   setCWSpeed( SpeedControl->Value );
+   setCWSpeed( SpeedControl->Text.ToIntDef(12) );
 }
 //---------------------------------------------------------------------------
 
