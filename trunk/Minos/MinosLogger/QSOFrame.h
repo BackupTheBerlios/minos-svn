@@ -108,7 +108,6 @@ class TGJVEditFrame : public TFrame
       void getScreenEntry();
       void showScreenEntry( );
       bool checkLogEntry( );
-      void selectField( TWinControl *v );
    public: 		// User declarations
       ScreenContact screenContact;  // contact being edited on screen
       BaseContact *selectedContact;   // contact from log list selected
@@ -121,6 +120,7 @@ class TGJVEditFrame : public TFrame
       void lgTraceerr( int err );
       void setTimeNow();
 
+      void selectField( TWinControl *v );
       virtual void selectEntry( DisplayContestContact *lct ) = 0;
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen );
       virtual bool doGJVOKButtonClick( TObject *Sender );

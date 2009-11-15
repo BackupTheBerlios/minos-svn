@@ -158,20 +158,18 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
 {
    if ( lct )
    {
-      TQSOEditDlg * ptr = new TQSOEditDlg( this );
-      std::auto_ptr <TQSOEditDlg> qdlg( ptr );
+      std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
 
       ContestContact *ct = dynamic_cast<ContestContact *>( lct );
       qdlg->selectContact( contest, ct );
 
       qdlg->ShowModal();
-
       contest->startScan();
       LogMonitor->Invalidate();
       MultDispFrame->refreshMults();
       OperatorFrame->refreshOps();
       LogMonitor->Repaint();
-      //GJVQSOLogFrame->selectEntry( 0 );
+      GJVQSOLogFrame->selectField( 0 );
    }
 }
 //---------------------------------------------------------------------------
