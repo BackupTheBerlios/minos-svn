@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{fbffeecb-adc2-4986-affe-a00e1660471c}</ProjectGuid>
@@ -27,7 +27,7 @@
     <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>

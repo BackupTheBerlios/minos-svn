@@ -52,7 +52,7 @@ DWORD DataSize;								/* size of the DeviceInterfaceDetail structure */
 BOOLEAN GotRequiredSize;					/* 1-shot got device info data structure size flag */
 PSP_DEVICE_INTERFACE_DETAIL_DATA detailData;/* device info data */
 DWORD RequiredSize;							/* size of device info data structure */
-BOOLEAN DIDResult;							/* get device info data result */
+//BOOLEAN DIDResult;							/* get device info data result */
 HIDD_ATTRIBUTES HIDAttrib;					/* HID device attributes */
 
 trace("THidControlFM::bOpenHidDevice");
@@ -109,7 +109,7 @@ trace("THidControlFM::bOpenHidDevice");
 						/* 3) Get the size of the DEVICE_INTERFACE_DETAIL_DATA
 						structure.  The first call will return an error condition,
 						but we'll get the size of the strucure */
-						DIDResult = SetupDiGetDeviceInterfaceDetail(	HidDevInfo,
+						/*bool DIDResult = */SetupDiGetDeviceInterfaceDetail(	HidDevInfo,
 																	&devInfoData,
 																	NULL,
 																	0,
@@ -129,7 +129,7 @@ trace("THidControlFM::bOpenHidDevice");
 					function will return data from one of the array members that
 					Step #2 pointed to.  This way we can start to identify the
 					attributes of particular HID devices.  */
-					DIDResult = SetupDiGetDeviceInterfaceDetail(	HidDevInfo,
+					/*bool DIDResult =*/ SetupDiGetDeviceInterfaceDetail(	HidDevInfo,
 																&devInfoData,
 																detailData,
 																DataSize,
@@ -306,7 +306,7 @@ trace("THidControlFM::WmDeviceChange");
 
 }
 //---------------------------------------------------------------------------
-void __fastcall THidControlFM::FormShow(TObject *Sender)
+void __fastcall THidControlFM::FormShow(TObject */*Sender*/)
 {
 trace("THidControlFM::FormShow");
 	/* Set up notifications of HID device attach and detach events */

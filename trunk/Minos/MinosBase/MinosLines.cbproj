@@ -28,7 +28,7 @@
     <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
     <UsePackages>true</UsePackages>
     <ILINK_ObjectSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosBase</ILINK_ObjectSearchPath>
-    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;vclib.bpi;xmlrtl.bpi;vclie.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;indy.bpi;vclactnband.bpi;bcbsmp.bpi;soaprtl.bpi;dsnap.bpi;bcbie.bpi;bdertl.bpi;teeui.bpi;teedb.bpi;tee.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>rtl.bpi;vcl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;adortl.bpi;dbxcds.bpi;dbexpress.bpi;vclib.bpi;xmlrtl.bpi;vclie.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;indy.bpi;vclactnband.bpi;soaprtl.bpi;dsnap.bpi;bcbie.bpi;bdertl.bpi;teeui.bpi;teedb.bpi;tee.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>C:\ThirdParty\TinyXML;C:\Minos\MinosBase;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <ILINK_WinAppType>DLL</ILINK_WinAppType>

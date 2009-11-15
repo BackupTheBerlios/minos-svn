@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{d3904b7e-e3ef-4965-af1b-8229ae31c447}</ProjectGuid>
@@ -40,7 +40,7 @@
     <FinalOutputDir>.</FinalOutputDir>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi;VTV.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;GJVControls.bpi;GJVAudio.bpi;VTV.bpi</PackageImports>
     <DCC_UnitSearchPath>..\XMPPLib;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <BRCC_UserSuppliedOptions> C:\Program Files\Soft Gems\Virtual Treeview\Source;..\XMPPLib;..\iksemel\src;$(BDS)\Projects;$(BDS)\include;$(BDS)\include\vcl;..\iksemel\include;..\minoslogger;C:\Program Files\Soft Gems\Theme Manager\Source;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>

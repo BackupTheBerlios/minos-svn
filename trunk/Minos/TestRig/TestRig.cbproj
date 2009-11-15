@@ -38,7 +38,7 @@
     <FinalOutputDir>.</FinalOutputDir>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <BRCC_UserSuppliedOptions> ..\MinosLogger;..\XMPPLib;..\iksemel\src;$(BDS)\Projects;$(BDS)\include;$(BDS)\include\vcl;..\iksemel\include;C:\hamlib\include;C:\vcl\sndvcl\xtrackkbar;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>

@@ -12,7 +12,6 @@
 #include "MDateSelectForm.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "smpreg"
 #pragma resource "*.dfm"
 TDateSelectForm *DateSelectForm;
 

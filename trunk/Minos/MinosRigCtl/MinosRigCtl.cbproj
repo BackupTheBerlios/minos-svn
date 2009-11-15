@@ -37,7 +37,7 @@
     <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>..\XMPPLib;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>

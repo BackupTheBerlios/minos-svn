@@ -55,7 +55,7 @@ copy ..\MinosServer\MinosServer.exe .
 copy ..\TestRig\TestRig.exe .
 
 REM samples (for spinner edit)
-copy "C:\Program Files\CodeGear\RAD Studio\5.0\bin"\bcbsmp100.bpl
+REM copy "C:\Program Files\CodeGear\RAD Studio\5.0\bin"\bcbsmp100.bpl
 
 
 copy "C:\Documents and Settings\All Users\Documents\RAD Studio\5.0\BPL"\GJVAudio.bpl

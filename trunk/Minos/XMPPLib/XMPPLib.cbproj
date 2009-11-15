@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{63cd2662-639a-456c-9ef4-2e84d64b719c}</ProjectGuid>
@@ -24,7 +24,7 @@
     <Defines>TIXML_USE_STL</Defines>
     <DynamicRTL>true</DynamicRTL>
     <ProjectType>CppStaticLibrary</ProjectType>
-    <PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;teedb.bpi;tee.bpi;adortl.bpi;vclib.bpi;ibxpress.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;GJVControls.bpi;GJVAudio.bpi;VTVD.bpi;VTV.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;dbrtl.bpi;vcldb.bpi;vcldbx.bpi;bdertl.bpi;dsnap.bpi;dsnapcon.bpi;teeUI.bpi;teedb.bpi;tee.bpi;adortl.bpi;vclib.bpi;ibxpress.bpi;dbxcds.bpi;dbexpress.bpi;DbxCommonDriver.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;IntrawebDB_90_100.bpi;Intraweb_90_100.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;GJVControls.bpi;GJVAudio.bpi;VTVD.bpi;VTV.bpi</PackageImports>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <BCC_wpar>false</BCC_wpar>
     <IncludePath>$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;..\XMPPLib;C:\ThirdParty\tinyxml;$(BOOST)\include</IncludePath>

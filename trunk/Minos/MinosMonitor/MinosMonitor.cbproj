@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{3ec0afe0-6de1-4b4c-87cd-d08d4262870f}</ProjectGuid>
@@ -39,7 +39,7 @@
     <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;bcbsmp.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>..\MinosLogger;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
