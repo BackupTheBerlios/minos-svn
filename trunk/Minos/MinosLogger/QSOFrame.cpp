@@ -469,7 +469,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 
    if ( screenContact.contactFlags & ( LOCAL_COMMENT | DONT_PRINT | COMMENT_ONLY ) )
    {
-      logCurrentContact( false );
+      logCurrentContact( );
       return true;
    }
 
@@ -574,7 +574,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
    }
    else
    {
-      logCurrentContact( false );
+      logCurrentContact( );
    }
    selectField( 0 );             // make sure we move off the "Log" default button
    return true;
@@ -730,7 +730,7 @@ bool TGJVEditFrame::dlgForced()
          }
       }
 
-      logCurrentContact( true );
+      logCurrentContact( );
       return true;
 
    }
@@ -1274,4 +1274,5 @@ void __fastcall TGJVEditFrame::ModeButtonClick(TObject *Sender)
    EditControlExit(Sender);
 }
 //---------------------------------------------------------------------------
+
 

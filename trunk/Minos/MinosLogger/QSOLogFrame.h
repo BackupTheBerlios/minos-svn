@@ -35,7 +35,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       bool restorePartial( void );
       void killPartial( void );
       void doGJVEditChange( TObject *Sender );
-      void logCurrentContact( bool forcelog );
+      void logCurrentContact();
       void logScreenEntry( );
 
    public: 		// User declarations

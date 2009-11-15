@@ -86,7 +86,7 @@ class TGJVEditFrame : public TFrame
       bool locValid;
 
       virtual void logScreenEntry( ) = 0;
-      virtual void logCurrentContact( bool forcelog ) = 0;
+      virtual void logCurrentContact( ) = 0;
       virtual void killPartial( void ) = 0;
       virtual void doGJVEditChange( TObject *Sender ) = 0;
 

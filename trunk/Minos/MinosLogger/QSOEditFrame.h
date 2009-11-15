@@ -43,7 +43,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
    private: 	// User declarations
       void killPartial( void );
       void doGJVEditChange( TObject *Sender );
-      void logCurrentContact( bool forcelog );
+      void logCurrentContact( );
       void logScreenEntry( );
       BaseContact *getPriorContact();
    public: 		// User declarations

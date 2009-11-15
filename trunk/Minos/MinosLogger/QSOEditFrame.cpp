@@ -131,7 +131,7 @@ void TGJVQSOEditFrame::logScreenEntry( )
    editScreen->afterLogContact();
 }
 //==============================================================================
-void TGJVQSOEditFrame::logCurrentContact( bool /*forcelog*/ )
+void TGJVQSOEditFrame::logCurrentContact( )
 {
    if ( contest->isReadOnly() )
       return ;
