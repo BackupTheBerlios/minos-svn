@@ -1,0 +1,78 @@
+
+2010 calendar; make URLs for years configurable; make a new year just a config change!
+
+//================================================================
+Bugs, etc to fix
+
+Ken's duplicate bug
+
+Sticky splitters in monitor and chat
+
+Remove spinners from keyer - use sliders?
+
+Check tab orders (again) - to make sure!
+
+What to do with spare space in log details?
+
+Auto copy MinosLines on compilation
+
+Can we get nice direction arrows on the splitters, or are the dots enough?
+//================================================================
+Next version - 1.3.0 - new features etc
+
+Uses rsgbcc URL for contest files
+
+"time now" button/accelerator
+
+"mode change" button/accelerator
+
+Revise display of current band; above cribsheet looks good;
+
+Locators - if replacing 1/I and 0/O makes a good locator then do it!
+
+Mults don't get reset when choosing from calendar
+
+New style splitters, all should be sticky
+
+New style calendar
+
+Reduced number of support files (so hopefully all smaller)
+
+//==================================================================
+*****************  Documentation for networking  *******************
+//==================================================================
+Use RSGB addresses for calendar; slide calendars looked for based on current date (don't get before previous november?)
+
+Make calendar URLs configurable (somewhere - registry? Probably not! But need an editor for them - button on TCalendarForm?)
+
+Dble click on QSO in other switches contests, not transfer - need RMB for switch/edit
+
+Merge post entry and Uri mode (somehow) - Double click on "next" contact to trigger fill in
+
+Can we make "old" contests read only? i.e. if "after time" by some amount then make them RO unless overridden? Lose the RO check box!
+
+Insert contact(s) before(/after?), with option to renumber following up to an unfilled contact
+
+?? free floating crib sheet
+
+SysMenu - bring main window back to screen centre
+
+Make archive splitters sticky
+
+fly-by hints for headers
+
+auto width on headers
+
+Sorting and column rearrangement, especially on match lists?
+
+sticky header drag/drop
+
+sticky settings clear down
+
+sticky stats splitter(s)
+
+Add colour attribute to bandlist.xml, use it in the band combo
+
+Revise networking to use something like activeMQ topics
+
+revise networking to use something like activeMQ clustering
