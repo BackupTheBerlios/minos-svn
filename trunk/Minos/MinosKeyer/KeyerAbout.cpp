@@ -9,10 +9,12 @@
 #include "MinosVK_pch.h"
 #pragma hdrstop
 
+#include "MinosVer.h"   // updated by SubWCRev
+
 #include "RCVersion.h"
-#include "KeyerAbout.h" 
+#include "KeyerAbout.h"
 //---------------------------------------------------------------------
-#pragma resource "*.dfm" 
+#pragma resource "*.dfm"
 //---------------------------------------------------------------------
 __fastcall TAboutBox::TAboutBox( TComponent *Owner )
       : TForm( Owner )
@@ -24,9 +26,14 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner )
    //   Copyright->Caption = RCVersion.LegalCopyright;
    //   Comments->Caption = RCVersion.Comments;
 
-   String minor = RCVersion.MinorVersion;
-   bool Beta = ( minor.ToIntDef( 1 ) % 2 == 1 );
+#ifdef BETA_VERSION
+   bool Beta = true;
+#else
+   bool Beta = false;
+#endif
+
    Version->Caption = "Version " + RCVersion.FileVersion + ( Beta ? " BETA" : "" );
+
    Copyright->Caption = RCVersion.LegalCopyright;
    Comments->Caption = ( Beta ? "Beta version - use at your own risk!\r\n\r\n\r\n" : "" ) + RCVersion.Comments;
 

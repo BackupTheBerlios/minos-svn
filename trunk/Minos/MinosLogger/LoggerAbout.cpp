@@ -9,6 +9,8 @@
 #include "logger_pch.h"
 #pragma hdrstop
 
+#include "MinosVer.h"   // updated by SubWCRev
+
 #include "RCVersion.h"
 #include "GJVThreads.h"
 #include "ConfigDM.h"
@@ -60,7 +62,11 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
    RCVersion.initialise();
    ProductName->Caption = RCVersion.ProductName;
    String minor = RCVersion.MinorVersion;
-   bool Beta = false/*( minor.ToIntDef( 1 ) % 2 == 1 )*/;
+#ifdef BETA_VERSION
+   bool Beta = true;
+#else
+   bool Beta = false;
+#endif
    Version->Caption = "Version " + RCVersion.FileVersion + ( Beta ? " BETA" : "" );
    Copyright->Caption = RCVersion.LegalCopyright;
    Comments->Caption = ( Beta ? "Beta version - use at your own risk!\r\n\r\n\r\n" : "" ) + RCVersion.Comments;

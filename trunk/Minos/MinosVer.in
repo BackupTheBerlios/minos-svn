@@ -20,3 +20,6 @@
 #define MINOSBUILDNO $WCREV$
 #define MINOSVERSIONBUILD "1.3.0 build $WCREV$"
 #define MINOSRCVERSION "1.3.0.$WCREV$\0"
+
+#define BETA_VERSION
+
