@@ -26,7 +26,9 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TButton *BandMapButton;
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
+   TButton *BackfillButton;
       void __fastcall BandMapButtonClick( TObject *Sender );
+   void __fastcall BackfillButtonClick(TObject *Sender);
    private: 	// User declarations
       ScreenContact *partialContact; // contact being edited on screen
       String sCurrFreq;

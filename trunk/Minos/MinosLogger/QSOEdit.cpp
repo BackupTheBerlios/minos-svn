@@ -51,6 +51,15 @@ void TQSOEditDlg::selectContact( BaseContestLog * ccontest, DisplayContestContac
 //---------------------------------------------------------------------------
 void __fastcall TQSOEditDlg::FormShow( TObject */*Sender*/ )
 {
+   InitialiseTimer->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject *Sender)
+{
+   // we had this so that we could close the form easily on startup
+   // when the conatct was zero - not sure if still needed
+   InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, this );
    selectEntry( firstContact );
    firstContact = 0;

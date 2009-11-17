@@ -24,6 +24,7 @@ object QSOEditDlg: TQSOEditDlg
     Height = 248
     Align = alClient
     Header.AutoSizeIndex = 0
+    Header.DefaultHeight = 17
     Header.Font.Charset = DEFAULT_CHARSET
     Header.Font.Color = clWindowText
     Header.Font.Height = -11
@@ -84,5 +85,12 @@ object QSOEditDlg: TQSOEditDlg
     OnTimer = ShowFocusTimerTimer
     Left = 40
     Top = 24
+  end
+  object InitialiseTimer: TTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = InitialiseTimerTimer
+    Left = 40
+    Top = 72
   end
 end

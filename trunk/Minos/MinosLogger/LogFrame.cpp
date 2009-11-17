@@ -156,21 +156,18 @@ void TSingleLogFrame::showQSOs()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::EditContact( BaseContact *lct )
 {
-   if ( lct )
-   {
-      std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+   ContestContact *ct = dynamic_cast<ContestContact *>( lct );
+   qdlg->selectContact( contest, ct );
 
-      ContestContact *ct = dynamic_cast<ContestContact *>( lct );
-      qdlg->selectContact( contest, ct );
+   qdlg->ShowModal();
+   contest->startScan();
+   LogMonitor->Invalidate();
+   MultDispFrame->refreshMults();
+   OperatorFrame->refreshOps();
+   LogMonitor->Repaint();
+   GJVQSOLogFrame->selectField( 0 );
 
-      qdlg->ShowModal();
-      contest->startScan();
-      LogMonitor->Invalidate();
-      MultDispFrame->refreshMults();
-      OperatorFrame->refreshOps();
-      LogMonitor->Repaint();
-      GJVQSOLogFrame->selectField( 0 );
-   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::QSOTreeSelect( PVirtualNode sel )
@@ -178,22 +175,25 @@ void __fastcall TSingleLogFrame::QSOTreeSelect( PVirtualNode sel )
    if ( sel )
    {
       DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( contest->pcontactAt( sel->Index ) );
-      EditContact( lct );
+      if (lct)
+      {
+         EditContact( lct );
 
-      if ( lct->op1.getValue().size() )
-      {
-         contest->oplist.insert( lct->op1.getValue() );
+         if ( lct->op1.getValue().size() )
+         {
+            contest->oplist.insert( lct->op1.getValue() );
+         }
+         if ( lct->op2.getValue().size() )
+         {
+            contest->oplist.insert( lct->op2.getValue() );
+         }
+         if ( ( int ) sel->Index == contest->getContactCount() - 1 )
+         {
+            contest->op1.setValue( lct->op1 );
+            contest->op2.setValue( lct->op2 );
+         }
+         OperatorFrame->refreshOps();
       }
-      if ( lct->op2.getValue().size() )
-      {
-         contest->oplist.insert( lct->op2.getValue() );
-      }
-      if ( ( int ) sel->Index == contest->getContactCount() - 1 )
-      {
-         contest->op1.setValue( lct->op1 );
-         contest->op2.setValue( lct->op2 );
-      }
-      OperatorFrame->refreshOps();
    }
 }
 //---------------------------------------------------------------------------
@@ -1476,4 +1476,5 @@ void TSingleLogFrame::getSplitters()
    splittersChanged = false;
 }
 //---------------------------------------------------------------------------
+
 

@@ -14,7 +14,8 @@
 #include "ServerEvent.h"
 #include "MatchContact.h"
 #include "MatchThread.h"
-#include "QSOLogFrame.h" 
+#include "QSOLogFrame.h"
+#include "QSOEdit.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "QSOFrame"
@@ -400,6 +401,35 @@ void TGJVQSOLogFrame::updateQSOTime()
       DateEdit->Font->Color = clRed;
       TimeEdit->Font->Color = clRed;
    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOLogFrame::BackfillButtonClick(TObject */*Sender*/)
+{
+// Kick off Post Entry/Uri/Backfill
+// We need to create a new contact, and set the "post entry" flag
+// and then trigger the qso edit dialog on it
+
+   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+
+   #warning we aren't getting a correct maxSerial 
+   int ctmax = contest->maxSerial;
+
+   DisplayContestContact *lct = ct->addContact( ctmax, 0, false );	// "current" doesn't get flag, don't save ContestLog yet
+
+   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+   ContestContact *dct = dynamic_cast<ContestContact *>( lct );
+   qdlg->selectContact( ct, dct );
+
+   qdlg->ShowModal();
+   editScreen->afterLogContact();
+
+   ct->startScan();
+//   LogMonitor->Invalidate();
+//   MultDispFrame->refreshMults();
+//   OperatorFrame->refreshOps();
+//   LogMonitor->Repaint();
+   selectField( 0 );
 }
 //---------------------------------------------------------------------------
 

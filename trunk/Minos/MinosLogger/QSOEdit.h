@@ -26,6 +26,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
       TVirtualStringTree *QSOHistoryTree;
       TGJVQSOEditFrame *GJVQSOEditFrame;
       TTimer *ShowFocusTimer;
+   TTimer *InitialiseTimer;
       void __fastcall QSOHistoryTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
       void __fastcall QSOHistoryTreeGetText( TBaseVirtualTree *Sender,
@@ -47,6 +48,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
       void __fastcall QSOHistoryTreeBeforeItemErase( TBaseVirtualTree *Sender,
             TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
             TColor &ItemColor, TItemEraseAction &EraseAction );
+   void __fastcall InitialiseTimerTimer(TObject *Sender);
    private: 	// User declarations
       BaseContestLog * contest;
       BaseContact *firstContact;
@@ -54,7 +56,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
    public: 		// User declarations
       __fastcall TQSOEditDlg( TComponent* Owner );
       void selectContact( BaseContestLog * contest, DisplayContestContact *lct );
-      void selectEntry( BaseContact *lct );
+      void  selectEntry( BaseContact *lct );
       void setContest( BaseContestLog * c )
       {
          contest = c;
