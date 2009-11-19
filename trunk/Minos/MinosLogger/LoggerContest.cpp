@@ -420,12 +420,12 @@ void LoggerContestLog::closeFile( void )
    adifContestFile = INVALID_HANDLE_VALUE;
    ediContestFile = INVALID_HANDLE_VALUE;
 }
-DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags, bool saveNew )
+DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags, bool saveNew, bool backfill )
 {
    // add the contact number as an new empty contact, with disk block and log_seq
 
    bool timenow = true;
-   if ( ( extraFlags & TO_BE_ENTERED ) || isPostEntry() )
+   if ( ( extraFlags & TO_BE_ENTERED ) || backfill )
       timenow = false;
 
    DisplayContestContact *lct;
@@ -450,6 +450,12 @@ DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags
    }
 
    return lct;
+}
+//==========================================================================
+void LoggerContestLog::removeContact( DisplayContestContact *lct )
+{
+   ctList.erase(lct);
+   delete lct;
 }
 //==========================================================================
 bool LoggerContestLog::commonSave( bool newfile )
@@ -515,7 +521,7 @@ bool LoggerContestLog::GJVsave( GJVParams &gp )
    //   strtobuf( secondOpNow );
    strtobuf( mode );
    opyn( true );						// RADIAL rings are DEAD
-   opyn( isPostEntry() );
+   opyn( false );                // was post entry
    opyn( scoreMode.getValue() == PPQSO );
    opyn( countryMult );
    opyn( false /*County_mult*/ );
@@ -598,7 +604,7 @@ bool LoggerContestLog::GJVload( void )
    inyn();
    scoreMode.setValue( PPKM );			// don't take any notice of radial flag!
 
-   setPostEntry( inyn() );
+   inyn();        // was post entry
    if ( inyn() )
    {
       scoreMode.setValue( PPQSO );

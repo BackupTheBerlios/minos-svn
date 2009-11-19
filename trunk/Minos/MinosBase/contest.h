@@ -95,6 +95,7 @@ class BaseContestLog
 
    public:
       int slotno;
+      int unfilledCount;
 
       BaseContestLog();
       virtual ~BaseContestLog();
@@ -110,7 +111,6 @@ class BaseContestLog
       // and provide the "front sheet" data
 
       MinosItem<bool> readOnly;
-      MinosItem<bool> postEntry;
 
       MinosItem<std::string> name;         // name of contest
       MinosItem<std::string> location;
@@ -151,14 +151,6 @@ class BaseContestLog
       void setReadOnly( bool s = true )
       {
          readOnly.setValue( s );
-      }
-      bool isPostEntry( void )
-      {
-         return postEntry.getValue();
-      }
-      void setPostEntry( bool s = true )
-      {
-         postEntry.setValue( s );
       }
       // end of contest details
 

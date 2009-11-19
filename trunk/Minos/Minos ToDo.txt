@@ -81,3 +81,7 @@ Add colour attribute to bandlist.xml, use it in the band combo
 Revise networking to use something like activeMQ topics
 
 revise networking to use something like activeMQ clustering
+
+?? revise so general actions happen on event posting like in POS UI?
+
+?? revise to use attached forms (with actions) rather than the current mess of forms?

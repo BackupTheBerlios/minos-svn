@@ -152,7 +152,8 @@ class LoggerContestLog : public BaseContestLog
       bool exportMinos( HANDLE expfd );
 
       virtual void makeContact( bool time_now, BaseContact *& );
-      DisplayContestContact *addContact( int newctno, int extra_flags, bool save_new );
+      DisplayContestContact *addContact( int newctno, int extra_flags, bool save_new, bool backfill );
+      void removeContact( DisplayContestContact * );
 
 };
 

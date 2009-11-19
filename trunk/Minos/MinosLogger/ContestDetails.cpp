@@ -243,16 +243,13 @@ void TContestEntryDetails::setDetails(  )
 
    if ( contest->isGJVFile() )
    {
-      PostEventOption->Checked = false ;   // bool       // Free!
       ReadOnlyOption->Checked = true ;   // bool         // Free!
 
-      PostEventOption->Enabled = false;
       ReadOnlyOption->Enabled = false;
       OptionsGroupBox->Enabled = false;
    }
    else
    {
-      PostEventOption->Checked = contest->isPostEntry() ;   // bool       // Free!
       ReadOnlyOption->Checked = contest->isReadOnly() ;   // bool         // Free!
    }
    RSTField->Checked = contest->RSTField.getValue() ;   // bool                   // contest
@@ -447,7 +444,6 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->countryMult.setValue( DXCCMult->Checked );   // bool
 
    contest->locMult.setValue( LocatorMult->Checked ) ;   // bool
-   contest->setPostEntry( PostEventOption->Checked ) ;   // bool
    contest->setReadOnly( ReadOnlyOption->Checked ) ;   // bool  - NB this doesn't do very much useful - doesn't convert it to RO
 
    /*

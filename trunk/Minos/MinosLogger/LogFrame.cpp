@@ -70,7 +70,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
    OperatorFrame->ParentFont = true;
 
    LogMonitor->initialise( contest );
-   GJVQSOLogFrame->initialise( contest, this );
+   GJVQSOLogFrame->initialise( contest, this, false );
 
    OperatorFrame->refreshOps();
 
@@ -1316,7 +1316,7 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeMouseDown( TObject */*Sender*/
 void __fastcall TSingleLogFrame::PublishTimerTimer( TObject */*Sender*/ )
 {
    LoggerContestLog * ct = dynamic_cast<LoggerContestLog *>( contest );
-   if ( ct && ct->isMinosFile() && !ct->isReadOnly() && !ct->isPostEntry() )
+   if ( ct && ct->isMinosFile() && !ct->isReadOnly() )
    {
       int stanzaCount = contest->getStanzaCount();
       if ( lastStanzaCount != stanzaCount )

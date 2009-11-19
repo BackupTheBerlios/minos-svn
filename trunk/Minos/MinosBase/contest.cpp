@@ -21,8 +21,8 @@ bool LtLogSeq::operator() ( const BaseContact* s1, const BaseContact* s2 ) const
 
 BaseContestLog::BaseContestLog( void ) :
       readOnly( false ),
-      postEntry( false ),
       nextBlock( 1 ),
+      unfilledCount(0),
       stanzaCount( 0 ), slotno( -1 ), locValid( false ),
       ode( 0.0 ), odn( 0.0 ), sinodn( 0.0 ), cosodn( 0.0 ),
       allowLoc8( false ), allowLoc4 ( false ),
@@ -105,7 +105,6 @@ BaseContact *BaseContestLog::pcontactAtSeq( unsigned long logSequence )
 }
 void BaseContestLog::clearDirty()
 {
-   postEntry.clearDirty();
    readOnly.clearDirty();
    mycall.fullCall.clearDirty();
 
@@ -136,7 +135,6 @@ void BaseContestLog::clearDirty()
 }
 void BaseContestLog::setDirty()
 {
-   postEntry.setDirty();
    readOnly.setDirty();
    mycall.fullCall.setDirty();
    name.setDirty();
@@ -539,6 +537,8 @@ void BaseContestLog::setScore( std::string &buff )
             brcc4 % brloc1 % nlocs % brloc2 % totalScore ).str();
 
 }
+#error rename and do some refactoring round here - we ALWAYS do the complete scan
+// and we need to do this a bit more often to pick up unfilled properly
 void BaseContestLog::startScan( void )
 {
    DupSheet.clear();
@@ -569,6 +569,7 @@ void BaseContestLog::startScan( void )
    nlocs = 0;
 
    nextScan = -1;
+   unfilledCount = 0;
 
    rescan();
 
@@ -599,6 +600,10 @@ void BaseContestLog::rescan( void )
       if ( !nct )
          break ;
 
+      if (nct->contactFlags.getValue() & TO_BE_ENTERED)
+      {
+         unfilledCount++;
+      }
       curop1 = nct->op1.getValue();
       oplist.insert( curop1 );
       curop2 = nct->op2.getValue();
@@ -882,7 +887,6 @@ void BaseContestLog::processMinosStanza( const std::string &methodName, MinosTes
       if ( methodName == "MinosLogMode" )
       {
          mt->getStructArgMemberValue( "readOnly", readOnly );
-         mt->getStructArgMemberValue( "postEntry", postEntry );
       }
    if ( methodName == "MinosLogQTH" )
    {

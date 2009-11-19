@@ -40,7 +40,6 @@ class TContestEntryDetails : public TForm
       TGroupBox *OptionsGroupBox;
       TGroupBox *FieldsGroupBox;
       TCheckBox *ReadOnlyOption;
-      TCheckBox *PostEventOption;
       TCheckBox *RSTField;
       TCheckBox *SerialField;
       TCheckBox *LocatorField;

@@ -21,7 +21,9 @@
 //---------------------------------------------------------------------------
 __fastcall TGJVQSOEditFrame::TGJVQSOEditFrame( TComponent* Owner )
       : TGJVEditFrame( Owner ), op1Value( 0 ), op2Value( 0 )
-{}
+{
+   BackfillButton->Visible = false;
+}
 //---------------------------------------------------------------------------
 void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
 {
@@ -147,11 +149,19 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
 {
    selectedContact = lct;   // contact from log list selected
 
+   if (contest->unfilledCount <= 0)
+   {
+      FirstUnfilledButton->Visible = false;
+   }
+   else
+   {
+      FirstUnfilledButton->Visible = true;
+   }
    updateTimeAllowed = false;   // whatever the time says, leave it alone
 
    screenContact.copyFromArg( *lct );
    showScreenEntry();
-   if ( !contest->isReadOnly() && screenContact.contactFlags & TO_BE_ENTERED )
+   if ( !contest->isReadOnly() && (screenContact.contactFlags & TO_BE_ENTERED || backfill))
    {
       // Uri Mode - backfilling QSOs from paper while logging current QSOs
       // and we need to set the date/time from the previous contact
@@ -257,8 +267,8 @@ bool TGJVQSOEditFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
    if ( checkLogEntry() )
    {
-      DateEdit->ReadOnly = !contest->isPostEntry();
-      TimeEdit->ReadOnly = !contest->isPostEntry();
+      DateEdit->ReadOnly = !backfill;
+      TimeEdit->ReadOnly = !backfill;
       SerTXEdit->ReadOnly = true;
 
       return true;
@@ -342,4 +352,8 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxKeyPress( TObject */*Sender*/,
    Key = toupper( Key );
 }
 //---------------------------------------------------------------------------
+void TGJVQSOEditFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool bf )
+{
+   TGJVEditFrame::initialise(contest, edScreen, bf);
+}
 

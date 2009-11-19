@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef QSOEditFrameH
-#define QSOEditFrameH 
+#define QSOEditFrameH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -16,14 +16,13 @@
 #include <Forms.hpp>
 #include "QSOFrame.h"
 #include <ExtCtrls.hpp>
-#include "BundleFrame.h" 
+#include "BundleFrame.h"
 //---------------------------------------------------------------------------
 class TGJVQSOEditFrame : public TGJVEditFrame
 {
    __published: 	// IDE-managed Components
       TButton *InsertBeforeButton;
       TButton *InsertAfterButton;
-      TButton *FirstUnfilledButton;
       TButton *PriorButton;
       TButton *NextButton;
       TTimer *ROFieldTimer;
@@ -49,6 +48,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
    public: 		// User declarations
       __fastcall TGJVQSOEditFrame( TComponent* Owner );
       virtual void selectEntry( BaseContact *lct );
+      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
       bool doGJVOKButtonClick( TObject *Sender );
       bool doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();

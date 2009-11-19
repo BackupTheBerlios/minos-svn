@@ -52,6 +52,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
    private: 	// User declarations
       BaseContestLog * contest;
       BaseContact *firstContact;
+      bool backfill;
       void refreshOps( ScreenContact &screenContact );
    public: 		// User declarations
       __fastcall TQSOEditDlg( TComponent* Owner );
@@ -61,6 +62,7 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
       {
          contest = c;
       }
+      void selectBackfill( BaseContestLog * contest );
    public: 		// implementations of QSOEditScreen
       void getScreenEntry( ScreenContact &screenContact );
       void showScreenEntry( ScreenContact &screenContact );

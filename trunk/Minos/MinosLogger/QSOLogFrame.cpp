@@ -28,9 +28,9 @@ __fastcall TGJVQSOLogFrame::~TGJVQSOLogFrame()
 {
    delete partialContact;
 }
-void TGJVQSOLogFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScreen )
+void TGJVQSOLogFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool /*bacfill*/ )
 {
-   TGJVEditFrame::initialise( contest, edScreen );
+   TGJVEditFrame::initialise( contest, edScreen, false );
    BandMapPanel->Visible = checkServerReady();
    editScreen->reportOverstrike( overstrike );
 }
@@ -53,9 +53,7 @@ void TGJVQSOLogFrame::logScreenEntry( )
    {
       return ;
    }
-   DisplayContestContact *lct = ct->addContact( ctmax, 0, false );	// "current" doesn't get flag, don't save ContestLog yet
-
-   bool setTime = ct->isPostEntry();
+   DisplayContestContact *lct = ct->addContact( ctmax, 0, false, false );	// "current" doesn't get flag, don't save ContestLog yet
 
    dtg saved( screenContact.time );		// dtg from current contact
 
@@ -89,28 +87,6 @@ void TGJVQSOLogFrame::logScreenEntry( )
    llct->commonSave();				// which also saves the ContestLog
 
    selectEntry( 0 );	// select the "next"
-   if ( setTime )
-   {
-      updateTimeAllowed = false;
-      updateQSOTime();
-      screenContact.time = saved;
-      DateEdit->Text = screenContact.time.getDate( DTGDISP ).c_str();
-      int selpt = DateEdit->Text.Length();
-      if ( selpt > 2 )
-      {
-         DateEdit->SelStart = 1;
-         DateEdit->SelLength = 1;
-      }
-
-      TimeEdit->Text = screenContact.time.getTime( DTGDISP ).c_str();
-      selpt = TimeEdit->Text.Length();
-      if ( selpt > 0 )
-      {
-         TimeEdit->SelStart = selpt - 1;
-         TimeEdit->SelLength = 1;
-      }
-      selectField( 0 );
-   }
    editScreen->afterLogContact();
 }
 //==============================================================================
@@ -143,7 +119,7 @@ void TGJVQSOLogFrame::logCurrentContact( )
          {
             // last child is "current contact", and we need to add TO IT
             LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
-            ct->addContact( nct_no, orflag, true ); // last contact
+            ct->addContact( nct_no, orflag, true, false ); // last contact
             nct_no++;
          }
          while ( nct_no < ctno ) ;
@@ -162,6 +138,14 @@ void TGJVQSOLogFrame::logCurrentContact( )
 //==============================================================================
 void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
 {
+   if (contest->unfilledCount <= 0)
+   {
+      FirstUnfilledButton->Visible = false;
+   }
+   else
+   {
+      FirstUnfilledButton->Visible = true;
+   }
    if ( plct )
    {
       // Non zero plct happens if we switch contests by double clicking on a match
@@ -174,51 +158,17 @@ void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
       {
          updateTimeAllowed = true;
          screenContact.initialise( contest );
-         if ( contest->isPostEntry() )
-         {
-            // need to get previous contact dtg, or if not, set as now
-            if ( contest->getContactCount() > 1 )
-            {
-               BaseContact * pct = contest->pcontactAt( contest->getContactCount() - 1 ) ;
-               if ( pct )
-               {
-                  screenContact.time = pct->time;
-                  int tne = screenContact.time.notEntered(); // partial dtg will give fe
-                  // full dtg gives -ve, none gives 0
-                  if ( tne != 0 )
-                  {
-                     updateTimeAllowed = FALSE;
-                  }
-               }
-            }
-         }
       }
 
    updateQSOTime();
    showScreenEntry();
 
-   if ( !plct && contest->isPostEntry() )
-   {
-      int selpt = DateEdit->Text.Length();
-      if ( selpt > 2 )
-      {
-         DateEdit->SelStart = 1;
-         DateEdit->SelLength = 1;
-      }
-      selpt = TimeEdit->Text.Length();
-      if ( selpt > 0 )
-      {
-         TimeEdit->SelStart = selpt - 1;
-         TimeEdit->SelLength = 1;
-      }
-   }
-
    editScreen->afterSelectEntry( plct );
 }
 bool TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
-   DateEdit->ReadOnly = !contest->isPostEntry();
-   TimeEdit->ReadOnly = !contest->isPostEntry();
+   DateEdit->ReadOnly = true;
+   TimeEdit->ReadOnly = true;
    SerTXEdit->ReadOnly = true;
 
    ScreenContact *temp = 0;
@@ -368,7 +318,7 @@ void TGJVQSOLogFrame::updateQSOTime()
    // If not we wish to show as red
    // We need to do this in log displays as well
 
-   if ( !contest->isPostEntry() && updateTimeAllowed )
+   if ( updateTimeAllowed )
    {
       static bool tick = true;
       dtg tnow( true );
@@ -406,30 +356,38 @@ void TGJVQSOLogFrame::updateQSOTime()
 
 void __fastcall TGJVQSOLogFrame::BackfillButtonClick(TObject */*Sender*/)
 {
-// Kick off Post Entry/Uri/Backfill
-// We need to create a new contact, and set the "post entry" flag
-// and then trigger the qso edit dialog on it
+// we should make this an action on the actionlist
+// then all may work
 
-   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
 
-   #warning we aren't getting a correct maxSerial 
-   int ctmax = contest->maxSerial;
-
-   DisplayContestContact *lct = ct->addContact( ctmax, 0, false );	// "current" doesn't get flag, don't save ContestLog yet
 
    std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
-   ContestContact *dct = dynamic_cast<ContestContact *>( lct );
-   qdlg->selectContact( ct, dct );
+   qdlg->selectBackfill( contest );
 
-   qdlg->ShowModal();
-   editScreen->afterLogContact();
 
-   ct->startScan();
+   if (qdlg->ShowModal() == mrOk)
+   {
+//      editScreen->afterLogContact();
+
+      contest->startScan();
+
+      // and how do we do these? Do we need to?
+
 //   LogMonitor->Invalidate();
 //   MultDispFrame->refreshMults();
 //   OperatorFrame->refreshOps();
 //   LogMonitor->Repaint();
+   }
    selectField( 0 );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject *Sender)
+{
+// Go to the first unfilled QSO
+// If there aren't any then it needs to be made invisible
+// ScanContest can work out how many there are - and we can display that on the button
+   LogContainer->NextUnfilledActionExecute(Sender);
 }
 //---------------------------------------------------------------------------
 

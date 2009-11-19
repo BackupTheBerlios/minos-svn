@@ -53,7 +53,7 @@ object GJVEditFrame: TGJVEditFrame
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
-      TabOrder = 1
+      TabOrder = 6
       OnChange = TimeEditChange
       OnDblClick = TimeEditDblClick
       OnEnter = EditControlEnter
@@ -199,7 +199,7 @@ object GJVEditFrame: TGJVEditFrame
       Width = 52
       Height = 21
       ItemHeight = 13
-      TabOrder = 3
+      TabOrder = 1
       TabStop = False
       Text = 'J3E'
       OnEnter = EditControlEnter
@@ -262,7 +262,7 @@ object GJVEditFrame: TGJVEditFrame
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
-      TabOrder = 0
+      TabOrder = 5
       OnChange = DateEditChange
       OnDblClick = DateEditDblClick
       OnEnter = EditControlEnter
@@ -277,7 +277,7 @@ object GJVEditFrame: TGJVEditFrame
       Height = 17
       TabStop = False
       Caption = 'Non Scoring'
-      TabOrder = 5
+      TabOrder = 3
     end
     object DeletedCheckBox: TCheckBox
       Left = 504
@@ -286,7 +286,7 @@ object GJVEditFrame: TGJVEditFrame
       Height = 17
       TabStop = False
       Caption = 'Deleted'
-      TabOrder = 6
+      TabOrder = 4
     end
     object TimeNowButton: TButton
       Left = 200
@@ -294,7 +294,8 @@ object GJVEditFrame: TGJVEditFrame
       Width = 33
       Height = 25
       Caption = 'Now'
-      TabOrder = 2
+      TabOrder = 0
+      TabStop = False
       OnClick = TimeNowButtonClick
     end
     object ModeButton: TButton
@@ -303,8 +304,27 @@ object GJVEditFrame: TGJVEditFrame
       Width = 33
       Height = 25
       Caption = 'A1A'
-      TabOrder = 4
+      TabOrder = 2
+      TabStop = False
       OnClick = ModeButtonClick
+    end
+    object FirstUnfilledButton: TButton
+      Left = 171
+      Top = 8
+      Width = 113
+      Height = 25
+      Caption = 'First Unfilled QSO'
+      TabOrder = 18
+      TabStop = False
+    end
+    object BackfillButton: TButton
+      Left = 24
+      Top = 8
+      Width = 129
+      Height = 25
+      Caption = 'Backfill (Post Entry)'
+      TabOrder = 19
+      TabStop = False
     end
   end
 end

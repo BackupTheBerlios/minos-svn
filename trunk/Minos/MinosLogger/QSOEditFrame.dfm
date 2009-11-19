@@ -34,6 +34,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     inherited GJVForceButton: TButton
       Left = 193
       Top = 225
+      TabOrder = 23
       ExplicitLeft = 193
       ExplicitTop = 225
     end
@@ -42,12 +43,19 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 225
       Width = 91
       Caption = 'Return to Log'
+      TabOrder = 24
       ExplicitLeft = 253
       ExplicitTop = 225
       ExplicitWidth = 91
     end
     inherited DateEdit: TLabeledEdit
       Hint = 'Date/Time is read only - double click to modify'
+    end
+    inherited FirstUnfilledButton: TButton
+      OnClick = FirstUnfilledButtonClick
+    end
+    inherited BackfillButton: TButton
+      TabOrder = 25
     end
     object InsertBeforeButton: TButton
       Left = 8
@@ -67,15 +75,6 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       TabOrder = 17
       OnClick = InsertAfterButtonClick
     end
-    object FirstUnfilledButton: TButton
-      Left = 371
-      Top = 225
-      Width = 75
-      Height = 25
-      Caption = 'First Unfilled'
-      TabOrder = 18
-      OnClick = FirstUnfilledButtonClick
-    end
     object PriorButton: TButton
       Left = 470
       Top = 194
@@ -83,6 +82,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Height = 25
       Caption = 'Prior'
       TabOrder = 19
+      TabStop = False
       OnClick = PriorButtonClick
     end
     object NextButton: TButton
@@ -92,6 +92,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Height = 25
       Caption = 'Next'
       TabOrder = 20
+      TabStop = False
       OnClick = NextButtonClick
     end
     object MainOpComboBox: TComboBox
@@ -99,8 +100,9 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 158
       Width = 145
       Height = 21
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 21
+      TabStop = False
       Text = 'MainOpComboBox'
       OnChange = MainOpComboBoxChange
       OnKeyPress = MainOpComboBoxKeyPress
@@ -110,8 +112,9 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 160
       Width = 145
       Height = 21
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 22
+      TabStop = False
       Text = 'SecondOpComboBox'
       OnChange = SecondOpComboBoxChange
       OnKeyPress = MainOpComboBoxKeyPress

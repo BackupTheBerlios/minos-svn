@@ -89,7 +89,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 5
   end
   object CallsignEdit: TLabeledEdit
@@ -191,21 +191,13 @@ object ContestEntryDetails: TContestEntryDetails
       Caption = 'Read Only'
       TabOrder = 0
     end
-    object PostEventOption: TCheckBox
-      Left = 6
-      Top = 48
-      Width = 209
-      Height = 17
-      Caption = 'Post Event Entry (not real time)'
-      TabOrder = 1
-    end
     object MultiBandCheckBox4: TCheckBox
       Left = 8
-      Top = 74
+      Top = 51
       Width = 201
       Height = 17
       Caption = 'Multi-Band (see Band combo)'
-      TabOrder = 2
+      TabOrder = 1
     end
   end
   object FieldsGroupBox: TGroupBox
@@ -370,7 +362,7 @@ object ContestEntryDetails: TContestEntryDetails
     Height = 21
     Style = csDropDownList
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 6
   end
   object PowerEdit: TLabeledEdit
@@ -388,7 +380,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 214
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 11
   end
   object EndTimeCombo: TComboBox
@@ -396,7 +388,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 214
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 12
   end
   object LocatorGroupBox: TGroupBox

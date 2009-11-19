@@ -38,7 +38,7 @@ class QSOHistoryNode
 ;
 //---------------------------------------------------------------------------
 __fastcall TQSOEditDlg::TQSOEditDlg( TComponent* Owner )
-      : TForm( Owner ), firstContact( 0 ), contest( 0 )
+      : TForm( Owner ), firstContact( 0 ), contest( 0 ), backfill(false)
 {}
 //---------------------------------------------------------------------------
 
@@ -55,12 +55,12 @@ void __fastcall TQSOEditDlg::FormShow( TObject */*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject *Sender)
+void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
 {
    // we had this so that we could close the form easily on startup
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
-   GJVQSOEditFrame->initialise( contest, this );
+   GJVQSOEditFrame->initialise( contest, this, backfill );
    selectEntry( firstContact );
    firstContact = 0;
 }
@@ -223,19 +223,36 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVOKButtonClick( TObject *Sender )
 {
    if ( GJVQSOEditFrame->doGJVOKButtonClick( Sender ) )
    {
-      ModalResult = mrOk;
+      if (backfill)
+      {
+         LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+         int ctmax = ct->maxSerial + 1;
+         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+         selectEntry(lct);
+      }
+      else
+      {
+         ModalResult = mrOk;
+      }
    }
 
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
-   TObject *Sender )
+   TObject */*Sender*/ )
 {
-   if ( GJVQSOEditFrame->doGJVForceButtonClick( Sender ) )
-   {
-      ModalResult = mrOk;
-   }
+      if (backfill)
+      {
+         LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+         int ctmax = ct->maxSerial + 1;
+         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+         selectEntry(lct);
+      }
+      else
+      {
+         ModalResult = mrOk;
+      }
 }
 //---------------------------------------------------------------------------
 
@@ -243,6 +260,12 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVCancelButtonClick(
    TObject *Sender )
 {
    GJVQSOEditFrame->doGJVCancelButtonClick( Sender );
+   if (backfill)
+   {
+      LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+      DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( GJVQSOEditFrame->selectedContact );
+      ct->removeContact(lct);
+   }
    ModalResult = mrCancel;
 }
 //---------------------------------------------------------------------------
@@ -322,4 +345,24 @@ void __fastcall TQSOEditDlg::QSOHistoryTreeBeforeItemErase(
 
 }
 //---------------------------------------------------------------------------
+void TQSOEditDlg::selectBackfill( BaseContestLog * c )
+{
+   // Kick off Post Entry/Uri/Backfill
+   // We need to create a new contact, and set the "post entry" flag
+   // and then trigger the qso edit dialog on it
+
+   // Also note that we don't get a dups display doing it this way
+   // Not sure if that matters...
+
+   // OR can we build a match window into the edit dialog?
+
+   backfill = true;
+   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( c );
+
+   int ctmax = ct->maxSerial + 1;
+
+   DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+   selectContact(c, lct);
+   GJVQSOEditFrame->FirstUnfilledButton->Enabled = false;
+}
 

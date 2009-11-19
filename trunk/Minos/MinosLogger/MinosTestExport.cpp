@@ -73,7 +73,6 @@ void MinosTestExport::exportMode( HANDLE expfd )
    bool dirty = false;
 
    ct->readOnly.addIfDirty( st, "readOnly", dirty );
-   ct->postEntry.addIfDirty( st, "postEntry", dirty );
    if ( dirty )
    {
       sendRequest( expfd, "MinosLogMode", st );

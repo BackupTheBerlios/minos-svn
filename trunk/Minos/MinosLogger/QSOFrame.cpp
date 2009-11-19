@@ -31,8 +31,9 @@ __fastcall TGJVEditFrame::~TGJVEditFrame()
       delete ( *vcp );
    }
 }
-void TGJVEditFrame::initialise( BaseContestLog * pcontest, QSOEditScreen *edScreen )
+void TGJVEditFrame::initialise( BaseContestLog * pcontest, QSOEditScreen *edScreen, bool bf )
 {
+   backfill = bf;
    editScreen = edScreen;
    contest = pcontest;
    screenContact.initialise( contest ); // get ops etc correct
@@ -227,8 +228,8 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 {
    // proxied?
    bool tbe = screenContact.contactFlags & TO_BE_ENTERED;
-   DateEdit->ReadOnly = !contest->isPostEntry() && !tbe;
-   TimeEdit->ReadOnly = !contest->isPostEntry() && !tbe;
+   DateEdit->ReadOnly = !backfill && !tbe;
+   TimeEdit->ReadOnly = !backfill && !tbe;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );
@@ -454,8 +455,8 @@ void __fastcall TGJVEditFrame::GJVEditKeyPress( TObject *Sender, char &Key )
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 {
-   DateEdit->ReadOnly = !contest->isPostEntry();
-   TimeEdit->ReadOnly = !contest->isPostEntry();
+   DateEdit->ReadOnly = !backfill;
+   TimeEdit->ReadOnly = !backfill;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
 
@@ -524,8 +525,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 
       if ( ( nextf == TimeEdit ) || ( nextf == DateEdit ) )
       {
-         bool pe = contest->isPostEntry();
-         if ( !pe && screenContact.time.notEntered() == 0 )
+         if ( !backfill && screenContact.time.notEntered() == 0 )
          {
             selectField( CallsignEdit );
             nextf = 0;			// dont show silly errors!
@@ -565,7 +565,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
    // we have to check if we need to save it
    // checkLogEntry does the log action as well
 
-   if ( !was_unfilled && selectedContact )  // AND if we are logging "current" then we don't want to do this
+   if ( !was_unfilled && !backfill && selectedContact )  // AND if we are logging "current" then we don't want to do this
    {
       if ( !checkLogEntry() )  // if it is the same, then don't log
       {
@@ -718,7 +718,7 @@ bool TGJVEditFrame::dlgForced()
 
       // if no dtg then autofill dtg
 
-      if ( !contest->isPostEntry() && !( screenContact.contactFlags & TO_BE_ENTERED ) )
+      if ( !backfill && !( screenContact.contactFlags & TO_BE_ENTERED ) )
       {
          int tne = screenContact.time.notEntered(); // partial dtg will give fe
          // full dtg gives -ve, none gives 0
@@ -743,8 +743,8 @@ bool TGJVEditFrame::doGJVForceButtonClick( TObject */*Sender*/ )
    {
       return true;
    }
-   DateEdit->ReadOnly = !contest->isPostEntry();
-   TimeEdit->ReadOnly = !contest->isPostEntry();
+   DateEdit->ReadOnly = !backfill;
+   TimeEdit->ReadOnly = !backfill;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
    MinosParameters::getMinosParameters() ->showErrorList( );
@@ -924,8 +924,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
 {
    int dtgne = -1;
 
-   bool pe = contest->isPostEntry();
-   if ( pe )
+   if ( backfill )
    {
       dtgne = screenContact.time.notEntered();
    }
@@ -937,7 +936,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
          v = CallsignEdit;
       }
       else
-         if ( pe )
+         if ( backfill )
          {
             v = ( ( dtgne != -1 ) && ( dtgne <= 1 ) ) ? DateEdit : TimeEdit;
          }
@@ -962,15 +961,8 @@ void TGJVEditFrame::selectField( TWinControl *v )
       ( ( TLabeledEdit * ) v ) ->Color = clWindow;
       if (dtgne == 0 || dtgne == 1)
       {
-         if (pe)
-         {
-#warning get start time from either of previous contact OR contest start time
-         }
-         else
-         {
-            TimeEdit->SelStart = 0;
-            TimeEdit->SelLength = 1;
-         }
+         TimeEdit->SelStart = 0;
+         TimeEdit->SelLength = 1;
       }
    }
    if ( v == DateEdit )
@@ -979,15 +971,8 @@ void TGJVEditFrame::selectField( TWinControl *v )
       ( ( TLabeledEdit * ) v ) ->Color = clWindow;
       if (dtgne == 0 || dtgne == 2)
       {
-         if (pe)
-         {
-#warning get start date from either of previous contact OR contest start date
-         }
-         else
-         {
-            DateEdit->SelStart = 0;
-            DateEdit->SelLength = 1;
-         }
+         DateEdit->SelStart = 0;
+         DateEdit->SelLength = 1;
       }
    }
    if ( v == SerTXEdit )
@@ -1037,7 +1022,7 @@ void TGJVEditFrame::doAutofill( void )
    if ( contest->isReadOnly() )
       return ;
    ScreenContact *vcct = &screenContact;
-   if ( ( vcct->contactFlags & TO_BE_ENTERED ) || contest->isPostEntry() )
+   if ( ( vcct->contactFlags & TO_BE_ENTERED ) ||  backfill)
    {
       // don't think we do anything here
    }
@@ -1204,7 +1189,7 @@ bool TGJVEditFrame::checkLogEntry()
 
       // Dont check with op if not entered, and e.g. ESC pressed
       // Also allows for partial saving when in Uri mode
-      if ( !( screenContact.contactFlags & TO_BE_ENTERED ) )
+      if ( !( screenContact.contactFlags & TO_BE_ENTERED ) && !backfill )
       {
          mresp = MessageBox( Handle,
                              "This Contact has changed: Shall I log the changes?\n"
