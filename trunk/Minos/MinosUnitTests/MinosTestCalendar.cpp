@@ -90,7 +90,7 @@ void CalendarTestParams::testContests()
    CPPUNIT_ASSERT_EQUAL( true, loaded );
 
    int nc = vhf.contests.size();
-   CPPUNIT_ASSERT_EQUAL( 33, nc );
+   CPPUNIT_ASSERT_EQUAL( 29, nc );
 
    std::string lp144( "lp144" );
    Contest &qrp144 = vhf.contests[ lp144 ];
