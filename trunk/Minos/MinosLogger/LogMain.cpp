@@ -184,12 +184,11 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
             if ( ced->ShowModal() == mrOk )
             {
                contest->commonSave( false );
-               contest->startScan();
+               contest->scanContest();
                show = true;
             }
             else
             {
-//               ContestMRU->AddItem( fname.c_str() );
                TContestApp::getContestApp() ->closeFile( contest );
                contest = 0;
             }
@@ -197,7 +196,7 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
       }
       else
       {
-         contest->startScan();
+         contest->scanContest();
          show = true;
       }
 
@@ -650,7 +649,7 @@ void __fastcall TLogContainer::ContestDetailsActionExecute( TObject */*Sender*/ 
          {
             f->updateQSODisplay();
          }
-         ct->startScan();
+         ct->scanContest();
       }
 
    }

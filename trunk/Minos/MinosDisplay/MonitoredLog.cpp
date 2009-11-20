@@ -104,7 +104,7 @@ void MonitoredLog::checkMonitor()
    }
    if ( expectedStanzaCount == curCount && lastScannedStanza != curCount )
    {
-      contest->startScan();
+      contest->scanContest();
       frame->LogMonitorFrame->showQSOs();
       frame->MultDispFrame->refreshMults();
       frame->LogMonitorFrame->Repaint();

@@ -299,7 +299,7 @@ void __fastcall TQSOEditDlg::FormKeyUp( TObject */*Sender*/, WORD &Key,
 //---------------------------------------------------------------------------
 void TQSOEditDlg::afterLogContact()
 {
-   // nothing to do
+   contest->scanContest();
 }
 //---------------------------------------------------------------------------
 

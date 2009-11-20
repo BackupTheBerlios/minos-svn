@@ -294,7 +294,7 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
       }
    commonSave( newFile );
 
-   startScan(); // scan through all contacts
+   scanContest();
    return true;
 }
 void LoggerContestLog::setINIDetails()

@@ -537,9 +537,8 @@ void BaseContestLog::setScore( std::string &buff )
             brcc4 % brloc1 % nlocs % brloc2 % totalScore ).str();
 
 }
-#error rename and do some refactoring round here - we ALWAYS do the complete scan
 // and we need to do this a bit more often to pick up unfilled properly
-void BaseContestLog::startScan( void )
+void BaseContestLog::scanContest( void )
 {
    DupSheet.clear();
 
@@ -571,11 +570,6 @@ void BaseContestLog::startScan( void )
    nextScan = -1;
    unfilledCount = 0;
 
-   rescan();
-
-}
-void BaseContestLog::rescan( void )
-{
    std::string curop1;
    std::string curop2;
    oplist.clear();

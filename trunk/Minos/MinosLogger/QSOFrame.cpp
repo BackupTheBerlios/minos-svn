@@ -947,7 +947,11 @@ void TGJVEditFrame::selectField( TWinControl *v )
                v = CallsignEdit;
    }
    if ( !v || ( current == v ) )
+   {
+      if (v)
+         v->SetFocus();
       return ;
+   }
 
    if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
    {

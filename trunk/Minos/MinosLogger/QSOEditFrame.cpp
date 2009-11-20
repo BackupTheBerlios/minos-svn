@@ -54,7 +54,7 @@ void __fastcall TGJVQSOEditFrame::FirstUnfilledButtonClick( TObject */*Sender*/ 
          return ;
       }
    }
-   ShowMessage( "No unfilled contacts found" );
+   ShowMessage( "No more unfilled contacts found" );
 }
 //---------------------------------------------------------------------------
 BaseContact *TGJVQSOEditFrame::getPriorContact()

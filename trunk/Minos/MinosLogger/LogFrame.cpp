@@ -161,12 +161,14 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
    qdlg->selectContact( contest, ct );
 
    qdlg->ShowModal();
-   contest->startScan();
+
+   contest->scanContest();
+
    LogMonitor->Invalidate();
    MultDispFrame->refreshMults();
    OperatorFrame->refreshOps();
    LogMonitor->Repaint();
-   GJVQSOLogFrame->selectField( 0 );
+   GJVQSOLogFrame->selectEntry( 0 );
 
 }
 //---------------------------------------------------------------------------
@@ -1218,9 +1220,10 @@ void TSingleLogFrame::getScreenEntry( ScreenContact &screenContact )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::afterLogContact()
 {
+   contest->scanContest();
    // callback
    updateTrees();
-   afterSelectEntry( 0 );
+//   afterSelectEntry( 0 ); - // why after SELECT here?
    NextContactDetailsTimerTimer( this );
 }
 //---------------------------------------------------------------------------
@@ -1241,12 +1244,12 @@ void TSingleLogFrame::GoNextUnfilled()
       qdlg->setContest( contest );
       qdlg->setFirstContact( nuc );
       qdlg->ShowModal();
-      contest->startScan();
+      contest->scanContest();
       LogMonitor->QSOTree->Invalidate();
       MultDispFrame->refreshMults();
       OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
-      //GJVQSOLogFrame->selectEntry( 0 );
+      GJVQSOLogFrame->selectEntry( 0 );
    }
    else
    {

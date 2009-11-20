@@ -86,9 +86,6 @@ class BaseContestLog
       // which hold slightly different info, and more importantly handle backing store
       // totally differently
 
-   private:
-
-      void rescan( void );
    protected:
       int stanzaCount;
       unsigned long nextBlock;
@@ -249,7 +246,7 @@ class BaseContestLog
       void validateLoc( void );
       void getMatchText( BaseContact *, std::string &, const BaseContestLog *const ct ) const;
       void getMatchField( BaseContact *pct, int col, std::string &disp, const BaseContestLog *const ct ) const;
-      void startScan( void );
+      void scanContest( void );
       void setScore( std::string & );
 
       // manipulation of contact list

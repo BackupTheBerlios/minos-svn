@@ -124,7 +124,7 @@ class TGJVEditFrame : public TFrame
       void setTimeNow();
 
       void selectField( TWinControl *v );
-      virtual void selectEntry( DisplayContestContact *lct ) = 0;
+      virtual void selectEntry( BaseContact *lct ) = 0;
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );

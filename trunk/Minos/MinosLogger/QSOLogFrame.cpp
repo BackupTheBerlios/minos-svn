@@ -86,8 +86,8 @@ void TGJVQSOLogFrame::logScreenEntry( )
    ContestContact *llct = dynamic_cast<ContestContact *>( lct );
    llct->commonSave();				// which also saves the ContestLog
 
-   selectEntry( 0 );	// select the "next"
    editScreen->afterLogContact();
+   selectEntry( 0 );	// select the "next"
 }
 //==============================================================================
 void TGJVQSOLogFrame::logCurrentContact( )
@@ -146,6 +146,7 @@ void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
    {
       FirstUnfilledButton->Visible = true;
    }
+
    if ( plct )
    {
       // Non zero plct happens if we switch contests by double clicking on a match
@@ -367,10 +368,6 @@ void __fastcall TGJVQSOLogFrame::BackfillButtonClick(TObject */*Sender*/)
 
    if (qdlg->ShowModal() == mrOk)
    {
-//      editScreen->afterLogContact();
-
-      contest->startScan();
-
       // and how do we do these? Do we need to?
 
 //   LogMonitor->Invalidate();
