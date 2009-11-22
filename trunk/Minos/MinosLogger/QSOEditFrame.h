@@ -48,7 +48,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
    public: 		// User declarations
       __fastcall TGJVQSOEditFrame( TComponent* Owner );
       virtual void selectEntry( BaseContact *lct );
-      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
+      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
       bool doGJVOKButtonClick( TObject *Sender );
       void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();

@@ -354,7 +354,7 @@ void TGJVQSOLogFrame::updateQSOTime()
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVQSOLogFrame::BackfillButtonClick(TObject */*Sender*/)
+void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
 {
 // we should make this an action on the actionlist
 // then all may work
@@ -362,7 +362,7 @@ void __fastcall TGJVQSOLogFrame::BackfillButtonClick(TObject */*Sender*/)
 
 
    std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
-   qdlg->selectBackfill( contest );
+   qdlg->selectCatchup( contest );
 
 
    if (qdlg->ShowModal() == mrOk)

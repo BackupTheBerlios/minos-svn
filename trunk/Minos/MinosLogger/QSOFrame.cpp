@@ -33,7 +33,7 @@ __fastcall TGJVEditFrame::~TGJVEditFrame()
 }
 void TGJVEditFrame::initialise( BaseContestLog * pcontest, QSOEditScreen *edScreen, bool bf )
 {
-   backfill = bf;
+   catchup = bf;
    editScreen = edScreen;
    contest = pcontest;
    screenContact.initialise( contest ); // get ops etc correct
@@ -228,8 +228,8 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 {
    // proxied?
    bool tbe = screenContact.contactFlags & TO_BE_ENTERED;
-   DateEdit->ReadOnly = !backfill && !tbe;
-   TimeEdit->ReadOnly = !backfill && !tbe;
+   DateEdit->ReadOnly = !catchup && !tbe;
+   TimeEdit->ReadOnly = !catchup && !tbe;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );
@@ -455,8 +455,8 @@ void __fastcall TGJVEditFrame::GJVEditKeyPress( TObject *Sender, char &Key )
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 {
-   DateEdit->ReadOnly = !backfill;
-   TimeEdit->ReadOnly = !backfill;
+   DateEdit->ReadOnly = !catchup;
+   TimeEdit->ReadOnly = !catchup;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
 
@@ -525,7 +525,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 
       if ( ( nextf == TimeEdit ) || ( nextf == DateEdit ) )
       {
-         if ( !backfill && screenContact.time.notEntered() == 0 )
+         if ( !catchup && screenContact.time.notEntered() == 0 )
          {
             selectField( CallsignEdit );
             nextf = 0;			// dont show silly errors!
@@ -565,7 +565,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
    // we have to check if we need to save it
    // checkLogEntry does the log action as well
 
-   if ( !was_unfilled && !backfill && selectedContact )  // AND if we are logging "current" then we don't want to do this
+   if ( !was_unfilled && !catchup && selectedContact )  // AND if we are logging "current" then we don't want to do this
    {
       if ( !checkLogEntry(true) )  // if it is the same, then don't log
       {
@@ -718,7 +718,7 @@ bool TGJVEditFrame::dlgForced()
 
       // if no dtg then autofill dtg
 
-      if ( !backfill && !( screenContact.contactFlags & TO_BE_ENTERED ) )
+      if ( !catchup && !( screenContact.contactFlags & TO_BE_ENTERED ) )
       {
          int tne = screenContact.time.notEntered(); // partial dtg will give fe
          // full dtg gives -ve, none gives 0
@@ -743,8 +743,8 @@ bool TGJVEditFrame::doGJVForceButtonClick( TObject */*Sender*/ )
    {
       return true;
    }
-   DateEdit->ReadOnly = !backfill;
-   TimeEdit->ReadOnly = !backfill;
+   DateEdit->ReadOnly = !catchup;
+   TimeEdit->ReadOnly = !catchup;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
    MinosParameters::getMinosParameters() ->showErrorList( );
@@ -924,7 +924,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
 {
    int dtgne = -1;
 
-   if ( backfill )
+   if ( catchup )
    {
       dtgne = screenContact.time.notEntered();
    }
@@ -936,7 +936,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
          v = CallsignEdit;
       }
       else
-         if ( backfill )
+         if ( catchup )
          {
             v = ( ( dtgne != -1 ) && ( dtgne <= 1 ) ) ? DateEdit : TimeEdit;
          }
@@ -1026,7 +1026,7 @@ void TGJVEditFrame::doAutofill( void )
    if ( contest->isReadOnly() )
       return ;
    ScreenContact *vcct = &screenContact;
-   if ( ( vcct->contactFlags & TO_BE_ENTERED ) ||  backfill)
+   if ( ( vcct->contactFlags & TO_BE_ENTERED ) ||  catchup)
    {
       // don't think we do anything here
    }
@@ -1193,7 +1193,7 @@ bool TGJVEditFrame::checkLogEntry(bool checkDTG)
 
       // Dont check with op if not entered, and e.g. ESC pressed
       // Also allows for partial saving when in Uri mode
-      if ( !( screenContact.contactFlags & TO_BE_ENTERED ) && !backfill )
+      if ( !( screenContact.contactFlags & TO_BE_ENTERED ) && !catchup )
       {
          mresp = MessageBox( Handle,
                              "This Contact has changed: Shall I log the changes?\n"

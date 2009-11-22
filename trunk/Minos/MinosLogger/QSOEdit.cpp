@@ -38,7 +38,7 @@ class QSOHistoryNode
 ;
 //---------------------------------------------------------------------------
 __fastcall TQSOEditDlg::TQSOEditDlg( TComponent* Owner )
-      : TForm( Owner ), firstContact( 0 ), contest( 0 ), backfill(false)
+      : TForm( Owner ), firstContact( 0 ), contest( 0 ), catchup(false)
 {}
 //---------------------------------------------------------------------------
 
@@ -60,9 +60,9 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    // we had this so that we could close the form easily on startup
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
-   GJVQSOEditFrame->initialise( contest, this, backfill );
+   GJVQSOEditFrame->initialise( contest, this, catchup );
    selectEntry( firstContact );
-   if (GJVQSOEditFrame->isBackfill())
+   if (GJVQSOEditFrame->isCatchup())
    {
       Caption = "Catch-up (Post Entry)";
    }
@@ -235,11 +235,11 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVOKButtonClick( TObject *Sender )
 {
    if ( GJVQSOEditFrame->doGJVOKButtonClick( Sender ) )
    {
-      if (backfill)
+      if (catchup)
       {
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
          int ctmax = ct->maxSerial + 1;
-         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
          selectEntry(lct);
       }
       else
@@ -254,11 +254,11 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVOKButtonClick( TObject *Sender )
 void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
    TObject */*Sender*/ )
 {
-      if (backfill)
+      if (catchup)
       {
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
          int ctmax = ct->maxSerial + 1;
-         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+         DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
          selectEntry(lct);
       }
       else
@@ -272,7 +272,7 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVCancelButtonClick(
    TObject *Sender )
 {
    GJVQSOEditFrame->doGJVCancelButtonClick( Sender );
-   if (backfill)
+   if (catchup)
    {
       LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
       DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( GJVQSOEditFrame->selectedContact );
@@ -357,9 +357,9 @@ void __fastcall TQSOEditDlg::QSOHistoryTreeBeforeItemErase(
 
 }
 //---------------------------------------------------------------------------
-void TQSOEditDlg::selectBackfill( BaseContestLog * c )
+void TQSOEditDlg::selectCatchup( BaseContestLog * c )
 {
-   // Kick off Post Entry/Uri/Backfill
+   // Kick off Post Entry/Uri/catchup
    // We need to create a new contact, and set the "post entry" flag
    // and then trigger the qso edit dialog on it
 
@@ -368,12 +368,12 @@ void TQSOEditDlg::selectBackfill( BaseContestLog * c )
 
    // OR can we build a match window into the edit dialog?
 
-   backfill = true;
+   catchup = true;
    LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( c );
 
    int ctmax = ct->maxSerial + 1;
 
-   DisplayContestContact *lct = ct->addContact( ctmax, 0, false, backfill );
+   DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
    selectContact(c, lct);
    GJVQSOEditFrame->FirstUnfilledButton->Enabled = false;
 }

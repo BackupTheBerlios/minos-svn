@@ -54,7 +54,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     inherited FirstUnfilledButton: TButton
       OnClick = FirstUnfilledButtonClick
     end
-    inherited BackfillButton: TButton
+    inherited CatchupButton: TButton
       TabOrder = 25
     end
     object InsertBeforeButton: TButton

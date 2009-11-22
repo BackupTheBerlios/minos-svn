@@ -317,7 +317,7 @@ object GJVEditFrame: TGJVEditFrame
       TabOrder = 18
       TabStop = False
     end
-    object BackfillButton: TButton
+    object CatchupButton: TButton
       Left = 24
       Top = 8
       Width = 129

@@ -22,7 +22,7 @@
 __fastcall TGJVQSOEditFrame::TGJVQSOEditFrame( TComponent* Owner )
       : TGJVEditFrame( Owner ), op1Value( 0 ), op2Value( 0 )
 {
-   BackfillButton->Visible = false;
+   CatchupButton->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
@@ -161,9 +161,9 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
 
    screenContact.copyFromArg( *lct );
    showScreenEntry();
-   if ( !contest->isReadOnly() && (screenContact.contactFlags & TO_BE_ENTERED || backfill))
+   if ( !contest->isReadOnly() && (screenContact.contactFlags & TO_BE_ENTERED || catchup))
    {
-      // Uri Mode - backfilling QSOs from paper while logging current QSOs
+      // Uri Mode - catchuping QSOs from paper while logging current QSOs
       // and we need to set the date/time from the previous contact
       TimeEdit->ReadOnly = false;
       DateEdit->ReadOnly = false;
@@ -265,7 +265,7 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
 
 void TGJVQSOEditFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
-   backfill = false;
+   catchup = false;
    checkLogEntry(false);
 }
 

@@ -420,12 +420,12 @@ void LoggerContestLog::closeFile( void )
    adifContestFile = INVALID_HANDLE_VALUE;
    ediContestFile = INVALID_HANDLE_VALUE;
 }
-DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags, bool saveNew, bool backfill )
+DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags, bool saveNew, bool catchup )
 {
    // add the contact number as an new empty contact, with disk block and log_seq
 
    bool timenow = true;
-   if ( ( extraFlags & TO_BE_ENTERED ) || backfill )
+   if ( ( extraFlags & TO_BE_ENTERED ) || catchup )
       timenow = false;
 
    DisplayContestContact *lct;

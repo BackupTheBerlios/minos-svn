@@ -27,7 +27,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
       void __fastcall BandMapButtonClick( TObject *Sender );
-   void __fastcall BackfillButtonClick(TObject *Sender);
+   void __fastcall CatchupButtonClick(TObject *Sender);
    void __fastcall FirstUnfilledButtonClick(TObject *Sender);
    private: 	// User declarations
       ScreenContact *partialContact; // contact being edited on screen
@@ -47,7 +47,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void doGJVCancelButtonClick( TObject *Sender );
       void transferDetails( const BaseContact * lct, const BaseContestLog *matct );
       void transferDetails( const ListContact * lct, const ContactList *matct );
-      void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
+      void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
       void setFreq( String f );
       virtual void updateQSOTime();
 };

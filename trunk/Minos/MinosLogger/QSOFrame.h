@@ -55,7 +55,7 @@ class TGJVEditFrame : public TFrame
    TButton *TimeNowButton;
    TButton *ModeButton;
    TButton *FirstUnfilledButton;
-   TButton *BackfillButton;
+   TButton *CatchupButton;
       void __fastcall EditControlEnter( TObject *Sender );
       void __fastcall EditControlExit( TObject *Sender );
       void __fastcall EditKeyDown( TObject *Sender, WORD &Key,
@@ -102,7 +102,7 @@ class TGJVEditFrame : public TFrame
       bool overstrike;
       TWinControl *current;
       bool updateTimeAllowed;
-      bool backfill;
+      bool catchup;
 
       bool valid( validTypes command );
       void calcLoc( void );
@@ -122,11 +122,11 @@ class TGJVEditFrame : public TFrame
       void clearCurrentField();
       void lgTraceerr( int err );
       void setTimeNow();
-      bool isBackfill(){return backfill;}
+      bool isCatchup(){return catchup;}
 
       void selectField( TWinControl *v );
       virtual void selectEntry( BaseContact *lct ) = 0;
-      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
+      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;
