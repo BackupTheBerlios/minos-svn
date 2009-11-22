@@ -62,6 +62,18 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, this, backfill );
    selectEntry( firstContact );
+   if (GJVQSOEditFrame->isBackfill())
+   {
+      Caption = "Catch-up (Post Entry)";
+   }
+   else if ( firstContact ->contactFlags.getValue() & TO_BE_ENTERED )
+   {
+      Caption = "Completing unfilled contacts";
+   }
+   else
+   {
+      Caption = "Editting QSO";
+   }
    firstContact = 0;
 }
 //---------------------------------------------------------------------------

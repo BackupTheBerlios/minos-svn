@@ -100,7 +100,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 158
       Width = 145
       Height = 21
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 21
       TabStop = False
       Text = 'MainOpComboBox'
@@ -112,7 +112,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 160
       Width = 145
       Height = 21
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 22
       TabStop = False
       Text = 'SecondOpComboBox'

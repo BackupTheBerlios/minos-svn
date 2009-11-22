@@ -42,7 +42,7 @@ void __fastcall TGJVQSOEditFrame::InsertAfterButtonClick( TObject */*Sender*/ )
 void __fastcall TGJVQSOEditFrame::FirstUnfilledButtonClick( TObject */*Sender*/ )
 {
    current = 0;            // make sure the focus moves off this button
-   if ( !checkLogEntry() )
+   if ( !checkLogEntry(true) )
    {
       return ;
    }
@@ -78,7 +78,7 @@ BaseContact *TGJVQSOEditFrame::getPriorContact()
 void __fastcall TGJVQSOEditFrame::PriorButtonClick( TObject */*Sender*/ )
 {
    current = 0;            // make sure the focus moves off this button
-   if ( !checkLogEntry() )
+   if ( !checkLogEntry(true) )
    {
       return ;
    }
@@ -97,7 +97,7 @@ void __fastcall TGJVQSOEditFrame::PriorButtonClick( TObject */*Sender*/ )
 void __fastcall TGJVQSOEditFrame::NextButtonClick( TObject */*Sender*/ )
 {
    current = 0;            // make sure the focus moves off this button
-   if ( !checkLogEntry() )
+   if ( !checkLogEntry(true) )
    {
       return ;
    }
@@ -263,18 +263,10 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
 }
 //---------------------------------------------------------------------------
 
-bool TGJVQSOEditFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
+void TGJVQSOEditFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
-   if ( checkLogEntry() )
-   {
-      DateEdit->ReadOnly = !backfill;
-      TimeEdit->ReadOnly = !backfill;
-      SerTXEdit->ReadOnly = true;
-
-      return true;
-   }
-
-   return false;
+   backfill = false;
+   checkLogEntry(false);
 }
 
 //==============================================================================

@@ -50,7 +50,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       virtual void selectEntry( BaseContact *lct );
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
       bool doGJVOKButtonClick( TObject *Sender );
-      bool doGJVCancelButtonClick( TObject *Sender );
+      void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();
       MinosItem<std::string> *op1Value;
       MinosItem<std::string> *op2Value;

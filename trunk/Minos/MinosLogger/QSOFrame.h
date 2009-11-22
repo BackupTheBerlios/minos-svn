@@ -110,7 +110,7 @@ class TGJVEditFrame : public TFrame
       void fillRst( TLabeledEdit *rIl, std::string &rep, const std::string &mode );
       void getScreenEntry();
       void showScreenEntry( );
-      bool checkLogEntry( );
+      bool checkLogEntry(bool checkDTG );
    public: 		// User declarations
       ScreenContact screenContact;  // contact being edited on screen
       BaseContact *selectedContact;   // contact from log list selected
@@ -122,13 +122,14 @@ class TGJVEditFrame : public TFrame
       void clearCurrentField();
       void lgTraceerr( int err );
       void setTimeNow();
+      bool isBackfill(){return backfill;}
 
       void selectField( TWinControl *v );
       virtual void selectEntry( BaseContact *lct ) = 0;
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool backfill );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );
-      virtual bool doGJVCancelButtonClick( TObject *Sender ) = 0;
+      virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;
       virtual void updateQSOTime() = 0;
       virtual void updateQSODisplay();
 };

@@ -322,7 +322,7 @@ object GJVEditFrame: TGJVEditFrame
       Top = 8
       Width = 129
       Height = 25
-      Caption = 'Backfill (Post Entry)'
+      Caption = 'Catch-up (Post Entry)'
       TabOrder = 19
       TabStop = False
     end

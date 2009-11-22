@@ -166,7 +166,7 @@ void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
 
    editScreen->afterSelectEntry( plct );
 }
-bool TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
+void TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
    DateEdit->ReadOnly = true;
    TimeEdit->ReadOnly = true;
@@ -188,7 +188,6 @@ bool TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
       partialContact = temp;
 
    MinosParameters::getMinosParameters() ->showErrorList( );
-   return true;
 }
 //==============================================================================
 bool TGJVQSOLogFrame::savePartial()

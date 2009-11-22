@@ -567,7 +567,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
 
    if ( !was_unfilled && !backfill && selectedContact )  // AND if we are logging "current" then we don't want to do this
    {
-      if ( !checkLogEntry() )  // if it is the same, then don't log
+      if ( !checkLogEntry(true) )  // if it is the same, then don't log
       {
          return false;
       }
@@ -1177,7 +1177,7 @@ void TGJVEditFrame::contactValid( void )
 }
 
 //---------------------------------------------------------------------------
-bool TGJVEditFrame::checkLogEntry()
+bool TGJVEditFrame::checkLogEntry(bool checkDTG)
 {
 
    if ( contest->isReadOnly() )
@@ -1187,7 +1187,7 @@ bool TGJVEditFrame::checkLogEntry()
    bool retval = true;
    getScreenEntry();
    BaseContact *sct = selectedContact ;
-   if ( sct->ne( screenContact ) )
+   if ( sct->ne( screenContact, checkDTG ) )
    {
       int mresp = IDYES;
 
