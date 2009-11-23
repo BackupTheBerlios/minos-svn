@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyerConfig>
+   <Trace enabled="true" />
+   <Tune time="20" level="90"/>
+   <CW tone = "1200" speed = "15"/>
+
+   <Ports>
+      <Port name="WindowsMonitor" type="Windows" />
+      <Port name="MinosControl" type="MinosControl" />
+
+   </Ports>
+
+   <Keyers>
+      <Keyer name="VoiceKeyer" 
+      		enablePip="1" pipTone="1000" pipLength="250" 
+      		pipStartDelay="100" pipVolume="50"
+      		startDelay="50" autoRepeat="6" enableAutoRepeat="1"
+      		playPTTDelay="240" voxHangTime="0" clipRecord="105"/>
+
+   </Keyers>
+
+<!--
+   <Enable keyer="VoiceKeyer" port="MinosControl"/>
+   <Enable keyer="VoiceKeyer" port="WindowsMonitor"/>
+-->
+   <Enable keyer="VoiceKeyer" port="WindowsMonitor"/>
+
+<!--This is the morse code table for the CW keyer. If you want to define your own
+   version of morse code, then this is the place to do it! Otherwise, leave well alone. Field 
+   index is the keyboard character used to send the morse code. Code itself is the value.
+-->
+
+   <MorseCode>
+    <key character="0" code= "-----" />
+    <key character="1" code= ".----" />
+    <key character="2" code= "..---" />
+    <key character="3" code= "...--" />
+    <key character="4" code= "....-" />
+    <key character="5" code= "....." />
+    <key character="6" code= "-...." />
+    <key character="7" code= "--..." />
+    <key character="8" code= "---.." />
+    <key character="9" code= "----." />
+    <key character="A" code= ".-" />
+    <key character="B" code= "-..." />
+    <key character="C" code= "-.-." />
+    <key character="D" code= "-.." />
+    <key character="E" code= "." />
+    <key character="F" code= "..-." />
+    <key character="G" code= "--." />
+    <key character="H" code= "...." />
+    <key character="I" code= ".." />
+    <key character="J" code= ".---" />
+    <key character="K" code= "-.-" />
+    <key character="L" code= ".-.." />
+    <key character="M" code= "--" />
+    <key character="N" code= "-." />
+    <key character="O" code= "---" />
+    <key character="P" code= ".--." />
+    <key character="Q" code= "--.-" />
+    <key character="R" code= ".-." />
+    <key character="S" code= "..." />
+    <key character="T" code= "-" />
+    <key character="U" code= "..-" />
+    <key character="V" code= "...-" />
+    <key character="W" code= ".--" />
+    <key character="X" code= "-..-" />
+    <key character="Y" code= "-.--" />
+    <key character="Z" code= "--.." />
+    <key character="/" code= "-..-." />
+    <key character="@" code= ".--.-." />
+    <key character="!" code= ".-..." /> <!-- wait -->
+    <key character="\" code= ".-.-." /> <!-- AR -->
+    <key character="#" code= "...-.-" /> <!-- VA -->
+    <key character="?" code= "..--.." />
+    <key character="." code= "-...-" />   <!--break -->
+    <key character="," code= "--..--" />
+    <key character="&gt;" code= "-.--." /> <!-- KN -->
+    <key character="|" code= "........" /> <!--error -->
+    <key character="&lt;" code= "...-." /> <!-- SN -->
+   </MorseCode>
+
+   <CWMessages>
+      <Message id="1" autoRepeat="true">
+         CQ CQ CQ de $MyCall
+      </Message>
+      <Message id="2" autoRepeat="false">
+         $MyCall
+      </Message>
+      <Message id="3" autoRepeat="false">
+         $HisCall
+      </Message>
+      <Message id="4" autoRepeat="true">
+         $CorrectedCall UR $RST $Serial at $MyLocator $MyQTH
+      </Message>
+   </CWMessages>
+
+</KeyerConfig>

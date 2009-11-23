@@ -1,0 +1,17 @@
+#
+#	district synonym control
+#
+# <district code (in district.ctl)>,<district synonym>
+# Used for single character codes; choose your own pad character!
+# At the moment, enter B? and it will give you BM
+# can also be used to give short area names, e.g. Brum
+#
+BM,Brum
+BM,B?
+EL,E?
+GS,G?
+LP,L?
+MR,M?
+NL,N?
+SD,S?
+WL,W?

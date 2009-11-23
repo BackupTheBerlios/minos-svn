@@ -1,0 +1,61 @@
+Actions and messages in logger
+==============================
+
+I think we need to release what we currently have before starting on this. Maybe a beta release once I've had a contest to test it on?
+
+Are these two things linked - is this an in program broker? Should it be treated that way? At the very least it may be a common programming model!
+
+Does the RQ event system give us problems? I think a queue based system may well be better, as it may work better across threads? Or do we need a threaded listener concept, so that a threaded listener gets its events queued and signalled?
+
+What about race conditions? We need to separate out the actions properly, and make sure we don't get bad action chains.
+
+Two aims - separate model and view, and separate control actions from both model and view. Don't know if this gives us a full MVC architecture or not!
+
+Most of the complications are
+	Key pressed, and hence a log field has changed
+	Focus change within QSO (return/tab/mouse)
+	Actual logging of a contact (add QSO to contest)
+	Button or menu action that changes selection
+	Gain/loss of current contest status
+	
+- Keep all messages within the current contest - others aren't interested until they become current. MAy also want to send to a net gateway, e.g. so a second PC can see what is being typed in  amonitor app (internal message <-> broker <-> broker <-> internal message). So need to tie registration to the individual contest/logframe, and not have a global system.
+
+Or we register listeners, and they all look, and say "not for me" if the contest is wrong. I think this works - we then don't need the nasty "all frames" loops for splitter and header position changes.
+
+Do we even make QSO log to disk part of this? contest and qso pick up change and action messages from the display?
+
+I think it also means that we could manage multiple logging stations by integrating broker comms into this, and having a serial claim protocol.
+
+
+ActiveMQ style in network
+=========================
+
+ActiveMQ does work, but is nasty to configure. It does fit on a small machine. even carrying the JRE. And I don't think it will necessarily fit our flexible network connectivity!
+
+We will want both local and general queues and topics, so that we don't flood the net with (e.g.) keyer state messages. 
+
+Clustering to be full and automatic
+
+Each message will carry a GUID and a list of nodes that has seen it. 
+
+Each node will ignore any message whose GUID has already been seen
+
+Each node will send a (new) message to all attached nodes which are not listed in the message
+
+Each node adds itself to the list of nodes.
+
+OR do we add ourselves as "definite receive" and all our currently connected nodes as well. If one of the sends fails then we resend the message to all, with a reduced node list, the same GUID, and a "please pass on" flag?
+
+We may want to configure some PCs as a "local spur" with all traffic to go through a designated gateway PC. e.g. second/search op PC. We may even want to have some topics that stay within the local group. Don't know how we configure this, unless we have a separate net for such local traffic, and a bridge within the gateway? We may well want to separate e.g. local and general "chat". But until we have it all working and want more than NFDs 5 node systems, this may be overkill!
+
+Most things are topic based; they go to everyone interested.
+
+One to one traffic would be nice if it were queue based, but it is still likely to have to flood the network. So it may as well all be topic based, but maybe we have temporary topics defined for one-one traffic If we subscribe to our own topic, should we get back the messages we send ourselves? We can always have two topics, one for each direction!
+
+Just topics means that we don't need any conventions etc to distinguish topics and queues
+
+Or do we do as ActiveMQ? Each node propagates all subscriptions by subscribing itself to all of its immediate attached nodes.
+
+What about our likely topology? we are unlikely to have full grid connectivity (which I think activeMQ relies on) - down a field a "chain" is the most likely, maybe with spurs. If we are lucky we will have full connectivity via a ce ntral hub (which may not be running a server, or at best may be ONLY running a server (internet on a stick scenario)
+
+Definitely need to use a sensible protocol and access library (Stomp?). Don't think I want to have full JMS... This is after all a specialist brokerage, not an activeMQ replacement
