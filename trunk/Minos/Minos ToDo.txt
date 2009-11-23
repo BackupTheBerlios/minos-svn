@@ -18,7 +18,10 @@ Some form of log printing?
 
 Read only simplification
 //================================================================
-Next version - 1.4.0 - new features etc
+//================================================================
+Next version - 1.3.1 Beta - new features etc
+
+Using a branch "svn+ssh://g0gjv@svn.berlios.de/svnroot/repos/minos/branches/V1_3_1_x"
 
 Post event and Uri mode simplification - catch-up button and unfilled button on QSO edit area. Uri mode still not that obvious to initiate
 
