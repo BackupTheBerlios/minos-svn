@@ -8,6 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 #include "logger_pch.h"
 #pragma hdrstop
+
 #include "LogEvents.h"
 #include "LoggerContest.h"
 
@@ -57,7 +58,10 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       matchTreeClickNode( 0 ),
       otherTreeClickNode( 0 ),
       archiveTreeClickNode( 0 ),
-      xferTree( 0 )
+      xferTree( 0 ),
+      EL_SplitterChanged ( EN_SplitterChanged, & SplittersChanged_Event ),
+      EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
+      EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -108,7 +112,36 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 }
 //---------------------------------------------------------------------------
 __fastcall TSingleLogFrame::~TSingleLogFrame()
-{}
+{
+   delete WLogAreaSplitter;
+   delete WMultSplitter;
+   delete WNextContactDetailsSplitter;
+   delete WMatchSplitter;
+   delete WArchiveMatchSplitter;
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & Event )
+{
+   if ( Parent != LogContainer->ContestPageControl->ActivePage )
+      return ;
+
+   BaseContestLog * ct = getContest();
+   TContestApp::getContestApp() ->setCurrentContest( ct );
+
+   if ( logColumnsChanged )
+      showQSOs();
+
+   if (splittersChanged)
+   {
+      getSplitters();
+   }
+
+   OnShowTimer->Enabled = true;
+   GJVQSOLogFrame->CallsignEdit->SetFocus();
+
+//   LogContainer->enableActions();
+//   Repaint();     // make sure the trees get repainted
+}
 //---------------------------------------------------------------------------
 void TSingleLogFrame::closeContest()
 {
@@ -604,38 +637,9 @@ void TSingleLogFrame::transferDetails( MatchNodeListData *MatchTreeIndex )
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::QSOTreeColumnResize( TVTHeader *Sender,
-      TColumnIndex Column )
+void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & Event )
 {
-   LogMonitor->QSOTreeColumnResize( Sender, Column );
-   // preserve the column size in the ini file
-   //   TContestApp::getContestApp() ->displayBundle.setIntProfile( ( "LogColumn" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
-
-   // and this should happen for all columns...
-   int cf = LogContainer->ContestPageControl->PageCount;
-   for ( int j = 0; j < cf; j++ )
-   {
-      int cc = LogContainer->ContestPageControl->Pages[ j ] ->ControlCount;
-      for ( int i = 0; i < cc; i++ )
-      {
-         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( LogContainer->ContestPageControl->Pages[ j ] ->Controls[ i ] ) )
-         {
-            if ( Column < THISMATCHTREECOLS )
-            {
-               int temp = -1;
-               String key = "LogColumn" + String( Column );
-               TContestApp::getContestApp() ->displayBundle.getIntProfile( key.c_str(), temp, -1 );
-               TVirtualTreeColumn *CurColumn = LogMonitor->QSOTree->Header->Columns->Items[ Column ];
-               if ( CurColumn->Width != temp )
-               {
-                  f->logColumnsChanged = true;
-               }
-            }
-
-            break;
-         }
-      }
-   }
+   logColumnsChanged = true;
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::goSerial( )
@@ -1416,6 +1420,8 @@ void __fastcall TSingleLogFrame::MultSplitterMoved(TObject */*Sender*/)
 //---------------------------------------------------------------------------
 void TSingleLogFrame::SplittersChanged()
 {
+   MinosLoggerEvents::SendSplittersChanged();
+   /*
    int cf = LogContainer->ContestPageControl->PageCount;
    for ( int j = 0; j < cf; j++ )
    {
@@ -1428,6 +1434,11 @@ void TSingleLogFrame::SplittersChanged()
          }
       }
    }
+   */
+}
+void TSingleLogFrame::SplittersChanged_Event ( MinosEventBase & Event )
+{
+   splittersChanged = true;
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::getSplitters()

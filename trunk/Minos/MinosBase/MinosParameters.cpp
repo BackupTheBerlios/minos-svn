@@ -65,9 +65,6 @@ void MinosParametersAdapter::setStatsPeriod2( int /*p*/ )
 }
 void MinosParametersAdapter::addOperator( const std::string &/*curop*/ )
 {}
-void MinosParametersAdapter::setError( int /*err*/ )
-{
-}
 bool MinosParametersAdapter::getAllowLoc4()
 {
    return false;
@@ -108,12 +105,6 @@ void MinosParametersAdapter::showErrorList( )
 ErrorList &MinosParametersAdapter::getErrorList()
 {
    return errs;
-}
-void MinosParametersAdapter::clearErrorList()
-{
-}
-void MinosParametersAdapter::valtrace( int /*mess_no*/, bool /*flag*/ )
-{
 }
 bool MinosParametersAdapter::isErrSet( int /*mess_no*/ )
 {

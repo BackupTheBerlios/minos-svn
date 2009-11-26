@@ -13,7 +13,7 @@
 
 #pragma package(smart_init)
 
-GridColumn QSOTreeColumns[ THISMATCHTREECOLS ] =
+GridColumn QSOTreeColumns[ LOGTREECOLS ] =
    {
       GridColumn( egTime, "XXXXXX", "UTC", taLeftJustify ),               // time
       GridColumn( egCall, "MMMMMMMMMMM", "Callsign", taLeftJustify ),         // call

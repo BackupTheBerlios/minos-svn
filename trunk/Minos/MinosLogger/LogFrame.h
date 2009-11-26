@@ -101,8 +101,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
                                             WideString &CellText );
       void __fastcall ThisMatchTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
-      void __fastcall QSOTreeColumnResize( TVTHeader *Sender,
-                                           TColumnIndex Column );
       void __fastcall LogAreaSplitterMoved( TObject *Sender );
       void __fastcall SetTimeNowClick( TObject *Sender );
       void __fastcall ThisMatchTreeDblClick( TObject *Sender );
@@ -156,11 +154,20 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
             TMouseButton Button, TShiftState Shift, int X, int Y );
       void __fastcall PublishTimerTimer( TObject *Sender );
       void __fastcall OnShowTimerTimer( TObject *Sender );
-   void __fastcall MatchSplitterMoved(TObject *Sender);
-   void __fastcall ArchiveMatchSplitterMoved(TObject *Sender);
-   void __fastcall NextContactDetailsSplitterMoved(TObject *Sender);
-   void __fastcall MultSplitterMoved(TObject *Sender);
+      void __fastcall MatchSplitterMoved(TObject *Sender);
+      void __fastcall ArchiveMatchSplitterMoved(TObject *Sender);
+      void __fastcall NextContactDetailsSplitterMoved(TObject *Sender);
+      void __fastcall MultSplitterMoved(TObject *Sender);
    private:  	// User declarations
+
+      MinosEventListener  EL_ContestPageChanged;
+      void ContestPageChanged_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_LogColumnsChanged;
+      void LogColumnsChanged_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_SplitterChanged;
+      void SplittersChanged_Event ( MinosEventBase & Event );
 
       TOperatorFrame *OperatorFrame;
       TWhisperSplitter *WLogAreaSplitter;
@@ -211,8 +218,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
 
       bool logColumnsChanged;
       bool splittersChanged;
-
-      void lgTraceerr( int err );
 
       void setMode( String m );
       void setFreq( String f );

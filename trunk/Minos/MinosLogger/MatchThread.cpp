@@ -308,7 +308,7 @@ void Matcher::startMatch( CountryEntry *c )
    thisContestMatched = 0;
 }
 
-// on timer, start it off
+// on timer, start it off NB this NOT in the main thread
 void Matcher::initMatch( void )
 {
    try

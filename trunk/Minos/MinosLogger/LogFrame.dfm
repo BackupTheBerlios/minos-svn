@@ -350,61 +350,11 @@ object SingleLogFrame: TSingleLogFrame
               Width = 14
               ExplicitWidth = 14
             end
-            inherited DateEdit: TLabeledEdit
-              EditLabel.Width = 27
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 45
-              EditLabel.ExplicitWidth = 27
-            end
-            inherited GJVCancelButton: TButton
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited GJVForceButton: TButton
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited GJVOKButton: TButton
-              OnClick = GJVQSOLogFrame1GJVOKButtonClick
-            end
-            inherited RSTTXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 108
+            inherited SerRXEdit: TLabeledEdit
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 337
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited MatchXferButton: TBitBtn
-              OnClick = GJVQSOLogFrame1MatchXferButtonClick
-            end
-            inherited SerTXEdit: TLabeledEdit
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 170
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 52
-            end
-            inherited BandMapPanel: TPanel
-              inherited AutoBandmapTune: TCheckBox
-                OnClick = AutoBandmapTuneClick
-              end
-              inherited AutoBandmapTime: TCheckBox
-                OnClick = AutoBandmapTimeClick
-              end
-            end
-            inherited RSTRXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 254
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited LocEdit: TLabeledEdit
-              EditLabel.Width = 46
-              EditLabel.ExplicitLeft = 420
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 46
-            end
-            inherited CommentsEdit: TLabeledEdit
-              EditLabel.Width = 62
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 104
-              EditLabel.ExplicitWidth = 62
+              EditLabel.ExplicitWidth = 53
             end
             inherited TimeEdit: TLabeledEdit
               EditLabel.Width = 28
@@ -418,17 +368,67 @@ object SingleLogFrame: TSingleLogFrame
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 72
             end
-            inherited SerRXEdit: TLabeledEdit
-              EditLabel.Width = 53
-              EditLabel.ExplicitLeft = 337
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 53
-            end
             inherited QTHEdit: TLabeledEdit
               EditLabel.Width = 55
               EditLabel.ExplicitLeft = 504
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 55
+            end
+            inherited LocEdit: TLabeledEdit
+              EditLabel.Width = 46
+              EditLabel.ExplicitLeft = 420
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 46
+            end
+            inherited GJVForceButton: TButton
+              OnClick = GJVQSOLogFrame1GJVForceButtonClick
+            end
+            inherited RSTRXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 254
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited RSTTXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 108
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited SerTXEdit: TLabeledEdit
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 170
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
+            end
+            inherited MatchXferButton: TBitBtn
+              OnClick = GJVQSOLogFrame1MatchXferButtonClick
+            end
+            inherited GJVOKButton: TButton
+              OnClick = GJVQSOLogFrame1GJVOKButtonClick
+            end
+            inherited BandMapPanel: TPanel
+              inherited AutoBandmapTune: TCheckBox
+                OnClick = AutoBandmapTuneClick
+              end
+              inherited AutoBandmapTime: TCheckBox
+                OnClick = AutoBandmapTimeClick
+              end
+            end
+            inherited GJVCancelButton: TButton
+              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
+            end
+            inherited DateEdit: TLabeledEdit
+              EditLabel.Width = 27
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 27
+            end
+            inherited CommentsEdit: TLabeledEdit
+              EditLabel.Width = 62
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 104
+              EditLabel.ExplicitWidth = 62
             end
             inherited TimeNowButton: TButton
               OnClick = SetTimeNowClick

@@ -15,10 +15,12 @@
 #include "boost\format.hpp"
 #include "boost\shared_ptr.hpp"
 
-
-
 #define _MSC_VER 2300
 #include "sorted_vector.h"
+
+#include "MinosEventData.h"
+#include "MinosEventManager.h"
+#include "MinosLoggerEvents.h"
 
 #include "validators.h"
 

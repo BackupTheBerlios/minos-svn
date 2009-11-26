@@ -49,7 +49,7 @@ ErrEntry errDefs[] =
    };
 void setError( int err )   // No CS
 {
-   MinosParameters::getMinosParameters() ->setError( err );
+   MinosLoggerEvents::SendValidateError(err);
 }
 
 Validator::Validator( validatorTypes vt ) : vt( vt ), status( false )

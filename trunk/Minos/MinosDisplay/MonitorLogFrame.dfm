@@ -12,11 +12,7 @@ object LogMonitorFrame: TLogMonitorFrame
     Height = 240
     Align = alClient
     Header.AutoSizeIndex = -1
-    Header.Font.Charset = DEFAULT_CHARSET
-    Header.Font.Color = clWindowText
-    Header.Font.Height = -11
-    Header.Font.Name = 'Tahoma'
-    Header.Font.Style = []
+    Header.DefaultHeight = 17
     Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoVisible]
     Header.ParentFont = True
     TabOrder = 0

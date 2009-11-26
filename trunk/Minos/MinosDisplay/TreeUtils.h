@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 
 #ifndef TreeUtilsH
-#define TreeUtilsH 
+#define TreeUtilsH
 //---------------------------------------------------------------------------
 class GridColumn
 {
@@ -32,9 +32,10 @@ enum eLogGridCols {egTime,
                    egLogMaxCol
                   };
 //---------------------------------------------------------------------------
+#define LOGTREECOLS egLogMaxCol
 #define THISMATCHTREECOLS egLogMaxCol
 #define OTHERMATCHTREECOLS egLogMaxCol - 5
 #define ARCHIVEMATCHTREECOLS egLogMaxCol - 5
-extern GridColumn QSOTreeColumns[ THISMATCHTREECOLS ];
+extern GridColumn QSOTreeColumns[ LOGTREECOLS ];
 
 #endif

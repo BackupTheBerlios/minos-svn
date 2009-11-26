@@ -61,13 +61,6 @@ void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreeGetText(
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreeColumnResize(
-   TVTHeader *Sender, TColumnIndex Column )
-{
-   LogMonitorFrame->QSOTreeColumnResize( Sender, Column );
-
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TMonitoringFrame::LogMonitorFrameQSOTreeBeforeItemErase(
    TBaseVirtualTree *Sender, TCanvas *TargetCanvas, PVirtualNode Node,

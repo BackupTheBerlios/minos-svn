@@ -587,6 +587,8 @@ bool TGJVEditFrame::dlgForced()
    getScreenEntry();
    valid( cmCheckValid );       // This adds errors to the MAIN dialog error list, not our own
 
+   #error WE need to subscribe to errors as well
+
    ErrorList &errs = MinosParameters::getMinosParameters() ->getErrorList();
    for ( ErrorIterator i = errs.begin(); i != errs.end(); i++ )
    {
@@ -610,7 +612,7 @@ bool TGJVEditFrame::dlgForced()
    ForceDlg->CheckBox7->Checked = screenContact.contactFlags & VALID_DISTRICT;
    ForceDlg->CheckBox8->Checked = screenContact.contactFlags & XBAND;
 
-   if ( MinosParameters::getMinosParameters() ->isErrSet( ERR_12 ) ||
+   if ( MinosParameters::getMinosParameters() ->isErrSet( ERR_12 ) ||             // duplicate callsign
         ( screenContact.contactFlags & ( NON_SCORING | MANUAL_SCORE | DONT_PRINT | VALID_DUPLICATE | TO_BE_ENTERED | XBAND ) ) )
 
    {
@@ -904,7 +906,7 @@ bool TGJVEditFrame::validateControls( validTypes command )   // do control valid
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::valid( validTypes command )
 {
-   MinosParameters::getMinosParameters() ->clearErrorList( ); // clear the error list
+   lgTraceerr(0); // clear the error list
 
    if ( contest->isReadOnly() )
       return true;
@@ -1055,7 +1057,7 @@ void TGJVEditFrame::doAutofill( void )
 //==============================================================================
 void TGJVEditFrame::lgTraceerr( int err )
 {
-   MinosParameters::getMinosParameters() ->valtrace( err, true );
+   MinosLoggerEvents::SendValidateError(err);
 }
 //==============================================================================
 void TGJVEditFrame::contactValid( void )
@@ -1075,7 +1077,7 @@ void TGJVEditFrame::contactValid( void )
 
    if ( vcct->contactFlags & DONT_PRINT )
    {
-      MinosParameters::getMinosParameters() ->clearErrorList();
+      lgTraceerr(0);
       lgTraceerr( ERR_26 );
    }
    else

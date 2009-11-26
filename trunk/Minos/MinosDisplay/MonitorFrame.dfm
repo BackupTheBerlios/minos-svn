@@ -28,18 +28,17 @@ object MonitoringFrame: TMonitoringFrame
     Align = alClient
     TabOrder = 1
     TabStop = True
-    ExplicitWidth = 286
+    ExplicitWidth = 280
     ExplicitHeight = 288
     inherited QSOTree: TVirtualStringTree
       Width = 280
       Height = 288
       OnBeforeItemErase = LogMonitorFrameQSOTreeBeforeItemErase
-      OnColumnResize = LogMonitorFrameQSOTreeColumnResize
       OnDblClick = LogMonitorFrameQSOTreeDblClick
       OnGetText = LogMonitorFrameQSOTreeGetText
       OnPaintText = LogMonitorFrameQSOTreePaintText
       OnGetNodeDataSize = LogMonitorFrameQSOTreeGetNodeDataSize
-      ExplicitWidth = 286
+      ExplicitWidth = 280
       ExplicitHeight = 288
     end
   end

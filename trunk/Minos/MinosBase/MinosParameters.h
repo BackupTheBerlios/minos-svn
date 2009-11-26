@@ -48,7 +48,6 @@ class MinosParameters
       virtual void setStatsPeriod1( int ) = 0;
       virtual void setStatsPeriod2( int ) = 0;
       virtual void addOperator( const std::string &curop ) = 0;
-      virtual void setError( int err ) = 0;
       virtual bool getAllowLoc4() = 0;
       virtual bool getAllowLoc8() = 0;
       virtual bool yesNoMessage( TComponent* Owner, String mess ) = 0;
@@ -60,9 +59,7 @@ class MinosParameters
       virtual bool isContestOpen( const std::string fn ) = 0;
       virtual bool isListOpen( const std::string fn ) = 0;
       virtual ErrorList &getErrorList() = 0;
-      virtual void valtrace( int mess_no, bool flag ) = 0;
       virtual bool isErrSet( int mess_no ) = 0;
-      virtual void clearErrorList() = 0;
 };
 class MinosParametersAdapter : public MinosParameters
 {
@@ -85,7 +82,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual void setStatsPeriod1( int );
       virtual void setStatsPeriod2( int );
       virtual void addOperator( const std::string &curop );
-      virtual void setError( int err );
       virtual bool getAllowLoc4();
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
@@ -97,8 +93,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
       virtual ErrorList &getErrorList();
-      virtual void valtrace( int mess_no, bool flag );
       virtual bool isErrSet( int mess_no );
-      virtual void clearErrorList();
 };
 #endif

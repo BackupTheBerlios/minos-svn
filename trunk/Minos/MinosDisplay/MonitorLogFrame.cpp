@@ -48,8 +48,7 @@ void __fastcall TLogMonitorFrame::QSOTreeColumnResize( TVTHeader *Sender,
    // preserve the column size in the ini file
    MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumn" + String( Column ) ).c_str(), - 1 );
    MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumnWidth" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
-   //   TContestApp::getContestApp() ->displayBundle.setIntProfile( ( "LogColumn" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
-
+   MinosLoggerEvents::SendLogColumnsChanged();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogMonitorFrame::QSOTreeDblClick( TObject */*Sender*/ )
@@ -123,7 +122,7 @@ void TLogMonitorFrame::showQSOs()
    QSOTree->Header->Columns->Clear();
    QSOTree->Margin = 0;
    QSOTree->TextMargin = 4;
-   for ( int i = 0; i < THISMATCHTREECOLS; i++ )
+   for ( int i = 0; i < LOGTREECOLS; i++ )
    {
       TVirtualTreeColumn *NewColumn = QSOTree->Header->Columns->Add();
       NewColumn->Alignment = QSOTreeColumns[ i ].alignment;

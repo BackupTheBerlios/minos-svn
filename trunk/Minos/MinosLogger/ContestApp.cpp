@@ -222,7 +222,9 @@ void TContestApp::close()
 }
 TContestApp::TContestApp() : MinosParameters(), magneticVariation( 0 ), period1( 5 ), period2( 20 ),
       reverseBearing( false ), dispCountry( false ), dispBearing( true ), dispScore( true ),
-      currentContest( 0 )
+      currentContest( 0 ),
+      EL_ValidateError ( EN_ValidateError, & ValidateError_Event )
+
 {
    sysfont = new TFont();
    sysfont->Name = "Verdana";
@@ -609,10 +611,6 @@ void TContestApp::addOperator( const std::string &curop )
    }
 
 }
-void TContestApp::setError( int err )
-{
-   TLogContainer::setError( err );
-}
 bool TContestApp::getAllowLoc4()
 {
    BaseContestLog * ct = TContestApp::getCurrentContest();
@@ -651,31 +649,25 @@ ErrorList &TContestApp::getErrorList()
 {
    return errs;
 }
-void TContestApp::clearErrorList()
+void TContestApp::ValidateError_Event ( MinosEventBase & Event )
 {
-   errs.clear();
-   int i = 0;
-   while ( errDefs[ i ].priority )
-      errDefs[ i++ ].flag = false;
-}
-void TContestApp::valtrace( int mess_no, bool flag )
-{
-   // used to control the error list window
-   if ( mess_no == -1 )
-   {
-      clearErrorList();
-      return ;
-   }
+		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
+      int mess_no = S.getData();
+      if ( mess_no == -1 )
+      {
+         errs.clear();
+         int i = 0;
+         while ( errDefs[ i ].priority )
+            errDefs[ i++ ].flag = false;
+         return ;
+      }
 
-   if ( flag == true )
-   {
       // add the message into the error list
       if ( !errDefs[ mess_no ].flag )
       {
          errDefs[ mess_no ].flag = true;
          errs.insert( &errDefs[ mess_no ] );
       }
-   }
 }
 bool TContestApp::isErrSet( int mess_no )
 {

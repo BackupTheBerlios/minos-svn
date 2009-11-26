@@ -12,7 +12,6 @@
 #include "LoggerContest.h"
 
 #include "gridhint.h"
-#include "LogFrame.h"
 #include "LogMain.h"
 
 #include "GJVThreads.h"
@@ -214,10 +213,12 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
          f->ParentFont = true;
          f->TabStop = false;
 
+         f->logColumnsChanged = true;  // also causes show QSOs
+         f->splittersChanged = true;
+
          t->PageControl = ContestPageControl;
          ContestPageControl->ActivePage = t;
          ContestPageControlChange( this );
-         f->showQSOs();
 
          if ( contest->needsExport() )      // imported from an alien format (e.g. .log)
          {
@@ -279,15 +280,6 @@ TSingleLogFrame *TLogContainer::findCurrentLogFrame()
    return 0;
 }
 //---------------------------------------------------------------------------
-void TLogContainer::setError( int err )
-{
-   if ( LogContainer )
-   {
-      TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-      if ( f )
-         f->GJVQSOLogFrame->lgTraceerr( err );
-   }
-}
 void TLogContainer::showErrorList( ErrorList &errs )
 {
    if ( LogContainer )
@@ -438,6 +430,8 @@ bool TLogContainer::isNextContactDetailsOnLeft()
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestPageControlChange( TObject */*Sender*/ )
 {
+   MinosLoggerEvents::SendContestPageChanged();
+   /*
    TSingleLogFrame * f = findCurrentLogFrame();
    if ( f )
    {
@@ -455,6 +449,7 @@ void __fastcall TLogContainer::ContestPageControlChange( TObject */*Sender*/ )
       f->OnShowTimer->Enabled = true;
       f->GJVQSOLogFrame->CallsignEdit->SetFocus();
    }
+   */
    enableActions();
    Repaint();     // make sure the trees get repainted
 }

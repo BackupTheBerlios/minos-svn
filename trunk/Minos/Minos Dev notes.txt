@@ -1,3 +1,8 @@
+Other points
+============
+
+Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
+
 Actions and messages in logger
 ==============================
 
@@ -17,6 +22,12 @@ Most of the complications are
 	Actual logging of a contact (add QSO to contest)
 	Button or menu action that changes selection
 	Gain/loss of current contest status
+	
+	SplitterChanged
+	now we want
+	ContestChanged
+	HeadersChanged
+	
 	
 - Keep all messages within the current contest - others aren't interested until they become current. MAy also want to send to a net gateway, e.g. so a second PC can see what is being typed in  amonitor app (internal message <-> broker <-> broker <-> internal message). So need to tie registration to the individual contest/logframe, and not have a global system.
 
