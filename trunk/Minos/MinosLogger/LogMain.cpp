@@ -280,14 +280,6 @@ TSingleLogFrame *TLogContainer::findCurrentLogFrame()
    return 0;
 }
 //---------------------------------------------------------------------------
-void TLogContainer::showErrorList( ErrorList &errs )
-{
-   if ( LogContainer )
-   {
-      TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-      f->showErrorList( errs );
-   }
-}
 /*static*/ void TLogContainer::showContestScore( const std::string &score )
 {
    if ( LogContainer )
@@ -431,25 +423,6 @@ bool TLogContainer::isNextContactDetailsOnLeft()
 void __fastcall TLogContainer::ContestPageControlChange( TObject */*Sender*/ )
 {
    MinosLoggerEvents::SendContestPageChanged();
-   /*
-   TSingleLogFrame * f = findCurrentLogFrame();
-   if ( f )
-   {
-      BaseContestLog * ct = f->getContest();
-      TContestApp::getContestApp() ->setCurrentContest( ct );
-
-      if ( f->logColumnsChanged )
-         f->showQSOs();
-
-      if (f->splittersChanged)
-      {
-         f->getSplitters();
-      }
-
-      f->OnShowTimer->Enabled = true;
-      f->GJVQSOLogFrame->CallsignEdit->SetFocus();
-   }
-   */
    enableActions();
    Repaint();     // make sure the trees get repainted
 }

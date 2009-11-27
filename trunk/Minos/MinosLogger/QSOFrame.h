@@ -73,6 +73,9 @@ class TGJVEditFrame : public TFrame
    void __fastcall TimeNowButtonClick(TObject *Sender);
    void __fastcall ModeButtonClick(TObject *Sender);
    private: 	// User declarations
+      MinosEventListener  EL_ValidateError;
+      void ValidateError_Event ( MinosEventBase & Event );
+      ErrorList errs;
 
       ValidatedControl *dateIl;
       ValidatedControl *timeIl;

@@ -81,6 +81,13 @@ class TMultDispFrame : public TFrame
       void __fastcall FilterTimerTimer( TObject *Sender );
    void __fastcall FilterSplitterMoved(TObject *Sender);
    private:  	// User declarations
+      MinosEventListener  EL_ShowErrorList;
+      void ShowErrorList_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ValidateError;
+      void ValidateError_Event ( MinosEventBase & Event );
+      ErrorList errs;
+
       BaseContestLog *ct;
       TWhisperSplitter *WFilterSplitter;
       void initFilters();

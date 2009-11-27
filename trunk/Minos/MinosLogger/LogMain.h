@@ -199,7 +199,6 @@ class TLogContainer : public TForm
       bool bandMapLoaded;
 
    public:  		// User declarations
-      static void showErrorList( ErrorList &errs );
       static void showContestScore( const std::string &score );
       TSingleLogFrame *findCurrentLogFrame();
       void selectContest( BaseContestLog * , BaseContact * );

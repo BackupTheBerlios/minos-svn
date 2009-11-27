@@ -19,6 +19,7 @@ public:
    static void SendLogColumnsChanged();
    static void SendSplittersChanged();
    static void SendValidateError(int err);
+   static void SendShowErrorList();
 };
 //---------------------------------------------------------------------------
 #endif

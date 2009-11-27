@@ -82,7 +82,9 @@ void TMultDispFrame::saveFilters()
 }
 //---------------------------------------------------------------------------
 __fastcall TMultDispFrame::TMultDispFrame( TComponent* Owner )
-      : TFrame( Owner ), filterClickEnabled( false ), ct( 0 )
+      : TFrame( Owner ), filterClickEnabled( false ), ct( 0 ),
+      EL_ShowErrorList ( EN_ShowErrorList, & ShowErrorList_Event ),
+      EL_ValidateError ( EN_ValidateError, & ValidateError_Event )
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
    //   CountryMultTree->Canvas->Font->Assign(Parent->Font);
@@ -484,6 +486,23 @@ void __fastcall TMultDispFrame::FilterTimerTimer( TObject */*Sender*/ )
    FilterTimer->Enabled = false;
 }
 //---------------------------------------------------------------------------
+void TMultDispFrame::ValidateError_Event ( MinosEventBase & Event )
+{
+		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
+      int mess_no = S.getData();
+      if ( mess_no == -1 )
+      {
+         errs.clear();
+         return ;
+      }
+
+      // add the message into the error list
+      errs.insert( &errDefs[ mess_no ] );
+}
+void TMultDispFrame::ShowErrorList_Event ( MinosEventBase & Event )
+{
+   showErrorList(errs);
+}
 void TMultDispFrame::showErrorList( ErrorList &errs )
 {
    ErrList->Clear();

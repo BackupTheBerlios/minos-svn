@@ -16,36 +16,36 @@
 
 ErrEntry errDefs[] =
    {
-      ErrEntry( false, 20, "null validator failed" ),   //ERR_0
-      ErrEntry( false, 11, "Invalid time" ),        //ERR_1
-      ErrEntry( false, 10, "Invalid date" ),        //ERR_2
-      ErrEntry( false, 9, "Invalid power(0.01 - 1000 W)" ),      //ERR_3
-      ErrEntry( false, 15, "Invalid locator" ),     //ERR_4
-      ErrEntry( false, 14, "Invalid Serial" ),      //ERR_5
-      ErrEntry( false, 13, "Invalid RS(T)" ),       //ERR_6
-      ErrEntry( false, 9, "Invalid power(-40 - +40 dBW)" ),      //ERR_7
-      ErrEntry( false, 10, "Invalid district" ),      //ERR_8
-      ErrEntry( false, 10, "Invalid band" ),        //ERR_9
-      ErrEntry( false, 12, "!!! CS not validated !!!" ),   //ERR_10
-      ErrEntry( false, 12, "!!! No CS present !!!" ),   //ERR_11
-      ErrEntry( false, 1, "!!! Duplicate Callsign !!!" ),   //ERR_12
-      ErrEntry( false, 8, "Invalid Callsign!" ),         //ERR_13
-      ErrEntry( false, 10, "No RX Serial Number" ),      //ERR_14
-      ErrEntry( false, 10, "" ),   //ERR_15
-      ErrEntry( false, 10, "" ),     //ERR_16
-      ErrEntry( false, 10, "" ),   //ERR_17
-      ErrEntry( false, 20, "No Locator" ),             //ERR_18
-      ErrEntry( false, 2, "!!Loc not AA00AA to RR99XX!!" ),   //ERR_19
-      ErrEntry( false, 16, "Invalid district multiplier" ),          //ERR_20
-      ErrEntry( false, 10, "QTH required" ),           //ERR_21
-      ErrEntry( false, 10, "" ),         //ERR_22
-      ErrEntry( false, 5, "Unknown Country" ),         //ERR_23
-      ErrEntry( false, 2, "!!! Non Scoring Contact !!!" ),         //ERR_24
-      ErrEntry( false, 1, "!!! Comment Only !!!" ),         //ERR_25
-      ErrEntry( false, 1, "!!! DELETED !!!" ),         //ERR_26
-      ErrEntry( false, 90, "" ),         //ERR_27
-      ErrEntry( false, 90, "" ),         //ERR_28
-      ErrEntry( false, 0, "" )          //ERR_29
+      ErrEntry( 20, "null validator failed" ),   //ERR_0
+      ErrEntry( 11, "Invalid time" ),        //ERR_1
+      ErrEntry( 10, "Invalid date" ),        //ERR_2
+      ErrEntry( 9, "Invalid power(0.01 - 1000 W)" ),      //ERR_3
+      ErrEntry( 15, "Invalid locator" ),     //ERR_4
+      ErrEntry( 14, "Invalid Serial" ),      //ERR_5
+      ErrEntry( 13, "Invalid RS(T)" ),       //ERR_6
+      ErrEntry( 9, "Invalid power(-40 - +40 dBW)" ),      //ERR_7
+      ErrEntry( 10, "Invalid district" ),      //ERR_8
+      ErrEntry( 10, "Invalid band" ),        //ERR_9
+      ErrEntry( 12, "!!! CS not validated !!!" ),   //ERR_10
+      ErrEntry( 12, "!!! No CS present !!!" ),   //ERR_11
+      ErrEntry( 1, "!!! Duplicate Callsign !!!" ),   //ERR_12
+      ErrEntry( 8, "Invalid Callsign!" ),         //ERR_13
+      ErrEntry( 10, "No RX Serial Number" ),      //ERR_14
+      ErrEntry( 10, "" ),   //ERR_15
+      ErrEntry( 10, "" ),     //ERR_16
+      ErrEntry( 10, "" ),   //ERR_17
+      ErrEntry( 20, "No Locator" ),             //ERR_18
+      ErrEntry( 2, "!!Loc not AA00AA to RR99XX!!" ),   //ERR_19
+      ErrEntry( 16, "Invalid district multiplier" ),          //ERR_20
+      ErrEntry( 10, "QTH required" ),           //ERR_21
+      ErrEntry( 10, "" ),         //ERR_22
+      ErrEntry( 5, "Unknown Country" ),         //ERR_23
+      ErrEntry( 2, "!!! Non Scoring Contact !!!" ),         //ERR_24
+      ErrEntry( 1, "!!! Comment Only !!!" ),         //ERR_25
+      ErrEntry( 1, "!!! DELETED !!!" ),         //ERR_26
+      ErrEntry( 90, "" ),         //ERR_27
+      ErrEntry( 90, "" ),         //ERR_28
+      ErrEntry( 0, "" )          //ERR_29
    };
 void setError( int err )   // No CS
 {

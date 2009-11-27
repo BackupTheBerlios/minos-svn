@@ -20,7 +20,8 @@
 //---------------------------------------------------------------------------
 __fastcall TGJVEditFrame::TGJVEditFrame( TComponent* Owner )
       : TFrame( Owner ), selectedContact( 0 ),
-      updateTimeAllowed( true ), overstrike( false )
+      updateTimeAllowed( true ), overstrike( false ),
+      EL_ValidateError ( EN_ValidateError, & ValidateError_Event )
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
 }
@@ -87,6 +88,19 @@ void TGJVEditFrame::initialise( BaseContestLog * pcontest, QSOEditScreen *edScre
    current = 0;
    updateTimeAllowed = true;
    updateQSOTime();
+}
+void TGJVEditFrame::ValidateError_Event ( MinosEventBase & Event )
+{
+		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
+      int mess_no = S.getData();
+      if ( mess_no == -1 )
+      {
+         errs.clear();
+         return ;
+      }
+
+      // add the message into the error list
+      errs.insert( &errDefs[ mess_no ] );
 }
 void TGJVEditFrame::setActiveControl( WORD &Key )
 {
@@ -201,8 +215,7 @@ void TGJVEditFrame::showScreenEntry( void )
 
       SerTXEdit->Color = clBtnFace;
       SerTXEdit->ReadOnly = true;
-      MinosParameters::getMinosParameters() ->showErrorList( );
-
+      MinosLoggerEvents::SendShowErrorList();
    }
 }
 //---------------------------------------------------------------------------
@@ -291,7 +304,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
       valid( cmCheckValid ); // make sure all single and cross field
       doAutofill();
    }
-   MinosParameters::getMinosParameters() ->showErrorList( );
+   MinosLoggerEvents::SendShowErrorList();
    editScreen->reportOverstrike( overstrike );
    if (ModeComboBoxGJV->Text == "A1A")
    {
@@ -551,7 +564,7 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
             selectField( nextf );
       }
       // Show on errList on multdisp frame
-      MinosParameters::getMinosParameters() ->showErrorList( );
+      MinosLoggerEvents::SendShowErrorList();
       return false ;
    }
    else
@@ -587,9 +600,6 @@ bool TGJVEditFrame::dlgForced()
    getScreenEntry();
    valid( cmCheckValid );       // This adds errors to the MAIN dialog error list, not our own
 
-   #error WE need to subscribe to errors as well
-
-   ErrorList &errs = MinosParameters::getMinosParameters() ->getErrorList();
    for ( ErrorIterator i = errs.begin(); i != errs.end(); i++ )
    {
       ForceDlg->ErrList->Items->Add( ( *i ) ->errStr.c_str() );
@@ -612,7 +622,7 @@ bool TGJVEditFrame::dlgForced()
    ForceDlg->CheckBox7->Checked = screenContact.contactFlags & VALID_DISTRICT;
    ForceDlg->CheckBox8->Checked = screenContact.contactFlags & XBAND;
 
-   if ( MinosParameters::getMinosParameters() ->isErrSet( ERR_12 ) ||             // duplicate callsign
+   if ((screenContact.cs.valRes == ERR_DUPCS) ||
         ( screenContact.contactFlags & ( NON_SCORING | MANUAL_SCORE | DONT_PRINT | VALID_DUPLICATE | TO_BE_ENTERED | XBAND ) ) )
 
    {
@@ -749,7 +759,7 @@ bool TGJVEditFrame::doGJVForceButtonClick( TObject */*Sender*/ )
    TimeEdit->ReadOnly = !catchup;
    SerTXEdit->ReadOnly = true;
    SerTXEdit->Color = clBtnFace;
-   MinosParameters::getMinosParameters() ->showErrorList( );
+   MinosLoggerEvents::SendShowErrorList();
    return dlgForced();
 }
 //---------------------------------------------------------------------------
@@ -906,7 +916,7 @@ bool TGJVEditFrame::validateControls( validTypes command )   // do control valid
 //---------------------------------------------------------------------------
 bool TGJVEditFrame::valid( validTypes command )
 {
-   lgTraceerr(0); // clear the error list
+   lgTraceerr(-1); // clear the error list
 
    if ( contest->isReadOnly() )
       return true;
@@ -991,7 +1001,7 @@ void TGJVEditFrame::selectField( TWinControl *v )
       v->SetFocus();
       current = v;
    }
-   MinosParameters::getMinosParameters() ->showErrorList( );
+   MinosLoggerEvents::SendShowErrorList();
 }
 //==============================================================================
 // check for embedded space or empty number
@@ -1077,7 +1087,7 @@ void TGJVEditFrame::contactValid( void )
 
    if ( vcct->contactFlags & DONT_PRINT )
    {
-      lgTraceerr(0);
+      lgTraceerr(-1);
       lgTraceerr( ERR_26 );
    }
    else

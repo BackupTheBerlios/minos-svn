@@ -54,13 +54,10 @@ typedef ListSlotList::iterator ListSlotIterator;
 class TContestApp : public MinosParameters
 {
    private:
-      MinosEventListener  EL_ValidateError;
-      void ValidateError_Event ( MinosEventBase & Event );
 
       BaseContestLog * currentContest;
       static TContestApp *contestApp;
       int magneticVariation;
-      ErrorList errs;
    public:
       static TContestApp *getContestApp();
 
@@ -109,14 +106,11 @@ class TContestApp : public MinosParameters
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showErrorList( );
       virtual void showContestScore( const std::string &score );
       virtual BaseContestLog * getCurrentContest();
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
-      virtual ErrorList &getErrorList();
-      virtual bool isErrSet( int mess_no );
 
       TContestApp();
       bool initialise();

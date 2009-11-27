@@ -59,7 +59,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       otherTreeClickNode( 0 ),
       archiveTreeClickNode( 0 ),
       xferTree( 0 ),
-      EL_SplitterChanged ( EN_SplitterChanged, & SplittersChanged_Event ),
+      EL_SplitterChanged ( EN_SplittersChanged, & SplittersChanged_Event ),
       EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
       EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event )
 
@@ -1359,12 +1359,6 @@ void __fastcall TSingleLogFrame::OnShowTimerTimer( TObject */*Sender*/ )
 bool TSingleLogFrame::getStanza( unsigned int stanza, std::string &stanzaData )
 {
    return contest->getStanza( stanza, stanzaData );
-}
-//---------------------------------------------------------------------------
-
-void TSingleLogFrame::showErrorList( ErrorList &errs )
-{
-   MultDispFrame->showErrorList( errs );
 }
 //---------------------------------------------------------------------------
 

@@ -15,8 +15,9 @@ enum MinosEventNumber
 
    EN_ContestPageChanged,
    EN_LogColumnsChanged,
-   EN_SplitterChanged,
+   EN_SplittersChanged,
    EN_ValidateError,
+   EN_ShowErrorList,
 
 //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,

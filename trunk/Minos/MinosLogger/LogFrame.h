@@ -226,7 +226,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void updateQSODisplay();
 
       bool getStanza( unsigned int stanza, std::string &stanzaData );
-      void showErrorList( ErrorList &errs );
 
    public: 		// implementations of QSOEditScreen
       PVirtualNode QSOTreeClickNode;

@@ -9,6 +9,7 @@
 #include <vcl.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
+#include "MinosEventData.h"
 #include "MinosEventManager.h"
 #include "MinosLoggerEvents.h"
 //---------------------------------------------------------------------------
@@ -24,12 +25,17 @@ void MinosLoggerEvents::SendLogColumnsChanged()
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendSplittersChanged()
 {
-	ActionEvent<int ,EN_ContestPageChanged>::Send(0); // as we cannot have void
+	ActionEvent<int ,EN_SplittersChanged>::Send(0); // as we cannot have void
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendValidateError(int err)
 {
 	ActionEvent<int ,EN_ValidateError>::Send(err);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendShowErrorList()
+{
+	ActionEvent<int ,EN_ShowErrorList>::Send(0);
 }
 //---------------------------------------------------------------------------
 

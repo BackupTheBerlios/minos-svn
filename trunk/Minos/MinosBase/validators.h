@@ -47,20 +47,18 @@ class ErrEntry
 {
    public:
       ErrEntry()
-            : flag( false ), priority( 0 ), errStr( "" )
+            : priority( 0 ), errStr( "" )
       {}
-      ErrEntry( bool f, unsigned char c, const char *s )
-            : flag( f ), priority( c ), errStr( s )
+      ErrEntry( unsigned int c, const char *s )
+            : priority( c ), errStr( s )
       {}
 
       ErrEntry( const ErrEntry &e )
       {
-         flag = e.flag;
          priority = e.priority;
          errStr = e.errStr;
       }
-      bool flag;
-      unsigned char priority;
+      unsigned int priority;
       /*const*/
       std::string errStr;
 

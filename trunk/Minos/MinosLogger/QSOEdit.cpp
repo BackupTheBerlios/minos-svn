@@ -252,8 +252,10 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVOKButtonClick( TObject *Sender )
 //---------------------------------------------------------------------------
 
 void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
-   TObject */*Sender*/ )
+   TObject *Sender )
 {
+   if ( GJVQSOEditFrame->doGJVForceButtonClick( Sender ) )
+   {
       if (catchup)
       {
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
@@ -265,6 +267,7 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
       {
          ModalResult = mrOk;
       }
+   }
 }
 //---------------------------------------------------------------------------
 

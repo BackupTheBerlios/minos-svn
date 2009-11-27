@@ -222,8 +222,7 @@ void TContestApp::close()
 }
 TContestApp::TContestApp() : MinosParameters(), magneticVariation( 0 ), period1( 5 ), period2( 20 ),
       reverseBearing( false ), dispCountry( false ), dispBearing( true ), dispScore( true ),
-      currentContest( 0 ),
-      EL_ValidateError ( EN_ValidateError, & ValidateError_Event )
+      currentContest( 0 )
 
 {
    sysfont = new TFont();
@@ -640,37 +639,5 @@ void TContestApp::mshowMessage( String mess, TComponent* Owner )
 void TContestApp::showContestScore( const std::string &score )
 {
    TLogContainer::showContestScore( score );
-}
-void TContestApp::showErrorList( )
-{
-   TLogContainer::showErrorList( errs );
-}
-ErrorList &TContestApp::getErrorList()
-{
-   return errs;
-}
-void TContestApp::ValidateError_Event ( MinosEventBase & Event )
-{
-		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
-      int mess_no = S.getData();
-      if ( mess_no == -1 )
-      {
-         errs.clear();
-         int i = 0;
-         while ( errDefs[ i ].priority )
-            errDefs[ i++ ].flag = false;
-         return ;
-      }
-
-      // add the message into the error list
-      if ( !errDefs[ mess_no ].flag )
-      {
-         errDefs[ mess_no ].flag = true;
-         errs.insert( &errDefs[ mess_no ] );
-      }
-}
-bool TContestApp::isErrSet( int mess_no )
-{
-   return errDefs[ mess_no ].flag;
 }
 

@@ -99,15 +99,4 @@ bool MinosParametersAdapter::isListOpen( const std::string /*fn*/ )
 {
    return false;
 }
-void MinosParametersAdapter::showErrorList( )
-{
-}
-ErrorList &MinosParametersAdapter::getErrorList()
-{
-   return errs;
-}
-bool MinosParametersAdapter::isErrSet( int /*mess_no*/ )
-{
-   return false;
-}
 
