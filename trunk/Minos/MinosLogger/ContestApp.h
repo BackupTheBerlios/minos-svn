@@ -106,7 +106,6 @@ class TContestApp : public MinosParameters
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showContestScore( const std::string &score );
       virtual BaseContestLog * getCurrentContest();
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );

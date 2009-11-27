@@ -636,8 +636,4 @@ void TContestApp::mshowMessage( String mess, TComponent* Owner )
 {
    mShowMessage( mess, Owner );
 }
-void TContestApp::showContestScore( const std::string &score )
-{
-   TLogContainer::showContestScore( score );
-}
 

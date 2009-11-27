@@ -52,7 +52,6 @@ class MinosParameters
       virtual bool getAllowLoc8() = 0;
       virtual bool yesNoMessage( TComponent* Owner, String mess ) = 0;
       virtual void mshowMessage( String mess, TComponent* Owner = 0 ) = 0;
-      virtual void showContestScore( const std::string &score ) = 0;
       virtual BaseContestLog *getCurrentContest() = 0;
       virtual bool insertList( ContactList *p, unsigned int sno ) = 0;
       virtual bool isContestOpen( const std::string fn ) = 0;
@@ -82,7 +81,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showContestScore( const std::string &score );
       virtual BaseContestLog *getCurrentContest();
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );

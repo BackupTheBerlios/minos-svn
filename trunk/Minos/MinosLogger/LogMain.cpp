@@ -280,12 +280,9 @@ TSingleLogFrame *TLogContainer::findCurrentLogFrame()
    return 0;
 }
 //---------------------------------------------------------------------------
-/*static*/ void TLogContainer::showContestScore( const std::string &score )
+void TLogContainer::showContestScore( const std::string &score )
 {
-   if ( LogContainer )
-   {
-      LogContainer->StatusBar1->Panels->Items[ 0 ] ->Text = score.c_str();
-   }
+   StatusBar1->Panels->Items[ 0 ] ->Text = score.c_str();
 }
 //---------------------------------------------------------------------------
 void TLogContainer::closeSlot( bool addToMRU )
@@ -643,7 +640,7 @@ void __fastcall TLogContainer::TimeDisplayTimerTimer( TObject */*Sender*/ )
          }
          ct->setScore( statbuf );
       }
-      TContestApp::getContestApp() ->showContestScore( statbuf );
+      showContestScore( statbuf );
    }
 
 }

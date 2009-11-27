@@ -47,7 +47,6 @@ class MonitorParameters : public MinosParametersAdapter
       virtual void setStatsPeriod2( int );
       virtual bool yesNoMessage( TComponent* Owner, String mess );
       virtual void mshowMessage( String mess, TComponent* Owner = 0 );
-      virtual void showContestScore( const std::string &score );
 };
 static MonitorParameters mp;
 
@@ -74,10 +73,6 @@ bool MonitorParameters::yesNoMessage( TComponent* Owner, String mess )
 void MonitorParameters::mshowMessage( String mess, TComponent* Owner )
 {
    mShowMessage( mess, Owner );
-}
-void MonitorParameters::showContestScore( const std::string &score )
-{
-   MonitorMain->ScoreLabel->Caption = score.c_str();
 }
 //---------------------------------------------------------------------------
 /*static*/
@@ -123,6 +118,11 @@ __fastcall TMonitorMain::~TMonitorMain( )
    stationList.clear();
    delete MultLists::getMultLists();
    CsGuard::ClearDown();
+}
+//---------------------------------------------------------------------------
+void TMonitorMain::showContestScore( const std::string &score )
+{
+   ScoreLabel->Caption = score.c_str();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMonitorMain::CloseButtonClick( TObject */*Sender*/ )
@@ -631,7 +631,7 @@ void __fastcall TMonitorMain::MonitorTimerTimer( TObject */*Sender*/ )
    {
       f->getContest() ->setScore( statbuf );
    }
-   MinosParameters::getMinosParameters() ->showContestScore( statbuf );
+   showContestScore( statbuf );
 }
 //---------------------------------------------------------------------------
 

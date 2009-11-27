@@ -80,9 +80,6 @@ bool MinosParametersAdapter::yesNoMessage( TComponent* /*Owner*/, String /*mess*
 void MinosParametersAdapter::mshowMessage( String /*mess*/, TComponent* /*Owner*/ )
 {
 }
-void MinosParametersAdapter::showContestScore( const std::string &/*score*/ )
-{
-}
 BaseContestLog * MinosParametersAdapter::getCurrentContest()
 {
    return 0;

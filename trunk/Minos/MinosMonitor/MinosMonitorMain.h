@@ -75,6 +75,7 @@ class TMonitorMain : public TForm
       void addSlot( MonitoredLog *ct );
       TMonitoringFrame *findCurrentLogFrame();
       TTabSheet *findContestPage( BaseContestLog *ct );
+      void showContestScore( const std::string &score );
    public:  		// User declarations
       __fastcall TMonitorMain( TComponent* Owner );
       __fastcall ~TMonitorMain( );
