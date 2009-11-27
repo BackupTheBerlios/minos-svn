@@ -169,6 +169,12 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       MinosEventListener  EL_SplitterChanged;
       void SplittersChanged_Event ( MinosEventBase & Event );
 
+      MinosEventListener  EL_ReportOverstrike;
+      void ReportOverstrike_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_AfterLogContact;
+      void AfterLogContact_Event ( MinosEventBase & Event );
+
       TOperatorFrame *OperatorFrame;
       TWhisperSplitter *WLogAreaSplitter;
       TWhisperSplitter *WMultSplitter;
@@ -237,9 +243,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void showScreenEntry( ScreenContact &screenContact );
       void getScreenEntry( ScreenContact &screenContact );
       void afterSelectEntry( BaseContact *lct );
-      TWinControl *getActiveControl();
-      void reportOverstrike( bool overstrike );
-      void afterLogContact();
       void GoNextUnfilled();
       void doNextContactDetailsOnLeftClick( TObject *Sender );
 };

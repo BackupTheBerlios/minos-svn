@@ -32,7 +32,7 @@ void TGJVQSOLogFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScr
 {
    TGJVEditFrame::initialise( contest, edScreen, false );
    BandMapPanel->Visible = checkServerReady();
-   editScreen->reportOverstrike( overstrike );
+   MinosLoggerEvents::SendReportOverstrike(overstrike);
 }
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::logScreenEntry( )
@@ -83,10 +83,9 @@ void TGJVQSOLogFrame::logScreenEntry( )
    screenContact.op2.setValue( ct->op2.getValue() );
 
    lct->copyFromArg( screenContact );
-   ContestContact *llct = dynamic_cast<ContestContact *>( lct );
-   llct->commonSave();				// which also saves the ContestLog
+   lct->commonSave();				// which also saves the ContestLog
 
-   editScreen->afterLogContact();
+   MinosLoggerEvents::SendAfterLogContact(ct);
    selectEntry( 0 );	// select the "next"
 }
 //==============================================================================

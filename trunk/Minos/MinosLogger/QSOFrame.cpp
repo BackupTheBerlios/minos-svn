@@ -219,9 +219,9 @@ void TGJVEditFrame::showScreenEntry( void )
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TGJVEditFrame::EditControlEnter( TObject */*Sender*/ )
+void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
 {
-   current = editScreen->getActiveControl();
+   current = dynamic_cast<TWinControl *>(Sender);
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );
    if ( tle )
    {
@@ -233,7 +233,7 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject */*Sender*/ )
    {
       ovr = true;
    }
-   editScreen->reportOverstrike( ovr );
+   MinosLoggerEvents::SendReportOverstrike(ovr);
 }
 //---------------------------------------------------------------------------
 
@@ -305,7 +305,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
       doAutofill();
    }
    MinosLoggerEvents::SendShowErrorList();
-   editScreen->reportOverstrike( overstrike );
+   MinosLoggerEvents::SendReportOverstrike(overstrike);
    if (ModeComboBoxGJV->Text == "A1A")
    {
       ModeButton->Caption = "J3E";
@@ -332,7 +332,7 @@ void __fastcall TGJVEditFrame::EditKeyDown( TObject */*Sender*/, WORD &Key,
       ovr = true;
    }
 
-   editScreen->reportOverstrike( ovr );
+   MinosLoggerEvents::SendReportOverstrike(ovr);
 
    if ( ed->ReadOnly )
    {

@@ -18,6 +18,8 @@ enum MinosEventNumber
    EN_SplittersChanged,
    EN_ValidateError,
    EN_ShowErrorList,
+   EN_ReportOverstrike,
+   EN_AfterLogContact,
 
 //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,

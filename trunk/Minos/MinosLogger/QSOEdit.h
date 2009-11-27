@@ -67,9 +67,6 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
       void getScreenEntry( ScreenContact &screenContact );
       void showScreenEntry( ScreenContact &screenContact );
       void afterSelectEntry( BaseContact *lct );
-      TWinControl *getActiveControl();
-      void reportOverstrike( bool overstrike );
-      void afterLogContact();
       void setFirstContact( BaseContact *c )
       {
          firstContact = c;

@@ -130,7 +130,7 @@ void TGJVQSOEditFrame::logScreenEntry( )
 
    selectedContact->copyFromArg( screenContact );
    selectedContact->commonSave();
-   editScreen->afterLogContact();
+   MinosLoggerEvents::SendAfterLogContact(contest);
 }
 //==============================================================================
 void TGJVQSOEditFrame::logCurrentContact( )

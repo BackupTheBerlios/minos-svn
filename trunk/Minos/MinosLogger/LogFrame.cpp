@@ -61,7 +61,9 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       xferTree( 0 ),
       EL_SplitterChanged ( EN_SplittersChanged, & SplittersChanged_Event ),
       EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
-      EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event )
+      EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event ),
+      EL_ReportOverstrike ( EN_ReportOverstrike, & ReportOverstrike_Event ),
+      EL_AfterLogContact ( EN_AfterLogContact, & AfterLogContact_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -158,13 +160,11 @@ BaseContestLog * TSingleLogFrame::getContest()
    return contest;
 }
 //---------------------------------------------------------------------------
-TWinControl *TSingleLogFrame::getActiveControl()
+void TSingleLogFrame::ReportOverstrike_Event( MinosEventBase & Event )
 {
-   return LogContainer->ActiveControl;
-}
-//---------------------------------------------------------------------------
-void TSingleLogFrame::reportOverstrike( bool overstrike )
-{
+   ActionEvent<bool, EN_ReportOverstrike> & S = dynamic_cast<ActionEvent<bool, EN_ReportOverstrike> &> ( Event );
+
+   bool overstrike = S.getData();
    LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = overstrike ? "Overwrite" : "Insert";
 }
 //---------------------------------------------------------------------------
@@ -1222,13 +1222,17 @@ void TSingleLogFrame::getScreenEntry( ScreenContact &screenContact )
    }
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::afterLogContact()
+void TSingleLogFrame::AfterLogContact_Event( MinosEventBase & Event)
 {
-   contest->scanContest();
-   // callback
-   updateTrees();
-//   afterSelectEntry( 0 ); - // why after SELECT here?
-   NextContactDetailsTimerTimer( this );
+   ActionEvent<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent<BaseContestLog *, EN_AfterLogContact> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
+   {
+      contest->scanContest();
+      updateTrees();
+      NextContactDetailsTimerTimer( this );
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateTrees()

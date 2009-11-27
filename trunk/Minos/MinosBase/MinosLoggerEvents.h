@@ -11,6 +11,7 @@
 //---------------------------------------------------------------------------
 #include "MinosEventData.h"
 //---------------------------------------------------------------------------
+class BaseContestLog;
 class MinosLoggerEvents
 {
 private:
@@ -20,6 +21,9 @@ public:
    static void SendSplittersChanged();
    static void SendValidateError(int err);
    static void SendShowErrorList();
+   static void SendReportOverstrike(bool ov);
+   static void SendAfterLogContact(BaseContestLog *ct);
+
 };
 //---------------------------------------------------------------------------
 #endif

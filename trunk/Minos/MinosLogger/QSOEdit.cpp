@@ -77,13 +77,6 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    firstContact = 0;
 }
 //---------------------------------------------------------------------------
-TWinControl *TQSOEditDlg::getActiveControl()
-{
-   return ActiveControl;
-}
-void TQSOEditDlg::reportOverstrike( bool /*overstrike*/ )
-{}
-//---------------------------------------------------------------------------
 
 void __fastcall TQSOEditDlg::FormClose( TObject */*Sender*/, TCloseAction &/*Action*/ )
 {
@@ -310,11 +303,6 @@ void __fastcall TQSOEditDlg::FormKeyUp( TObject */*Sender*/, WORD &Key,
          }
       }
 
-}
-//---------------------------------------------------------------------------
-void TQSOEditDlg::afterLogContact()
-{
-   contest->scanContest();
 }
 //---------------------------------------------------------------------------
 

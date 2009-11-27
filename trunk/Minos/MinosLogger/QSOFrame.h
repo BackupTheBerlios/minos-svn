@@ -23,9 +23,6 @@ class QSOEditScreen
       virtual void showScreenEntry( ScreenContact &screenContact ) = 0;
       virtual void getScreenEntry( ScreenContact &screenContact ) = 0;
       virtual void afterSelectEntry( BaseContact *lct ) = 0;
-      virtual TWinControl *getActiveControl() = 0;
-      virtual void reportOverstrike( bool overstrike ) = 0;
-      virtual void afterLogContact() = 0;
 };
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------

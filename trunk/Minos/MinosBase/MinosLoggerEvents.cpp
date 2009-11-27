@@ -38,4 +38,14 @@ void MinosLoggerEvents::SendShowErrorList()
 	ActionEvent<int ,EN_ShowErrorList>::Send(0);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendReportOverstrike(bool ov)
+{
+	ActionEvent<bool ,EN_ReportOverstrike>::Send(ov);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendAfterLogContact(BaseContestLog *ct)
+{
+	ActionEvent<BaseContestLog * ,EN_AfterLogContact>::Send(ct);
+}
+//---------------------------------------------------------------------------
 
