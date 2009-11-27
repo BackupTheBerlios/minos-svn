@@ -185,17 +185,6 @@ bool Validator::validate( String str )
       case vtQTH:
          {
             // We need a QTH if (a) QTH required or (b) dist mult and NOT a non-G callsign
-            /*
-            LoggerContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
-            if (ct->otherExchange.getValue() && trim(str).size() == 0)
-            {
-               return false;
-            }
-            if (ct->districtMult.getValue())
-            {
-             && trim(str).size() == 0)
-            }
-            */ 
             return true;
          }
 
