@@ -96,6 +96,8 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
    TPanel *ArchiveMatchPanel;
    TPanel *OtherMatchPanel;
    TPanel *ContestMatchPanel;
+   TMenuItem *MenuEditSeparator;
+   TMenuItem *MenuEditContact;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );
@@ -104,8 +106,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall LogAreaSplitterMoved( TObject *Sender );
       void __fastcall SetTimeNowClick( TObject *Sender );
       void __fastcall ThisMatchTreeDblClick( TObject *Sender );
-      void __fastcall QSOTreeNewText( TBaseVirtualTree *Sender,
-                                      PVirtualNode Node, TColumnIndex Column, WideString NewText );
       void __fastcall ThisMatchTreeMouseDown( TObject *Sender, TMouseButton Button,
                                               TShiftState Shift, int X, int Y );
       void __fastcall NextContactDetailsTimerTimer( TObject *Sender );
@@ -137,8 +137,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall NextContactDetailsOnLeftClick( TObject *Sender );
       void __fastcall AutoBandmapTuneClick( TObject *Sender );
       void __fastcall AutoBandmapTimeClick( TObject *Sender );
-      void __fastcall FrameMouseMove( TObject *Sender, TShiftState Shift, int X,
-                                      int Y );
       void __fastcall ThisMatchTreePaintText( TBaseVirtualTree *Sender,
                                               const TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
                                               TVSTTextType TextType );
@@ -158,6 +156,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void __fastcall ArchiveMatchSplitterMoved(TObject *Sender);
       void __fastcall NextContactDetailsSplitterMoved(TObject *Sender);
       void __fastcall MultSplitterMoved(TObject *Sender);
+   void __fastcall EntryChoiceMenuPopup(TObject *Sender);
    private:  	// User declarations
 
       MinosEventListener  EL_ContestPageChanged;
@@ -221,7 +220,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       String makeEntry( bool saveMinos );
       void exportContest();
       void EditContact( BaseContact *lct );
-
+      void EditMatchContact();
       bool logColumnsChanged;
       bool splittersChanged;
 

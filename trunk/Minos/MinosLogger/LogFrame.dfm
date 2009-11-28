@@ -11,7 +11,6 @@ object SingleLogFrame: TSingleLogFrame
   ParentFont = False
   TabOrder = 0
   TabStop = True
-  OnMouseMove = FrameMouseMove
   object Splitter_Image: TImage
     Left = 60
     Top = 100
@@ -316,7 +315,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -597,8 +596,16 @@ object SingleLogFrame: TSingleLogFrame
     end
   end
   object EntryChoiceMenu: TPopupMenu
+    OnPopup = EntryChoiceMenuPopup
     Left = 328
     Top = 222
+    object MenuEditContact: TMenuItem
+      Action = LogContainer.EditContactAction
+    end
+    object MenuEditSeparator: TMenuItem
+      Caption = '-'
+      Visible = False
+    end
     object Close1: TMenuItem
       Action = LogContainer.FileCloseAction1
     end

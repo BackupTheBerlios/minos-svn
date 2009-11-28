@@ -1142,3 +1142,13 @@ void __fastcall TLogContainer::Tools1Click(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TLogContainer::EditContactActionExecute(TObject *Sender)
+{
+   TSingleLogFrame * f = findCurrentLogFrame();
+   if ( f )
+   {
+      f->EditMatchContact( );
+   }
+}
+//---------------------------------------------------------------------------
+

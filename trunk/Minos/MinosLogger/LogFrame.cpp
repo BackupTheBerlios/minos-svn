@@ -122,7 +122,7 @@ __fastcall TSingleLogFrame::~TSingleLogFrame()
    delete WArchiveMatchSplitter;
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & Event )
+void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 {
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
       return ;
@@ -637,7 +637,7 @@ void TSingleLogFrame::transferDetails( MatchNodeListData *MatchTreeIndex )
    }
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & Event )
+void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & /*Event*/ )
 {
    logColumnsChanged = true;
 }
@@ -829,9 +829,9 @@ void __fastcall TSingleLogFrame::ThisMatchTreeMouseDown( TObject */*Sender*/,
    matchTreeClickNode = ThisMatchTree->GetNodeAt( X, Y );
 }
 //---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::OtherMatchTreeDblClick( TObject */*Sender*/ )
+void __fastcall TSingleLogFrame::OtherMatchTreeDblClick( TObject *Sender )
 {
-   otherMatchTreeSelect( otherTreeClickNode );
+   GJVQSOLogFrame1MatchXferButtonClick(Sender);
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::OtherMatchTreeEnter( TObject */*Sender*/ )
@@ -1063,31 +1063,6 @@ void __fastcall TSingleLogFrame::AutoBandmapTuneClick( TObject */*Sender*/ )
 void __fastcall TSingleLogFrame::AutoBandmapTimeClick( TObject */*Sender*/ )
 {
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpAutoBandMapTime, GJVQSOLogFrame->AutoBandmapTime->Checked );
-}
-//---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::FrameMouseMove( TObject */*Sender*/,
-      TShiftState /*Shift*/, int /*X*/, int /*Y*/ )
-{
-   LogContainer->GridHintWindow->SetHintControl( this );
-   LogContainer->GridHintWindow->Showing = false;
-   LogContainer->GridHintTimer->Enabled = false;
-}
-//---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::QSOTreeNewText( TBaseVirtualTree */*Sender*/,
-      PVirtualNode /*Node*/, TColumnIndex /*Column*/, WideString /*NewText*/ )
-{
-   /*
-      // it has been edited, so set it
-      //bool ContestContact::setField(int ACol, const std::string Value)
-      ContestContact * cont = contest->pcontactAt( Node->Index );
-      if ( cont )
-      {
-         if ( Column )
-         {
-            cont->setField( Column - 1, String( NewText ).c_str() );
-         }
-      }
-      */
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::SetTimeNowClick( TObject */*Sender*/ )
@@ -1434,7 +1409,7 @@ void TSingleLogFrame::SplittersChanged()
    }
    */
 }
-void TSingleLogFrame::SplittersChanged_Event ( MinosEventBase & Event )
+void TSingleLogFrame::SplittersChanged_Event ( MinosEventBase & /*Event*/ )
 {
    splittersChanged = true;
 }
@@ -1489,4 +1464,25 @@ void TSingleLogFrame::getSplitters()
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TSingleLogFrame::EntryChoiceMenuPopup(TObject */*Sender*/)
+{
+   bool showEdit = false;
+   POINT mpos, mpos2;
+   ::GetCursorPos( &mpos );
+   mpos2 = OtherMatchTree->ScreenToClient( mpos );
+   if ( PtInRect( &( OtherMatchTree->ClientRect ), mpos2 ) )
+   {
+      showEdit = true;
+   }
+// If from "other" match list, we want to enable an "edit contact" option
+   MenuEditContact->Visible = showEdit;
+   MenuEditSeparator->Visible = showEdit;
+
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::EditMatchContact()
+{
+   otherMatchTreeSelect( otherTreeClickNode );
+}
+//---------------------------------------------------------------------------
 

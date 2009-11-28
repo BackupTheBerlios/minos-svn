@@ -406,6 +406,11 @@ object LogContainer: TLogContainer
       Caption = 'Correct Date/Time'
       OnExecute = CorrectDateTimeActionExecute
     end
+    object EditContactAction: TAction
+      Category = 'Edit'
+      Caption = 'Edit Contact'
+      OnExecute = EditContactActionExecute
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
