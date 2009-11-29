@@ -499,7 +499,7 @@ void TMultDispFrame::ValidateError_Event ( MinosEventBase & Event )
       // add the message into the error list
       errs.insert( &errDefs[ mess_no ] );
 }
-void TMultDispFrame::ShowErrorList_Event ( MinosEventBase & Event )
+void TMultDispFrame::ShowErrorList_Event ( MinosEventBase & /*Event*/ )
 {
    showErrorList(errs);
 }
