@@ -14,7 +14,7 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <ExtCtrls.hpp> 
+#include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 // a pure interface class to be implemented by the parent of QSOFrame descendants
 class QSOEditScreen
@@ -124,7 +124,6 @@ class TGJVEditFrame : public TFrame
       bool isCatchup(){return catchup;}
 
       void selectField( TWinControl *v );
-//      virtual void selectEntry( BaseContact *lct ) = 0;
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );

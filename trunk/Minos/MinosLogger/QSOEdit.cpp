@@ -62,7 +62,7 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, this, catchup );
-   selectEntry( firstContact );
+   GJVQSOEditFrame->selectEntry( firstContact );
    if (GJVQSOEditFrame->isCatchup())
    {
       Caption = "Catch-up (Post Entry)";
@@ -82,11 +82,6 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
 void __fastcall TQSOEditDlg::FormClose( TObject */*Sender*/, TCloseAction &/*Action*/ )
 {
    //   GJVQSOEditFrame->selectedContact = 0;
-}
-//---------------------------------------------------------------------------
-void TQSOEditDlg::selectEntry( BaseContact *lct )
-{
-   GJVQSOEditFrame->selectEntry( lct );
 }
 //---------------------------------------------------------------------------
 void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
@@ -240,7 +235,7 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVOKButtonClick( TObject *Sender )
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
          int ctmax = ct->maxSerial + 1;
          DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
-         selectEntry(lct);
+         GJVQSOEditFrame->selectEntry( lct );
       }
       else
       {
@@ -261,7 +256,7 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
          int ctmax = ct->maxSerial + 1;
          DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
-         selectEntry(lct);
+         GJVQSOEditFrame->selectEntry( lct );
       }
       else
       {

@@ -183,7 +183,7 @@ void TSingleLogFrame::showQSOs()
    logColumnsChanged = false;
 
    GJVQSOLogFrame->clearCurrentField();
-   GJVQSOLogFrame->selectEntry();
+   GJVQSOLogFrame->startNextEntry();
 
 }
 
@@ -202,7 +202,7 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
    MultDispFrame->refreshMults();
    OperatorFrame->refreshOps();
    LogMonitor->Repaint();
-   GJVQSOLogFrame->selectEntry();
+   GJVQSOLogFrame->startNextEntry();
 
 }
 //---------------------------------------------------------------------------
@@ -1235,7 +1235,7 @@ void TSingleLogFrame::GoNextUnfilled()
       MultDispFrame->refreshMults();
       OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
-      GJVQSOLogFrame->selectEntry();
+      GJVQSOLogFrame->startNextEntry();
    }
    else
    {

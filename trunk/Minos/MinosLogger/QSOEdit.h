@@ -61,7 +61,6 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
    public: 		// User declarations
       __fastcall TQSOEditDlg( TComponent* Owner );
       void selectContact( BaseContestLog * contest, DisplayContestContact *lct );
-      void  selectEntry( BaseContact *lct );
       void setContest( BaseContestLog * c )
       {
          contest = c;
