@@ -48,4 +48,9 @@ void MinosLoggerEvents::SendAfterLogContact(BaseContestLog *ct)
 	ActionEvent<BaseContestLog * ,EN_AfterLogContact>::Send(ct);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendAfterSelectContact(BaseContact *lct)
+{
+	ActionEvent<BaseContact * ,EN_AfterSelectContact>::Send(lct);
+}
+//---------------------------------------------------------------------------
 

@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef QSOEditH
-#define QSOEditH 
+#define QSOEditH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -18,7 +18,7 @@
 #include "VirtualTrees.hpp"
 #include <ExtCtrls.hpp>
 #include "QSOFrame.h"
-#include "QSOEditFrame.h" 
+#include "QSOEditFrame.h"
 //---------------------------------------------------------------------------
 class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure vitual - an interface
 {
@@ -50,6 +50,10 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
             TColor &ItemColor, TItemEraseAction &EraseAction );
    void __fastcall InitialiseTimerTimer(TObject *Sender);
    private: 	// User declarations
+
+      MinosEventListener  EL_AfterSelectContact;
+      void AfterSelectContact_Event ( MinosEventBase & Event );
+
       BaseContestLog * contest;
       BaseContact *firstContact;
       bool catchup;
@@ -66,7 +70,6 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
    public: 		// implementations of QSOEditScreen
       void getScreenEntry( ScreenContact &screenContact );
       void showScreenEntry( ScreenContact &screenContact );
-      void afterSelectEntry( BaseContact *lct );
       void setFirstContact( BaseContact *c )
       {
          firstContact = c;

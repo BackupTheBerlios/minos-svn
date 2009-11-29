@@ -171,6 +171,9 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       MinosEventListener  EL_ReportOverstrike;
       void ReportOverstrike_Event ( MinosEventBase & Event );
 
+      MinosEventListener  EL_AfterSelectContact;
+      void AfterSelectContact_Event ( MinosEventBase & Event );
+
       MinosEventListener  EL_AfterLogContact;
       void AfterLogContact_Event ( MinosEventBase & Event );
 
@@ -221,6 +224,8 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void exportContest();
       void EditContact( BaseContact *lct );
       void EditMatchContact();
+      void QSOTreeSelectContact( BaseContact * lct );
+
       bool logColumnsChanged;
       bool splittersChanged;
 
@@ -241,7 +246,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
 
       void showScreenEntry( ScreenContact &screenContact );
       void getScreenEntry( ScreenContact &screenContact );
-      void afterSelectEntry( BaseContact *lct );
       void GoNextUnfilled();
       void doNextContactDetailsOnLeftClick( TObject *Sender );
 };

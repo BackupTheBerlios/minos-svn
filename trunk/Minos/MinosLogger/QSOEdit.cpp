@@ -38,7 +38,8 @@ class QSOHistoryNode
 ;
 //---------------------------------------------------------------------------
 __fastcall TQSOEditDlg::TQSOEditDlg( TComponent* Owner )
-      : TForm( Owner ), firstContact( 0 ), contest( 0 ), catchup(false)
+      : TForm( Owner ), firstContact( 0 ), contest( 0 ), catchup(false),
+      EL_AfterSelectContact ( EN_AfterSelectContact, & AfterSelectContact_Event )
 {}
 //---------------------------------------------------------------------------
 
@@ -87,12 +88,18 @@ void TQSOEditDlg::selectEntry( BaseContact *lct )
 {
    GJVQSOEditFrame->selectEntry( lct );
 }
-void TQSOEditDlg::afterSelectEntry( BaseContact *lct )
+//---------------------------------------------------------------------------
+void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
 {
-   QSOHistoryTree->RootNodeCount = 0;
-   QSOHistoryTree->RootNodeCount = lct->getHistory().size();
+   ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
+   BaseContact *lct = S.getData();
+   if (lct)
+   {
+      QSOHistoryTree->RootNodeCount = 0;
+      QSOHistoryTree->RootNodeCount = lct->getHistory().size();
 
-   QSOHistoryTree->FullExpand();
+      QSOHistoryTree->FullExpand();
+   }
 }
 //---------------------------------------------------------------------------
 void TQSOEditDlg::getScreenEntry( ScreenContact &/*screenContact*/ )

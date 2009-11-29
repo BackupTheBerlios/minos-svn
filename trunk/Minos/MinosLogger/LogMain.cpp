@@ -670,8 +670,8 @@ void TLogContainer::selectContest( BaseContestLog *pc, BaseContact *pct )
             if ( f->getContest() == clp )
             {
                ContestPageControl->ActivePage = ctab;         // This doesn't call ContestPageControlChange (see TPageControl::OnChange in  help)
-               ContestPageControlChange( this );                // so the contest gets properly switched
-               f->GJVQSOLogFrame->selectEntry( pct );
+               ContestPageControlChange( this );              // so the contest gets properly switched
+               f->QSOTreeSelectContact( pct );         // which triggers edit on the contact
                return ;
             }
          }

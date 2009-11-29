@@ -236,7 +236,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
       TimeEdit->Font->Color = clRed;
    }
 
-   editScreen->afterSelectEntry( lct );
+   MinosLoggerEvents::SendAfterSelectContact(lct);
    selectField( 0 );
 }
 //---------------------------------------------------------------------------

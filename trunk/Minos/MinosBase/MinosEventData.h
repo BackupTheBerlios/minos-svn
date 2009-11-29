@@ -20,6 +20,7 @@ enum MinosEventNumber
    EN_ShowErrorList,
    EN_ReportOverstrike,
    EN_AfterLogContact,
+   EN_AfterSelectContact,
 
 //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,

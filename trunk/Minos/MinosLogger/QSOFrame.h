@@ -22,7 +22,6 @@ class QSOEditScreen
    public:
       virtual void showScreenEntry( ScreenContact &screenContact ) = 0;
       virtual void getScreenEntry( ScreenContact &screenContact ) = 0;
-      virtual void afterSelectEntry( BaseContact *lct ) = 0;
 };
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
@@ -125,7 +124,7 @@ class TGJVEditFrame : public TFrame
       bool isCatchup(){return catchup;}
 
       void selectField( TWinControl *v );
-      virtual void selectEntry( BaseContact *lct ) = 0;
+//      virtual void selectEntry( BaseContact *lct ) = 0;
       virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );

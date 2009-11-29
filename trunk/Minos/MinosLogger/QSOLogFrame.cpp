@@ -86,7 +86,7 @@ void TGJVQSOLogFrame::logScreenEntry( )
    lct->commonSave();				// which also saves the ContestLog
 
    MinosLoggerEvents::SendAfterLogContact(ct);
-   selectEntry( 0 );	// select the "next"
+   selectEntry( );	// select the "next"
 }
 //==============================================================================
 void TGJVQSOLogFrame::logCurrentContact( )
@@ -135,7 +135,7 @@ void TGJVQSOLogFrame::logCurrentContact( )
    logScreenEntry( );  // true => move on to next contact
 }
 //==============================================================================
-void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
+void TGJVQSOLogFrame::selectEntry( )
 {
    if (contest->unfilledCount <= 0)
    {
@@ -146,24 +146,16 @@ void TGJVQSOLogFrame::selectEntry( BaseContact *plct )
       FirstUnfilledButton->Visible = true;
    }
 
-   if ( plct )
+   if ( !restorePartial() )
    {
-      // Non zero plct happens if we switch contests by double clicking on a match
-      editScreen->afterSelectEntry( plct );
-      return ;
+      updateTimeAllowed = true;
+      screenContact.initialise( contest );
    }
-
-   else
-      if ( !restorePartial() )
-      {
-         updateTimeAllowed = true;
-         screenContact.initialise( contest );
-      }
 
    updateQSOTime();
    showScreenEntry();
 
-   editScreen->afterSelectEntry( plct );
+   MinosLoggerEvents::SendAfterSelectContact(0);
 }
 void TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
@@ -180,7 +172,7 @@ void TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
    }
    updateTimeAllowed = true;
    updateQSOTime();
-   selectEntry( 0 );
+   selectEntry();
    CallsignEdit->SetFocus();
 
    if ( temp )

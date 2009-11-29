@@ -63,7 +63,8 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
       EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event ),
       EL_ReportOverstrike ( EN_ReportOverstrike, & ReportOverstrike_Event ),
-      EL_AfterLogContact ( EN_AfterLogContact, & AfterLogContact_Event )
+      EL_AfterLogContact ( EN_AfterLogContact, & AfterLogContact_Event ),
+      EL_AfterSelectContact ( EN_AfterSelectContact, & AfterSelectContact_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -182,7 +183,7 @@ void TSingleLogFrame::showQSOs()
    logColumnsChanged = false;
 
    GJVQSOLogFrame->clearCurrentField();
-   GJVQSOLogFrame->selectEntry( 0 );
+   GJVQSOLogFrame->selectEntry();
 
 }
 
@@ -201,34 +202,39 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
    MultDispFrame->refreshMults();
    OperatorFrame->refreshOps();
    LogMonitor->Repaint();
-   GJVQSOLogFrame->selectEntry( 0 );
+   GJVQSOLogFrame->selectEntry();
 
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::QSOTreeSelectContact( BaseContact * lct )
+{
+   if (lct)
+   {
+      EditContact( lct );
+
+      if ( lct->op1.getValue().size() )
+      {
+         contest->oplist.insert( lct->op1.getValue() );
+      }
+      if ( lct->op2.getValue().size() )
+      {
+         contest->oplist.insert( lct->op2.getValue() );
+      }
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::QSOTreeSelect( PVirtualNode sel )
 {
    if ( sel )
    {
-      DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( contest->pcontactAt( sel->Index ) );
-      if (lct)
+      BaseContact * lct = dynamic_cast<BaseContact*>( contest->pcontactAt( sel->Index ) );
+      QSOTreeSelectContact(lct);
+      if ( ( int ) sel->Index == contest->getContactCount() - 1 )
       {
-         EditContact( lct );
-
-         if ( lct->op1.getValue().size() )
-         {
-            contest->oplist.insert( lct->op1.getValue() );
-         }
-         if ( lct->op2.getValue().size() )
-         {
-            contest->oplist.insert( lct->op2.getValue() );
-         }
-         if ( ( int ) sel->Index == contest->getContactCount() - 1 )
-         {
-            contest->op1.setValue( lct->op1 );
-            contest->op2.setValue( lct->op2 );
-         }
-         OperatorFrame->refreshOps();
+         contest->op1.setValue( lct->op1 );
+         contest->op2.setValue( lct->op2 );
       }
+      OperatorFrame->refreshOps();
    }
 }
 //---------------------------------------------------------------------------
@@ -1166,14 +1172,11 @@ void __fastcall TSingleLogFrame::GJVQSOLogFrame1MatchXferButtonClick(
       }
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::afterSelectEntry( BaseContact *lct )
+void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
 {
-   // How do we find the correct PVirtualNode for lct?
-   if ( lct )
-   {
-      EditContact( lct );
-   }
-   else
+   ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
+   BaseContact *lct = S.getData();
+   if (!lct)
    {
       PVirtualNode l = LogMonitor->QSOTree->GetLastChild( LogMonitor->QSOTree->RootNode );
       LogMonitor->QSOTree->FocusedNode = l;
@@ -1232,7 +1235,7 @@ void TSingleLogFrame::GoNextUnfilled()
       MultDispFrame->refreshMults();
       OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
-      GJVQSOLogFrame->selectEntry( 0 );
+      GJVQSOLogFrame->selectEntry();
    }
    else
    {
