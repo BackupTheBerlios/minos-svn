@@ -4,8 +4,11 @@
 //================================================================
 Bugs, etc to fix
 
+OPERATORS
 
 Sticky splitters in monitor and chat
+
+Whisper splitter in monitor
 
 Check tab orders (again) - to make sure!
 
