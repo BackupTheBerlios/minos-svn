@@ -32,10 +32,10 @@ __fastcall TGJVEditFrame::~TGJVEditFrame()
       delete ( *vcp );
    }
 }
-void TGJVEditFrame::initialise( BaseContestLog * pcontest, QSOEditScreen *edScreen, bool bf )
+void TGJVEditFrame::initialise( BaseContestLog * pcontest, bool bf )
 {
    catchup = bf;
-   editScreen = edScreen;
+//   editScreen = edScreen;
    contest = pcontest;
    screenContact.initialise( contest ); // get ops etc correct
 
@@ -167,7 +167,6 @@ void TGJVEditFrame::getScreenEntry()
    {
       screenContact.contactFlags |= DONT_PRINT;
    }
-   editScreen->getScreenEntry( screenContact );
 }
 //---------------------------------------------------------------------------
 void TGJVEditFrame::showScreenEntry( void )
@@ -194,8 +193,6 @@ void TGJVEditFrame::showScreenEntry( void )
       ModeComboBoxGJV->Text = trim( temp.mode ).c_str();
       NonScoreCheckBox->Checked = temp.contactFlags & NON_SCORING;
       DeletedCheckBox->Checked = temp.contactFlags & DONT_PRINT;
-
-      editScreen->showScreenEntry( screenContact );
 
       // and now we want to put the selection on each at the END of the text
       for ( std::vector <ValidatedControl *>::iterator vcp = vcs.begin(); vcp != vcs.end(); vcp++ )

@@ -50,7 +50,7 @@ class MatchNodeListData
       ListContact *matchedContact;
 };
 //==========================================================
-class TSingleLogFrame : public TFrame , public QSOEditScreen
+class TSingleLogFrame : public TFrame
 {
    __published:  	// IDE-managed Components
       TPanel *Panel1;
@@ -177,7 +177,7 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       MinosEventListener  EL_AfterLogContact;
       void AfterLogContact_Event ( MinosEventBase & Event );
 
-      TOperatorFrame *OperatorFrame;
+//      TOperatorFrame *OperatorFrame;
       TWhisperSplitter *WLogAreaSplitter;
       TWhisperSplitter *WMultSplitter;
       TWhisperSplitter *WNextContactDetailsSplitter;
@@ -211,7 +211,6 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
       void goSerial( );
       BaseContestLog * getContest();
       void closeContest();
-      void getScreenEntry();
       void showMatchHeaders( );
       void showMatchQSOs( TMatchCollection *matchCollection );
       void showMatchList( TMatchCollection *matchCollection );
@@ -237,15 +236,12 @@ class TSingleLogFrame : public TFrame , public QSOEditScreen
 
       bool getStanza( unsigned int stanza, std::string &stanzaData );
 
-   public: 		// implementations of QSOEditScreen
       PVirtualNode QSOTreeClickNode;
       PVirtualNode matchTreeClickNode;
       PVirtualNode otherTreeClickNode;
       PVirtualNode archiveTreeClickNode;
       TVirtualStringTree *xferTree;
 
-      void showScreenEntry( ScreenContact &screenContact );
-      void getScreenEntry( ScreenContact &screenContact );
       void GoNextUnfilled();
       void doNextContactDetailsOnLeftClick( TObject *Sender );
 };

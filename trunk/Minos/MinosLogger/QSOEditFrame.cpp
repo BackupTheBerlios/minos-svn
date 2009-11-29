@@ -344,8 +344,12 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxKeyPress( TObject */*Sender*/,
    Key = toupper( Key );
 }
 //---------------------------------------------------------------------------
-void TGJVQSOEditFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool bf )
+void TGJVQSOEditFrame::initialise( BaseContestLog * contest, bool bf )
 {
-   TGJVEditFrame::initialise(contest, edScreen, bf);
+   MainOpLabel->Visible = false;
+   MainOpComboBox->Visible = false;
+   SecondOpLabel->Visible = false;
+   SecondOpComboBox->Visible = false;
+   TGJVEditFrame::initialise(contest, /*edScreen,*/ bf);
 }
 

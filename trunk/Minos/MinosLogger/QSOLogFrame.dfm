@@ -4,16 +4,28 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
   inherited G0GJVPanel: TPanel
     Width = 576
     ExplicitWidth = 576
-    inherited CommentsEdit: TLabeledEdit [3]
-      TabOrder = 12
+    inherited SerTXEdit: TLabeledEdit [3]
+      TabOrder = 7
     end
-    inherited DateEdit: TLabeledEdit [4]
-      TabOrder = 4
+    object MatchXferButton: TBitBtn [4]
+      Left = 321
+      Top = 116
+      Width = 67
+      Height = 25
+      Hint = 'Get fields from current matching QSO'
+      Caption = 'Match &Xfer'
+      Enabled = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 13
+      TabStop = False
     end
-    inherited RSTTXEdit: TLabeledEdit
-      TabOrder = 6
+    inherited ModeComboBoxGJV: TComboBox [5]
     end
-    object BandMapPanel: TPanel [6]
+    inherited GJVOKButton: TButton [6]
+      TabOrder = 16
+    end
+    object BandMapPanel: TPanel [7]
       Left = 394
       Top = 111
       Width = 177
@@ -48,55 +60,43 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
         TabOrder = 2
       end
     end
-    inherited GJVOKButton: TButton [7]
-      TabOrder = 16
-    end
-    inherited ModeComboBoxGJV: TComboBox [8]
-    end
-    object MatchXferButton: TBitBtn [9]
-      Left = 321
-      Top = 116
-      Width = 67
-      Height = 25
-      Hint = 'Get fields from current matching QSO'
-      Caption = 'Match &Xfer'
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 13
-      TabStop = False
-    end
-    inherited SerTXEdit: TLabeledEdit [10]
-      TabOrder = 7
-    end
-    inherited RSTRXEdit: TLabeledEdit [11]
+    inherited RSTRXEdit: TLabeledEdit [8]
       TabOrder = 8
     end
-    inherited LocEdit: TLabeledEdit [12]
+    inherited CommentsEdit: TLabeledEdit [9]
+      TabOrder = 12
+    end
+    inherited RSTTXEdit: TLabeledEdit [10]
+      TabOrder = 6
+    end
+    inherited LocEdit: TLabeledEdit
       TabOrder = 10
     end
-    inherited SerRXEdit: TLabeledEdit [13]
-      TabOrder = 9
+    inherited GJVCancelButton: TButton [12]
+      TabOrder = 19
     end
-    inherited DeletedCheckBox: TCheckBox [14]
-      TabOrder = 18
+    inherited GJVForceButton: TButton [13]
+      TabOrder = 14
     end
-    inherited TimeEdit: TLabeledEdit [15]
-      TabOrder = 17
+    inherited NonScoreCheckBox: TCheckBox [14]
+    end
+    inherited QTHEdit: TLabeledEdit [15]
+      TabOrder = 11
     end
     inherited CallsignEdit: TLabeledEdit [16]
       TabOrder = 5
     end
-    inherited QTHEdit: TLabeledEdit [17]
-      TabOrder = 11
+    inherited TimeEdit: TLabeledEdit [17]
+      TabOrder = 17
     end
-    inherited NonScoreCheckBox: TCheckBox [18]
+    inherited DeletedCheckBox: TCheckBox [18]
+      TabOrder = 18
     end
-    inherited GJVForceButton: TButton [19]
-      TabOrder = 14
+    inherited SerRXEdit: TLabeledEdit [19]
+      TabOrder = 9
     end
-    inherited GJVCancelButton: TButton [20]
-      TabOrder = 19
+    inherited DateEdit: TLabeledEdit [20]
+      TabOrder = 4
     end
     inherited FirstUnfilledButton: TButton
       TabOrder = 20

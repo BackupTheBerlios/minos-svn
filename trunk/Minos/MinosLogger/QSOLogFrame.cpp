@@ -28,9 +28,9 @@ __fastcall TGJVQSOLogFrame::~TGJVQSOLogFrame()
 {
    delete partialContact;
 }
-void TGJVQSOLogFrame::initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool /*bacfill*/ )
+void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
 {
-   TGJVEditFrame::initialise( contest, edScreen, false );
+   TGJVEditFrame::initialise( contest, false );
    BandMapPanel->Visible = checkServerReady();
    MinosLoggerEvents::SendReportOverstrike(overstrike);
 }
@@ -346,24 +346,10 @@ void TGJVQSOLogFrame::updateQSOTime()
 
 void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
 {
-// we should make this an action on the actionlist
-// then all may work
-
-
-
    std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
    qdlg->selectCatchup( contest );
 
-
-   if (qdlg->ShowModal() == mrOk)
-   {
-      // and how do we do these? Do we need to?
-
-//   LogMonitor->Invalidate();
-//   MultDispFrame->refreshMults();
-//   OperatorFrame->refreshOps();
-//   LogMonitor->Repaint();
-   }
+   qdlg->ShowModal();
    selectField( 0 );
 }
 //---------------------------------------------------------------------------

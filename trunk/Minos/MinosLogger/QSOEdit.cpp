@@ -61,7 +61,7 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    // we had this so that we could close the form easily on startup
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
-   GJVQSOEditFrame->initialise( contest, this, catchup );
+   GJVQSOEditFrame->initialise( contest, /*this,*/ catchup );
    GJVQSOEditFrame->selectEntry( firstContact );
    if (GJVQSOEditFrame->isCatchup())
    {
@@ -97,25 +97,6 @@ void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
    }
 }
 //---------------------------------------------------------------------------
-void TQSOEditDlg::getScreenEntry( ScreenContact &/*screenContact*/ )
-{
-   // callback from edit frame
-   /*
-      std::string op1 = trim(GJVQSOEditFrame->MainOpComboBox->Text.c_str());
-      std::string op2 = trim(GJVQSOEditFrame->SecondOpComboBox->Text.c_str());
-      screenContact.op1.setValue(op1);
-      if (op1.size())
-      {
-         contest->oplist.insert(op1);
-      }
-      screenContact.op2.setValue(op2);
-      if (op2.size())
-      {
-         contest->oplist.insert(op2);
-      }
-   */
-}
-//---------------------------------------------------------------------------
 void TQSOEditDlg::refreshOps( ScreenContact &screenContact )
 {
    GJVQSOEditFrame->MainOpComboBox->Clear();
@@ -138,24 +119,6 @@ void TQSOEditDlg::refreshOps( ScreenContact &screenContact )
 
    // and if this is the last contact, the ops should also propogate into the contest
    // for the NEXT contact
-}
-void TQSOEditDlg::showScreenEntry( ScreenContact &screenContact )
-{
-   // callback from edit frame
-
-   refreshOps( screenContact );
-
-   /*
-   TContestApp::getContestApp() ->operatorBundle.openSection(screenContact.op2.getValue());
-   GJVQSOEditFrame->SecondOpBundleFrame->initialise( "Second Operator",
-                        &TContestApp::getContestApp() ->operatorBundle,
-                        &screenContact.op2 );
-
-   TContestApp::getContestApp() ->operatorBundle.openSection(screenContact.op1.getValue());
-   GJVQSOEditFrame->MainOpBundleFrame->initialise( "Main Operator",
-                        &TContestApp::getContestApp() ->operatorBundle,
-                        &screenContact.op1 );
-   */
 }
 //---------------------------------------------------------------------------
 

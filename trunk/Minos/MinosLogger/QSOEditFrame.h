@@ -26,9 +26,9 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       TButton *PriorButton;
       TButton *NextButton;
       TTimer *ROFieldTimer;
-      TLabel *Label1;
+   TLabel *MainOpLabel;
       TComboBox *MainOpComboBox;
-      TLabel *Label2;
+   TLabel *SecondOpLabel;
       TComboBox *SecondOpComboBox;
       void __fastcall InsertBeforeButtonClick( TObject *Sender );
       void __fastcall InsertAfterButtonClick( TObject *Sender );
@@ -48,7 +48,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
    public: 		// User declarations
       __fastcall TGJVQSOEditFrame( TComponent* Owner );
       virtual void selectEntry( BaseContact *lct );
-      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
+      virtual void initialise( BaseContestLog * contest, bool catchup );
       bool doGJVOKButtonClick( TObject *Sender );
       void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();

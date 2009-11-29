@@ -20,7 +20,7 @@
 #include "QSOFrame.h"
 #include "QSOEditFrame.h"
 //---------------------------------------------------------------------------
-class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure vitual - an interface
+class TQSOEditDlg : public TForm
 {
    __published: 	// IDE-managed Components
       TVirtualStringTree *QSOHistoryTree;
@@ -66,9 +66,6 @@ class TQSOEditDlg : public TForm , public QSOEditScreen  //QSOEditScreen is pure
          contest = c;
       }
       void selectCatchup( BaseContestLog * contest );
-   public: 		// implementations of QSOEditScreen
-      void getScreenEntry( ScreenContact &screenContact );
-      void showScreenEntry( ScreenContact &screenContact );
       void setFirstContact( BaseContact *c )
       {
          firstContact = c;

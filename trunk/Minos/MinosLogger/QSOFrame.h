@@ -16,14 +16,6 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
-// a pure interface class to be implemented by the parent of QSOFrame descendants
-class QSOEditScreen
-{
-   public:
-      virtual void showScreenEntry( ScreenContact &screenContact ) = 0;
-      virtual void getScreenEntry( ScreenContact &screenContact ) = 0;
-};
-//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 class TGJVEditFrame : public TFrame
 {
@@ -97,7 +89,6 @@ class TGJVEditFrame : public TFrame
       void contactValid( void );
    protected: 	// User declarations
       BaseContestLog * contest;
-      QSOEditScreen *editScreen;
       bool overstrike;
       TWinControl *current;
       bool updateTimeAllowed;
@@ -124,7 +115,7 @@ class TGJVEditFrame : public TFrame
       bool isCatchup(){return catchup;}
 
       void selectField( TWinControl *v );
-      virtual void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
+      virtual void initialise( BaseContestLog * contest, bool catchup );
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;

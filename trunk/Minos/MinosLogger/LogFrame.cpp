@@ -68,6 +68,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
+   /*
    TTabSheet *OpTabSheet = new TTabSheet( MultDispFrame );
    OpTabSheet->Caption = "Ops";
    OperatorFrame = new TOperatorFrame( OpTabSheet );
@@ -75,11 +76,11 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
    OperatorFrame->Parent = OpTabSheet;
    OperatorFrame->Align = alClient;
    OperatorFrame->ParentFont = true;
-
+   */
    LogMonitor->initialise( contest );
-   GJVQSOLogFrame->initialise( contest, this, false );
+   GJVQSOLogFrame->initialise( contest, /*this,*/ false );
 
-   OperatorFrame->refreshOps();
+//   OperatorFrame->refreshOps();
 
    WLogAreaSplitter = new TWhisperSplitter(LogAreaSplitter, MatchPanel);
 	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
@@ -200,7 +201,7 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
 
    LogMonitor->Invalidate();
    MultDispFrame->refreshMults();
-   OperatorFrame->refreshOps();
+//   OperatorFrame->refreshOps();
    LogMonitor->Repaint();
    GJVQSOLogFrame->startNextEntry();
 
@@ -234,7 +235,7 @@ void __fastcall TSingleLogFrame::QSOTreeSelect( PVirtualNode sel )
          contest->op1.setValue( lct->op1 );
          contest->op2.setValue( lct->op2 );
       }
-      OperatorFrame->refreshOps();
+//      OperatorFrame->refreshOps();
    }
 }
 //---------------------------------------------------------------------------
@@ -1185,21 +1186,6 @@ void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
    }
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::showScreenEntry( ScreenContact &/*screenContact*/ )
-{
-   // callback
-}
-//---------------------------------------------------------------------------
-void TSingleLogFrame::getScreenEntry( ScreenContact &screenContact )
-{
-   // callback
-   if ( contest )
-   {
-      screenContact.op1.setValue( contest->op1 );
-      screenContact.op2.setValue( contest->op2 );
-   }
-}
-//---------------------------------------------------------------------------
 void TSingleLogFrame::AfterLogContact_Event( MinosEventBase & Event)
 {
    ActionEvent<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent<BaseContestLog *, EN_AfterLogContact> &> ( Event );
@@ -1217,7 +1203,7 @@ void TSingleLogFrame::updateTrees()
 {
    LogMonitor->QSOTree->RootNodeCount = contest->getContactCount() + 1;
    MultDispFrame->refreshMults();
-   OperatorFrame->refreshOps();
+//   OperatorFrame->refreshOps();
    LogMonitor->QSOTree->Invalidate();
 }
 //---------------------------------------------------------------------------
@@ -1233,7 +1219,7 @@ void TSingleLogFrame::GoNextUnfilled()
       contest->scanContest();
       LogMonitor->QSOTree->Invalidate();
       MultDispFrame->refreshMults();
-      OperatorFrame->refreshOps();
+//      OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
       GJVQSOLogFrame->startNextEntry();
    }

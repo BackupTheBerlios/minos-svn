@@ -47,7 +47,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void doGJVCancelButtonClick( TObject *Sender );
       void transferDetails( const BaseContact * lct, const BaseContestLog *matct );
       void transferDetails( const ListContact * lct, const ContactList *matct );
-      void initialise( BaseContestLog * contest, QSOEditScreen *edScreen, bool catchup );
+      void initialise( BaseContestLog * contest, bool catchup );
       void setFreq( String f );
       virtual void updateQSOTime();
 };

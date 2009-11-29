@@ -8,14 +8,14 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     Height = 267
     ExplicitWidth = 574
     ExplicitHeight = 267
-    object Label1: TLabel [3]
+    object MainOpLabel: TLabel [3]
       Left = 14
-      Top = 164
+      Top = 163
       Width = 69
       Height = 13
       Caption = 'Main Operator'
     end
-    object Label2: TLabel [4]
+    object SecondOpLabel: TLabel [4]
       Left = 288
       Top = 164
       Width = 82
