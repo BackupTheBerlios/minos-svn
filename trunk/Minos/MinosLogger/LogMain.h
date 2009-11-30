@@ -183,7 +183,7 @@ class TLogContainer : public TForm
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
-      void closeSlot( bool addToMRU );
+      void closeSlot( TTabSheet *t, bool addToMRU );
       void preloadFiles( const std::string &conarg );
       void enableActions();
       String getDefaultDirectory( bool IsList );
@@ -202,6 +202,7 @@ class TLogContainer : public TForm
 
    public:  		// User declarations
       void showContestScore( const std::string &score );
+      TSingleLogFrame *findLogFrame(TTabSheet *);
       TSingleLogFrame *findCurrentLogFrame();
       void selectContest( BaseContestLog * , BaseContact * );
       __fastcall TLogContainer( TComponent* Owner );

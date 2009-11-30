@@ -25,6 +25,12 @@ public:
    static void SendReportOverstrike(bool ov);
    static void SendAfterLogContact(BaseContestLog *ct);
    static void SendAfterSelectContact(BaseContact *ct);
+   static void SendNextContactDetailsOnLeft();
+   static void SendContestDetails();
+   static void SendGoToSerial();
+   static void SendMakeEntry();
+   static void SendSetTimeNow();
+   static void SendNextUnfilled();
 
 };
 //---------------------------------------------------------------------------

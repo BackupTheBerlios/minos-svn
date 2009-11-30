@@ -53,4 +53,34 @@ void MinosLoggerEvents::SendAfterSelectContact(BaseContact *lct)
 	ActionEvent<BaseContact * ,EN_AfterSelectContact>::Send(lct);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendNextContactDetailsOnLeft()
+{
+	ActionEvent<int ,EN_NextContactDetailsOnLeft>::Send(0);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendContestDetails()
+{
+	ActionEvent<int ,EN_ContestDetails>::Send(0);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendGoToSerial()
+{
+	ActionEvent<int ,EN_GoToSerial>::Send(0);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendMakeEntry()
+{
+	ActionEvent<int ,EN_MakeEntry>::Send(0);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendSetTimeNow()
+{
+	ActionEvent<int ,EN_SetTimeNow>::Send(0);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendNextUnfilled()
+{
+	ActionEvent<int ,EN_NextUnfilled>::Send(0);
+}
+//---------------------------------------------------------------------------
 

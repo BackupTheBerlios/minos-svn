@@ -21,8 +21,14 @@ enum MinosEventNumber
    EN_ReportOverstrike,
    EN_AfterLogContact,
    EN_AfterSelectContact,
+   EN_NextContactDetailsOnLeft,
+   EN_ContestDetails,
+   EN_GoToSerial,
+   EN_MakeEntry,
+   EN_SetTimeNow,
+   EN_NextUnfilled,
 
-//   EN_ThisMatchColumnsChanged,
+   //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,
  //  EN_ArchiveMatchColumnsChanged,
 

@@ -177,6 +177,26 @@ class TSingleLogFrame : public TFrame
       MinosEventListener  EL_AfterLogContact;
       void AfterLogContact_Event ( MinosEventBase & Event );
 
+      MinosEventListener  EL_NextContactDetailsOnLeft;
+      void NextContactDetailsOnLeft_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ContestDetails;
+      void ContestDetails_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_GoToSerial;
+      void GoToSerial_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_MakeEntry;
+      void MakeEntry_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_SetTimeNow;
+      void SetTimeNow_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_NextUnfilled;
+      void NextUnfilled_Event ( MinosEventBase & Event );
+
+      bool isCurrentLog;
+
 //      TOperatorFrame *OperatorFrame;
       TWhisperSplitter *WLogAreaSplitter;
       TWhisperSplitter *WMultSplitter;

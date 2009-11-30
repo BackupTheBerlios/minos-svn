@@ -225,7 +225,7 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
             String expName = f->makeEntry( true );
             if ( expName.Length() )
             {
-               closeSlot( true );
+               closeSlot(t, true );
                addSlot( 0, expName.c_str(), false, false, -1 );
             }
          }
@@ -264,15 +264,15 @@ ContactList * TLogContainer::addListSlot( TContactListDetails *ced, const std::s
    return list;
 }
 //---------------------------------------------------------------------------
-TSingleLogFrame *TLogContainer::findCurrentLogFrame()
+TSingleLogFrame *TLogContainer::findLogFrame(TTabSheet *t)
 {
    // we need to find the embedded frame...
-   if ( !ContestPageControl->ActivePage )
+   if ( !t )
       return 0;
-   int cc = ContestPageControl->ActivePage->ControlCount;
+   int cc = t->ControlCount;
    for ( int i = 0; i < cc; i++ )
    {
-      if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( ContestPageControl->ActivePage->Controls[ i ] ) )
+      if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( t->Controls[ i ] ) )
       {
          return f;
       }
@@ -280,17 +280,21 @@ TSingleLogFrame *TLogContainer::findCurrentLogFrame()
    return 0;
 }
 //---------------------------------------------------------------------------
+TSingleLogFrame *TLogContainer::findCurrentLogFrame()
+{
+   return findLogFrame(ContestPageControl->ActivePage);
+}
+//---------------------------------------------------------------------------
 void TLogContainer::showContestScore( const std::string &score )
 {
    StatusBar1->Panels->Items[ 0 ] ->Text = score.c_str();
 }
 //---------------------------------------------------------------------------
-void TLogContainer::closeSlot( bool addToMRU )
+void TLogContainer::closeSlot(TTabSheet *t, bool addToMRU )
 {
-   TTabSheet * t = ContestPageControl->ActivePage;
    if ( t )
    {
-      TSingleLogFrame * f = findCurrentLogFrame();
+      TSingleLogFrame * f = findLogFrame(t);
       if ( addToMRU )
       {
          BaseContestLog * contest = f->getContest();
@@ -309,7 +313,8 @@ void TLogContainer::closeSlot( bool addToMRU )
 void __fastcall TLogContainer::FileCloseAction1Execute( TObject */*Sender*/ )
 {
    TWaitCursor fred;
-   closeSlot( true );
+   TTabSheet * t = ContestPageControl->ActivePage;
+   closeSlot(t, true );
 }
 
 //---------------------------------------------------------------------------
@@ -320,21 +325,7 @@ void __fastcall TLogContainer::CloseAllActionExecute(TObject */*Sender*/)
    while ( ContestPageControl->PageCount)
    {
       TTabSheet *ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 1 ];
-      int cc = ctab->ControlCount;
-
-      for ( int i = 0; i < cc; i++ )
-      {
-         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( ctab->Controls[ i ] ) )
-         {
-            BaseContestLog * contest = f->getContest();
-            String curPath = contest->cfileName.c_str();
-            ContestMRU->AddItem( curPath );
-
-            f->closeContest();    // which should close the contest
-            ctab->PageControl = 0;
-            delete ctab;
-         }
-      }
+      closeSlot(ctab, true);
    }
    ContestPageControlChange( this );
    enableActions();
@@ -352,21 +343,7 @@ void __fastcall TLogContainer::CloseAllButActionExecute(TObject */*Sender*/)
       {
          ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 2 ];
       }
-      int cc = ctab->ControlCount;
-
-      for ( int i = 0; i < cc; i++ )
-      {
-         if ( TSingleLogFrame * f = dynamic_cast<TSingleLogFrame *>( ctab->Controls[ i ] ) )
-         {
-            BaseContestLog * contest = f->getContest();
-            String curPath = contest->cfileName.c_str();
-            ContestMRU->AddItem( curPath );
-
-            f->closeContest();    // which should close the contest
-            ctab->PageControl = 0;
-            delete ctab;
-         }
-      }
+      closeSlot(ctab, true);
    }
    ContestPageControlChange( this );
    enableActions();
@@ -382,11 +359,13 @@ void TLogContainer::enableActions()
    LocCalcAction->Enabled = true;
    FileNewAction->Enabled = true;
    HelpAboutAction->Enabled = true;
-   NextContactDetailsOnLeftAction->Enabled = true;
 
    FileCloseAction1->Enabled = f;
    CloseAllAction->Enabled = f;
    CloseAllButAction->Enabled = f;
+
+   NextContactDetailsOnLeftAction->Enabled = true;
+
    ContestDetailsAction->Enabled = f;
    GoToSerialAction->Enabled = f;
    MakeEntryAction->Enabled = f;
@@ -566,7 +545,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
       OpenDialog1->Filter = "Minos contest files (*.Minos)|*.Minos|All Files (*.*)|*.*" ;
       OpenDialog1->FileName = suggestedfName;
 
-      closeSlot( false );
+      closeSlot(ContestPageControl->ActivePage, false );
       if ( OpenDialog1->Execute() )
       {
          suggestedfName = OpenDialog1->FileName;
@@ -598,26 +577,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestDetailsActionExecute( TObject */*Sender*/ )
 {
-   BaseContestLog * contest = TContestApp::getContestApp() ->getCurrentContest();
-   std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-
-   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
-   if ( ct )
-   {
-      pced->setDetails( ct );
-      if ( pced->ShowModal() == mrOk )
-      {
-         ct->commonSave( false );
-         // and we need to do some re-init on the display
-         TSingleLogFrame *f = findCurrentLogFrame();
-         if ( f )
-         {
-            f->updateQSODisplay();
-         }
-         ct->scanContest();
-      }
-
-   }
+   MinosLoggerEvents::SendContestDetails();
 }
 //---------------------------------------------------------------------------
 
@@ -786,20 +746,12 @@ void __fastcall TLogContainer::SyncTimerTimer( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::GoToSerialActionExecute( TObject */*Sender*/ )
 {
-   TSingleLogFrame * f = findCurrentLogFrame();
-   if ( f )
-   {
-      f->goSerial( );
-   }
+   MinosLoggerEvents::SendGoToSerial();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::MakeEntryActionExecute( TObject */*Sender*/ )
 {
-   TSingleLogFrame * f = findCurrentLogFrame();
-   if ( f )
-   {
-      f->makeEntry( false );
-   }
+   MinosLoggerEvents::SendMakeEntry();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::AnalyseMinosLogActionExecute( TObject */*Sender*/ )
@@ -837,14 +789,7 @@ void __fastcall TLogContainer::AnalyseMinosLogActionExecute( TObject */*Sender*/
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::NextUnfilledActionExecute( TObject */*Sender*/ )
 {
-   if ( LogContainer )
-   {
-      TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-      if ( f )
-      {
-         f->GoNextUnfilled( );
-      }
-   }
+   MinosLoggerEvents::SendNextUnfilled();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestPageControlMouseDown( TObject */*Sender*/,
@@ -1007,11 +952,7 @@ void __fastcall TLogContainer::WmMove( TMessage &/*Msg*/ )
 
 void __fastcall TLogContainer::SetTimeNowActionExecute( TObject *Sender )
 {
-   TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-   if ( f )
-   {
-      f->SetTimeNowClick( Sender );
-   }
+   MinosLoggerEvents::SendSetTimeNow();
 }
 //---------------------------------------------------------------------------
 
@@ -1020,12 +961,9 @@ void __fastcall TLogContainer::NextContactDetailsOnLeftActionExecute( TObject */
    bool ncdol = !isNextContactDetailsOnLeft();
    NextContactDetailsOnLeftAction->Checked = ncdol;
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpNextContactDetailsOnLeft, ncdol );
-   TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-   if ( f )
-   {
-      f->OnShowTimer->Enabled = true;
-   }
    TContestApp::getContestApp() ->displayBundle.flushProfile();
+
+   MinosLoggerEvents::SendNextContactDetailsOnLeft();
 }
 //---------------------------------------------------------------------------
 void TLogContainer::setBandMapLoaded()

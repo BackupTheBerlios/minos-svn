@@ -9,6 +9,8 @@
 #include "logger_pch.h"
 #pragma hdrstop
 
+#include "ContestDetails.h"
+
 #include "LogEvents.h"
 #include "LoggerContest.h"
 
@@ -64,7 +66,14 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event ),
       EL_ReportOverstrike ( EN_ReportOverstrike, & ReportOverstrike_Event ),
       EL_AfterLogContact ( EN_AfterLogContact, & AfterLogContact_Event ),
-      EL_AfterSelectContact ( EN_AfterSelectContact, & AfterSelectContact_Event )
+      EL_AfterSelectContact ( EN_AfterSelectContact, & AfterSelectContact_Event ),
+
+      EL_NextContactDetailsOnLeft ( EN_NextContactDetailsOnLeft, & NextContactDetailsOnLeft_Event ),
+      EL_ContestDetails ( EN_ContestDetails, & ContestDetails_Event ),
+      EL_GoToSerial ( EN_GoToSerial, & GoToSerial_Event ),
+      EL_MakeEntry ( EN_MakeEntry, & MakeEntry_Event ),
+      EL_SetTimeNow ( EN_SetTimeNow, & SetTimeNow_Event ),
+      EL_NextUnfilled ( EN_NextUnfilled, & NextUnfilled_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -127,10 +136,15 @@ __fastcall TSingleLogFrame::~TSingleLogFrame()
 void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 {
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
+   {
+      isCurrentLog = false;
       return ;
+   }
 
    BaseContestLog * ct = getContest();
    TContestApp::getContestApp() ->setCurrentContest( ct );
+
+   isCurrentLog = true;
 
    if ( logColumnsChanged )
       showQSOs();
@@ -143,8 +157,6 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
    OnShowTimer->Enabled = true;
    GJVQSOLogFrame->CallsignEdit->SetFocus();
 
-//   LogContainer->enableActions();
-//   Repaint();     // make sure the trees get repainted
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::closeContest()
@@ -164,10 +176,13 @@ BaseContestLog * TSingleLogFrame::getContest()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ReportOverstrike_Event( MinosEventBase & Event )
 {
-   ActionEvent<bool, EN_ReportOverstrike> & S = dynamic_cast<ActionEvent<bool, EN_ReportOverstrike> &> ( Event );
+   if (isCurrentLog)
+   {
+      ActionEvent<bool, EN_ReportOverstrike> & S = dynamic_cast<ActionEvent<bool, EN_ReportOverstrike> &> ( Event );
 
-   bool overstrike = S.getData();
-   LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = overstrike ? "Overwrite" : "Insert";
+      bool overstrike = S.getData();
+      LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = overstrike ? "Overwrite" : "Insert";
+   }
 }
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
@@ -649,6 +664,15 @@ void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & /*Event*/ )
    logColumnsChanged = true;
 }
 //---------------------------------------------------------------------------
+void TSingleLogFrame::GoToSerial_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      goSerial();
+   }
+}
+//---------------------------------------------------------------------------
+
 void TSingleLogFrame::goSerial( )
 {
    static int serial = 0;
@@ -1020,6 +1044,14 @@ void TSingleLogFrame::doNextContactDetailsOnLeftClick( TObject */*Sender*/ )
       }
 }
 //---------------------------------------------------------------------------
+void TSingleLogFrame::MakeEntry_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      makeEntry( false );
+   }
+}
+//---------------------------------------------------------------------------
 String TSingleLogFrame::makeEntry( bool saveMinos )
 {
    LoggerContestLog * ct = dynamic_cast<LoggerContestLog *>( contest );
@@ -1070,6 +1102,15 @@ void __fastcall TSingleLogFrame::AutoBandmapTuneClick( TObject */*Sender*/ )
 void __fastcall TSingleLogFrame::AutoBandmapTimeClick( TObject */*Sender*/ )
 {
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpAutoBandMapTime, GJVQSOLogFrame->AutoBandmapTime->Checked );
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::SetTimeNow_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      SetTimeNowClick(0);
+
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::SetTimeNowClick( TObject */*Sender*/ )
@@ -1175,27 +1216,33 @@ void __fastcall TSingleLogFrame::GJVQSOLogFrame1MatchXferButtonClick(
 //---------------------------------------------------------------------------
 void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
 {
-   ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
-   BaseContact *lct = S.getData();
-   if (!lct)
+   if (isCurrentLog)
    {
-      PVirtualNode l = LogMonitor->QSOTree->GetLastChild( LogMonitor->QSOTree->RootNode );
-      LogMonitor->QSOTree->FocusedNode = l;
-      LogMonitor->QSOTree->Selected[ l ] = true;
-      TMatchThread::startMatch();
+      ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
+      BaseContact *lct = S.getData();
+      if (!lct)
+      {
+         PVirtualNode l = LogMonitor->QSOTree->GetLastChild( LogMonitor->QSOTree->RootNode );
+         LogMonitor->QSOTree->FocusedNode = l;
+         LogMonitor->QSOTree->Selected[ l ] = true;
+         TMatchThread::startMatch();
+      }
    }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::AfterLogContact_Event( MinosEventBase & Event)
 {
-   ActionEvent<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent<BaseContestLog *, EN_AfterLogContact> &> ( Event );
-   BaseContestLog *ct = S.getData();
-
-   if (ct == contest)
+   if (isCurrentLog)
    {
-      contest->scanContest();
-      updateTrees();
-      NextContactDetailsTimerTimer( this );
+      ActionEvent<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent<BaseContestLog *, EN_AfterLogContact> &> ( Event );
+      BaseContestLog *ct = S.getData();
+
+      if (ct == contest)
+      {
+         contest->scanContest();
+         updateTrees();
+         NextContactDetailsTimerTimer( this );
+      }
    }
 }
 //---------------------------------------------------------------------------
@@ -1205,6 +1252,14 @@ void TSingleLogFrame::updateTrees()
    MultDispFrame->refreshMults();
 //   OperatorFrame->refreshOps();
    LogMonitor->QSOTree->Invalidate();
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::NextUnfilled_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      GoNextUnfilled();
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::GoNextUnfilled()
@@ -1473,5 +1528,36 @@ void TSingleLogFrame::EditMatchContact()
 {
    otherMatchTreeSelect( otherTreeClickNode );
 }
+//---------------------------------------------------------------------------
+void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      OnShowTimer->Enabled = true;
+   }
+}
+
+//---------------------------------------------------------------------------
+void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
+
+      LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+      if ( ct )
+      {
+         pced->setDetails( ct );
+         if ( pced->ShowModal() == mrOk )
+         {
+            ct->commonSave( false );
+            // and we need to do some re-init on the display
+            updateQSODisplay();
+            ct->scanContest();
+         }
+      }
+   }
+}
+
 //---------------------------------------------------------------------------
 

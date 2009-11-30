@@ -359,7 +359,7 @@ void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject *Sender)
 // Go to the first unfilled QSO
 // If there aren't any then it needs to be made invisible
 // ScanContest can work out how many there are - and we can display that on the button
-   LogContainer->NextUnfilledActionExecute(Sender);
+   MinosLoggerEvents::SendNextUnfilled();
 }
 //---------------------------------------------------------------------------
 

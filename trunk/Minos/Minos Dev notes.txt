@@ -1,6 +1,8 @@
 Other points
 ============
 
+Have a "isCurrentContest" or some such in LogFrame, so that we can easily recognise that we are actually the contest on display, and hence any action messages apply to us.
+
 Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
 
 Actions and messages in logger
