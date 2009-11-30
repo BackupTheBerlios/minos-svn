@@ -593,11 +593,6 @@ void __fastcall TLogContainer::TimeDisplayTimerTimer( TObject */*Sender*/ )
       BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
       if ( ct )
       {
-         TSingleLogFrame * f = findCurrentLogFrame();
-         if ( f )
-         {
-            f->updateQSOTime();
-         }
          ct->setScore( statbuf );
       }
       showContestScore( statbuf );
@@ -658,16 +653,7 @@ void __fastcall TLogContainer::FormKeyUp( TObject */*Sender*/, WORD &Key,
    else
       if ( Shift.Empty() )
       {
-         if ( ( Key == VK_F1 || Key == VK_F2 || Key == VK_F3
-                  || Key == VK_F4 || Key == VK_F5 || Key == VK_F6
-                  || Key == VK_F12 || Key == VK_PRIOR || Key == VK_NEXT ) )
-         {
-            TSingleLogFrame * cf = findCurrentLogFrame();
-            if ( cf )
-            {
-               cf->setActiveControl( Key );
-            }
-         }
+         MinosLoggerEvents::SendFormKey(&Key);
       }
 }
 //---------------------------------------------------------------------------
@@ -700,15 +686,11 @@ void __fastcall TLogContainer::doSetCaption()
 }
 void __fastcall TLogContainer::doSetMode()
 {
-   TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-   if ( f )
-      f->setMode( modeToSet );
+   MinosLoggerEvents::SendSetMode(modeToSet);
 }
 void __fastcall TLogContainer::doSetFreq()
 {
-   TSingleLogFrame * f = LogContainer->findCurrentLogFrame();
-   if ( f )
-      f->setFreq( freqToSet );
+   MinosLoggerEvents::SendSetMode(freqToSet);
 }
 void TLogContainer::setCaption( String c )
 {
@@ -950,7 +932,7 @@ void __fastcall TLogContainer::WmMove( TMessage &/*Msg*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TLogContainer::SetTimeNowActionExecute( TObject *Sender )
+void __fastcall TLogContainer::SetTimeNowActionExecute( TObject */*Sender*/ )
 {
    MinosLoggerEvents::SendSetTimeNow();
 }
@@ -1082,11 +1064,7 @@ void __fastcall TLogContainer::Tools1Click(TObject */*Sender*/)
 
 void __fastcall TLogContainer::EditContactActionExecute(TObject */*Sender*/)
 {
-   TSingleLogFrame * f = findCurrentLogFrame();
-   if ( f )
-   {
-      f->EditMatchContact( );
-   }
+   MinosLoggerEvents::SendEditMatchContact();
 }
 //---------------------------------------------------------------------------
 

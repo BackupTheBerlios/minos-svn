@@ -73,7 +73,11 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_GoToSerial ( EN_GoToSerial, & GoToSerial_Event ),
       EL_MakeEntry ( EN_MakeEntry, & MakeEntry_Event ),
       EL_SetTimeNow ( EN_SetTimeNow, & SetTimeNow_Event ),
-      EL_NextUnfilled ( EN_NextUnfilled, & NextUnfilled_Event )
+      EL_NextUnfilled ( EN_NextUnfilled, & NextUnfilled_Event ),
+      EL_FormKey ( EN_FormKey, & FormKey_Event ),
+      EL_SetMode ( EN_SetMode, & SetMode_Event ),
+      EL_SetFreq ( EN_SetFreq, & SetFreq_Event ),
+      EL_EditMatchContact ( EN_EditMatchContact, & EditMatchContact_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -1073,9 +1077,29 @@ String TSingleLogFrame::makeEntry( bool saveMinos )
    return "";
 }
 //---------------------------------------------------------------------------
+void TSingleLogFrame::SetMode_Event( MinosEventBase & Event)
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<String, EN_SetMode> & S = dynamic_cast<ActionEvent<String, EN_SetMode> &> ( Event );
+      String mode = S.getData();
+      setMode(mode);
+   }
+}
+//---------------------------------------------------------------------------
 void TSingleLogFrame::setMode( String m )
 {
    GJVQSOLogFrame->setMode( m );
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::SetFreq_Event( MinosEventBase & Event)
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<String, EN_SetFreq> & S = dynamic_cast<ActionEvent<String, EN_SetFreq> &> ( Event );
+      String freq = S.getData();
+      setFreq(freq);
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::setFreq( String f )
@@ -1118,32 +1142,43 @@ void __fastcall TSingleLogFrame::SetTimeNowClick( TObject */*Sender*/ )
    GJVQSOLogFrame->setTimeNow();
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::setActiveControl( WORD &Key )
+void TSingleLogFrame::FormKey_Event( MinosEventBase & Event)
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<WORD *, EN_FormKey> & S = dynamic_cast<ActionEvent<WORD *, EN_FormKey> &> ( Event );
+      WORD *key = S.getData();
+      setActiveControl(key);
+   }
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::setActiveControl( WORD *Key )
 {
    GJVQSOLogFrame->setActiveControl( Key );
    if (
       LogContainer->ActiveControl != LogMonitor->QSOTree
       && LogContainer->ActiveControl != ThisMatchTree
       && LogContainer->ActiveControl != OtherMatchTree
-      && Key == VK_PRIOR )
+      && *Key == VK_PRIOR )
    {
       LogContainer->ActiveControl = LogMonitor->QSOTree;
-      Key = 0;
+      *Key = 0;
    }
    else
       if (
          LogContainer->ActiveControl != LogMonitor->QSOTree
          && LogContainer->ActiveControl != ThisMatchTree
          && LogContainer->ActiveControl != OtherMatchTree
-         && Key == VK_NEXT )
+         && *Key == VK_NEXT )
       {
          LogContainer->ActiveControl = ThisMatchTree;
-         Key = 0;
+         *Key = 0;
       }
       else
-         if (Key == VK_F12 && GJVQSOLogFrame->MatchXferButton->Enabled)
+         if (*Key == VK_F12 && GJVQSOLogFrame->MatchXferButton->Enabled)
          {
             GJVQSOLogFrame1MatchXferButtonClick(this);
+            *Key = 0;
          }
 }
 //-------------------------------------------------------------------------
@@ -1285,9 +1320,18 @@ void TSingleLogFrame::GoNextUnfilled()
 
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TSingleLogFrame::TimerUpdateQSOTimerTimer(TObject */*Sender*/)
+{
+   updateQSOTime();
+}
+//---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSOTime()
 {
-   GJVQSOLogFrame->updateQSOTime();
+   if (isCurrentLog)
+   {
+      GJVQSOLogFrame->updateQSOTime();
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSODisplay()
@@ -1522,6 +1566,14 @@ void __fastcall TSingleLogFrame::EntryChoiceMenuPopup(TObject */*Sender*/)
    MenuEditContact->Visible = showEdit;
    MenuEditSeparator->Visible = showEdit;
 
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::EditMatchContact_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      EditMatchContact();
+   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::EditMatchContact()

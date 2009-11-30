@@ -81,6 +81,7 @@ void __fastcall TMatchThread::Execute()
       matchThread = new TMatchThread();
 
    TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
+   // clear down match trees
    lgmt->xferTree = 0;
    lgmt->matchTreeClickNode = 0;
    lgmt->otherTreeClickNode = 0;
@@ -100,7 +101,7 @@ void __fastcall TMatchThread::doReplaceContestList( void )
    try
    {
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->replaceContestList( myMatches );
+      lgmt->replaceContestList( myMatches );// replace the "other" list
    }
    catch ( ... )
    {}
@@ -116,7 +117,7 @@ void __fastcall TMatchThread::doReplaceListList( void )
    try
    {
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->replaceListList( myListMatches );
+      lgmt->replaceListList( myListMatches );   // replace the archive list
    }
    catch ( ... )
    {}
@@ -146,7 +147,7 @@ void __fastcall TMatchThread::doMatchCountry( void )
    try
    {
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->matchCountry( ctrymatch );
+      lgmt->matchCountry( ctrymatch );       // scroll to country
    }
    catch ( ... )
    {}
@@ -162,7 +163,7 @@ void __fastcall TMatchThread::doMatchDistrict( void )
    try
    {
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->matchDistrict( distmatch );
+      lgmt->matchDistrict( distmatch );          // scroll to district
    }
    catch ( ... )
    {}
@@ -334,6 +335,7 @@ void Matcher::initMatch( void )
       if ( !ce )
       {
 
+         // we need to have been sent this... in a start match action?
          ScreenContact * mct = &LogContainer->findCurrentLogFrame() ->GJVQSOLogFrame->screenContact;
          if ( !mct )
             return ;

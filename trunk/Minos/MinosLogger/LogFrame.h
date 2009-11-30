@@ -98,6 +98,7 @@ class TSingleLogFrame : public TFrame
    TPanel *ContestMatchPanel;
    TMenuItem *MenuEditSeparator;
    TMenuItem *MenuEditContact;
+   TTimer *TimerUpdateQSOTimer;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );
@@ -157,6 +158,7 @@ class TSingleLogFrame : public TFrame
       void __fastcall NextContactDetailsSplitterMoved(TObject *Sender);
       void __fastcall MultSplitterMoved(TObject *Sender);
    void __fastcall EntryChoiceMenuPopup(TObject *Sender);
+   void __fastcall TimerUpdateQSOTimerTimer(TObject *Sender);
    private:  	// User declarations
 
       MinosEventListener  EL_ContestPageChanged;
@@ -194,6 +196,18 @@ class TSingleLogFrame : public TFrame
 
       MinosEventListener  EL_NextUnfilled;
       void NextUnfilled_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_FormKey;
+      void FormKey_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_SetMode;
+      void SetMode_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_SetFreq;
+      void SetFreq_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_EditMatchContact;
+      void EditMatchContact_Event ( MinosEventBase & Event );
 
       bool isCurrentLog;
 
@@ -238,7 +252,7 @@ class TSingleLogFrame : public TFrame
       void matchCountry( const std::string &csCs );
       void replaceContestList( TMatchCollection *matchCollection );
       void replaceListList( TMatchCollection *matchCollection );
-      void setActiveControl( WORD &Key );
+      void setActiveControl( WORD *Key );
       String makeEntry( bool saveMinos );
       void exportContest();
       void EditContact( BaseContact *lct );

@@ -251,12 +251,6 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
       FirstUnfilledButtonClick( Sender );
       unfilled = screenContact.contactFlags & TO_BE_ENTERED;
 
-      // somehow we need to update the log screen tree - how do we find it?
-      TSingleLogFrame *frame = LogContainer->findCurrentLogFrame();
-      if ( frame )
-      {
-         frame->updateTrees();
-      }
       return !unfilled;   // so we don't close the dialog
    }
    return OKok;

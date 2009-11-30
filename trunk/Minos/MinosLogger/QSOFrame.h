@@ -107,7 +107,7 @@ class TGJVEditFrame : public TFrame
 
       __fastcall TGJVEditFrame( TComponent* Owner );
       __fastcall ~TGJVEditFrame();
-      void setActiveControl( WORD &Key );
+      void setActiveControl( WORD *Key );
       void setMode( String m );
       void clearCurrentField();
       void lgTraceerr( int err );

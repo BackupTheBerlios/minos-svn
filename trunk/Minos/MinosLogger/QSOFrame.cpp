@@ -102,33 +102,33 @@ void TGJVEditFrame::ValidateError_Event ( MinosEventBase & Event )
       // add the message into the error list
       errs.insert( &errDefs[ mess_no ] );
 }
-void TGJVEditFrame::setActiveControl( WORD &Key )
+void TGJVEditFrame::setActiveControl( WORD *Key )
 {
-   switch ( Key )
+   switch ( *Key )
    {
       case VK_F1:
          selectField( CallsignEdit );
-         Key = 0;
+         *Key = 0;
          break;
       case VK_F2:
          selectField( RSTTXEdit );
-         Key = 0;
+         *Key = 0;
          break;
       case VK_F3:
          selectField( RSTRXEdit );
-         Key = 0;
+         *Key = 0;
          break;
       case VK_F4:
          selectField( SerRXEdit );
-         Key = 0;
+         *Key = 0;
          break;
       case VK_F5:
          selectField( LocEdit );
-         Key = 0;
+         *Key = 0;
          break;
       case VK_F6:
          selectField( QTHEdit );
-         Key = 0;
+         *Key = 0;
          break;
    }
 }

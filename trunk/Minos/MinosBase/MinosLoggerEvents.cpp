@@ -83,4 +83,24 @@ void MinosLoggerEvents::SendNextUnfilled()
 	ActionEvent<int ,EN_NextUnfilled>::Send(0);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendFormKey(WORD *key)
+{
+	ActionEvent<WORD * ,EN_FormKey>::Send(key);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendSetMode(String mode)
+{
+	ActionEvent<String ,EN_SetMode>::Send(mode);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendSetFreq(String freq)
+{
+	ActionEvent<String ,EN_SetFreq>::Send(freq);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendEditMatchContact()
+{
+	ActionEvent<String ,EN_EditMatchContact>::Send(0);
+}
+//---------------------------------------------------------------------------
 

@@ -27,6 +27,10 @@ enum MinosEventNumber
    EN_MakeEntry,
    EN_SetTimeNow,
    EN_NextUnfilled,
+   EN_FormKey,
+   EN_SetMode,
+   EN_SetFreq,
+   EN_EditMatchContact,
 
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,

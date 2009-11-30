@@ -31,7 +31,10 @@ public:
    static void SendMakeEntry();
    static void SendSetTimeNow();
    static void SendNextUnfilled();
-
+   static void SendFormKey(WORD *);
+   static void SendSetMode(String);
+   static void SendSetFreq(String);
+   static void SendEditMatchContact();
 };
 //---------------------------------------------------------------------------
 #endif
