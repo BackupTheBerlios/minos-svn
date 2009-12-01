@@ -103,4 +103,9 @@ void MinosLoggerEvents::SendEditMatchContact()
 	ActionEvent<String ,EN_EditMatchContact>::Send(0);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendScreenContactChanged(ScreenContact *sct)
+{
+	ActionEvent<ScreenContact * ,EN_ScreenContactChanged>::Send(sct);
+}
+//---------------------------------------------------------------------------
 

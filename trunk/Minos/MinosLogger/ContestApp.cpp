@@ -200,6 +200,7 @@ bool TContestApp::initialise()
       sysfont->Size = itemp;
    */
    initClock();
+   TMatchThread::InitialiseMatchThread();
 
    return true;
 }

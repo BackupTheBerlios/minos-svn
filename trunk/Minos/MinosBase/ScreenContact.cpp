@@ -98,7 +98,6 @@ void ScreenContact::copyFromArg( BaseContact &cct )
    contactScore = cct.contactScore.getValue();
    bearing = cct.bearing;
    mode = cct.mode.getValue();
-
 }
 void ScreenContact::copyFromArg( ScreenContact &cct )
 {
@@ -141,7 +140,6 @@ void ScreenContact::copyFromArg( ScreenContact &cct )
    contactScore = cct.contactScore;
    bearing = cct.bearing;
    mode = cct.mode;
-
 }
 void ScreenContact::check( )
 {

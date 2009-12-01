@@ -4,42 +4,58 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
   inherited G0GJVPanel: TPanel
     Width = 576
     ExplicitWidth = 576
-    inherited GJVForceButton: TButton [3]
-      TabOrder = 14
-    end
-    inherited NonScoreCheckBox: TCheckBox [4]
-    end
-    inherited QTHEdit: TLabeledEdit [5]
-      TabOrder = 11
-    end
-    inherited CallsignEdit: TLabeledEdit [6]
-      TabOrder = 5
-    end
-    inherited TimeEdit: TLabeledEdit [7]
-      TabOrder = 17
-    end
-    inherited DeletedCheckBox: TCheckBox [8]
-      TabOrder = 18
-    end
-    inherited SerRXEdit: TLabeledEdit [9]
-      TabOrder = 9
-    end
-    inherited DateEdit: TLabeledEdit [10]
+    inherited DateEdit: TLabeledEdit [3]
       TabOrder = 4
     end
-    inherited GJVCancelButton: TButton [11]
+    inherited SerRXEdit: TLabeledEdit [4]
+      TabOrder = 9
+    end
+    inherited DeletedCheckBox: TCheckBox [5]
+      TabOrder = 18
+    end
+    inherited TimeEdit: TLabeledEdit [6]
+      TabOrder = 17
+    end
+    inherited CallsignEdit: TLabeledEdit [7]
+      TabOrder = 5
+    end
+    inherited QTHEdit: TLabeledEdit [8]
+      TabOrder = 11
+    end
+    inherited GJVCancelButton: TButton [9]
       TabOrder = 19
     end
-    inherited RSTTXEdit: TLabeledEdit [12]
+    inherited GJVForceButton: TButton [10]
+      TabOrder = 14
+    end
+    inherited RSTTXEdit: TLabeledEdit [11]
       TabOrder = 6
     end
-    inherited CommentsEdit: TLabeledEdit [13]
-      TabOrder = 12
+    inherited LocEdit: TLabeledEdit [12]
+      TabOrder = 10
     end
-    inherited RSTRXEdit: TLabeledEdit [14]
-      TabOrder = 8
+    inherited SerTXEdit: TLabeledEdit [13]
+      TabOrder = 7
     end
-    object BandMapPanel: TPanel [15]
+    object MatchXferButton: TBitBtn [14]
+      Left = 321
+      Top = 116
+      Width = 67
+      Height = 25
+      Hint = 'Get fields from current matching QSO'
+      Caption = 'Match &Xfer'
+      Enabled = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 13
+      TabStop = False
+    end
+    inherited ModeComboBoxGJV: TComboBox [15]
+    end
+    inherited GJVOKButton: TButton [16]
+      TabOrder = 16
+    end
+    object BandMapPanel: TPanel [17]
       Left = 394
       Top = 111
       Width = 177
@@ -74,29 +90,13 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
         TabOrder = 2
       end
     end
-    inherited GJVOKButton: TButton [16]
-      TabOrder = 16
+    inherited RSTRXEdit: TLabeledEdit [18]
+      TabOrder = 8
     end
-    inherited ModeComboBoxGJV: TComboBox [17]
+    inherited CommentsEdit: TLabeledEdit [19]
+      TabOrder = 12
     end
-    object MatchXferButton: TBitBtn [18]
-      Left = 321
-      Top = 116
-      Width = 67
-      Height = 25
-      Hint = 'Get fields from current matching QSO'
-      Caption = 'Match &Xfer'
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 13
-      TabStop = False
-    end
-    inherited SerTXEdit: TLabeledEdit [19]
-      TabOrder = 7
-    end
-    inherited LocEdit: TLabeledEdit [20]
-      TabOrder = 10
+    inherited NonScoreCheckBox: TCheckBox [20]
     end
     inherited FirstUnfilledButton: TButton
       TabOrder = 20

@@ -213,6 +213,7 @@ void TGJVEditFrame::showScreenEntry( void )
       SerTXEdit->Color = clBtnFace;
       SerTXEdit->ReadOnly = true;
       MinosLoggerEvents::SendShowErrorList();
+      MinosLoggerEvents::SendScreenContactChanged(&screenContact);
    }
 }
 //---------------------------------------------------------------------------
@@ -293,6 +294,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
          if (loc != LocEdit->Text.Trim())
          {
             LocEdit->Text = loc;
+            doGJVEditChange( LocEdit );
          }
       }
    }

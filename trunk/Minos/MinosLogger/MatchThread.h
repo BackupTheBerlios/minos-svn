@@ -130,10 +130,12 @@ class ListMatcher: public Matcher
 //---------------------------------------------------------------------------
 class TMatchThread : public TThread
 {
-      //   friend class Matcher;
-      //   friend class LogMatcher;
-      //   friend class ListMatcher;
    private:
+      MinosEventListener  EL_ScreenContactChanged;
+      void ScreenContactChanged_Event ( MinosEventBase & Event );
+
+      static void startMatch( CountryEntry *ce = 0 );
+
       static TMatchThread *matchThread;
       __fastcall TMatchThread();
 
@@ -162,8 +164,8 @@ class TMatchThread : public TThread
       void __fastcall matchCountry( std::string cs );
       void __fastcall matchDistrict( std::string dist );
 
-      static void startMatch( CountryEntry *ce = 0 );
       static std::string getMatchStatus( );
+      static void InitialiseMatchThread();
       static void FinishMatchThread();
       static TMatchThread *getMatchThread()
       {

@@ -32,7 +32,8 @@
 TMatchThread *TMatchThread::matchThread = 0;
 
 __fastcall TMatchThread::TMatchThread()
-      : TThread(  /*CreateSuspended*/ false ), myMatches( 0 ), myListMatches( 0 )
+      : TThread(  /*CreateSuspended*/ false ), myMatches( 0 ), myListMatches( 0 ),
+      EL_ScreenContactChanged ( EN_ScreenContactChanged, & ScreenContactChanged_Event )
 {
    Priority = tpLower;
    logMatch = new LogMatcher();
@@ -46,7 +47,24 @@ void TMatchThread::FinishMatchThread()
       matchThread->WaitFor();
    }
 }
+void TMatchThread::InitialiseMatchThread()
+{
+   if ( !matchThread )
+      matchThread = new TMatchThread();
+}
+void TMatchThread::ScreenContactChanged_Event ( MinosEventBase & Event )
+{
+   ActionEvent<ScreenContact *, EN_ScreenContactChanged> & S = dynamic_cast<ActionEvent<ScreenContact *, EN_ScreenContactChanged> &> ( Event );
+   ScreenContact *sct = S.getData();
+   if (sct)
+   {
+      // we want to initialise the search from the screen contact - break what couplings we can
+      // we need to take care over thread safety as well!
+      startMatch();
+   }
+}
 //---------------------------------------------------------------------------
+#warning we also want to return the match results by event message
 const int MATCH_LIM = 20;
 void __fastcall TMatchThread::Execute()
 {
@@ -77,9 +95,7 @@ void __fastcall TMatchThread::Execute()
 //---------------------------------------------------------------------------
 /*static*/ void TMatchThread::startMatch(   CountryEntry *ce )
 {
-   if ( !matchThread )
-      matchThread = new TMatchThread();
-
+// The log frame should also be watching for ScreenContactChanged, and do this lot there
    TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
    // clear down match trees
    lgmt->xferTree = 0;
@@ -100,6 +116,7 @@ void __fastcall TMatchThread::doReplaceContestList( void )
 {
    try
    {
+//we also want to return the match results by event message
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
       lgmt->replaceContestList( myMatches );// replace the "other" list
    }
@@ -116,6 +133,7 @@ void __fastcall TMatchThread::doReplaceListList( void )
 {
    try
    {
+//we also want to return the match results by event message
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
       lgmt->replaceListList( myListMatches );   // replace the archive list
    }
@@ -146,6 +164,7 @@ void __fastcall TMatchThread::doMatchCountry( void )
 {
    try
    {
+//we also want to return the match results by event message
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
       lgmt->matchCountry( ctrymatch );       // scroll to country
    }
@@ -162,6 +181,7 @@ void __fastcall TMatchThread::doMatchDistrict( void )
 {
    try
    {
+//we also want to return the match results by event message
       TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
       lgmt->matchDistrict( distmatch );          // scroll to district
    }

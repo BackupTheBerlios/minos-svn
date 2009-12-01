@@ -210,7 +210,6 @@ void TGJVQSOLogFrame::killPartial( void )
       delete partialContact;
       partialContact = 0;
    }
-   TMatchThread::startMatch();
 }
 //==============================================================================
 void TGJVQSOLogFrame::doGJVEditChange( TObject *Sender )
@@ -225,12 +224,12 @@ void TGJVQSOLogFrame::doGJVEditChange( TObject *Sender )
          // clear the error list
          contest->DupSheet.clearCurDup();	// as edited, no longer a dup(?)
       }
-      TMatchThread::startMatch();
       if ( current == LocEdit || Sender == LocEdit )
       {
          // force bearing calc
          calcLoc();
       }
+      MinosLoggerEvents::SendScreenContactChanged(&screenContact);
    }
 }
 //==============================================================================
@@ -258,11 +257,14 @@ void TGJVQSOLogFrame::transferDetails( const BaseContact * lct, const BaseContes
    CallsignEdit->SetFocus();
    doAutofill();
    CallsignEdit->SetFocus();
+
+   doGJVEditChange(CallsignEdit);
+   doGJVEditChange(LocEdit);
 }
 void TGJVQSOLogFrame::transferDetails( const ListContact * lct, const ContactList */*matct*/ )
 {
    CallsignEdit->Text = lct->cs.fullCall.getValue().c_str();
-   LocEdit->Text = lct->loc.loc.getValue().c_str();  // also forces update of score etc
+   LocEdit->Text = lct->loc.loc.getValue().c_str();
 
    valid( cmCheckValid ); // make sure all single and cross field
    // validation has been done
@@ -271,6 +273,9 @@ void TGJVQSOLogFrame::transferDetails( const ListContact * lct, const ContactLis
    CallsignEdit->SetFocus();
    doAutofill();
    CallsignEdit->SetFocus();
+
+   doGJVEditChange(CallsignEdit);
+   doGJVEditChange(LocEdit);
 }
 //==============================================================================
 void TGJVQSOLogFrame::setFreq( String f )

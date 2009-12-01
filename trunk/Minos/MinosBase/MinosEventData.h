@@ -31,6 +31,7 @@ enum MinosEventNumber
    EN_SetMode,
    EN_SetFreq,
    EN_EditMatchContact,
+   EN_ScreenContactChanged,
 
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,

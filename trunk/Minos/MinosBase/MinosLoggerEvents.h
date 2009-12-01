@@ -13,6 +13,7 @@
 //---------------------------------------------------------------------------
 class BaseContestLog;
 class BaseContact;
+class ScreenContact;
 class MinosLoggerEvents
 {
 private:
@@ -35,6 +36,7 @@ public:
    static void SendSetMode(String);
    static void SendSetFreq(String);
    static void SendEditMatchContact();
+   static void SendScreenContactChanged(ScreenContact *);
 };
 //---------------------------------------------------------------------------
 #endif

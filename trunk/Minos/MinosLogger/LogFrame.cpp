@@ -640,8 +640,6 @@ void TSingleLogFrame::transferDetails( MatchNodeData *MatchTreeIndex )
    {
       BaseContestLog * matct = MatchTreeIndex->matchedContest;
       GJVQSOLogFrame->transferDetails( lct, matct );
-
-      TMatchThread::startMatch();						// make sure rematched
    }
 }
 //---------------------------------------------------------------------------
@@ -658,8 +656,6 @@ void TSingleLogFrame::transferDetails( MatchNodeListData *MatchTreeIndex )
    {
       ContactList * matct = MatchTreeIndex->matchedList;
       GJVQSOLogFrame->transferDetails( lct, matct );
-
-      TMatchThread::startMatch();						// make sure rematched
    }
 }
 //---------------------------------------------------------------------------
@@ -1260,7 +1256,6 @@ void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
          PVirtualNode l = LogMonitor->QSOTree->GetLastChild( LogMonitor->QSOTree->RootNode );
          LogMonitor->QSOTree->FocusedNode = l;
          LogMonitor->QSOTree->Selected[ l ] = true;
-         TMatchThread::startMatch();
       }
    }
 }
