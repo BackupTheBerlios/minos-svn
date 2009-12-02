@@ -9,6 +9,7 @@
 #include <vcl.h>
 #pragma hdrstop
 //---------------------------------------------------------------------------
+#include <string>
 #include "MinosEventData.h"
 #include "MinosEventManager.h"
 #include "MinosLoggerEvents.h"
@@ -106,6 +107,26 @@ void MinosLoggerEvents::SendEditMatchContact()
 void MinosLoggerEvents::SendScreenContactChanged(ScreenContact *sct)
 {
 	ActionEvent<ScreenContact * ,EN_ScreenContactChanged>::Send(sct);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendReplaceLogList(TMatchCollection *matchCollection)
+{
+	ActionEvent<TMatchCollection * ,EN_ReplaceLogList>::Send(matchCollection);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendReplaceListList(TMatchCollection *matchCollection)
+{
+	ActionEvent<TMatchCollection * ,EN_ReplaceListList>::Send(matchCollection);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendScrollToCountry(std::string prefix)
+{
+	ActionEvent<std::string ,EN_ScrollToCountry>::Send(prefix);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendScrollToDistrict(std::string prefix)
+{
+	ActionEvent<std::string ,EN_ScrollToDistrict>::Send(prefix);
 }
 //---------------------------------------------------------------------------
 

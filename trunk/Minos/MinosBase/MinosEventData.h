@@ -33,6 +33,11 @@ enum MinosEventNumber
    EN_EditMatchContact,
    EN_ScreenContactChanged,
 
+   EN_ReplaceLogList,
+   EN_ReplaceListList,
+   EN_ScrollToCountry,
+   EN_ScrollToDistrict,
+
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,
  //  EN_ArchiveMatchColumnsChanged,

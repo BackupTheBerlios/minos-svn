@@ -158,6 +158,7 @@ class TMatchThread : public TThread
    protected:
       virtual void __fastcall Execute();    // TThread method
    public:
+      ScreenContact * mct;
       void __fastcall ShowMatchStatus( std::string mess );
       void __fastcall replaceContestList( TMatchCollection *matchCollection );
       void __fastcall replaceListList( TMatchCollection *matchCollection );

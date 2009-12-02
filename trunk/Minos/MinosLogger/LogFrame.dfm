@@ -349,54 +349,6 @@ object SingleLogFrame: TSingleLogFrame
               Width = 14
               ExplicitWidth = 14
             end
-            inherited DateEdit: TLabeledEdit
-              EditLabel.Width = 27
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 45
-              EditLabel.ExplicitWidth = 27
-            end
-            inherited SerRXEdit: TLabeledEdit
-              EditLabel.Width = 53
-              EditLabel.ExplicitLeft = 337
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 53
-            end
-            inherited TimeEdit: TLabeledEdit
-              EditLabel.Width = 28
-              EditLabel.ExplicitLeft = 108
-              EditLabel.ExplicitTop = 45
-              EditLabel.ExplicitWidth = 28
-            end
-            inherited CallsignEdit: TLabeledEdit
-              EditLabel.Width = 72
-              EditLabel.ExplicitLeft = 4
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 72
-            end
-            inherited QTHEdit: TLabeledEdit
-              EditLabel.Width = 55
-              EditLabel.ExplicitLeft = 504
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 55
-            end
-            inherited GJVCancelButton: TButton
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited GJVForceButton: TButton
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited RSTTXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 108
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
-            inherited LocEdit: TLabeledEdit
-              EditLabel.Width = 46
-              EditLabel.ExplicitLeft = 420
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 46
-            end
             inherited SerTXEdit: TLabeledEdit
               EditLabel.Width = 52
               EditLabel.ExplicitLeft = 170
@@ -428,6 +380,54 @@ object SingleLogFrame: TSingleLogFrame
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 104
               EditLabel.ExplicitWidth = 62
+            end
+            inherited LocEdit: TLabeledEdit
+              EditLabel.Width = 46
+              EditLabel.ExplicitLeft = 420
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 46
+            end
+            inherited RSTTXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 108
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited GJVForceButton: TButton
+              OnClick = GJVQSOLogFrame1GJVForceButtonClick
+            end
+            inherited GJVCancelButton: TButton
+              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
+            end
+            inherited QTHEdit: TLabeledEdit
+              EditLabel.Width = 55
+              EditLabel.ExplicitLeft = 504
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 55
+            end
+            inherited CallsignEdit: TLabeledEdit
+              EditLabel.Width = 72
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 72
+            end
+            inherited TimeEdit: TLabeledEdit
+              EditLabel.Width = 28
+              EditLabel.ExplicitLeft = 108
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 28
+            end
+            inherited SerRXEdit: TLabeledEdit
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 337
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 53
+            end
+            inherited DateEdit: TLabeledEdit
+              EditLabel.Width = 27
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 45
+              EditLabel.ExplicitWidth = 27
             end
             inherited TimeNowButton: TButton
               OnClick = SetTimeNowClick

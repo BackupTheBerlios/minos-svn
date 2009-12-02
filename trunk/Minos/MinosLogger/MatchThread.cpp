@@ -32,7 +32,7 @@
 TMatchThread *TMatchThread::matchThread = 0;
 
 __fastcall TMatchThread::TMatchThread()
-      : TThread(  /*CreateSuspended*/ false ), myMatches( 0 ), myListMatches( 0 ),
+      : TThread(  /*CreateSuspended*/ false ), myMatches( 0 ), myListMatches( 0 ), mct(0),
       EL_ScreenContactChanged ( EN_ScreenContactChanged, & ScreenContactChanged_Event )
 {
    Priority = tpLower;
@@ -55,8 +55,8 @@ void TMatchThread::InitialiseMatchThread()
 void TMatchThread::ScreenContactChanged_Event ( MinosEventBase & Event )
 {
    ActionEvent<ScreenContact *, EN_ScreenContactChanged> & S = dynamic_cast<ActionEvent<ScreenContact *, EN_ScreenContactChanged> &> ( Event );
-   ScreenContact *sct = S.getData();
-   if (sct)
+   mct = S.getData();
+   if (mct)
    {
       // we want to initialise the search from the screen contact - break what couplings we can
       // we need to take care over thread safety as well!
@@ -116,9 +116,7 @@ void __fastcall TMatchThread::doReplaceContestList( void )
 {
    try
    {
-//we also want to return the match results by event message
-      TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->replaceContestList( myMatches );// replace the "other" list
+       MinosLoggerEvents::SendReplaceLogList(myMatches);
    }
    catch ( ... )
    {}
@@ -133,9 +131,7 @@ void __fastcall TMatchThread::doReplaceListList( void )
 {
    try
    {
-//we also want to return the match results by event message
-      TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->replaceListList( myListMatches );   // replace the archive list
+       MinosLoggerEvents::SendReplaceListList(myListMatches);
    }
    catch ( ... )
    {}
@@ -164,9 +160,7 @@ void __fastcall TMatchThread::doMatchCountry( void )
 {
    try
    {
-//we also want to return the match results by event message
-      TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->matchCountry( ctrymatch );       // scroll to country
+      MinosLoggerEvents::SendScrollToCountry(ctrymatch);
    }
    catch ( ... )
    {}
@@ -181,9 +175,7 @@ void __fastcall TMatchThread::doMatchDistrict( void )
 {
    try
    {
-//we also want to return the match results by event message
-      TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-      lgmt->matchDistrict( distmatch );          // scroll to district
+      MinosLoggerEvents::SendScrollToCountry(distmatch);
    }
    catch ( ... )
    {}
@@ -356,7 +348,7 @@ void Matcher::initMatch( void )
       {
 
          // we need to have been sent this... in a start match action?
-         ScreenContact * mct = &LogContainer->findCurrentLogFrame() ->GJVQSOLogFrame->screenContact;
+         ScreenContact * mct = TMatchThread::getMatchThread()->mct;
          if ( !mct )
             return ;
 

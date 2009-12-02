@@ -77,7 +77,13 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_FormKey ( EN_FormKey, & FormKey_Event ),
       EL_SetMode ( EN_SetMode, & SetMode_Event ),
       EL_SetFreq ( EN_SetFreq, & SetFreq_Event ),
-      EL_EditMatchContact ( EN_EditMatchContact, & EditMatchContact_Event )
+      EL_EditMatchContact ( EN_EditMatchContact, & EditMatchContact_Event ),
+
+      EL_ReplaceLogList ( EN_ReplaceLogList, & ReplaceLogList_Event ),
+      EL_ReplaceListList ( EN_ReplaceListList, & ReplaceListList_Event ),
+
+      EL_ScrollToCountry ( EN_ScrollToCountry, & ScrollToCountry_Event ),
+      EL_ScrollToDistrict ( EN_ScrollToDistrict, & ScrollToDistrict_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -616,6 +622,26 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
    ArchiveMatchTree->EndUpdate();
 
 }
+//---------------------------------------------------------------------------
+void TSingleLogFrame::ReplaceLogList_Event ( MinosEventBase & Event )
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<TMatchCollection *, EN_ReplaceLogList> & S = dynamic_cast<ActionEvent<TMatchCollection *, EN_ReplaceLogList> &> ( Event );
+      TMatchCollection *matchCollection = S.getData();
+      replaceContestList(matchCollection);
+   }
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::ReplaceListList_Event ( MinosEventBase & Event )
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<TMatchCollection *, EN_ReplaceListList> & S = dynamic_cast<ActionEvent<TMatchCollection *, EN_ReplaceListList> &> ( Event );
+      TMatchCollection *matchCollection = S.getData();
+      replaceListList(matchCollection);
+   }
+}
 //==============================================================================
 void TSingleLogFrame::replaceContestList( TMatchCollection *matchCollection )
 {
@@ -741,6 +767,16 @@ void __fastcall TSingleLogFrame::NextContactDetailsTimerTimer( TObject */*Sender
    }
 }
 //---------------------------------------------------------------------------
+void TSingleLogFrame::ScrollToDistrict_Event ( MinosEventBase & Event )
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<std::string, EN_ScrollToDistrict> & S = dynamic_cast<ActionEvent<std::string, EN_ScrollToDistrict> &> ( Event );
+      std::string qth = S.getData();
+      matchDistrict(qth);
+   }
+}
+//---------------------------------------------------------------------------
 
 void TSingleLogFrame::matchDistrict( const std::string &qth )
 {
@@ -749,6 +785,16 @@ void TSingleLogFrame::matchDistrict( const std::string &qth )
    {
       unsigned int district_ind = MultLists::getMultLists() ->getDistListIndexOf( dist );
       MultDispFrame->scrollToDistrict( district_ind, true );
+   }
+}
+//---------------------------------------------------------------------------
+void TSingleLogFrame::ScrollToCountry_Event ( MinosEventBase & Event )
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<std::string, EN_ScrollToCountry> & S = dynamic_cast<ActionEvent<std::string, EN_ScrollToCountry> &> ( Event );
+      std::string prefix = S.getData();
+      matchCountry(prefix);
    }
 }
 //---------------------------------------------------------------------------

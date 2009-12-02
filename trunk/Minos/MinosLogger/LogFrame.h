@@ -209,6 +209,18 @@ class TSingleLogFrame : public TFrame
       MinosEventListener  EL_EditMatchContact;
       void EditMatchContact_Event ( MinosEventBase & Event );
 
+      MinosEventListener  EL_ReplaceLogList;
+      void ReplaceLogList_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ReplaceListList;
+      void ReplaceListList_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ScrollToCountry;
+      void ScrollToCountry_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ScrollToDistrict;
+      void ScrollToDistrict_Event ( MinosEventBase & Event );
+
       bool isCurrentLog;
 
 //      TOperatorFrame *OperatorFrame;

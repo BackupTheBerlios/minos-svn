@@ -14,6 +14,7 @@
 class BaseContestLog;
 class BaseContact;
 class ScreenContact;
+class TMatchCollection;
 class MinosLoggerEvents
 {
 private:
@@ -37,6 +38,10 @@ public:
    static void SendSetFreq(String);
    static void SendEditMatchContact();
    static void SendScreenContactChanged(ScreenContact *);
+   static void SendReplaceLogList(TMatchCollection *matchCollection);
+   static void SendReplaceListList(TMatchCollection *matchCollection);
+   static void SendScrollToCountry(std::string prefix);
+   static void SendScrollToDistrict(std::string prefix);
 };
 //---------------------------------------------------------------------------
 #endif
