@@ -19,6 +19,7 @@
 #include <ExtCtrls.hpp>
 #include "MultDisp.h"
 #include <ComCtrls.hpp>
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class TMonitoringFrame : public TFrame
 {
@@ -27,7 +28,10 @@ class TMonitoringFrame : public TFrame
       TLogMonitorFrame *LogMonitorFrame;
       TSplitter *MultSplitter;
       TMultDispFrame *MultDispFrame;
+      TPanel *MultPanel;
       TTimer *InitTimer;
+   TPanel *Panel1;
+   TImage *Splitter_Image;
       void __fastcall LogMonitorFrameQSOTreeDblClick( TObject *Sender );
       void __fastcall LogMonitorFrameQSOTreeGetNodeDataSize(
          TBaseVirtualTree *Sender, int &NodeDataSize );
@@ -41,7 +45,9 @@ class TMonitoringFrame : public TFrame
             const TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
             TVSTTextType TextType );
       void __fastcall InitTimerTimer( TObject *Sender );
+   void __fastcall MultSplitterMoved(TObject *Sender);
    private: 	// User declarations
+      TWhisperSplitter *WMultSplitter;
       BaseContestLog *contest;
    public: 		// User declarations
       __fastcall TMonitoringFrame( TComponent* Owner );

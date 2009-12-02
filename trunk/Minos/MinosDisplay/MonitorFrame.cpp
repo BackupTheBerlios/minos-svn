@@ -20,7 +20,11 @@ TMonitoringFrame *MonitoringFrame;
 //---------------------------------------------------------------------------
 __fastcall TMonitoringFrame::TMonitoringFrame( TComponent* Owner )
       : TFrame( Owner ), contest( 0 )
-{}
+{
+   WMultSplitter = new TWhisperSplitter(MultSplitter, MultPanel);
+	WMultSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WMultSplitter->HighlightColor = clSkyBlue;
+}
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -88,6 +92,12 @@ void __fastcall TMonitoringFrame::InitTimerTimer( TObject */*Sender*/ )
    InitTimer->Enabled = false;
    MultDispFrame->setContest( contest );
    MultDispFrame->ErrTab->TabVisible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMonitoringFrame::MultSplitterMoved(TObject *Sender)
+{
+//
 }
 //---------------------------------------------------------------------------
 

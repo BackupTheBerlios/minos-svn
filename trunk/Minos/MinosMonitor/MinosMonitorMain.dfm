@@ -17,11 +17,13 @@ object MonitorMain: TMonitorMain
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 153
+    Left = 185
     Top = 0
     Width = 14
     Height = 361
     MinSize = 1
+    OnMoved = Splitter1Moved
+    ExplicitLeft = 153
   end
   object Splitter_Image: TImage
     Left = 60
@@ -37,7 +39,7 @@ object MonitorMain: TMonitorMain
     Transparent = True
     Visible = False
   end
-  object Panel1: TPanel
+  object ButtonPanel: TPanel
     Left = 0
     Top = 361
     Width = 600
@@ -76,42 +78,60 @@ object MonitorMain: TMonitorMain
       OnClick = FocusCurrentButtonClick
     end
   end
-  object MonitorTree: TVirtualStringTree
+  object MonitorTreePanel: TPanel
     Left = 0
     Top = 0
-    Width = 153
+    Width = 185
     Height = 361
     Align = alLeft
-    AutoExpandDelay = 100
-    Header.AutoSizeIndex = -1
-    Header.DefaultHeight = 17
-    Header.Options = [hoColumnResize, hoDrag]
-    Header.ParentFont = True
+    Caption = 'MonitorTreePanel'
     TabOrder = 1
-    TabStop = False
-    TreeOptions.AutoOptions = [toAutoExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
-    OnDblClick = MonitorTreeDblClick
-    OnGetText = MonitorTreeGetText
-    OnGetNodeDataSize = MonitorTreeGetNodeDataSize
-    OnInitChildren = MonitorTreeInitChildren
-    OnInitNode = MonitorTreeInitNode
-    OnMouseDown = MonitorTreeMouseDown
-    Columns = <
-      item
-        Margin = 0
-        Position = 0
-        Spacing = 0
-        Width = 180
-      end>
+    object MonitorTree: TVirtualStringTree
+      Left = 1
+      Top = 1
+      Width = 183
+      Height = 359
+      Align = alClient
+      AutoExpandDelay = 100
+      Header.AutoSizeIndex = -1
+      Header.DefaultHeight = 17
+      Header.Options = [hoColumnResize, hoDrag]
+      Header.ParentFont = True
+      TabOrder = 0
+      TabStop = False
+      TreeOptions.AutoOptions = [toAutoExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
+      OnDblClick = MonitorTreeDblClick
+      OnGetText = MonitorTreeGetText
+      OnGetNodeDataSize = MonitorTreeGetNodeDataSize
+      OnInitChildren = MonitorTreeInitChildren
+      OnInitNode = MonitorTreeInitNode
+      OnMouseDown = MonitorTreeMouseDown
+      Columns = <
+        item
+          Margin = 0
+          Position = 0
+          Spacing = 0
+          Width = 180
+        end>
+    end
   end
-  object ContestPageControl: TPageControl
-    Left = 167
+  object LogPanel: TPanel
+    Left = 199
     Top = 0
-    Width = 433
+    Width = 401
     Height = 361
     Align = alClient
-    PopupMenu = PopupMenu1
+    Caption = 'LogPanel'
     TabOrder = 2
+    object ContestPageControl: TPageControl
+      Left = 1
+      Top = 1
+      Width = 399
+      Height = 359
+      Align = alClient
+      PopupMenu = PopupMenu1
+      TabOrder = 0
+    end
   end
   object LogTimer: TTimer
     Interval = 100

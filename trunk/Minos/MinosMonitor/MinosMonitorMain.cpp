@@ -94,6 +94,9 @@ __fastcall TMonitorMain::TMonitorMain( TComponent* Owner )
       : TForm( Owner ), subscribed( false ), saveResize( false ), MonitorTreeClickNode( 0 )
 {
    enableTrace( ".\\TraceLog\\MinosMonitor_" );
+   WLogAreaSplitter = new TWhisperSplitter(Splitter1, MonitorTreePanel);
+	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
+	WLogAreaSplitter->HighlightColor = clSkyBlue;
 }
 //---------------------------------------------------------------------------
 __fastcall TMonitorMain::~TMonitorMain( )
@@ -118,6 +121,7 @@ __fastcall TMonitorMain::~TMonitorMain( )
    stationList.clear();
    delete MultLists::getMultLists();
    CsGuard::ClearDown();
+   delete WLogAreaSplitter;
 }
 //---------------------------------------------------------------------------
 void TMonitorMain::showContestScore( const std::string &score )
@@ -675,6 +679,12 @@ void __fastcall TMonitorMain::FocusCurrentButtonClick(TObject */*Sender*/)
       f->LogMonitorFrame->QSOTree->FocusedNode = l;
       f->LogMonitorFrame->QSOTree->Selected[ l ] = true;
    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMonitorMain::Splitter1Moved(TObject *Sender)
+{
+//   
 }
 //---------------------------------------------------------------------------
 

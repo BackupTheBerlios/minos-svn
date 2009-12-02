@@ -28,7 +28,7 @@ class TMonitorMain : public TForm
       TTimer *LogTimer;
       TTimer *StartupTimer;
       TTimer *ConnectTimer;
-      TPanel *Panel1;
+   TPanel *ButtonPanel;
       TButton *CloseButton;
       TVirtualStringTree *MonitorTree;
       TTimer *MonitorTimer;
@@ -40,6 +40,8 @@ class TMonitorMain : public TForm
       TMenuItem *Cancel1;
    TButton *FocusCurrentButton;
    TImage *Splitter_Image;
+   TPanel *LogPanel;
+   TPanel *MonitorTreePanel;
       void __fastcall CloseButtonClick( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall LogTimerTimer( TObject *Sender );
@@ -64,7 +66,9 @@ class TMonitorMain : public TForm
       void __fastcall Close1Click( TObject *Sender );
       void __fastcall Cancel1Click( TObject *Sender );
    void __fastcall FocusCurrentButtonClick(TObject *Sender);
+   void __fastcall Splitter1Moved(TObject *Sender);
    private:  	// User declarations
+      TWhisperSplitter *WLogAreaSplitter;
       std::string localServerName;
       bool subscribed;
       bool saveResize;

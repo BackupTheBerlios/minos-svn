@@ -21,25 +21,25 @@
   <PropertyGroup Condition="'$(Base)'!=''">
     <OutputExt>lib</OutputExt>
     <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-    <BCC_OutputDir>obj</BCC_OutputDir>
     <DCC_ObjPath>..\MinosBase;C:\Minos\MinosDisplay</DCC_ObjPath>
+    <BCC_OutputDir>obj</BCC_OutputDir>
     <DynamicRTL>true</DynamicRTL>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
     <FinalOutputDir>.</FinalOutputDir>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
     <DCC_UnitSearchPath>..\MinosBase;C:\Minos\MinosDisplay;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
-    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <PackageLibs>vcl.lib;rtl.lib;JvCoreD11R.lib;vcldb.lib;dbrtl.lib;vclx.lib;VTV.lib</PackageLibs>
-    <BCC_PCHCache>true</BCC_PCHCache>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <IncludePath>$(VTV)\Source;$(TINYXML);..\WhisperSplitter</IncludePath>
-    <BCC_IncludePath>..\XMPPLib;..\minosbase;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include;..\..\vcl\RADStudio2007</BCC_IncludePath>
-    <DCC_IncludePath>..\MinosBase;C:\Minos\MinosDisplay;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-    <BRCC_IncludePath>..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include;C:\Program Files\Soft Gems\Virtual Treeview\Source</BRCC_IncludePath>
-    <TASM_IncludePath>..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include;C:\Program Files\Soft Gems\Virtual Treeview\Source</TASM_IncludePath>
+    <BCC_PCHCache>true</BCC_PCHCache>
     <AllPackageLibs>vcl.lib;rtl.lib;JvCoreD11R.lib;vcldb.lib;dbrtl.lib;vclx.lib;VTV.lib</AllPackageLibs>
-    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
-    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <TASM_IncludePath>..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include;C:\Program Files\Soft Gems\Virtual Treeview\Source</TASM_IncludePath>
+    <BRCC_IncludePath>..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include;C:\Program Files\Soft Gems\Virtual Treeview\Source</BRCC_IncludePath>
+    <DCC_IncludePath>..\MinosBase;C:\Minos\MinosDisplay;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BCC_IncludePath>..\XMPPLib;..\minosbase;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include;..\..\vcl\RADStudio2007</BCC_IncludePath>
     <TLIB_PageSize>256</TLIB_PageSize>
+    <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</ILINK_LibraryPath>
+    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
     <Multithreaded>true</Multithreaded>
     <DCC_ResourcePath>..\MinosBase;C:\Minos\MinosDisplay</DCC_ResourcePath>
   </PropertyGroup>
@@ -55,8 +55,8 @@
     <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
     <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
     <BCC_StackFrames>true</BCC_StackFrames>
-    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
     <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
     <TASM_Debugging>Full</TASM_Debugging>
     <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
