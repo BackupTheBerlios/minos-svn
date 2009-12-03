@@ -1,8 +1,6 @@
 Other points
 ============
 
-Have a "isCurrentContest" or some such in LogFrame, so that we can easily recognise that we are actually the contest on display, and hence any action messages apply to us.
-
 Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
 
 Actions and messages in logger
@@ -31,9 +29,9 @@ Most of the complications are
 	HeadersChanged
 	
 	
-- Keep all messages within the current contest - others aren't interested until they become current. MAy also want to send to a net gateway, e.g. so a second PC can see what is being typed in  amonitor app (internal message <-> broker <-> broker <-> internal message). So need to tie registration to the individual contest/logframe, and not have a global system.
+- Keep all messages within the current contest - others aren't interested until they become current. May also want to send to a net gateway, e.g. so a second PC can see what is being typed in a monitor app (internal message <-> broker <-> broker <-> internal message).
 
-Or we register listeners, and they all look, and say "not for me" if the contest is wrong. I think this works - we then don't need the nasty "all frames" loops for splitter and header position changes.
+We register listeners, and they all look, and say "not for me" if the contest is wrong. I think this works - we then don't need the nasty "all frames" loops for splitter and header position changes.
 
 Do we even make QSO log to disk part of this? contest and qso pick up change and action messages from the display?
 
