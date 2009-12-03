@@ -16,17 +16,17 @@
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendContestPageChanged()
 {
-	ActionEvent<int ,EN_ContestPageChanged>::Send(0); // as we cannot have void
+	ActionEventV<EN_ContestPageChanged>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendLogColumnsChanged()
 {
-	ActionEvent<int ,EN_LogColumnsChanged>::Send(0); // as we cannot have void
+	ActionEventV<EN_LogColumnsChanged>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendSplittersChanged()
 {
-	ActionEvent<int ,EN_SplittersChanged>::Send(0); // as we cannot have void
+	ActionEventV<EN_SplittersChanged>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendValidateError(int err)
@@ -36,7 +36,7 @@ void MinosLoggerEvents::SendValidateError(int err)
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendShowErrorList()
 {
-	ActionEvent<int ,EN_ShowErrorList>::Send(0);
+	ActionEventV<EN_ShowErrorList>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendReportOverstrike(bool ov)
@@ -56,32 +56,32 @@ void MinosLoggerEvents::SendAfterSelectContact(BaseContact *lct)
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendNextContactDetailsOnLeft()
 {
-	ActionEvent<int ,EN_NextContactDetailsOnLeft>::Send(0);
+	ActionEventV<EN_NextContactDetailsOnLeft>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendContestDetails()
 {
-	ActionEvent<int ,EN_ContestDetails>::Send(0);
+	ActionEventV<EN_ContestDetails>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendGoToSerial()
 {
-	ActionEvent<int ,EN_GoToSerial>::Send(0);
+	ActionEventV<EN_GoToSerial>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendMakeEntry()
 {
-	ActionEvent<int ,EN_MakeEntry>::Send(0);
+	ActionEventV<EN_MakeEntry>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendSetTimeNow()
 {
-	ActionEvent<int ,EN_SetTimeNow>::Send(0);
+	ActionEventV<EN_SetTimeNow>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendNextUnfilled()
 {
-	ActionEvent<int ,EN_NextUnfilled>::Send(0);
+	ActionEventV<EN_NextUnfilled>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendFormKey(WORD *key)
@@ -101,7 +101,7 @@ void MinosLoggerEvents::SendSetFreq(String freq)
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendEditMatchContact()
 {
-	ActionEvent<String ,EN_EditMatchContact>::Send(0);
+	ActionEventV<EN_EditMatchContact>::Send();
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendScreenContactChanged(ScreenContact *sct)
@@ -131,7 +131,7 @@ void MinosLoggerEvents::SendScrollToDistrict(std::string prefix)
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendMatchStarting()
 {
-	ActionEvent<int ,EN_MatchStarting>::Send(0);
+	ActionEventV<EN_MatchStarting>::Send();
 }
 //---------------------------------------------------------------------------
 

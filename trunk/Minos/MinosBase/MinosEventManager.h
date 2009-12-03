@@ -212,6 +212,25 @@ class MinosEventListener
       }
 };
 //---------------------------------------------------------------------------
+template <MinosEventNumber type>
+class ActionEventV : public MinosEventBase
+{
+	public:
+
+		ActionEventV (int)
+            :  MinosEventBase ( type )
+            { }
+
+		static void Send( );
+};
+template <MinosEventNumber type>
+void ActionEventV<type>::Send ( )
+{
+	ActionEventV<type> E (0 );
+	MinosEventManager & EM = MinosEventManager::GetMinosEventManager();
+	EM.ProcessEvent ( E );
+}
+//---------------------------------------------------------------------------
 template <class T,MinosEventNumber type>
 class ActionEvent : public MinosEventBase
 {
