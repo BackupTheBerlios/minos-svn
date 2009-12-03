@@ -305,22 +305,6 @@ void __fastcall TSingleLogFrame::otherMatchTreeSelect( PVirtualNode sel )
    }
 }
 //---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::archiveMatchTreeSelect( PVirtualNode sel )
-{
-   if ( !sel )
-      return ;
-   MatchNodeData *MatchTreeIndex = ( MatchNodeData * ) ( ArchiveMatchTree->GetNodeData( sel ) );
-   BaseContestLog *mclp = MatchTreeIndex->matchedContest;
-   if ( MatchTreeIndex && mclp && MatchTreeIndex->matchedContact )
-   {
-      if ( MinosParameters::getMinosParameters() ->yesNoMessage( this, "ARCHIVE LIST - Do you wish to switch?" ) )
-      {
-         LogContainer->selectContest( MatchTreeIndex->matchedContest, MatchTreeIndex->matchedContact );
-      }
-      ArchiveMatchTree->Repaint();
-   }
-}
-//---------------------------------------------------------------------------
 static GridColumn ThisMatchTreeColumns[ THISMATCHTREECOLS ] =
    {
       GridColumn( egTime, "XXXXXXXXXX", "UTC", taLeftJustify ),               // time
@@ -994,7 +978,6 @@ void __fastcall TSingleLogFrame::OtherMatchTreeMouseDown( TObject */*Sender*/,
 //---------------------------------------------------------------------------
 void __fastcall TSingleLogFrame::ArchiveMatchTreeDblClick( TObject *Sender )
 {
-   //   archiveMatchTreeSelect( matchTreeClickNode );
    GJVQSOLogFrame1MatchXferButtonClick(Sender);
 }
 //---------------------------------------------------------------------------
@@ -1053,16 +1036,6 @@ void __fastcall TSingleLogFrame::ArchiveMatchTreeGetText(
    {
       if ( Column == 0 )
          CellText = "No archive matches";
-   }
-}
-//---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::ArchiveMatchTreeKeyDown( TObject */*Sender*/,
-      WORD &Key, TShiftState /*Shift*/ )
-{
-   if ( Key == VK_SPACE )
-   {
-      Key = 0;
-      //      archiveMatchTreeSelect( ArchiveMatchTree->FocusedNode );
    }
 }
 //---------------------------------------------------------------------------

@@ -315,7 +315,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -491,7 +491,6 @@ object SingleLogFrame: TSingleLogFrame
           OnEnter = ArchiveMatchTreeEnter
           OnGetText = ArchiveMatchTreeGetText
           OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
-          OnKeyDown = ArchiveMatchTreeKeyDown
           OnMouseDown = ArchiveMatchTreeMouseDown
           Columns = <>
         end

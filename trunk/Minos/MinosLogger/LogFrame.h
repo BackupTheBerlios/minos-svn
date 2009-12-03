@@ -131,8 +131,6 @@ class TSingleLogFrame : public TFrame
       void __fastcall ArchiveMatchTreeGetText( TBaseVirtualTree *Sender,
             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
             WideString &CellText );
-      void __fastcall ArchiveMatchTreeKeyDown( TObject *Sender, WORD &Key,
-            TShiftState Shift );
       void __fastcall ArchiveMatchTreeMouseDown( TObject *Sender,
             TMouseButton Button, TShiftState Shift, int X, int Y );
       void __fastcall NextContactDetailsOnLeftClick( TObject *Sender );
@@ -248,7 +246,6 @@ class TSingleLogFrame : public TFrame
       void __fastcall QSOTreeSelect( PVirtualNode sel );
       void __fastcall thisMatchTreeSelect( PVirtualNode sel );
       void __fastcall otherMatchTreeSelect( PVirtualNode sel );
-      void __fastcall archiveMatchTreeSelect( PVirtualNode sel );
       void SplittersChanged();
 
    public:  		// User declarations

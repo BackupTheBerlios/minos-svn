@@ -692,7 +692,7 @@ void __fastcall TLogContainer::doSetMode()
 }
 void __fastcall TLogContainer::doSetFreq()
 {
-   MinosLoggerEvents::SendSetMode(freqToSet);
+   MinosLoggerEvents::SendSetFreq(freqToSet);
 }
 void TLogContainer::setCaption( String c )
 {

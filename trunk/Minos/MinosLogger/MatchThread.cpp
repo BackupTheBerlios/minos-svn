@@ -167,7 +167,7 @@ void __fastcall TMatchThread::doMatchDistrict( void )
 {
    try
    {
-      MinosLoggerEvents::SendScrollToCountry(distmatch);
+      MinosLoggerEvents::SendScrollToDistrict(distmatch);
    }
    catch ( ... )
    {}
