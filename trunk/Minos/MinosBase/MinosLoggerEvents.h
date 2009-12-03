@@ -42,6 +42,7 @@ public:
    static void SendReplaceListList(TMatchCollection *matchCollection);
    static void SendScrollToCountry(std::string prefix);
    static void SendScrollToDistrict(std::string prefix);
+   static void SendMatchStarting();
 };
 //---------------------------------------------------------------------------
 #endif

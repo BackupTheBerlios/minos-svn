@@ -267,6 +267,7 @@ ContactList * TLogContainer::addListSlot( TContactListDetails *ced, const std::s
 TSingleLogFrame *TLogContainer::findLogFrame(TTabSheet *t)
 {
    // we need to find the embedded frame...
+   // now ONLY used in closeSlot!
    if ( !t )
       return 0;
    int cc = t->ControlCount;
@@ -280,10 +281,12 @@ TSingleLogFrame *TLogContainer::findLogFrame(TTabSheet *t)
    return 0;
 }
 //---------------------------------------------------------------------------
+/*
 TSingleLogFrame *TLogContainer::findCurrentLogFrame()
 {
    return findLogFrame(ContestPageControl->ActivePage);
 }
+*/
 //---------------------------------------------------------------------------
 void TLogContainer::showContestScore( const std::string &score )
 {
@@ -352,8 +355,7 @@ void __fastcall TLogContainer::CloseAllButActionExecute(TObject */*Sender*/)
 
 void TLogContainer::enableActions()
 {
-   TSingleLogFrame * lf = findCurrentLogFrame();
-   bool f = ( lf != 0 );
+   bool f = ( ContestPageControl->ActivePage != 0 );
 
    LoggerAction->Enabled = true;
    LocCalcAction->Enabled = true;
@@ -826,13 +828,12 @@ void __fastcall TLogContainer::GridHintTimerTimer( TObject */*Sender*/ )
    {
       if ( GridHintWindow->GetHintControl() == ContestPageControl )
       {
-         TSingleLogFrame * lf = findCurrentLogFrame();
          POINT mpos, mpos2;
          ::GetCursorPos( &mpos );
-         if ( lf )
+         if ( ContestPageControl->ActivePage )
          {
-            mpos2 = lf->ScreenToClient( mpos );
-            if ( PtInRect( &( lf->ClientRect ), mpos2 ) )
+            mpos2 = ContestPageControl->ActivePage->ScreenToClient( mpos );
+            if ( PtInRect( &( ContestPageControl->ActivePage->ClientRect ), mpos2 ) )
             {
                GridHintWindow->Showing = false;
                return ;
@@ -888,6 +889,7 @@ void __fastcall TLogContainer::ContestPageControlMouseMove( TObject */*Sender*/,
             // and we want to set the hint position to the current mouse position
             GridHintTimer->Enabled = true;
             GridHintTimer->Interval = 500;
+            // Grid Hint is only actually used for hover over the actual tab to show full contest detail
             // We actually want the contest cfileName and the contest name etc here
             // - caption should be short file name
             TTabSheet *ctab = ContestPageControl->Pages[ tabno ];

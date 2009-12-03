@@ -129,4 +129,9 @@ void MinosLoggerEvents::SendScrollToDistrict(std::string prefix)
 	ActionEvent<std::string ,EN_ScrollToDistrict>::Send(prefix);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendMatchStarting()
+{
+	ActionEvent<int ,EN_MatchStarting>::Send(0);
+}
+//---------------------------------------------------------------------------
 

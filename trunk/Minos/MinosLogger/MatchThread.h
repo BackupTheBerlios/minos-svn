@@ -59,7 +59,7 @@ class TMatchCollection
 };
 class Matcher
 {
-      bool matchRequired;
+      bool matchRequired;  // use getter and setter below
    protected:
       enum MatchPhase {Exact, NoSuffix, NoLoc, Body, Country};
       enum ContestPhase {Starting, MainContest, Rest};

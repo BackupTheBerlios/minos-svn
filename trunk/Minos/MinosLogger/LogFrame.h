@@ -221,6 +221,9 @@ class TSingleLogFrame : public TFrame
       MinosEventListener  EL_ScrollToDistrict;
       void ScrollToDistrict_Event ( MinosEventBase & Event );
 
+      MinosEventListener  EL_MatchStarting;
+      void MatchStarting_Event ( MinosEventBase & Event );
+
       bool isCurrentLog;
 
 //      TOperatorFrame *OperatorFrame;

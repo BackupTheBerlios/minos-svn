@@ -64,7 +64,7 @@ void TMatchThread::ScreenContactChanged_Event ( MinosEventBase & Event )
    }
 }
 //---------------------------------------------------------------------------
-#warning we also want to return the match results by event message
+// limit the total  number of hits
 const int MATCH_LIM = 20;
 void __fastcall TMatchThread::Execute()
 {
@@ -74,11 +74,13 @@ void __fastcall TMatchThread::Execute()
    {
       while ( !Terminated )
       {
-         logMatch->initMatch();
+         logMatch->initMatch();  // does nothing unless matchRequired is true
          listMatch->initMatch();
 
+         // so it only does a max of 20+20 contacts before switching
+         // to "other" of log/list
          if ( !logMatch->idleMatch( 20 ) && !listMatch->idleMatch( 20 ) )
-            Sleep( 100 );
+            Sleep( 100 );  // this only happens when no more to do
       }
       delete logMatch;
       logMatch = 0;
@@ -95,17 +97,7 @@ void __fastcall TMatchThread::Execute()
 //---------------------------------------------------------------------------
 /*static*/ void TMatchThread::startMatch(   CountryEntry *ce )
 {
-// The log frame should also be watching for ScreenContactChanged, and do this lot there
-   TSingleLogFrame * lgmt = LogContainer->findCurrentLogFrame();
-   // clear down match trees
-   lgmt->xferTree = 0;
-   lgmt->matchTreeClickNode = 0;
-   lgmt->otherTreeClickNode = 0;
-   lgmt->archiveTreeClickNode = 0;
-   lgmt->OtherMatchTree->Colors->UnfocusedSelectionColor = clBtnFace;
-   lgmt->ArchiveMatchTree->Colors->UnfocusedSelectionColor = clBtnFace;
-   lgmt->GJVQSOLogFrame->MatchXferButton->Font->Color = clBtnText;
-   lgmt->GJVQSOLogFrame->MatchXferButton->Enabled = false;
+   MinosLoggerEvents::SendMatchStarting();
 
    matchThread->logMatch->startMatch( ce );
    matchThread->listMatch->startMatch( ce );
@@ -617,9 +609,9 @@ bool LogMatcher::idleMatch( int limit )
             contactIndex = ccon->getContactCount();	// force to go on
       }
 
-      while ( limit > 0 )
+      while (  matchStarted && limit > 0 )
       {
-         limit -= 1;
+//         limit -= 1;
          if ( !ccon ||
               ( contactIndex >= ccon->getContactCount() )
             )
@@ -642,7 +634,7 @@ bool LogMatcher::idleMatch( int limit )
                contestIndex++;
                if ( contestIndex < TContestApp::getContestApp() ->getContestSlotCount() )
                {
-                  // ContestLog is valid, if it is a list set first part
+                  // ContestLog is valid
                   ContestSlot * cs = TContestApp::getContestApp() ->contestSlotList.at( contestIndex );
                   ccon = cs->slot;
                }
@@ -909,7 +901,7 @@ bool ListMatcher::idleMatch( int limit )
 
       while ( limit > 0 )
       {
-         limit -= 1;
+//         limit -= 1;
          if ( !ccon ||
               ( contactIndex >= ccon->getContactCount() )
             )

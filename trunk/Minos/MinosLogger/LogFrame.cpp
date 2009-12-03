@@ -83,7 +83,8 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_ReplaceListList ( EN_ReplaceListList, & ReplaceListList_Event ),
 
       EL_ScrollToCountry ( EN_ScrollToCountry, & ScrollToCountry_Event ),
-      EL_ScrollToDistrict ( EN_ScrollToDistrict, & ScrollToDistrict_Event )
+      EL_ScrollToDistrict ( EN_ScrollToDistrict, & ScrollToDistrict_Event ),
+      EL_MatchStarting ( EN_MatchStarting, & MatchStarting_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -652,7 +653,24 @@ void TSingleLogFrame::replaceListList( TMatchCollection *matchCollection )
 {
    showMatchList( matchCollection );
 }
-//---------------------------------------------------------------------------
+//==============================================================================
+void TSingleLogFrame::MatchStarting_Event ( MinosEventBase & /*Event*/ )
+{
+   if (isCurrentLog)
+   {
+      // clear down match trees
+      xferTree = 0;
+      matchTreeClickNode = 0;
+      otherTreeClickNode = 0;
+      archiveTreeClickNode = 0;
+      OtherMatchTree->Colors->UnfocusedSelectionColor = clBtnFace;
+      ArchiveMatchTree->Colors->UnfocusedSelectionColor = clBtnFace;
+      GJVQSOLogFrame->MatchXferButton->Font->Color = clBtnText;
+      GJVQSOLogFrame->MatchXferButton->Enabled = false;
+   }
+}
+
+//==============================================================================
 void TSingleLogFrame::transferDetails( MatchNodeData *MatchTreeIndex )
 {
    // needs to be transferred into QSOLogFrame.cpp
@@ -687,6 +705,7 @@ void TSingleLogFrame::transferDetails( MatchNodeListData *MatchTreeIndex )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & /*Event*/ )
 {
+// no need to check for current log
    logColumnsChanged = true;
 }
 //---------------------------------------------------------------------------
@@ -1540,6 +1559,7 @@ void TSingleLogFrame::SplittersChanged()
 }
 void TSingleLogFrame::SplittersChanged_Event ( MinosEventBase & /*Event*/ )
 {
+// No need to check for current log
    splittersChanged = true;
 }
 //---------------------------------------------------------------------------

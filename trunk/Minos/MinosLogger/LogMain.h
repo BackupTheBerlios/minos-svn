@@ -203,7 +203,7 @@ class TLogContainer : public TForm
    public:  		// User declarations
       void showContestScore( const std::string &score );
       TSingleLogFrame *findLogFrame(TTabSheet *);
-      TSingleLogFrame *findCurrentLogFrame();
+//      TSingleLogFrame *findCurrentLogFrame();
       void selectContest( BaseContestLog * , BaseContact * );
       __fastcall TLogContainer( TComponent* Owner );
       TSingleLogFrame *findContest( const std::string &pubname );

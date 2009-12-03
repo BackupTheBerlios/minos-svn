@@ -37,6 +37,7 @@ enum MinosEventNumber
    EN_ReplaceListList,
    EN_ScrollToCountry,
    EN_ScrollToDistrict,
+   EN_MatchStarting,
 
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,
