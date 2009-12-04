@@ -25,7 +25,6 @@ class TQSOEditDlg : public TForm
    __published: 	// IDE-managed Components
       TVirtualStringTree *QSOHistoryTree;
       TGJVQSOEditFrame *GJVQSOEditFrame;
-      TTimer *ShowFocusTimer;
    TTimer *InitialiseTimer;
       void __fastcall QSOHistoryTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
@@ -44,7 +43,6 @@ class TQSOEditDlg : public TForm
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormKeyUp( TObject *Sender, WORD &Key, TShiftState Shift );
       void __fastcall GJVQSOEditFrameNextButtonClick( TObject *Sender );
-      void __fastcall ShowFocusTimerTimer( TObject *Sender );
       void __fastcall QSOHistoryTreeBeforeItemErase( TBaseVirtualTree *Sender,
             TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
             TColor &ItemColor, TItemEraseAction &EraseAction );

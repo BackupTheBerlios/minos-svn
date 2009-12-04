@@ -631,8 +631,8 @@ void BaseContestLog::scanContest( void )
       nct->newLoc = false;
       nct->check( );
    }
-   op1.setInitialValue( curop1 );
-   op2.setInitialValue( curop2 );
+   op1.setValue( curop1 );
+   op2.setValue( curop2 );
 }
 //============================================================
 DupContact::DupContact( BaseContact *c ) : dct( c ), sct( 0 )

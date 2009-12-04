@@ -39,6 +39,8 @@ enum MinosEventNumber
    EN_ScrollToDistrict,
    EN_MatchStarting,
 
+   EN_Op1Change,
+   EN_Op2Change,
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,
  //  EN_ArchiveMatchColumnsChanged,

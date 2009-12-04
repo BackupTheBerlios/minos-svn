@@ -134,4 +134,14 @@ void MinosLoggerEvents::SendMatchStarting()
 	ActionEventV<EN_MatchStarting>::Send();
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendOp1Change(std::string op)
+{
+	ActionEvent<std::string ,EN_Op1Change>::Send(op);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendOp2Change(std::string op)
+{
+	ActionEvent<std::string ,EN_Op2Change>::Send(op);
+}
+//---------------------------------------------------------------------------
 

@@ -249,6 +249,7 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
                      loadOK = importReg1Test( ediContestFile );
                      needExport = true;
                   }
+      scanContest();
       clearDirty();  // what we have just read CAN'T be dirty
       validateLoc();
       // run_contest_dialog has already loaded the LoggerContestLog and set log_count
@@ -294,7 +295,6 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
       }
    commonSave( newFile );
 
-   scanContest();
    return true;
 }
 void LoggerContestLog::setINIDetails()

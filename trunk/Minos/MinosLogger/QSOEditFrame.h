@@ -36,8 +36,6 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       void __fastcall PriorButtonClick( TObject *Sender );
       void __fastcall NextButtonClick( TObject *Sender );
       void __fastcall ROFieldTimerTimer( TObject *Sender );
-      void __fastcall MainOpComboBoxChange( TObject *Sender );
-      void __fastcall SecondOpComboBoxChange( TObject *Sender );
       void __fastcall MainOpComboBoxKeyPress( TObject *Sender, char &Key );
    private: 	// User declarations
       void killPartial( void );
@@ -52,8 +50,6 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       bool doGJVOKButtonClick( TObject *Sender );
       void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();
-      MinosItem<std::string> *op1Value;
-      MinosItem<std::string> *op2Value;
 };
 //---------------------------------------------------------------------------
 #endif

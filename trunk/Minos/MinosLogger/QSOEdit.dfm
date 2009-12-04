@@ -81,11 +81,6 @@ object QSOEditDlg: TQSOEditDlg
       end
     end
   end
-  object ShowFocusTimer: TTimer
-    OnTimer = ShowFocusTimerTimer
-    Left = 40
-    Top = 24
-  end
   object InitialiseTimer: TTimer
     Enabled = False
     Interval = 10

@@ -44,8 +44,8 @@ void ScreenContact::initialise( BaseContestLog *ct )
    newCtry = false;
    newDistrict = false;
    newLoc = false ;
-   op1.setValue( "" );
-   op2.setValue( "" );
+   op1 = "" ;
+   op2 = "" ;
 
    districtMult = 0;
    ctryMult = 0;
@@ -84,8 +84,8 @@ void ScreenContact::copyFromArg( BaseContact &cct )
    multCount = cct.multCount;
    forcedMult = cct.forcedMult.getValue();
 
-   op1.setValue( cct.op1.getValue() );
-   op2.setValue( cct.op2.getValue() );
+   op1 = cct.op1.getValue();
+   op2 = cct.op2.getValue();
 
    newLoc = cct.newLoc;
    newDistrict = cct.newDistrict;

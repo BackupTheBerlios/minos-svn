@@ -104,7 +104,6 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       TabOrder = 21
       TabStop = False
       Text = 'MainOpComboBox'
-      OnChange = MainOpComboBoxChange
       OnKeyPress = MainOpComboBoxKeyPress
     end
     object SecondOpComboBox: TComboBox
@@ -116,7 +115,6 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       TabOrder = 22
       TabStop = False
       Text = 'SecondOpComboBox'
-      OnChange = SecondOpComboBoxChange
       OnKeyPress = MainOpComboBoxKeyPress
     end
   end

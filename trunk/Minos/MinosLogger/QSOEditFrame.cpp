@@ -19,8 +19,10 @@
 #pragma link "BundleFrame"
 #pragma resource "*.dfm" 
 //---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
 __fastcall TGJVQSOEditFrame::TGJVQSOEditFrame( TComponent* Owner )
-      : TGJVEditFrame( Owner ), op1Value( 0 ), op2Value( 0 )
+      : TGJVEditFrame( Owner )
 {
    CatchupButton->Visible = false;
 }
@@ -139,6 +141,8 @@ void TGJVQSOEditFrame::logCurrentContact( )
       return ;
 
    getScreenEntry();
+   screenContact.op1 = MainOpComboBox->Text.c_str();
+   screenContact.op2 = SecondOpComboBox->Text.c_str();
 
    screenContact.contactFlags &= ~TO_BE_ENTERED;
 
@@ -161,6 +165,8 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
 
    screenContact.copyFromArg( *lct );
    showScreenEntry();
+   MainOpComboBox->Text = screenContact.op1.c_str();
+   SecondOpComboBox->Text = screenContact.op2.c_str();
    if ( !contest->isReadOnly() && (screenContact.contactFlags & TO_BE_ENTERED || catchup))
    {
       // Uri Mode - catchuping QSOs from paper while logging current QSOs
@@ -243,6 +249,8 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
 bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
 {
    getScreenEntry();
+   screenContact.op1 = MainOpComboBox->Text.c_str();
+   screenContact.op2 = SecondOpComboBox->Text.c_str();
    bool unfilled = screenContact.contactFlags & TO_BE_ENTERED ;
    bool OKok = TGJVEditFrame::doGJVOKButtonClick( Sender );
    if ( OKok && unfilled )
@@ -305,33 +313,11 @@ void TGJVQSOEditFrame::updateQSOTime()
    }
 }
 //---------------------------------------------------------------------------
-
-
 void __fastcall TGJVQSOEditFrame::ROFieldTimerTimer( TObject */*Sender*/ )
 {
    updateQSOTime();
 }
 //---------------------------------------------------------------------------
-
-
-void __fastcall TGJVQSOEditFrame::MainOpComboBoxChange( TObject */*Sender*/ )
-{
-   if ( op1Value )
-   {
-      op1Value->setValue( MainOpComboBox->Text.c_str() );
-   }
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TGJVQSOEditFrame::SecondOpComboBoxChange( TObject */*Sender*/ )
-{
-   if ( op2Value )
-   {
-      op2Value->setValue( SecondOpComboBox->Text.c_str() );
-   }
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TGJVQSOEditFrame::MainOpComboBoxKeyPress( TObject */*Sender*/,
       char &Key )
 {
@@ -340,10 +326,6 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxKeyPress( TObject */*Sender*/,
 //---------------------------------------------------------------------------
 void TGJVQSOEditFrame::initialise( BaseContestLog * contest, bool bf )
 {
-   MainOpLabel->Visible = false;
-   MainOpComboBox->Visible = false;
-   SecondOpLabel->Visible = false;
-   SecondOpComboBox->Visible = false;
    TGJVEditFrame::initialise(contest, /*edScreen,*/ bf);
 }
 

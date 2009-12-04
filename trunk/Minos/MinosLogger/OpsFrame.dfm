@@ -24,11 +24,11 @@ object OperatorFrame: TOperatorFrame
     Top = 43
     Width = 145
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 0
     Text = 'MainOpComboBox'
     OnChange = MainOpComboBoxChange
-    OnExit = OpComboBoxExit
+    OnExit = MainOpComboBoxExit
     OnKeyPress = MainOpComboBoxKeyPress
   end
   object SecondOpComboBox: TComboBox
@@ -36,17 +36,10 @@ object OperatorFrame: TOperatorFrame
     Top = 109
     Width = 145
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 1
     Text = 'SecondOpComboBox'
-    OnChange = SecondOpComboBoxChange
-    OnExit = OpComboBoxExit
+    OnExit = SecondOpComboBoxExit
     OnKeyPress = MainOpComboBoxKeyPress
-  end
-  object OpChangeTimer: TTimer
-    Interval = 50
-    OnTimer = OpChangeTimerTimer
-    Left = 128
-    Top = 72
   end
 end

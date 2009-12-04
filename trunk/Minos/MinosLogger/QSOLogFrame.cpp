@@ -19,10 +19,13 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "QSOFrame"
-#pragma resource "*.dfm" 
+#pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TGJVQSOLogFrame::TGJVQSOLogFrame( TComponent* Owner )
-      : TGJVEditFrame( Owner ), partialContact( 0 )
+      : TGJVEditFrame( Owner ), partialContact( 0 ),
+      isCurrentLog(false),
+      EL_Op1Change ( EN_Op1Change, & Op1Change_Event ),
+      EL_Op2Change ( EN_Op2Change, & Op2Change_Event )
 {}
 __fastcall TGJVQSOLogFrame::~TGJVQSOLogFrame()
 {
@@ -79,8 +82,8 @@ void TGJVQSOLogFrame::logScreenEntry( )
       }
    }
    ct->mode.setValue( screenContact.mode );
-   screenContact.op1.setValue( ct->op1.getValue() );
-   screenContact.op2.setValue( ct->op2.getValue() );
+   screenContact.op1 = ct->op1.getValue() ;
+   screenContact.op2 = ct->op2.getValue();
 
    lct->copyFromArg( screenContact );
    lct->commonSave();				// which also saves the ContestLog
@@ -359,12 +362,42 @@ void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject *Sender)
+void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject */*Sender*/)
 {
 // Go to the first unfilled QSO
 // If there aren't any then it needs to be made invisible
 // ScanContest can work out how many there are - and we can display that on the button
    MinosLoggerEvents::SendNextUnfilled();
+}
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::Op1Change_Event( MinosEventBase & Event)
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<std::string, EN_Op1Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op1Change> &> ( Event );
+
+      std::string op1 = S.getData();
+      contest->op1.setValue( op1 );
+      if ( op1.size() )
+      {
+         contest->oplist.insert( op1 );
+      }
+   }
+}
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::Op2Change_Event( MinosEventBase & Event)
+{
+   if (isCurrentLog)
+   {
+      ActionEvent<std::string, EN_Op2Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op2Change> &> ( Event );
+      std::string op2 = S.getData();
+      contest->op2.setValue( op2 );
+      if ( op2.size() )
+      {
+         contest->oplist.insert( op2 );
+      }
+      contest->commonSave(false);
+   }
 }
 //---------------------------------------------------------------------------
 

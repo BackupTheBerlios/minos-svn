@@ -95,6 +95,7 @@ void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
 
       QSOHistoryTree->FullExpand();
    }
+   refreshOps(GJVQSOEditFrame->screenContact);
 }
 //---------------------------------------------------------------------------
 void TQSOEditDlg::refreshOps( ScreenContact &screenContact )
@@ -112,10 +113,8 @@ void TQSOEditDlg::refreshOps( ScreenContact &screenContact )
          GJVQSOEditFrame->SecondOpComboBox->Items->Add( ( *i ).c_str() );
       }
    }
-   GJVQSOEditFrame->SecondOpComboBox->Text = screenContact.op2.getValue().c_str();
-   GJVQSOEditFrame->op2Value = &screenContact.op2;
-   GJVQSOEditFrame->MainOpComboBox->Text = screenContact.op1.getValue().c_str();
-   GJVQSOEditFrame->op1Value = &screenContact.op1;
+   GJVQSOEditFrame->SecondOpComboBox->Text = screenContact.op2.c_str();
+   GJVQSOEditFrame->MainOpComboBox->Text = screenContact.op1.c_str();
 
    // and if this is the last contact, the ops should also propogate into the contest
    // for the NEXT contact
@@ -277,23 +276,6 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrameNextButtonClick( TObject *Sender )
 
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TQSOEditDlg::ShowFocusTimerTimer( TObject */*Sender*/ )
-{
-   /*
-      TWinControl *cur =  ActiveControl;
-      if (cur)
-      {
-         LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = cur->Name;
-      }
-      else
-      {
-         LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = "unknown";
-      }
-   */
-}
-//---------------------------------------------------------------------------
-
 
 void __fastcall TQSOEditDlg::QSOHistoryTreeBeforeItemErase(
    TBaseVirtualTree *Sender, TCanvas */*TargetCanvas*/, PVirtualNode Node,

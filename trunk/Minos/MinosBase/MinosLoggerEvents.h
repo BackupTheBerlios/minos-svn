@@ -43,6 +43,8 @@ public:
    static void SendScrollToCountry(std::string prefix);
    static void SendScrollToDistrict(std::string prefix);
    static void SendMatchStarting();
+   static void SendOp1Change(std::string op1);
+   static void SendOp2Change(std::string op2);
 };
 //---------------------------------------------------------------------------
 #endif

@@ -48,8 +48,8 @@ class ScreenContact
       unsigned short contactFlags;
       std::string forcedMult;
 
-      MinosItem<std::string> op1;
-      MinosItem<std::string> op2;
+      std::string op1;
+      std::string op2;
       //------------------
 
       bool QSOValid;

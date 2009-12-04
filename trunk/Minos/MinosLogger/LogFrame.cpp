@@ -61,6 +61,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       otherTreeClickNode( 0 ),
       archiveTreeClickNode( 0 ),
       xferTree( 0 ),
+      isCurrentLog(false),
       EL_SplitterChanged ( EN_SplittersChanged, & SplittersChanged_Event ),
       EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
       EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event ),
@@ -88,7 +89,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
-   /*
+
    TTabSheet *OpTabSheet = new TTabSheet( MultDispFrame );
    OpTabSheet->Caption = "Ops";
    OperatorFrame = new TOperatorFrame( OpTabSheet );
@@ -96,16 +97,15 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
    OperatorFrame->Parent = OpTabSheet;
    OperatorFrame->Align = alClient;
    OperatorFrame->ParentFont = true;
-   */
+
    LogMonitor->initialise( contest );
    GJVQSOLogFrame->initialise( contest, /*this,*/ false );
 
-//   OperatorFrame->refreshOps();
+   OperatorFrame->refreshOps();
 
    WLogAreaSplitter = new TWhisperSplitter(LogAreaSplitter, MatchPanel);
 	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
 	WLogAreaSplitter->HighlightColor = clSkyBlue;
-
 
    WMultSplitter = new TWhisperSplitter(MultSplitter, MultPanel);
 	WMultSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
@@ -149,6 +149,7 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
    {
       isCurrentLog = false;
+      GJVQSOLogFrame->isCurrentLog = false;
       return ;
    }
 
@@ -156,6 +157,7 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
    TContestApp::getContestApp() ->setCurrentContest( ct );
 
    isCurrentLog = true;
+   GJVQSOLogFrame->isCurrentLog = true;
 
    if ( logColumnsChanged )
       showQSOs();
@@ -227,7 +229,7 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
 
    LogMonitor->Invalidate();
    MultDispFrame->refreshMults();
-//   OperatorFrame->refreshOps();
+   OperatorFrame->refreshOps();
    LogMonitor->Repaint();
    GJVQSOLogFrame->startNextEntry();
 
@@ -238,15 +240,6 @@ void TSingleLogFrame::QSOTreeSelectContact( BaseContact * lct )
    if (lct)
    {
       EditContact( lct );
-
-      if ( lct->op1.getValue().size() )
-      {
-         contest->oplist.insert( lct->op1.getValue() );
-      }
-      if ( lct->op2.getValue().size() )
-      {
-         contest->oplist.insert( lct->op2.getValue() );
-      }
    }
 }
 //---------------------------------------------------------------------------
@@ -256,12 +249,6 @@ void __fastcall TSingleLogFrame::QSOTreeSelect( PVirtualNode sel )
    {
       BaseContact * lct = dynamic_cast<BaseContact*>( contest->pcontactAt( sel->Index ) );
       QSOTreeSelectContact(lct);
-      if ( ( int ) sel->Index == contest->getContactCount() - 1 )
-      {
-         contest->op1.setValue( lct->op1 );
-         contest->op2.setValue( lct->op2 );
-      }
-//      OperatorFrame->refreshOps();
    }
 }
 //---------------------------------------------------------------------------
@@ -1318,7 +1305,7 @@ void TSingleLogFrame::updateTrees()
 {
    LogMonitor->QSOTree->RootNodeCount = contest->getContactCount() + 1;
    MultDispFrame->refreshMults();
-//   OperatorFrame->refreshOps();
+   OperatorFrame->refreshOps();
    LogMonitor->QSOTree->Invalidate();
 }
 //---------------------------------------------------------------------------
@@ -1342,7 +1329,7 @@ void TSingleLogFrame::GoNextUnfilled()
       contest->scanContest();
       LogMonitor->QSOTree->Invalidate();
       MultDispFrame->refreshMults();
-//      OperatorFrame->refreshOps();
+      OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
       GJVQSOLogFrame->startNextEntry();
    }
