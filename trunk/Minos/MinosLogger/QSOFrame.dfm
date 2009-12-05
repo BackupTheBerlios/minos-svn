@@ -22,14 +22,14 @@ object GJVEditFrame: TGJVEditFrame
       Caption = 'Mode'
     end
     object BrgSt: TLabel
-      Left = 470
+      Left = 510
       Top = 11
       Width = 12
       Height = 13
       Caption = 'xx'
     end
     object DistSt: TLabel
-      Left = 422
+      Left = 454
       Top = 11
       Width = 12
       Height = 13

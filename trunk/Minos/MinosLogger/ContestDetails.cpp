@@ -257,6 +257,8 @@ void TContestEntryDetails::setDetails(  )
    LocatorField->Checked = contest->locatorField.getValue() ;   // bool         // contest
    QTHField->Checked = contest->QTHField.getValue() ;   // bool                   // contest
 
+   MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
+   SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
 }
 void TContestEntryDetails::setDetails( const IndividualContest &ic )
 {
@@ -483,6 +485,11 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->QTHField.setValue( QTHField->Checked ) ;   // bool
 
    contest->power.setValue( PowerEdit->Text.c_str() );
+
+   contest->currentOp1.setValue(MainOpComboBox->Text.c_str());
+   contest->currentOp2.setValue(SecondOpComboBox->Text.c_str());
+   contest->oplist.insert(contest->currentOp1.getValue());
+   contest->oplist.insert(contest->currentOp2.getValue());
 
    contest->validateLoc();
 

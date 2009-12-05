@@ -36,6 +36,8 @@ void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
    TGJVEditFrame::initialise( contest, false );
    BandMapPanel->Visible = checkServerReady();
    MinosLoggerEvents::SendReportOverstrike(overstrike);
+   #warning if there IS no operator, use the station callsign
+   OperatorLabel->Caption = ("Op: " + contest->currentOp1.getValue()).c_str();
 }
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::logScreenEntry( )
@@ -82,8 +84,8 @@ void TGJVQSOLogFrame::logScreenEntry( )
       }
    }
    ct->mode.setValue( screenContact.mode );
-   screenContact.op1 = ct->op1.getValue() ;
-   screenContact.op2 = ct->op2.getValue();
+   screenContact.op1 = ct->currentOp1.getValue() ;
+   screenContact.op2 = ct->currentOp2.getValue();
 
    lct->copyFromArg( screenContact );
    lct->commonSave();				// which also saves the ContestLog
@@ -377,11 +379,13 @@ void TGJVQSOLogFrame::Op1Change_Event( MinosEventBase & Event)
       ActionEvent<std::string, EN_Op1Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op1Change> &> ( Event );
 
       std::string op1 = S.getData();
-      contest->op1.setValue( op1 );
+      contest->currentOp1.setValue( op1 );
       if ( op1.size() )
       {
          contest->oplist.insert( op1 );
       }
+      contest->commonSave(false);
+      OperatorLabel->Caption = ("Op: " + op1).c_str();
    }
 }
 //---------------------------------------------------------------------------
@@ -391,7 +395,7 @@ void TGJVQSOLogFrame::Op2Change_Event( MinosEventBase & Event)
    {
       ActionEvent<std::string, EN_Op2Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op2Change> &> ( Event );
       std::string op2 = S.getData();
-      contest->op2.setValue( op2 );
+      contest->currentOp2.setValue( op2 );
       if ( op2.size() )
       {
          contest->oplist.insert( op2 );

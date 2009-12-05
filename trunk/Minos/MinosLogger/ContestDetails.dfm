@@ -43,6 +43,20 @@ object ContestEntryDetails: TContestEntryDetails
     Height = 13
     Caption = 'End Time'
   end
+  object Label1: TLabel
+    Left = 492
+    Top = 206
+    Width = 81
+    Height = 13
+    Caption = 'Main Operator'
+  end
+  object Label2: TLabel
+    Left = 492
+    Top = 270
+    Width = 97
+    Height = 13
+    Caption = 'Second Operator'
+  end
   object OKButton: TButton
     Left = 56
     Top = 478
@@ -134,15 +148,15 @@ object ContestEntryDetails: TContestEntryDetails
     Items.Strings = (
       'Commenced Kilometer'
       'Point per QSO')
-    TabOrder = 13
+    TabOrder = 15
   end
   object MultGroupBox: TGroupBox
     Left = 434
-    Top = 249
+    Top = 357
     Width = 249
     Height = 97
     Caption = 'Multipliers and Exchange'
-    TabOrder = 15
+    TabOrder = 17
     object DXCCMult: TCheckBox
       Left = 16
       Top = 19
@@ -180,9 +194,9 @@ object ContestEntryDetails: TContestEntryDetails
     Left = 10
     Top = 357
     Width = 225
-    Height = 105
+    Height = 77
     Caption = 'Options'
-    TabOrder = 16
+    TabOrder = 18
     object ReadOnlyOption: TCheckBox
       Left = 6
       Top = 25
@@ -201,12 +215,12 @@ object ContestEntryDetails: TContestEntryDetails
     end
   end
   object FieldsGroupBox: TGroupBox
-    Left = 434
+    Left = 241
     Top = 357
-    Width = 249
+    Width = 187
     Height = 105
     Caption = 'Optional Fields'
-    TabOrder = 17
+    TabOrder = 19
     Visible = False
     object RSTField: TCheckBox
       Left = 8
@@ -397,7 +411,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 187
     Height = 82
     Caption = 'Locator Length'
-    TabOrder = 14
+    TabOrder = 16
     object AllowLoc8CB: TCheckBox
       Left = 10
       Top = 52
@@ -423,7 +437,7 @@ object ContestEntryDetails: TContestEntryDetails
     EditLabel.Width = 59
     EditLabel.Height = 13
     EditLabel.Caption = 'Start Date'
-    TabOrder = 18
+    TabOrder = 20
     OnKeyPress = DateEditKeyPress
   end
   object EndDateEdit: TLabeledEdit
@@ -434,7 +448,7 @@ object ContestEntryDetails: TContestEntryDetails
     EditLabel.Width = 52
     EditLabel.Height = 13
     EditLabel.Caption = 'End Date'
-    TabOrder = 19
+    TabOrder = 21
     OnKeyPress = DateEditKeyPress
   end
   object StartDateButton: TButton
@@ -443,7 +457,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 21
     Height = 20
     Caption = '...'
-    TabOrder = 20
+    TabOrder = 22
     OnClick = StartDateButtonClick
   end
   object EndDateButton: TButton
@@ -452,7 +466,25 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 21
     Height = 20
     Caption = '...'
-    TabOrder = 21
+    TabOrder = 23
     OnClick = EndDateButtonClick
+  end
+  object MainOpComboBox: TComboBox
+    Left = 492
+    Top = 230
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 13
+    Text = 'MainOpComboBox'
+  end
+  object SecondOpComboBox: TComboBox
+    Left = 492
+    Top = 294
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 14
+    Text = 'SecondOpComboBox'
   end
 end

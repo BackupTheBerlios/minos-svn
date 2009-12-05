@@ -37,8 +37,8 @@ void TOperatorFrame::refreshOps()
          SecondOpComboBox->Items->Add( ( *i ).c_str() );
       }
    }
-   MainOpComboBox->Text = contest->op1.getValue().c_str();
-   SecondOpComboBox->Text = contest->op2.getValue().c_str();
+   MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
+   SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
 }
 //---------------------------------------------------------------------------
 
@@ -59,14 +59,9 @@ void __fastcall TOperatorFrame::MainOpComboBoxExit( TObject *Sender )
 
 void __fastcall TOperatorFrame::SecondOpComboBoxExit(TObject *Sender)
 {
-   MinosLoggerEvents::SendOp1Change(Trim(MainOpComboBox->Text).c_str());
+   MinosLoggerEvents::SendOp2Change(Trim(MainOpComboBox->Text).c_str());
    refreshOps();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TOperatorFrame::MainOpComboBoxChange(TObject *Sender)
-{
-//   
-}
-//---------------------------------------------------------------------------
 

@@ -27,7 +27,6 @@ object OperatorFrame: TOperatorFrame
     ItemHeight = 13
     TabOrder = 0
     Text = 'MainOpComboBox'
-    OnChange = MainOpComboBoxChange
     OnExit = MainOpComboBoxExit
     OnKeyPress = MainOpComboBoxKeyPress
   end

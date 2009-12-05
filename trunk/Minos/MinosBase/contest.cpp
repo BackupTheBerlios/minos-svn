@@ -570,9 +570,11 @@ void BaseContestLog::scanContest( void )
    nextScan = -1;
    unfilledCount = 0;
 
-   std::string curop1;
-   std::string curop2;
    oplist.clear();
+   std::string curop1 = currentOp1.getValue();
+   oplist.insert( curop1 );
+   std::string curop2 = currentOp2.getValue();
+   oplist.insert( curop2 );
    while ( nextScan >= -1 )
    {
       // get the next contact in sequence and do any required scan checks
@@ -598,8 +600,12 @@ void BaseContestLog::scanContest( void )
       {
          unfilledCount++;
       }
-      curop1 = nct->op1.getValue();
-      oplist.insert( curop1 );
+      std::string temp = nct->op1.getValue();
+      if (temp.size())
+      {
+         curop1 = temp;
+         oplist.insert( curop1 );
+      }
       curop2 = nct->op2.getValue();
       oplist.insert( curop2 );
 
@@ -631,8 +637,10 @@ void BaseContestLog::scanContest( void )
       nct->newLoc = false;
       nct->check( );
    }
-   op1.setValue( curop1 );
-   op2.setValue( curop2 );
+   if (currentOp1.getValue().size() == 0)
+   {
+      currentOp1.setValue( curop1 );
+   }
 }
 //============================================================
 DupContact::DupContact( BaseContact *c ) : dct( c ), sct( 0 )

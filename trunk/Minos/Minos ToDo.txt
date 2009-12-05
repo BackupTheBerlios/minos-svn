@@ -4,7 +4,11 @@
 //================================================================
 Bugs, etc to fix
 
-OPERATORS
+OPERATORS: 
+	we need to assume station callsign is initial op; 
+	we don't need to worry about "old" contests; 
+	edit last contact needs to modify the current op
+	How much testing can we do?
 
 Sticky splitters in monitor and chat
 

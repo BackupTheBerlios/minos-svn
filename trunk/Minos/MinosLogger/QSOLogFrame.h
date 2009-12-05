@@ -26,6 +26,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TButton *BandMapButton;
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
+   TLabel *OperatorLabel;
       void __fastcall BandMapButtonClick( TObject *Sender );
       void __fastcall CatchupButtonClick(TObject *Sender);
       void __fastcall FirstUnfilledButtonClick(TObject *Sender);

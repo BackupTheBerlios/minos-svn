@@ -157,8 +157,8 @@ class BaseContestLog
 
       // Ancilliary variables
 
-      MinosItem<std::string> op1;         // current main op - derived from contacts
-      MinosItem<std::string> op2;         // current second op - derived from contacts
+      MinosItem<std::string> currentOp1;         // current main op - derived from contacts
+      MinosItem<std::string> currentOp2;         // current second op - derived from contacts
 
       OperatorList oplist;
 

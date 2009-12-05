@@ -27,7 +27,6 @@ class TOperatorFrame : public TFrame
       void __fastcall MainOpComboBoxKeyPress( TObject *Sender, char &Key );
       void __fastcall MainOpComboBoxExit( TObject *Sender );
    void __fastcall SecondOpComboBoxExit(TObject *Sender);
-   void __fastcall MainOpComboBoxChange(TObject *Sender);
    private: 	// User declarations
    public: 		// User declarations
       __fastcall TOperatorFrame( TComponent* Owner );
