@@ -9,6 +9,13 @@ OPERATORS:
 	we don't need to worry about "old" contests; 
 	edit last contact needs to modify the current op
 	How much testing can we do?
+	
+	?? add contest * (or void *?) to all send events
+	so we have something better to check than isCurrentLog
+	
+	Add op to "must fill" list (but preset to station call)
+	Force caps on contest details ops
+	And it doesn't propagate into contest proper
 
 Sticky splitters in monitor and chat
 

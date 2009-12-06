@@ -237,7 +237,10 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
 
 void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 {
-   // proxied?
+   if (!contest)
+   {
+      return;
+   }
    bool tbe = screenContact.contactFlags & TO_BE_ENTERED;
    DateEdit->ReadOnly = !catchup && !tbe;
    TimeEdit->ReadOnly = !catchup && !tbe;
@@ -319,6 +322,10 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 void __fastcall TGJVEditFrame::EditKeyDown( TObject */*Sender*/, WORD &Key,
       TShiftState Shift )
 {
+   if (!contest)
+   {
+      return;
+   }
    if ( ( Key == VK_INSERT ) && ( !Shift.Contains( ssShift ) ) )
       overstrike = !overstrike;
 

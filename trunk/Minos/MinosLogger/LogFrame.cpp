@@ -177,6 +177,7 @@ void TSingleLogFrame::closeContest()
    if ( TContestApp::getContestApp() )
    {
       RPCPubSub::publish( "ContestLog", contest->publishedName, makeStr( 0 ), psRevoked );
+      GJVQSOLogFrame->closeContest();
       TContestApp::getContestApp() ->closeFile( contest );
       contest = 0;
    }

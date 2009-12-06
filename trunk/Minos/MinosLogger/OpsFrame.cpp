@@ -24,21 +24,24 @@ __fastcall TOperatorFrame::TOperatorFrame( TComponent* Owner )
 
 void TOperatorFrame::refreshOps()
 {
-   MainOpComboBox->Clear();
-   SecondOpComboBox->Clear();
    // refill the op combo boxes from the current contest, and select the correct op
    BaseContestLog * contest = TContestApp::getContestApp() ->getCurrentContest();
-
-   for ( OperatorIterator i = contest->oplist.begin(); i != contest->oplist.end(); i++ )
+   if (contest)
    {
-      if ( ( *i ).size() )
+      //if we are being closed then we are not the current contest - and current may be null
+      MainOpComboBox->Clear();
+      SecondOpComboBox->Clear();
+      for ( OperatorIterator i = contest->oplist.begin(); i != contest->oplist.end(); i++ )
       {
-         MainOpComboBox->Items->Add( ( *i ).c_str() );
-         SecondOpComboBox->Items->Add( ( *i ).c_str() );
+         if ( ( *i ).size() )
+         {
+            MainOpComboBox->Items->Add( ( *i ).c_str() );
+            SecondOpComboBox->Items->Add( ( *i ).c_str() );
+         }
       }
+      MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
+      SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
    }
-   MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
-   SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
 }
 //---------------------------------------------------------------------------
 

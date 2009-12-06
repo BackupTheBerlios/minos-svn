@@ -24,7 +24,7 @@ object OperatorFrame: TOperatorFrame
     Top = 43
     Width = 145
     Height = 21
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 0
     Text = 'MainOpComboBox'
     OnExit = MainOpComboBoxExit
@@ -35,7 +35,7 @@ object OperatorFrame: TOperatorFrame
     Top = 109
     Width = 145
     Height = 21
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 1
     Text = 'SecondOpComboBox'
     OnExit = SecondOpComboBoxExit

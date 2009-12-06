@@ -42,7 +42,7 @@ void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::logScreenEntry( )
 {
-   if ( contest->isReadOnly() )
+   if (!contest || contest->isReadOnly() )
       return ;
 
    int ctmax = atoi( screenContact.serials.c_str() );
@@ -96,7 +96,7 @@ void TGJVQSOLogFrame::logScreenEntry( )
 //==============================================================================
 void TGJVQSOLogFrame::logCurrentContact( )
 {
-   if ( contest->isReadOnly() )
+   if (!contest || contest->isReadOnly() )
       return ;
 
    // copy the display into the correct log entry, etc
@@ -374,7 +374,7 @@ void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject */*Sender*/)
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::Op1Change_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   if (isCurrentLog && contest)
    {
       ActionEvent<std::string, EN_Op1Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op1Change> &> ( Event );
 
@@ -391,7 +391,7 @@ void TGJVQSOLogFrame::Op1Change_Event( MinosEventBase & Event)
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::Op2Change_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   if (isCurrentLog && contest)
    {
       ActionEvent<std::string, EN_Op2Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op2Change> &> ( Event );
       std::string op2 = S.getData();

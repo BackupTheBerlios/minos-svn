@@ -40,10 +40,10 @@ class TGJVEditFrame : public TFrame
       TLabeledEdit *DateEdit;
       TCheckBox *NonScoreCheckBox;
       TCheckBox *DeletedCheckBox;
-   TButton *TimeNowButton;
-   TButton *ModeButton;
-   TButton *FirstUnfilledButton;
-   TButton *CatchupButton;
+      TButton *TimeNowButton;
+      TButton *ModeButton;
+      TButton *FirstUnfilledButton;
+      TButton *CatchupButton;
       void __fastcall EditControlEnter( TObject *Sender );
       void __fastcall EditControlExit( TObject *Sender );
       void __fastcall EditKeyDown( TObject *Sender, WORD &Key,
@@ -58,8 +58,8 @@ class TGJVEditFrame : public TFrame
       void __fastcall TimeEditChange( TObject *Sender );
       void __fastcall SerTXEditChange( TObject *Sender );
       void __fastcall LocEditChange( TObject *Sender );
-   void __fastcall TimeNowButtonClick(TObject *Sender);
-   void __fastcall ModeButtonClick(TObject *Sender);
+      void __fastcall TimeNowButtonClick(TObject *Sender);
+      void __fastcall ModeButtonClick(TObject *Sender);
    private: 	// User declarations
       MinosEventListener  EL_ValidateError;
       void ValidateError_Event ( MinosEventBase & Event );
@@ -121,6 +121,10 @@ class TGJVEditFrame : public TFrame
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;
       virtual void updateQSOTime() = 0;
       virtual void updateQSODisplay();
+      virtual void closeContest()
+      {
+         contest = 0;
+      }
 };
 //---------------------------------------------------------------------------
 #endif
