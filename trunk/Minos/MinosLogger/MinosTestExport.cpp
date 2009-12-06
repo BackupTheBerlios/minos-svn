@@ -220,6 +220,8 @@ void MinosTestExport::exportOperators( HANDLE expfd )
 
    ct->ops1.addIfDirty( st, "ops1", dirty );
    ct->ops2.addIfDirty( st, "ops2", dirty );
+   ct->currentOp1.addIfDirty( st, "currentOp1", dirty );
+   ct->currentOp2.addIfDirty( st, "currentOp2", dirty );
 
    if ( dirty )
    {

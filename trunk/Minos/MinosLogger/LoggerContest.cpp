@@ -1288,6 +1288,8 @@ void LoggerContestLog::processMinosStanza( const std::string &methodName, MinosT
             {
                mt->getStructArgMemberValue( "ops1", ops1 );
                mt->getStructArgMemberValue( "ops2", ops2 );
+               mt->getStructArgMemberValue( "currentOp1", currentOp1 );
+               mt->getStructArgMemberValue( "currentOp2", currentOp2 );
             }
             else
                if ( methodName == "MinosLogCurrent" )
