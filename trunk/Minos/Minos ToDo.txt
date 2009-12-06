@@ -16,6 +16,14 @@ OPERATORS:
 	Add op to "must fill" list (but preset to station call)
 	Force caps on contest details ops
 	And it doesn't propagate into contest proper
+	
+	Ops transfer to contest entry? But don't overwrite what the user enters!
+	
+	?? change some of the colours to make it more interesting (e.g. the Op1: label)
+	
+Scrolling tabs as an option
+
+
 
 Sticky splitters in monitor and chat
 
