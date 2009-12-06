@@ -196,6 +196,10 @@ void TContestEntryDetails::setDetails(  )
       contest->mycall.fullCall.setValue( temp );
    }
    CallsignEdit->Text = contest->mycall.fullCall.getValue().c_str();
+   if (MainOpComboBox->Text.IsEmpty())
+   {
+      MainOpComboBox->Text = CallsignEdit->Text;
+   }
 
    contest->validateLoc();
    if ( !contest->locValid && contest->myloc.loc.getValue().size() == 0 )
@@ -438,6 +442,10 @@ TWinControl * TContestEntryDetails::getDetails( )
    if ( contest->myloc.valRes != LOC_OK )
    {
       nextD = (nextD?nextD:LocatorEdit);
+   }
+   if ( contest->currentOp1.getValue().size() == 0 )
+   {
+      nextD = (nextD?nextD:MainOpComboBox);
    }
    contest->allowLoc4.setValue( AllowLoc4CB->Checked );    // bool
    contest->allowLoc8.setValue( AllowLoc8CB->Checked );    // bool
@@ -705,4 +713,13 @@ void __fastcall TContestEntryDetails::BundleFrameBundleEditClick(
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TContestEntryDetails::CallsignEditExit(TObject */*Sender*/)
+{
+   if (MainOpComboBox->Text.IsEmpty())
+   {
+      MainOpComboBox->Text = CallsignEdit->Text;
+   }  
+}
+//---------------------------------------------------------------------------
 

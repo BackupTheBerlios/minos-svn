@@ -113,6 +113,7 @@ object SettingsEditDlg: TSettingsEditDlg
     end
   end
   object GridHintTimer: TTimer
+    Enabled = False
     OnTimer = GridHintTimerTimer
     Left = 32
     Top = 32

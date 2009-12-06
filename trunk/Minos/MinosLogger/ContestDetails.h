@@ -82,6 +82,7 @@ class TContestEntryDetails : public TForm
    void __fastcall BundleFrameBundleEditClick(TObject *Sender);
    void __fastcall EndDateButtonClick(TObject *Sender);
    void __fastcall StartDateButtonClick(TObject *Sender);
+   void __fastcall CallsignEditExit(TObject *Sender);
    private:   	// User declarations
 //      TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;

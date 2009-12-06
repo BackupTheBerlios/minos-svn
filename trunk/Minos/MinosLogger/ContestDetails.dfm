@@ -116,6 +116,7 @@ object ContestEntryDetails: TContestEntryDetails
     EditLabel.Height = 13
     EditLabel.Caption = 'Callsign'
     TabOrder = 7
+    OnExit = CallsignEditExit
   end
   object LocatorEdit: TLabeledEdit
     Left = 159
@@ -474,17 +475,17 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 230
     Width = 145
     Height = 21
+    CharCase = ecUpperCase
     ItemHeight = 13
     TabOrder = 13
-    Text = 'MainOpComboBox'
   end
   object SecondOpComboBox: TComboBox
     Left = 492
     Top = 294
     Width = 145
     Height = 21
+    CharCase = ecUpperCase
     ItemHeight = 13
     TabOrder = 14
-    Text = 'SecondOpComboBox'
   end
 end
