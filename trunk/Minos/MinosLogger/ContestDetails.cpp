@@ -196,9 +196,9 @@ void TContestEntryDetails::setDetails(  )
       contest->mycall.fullCall.setValue( temp );
    }
    CallsignEdit->Text = contest->mycall.fullCall.getValue().c_str();
-   if (MainOpComboBox->Text.IsEmpty())
+   if (contest->currentOp1.getValue().size()== 0)
    {
-      MainOpComboBox->Text = CallsignEdit->Text;
+      contest->currentOp1.setValue( CallsignEdit->Text.c_str());
    }
 
    contest->validateLoc();
