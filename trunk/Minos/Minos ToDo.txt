@@ -3,29 +3,9 @@
 
 //================================================================
 Bugs, etc to fix
-
-OPERATORS: 
-	we need to assume station callsign is initial op; 
-	we don't need to worry about "old" contests; 
-	edit last contact needs to modify the current op
-	How much testing can we do?
-	
-	?? add contest * (or void *?) to all send events
-	so we have something better to check than isCurrentLog
-	
-	Add op to "must fill" list (but preset to station call)
-	Force caps on contest details ops
-	And it doesn't propagate into contest proper
-	
-	Ops transfer to contest entry? But don't overwrite what the user enters!
-	
-	Use a combo for the current/second op, on main dialog
-	
-	?? change some of the colours to make it more interesting (e.g. the Op1: label)
+=================
 	
 Scrolling tabs as an option
-
-
 
 Sticky splitters in monitor and chat
 
@@ -39,16 +19,18 @@ Next version - 1.4.0.0
 
 Event message modifications - big change, but should be nothing visible
 
-Dble click on QSO in other does transfer
+Dble click on QSO in "other" grid does transfer
 
-RMB option for editting "other"
+RMB option for editting "other" grid contact
+
+Operator setting moved from ops frams to main screen - and it more or less works.
+
+Post event and Uri mode simplification - catch-up button and unfilled button on QSO edit area. Uri mode still not that obvious to initiate
 
 //================================================================
 Next version - 1.3.1 Beta - new features etc
 
 Using a branch "svn+ssh://g0gjv@svn.berlios.de/svnroot/repos/minos/branches/V1_3_1_x"
-
-Post event and Uri mode simplification - catch-up button and unfilled button on QSO edit area. Uri mode still not that obvious to initiate
 
 //================================================================
 Next version - 1.3.0 - new features etc
