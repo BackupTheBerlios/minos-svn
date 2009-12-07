@@ -90,18 +90,8 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
 
-   TTabSheet *OpTabSheet = new TTabSheet( MultDispFrame );
-   OpTabSheet->Caption = "Ops";
-   OperatorFrame = new TOperatorFrame( OpTabSheet );
-   OpTabSheet->PageControl = MultDispFrame->MultPages;
-   OperatorFrame->Parent = OpTabSheet;
-   OperatorFrame->Align = alClient;
-   OperatorFrame->ParentFont = true;
-
    LogMonitor->initialise( contest );
    GJVQSOLogFrame->initialise( contest, /*this,*/ false );
-
-   OperatorFrame->refreshOps();
 
    WLogAreaSplitter = new TWhisperSplitter(LogAreaSplitter, MatchPanel);
 	WLogAreaSplitter->Bitmap = Splitter_Image->Picture->Bitmap;
@@ -228,9 +218,9 @@ void TSingleLogFrame::EditContact( BaseContact *lct )
 
    contest->scanContest();
 
+   GJVQSOLogFrame->refreshOps();
    LogMonitor->Invalidate();
    MultDispFrame->refreshMults();
-   OperatorFrame->refreshOps();
    LogMonitor->Repaint();
    GJVQSOLogFrame->startNextEntry();
 
@@ -1306,7 +1296,6 @@ void TSingleLogFrame::updateTrees()
 {
    LogMonitor->QSOTree->RootNodeCount = contest->getContactCount() + 1;
    MultDispFrame->refreshMults();
-   OperatorFrame->refreshOps();
    LogMonitor->QSOTree->Invalidate();
 }
 //---------------------------------------------------------------------------
@@ -1330,7 +1319,6 @@ void TSingleLogFrame::GoNextUnfilled()
       contest->scanContest();
       LogMonitor->QSOTree->Invalidate();
       MultDispFrame->refreshMults();
-      OperatorFrame->refreshOps();
       LogMonitor->QSOTree->Repaint();
       GJVQSOLogFrame->startNextEntry();
    }

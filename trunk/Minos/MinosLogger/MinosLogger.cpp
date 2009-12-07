@@ -24,7 +24,6 @@ USEFORM("LogFrame.cpp", SingleLogFrame);
 USEFORM("LoggerAbout.cpp", AboutBox);
 USEFORM("LogMain.cpp", LogContainer);
 USEFORM("MinosHelp.cpp", MinosHelpForm);
-USEFORM("OpsFrame.cpp", OperatorFrame);
 USEFORM("QSOEdit.cpp", QSOEditDlg);
 USEFORM("QSOEditFrame.cpp", GJVQSOEditFrame);
 USEFORM("QSOLogFrame.cpp", GJVQSOLogFrame);

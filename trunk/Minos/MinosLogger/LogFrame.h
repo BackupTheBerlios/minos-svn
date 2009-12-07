@@ -224,7 +224,6 @@ class TSingleLogFrame : public TFrame
 
       bool isCurrentLog;
 
-//      TOperatorFrame *OperatorFrame;
       TWhisperSplitter *WLogAreaSplitter;
       TWhisperSplitter *WMultSplitter;
       TWhisperSplitter *WNextContactDetailsSplitter;

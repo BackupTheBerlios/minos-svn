@@ -44,6 +44,10 @@ class TGJVEditFrame : public TFrame
       TButton *ModeButton;
       TButton *FirstUnfilledButton;
       TButton *CatchupButton;
+      TComboBox *SecondOpComboBox;
+      TLabel *SecondOpLabel;
+      TComboBox *MainOpComboBox;
+      TLabel *OperatorLabel;
       void __fastcall EditControlEnter( TObject *Sender );
       void __fastcall EditControlExit( TObject *Sender );
       void __fastcall EditKeyDown( TObject *Sender, WORD &Key,
@@ -60,6 +64,7 @@ class TGJVEditFrame : public TFrame
       void __fastcall LocEditChange( TObject *Sender );
       void __fastcall TimeNowButtonClick(TObject *Sender);
       void __fastcall ModeButtonClick(TObject *Sender);
+      void __fastcall OpComboBoxKeyPress(TObject *Sender, char &Key);
    private: 	// User declarations
       MinosEventListener  EL_ValidateError;
       void ValidateError_Event ( MinosEventBase & Event );
@@ -116,6 +121,7 @@ class TGJVEditFrame : public TFrame
 
       void selectField( TWinControl *v );
       virtual void initialise( BaseContestLog * contest, bool catchup );
+      virtual void refreshOps();
       virtual bool doGJVOKButtonClick( TObject *Sender );
       virtual bool doGJVForceButtonClick( TObject *Sender );
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;

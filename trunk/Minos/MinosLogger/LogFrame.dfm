@@ -315,7 +315,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -342,16 +342,20 @@ object SingleLogFrame: TSingleLogFrame
               ExplicitWidth = 30
             end
             inherited BrgSt: TLabel
-              Width = 14
-              ExplicitWidth = 14
+              Width = 46
+              ExplicitWidth = 46
             end
             inherited DistSt: TLabel
-              Width = 14
-              ExplicitWidth = 14
+              Width = 45
+              ExplicitWidth = 45
             end
             inherited OperatorLabel: TLabel
-              Width = 81
-              ExplicitWidth = 81
+              Width = 28
+              ExplicitWidth = 28
+            end
+            inherited SecondOpLabel: TLabel
+              Width = 28
+              ExplicitWidth = 28
             end
             inherited DateEdit: TLabeledEdit
               EditLabel.Width = 27
@@ -395,17 +399,17 @@ object SingleLogFrame: TSingleLogFrame
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 56
             end
+            inherited RSTRXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 254
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
             inherited LocEdit: TLabeledEdit
               EditLabel.Width = 46
               EditLabel.ExplicitLeft = 420
               EditLabel.ExplicitTop = 67
               EditLabel.ExplicitWidth = 46
-            end
-            inherited SerTXEdit: TLabeledEdit
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 170
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 52
             end
             inherited MatchXferButton: TBitBtn
               OnClick = GJVQSOLogFrame1MatchXferButtonClick
@@ -421,17 +425,17 @@ object SingleLogFrame: TSingleLogFrame
                 OnClick = AutoBandmapTimeClick
               end
             end
-            inherited RSTRXEdit: TLabeledEdit
-              EditLabel.Width = 56
-              EditLabel.ExplicitLeft = 254
-              EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
-            end
             inherited CommentsEdit: TLabeledEdit
               EditLabel.Width = 62
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 104
               EditLabel.ExplicitWidth = 62
+            end
+            inherited SerTXEdit: TLabeledEdit
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 170
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
             end
             inherited TimeNowButton: TButton
               OnClick = SetTimeNowClick

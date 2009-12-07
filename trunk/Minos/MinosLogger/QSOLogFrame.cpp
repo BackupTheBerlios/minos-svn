@@ -23,21 +23,19 @@
 //---------------------------------------------------------------------------
 __fastcall TGJVQSOLogFrame::TGJVQSOLogFrame( TComponent* Owner )
       : TGJVEditFrame( Owner ), partialContact( 0 ),
-      isCurrentLog(false),
-      EL_Op1Change ( EN_Op1Change, & Op1Change_Event ),
-      EL_Op2Change ( EN_Op2Change, & Op2Change_Event )
+      isCurrentLog(false)
 {}
 __fastcall TGJVQSOLogFrame::~TGJVQSOLogFrame()
 {
    delete partialContact;
 }
+//---------------------------------------------------------------------------
 void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
 {
    TGJVEditFrame::initialise( contest, false );
    BandMapPanel->Visible = checkServerReady();
    MinosLoggerEvents::SendReportOverstrike(overstrike);
-   #warning if there IS no operator, use the station callsign
-   OperatorLabel->Caption = ("Op: " + contest->currentOp1.getValue()).c_str();
+   refreshOps();
 }
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::logScreenEntry( )
@@ -372,35 +370,39 @@ void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject */*Sender*/)
    MinosLoggerEvents::SendNextUnfilled();
 }
 //---------------------------------------------------------------------------
-void TGJVQSOLogFrame::Op1Change_Event( MinosEventBase & Event)
-{
-   if (isCurrentLog && contest)
-   {
-      ActionEvent<std::string, EN_Op1Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op1Change> &> ( Event );
 
-      std::string op1 = S.getData();
-      contest->currentOp1.setValue( op1 );
-      if ( op1.size() )
-      {
-         contest->oplist.insert( op1 );
-      }
-      contest->commonSave(false);
-      OperatorLabel->Caption = ("Op: " + op1).c_str();
+void __fastcall TGJVQSOLogFrame::MainOpComboBoxExit(TObject */*Sender*/)
+{
+   std::string op1 = MainOpComboBox->Text.c_str();
+   contest->currentOp1.setValue( op1 );
+   if ( op1.size() )
+   {
+      contest->oplist.insert( op1 );
    }
+   contest->commonSave(false);
+   refreshOps();
 }
 //---------------------------------------------------------------------------
-void TGJVQSOLogFrame::Op2Change_Event( MinosEventBase & Event)
+
+void __fastcall TGJVQSOLogFrame::SecondOpComboBoxExit(TObject */*Sender*/)
 {
-   if (isCurrentLog && contest)
+   std::string op2 = SecondOpComboBox->Text.c_str();
+   contest->currentOp2.setValue( op2 );
+   if ( op2.size() )
    {
-      ActionEvent<std::string, EN_Op2Change> & S = dynamic_cast<ActionEvent<std::string, EN_Op2Change> &> ( Event );
-      std::string op2 = S.getData();
-      contest->currentOp2.setValue( op2 );
-      if ( op2.size() )
-      {
-         contest->oplist.insert( op2 );
-      }
-      contest->commonSave(false);
+      contest->oplist.insert( op2 );
+   }
+   contest->commonSave(false);
+   refreshOps();
+}
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::refreshOps()
+{
+   if (contest)
+   {
+      TGJVEditFrame::refreshOps();
+      MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
+      SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
    }
 }
 //---------------------------------------------------------------------------

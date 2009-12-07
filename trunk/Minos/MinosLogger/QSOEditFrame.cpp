@@ -318,14 +318,33 @@ void __fastcall TGJVQSOEditFrame::ROFieldTimerTimer( TObject */*Sender*/ )
    updateQSOTime();
 }
 //---------------------------------------------------------------------------
-void __fastcall TGJVQSOEditFrame::MainOpComboBoxKeyPress( TObject */*Sender*/,
-      char &Key )
-{
-   Key = toupper( Key );
-}
-//---------------------------------------------------------------------------
 void TGJVQSOEditFrame::initialise( BaseContestLog * contest, bool bf )
 {
    TGJVEditFrame::initialise(contest, /*edScreen,*/ bf);
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOEditFrame::MainOpComboBoxExit(TObject *Sender)
+{
+   std::string op1 = MainOpComboBox->Text.c_str();
+   if ( op1.size() )
+   {
+      contest->oplist.insert( op1 );
+   }
+   contest->commonSave(false);
+   refreshOps();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject *Sender)
+{
+   std::string op2 = SecondOpComboBox->Text.c_str();
+   if ( op2.size() )
+   {
+      contest->oplist.insert( op2 );
+   }
+   contest->commonSave(false);
+   refreshOps();
+}
+//---------------------------------------------------------------------------
 

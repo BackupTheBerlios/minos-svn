@@ -22,18 +22,32 @@ object GJVEditFrame: TGJVEditFrame
       Caption = 'Mode'
     end
     object BrgSt: TLabel
-      Left = 510
+      Left = 526
       Top = 11
-      Width = 12
+      Width = 38
       Height = 13
-      Caption = 'xx'
+      Caption = '(999XT)'
     end
     object DistSt: TLabel
-      Left = 454
+      Left = 482
       Top = 11
-      Width = 12
+      Width = 38
       Height = 13
-      Caption = 'xx'
+      Caption = '(99999)'
+    end
+    object SecondOpLabel: TLabel
+      Left = 369
+      Top = 13
+      Width = 24
+      Height = 13
+      Caption = 'Op2:'
+    end
+    object OperatorLabel: TLabel
+      Left = 267
+      Top = 13
+      Width = 24
+      Height = 13
+      Caption = 'Op1:'
     end
     object TimeEdit: TLabeledEdit
       Left = 139
@@ -309,7 +323,7 @@ object GJVEditFrame: TGJVEditFrame
       OnClick = ModeButtonClick
     end
     object FirstUnfilledButton: TButton
-      Left = 171
+      Left = 145
       Top = 8
       Width = 113
       Height = 25
@@ -318,13 +332,33 @@ object GJVEditFrame: TGJVEditFrame
       TabStop = False
     end
     object CatchupButton: TButton
-      Left = 24
+      Left = 6
       Top = 8
       Width = 129
       Height = 25
       Caption = 'Catch-up (Post Entry)'
       TabOrder = 19
       TabStop = False
+    end
+    object SecondOpComboBox: TComboBox
+      Left = 407
+      Top = 10
+      Width = 64
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 21
+      TabStop = False
+      OnKeyPress = OpComboBoxKeyPress
+    end
+    object MainOpComboBox: TComboBox
+      Left = 298
+      Top = 10
+      Width = 65
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 20
+      TabStop = False
+      OnKeyPress = OpComboBoxKeyPress
     end
   end
 end

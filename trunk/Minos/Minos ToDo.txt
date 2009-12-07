@@ -19,6 +19,8 @@ OPERATORS:
 	
 	Ops transfer to contest entry? But don't overwrite what the user enters!
 	
+	Use a combo for the current/second op, on main dialog
+	
 	?? change some of the colours to make it more interesting (e.g. the Op1: label)
 	
 Scrolling tabs as an option

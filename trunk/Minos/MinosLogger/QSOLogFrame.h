@@ -26,17 +26,12 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TButton *BandMapButton;
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
-      TLabel *OperatorLabel;
       void __fastcall BandMapButtonClick( TObject *Sender );
       void __fastcall CatchupButtonClick(TObject *Sender);
       void __fastcall FirstUnfilledButtonClick(TObject *Sender);
+   void __fastcall MainOpComboBoxExit(TObject *Sender);
+   void __fastcall SecondOpComboBoxExit(TObject *Sender);
    private: 	// User declarations
-      MinosEventListener  EL_Op1Change;
-      void Op1Change_Event ( MinosEventBase & Event );
-
-      MinosEventListener  EL_Op2Change;
-      void Op2Change_Event ( MinosEventBase & Event );
-
       ScreenContact *partialContact; // contact being edited on screen
       String sCurrFreq;
 
@@ -51,6 +46,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       __fastcall TGJVQSOLogFrame( TComponent* Owner );
       __fastcall ~TGJVQSOLogFrame();
       virtual void startNextEntry( );
+      virtual void refreshOps();
       void doGJVCancelButtonClick( TObject *Sender );
       void transferDetails( const BaseContact * lct, const BaseContestLog *matct );
       void transferDetails( const ListContact * lct, const ContactList *matct );

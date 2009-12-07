@@ -26,17 +26,14 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       TButton *PriorButton;
       TButton *NextButton;
       TTimer *ROFieldTimer;
-   TLabel *MainOpLabel;
-      TComboBox *MainOpComboBox;
-   TLabel *SecondOpLabel;
-      TComboBox *SecondOpComboBox;
       void __fastcall InsertBeforeButtonClick( TObject *Sender );
       void __fastcall InsertAfterButtonClick( TObject *Sender );
       void __fastcall FirstUnfilledButtonClick( TObject *Sender );
       void __fastcall PriorButtonClick( TObject *Sender );
       void __fastcall NextButtonClick( TObject *Sender );
       void __fastcall ROFieldTimerTimer( TObject *Sender );
-      void __fastcall MainOpComboBoxKeyPress( TObject *Sender, char &Key );
+   void __fastcall MainOpComboBoxExit(TObject *Sender);
+   void __fastcall SecondOpComboBoxExit(TObject *Sender);
    private: 	// User declarations
       void killPartial( void );
       void doGJVEditChange( TObject *Sender );

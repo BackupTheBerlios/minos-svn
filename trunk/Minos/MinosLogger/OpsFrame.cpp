@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 #include "logger_pch.h"
 #pragma hdrstop
-
+  #error no longer used
 #include "OpsFrame.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

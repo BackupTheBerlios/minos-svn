@@ -1,51 +1,37 @@
 inherited GJVQSOEditFrame: TGJVQSOEditFrame
   Width = 574
-  Height = 267
+  Height = 220
   ExplicitWidth = 574
-  ExplicitHeight = 267
+  ExplicitHeight = 220
   inherited G0GJVPanel: TPanel
     Width = 574
-    Height = 267
+    Height = 220
     ExplicitWidth = 574
-    ExplicitHeight = 267
-    object MainOpLabel: TLabel [3]
-      Left = 14
-      Top = 163
-      Width = 69
-      Height = 13
-      Caption = 'Main Operator'
-    end
-    object SecondOpLabel: TLabel [4]
-      Left = 288
-      Top = 164
-      Width = 82
-      Height = 13
-      Caption = 'Second Operator'
-    end
+    ExplicitHeight = 220
     inherited TimeEdit: TLabeledEdit
       Hint = 'Date/Time is read only - double click to modify'
     end
     inherited GJVOKButton: TButton
       Left = 139
-      Top = 225
+      Top = 179
       ExplicitLeft = 139
-      ExplicitTop = 225
+      ExplicitTop = 179
     end
     inherited GJVForceButton: TButton
       Left = 193
-      Top = 225
-      TabOrder = 23
+      Top = 179
+      TabOrder = 21
       ExplicitLeft = 193
-      ExplicitTop = 225
+      ExplicitTop = 179
     end
     inherited GJVCancelButton: TButton
       Left = 253
-      Top = 225
+      Top = 179
       Width = 91
       Caption = 'Return to Log'
-      TabOrder = 24
+      TabOrder = 22
       ExplicitLeft = 253
-      ExplicitTop = 225
+      ExplicitTop = 179
       ExplicitWidth = 91
     end
     inherited DateEdit: TLabeledEdit
@@ -57,9 +43,15 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     inherited CatchupButton: TButton
       TabOrder = 25
     end
+    inherited SecondOpComboBox: TComboBox
+      TabOrder = 23
+    end
+    inherited MainOpComboBox: TComboBox
+      TabOrder = 24
+    end
     object InsertBeforeButton: TButton
       Left = 8
-      Top = 194
+      Top = 148
       Width = 75
       Height = 25
       Caption = 'Insert Before'
@@ -68,7 +60,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     end
     object InsertAfterButton: TButton
       Left = 8
-      Top = 225
+      Top = 179
       Width = 75
       Height = 25
       Caption = 'Insert After'
@@ -77,7 +69,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     end
     object PriorButton: TButton
       Left = 470
-      Top = 194
+      Top = 148
       Width = 75
       Height = 25
       Caption = 'Prior'
@@ -87,7 +79,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     end
     object NextButton: TButton
       Left = 472
-      Top = 225
+      Top = 179
       Width = 75
       Height = 25
       Caption = 'Next'
@@ -95,33 +87,11 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       TabStop = False
       OnClick = NextButtonClick
     end
-    object MainOpComboBox: TComboBox
-      Left = 109
-      Top = 158
-      Width = 145
-      Height = 21
-      ItemHeight = 13
-      TabOrder = 21
-      TabStop = False
-      Text = 'MainOpComboBox'
-      OnKeyPress = MainOpComboBoxKeyPress
-    end
-    object SecondOpComboBox: TComboBox
-      Left = 406
-      Top = 160
-      Width = 145
-      Height = 21
-      ItemHeight = 13
-      TabOrder = 22
-      TabStop = False
-      Text = 'SecondOpComboBox'
-      OnKeyPress = MainOpComboBoxKeyPress
-    end
   end
   object ROFieldTimer: TTimer
     Interval = 100
     OnTimer = ROFieldTimerTimer
-    Left = 120
-    Top = 192
+    Left = 160
+    Top = 112
   end
 end

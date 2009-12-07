@@ -46,7 +46,6 @@
 #include "ContestApp.h"
 
 #include "gridhint.h"
-#include "OpsFrame.h"
 #include "LogFrame.h"
 #include "LogMain.h"
 #endif
