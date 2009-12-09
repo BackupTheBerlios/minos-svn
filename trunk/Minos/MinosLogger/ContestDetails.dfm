@@ -197,6 +197,13 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 225
     Height = 77
     Caption = 'Options'
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGrayText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 18
     object ReadOnlyOption: TCheckBox
       Left = 6
