@@ -688,6 +688,8 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          entries.push_back( ProfileEntry( edpShowWorked, "ShowWorked", true, "hint" ) );
          entries.push_back( ProfileEntry( edpShowUnworked, "ShowUnworked", true, "hint" ) );
          entries.push_back( ProfileEntry( edpNextContactDetailsOnLeft, "ShowNextContactDetailsOnLeft", false, "hint" ) );
+         entries.push_back( ProfileEntry( edpScrollingContestTabs, "ScrollingContestTabs", true, "hint" ) );
+
          entries.push_back( ProfileEntry( edpEditor, "Editor", "Notepad.exe", "Default editor" ) );
          entries.push_back( ProfileEntry( edpAutoBandMapTuneAmount, "AutoBandMapTuneAmount", 2000, "Send to band map on tune more than x Hz " ) );
          entries.push_back( ProfileEntry( edpAutoBandMapTune, "AutoBandMapTune", false, "Enable send to band map on tune" ) );

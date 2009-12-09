@@ -2,7 +2,7 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 386
+  ClientHeight = 426
   ClientWidth = 772
   Color = clBtnFace
   UseDockManager = True
@@ -24,10 +24,10 @@ object LogContainer: TLogContainer
     Left = 0
     Top = 0
     Width = 772
-    Height = 367
+    Height = 407
     Align = alClient
     DockSite = True
-    MultiLine = True
+    HotTrack = True
     ParentShowHint = False
     PopupMenu = TabPopup
     ShowHint = True
@@ -39,7 +39,7 @@ object LogContainer: TLogContainer
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 367
+    Top = 407
     Width = 772
     Height = 19
     Hint = 'Click to correct date/time'
@@ -411,6 +411,10 @@ object LogContainer: TLogContainer
       Caption = 'Edit Contact'
       OnExecute = EditContactActionExecute
     end
+    object ScrollingContestTabsAction: TAction
+      Caption = 'Scrolling contest tabs'
+      OnExecute = ScrollingContestTabsActionExecute
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
@@ -473,6 +477,9 @@ object LogContainer: TLogContainer
     end
     object AnalyseMinosLog3: TMenuItem
       Action = NextContactDetailsOnLeftAction
+    end
+    object Multiplecontesttablines1: TMenuItem
+      Action = ScrollingContestTabsAction
     end
     object ShiftLeft1: TMenuItem
       Action = ShiftTabLeftAction

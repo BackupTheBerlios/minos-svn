@@ -99,6 +99,7 @@ class TSingleLogFrame : public TFrame
    TMenuItem *MenuEditSeparator;
    TMenuItem *MenuEditContact;
    TTimer *TimerUpdateQSOTimer;
+   TMenuItem *Multiplecontesttablines1;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );

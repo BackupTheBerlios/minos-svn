@@ -71,6 +71,9 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
          Close();
          return ;
       }
+      bool mlpa = isScrollingContestTabs();
+      ScrollingContestTabsAction->Checked = mlpa;
+      ContestPageControl->MultiLine = !mlpa;
 
       SendDM = new TSendDM( this );
       if ( contestAppLoadFiles() )
@@ -395,6 +398,13 @@ bool TLogContainer::isNextContactDetailsOnLeft()
 {
    bool ncdol;
    TContestApp::getContestApp() ->displayBundle.getBoolProfile( edpNextContactDetailsOnLeft, ncdol );
+   return ncdol;
+}
+//---------------------------------------------------------------------------
+bool TLogContainer::isScrollingContestTabs()
+{
+   bool ncdol;
+   TContestApp::getContestApp() ->displayBundle.getBoolProfile( edpScrollingContestTabs, ncdol );
    return ncdol;
 }
 //---------------------------------------------------------------------------
@@ -1067,6 +1077,16 @@ void __fastcall TLogContainer::Tools1Click(TObject */*Sender*/)
 void __fastcall TLogContainer::EditContactActionExecute(TObject */*Sender*/)
 {
    MinosLoggerEvents::SendEditMatchContact();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::ScrollingContestTabsActionExecute(TObject *Sender)
+{
+   bool mlpa = !isScrollingContestTabs();
+   ScrollingContestTabsAction->Checked = mlpa;
+   ContestPageControl->MultiLine = !mlpa;
+   TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpScrollingContestTabs, mlpa );
+   TContestApp::getContestApp() ->displayBundle.flushProfile();
 }
 //---------------------------------------------------------------------------
 
