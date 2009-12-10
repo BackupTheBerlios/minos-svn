@@ -138,6 +138,8 @@ class TLogContainer : public TForm
    TAction *EditContactAction;
    TAction *ScrollingContestTabsAction;
    TMenuItem *Multiplecontesttablines1;
+   TAction *ShowOperatorsAction;
+   TMenuItem *ShowOperators1;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -183,6 +185,7 @@ class TLogContainer : public TForm
    void __fastcall Tools1Click(TObject *Sender);
    void __fastcall EditContactActionExecute(TObject *Sender);
    void __fastcall ScrollingContestTabsActionExecute(TObject *Sender);
+   void __fastcall ShowOperatorsActionExecute(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
@@ -222,6 +225,7 @@ class TLogContainer : public TForm
       bool isBandMapLoaded();
       bool isNextContactDetailsOnLeft();
       bool isScrollingContestTabs();
+      bool isShowOperators();
 
       void __fastcall WmMove( TMessage &Msg );
       BEGIN_MESSAGE_MAP

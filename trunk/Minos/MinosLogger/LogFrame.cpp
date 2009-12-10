@@ -85,7 +85,8 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 
       EL_ScrollToCountry ( EN_ScrollToCountry, & ScrollToCountry_Event ),
       EL_ScrollToDistrict ( EN_ScrollToDistrict, & ScrollToDistrict_Event ),
-      EL_MatchStarting ( EN_MatchStarting, & MatchStarting_Event )
+      EL_MatchStarting ( EN_MatchStarting, & MatchStarting_Event ),
+      EL_ShowOperators ( EN_ShowOperators, & ShowOperators_Event )
 
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
@@ -1420,6 +1421,7 @@ void __fastcall TSingleLogFrame::OnShowTimerTimer( TObject */*Sender*/ )
    OnShowTimer->Enabled = false;
    MultDispFrame->setContest( contest );
    doNextContactDetailsOnLeftClick( this );
+   MinosLoggerEvents::SendShowOperators();
 
    // Supress the tabstops we weren't able to manage in the form designed
    // to discover where they went, uncomment the top block in
@@ -1622,4 +1624,12 @@ void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & /*Event*/ )
 }
 
 //---------------------------------------------------------------------------
+void TSingleLogFrame::ShowOperators_Event ( MinosEventBase & Event )
+{
+   bool so = LogContainer->isShowOperators();
+   GJVQSOLogFrame->SecondOpComboBox->Visible = so;
+   GJVQSOLogFrame->SecondOpLabel->Visible = so;
+   GJVQSOLogFrame->MainOpComboBox->Visible = so;
+   GJVQSOLogFrame->OperatorLabel->Visible = so;
+}
 

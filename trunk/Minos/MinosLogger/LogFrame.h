@@ -100,6 +100,7 @@ class TSingleLogFrame : public TFrame
    TMenuItem *MenuEditContact;
    TTimer *TimerUpdateQSOTimer;
    TMenuItem *Multiplecontesttablines1;
+   TMenuItem *ShowOperators1;
       void __fastcall ThisMatchTreeGetText( TBaseVirtualTree *Sender,
                                             PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
                                             WideString &CellText );
@@ -222,6 +223,9 @@ class TSingleLogFrame : public TFrame
 
       MinosEventListener  EL_MatchStarting;
       void MatchStarting_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_ShowOperators;
+      void ShowOperators_Event ( MinosEventBase & Event );
 
       bool isCurrentLog;
 

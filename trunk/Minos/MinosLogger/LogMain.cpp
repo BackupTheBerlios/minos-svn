@@ -75,6 +75,9 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
       ScrollingContestTabsAction->Checked = mlpa;
       ContestPageControl->MultiLine = !mlpa;
 
+      bool so = isShowOperators();
+      ShowOperatorsAction->Checked = so;
+
       SendDM = new TSendDM( this );
       if ( contestAppLoadFiles() )
       {
@@ -405,6 +408,13 @@ bool TLogContainer::isScrollingContestTabs()
 {
    bool ncdol;
    TContestApp::getContestApp() ->displayBundle.getBoolProfile( edpScrollingContestTabs, ncdol );
+   return ncdol;
+}
+//---------------------------------------------------------------------------
+bool TLogContainer::isShowOperators()
+{
+   bool ncdol;
+   TContestApp::getContestApp() ->displayBundle.getBoolProfile( edpShowOperators, ncdol );
    return ncdol;
 }
 //---------------------------------------------------------------------------
@@ -1080,13 +1090,23 @@ void __fastcall TLogContainer::EditContactActionExecute(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TLogContainer::ScrollingContestTabsActionExecute(TObject *Sender)
+void __fastcall TLogContainer::ScrollingContestTabsActionExecute(TObject */*Sender*/)
 {
    bool mlpa = !isScrollingContestTabs();
    ScrollingContestTabsAction->Checked = mlpa;
    ContestPageControl->MultiLine = !mlpa;
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpScrollingContestTabs, mlpa );
    TContestApp::getContestApp() ->displayBundle.flushProfile();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::ShowOperatorsActionExecute(TObject */*Sender*/)
+{
+   bool so = !isShowOperators();
+   ShowOperatorsAction->Checked = so;
+   TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpShowOperators, so );
+   TContestApp::getContestApp() ->displayBundle.flushProfile();
+   MinosLoggerEvents::SendShowOperators();
 }
 //---------------------------------------------------------------------------
 
