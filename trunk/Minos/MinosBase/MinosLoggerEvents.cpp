@@ -144,4 +144,9 @@ void MinosLoggerEvents::SendOp2Change(std::string op)
 	ActionEvent<std::string ,EN_Op2Change>::Send(op);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendShowOperators()
+{
+	ActionEventV<EN_ShowOperators>::Send();
+}
+//---------------------------------------------------------------------------
 

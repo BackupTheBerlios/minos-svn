@@ -45,6 +45,7 @@ public:
    static void SendMatchStarting();
    static void SendOp1Change(std::string op1);
    static void SendOp2Change(std::string op2);
+   static void SendShowOperators();
 };
 //---------------------------------------------------------------------------
 #endif

@@ -41,6 +41,7 @@ enum MinosEventNumber
 
    EN_Op1Change,
    EN_Op2Change,
+   EN_ShowOperators,
    //   EN_ThisMatchColumnsChanged,
 //   EN_OtherMatchColumnsChanged,
  //  EN_ArchiveMatchColumnsChanged,
