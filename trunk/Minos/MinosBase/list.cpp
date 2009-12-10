@@ -107,7 +107,6 @@ bool ContactList::cslLoad( void )
       {
          typedef boost::tokenizer< boost::escaped_list_separator<char> > tokenizer ;
          tokenizer toker(sbuff);
-         tokenizer::iterator iterator = toker.begin() ;
 
          for( tokenizer::iterator beg=toker.begin(); beg!=toker.end();++beg)
          {
