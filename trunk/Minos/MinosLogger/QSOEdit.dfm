@@ -8,7 +8,7 @@ object QSOEditDlg: TQSOEditDlg
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
@@ -28,7 +28,7 @@ object QSOEditDlg: TQSOEditDlg
     Header.Font.Charset = DEFAULT_CHARSET
     Header.Font.Color = clWindowText
     Header.Font.Height = -11
-    Header.Font.Name = 'Tahoma'
+    Header.Font.Name = 'Verdana'
     Header.Font.Style = []
     Header.MainColumn = -1
     Header.Options = [hoColumnResize, hoDrag]
@@ -39,8 +39,6 @@ object QSOEditDlg: TQSOEditDlg
     OnGetNodeDataSize = QSOHistoryTreeGetNodeDataSize
     OnInitChildren = QSOHistoryTreeInitChildren
     OnInitNode = QSOHistoryTreeInitNode
-    ExplicitWidth = 566
-    ExplicitHeight = 248
     Columns = <>
   end
   inline GJVQSOEditFrame: TGJVQSOEditFrame
@@ -49,6 +47,12 @@ object QSOEditDlg: TQSOEditDlg
     Width = 580
     Height = 190
     Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 1
     TabStop = True
     ExplicitTop = 256
@@ -57,8 +61,8 @@ object QSOEditDlg: TQSOEditDlg
     inherited G0GJVPanel: TPanel
       Width = 580
       Height = 190
-      ExplicitWidth = 566
-      ExplicitHeight = 267
+      ExplicitWidth = 580
+      ExplicitHeight = 190
       inherited GJVOKButton: TButton
         Left = 159
         Top = 149

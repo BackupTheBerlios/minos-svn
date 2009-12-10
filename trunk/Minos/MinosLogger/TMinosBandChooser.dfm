@@ -8,7 +8,7 @@ object MinosBandChooser: TMinosBandChooser
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -19
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
@@ -31,7 +31,7 @@ object MinosBandChooser: TMinosBandChooser
     Width = 145
     Height = 31
     Style = csDropDownList
-    ItemHeight = 0
+    ItemHeight = 23
     TabOrder = 0
   end
   object OKButton: TButton

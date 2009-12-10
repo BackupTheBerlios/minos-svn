@@ -8,7 +8,7 @@ object MinosChatForm: TMinosChatForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
@@ -89,12 +89,12 @@ object MinosChatForm: TMinosChatForm
       426
       26)
     object ChatEdit: TLabeledEdit
-      Left = 53
+      Left = 72
       Top = 1
-      Width = 308
+      Width = 289
       Height = 21
       Anchors = [akLeft, akTop, akRight, akBottom]
-      EditLabel.Width = 49
+      EditLabel.Width = 58
       EditLabel.Height = 13
       EditLabel.Caption = 'Type here'
       LabelPosition = lpLeft

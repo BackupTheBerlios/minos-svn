@@ -7,7 +7,7 @@ object MinosHelpForm: TMinosHelpForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   PixelsPerInch = 96
@@ -19,9 +19,6 @@ object MinosHelpForm: TMinosHelpForm
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 152
-    ExplicitTop = 232
-    ExplicitWidth = 185
     DesignSize = (
       629
       41)
@@ -45,7 +42,5 @@ object MinosHelpForm: TMinosHelpForm
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 1
-    ExplicitWidth = 426
-    ExplicitHeight = 245
   end
 end

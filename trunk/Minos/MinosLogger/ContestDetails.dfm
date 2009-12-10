@@ -361,7 +361,7 @@ object ContestEntryDetails: TContestEntryDetails
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
-      Font.Name = 'Tahoma'
+      Font.Name = 'Verdana'
       Font.Style = []
       ParentFont = False
       TabOrder = 1

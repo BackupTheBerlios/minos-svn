@@ -8,7 +8,7 @@ object BandMapForm: TBandMapForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
@@ -50,6 +50,7 @@ object BandMapForm: TBandMapForm
     Width = 449
     Height = 473
     Header.AutoSizeIndex = -1
+    Header.DefaultHeight = 17
     Header.Font.Charset = DEFAULT_CHARSET
     Header.Font.Color = clWindowText
     Header.Font.Height = -11

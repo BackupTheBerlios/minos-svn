@@ -9,7 +9,7 @@ object WindowsMonitorForm: TWindowsMonitorForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   OnCloseQuery = FormCloseQuery

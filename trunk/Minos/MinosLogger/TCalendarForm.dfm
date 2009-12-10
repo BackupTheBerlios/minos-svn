@@ -8,7 +8,7 @@ object CalendarForm: TCalendarForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
@@ -39,7 +39,7 @@ object CalendarForm: TCalendarForm
     object CalendarVersionLabel: TLabel
       Left = 266
       Top = 14
-      Width = 103
+      Width = 125
       Height = 13
       Caption = 'CalendarVersionLabel'
     end
