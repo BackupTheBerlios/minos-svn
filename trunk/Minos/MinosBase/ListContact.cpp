@@ -54,7 +54,7 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
                else
                   if ( lres == LOC_SHORT )
                   {
-#warning  what here?
+#warning  what here? (lres == LOC_SHORT)
 
                   }
                brgbuff.printf( "%03.3d\xB0", varBrg( brg ) );

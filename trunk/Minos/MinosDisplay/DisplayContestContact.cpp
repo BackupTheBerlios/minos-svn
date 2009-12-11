@@ -670,8 +670,6 @@ void DisplayContestContact::processMinosStanza( const std::string &methodName, M
          mt->getStructArgMemberValue( "op1", op1 );
          mt->getStructArgMemberValue( "op2", op2 );
 
-#warning is this where we need to initially populate the contest oplist and cur ops?         
-
          int maxct = atoi( serials.getValue().c_str() );
          if ( maxct > contest->maxSerial )
             contest->maxSerial = maxct;

@@ -47,7 +47,6 @@ class MinosParameters
       virtual int getStatsPeriod2() = 0;
       virtual void setStatsPeriod1( int ) = 0;
       virtual void setStatsPeriod2( int ) = 0;
-      virtual void addOperator( const std::string &curop ) = 0;
       virtual bool getAllowLoc4() = 0;
       virtual bool getAllowLoc8() = 0;
       virtual bool yesNoMessage( TComponent* Owner, String mess ) = 0;
@@ -76,7 +75,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual int getStatsPeriod2();
       virtual void setStatsPeriod1( int );
       virtual void setStatsPeriod2( int );
-      virtual void addOperator( const std::string &curop );
       virtual bool getAllowLoc4();
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );

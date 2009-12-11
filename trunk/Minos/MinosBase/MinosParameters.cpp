@@ -63,8 +63,6 @@ void MinosParametersAdapter::setStatsPeriod1( int /*p*/ )
 void MinosParametersAdapter::setStatsPeriod2( int /*p*/ )
 {
 }
-void MinosParametersAdapter::addOperator( const std::string &/*curop*/ )
-{}
 bool MinosParametersAdapter::getAllowLoc4()
 {
    return false;

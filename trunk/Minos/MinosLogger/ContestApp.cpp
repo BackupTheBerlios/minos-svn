@@ -601,16 +601,6 @@ void TContestApp::setStatsPeriod2( int s2 )
    displayBundle.setIntProfile( edpStatisticsPeriod2, period2 );
    displayBundle.flushProfile();
 }
-void TContestApp::addOperator( const std::string &curop )
-{
-   if ( curop.length() )
-   {
-      // What do we need to do, if anything?
-#warning  TContestApp::addOperator is now doing nothing
-
-   }
-
-}
 bool TContestApp::getAllowLoc4()
 {
    BaseContestLog * ct = TContestApp::getCurrentContest();

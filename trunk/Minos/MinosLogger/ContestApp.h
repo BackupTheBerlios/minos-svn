@@ -101,7 +101,6 @@ class TContestApp : public MinosParameters
       virtual int getStatsPeriod2();
       virtual void setStatsPeriod1( int );
       virtual void setStatsPeriod2( int );
-      virtual void addOperator( const std::string &curop );
       virtual bool getAllowLoc4();
       virtual bool getAllowLoc8();
       virtual bool yesNoMessage( TComponent* Owner, String mess );
