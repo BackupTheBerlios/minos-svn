@@ -54,13 +54,17 @@ void TMatchThread::InitialiseMatchThread()
 }
 void TMatchThread::ScreenContactChanged_Event ( MinosEventBase & Event )
 {
-   ActionEvent<ScreenContact *, EN_ScreenContactChanged> & S = dynamic_cast<ActionEvent<ScreenContact *, EN_ScreenContactChanged> &> ( Event );
-   mct = S.getData();
-   if (mct)
+   ActionEvent2<ScreenContact *, BaseContestLog *, EN_ScreenContactChanged> & S = dynamic_cast<ActionEvent2<ScreenContact *, BaseContestLog *, EN_ScreenContactChanged> &> ( Event );
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   if (S.getContext() == ct)
    {
-      // we want to initialise the search from the screen contact - break what couplings we can
-      // we need to take care over thread safety as well!
-      startMatch();
+      mct = S.getData();
+      if (mct)
+      {
+         // we want to initialise the search from the screen contact - break what couplings we can
+         // we need to take care over thread safety as well!
+         startMatch();
+      }
    }
 }
 //---------------------------------------------------------------------------
@@ -97,7 +101,8 @@ void __fastcall TMatchThread::Execute()
 //---------------------------------------------------------------------------
 /*static*/ void TMatchThread::startMatch(   CountryEntry *ce )
 {
-   MinosLoggerEvents::SendMatchStarting();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendMatchStarting(ct);
 
    matchThread->logMatch->startMatch( ce );
    matchThread->listMatch->startMatch( ce );
@@ -108,7 +113,8 @@ void __fastcall TMatchThread::doReplaceContestList( void )
 {
    try
    {
-       MinosLoggerEvents::SendReplaceLogList(myMatches);
+      BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+      MinosLoggerEvents::SendReplaceLogList(myMatches, ct);
    }
    catch ( ... )
    {}
@@ -123,7 +129,8 @@ void __fastcall TMatchThread::doReplaceListList( void )
 {
    try
    {
-       MinosLoggerEvents::SendReplaceListList(myListMatches);
+      BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+      MinosLoggerEvents::SendReplaceListList(myListMatches, ct);
    }
    catch ( ... )
    {}
@@ -152,7 +159,8 @@ void __fastcall TMatchThread::doMatchCountry( void )
 {
    try
    {
-      MinosLoggerEvents::SendScrollToCountry(ctrymatch);
+      BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+      MinosLoggerEvents::SendScrollToCountry(ctrymatch, ct);
    }
    catch ( ... )
    {}
@@ -167,7 +175,8 @@ void __fastcall TMatchThread::doMatchDistrict( void )
 {
    try
    {
-      MinosLoggerEvents::SendScrollToDistrict(distmatch);
+      BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+      MinosLoggerEvents::SendScrollToDistrict(distmatch, ct);
    }
    catch ( ... )
    {}

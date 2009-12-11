@@ -242,7 +242,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
       TimeEdit->Font->Color = clRed;
    }
 
-   MinosLoggerEvents::SendAfterSelectContact(lct);
+   MinosLoggerEvents::SendAfterSelectContact(lct, contest);
    selectField( 0 );
 }
 //---------------------------------------------------------------------------
@@ -324,7 +324,7 @@ void TGJVQSOEditFrame::initialise( BaseContestLog * contest, bool bf )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVQSOEditFrame::MainOpComboBoxExit(TObject *Sender)
+void __fastcall TGJVQSOEditFrame::MainOpComboBoxExit(TObject */*Sender*/)
 {
    std::string op1 = MainOpComboBox->Text.c_str();
    if ( op1.size() )
@@ -336,7 +336,7 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxExit(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject *Sender)
+void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject */*Sender*/)
 {
    std::string op2 = SecondOpComboBox->Text.c_str();
    if ( op2.size() )

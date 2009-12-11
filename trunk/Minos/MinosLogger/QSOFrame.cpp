@@ -91,7 +91,7 @@ void TGJVEditFrame::initialise( BaseContestLog * pcontest, bool bf )
 }
 void TGJVEditFrame::ValidateError_Event ( MinosEventBase & Event )
 {
-		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
+		ActionEvent1<int, EN_ValidateError> & S = dynamic_cast<ActionEvent1<int, EN_ValidateError> &> ( Event );
       int mess_no = S.getData();
       if ( mess_no == -1 )
       {
@@ -213,7 +213,7 @@ void TGJVEditFrame::showScreenEntry( void )
       SerTXEdit->Color = clBtnFace;
       SerTXEdit->ReadOnly = true;
       MinosLoggerEvents::SendShowErrorList();
-      MinosLoggerEvents::SendScreenContactChanged(&screenContact);
+      MinosLoggerEvents::SendScreenContactChanged(&screenContact, contest);
    }
 }
 //---------------------------------------------------------------------------
@@ -231,7 +231,7 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
    {
       ovr = true;
    }
-   MinosLoggerEvents::SendReportOverstrike(ovr);
+   MinosLoggerEvents::SendReportOverstrike(ovr, contest);
 }
 //---------------------------------------------------------------------------
 
@@ -307,7 +307,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
       doAutofill();
    }
    MinosLoggerEvents::SendShowErrorList();
-   MinosLoggerEvents::SendReportOverstrike(overstrike);
+   MinosLoggerEvents::SendReportOverstrike(overstrike, contest);
    if (ModeComboBoxGJV->Text == "A1A")
    {
       ModeButton->Caption = "J3E";
@@ -338,7 +338,7 @@ void __fastcall TGJVEditFrame::EditKeyDown( TObject */*Sender*/, WORD &Key,
       ovr = true;
    }
 
-   MinosLoggerEvents::SendReportOverstrike(ovr);
+   MinosLoggerEvents::SendReportOverstrike(ovr, contest);
 
    if ( ed->ReadOnly )
    {
@@ -1284,7 +1284,7 @@ void __fastcall TGJVEditFrame::ModeButtonClick(TObject *Sender)
 
 
 
-void __fastcall TGJVEditFrame::OpComboBoxKeyPress(TObject *Sender,
+void __fastcall TGJVEditFrame::OpComboBoxKeyPress(TObject */*Sender*/,
       char &Key)
 {
    Key = toupper( Key );

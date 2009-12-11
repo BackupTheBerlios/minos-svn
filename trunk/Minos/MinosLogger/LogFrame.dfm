@@ -134,8 +134,6 @@ object SingleLogFrame: TSingleLogFrame
                 Width = 262
                 Height = 157
                 TabStop = False
-                ExplicitLeft = 2
-                ExplicitTop = -2
                 ExplicitWidth = 262
                 ExplicitHeight = 157
                 inherited SLabel1: TLabel
@@ -317,7 +315,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end

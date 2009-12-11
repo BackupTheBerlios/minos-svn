@@ -86,16 +86,19 @@ void __fastcall TQSOEditDlg::FormClose( TObject */*Sender*/, TCloseAction &/*Act
 //---------------------------------------------------------------------------
 void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
 {
-   ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
-   BaseContact *lct = S.getData();
-   if (lct)
+   ActionEvent2<BaseContact *, BaseContestLog *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent2<BaseContact *, BaseContestLog *, EN_AfterSelectContact> &> ( Event );
+   if (contest == S.getContext())
    {
-      QSOHistoryTree->RootNodeCount = 0;
-      QSOHistoryTree->RootNodeCount = lct->getHistory().size();
+      BaseContact *lct = S.getData();
+      if (lct)
+      {
+         QSOHistoryTree->RootNodeCount = 0;
+         QSOHistoryTree->RootNodeCount = lct->getHistory().size();
 
-      QSOHistoryTree->FullExpand();
+         QSOHistoryTree->FullExpand();
+      }
+      refreshOps(GJVQSOEditFrame->screenContact);
    }
-   refreshOps(GJVQSOEditFrame->screenContact);
 }
 //---------------------------------------------------------------------------
 void TQSOEditDlg::refreshOps( ScreenContact &screenContact )

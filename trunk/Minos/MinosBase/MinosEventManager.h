@@ -232,13 +232,13 @@ void ActionEventV<type>::Send ( )
 }
 //---------------------------------------------------------------------------
 template <class T,MinosEventNumber type>
-class ActionEvent : public MinosEventBase
+class ActionEvent1 : public MinosEventBase
 {
 		T FData;
 
 	public:
 
-		ActionEvent ( T data )
+		ActionEvent1 ( T data )
             :  MinosEventBase ( type ),
             FData ( data )
             { }
@@ -248,9 +248,35 @@ class ActionEvent : public MinosEventBase
 		static void Send( T data );
 };
 template <class T,MinosEventNumber type>
-void ActionEvent<T, type>::Send ( T data )
+void ActionEvent1<T, type>::Send ( T data )
 {
-	ActionEvent<T,type> E ( data );
+	ActionEvent1<T,type> E ( data );
+	MinosEventManager & EM = MinosEventManager::GetMinosEventManager();
+	EM.ProcessEvent ( E );
+}
+//---------------------------------------------------------------------------
+template <class T, class C, MinosEventNumber type>
+class ActionEvent2 : public MinosEventBase
+{
+		T FData;
+		C FContextData;
+
+	public:
+
+		ActionEvent2 ( T data, C context )
+            :  MinosEventBase ( type ),
+            FData ( data ), FContextData(context)
+            { }
+
+		T getData() { return FData; }
+		C getContext() { return FContextData; }
+
+		static void Send( T data, C context );
+};
+template <class T,class C, MinosEventNumber type>
+void ActionEvent2<T, C, type>::Send ( T data, C context )
+{
+	ActionEvent2<T,C,type> E ( data, context );
 	MinosEventManager & EM = MinosEventManager::GetMinosEventManager();
 	EM.ProcessEvent ( E );
 }

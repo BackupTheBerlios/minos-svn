@@ -61,7 +61,6 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       otherTreeClickNode( 0 ),
       archiveTreeClickNode( 0 ),
       xferTree( 0 ),
-      isCurrentLog(false),
       EL_SplitterChanged ( EN_SplittersChanged, & SplittersChanged_Event ),
       EL_LogColumnsChanged ( EN_LogColumnsChanged, & LogColumnsChanged_Event ),
       EL_ContestPageChanged ( EN_ContestPageChanged, & ContestPageChanged_Event ),
@@ -139,16 +138,11 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 {
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
    {
-      isCurrentLog = false;
-      GJVQSOLogFrame->isCurrentLog = false;
       return ;
    }
 
    BaseContestLog * ct = getContest();
    TContestApp::getContestApp() ->setCurrentContest( ct );
-
-   isCurrentLog = true;
-   GJVQSOLogFrame->isCurrentLog = true;
 
    if ( logColumnsChanged )
       showQSOs();
@@ -181,10 +175,10 @@ BaseContestLog * TSingleLogFrame::getContest()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ReportOverstrike_Event( MinosEventBase & Event )
 {
-   if (isCurrentLog)
-   {
-      ActionEvent<bool, EN_ReportOverstrike> & S = dynamic_cast<ActionEvent<bool, EN_ReportOverstrike> &> ( Event );
+   ActionEvent2<bool, BaseContestLog *, EN_ReportOverstrike> & S = dynamic_cast<ActionEvent2<bool, BaseContestLog *, EN_ReportOverstrike> &> ( Event );
 
+   if (contest == S.getContext())
+   {
       bool overstrike = S.getData();
       LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = overstrike ? "Overwrite" : "Insert";
    }
@@ -589,9 +583,9 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ReplaceLogList_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent2<TMatchCollection *, BaseContestLog *, EN_ReplaceLogList> & S = dynamic_cast<ActionEvent2<TMatchCollection *, BaseContestLog *, EN_ReplaceLogList> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<TMatchCollection *, EN_ReplaceLogList> & S = dynamic_cast<ActionEvent<TMatchCollection *, EN_ReplaceLogList> &> ( Event );
       TMatchCollection *matchCollection = S.getData();
       replaceContestList(matchCollection);
    }
@@ -599,9 +593,9 @@ void TSingleLogFrame::ReplaceLogList_Event ( MinosEventBase & Event )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ReplaceListList_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent2<TMatchCollection *, BaseContestLog *, EN_ReplaceListList> & S = dynamic_cast<ActionEvent2<TMatchCollection *, BaseContestLog *, EN_ReplaceListList> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<TMatchCollection *, EN_ReplaceListList> & S = dynamic_cast<ActionEvent<TMatchCollection *, EN_ReplaceListList> &> ( Event );
       TMatchCollection *matchCollection = S.getData();
       replaceListList(matchCollection);
    }
@@ -617,9 +611,12 @@ void TSingleLogFrame::replaceListList( TMatchCollection *matchCollection )
    showMatchList( matchCollection );
 }
 //==============================================================================
-void TSingleLogFrame::MatchStarting_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::MatchStarting_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_MatchStarting> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_MatchStarting> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       // clear down match trees
       xferTree = 0;
@@ -672,9 +669,12 @@ void TSingleLogFrame::LogColumnsChanged_Event ( MinosEventBase & /*Event*/ )
    logColumnsChanged = true;
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::GoToSerial_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::GoToSerial_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_GoToSerial> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_GoToSerial> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       goSerial();
    }
@@ -751,9 +751,9 @@ void __fastcall TSingleLogFrame::NextContactDetailsTimerTimer( TObject */*Sender
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ScrollToDistrict_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent2<std::string, BaseContestLog *, EN_ScrollToDistrict> & S = dynamic_cast<ActionEvent2<std::string, BaseContestLog *, EN_ScrollToDistrict> &> ( Event );
+   if (contest == S.getContext( ))
    {
-      ActionEvent<std::string, EN_ScrollToDistrict> & S = dynamic_cast<ActionEvent<std::string, EN_ScrollToDistrict> &> ( Event );
       std::string qth = S.getData();
       matchDistrict(qth);
    }
@@ -772,9 +772,9 @@ void TSingleLogFrame::matchDistrict( const std::string &qth )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ScrollToCountry_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent2<std::string, BaseContestLog *, EN_ScrollToCountry> & S = dynamic_cast<ActionEvent2<std::string, BaseContestLog *, EN_ScrollToCountry> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<std::string, EN_ScrollToCountry> & S = dynamic_cast<ActionEvent<std::string, EN_ScrollToCountry> &> ( Event );
       std::string prefix = S.getData();
       matchCountry(prefix);
    }
@@ -1061,9 +1061,12 @@ void TSingleLogFrame::doNextContactDetailsOnLeftClick( TObject */*Sender*/ )
       }
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::MakeEntry_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::MakeEntry_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_MakeEntry> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_MakeEntry> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       makeEntry( false );
    }
@@ -1092,9 +1095,9 @@ String TSingleLogFrame::makeEntry( bool saveMinos )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::SetMode_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   ActionEvent2<String, BaseContestLog *, EN_SetMode> & S = dynamic_cast<ActionEvent2<String, BaseContestLog *, EN_SetMode> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<String, EN_SetMode> & S = dynamic_cast<ActionEvent<String, EN_SetMode> &> ( Event );
       String mode = S.getData();
       setMode(mode);
    }
@@ -1107,9 +1110,9 @@ void TSingleLogFrame::setMode( String m )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::SetFreq_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   ActionEvent2<String, BaseContestLog *, EN_SetFreq> & S = dynamic_cast<ActionEvent2<String, BaseContestLog *, EN_SetFreq> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<String, EN_SetFreq> & S = dynamic_cast<ActionEvent<String, EN_SetFreq> &> ( Event );
       String freq = S.getData();
       setFreq(freq);
    }
@@ -1141,9 +1144,12 @@ void __fastcall TSingleLogFrame::AutoBandmapTimeClick( TObject */*Sender*/ )
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpAutoBandMapTime, GJVQSOLogFrame->AutoBandmapTime->Checked );
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::SetTimeNow_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::SetTimeNow_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_SetTimeNow> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_SetTimeNow> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       SetTimeNowClick(0);
 
@@ -1157,9 +1163,9 @@ void __fastcall TSingleLogFrame::SetTimeNowClick( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::FormKey_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   ActionEvent2<WORD *, BaseContestLog *, EN_FormKey> & S = dynamic_cast<ActionEvent2<WORD *, BaseContestLog *, EN_FormKey> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<WORD *, EN_FormKey> & S = dynamic_cast<ActionEvent<WORD *, EN_FormKey> &> ( Event );
       WORD *key = S.getData();
       setActiveControl(key);
    }
@@ -1264,9 +1270,9 @@ void __fastcall TSingleLogFrame::GJVQSOLogFrame1MatchXferButtonClick(
 //---------------------------------------------------------------------------
 void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
+   ActionEvent2<BaseContact *, BaseContestLog *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent2<BaseContact *, BaseContestLog *, EN_AfterSelectContact> &> ( Event );
+   if (contest == S.getContext())
    {
-      ActionEvent<BaseContact *, EN_AfterSelectContact> & S = dynamic_cast<ActionEvent<BaseContact *, EN_AfterSelectContact> &> ( Event );
       BaseContact *lct = S.getData();
       if (!lct)
       {
@@ -1279,9 +1285,7 @@ void TSingleLogFrame::AfterSelectContact_Event( MinosEventBase & Event)
 //---------------------------------------------------------------------------
 void TSingleLogFrame::AfterLogContact_Event( MinosEventBase & Event)
 {
-   if (isCurrentLog)
-   {
-      ActionEvent<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent<BaseContestLog *, EN_AfterLogContact> &> ( Event );
+      ActionEvent1<BaseContestLog *, EN_AfterLogContact> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_AfterLogContact> &> ( Event );
       BaseContestLog *ct = S.getData();
 
       if (ct == contest)
@@ -1290,7 +1294,6 @@ void TSingleLogFrame::AfterLogContact_Event( MinosEventBase & Event)
          updateTrees();
          NextContactDetailsTimerTimer( this );
       }
-   }
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateTrees()
@@ -1300,9 +1303,12 @@ void TSingleLogFrame::updateTrees()
    LogMonitor->QSOTree->Invalidate();
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::NextUnfilled_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::NextUnfilled_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_NextUnfilled> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_NextUnfilled> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       GoNextUnfilled();
    }
@@ -1338,10 +1344,7 @@ void __fastcall TSingleLogFrame::TimerUpdateQSOTimerTimer(TObject */*Sender*/)
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSOTime()
 {
-   if (isCurrentLog)
-   {
-      GJVQSOLogFrame->updateQSOTime();
-   }
+   GJVQSOLogFrame->updateQSOTime();
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSODisplay()
@@ -1580,9 +1583,12 @@ void __fastcall TSingleLogFrame::EntryChoiceMenuPopup(TObject */*Sender*/)
 
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::EditMatchContact_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::EditMatchContact_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_EditMatchContact> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_EditMatchContact> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       EditMatchContact();
    }
@@ -1593,18 +1599,24 @@ void TSingleLogFrame::EditMatchContact()
    otherMatchTreeSelect( otherTreeClickNode );
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_NextContactDetailsOnLeft> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_NextContactDetailsOnLeft> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       OnShowTimer->Enabled = true;
    }
 }
 
 //---------------------------------------------------------------------------
-void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & /*Event*/ )
+void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & Event )
 {
-   if (isCurrentLog)
+   ActionEvent1<BaseContestLog *, EN_ContestDetails> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_ContestDetails> &> ( Event );
+   BaseContestLog *ct = S.getData();
+
+   if (ct == contest)
    {
       std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
 
@@ -1624,7 +1636,7 @@ void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & /*Event*/ )
 }
 
 //---------------------------------------------------------------------------
-void TSingleLogFrame::ShowOperators_Event ( MinosEventBase & Event )
+void TSingleLogFrame::ShowOperators_Event ( MinosEventBase & /*Event*/ )
 {
    bool so = LogContainer->isShowOperators();
    GJVQSOLogFrame->SecondOpComboBox->Visible = so;

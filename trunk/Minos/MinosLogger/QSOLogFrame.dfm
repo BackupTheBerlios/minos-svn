@@ -12,13 +12,61 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
       Top = 13
       ExplicitTop = 13
     end
-    inherited SerTXEdit: TLabeledEdit [5]
-      TabOrder = 7
+    inherited DateEdit: TLabeledEdit [5]
+      TabOrder = 4
     end
-    inherited CommentsEdit: TLabeledEdit [6]
-      TabOrder = 12
+    inherited SerRXEdit: TLabeledEdit [6]
+      TabOrder = 9
     end
-    object BandMapPanel: TPanel [7]
+    inherited DeletedCheckBox: TCheckBox [7]
+      TabOrder = 18
+    end
+    inherited TimeEdit: TLabeledEdit [8]
+      TabOrder = 17
+    end
+    inherited CallsignEdit: TLabeledEdit [9]
+      TabOrder = 5
+    end
+    inherited QTHEdit: TLabeledEdit [10]
+      TabOrder = 11
+    end
+    inherited GJVCancelButton: TButton [11]
+      TabOrder = 19
+    end
+    inherited GJVForceButton: TButton [12]
+      TabOrder = 14
+    end
+    inherited RSTTXEdit: TLabeledEdit [13]
+      TabOrder = 6
+    end
+    inherited NonScoreCheckBox: TCheckBox [14]
+    end
+    inherited RSTRXEdit: TLabeledEdit [15]
+      TabOrder = 8
+    end
+    inherited LocEdit: TLabeledEdit [16]
+      TabOrder = 10
+    end
+    object MatchXferButton: TBitBtn [17]
+      Left = 321
+      Top = 112
+      Width = 67
+      Height = 30
+      Hint = 'Get fields from current matching QSO'
+      Caption = 'Match &Xfer F12'
+      Enabled = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 13
+      TabStop = False
+      WordWrap = True
+    end
+    inherited ModeComboBoxGJV: TComboBox [18]
+    end
+    inherited GJVOKButton: TButton [19]
+      TabOrder = 16
+    end
+    object BandMapPanel: TPanel [20]
       Left = 394
       Top = 111
       Width = 177
@@ -53,59 +101,11 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
         TabOrder = 2
       end
     end
-    inherited GJVOKButton: TButton [8]
-      TabOrder = 16
+    inherited CommentsEdit: TLabeledEdit [21]
+      TabOrder = 12
     end
-    inherited ModeComboBoxGJV: TComboBox [9]
-    end
-    object MatchXferButton: TBitBtn [10]
-      Left = 321
-      Top = 112
-      Width = 67
-      Height = 30
-      Hint = 'Get fields from current matching QSO'
-      Caption = 'Match &Xfer F12'
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 13
-      TabStop = False
-      WordWrap = True
-    end
-    inherited LocEdit: TLabeledEdit [11]
-      TabOrder = 10
-    end
-    inherited RSTRXEdit: TLabeledEdit [12]
-      TabOrder = 8
-    end
-    inherited NonScoreCheckBox: TCheckBox [13]
-    end
-    inherited RSTTXEdit: TLabeledEdit [14]
-      TabOrder = 6
-    end
-    inherited DateEdit: TLabeledEdit [15]
-      TabOrder = 4
-    end
-    inherited SerRXEdit: TLabeledEdit [16]
-      TabOrder = 9
-    end
-    inherited DeletedCheckBox: TCheckBox [17]
-      TabOrder = 18
-    end
-    inherited TimeEdit: TLabeledEdit [18]
-      TabOrder = 17
-    end
-    inherited CallsignEdit: TLabeledEdit [19]
-      TabOrder = 5
-    end
-    inherited QTHEdit: TLabeledEdit [20]
-      TabOrder = 11
-    end
-    inherited GJVCancelButton: TButton [21]
-      TabOrder = 19
-    end
-    inherited GJVForceButton: TButton [22]
-      TabOrder = 14
+    inherited SerTXEdit: TLabeledEdit [22]
+      TabOrder = 7
     end
     inherited FirstUnfilledButton: TButton
       TabOrder = 20

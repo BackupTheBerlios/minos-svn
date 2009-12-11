@@ -599,7 +599,8 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestDetailsActionExecute( TObject */*Sender*/ )
 {
-   MinosLoggerEvents::SendContestDetails();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendContestDetails(ct);
 }
 //---------------------------------------------------------------------------
 
@@ -675,7 +676,8 @@ void __fastcall TLogContainer::FormKeyUp( TObject */*Sender*/, WORD &Key,
    else
       if ( Shift.Empty() )
       {
-         MinosLoggerEvents::SendFormKey(&Key);
+         BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+         MinosLoggerEvents::SendFormKey(&Key, ct);
       }
 }
 //---------------------------------------------------------------------------
@@ -708,11 +710,13 @@ void __fastcall TLogContainer::doSetCaption()
 }
 void __fastcall TLogContainer::doSetMode()
 {
-   MinosLoggerEvents::SendSetMode(modeToSet);
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendSetMode(modeToSet, ct);
 }
 void __fastcall TLogContainer::doSetFreq()
 {
-   MinosLoggerEvents::SendSetFreq(freqToSet);
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendSetFreq(freqToSet, ct);
 }
 void TLogContainer::setCaption( String c )
 {
@@ -750,12 +754,14 @@ void __fastcall TLogContainer::SyncTimerTimer( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::GoToSerialActionExecute( TObject */*Sender*/ )
 {
-   MinosLoggerEvents::SendGoToSerial();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendGoToSerial(ct);
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::MakeEntryActionExecute( TObject */*Sender*/ )
 {
-   MinosLoggerEvents::SendMakeEntry();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendMakeEntry(ct);
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::AnalyseMinosLogActionExecute( TObject */*Sender*/ )
@@ -793,7 +799,8 @@ void __fastcall TLogContainer::AnalyseMinosLogActionExecute( TObject */*Sender*/
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::NextUnfilledActionExecute( TObject */*Sender*/ )
 {
-   MinosLoggerEvents::SendNextUnfilled();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendNextUnfilled(ct);
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::ContestPageControlMouseDown( TObject */*Sender*/,
@@ -956,7 +963,8 @@ void __fastcall TLogContainer::WmMove( TMessage &/*Msg*/ )
 
 void __fastcall TLogContainer::SetTimeNowActionExecute( TObject */*Sender*/ )
 {
-   MinosLoggerEvents::SendSetTimeNow();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendSetTimeNow(ct);
 }
 //---------------------------------------------------------------------------
 
@@ -1086,7 +1094,8 @@ void __fastcall TLogContainer::Tools1Click(TObject */*Sender*/)
 
 void __fastcall TLogContainer::EditContactActionExecute(TObject */*Sender*/)
 {
-   MinosLoggerEvents::SendEditMatchContact();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   MinosLoggerEvents::SendEditMatchContact(ct);
 }
 //---------------------------------------------------------------------------
 

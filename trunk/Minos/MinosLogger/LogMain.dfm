@@ -36,7 +36,6 @@ object LogContainer: TLogContainer
     OnChange = ContestPageControlChange
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
-    ExplicitHeight = 407
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -63,7 +62,6 @@ object LogContainer: TLogContainer
     UseSystemFont = False
     OnDblClick = CorrectDateTimeActionExecute
     OnResize = StatusBar1Resize
-    ExplicitTop = 407
   end
   object ActionManager: TActionManager
     ActionBars = <

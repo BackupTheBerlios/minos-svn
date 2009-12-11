@@ -53,7 +53,6 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void initialise( BaseContestLog * contest, bool catchup );
       void setFreq( String f );
       virtual void updateQSOTime();
-      bool isCurrentLog;
 };
 //---------------------------------------------------------------------------
 #endif

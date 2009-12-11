@@ -488,7 +488,8 @@ void __fastcall TMultDispFrame::FilterTimerTimer( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void TMultDispFrame::ValidateError_Event ( MinosEventBase & Event )
 {
-		ActionEvent<int, EN_ValidateError> & S = dynamic_cast<ActionEvent<int, EN_ValidateError> &> ( Event );
+#warning this really needs the log pointer for context
+		ActionEvent1<int, EN_ValidateError> & S = dynamic_cast<ActionEvent1<int, EN_ValidateError> &> ( Event );
       int mess_no = S.getData();
       if ( mess_no == -1 )
       {

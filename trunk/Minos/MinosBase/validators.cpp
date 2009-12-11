@@ -49,6 +49,7 @@ ErrEntry errDefs[] =
    };
 void setError( int err )   // No CS
 {
+#warning this really needs the log pointer for context - but where from?
    MinosLoggerEvents::SendValidateError(err);
 }
 

@@ -22,8 +22,7 @@
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TGJVQSOLogFrame::TGJVQSOLogFrame( TComponent* Owner )
-      : TGJVEditFrame( Owner ), partialContact( 0 ),
-      isCurrentLog(false)
+      : TGJVEditFrame( Owner ), partialContact( 0 )
 {}
 __fastcall TGJVQSOLogFrame::~TGJVQSOLogFrame()
 {
@@ -34,7 +33,7 @@ void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
 {
    TGJVEditFrame::initialise( contest, false );
    BandMapPanel->Visible = checkServerReady();
-   MinosLoggerEvents::SendReportOverstrike(overstrike);
+   MinosLoggerEvents::SendReportOverstrike(overstrike, contest);
    refreshOps();
 }
 //---------------------------------------------------------------------------
@@ -158,7 +157,7 @@ void TGJVQSOLogFrame::startNextEntry( )
    updateQSOTime();
    showScreenEntry();
 
-   MinosLoggerEvents::SendAfterSelectContact(0);
+   MinosLoggerEvents::SendAfterSelectContact(0, contest);
 }
 void TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
@@ -232,7 +231,7 @@ void TGJVQSOLogFrame::doGJVEditChange( TObject *Sender )
          // force bearing calc
          calcLoc();
       }
-      MinosLoggerEvents::SendScreenContactChanged(&screenContact);
+      MinosLoggerEvents::SendScreenContactChanged(&screenContact, contest);
    }
 }
 //==============================================================================
@@ -367,7 +366,7 @@ void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject */*Sender*/)
 // Go to the first unfilled QSO
 // If there aren't any then it needs to be made invisible
 // ScanContest can work out how many there are - and we can display that on the button
-   MinosLoggerEvents::SendNextUnfilled();
+   MinosLoggerEvents::SendNextUnfilled(contest);
 }
 //---------------------------------------------------------------------------
 

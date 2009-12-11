@@ -227,8 +227,6 @@ class TSingleLogFrame : public TFrame
       MinosEventListener  EL_ShowOperators;
       void ShowOperators_Event ( MinosEventBase & Event );
 
-      bool isCurrentLog;
-
       TWhisperSplitter *WLogAreaSplitter;
       TWhisperSplitter *WMultSplitter;
       TWhisperSplitter *WNextContactDetailsSplitter;

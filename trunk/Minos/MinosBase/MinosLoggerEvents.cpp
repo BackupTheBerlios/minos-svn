@@ -31,7 +31,7 @@ void MinosLoggerEvents::SendSplittersChanged()
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendValidateError(int err)
 {
-	ActionEvent<int ,EN_ValidateError>::Send(err);
+	ActionEvent1<int , EN_ValidateError>::Send(err);
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendShowErrorList()
@@ -39,19 +39,19 @@ void MinosLoggerEvents::SendShowErrorList()
 	ActionEventV<EN_ShowErrorList>::Send();
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendReportOverstrike(bool ov)
+void MinosLoggerEvents::SendReportOverstrike(bool ov, BaseContestLog *c)
 {
-	ActionEvent<bool ,EN_ReportOverstrike>::Send(ov);
+	ActionEvent2<bool , BaseContestLog *, EN_ReportOverstrike>::Send(ov, c);
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendAfterLogContact(BaseContestLog *ct)
 {
-	ActionEvent<BaseContestLog * ,EN_AfterLogContact>::Send(ct);
+	ActionEvent1<BaseContestLog * ,EN_AfterLogContact>::Send(ct);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendAfterSelectContact(BaseContact *lct)
+void MinosLoggerEvents::SendAfterSelectContact(BaseContact *lct, BaseContestLog *c)
 {
-	ActionEvent<BaseContact * ,EN_AfterSelectContact>::Send(lct);
+	ActionEvent2<BaseContact *, BaseContestLog * ,EN_AfterSelectContact>::Send(lct, c);
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendNextContactDetailsOnLeft()
@@ -59,89 +59,89 @@ void MinosLoggerEvents::SendNextContactDetailsOnLeft()
 	ActionEventV<EN_NextContactDetailsOnLeft>::Send();
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendContestDetails()
+void MinosLoggerEvents::SendContestDetails(BaseContestLog *c)
 {
-	ActionEventV<EN_ContestDetails>::Send();
+	ActionEvent1<BaseContestLog *, EN_ContestDetails>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendGoToSerial()
+void MinosLoggerEvents::SendGoToSerial(BaseContestLog *c)
 {
-	ActionEventV<EN_GoToSerial>::Send();
+	ActionEvent1<BaseContestLog *, EN_GoToSerial>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendMakeEntry()
+void MinosLoggerEvents::SendMakeEntry(BaseContestLog *c)
 {
-	ActionEventV<EN_MakeEntry>::Send();
+	ActionEvent1<BaseContestLog *, EN_MakeEntry>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendSetTimeNow()
+void MinosLoggerEvents::SendSetTimeNow(BaseContestLog *c)
 {
-	ActionEventV<EN_SetTimeNow>::Send();
+	ActionEvent1<BaseContestLog *,EN_SetTimeNow>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendNextUnfilled()
+void MinosLoggerEvents::SendNextUnfilled(BaseContestLog *c)
 {
-	ActionEventV<EN_NextUnfilled>::Send();
+	ActionEvent1<BaseContestLog *, EN_NextUnfilled>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendFormKey(WORD *key)
+void MinosLoggerEvents::SendFormKey(WORD *key, BaseContestLog *c)
 {
-	ActionEvent<WORD * ,EN_FormKey>::Send(key);
+	ActionEvent2<WORD *, BaseContestLog * ,EN_FormKey>::Send(key, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendSetMode(String mode)
+void MinosLoggerEvents::SendSetMode(String mode, BaseContestLog *c)
 {
-	ActionEvent<String ,EN_SetMode>::Send(mode);
+	ActionEvent2<String, BaseContestLog * ,EN_SetMode>::Send(mode, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendSetFreq(String freq)
+void MinosLoggerEvents::SendSetFreq(String freq, BaseContestLog *c)
 {
-	ActionEvent<String ,EN_SetFreq>::Send(freq);
+	ActionEvent2<String, BaseContestLog * ,EN_SetFreq>::Send(freq, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendEditMatchContact()
+void MinosLoggerEvents::SendEditMatchContact(BaseContestLog *c)
 {
-	ActionEventV<EN_EditMatchContact>::Send();
+	ActionEvent1<BaseContestLog *, EN_EditMatchContact>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendScreenContactChanged(ScreenContact *sct)
+void MinosLoggerEvents::SendScreenContactChanged(ScreenContact *sct, BaseContestLog *c)
 {
-	ActionEvent<ScreenContact * ,EN_ScreenContactChanged>::Send(sct);
+	ActionEvent2<ScreenContact *, BaseContestLog * ,EN_ScreenContactChanged>::Send(sct, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendReplaceLogList(TMatchCollection *matchCollection)
+void MinosLoggerEvents::SendReplaceLogList(TMatchCollection *matchCollection, BaseContestLog *c)
 {
-	ActionEvent<TMatchCollection * ,EN_ReplaceLogList>::Send(matchCollection);
+	ActionEvent2<TMatchCollection *, BaseContestLog * ,EN_ReplaceLogList>::Send(matchCollection, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendReplaceListList(TMatchCollection *matchCollection)
+void MinosLoggerEvents::SendReplaceListList(TMatchCollection *matchCollection, BaseContestLog *c)
 {
-	ActionEvent<TMatchCollection * ,EN_ReplaceListList>::Send(matchCollection);
+	ActionEvent2<TMatchCollection *, BaseContestLog * ,EN_ReplaceListList>::Send(matchCollection, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendScrollToCountry(std::string prefix)
+void MinosLoggerEvents::SendScrollToCountry(std::string prefix, BaseContestLog *c)
 {
-	ActionEvent<std::string ,EN_ScrollToCountry>::Send(prefix);
+	ActionEvent2<std::string, BaseContestLog * ,EN_ScrollToCountry>::Send(prefix, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendScrollToDistrict(std::string prefix)
+void MinosLoggerEvents::SendScrollToDistrict(std::string prefix, BaseContestLog *c)
 {
-	ActionEvent<std::string ,EN_ScrollToDistrict>::Send(prefix);
+	ActionEvent2<std::string, BaseContestLog * ,EN_ScrollToDistrict>::Send(prefix, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendMatchStarting()
+void MinosLoggerEvents::SendMatchStarting( BaseContestLog *c)
 {
-	ActionEventV<EN_MatchStarting>::Send();
+	ActionEvent1<BaseContestLog *, EN_MatchStarting>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendOp1Change(std::string op)
+void MinosLoggerEvents::SendOp1Change(std::string op, BaseContestLog *c)
 {
-	ActionEvent<std::string ,EN_Op1Change>::Send(op);
+	ActionEvent2<std::string, BaseContestLog * ,EN_Op1Change>::Send(op, c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendOp2Change(std::string op)
+void MinosLoggerEvents::SendOp2Change(std::string op, BaseContestLog *c)
 {
-	ActionEvent<std::string ,EN_Op2Change>::Send(op);
+	ActionEvent2<std::string, BaseContestLog * ,EN_Op2Change>::Send(op, c);
 }
 //---------------------------------------------------------------------------
 void MinosLoggerEvents::SendShowOperators()
