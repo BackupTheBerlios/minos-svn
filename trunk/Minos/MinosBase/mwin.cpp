@@ -419,7 +419,7 @@ char callsign::validate( )
    // NB that leading spaces may be genuine wildcards, and so may
    // actually be significant; we should reject as invalid
    // calls with leading spaces, even though this isn't very friendly
-
+#warning this is crap!
    TEMPBUFF( csv, CALLSIGNLENGTH + 1 );
    strncpy( csv, fullCall.getValue().c_str(), CALLSIGNLENGTH );          // set up a modifiable buffer
    csv[ CALLSIGNLENGTH ] = 0;

@@ -155,7 +155,7 @@ CountryEntry *findCtryPrefix( const callsign &cs )
          // This is getting VERY nasty; maybe we just say to enter the actual call
          // as a synonym (but of what... we need a placeholder for the main country)!
          testpart = cs.fullCall.getValue();
-         trimr( testpart );
+         testpart = trimr( testpart );
 
          int clen = testpart.length();
          int minlen;

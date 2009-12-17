@@ -3,7 +3,7 @@ object EntryOptionsForm: TEntryOptionsForm
   Top = 169
   Caption = 'Produce Contest Entry/Export File'
   ClientHeight = 547
-  ClientWidth = 567
+  ClientWidth = 579
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,15 +14,15 @@ object EntryOptionsForm: TEntryOptionsForm
   Position = poOwnerFormCenter
   OnShow = FormShow
   DesignSize = (
-    567
+    579
     547)
   PixelsPerInch = 96
   TextHeight = 13
   object EntryGroup: TRadioGroup
-    Left = 440
+    Left = 431
     Top = 32
-    Width = 123
-    Height = 273
+    Width = 144
+    Height = 313
     Anchors = [akTop, akRight]
     Caption = 'File Format'
     ItemIndex = 0
@@ -31,11 +31,12 @@ object EntryOptionsForm: TEntryOptionsForm
       'ADIF(export)'
       'G0GJV(export)'
       'Minos(export)'
-      'KML(GoogleEarth)')
+      'KML(GoogleEarth)'
+      'Printable(export)')
     TabOrder = 0
   end
   object CloseButton: TButton
-    Left = 486
+    Left = 498
     Top = 380
     Width = 75
     Height = 25
@@ -44,11 +45,12 @@ object EntryOptionsForm: TEntryOptionsForm
     Default = True
     TabOrder = 1
     OnClick = CloseButtonClick
+    ExplicitLeft = 486
   end
   object DetailGrid: TStringGrid
     Left = 0
     Top = 0
-    Width = 433
+    Width = 425
     Height = 547
     Align = alLeft
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -69,7 +71,7 @@ object EntryOptionsForm: TEntryOptionsForm
       27)
   end
   object CancelButton: TButton
-    Left = 486
+    Left = 498
     Top = 452
     Width = 75
     Height = 25
@@ -78,6 +80,7 @@ object EntryOptionsForm: TEntryOptionsForm
     Caption = 'Cancel'
     TabOrder = 3
     OnClick = CancelButtonClick
+    ExplicitLeft = 486
   end
   object SaveDialog: TSaveDialog
     Filter = 'ADIF|*.adi|RSGB Log|*.log|Summary|*.txt'

@@ -231,7 +231,7 @@ String TEntryOptionsForm::doFileSave( )
    String ext = ExtractFileExt( ct->cfileName.c_str() );
    fname = fname.SubString( 1, fname.Length() - ext.Length() );
 
-   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML };
+   //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML, EPRINTFILE };
    String defext;
    String filter;
    switch ( expformat )
@@ -262,6 +262,12 @@ String TEntryOptionsForm::doFileSave( )
             filter = "Region 1 EDI files (*.edi)|*.EDI|All Files (*.*)|*.*" ;
          }
          break;
+      case EPRINTFILE:
+      {
+         defext = "TXT";
+         filter = "Text output (*.txt)|*.TXT|All Files (*.*)|*.*" ;
+      }
+      break;
    }
    SaveDialog->FileName = fname;
    SaveDialog->DefaultExt = defext;

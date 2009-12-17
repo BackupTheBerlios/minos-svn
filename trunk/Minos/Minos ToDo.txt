@@ -10,11 +10,9 @@ Sticky splitters in monitor and chat
 
 Auto copy MinosLines on compilation
 
-Some form of log printing?
+Some form of log printing? 
 
-
-
-ActionEvent2 and ActionEvent1 - 2 sends "handle" often BaseContestLog *
+Insert before/insert after; "easy" enough to do, but what needs doing to all following? Do we need bulk increment of serial numbers? Or do we want a multi-select that allows such things?
 
 //================================================================
 Next version - 1.4.0.0

@@ -13,6 +13,15 @@
 #include "RCVersion.h"
 #include "reg1test.h"
 
+enum reg1test_order
+{
+   TName, TdDate, PCall, PWWLo, PExch, PAdr1, PAdr2, PSect, PBand,
+   PClub, RName, RCall, RAdr1, RAdr2, RPoCo, RCity, RCoun, RPhon,
+   RHBBS, MOpe1, MOpe2, STXEq, SPowe, SRXEq, SAnte, SAntH, CQSOs,
+   CQSOP, CWWLs, CWWLB, CExcs, CExcB, CDXCs, CDXCB, CToSc, CODXC,
+   LineCount
+};
+
 reg1testLine::reg1testLine( const std::string &pre, const std::string &dat ) :
       prefix( pre ), data( dat )
 {}
@@ -108,9 +117,10 @@ bool reg1test::exportTest( HANDLE expfd )
    }
    */
 
+   reg1testLine linelist[ ( int ) LineCount ];
    linelist[ ( int ) TName ] = reg1testLine( "TName", ct->name.getValue()  /*, "Contest Name"*/ ),
 
-                               linelist[ ( int ) TdDate ] = reg1testLine( "TDate", ct->dateRange( DTGFULL )  /*, "Start Date;End Date"*/ );
+   linelist[ ( int ) TdDate ] = reg1testLine( "TDate", ct->dateRange( DTGFULL )  /*, "Start Date;End Date"*/ );
    linelist[ ( int ) PCall ] = reg1testLine( "PCall", ct->mycall.fullCall.getValue()  /*, "Callsign Used"*/ );
    linelist[ ( int ) PWWLo ] = reg1testLine( "PWWLo", ct->myloc.loc.getValue()  /*, "Locator Used"*/ );
    linelist[ ( int ) PExch ] = reg1testLine( "PExch", ct->location.getValue()  /*, "Exchange Used"*/ );
@@ -199,7 +209,7 @@ bool reg1test::exportTest( HANDLE expfd )
       if ( sbuff.length() == 0 )
          continue;
 
-      trimr( sbuff );			// No need to pad to 250!!
+      sbuff = trimr( sbuff );			// No need to pad to 250!!
       wr.lwrite( sbuff.c_str() );
    }
 

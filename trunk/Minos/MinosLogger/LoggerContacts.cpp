@@ -35,13 +35,14 @@ static void catmult( char *multbuff, const std::string &text, int limit = 255 )
 int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
 {
    BaseContestLog * clp = contest;
-   sdest = "";
+   sdest = std::string(maxlen+1, 0);
    int thisscore = 0;
    if ( contactFlags.getValue() & ( LOCAL_COMMENT | DONT_PRINT ) )
       return 0;
 
    TEMPBUFF( multbuff, 60 );
    TEMPBUFF( dest, 1024 );
+   memset(dest, 0, 1024);
 
    memset( dest, ' ', maxlen - 1 );
    dest[ maxlen ] = 0;
@@ -150,7 +151,7 @@ int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
       placestr( ContactBuffs::buff2, ContactBuffs::scorebuff, 75, -5 );
    }
    strncpy( dest, ContactBuffs::buff2, maxlen );
-   dest[ maxlen ] = 0;
+   dest[ strlen(ContactBuffs::buff2) ] = 0;
    // return value is point score for this line, for accumulation
 
    sdest = std::string( dest ).substr( 0, maxlen );
@@ -159,137 +160,6 @@ int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
       return 0;
 
    return thisscore;
-}
-void ContestContact::getRSGBFileText( std::string &sdest, short maxlen )
-{
-   BaseContestLog * clp = contest;
-   sdest = "";
-   if ( contactFlags.getValue() & ( LOCAL_COMMENT | DONT_PRINT ) )
-      return ;
-
-   TEMPBUFF( exp_buff, 60 );
-   exp_buff[ 0 ] = 0;
-   ContactBuffs::qthbuff[ 0 ] = 0;
-
-   TEMPBUFF( dest, 1024 );
-   *dest = 0;
-
-   if ( contactFlags.getValue() & COMMENT_ONLY )
-   {
-      memset( ContactBuffs::buff2, ' ', 120 );
-      memcpy( ContactBuffs::buff2, time.getDate( DTGLOG ).c_str(), 6 );
-      memcpy( &ContactBuffs::buff2[ 7 ], time.getTime( DTGLOG ).c_str(), 4 );
-      placestr( ContactBuffs::buff2, clp->band.getValue(), 12, 4 );
-      placestr( ContactBuffs::buff2, mode.getValue(), 17, 3 );
-      placestr( ContactBuffs::buff2, "COMMENT", 93, 7 );
-      placestr( ContactBuffs::buff2, comments.getValue(), 101, 60 );
-      strncpy( dest, ContactBuffs::buff2, maxlen );
-      dest[ maxlen ] = 0;
-      sdest = std::string( dest ).substr( 0, maxlen );
-      return ;
-   }
-
-   makestrings( clp->serialField.getValue() );
-
-   if ( !districtMult )
-   {
-      strncpy( ContactBuffs::qthbuff, extraText.getValue().c_str(), EXTRALENGTH );
-      ContactBuffs::qthbuff[ EXTRALENGTH ] = 0;
-   }
-
-   strcpy( ContactBuffs::scorebuff, "0" );
-   if ( contactFlags.getValue() & NON_SCORING )
-   {
-      strcpy( exp_buff, "Non Scoring" );
-   }
-   else
-      if ( cs.valRes == ERR_DUPCS )
-      {
-         strcpy( exp_buff, "Duplicate" );
-      }
-      else
-      {
-         if ( contactFlags.getValue() & VALID_DUPLICATE )
-            strcpy( exp_buff, "BackPacker " );
-
-         if ( contactFlags.getValue() & VALID_DISTRICT )
-            strcat( exp_buff, "No district code " );
-
-         //      if (contactFlags & UNKNOWN_COUNTRY)
-         //         strcat(exp_buff, "Unknown Country ");
-
-         int temp = contactScore.getValue();
-         switch ( clp->scoreMode.getValue() )
-         {
-            case PPKM:
-               if ( contactFlags.getValue() & XBAND )
-               {
-                  temp = ( temp + 1 ) / 2;
-               }
-               break;
-
-            case PPQSO:
-               if ( temp > 0 )
-                  temp = 1;
-               else
-                  temp = 0;
-               break;
-
-         }
-         if ( contactScore.getValue() < 0 )
-            temp = 0;
-         sprintf( ContactBuffs::scorebuff, "%5d", temp );
-      }
-   ContactBuffs::scorebuff[ 5 ] = 0;
-   strcpysp( ContactBuffs::buff, comments.getValue().c_str(), 42 );
-   if ( ContactBuffs::buff[ 0 ] )
-   {
-      strcpysp( ContactBuffs::buff2, ContactBuffs::qthbuff, 20 );
-      strcat( ContactBuffs::buff2, " | " );
-      strcat( ContactBuffs::buff2, ContactBuffs::buff );
-   }
-   else
-      strcpysp( ContactBuffs::buff2, ContactBuffs::qthbuff, 42 );
-
-   sprintf( ContactBuffs::qthbuff, "%s %s", exp_buff, ContactBuffs::buff2 );
-
-   memset( ContactBuffs::buff, ' ', 255 );
-   memcpy( ContactBuffs::buff, time.getDate( DTGLOG ).c_str(), 6 );
-   memcpy( &ContactBuffs::buff[ 7 ], time.getTime( DTGLOG ).c_str(), 4 );
-   placestr( ContactBuffs::buff, clp->band.getValue(), 12, 4 );	// only 4 chars
-   placestr( ContactBuffs::buff, mode.getValue(), 17, 3 );
-   placestr( ContactBuffs::buff, cs.fullCall.getValue(), 21, 15 );
-   placestr( ContactBuffs::buff, reps.getValue(), 37, 3 );
-   placestr( ContactBuffs::buff, ContactBuffs::ssbuff, 41, -4 );
-   placestr( ContactBuffs::buff, repr.getValue(), 46, 3 );
-   placestr( ContactBuffs::buff, ContactBuffs::srbuff, 50, -4 );
-   if ( multCount )
-   {
-      memset( ContactBuffs::buff2, ' ', 120 );
-      sprintf( ContactBuffs::buff2, "%d", multCount );
-      placestr( ContactBuffs::buff, ContactBuffs::buff2, 55, -3 );		// mult count
-   }
-   placestr( ContactBuffs::buff, ContactBuffs::scorebuff, 59, -5 );
-   placestr( ContactBuffs::buff, op1.getValue(), 65, 6 );
-
-   placestr( ContactBuffs::buff, loc.loc.getValue(), 72, clp->allowLoc8.getValue() ? 8 : 6 );
-   if ( newLoc )
-      ContactBuffs::buff[ 79 ] = 'M';
-
-   if ( districtMult )
-      placestr( ContactBuffs::buff, districtMult->districtCode, 81, 3 );
-   if ( newDistrict )
-      ContactBuffs::buff[ 85 ] = 'M';
-
-   if ( ctryMult )
-      placestr( ContactBuffs::buff, ctryMult->basePrefix, 87, -3 );
-   if ( newCtry )
-      ContactBuffs::buff[ 91 ] = 'M';
-
-   placestr( ContactBuffs::buff, ContactBuffs::qthbuff, 93, 80 );
-   strncpy( dest, ContactBuffs::buff, maxlen );
-   dest[ maxlen ] = 0;
-   sdest = std::string( dest ).substr( 0, maxlen );
 }
 void ContestContact::addReg1TestComment( std::vector <std::string> &remarks )
 {

@@ -149,6 +149,7 @@ class LoggerContestLog : public BaseContestLog
       bool exportADIF( HANDLE expfd );
       bool exportKML( HANDLE expfd );
       bool exportREG1TEST( HANDLE expfd );
+      bool exportPrintFile( HANDLE expfd );
       bool exportMinos( HANDLE expfd );
 
       virtual void makeContact( bool time_now, BaseContact *& );

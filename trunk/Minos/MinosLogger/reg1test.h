@@ -8,14 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 #ifndef Reg1testH
 #define Reg1testH
-enum reg1test_order
-{
-   TName, TdDate, PCall, PWWLo, PExch, PAdr1, PAdr2, PSect, PBand,
-   PClub, RName, RCall, RAdr1, RAdr2, RPoCo, RCity, RCoun, RPhon,
-   RHBBS, MOpe1, MOpe2, STXEq, SPowe, SRXEq, SAnte, SAntH, CQSOs,
-   CQSOP, CWWLs, CWWLB, CExcs, CExcB, CDXCs, CDXCB, CToSc, CODXC,
-   LineCount
-};
+enum reg1test_order;
 
 class reg1testLine
 {
@@ -41,8 +34,6 @@ class reg1test
       bool parseQSO( String line );
       bool importReg1test();
    public:
-
-      reg1testLine linelist[ ( int ) LineCount ];
 
       reg1test( LoggerContestLog * c, HANDLE hFile );
       reg1test( LoggerContestLog * const ct );

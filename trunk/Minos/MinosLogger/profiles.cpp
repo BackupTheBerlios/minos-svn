@@ -388,6 +388,7 @@ bool INIFile::loadINIFile()
       char *a[ 3 ];
       bool sep2seen;
       int scnt = parseLine( buffer, '=', a, 2, 0, sep2seen );
+      #warning more crap trimming
       trimr( a[ 0 ] );
       trimr( a[ 1 ] );
 

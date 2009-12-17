@@ -343,9 +343,10 @@ bool wildComp( const std::string &ss, const std::string &ee )
 std::string trimr( const std::string &s )
 {
    int i;
-   for ( i = s.length(); i >= 0; i-- )
+   for ( i = s.length() - 1; i >= 0; i-- )
    {
-      if ( !iscntrl( s[ i ] ) && !isspace( s[ i ] ) )
+      char c = s[i];
+      if ( !iscntrl( c ) && !isspace( c ) )
          break;
    }
    std::string s2;

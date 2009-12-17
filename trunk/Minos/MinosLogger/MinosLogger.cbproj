@@ -209,54 +209,58 @@
     <CppCompile Include="MinosTestExport.cpp">
       <BuildOrder>29</BuildOrder>
     </CppCompile>
-    <CppCompile Include="profiles.cpp">
+    <CppCompile Include="PrintFile.cpp">
+      <DependentOn>PrintFile.h</DependentOn>
       <BuildOrder>30</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="profiles.cpp">
+      <BuildOrder>31</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOEdit.cpp">
       <Form>QSOEditDlg</Form>
       <DependentOn>QSOEdit.h</DependentOn>
-      <BuildOrder>31</BuildOrder>
+      <BuildOrder>32</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOEditFrame.cpp">
       <Form>GJVQSOEditFrame</Form>
       <DependentOn>QSOEditFrame.h</DependentOn>
-      <BuildOrder>32</BuildOrder>
+      <BuildOrder>33</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOFrame.cpp">
       <Form>GJVEditFrame</Form>
       <DependentOn>QSOFrame.h</DependentOn>
-      <BuildOrder>34</BuildOrder>
+      <BuildOrder>35</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOLogFrame.cpp">
       <Form>GJVQSOLogFrame</Form>
       <DependentOn>QSOLogFrame.h</DependentOn>
-      <BuildOrder>33</BuildOrder>
+      <BuildOrder>34</BuildOrder>
     </CppCompile>
     <CppCompile Include="reg1test.cpp">
-      <BuildOrder>35</BuildOrder>
+      <BuildOrder>36</BuildOrder>
     </CppCompile>
     <CppCompile Include="SendRPCDM.cpp">
       <Form>SendDM</Form>
-      <BuildOrder>36</BuildOrder>
+      <BuildOrder>37</BuildOrder>
     </CppCompile>
     <CppCompile Include="SettingsEditor.cpp">
       <Form>SettingsEditDlg</Form>
-      <BuildOrder>37</BuildOrder>
+      <BuildOrder>38</BuildOrder>
     </CppCompile>
     <CppCompile Include="TCalendarForm.cpp">
       <Form>CalendarForm</Form>
       <DependentOn>TCalendarForm.h</DependentOn>
-      <BuildOrder>38</BuildOrder>
+      <BuildOrder>39</BuildOrder>
     </CppCompile>
     <CppCompile Include="TManageListsDlg.cpp">
       <Form>ManageListsDlg</Form>
       <DependentOn>TManageListsDlg.h</DependentOn>
-      <BuildOrder>40</BuildOrder>
+      <BuildOrder>41</BuildOrder>
     </CppCompile>
     <CppCompile Include="TMinosBandChooser.cpp">
       <Form>MinosBandChooser</Form>
       <DependentOn>TMinosBandChooser.h</DependentOn>
-      <BuildOrder>39</BuildOrder>
+      <BuildOrder>40</BuildOrder>
     </CppCompile>
     <LibFiles Include="..\MinosBase\MinosBase.lib">
       <BuildOrder>2</BuildOrder>

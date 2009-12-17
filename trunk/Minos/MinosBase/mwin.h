@@ -41,7 +41,7 @@
 #define ERR_NOLOC 30
 #define ERR_LOC_RANGE 31
 
-enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML };
+enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML, EPRINTFILE };
 
 #define TEMPBUFF(a, b) char a[(b)]
 

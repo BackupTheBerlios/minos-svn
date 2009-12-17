@@ -10,6 +10,7 @@
 #pragma hdrstop
 #include "AdifImport.h"
 #include "reg1test.h"
+#include "printfile.h"
 #include "enqdlg.h"
 #include "MinosTestExport.h"
 #include "LoggerContest.h"
@@ -684,6 +685,9 @@ bool LoggerContestLog::export_contest( HANDLE expfd, ExportType exptype )
          ret = exportREG1TEST( expfd );
          break;
 
+      case EPRINTFILE:
+         ret = exportPrintFile(expfd);
+
       default:
          return false;
    }
@@ -869,6 +873,13 @@ bool LoggerContestLog::exportREG1TEST( HANDLE expfd )
 
 
    reg1test * rtest = new reg1test( this );
+   int rep = rtest->exportTest( expfd );
+   delete rtest;
+   return rep;
+}
+bool LoggerContestLog::exportPrintFile( HANDLE expfd )
+{
+   PrintFile * rtest = new PrintFile( this );
    int rep = rtest->exportTest( expfd );
    delete rtest;
    return rep;
