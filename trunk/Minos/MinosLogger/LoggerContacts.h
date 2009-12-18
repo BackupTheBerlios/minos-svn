@@ -28,7 +28,7 @@ class ContestContact: public DisplayContestContact
 
       ContestContact( LoggerContestLog *contest, bool time_now );
       ~ContestContact();
-      int getRSGBLogText( std::string &, short );
+      void getRSGBLogText( std::string &, short );
       void addReg1TestComment( std::vector <std::string> &remarks );
       void getReg1TestText( std::string & );
       std::string getADIFLine();

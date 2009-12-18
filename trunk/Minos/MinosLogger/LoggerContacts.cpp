@@ -32,24 +32,21 @@ static void catmult( char *multbuff, const std::string &text, int limit = 255 )
    strncat( multbuff, text.c_str(), limit );
    strcat( multbuff, "* " );
 }
-int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
+void ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
 {
    BaseContestLog * clp = contest;
-   sdest = std::string(maxlen+1, 0);
    int thisscore = 0;
-   if ( contactFlags.getValue() & ( LOCAL_COMMENT | DONT_PRINT ) )
-      return 0;
 
    TEMPBUFF( multbuff, 60 );
    TEMPBUFF( dest, 1024 );
-   memset(dest, 0, 1024);
-
    memset( dest, ' ', maxlen - 1 );
    dest[ maxlen ] = 0;
+
    if ( contactFlags.getValue() & COMMENT_ONLY )
    {
       memset( ContactBuffs::buff2, ' ', 120 );
-      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 4, 5 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
       placestr( ContactBuffs::buff2, "LOGGED COMMENT", 21, 14 );
       placestr( ContactBuffs::buff2, comments.getValue(), 29, 60 );
 
@@ -57,13 +54,6 @@ int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
    else
    {
       makestrings( clp->serialField.getValue() );
-      if ( districtMult )
-         sprintf( ContactBuffs::qthbuff, "%3.3s", districtMult->districtCode.c_str() );
-      else
-      {
-         strncpy( ContactBuffs::qthbuff, extraText.getValue().c_str(), EXTRALENGTH );
-         ContactBuffs::qthbuff[ EXTRALENGTH ] = 0;
-      }
 
       TEMPBUFF( exp_buff, 60 );
       exp_buff[ 0 ] = 0;
@@ -136,19 +126,30 @@ int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
       {
          strcpysp( ContactBuffs::buff2, ContactBuffs::qthbuff, 42 );
       }
-      sprintf( ContactBuffs::buff, "%s %s %s", exp_buff, ContactBuffs::buff2, multbuff );
+      sprintf( ContactBuffs::buff, "%s %s %s", ContactBuffs::buff2, exp_buff, multbuff );
 
       memset( ContactBuffs::buff2, ' ', 120 );
       int next = 0;
-      next = placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 4, 5 );
+      next = placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), next, 8 );
+      next = placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), next + 1, 5 );
       next = placestr( ContactBuffs::buff2, cs.fullCall.getValue(), next + 1, 10 );
       next = placestr( ContactBuffs::buff2, reps.getValue(), next + 1, 3 );
       next = placestr( ContactBuffs::buff2, ContactBuffs::ssbuff, next, -4 );
       next = placestr( ContactBuffs::buff2, repr.getValue(), next + 1, 3 );
       next = placestr( ContactBuffs::buff2, ContactBuffs::srbuff, next, -4 );
       next = placestr( ContactBuffs::buff2, loc.loc.getValue(), next + 1, clp->allowLoc8.getValue() ? 8 : 6 );
-      next = placestr( ContactBuffs::buff2, ContactBuffs::buff, next + 1, 30 );
-      placestr( ContactBuffs::buff2, ContactBuffs::scorebuff, 75, -5 );
+      if ( districtMult )
+      {
+         placestr( ContactBuffs::buff2, districtMult->districtCode, next + 1, 3 );
+      }
+      next += 4;
+      next = placestr( ContactBuffs::buff2, ContactBuffs::scorebuff, next + 1, -5 );
+
+      strncpy( ContactBuffs::qthbuff , trim(extraText.getValue()).c_str(), EXTRALENGTH );
+      ContactBuffs::qthbuff[ EXTRALENGTH] = 0;
+      next = placestr( ContactBuffs::buff2, ContactBuffs::qthbuff, next + 1, strlen(ContactBuffs::qthbuff) );
+
+      next = placestr( ContactBuffs::buff2, ContactBuffs::buff, next + 1, strlen(ContactBuffs::buff) );
    }
    strncpy( dest, ContactBuffs::buff2, maxlen );
    dest[ strlen(ContactBuffs::buff2) ] = 0;
@@ -156,10 +157,6 @@ int ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
 
    sdest = std::string( dest ).substr( 0, maxlen );
 
-   if ( contactScore.getValue() < 0 )
-      return 0;
-
-   return thisscore;
 }
 void ContestContact::addReg1TestComment( std::vector <std::string> &remarks )
 {
