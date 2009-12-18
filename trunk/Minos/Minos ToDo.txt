@@ -10,8 +10,6 @@ Sticky splitters in monitor and chat
 
 Auto copy MinosLines on compilation
 
-Some form of log printing? 
-
 Insert before/insert after; "easy" enough to do, but what needs doing to all following? Do we need bulk increment of serial numbers? Or do we want a multi-select that allows such things?
 
 //================================================================
@@ -37,6 +35,7 @@ Scrolling tabs as an option, on RMB
 
 Read only simplification - or for now, don't allow it  to be set
 
+New printable output format on Produce Entry/export file
 //================================================================
 Next version - 1.3.1 Beta - new features etc
 
