@@ -201,7 +201,7 @@ void INIEntry::setValue( const std::string &value )
 {
    if ( value != entryValue )
    {
-      entryValue = value;
+      entryValue = trim(value);
       entryDirty = true;
    }
 }
@@ -388,15 +388,12 @@ bool INIFile::loadINIFile()
       char *a[ 3 ];
       bool sep2seen;
       int scnt = parseLine( buffer, '=', a, 2, 0, sep2seen );
-      #warning more crap trimming
-      trimr( a[ 0 ] );
-      trimr( a[ 1 ] );
 
       if ( scnt )
       {
          this_entry = new INIEntry( thisSect, a[ 0 ], true );
          // somewhere we need to cope with quoted parameters
-         this_entry->setValue( a[ 1 ] );
+         this_entry->setValue( trim(a[ 1 ]) );
          this_entry->setClean();
       }
       else
