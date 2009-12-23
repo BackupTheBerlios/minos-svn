@@ -12,8 +12,6 @@
 //============================================================
 namespace ContactBuffs
 {
-   char mult_chars[] = " -=####";
-
    char scorebuff[ 20 ];
    char brgbuff[ 6 ];
    char buff2[ 120 ];

@@ -14,8 +14,6 @@
 
 namespace ContactBuffs
 {
-   extern char mult_chars[];
-
    extern char scorebuff[ 20 ];
    extern char brgbuff[ 6 ];
    extern char buff2[ 120 ];
