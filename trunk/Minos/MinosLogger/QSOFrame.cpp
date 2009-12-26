@@ -235,7 +235,7 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
+void __fastcall TGJVEditFrame::EditControlExit( TObject *Sender )
 {
    if (!contest)
    {
@@ -303,6 +303,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
    }
    if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
    {
+      GJVEditChange( Sender );   // start the match thread
       valid( cmCheckValid ); // make sure all single and cross field
       doAutofill();
    }
