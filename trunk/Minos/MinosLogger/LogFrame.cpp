@@ -1645,3 +1645,19 @@ void TSingleLogFrame::ShowOperators_Event ( MinosEventBase & /*Event*/ )
    GJVQSOLogFrame->OperatorLabel->Visible = so;
 }
 
+//---------------------------------------------------------------------------
+void __fastcall TSingleLogFrame::ThisMatchTreeBeforeItemErase(
+      TBaseVirtualTree *Sender, TCanvas */*TargetCanvas*/, PVirtualNode Node,
+      TRect &/*ItemRect*/, TColor &ItemColor, TItemEraseAction &EraseAction)
+{
+   MatchNodeData * pc = ( MatchNodeData * ) Sender->GetNodeData( Node );
+   BaseContestLog *clp = pc->matchedContest;
+   if (  clp && clp->isCurDup( pc->matchedContact ) )
+   {
+         ItemColor = clRed;
+         EraseAction = eaColor;
+   }
+
+}
+//---------------------------------------------------------------------------
+

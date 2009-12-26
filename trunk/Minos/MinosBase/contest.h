@@ -248,6 +248,7 @@ class BaseContestLog
       void getMatchField( BaseContact *pct, int col, std::string &disp, const BaseContestLog *const ct ) const;
       void scanContest( void );
       void setScore( std::string & );
+      bool isCurDup( BaseContact *) const;
 
       // manipulation of contact list
 

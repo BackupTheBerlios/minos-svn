@@ -328,9 +328,13 @@ void BaseContestLog::getMatchText( BaseContact *pct, std::string &disp, const Ba
 
    disp = trim( disp );
 }
+bool BaseContestLog::isCurDup( BaseContact *pct) const
+{
+   return pct && DupSheet.isCurDup( pct );
+}
 void BaseContestLog::getMatchField( BaseContact *pct, int col, std::string &disp, const BaseContestLog *const ct ) const
 {
-   if ( pct && DupSheet.isCurDup( pct ) && col == 0 )
+   if ( col ==0 && isCurDup( pct ) )
    {
       disp = "DUP OF";
       return ;

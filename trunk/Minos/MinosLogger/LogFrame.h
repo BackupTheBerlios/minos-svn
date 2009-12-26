@@ -159,6 +159,9 @@ class TSingleLogFrame : public TFrame
       void __fastcall MultSplitterMoved(TObject *Sender);
    void __fastcall EntryChoiceMenuPopup(TObject *Sender);
    void __fastcall TimerUpdateQSOTimerTimer(TObject *Sender);
+   void __fastcall ThisMatchTreeBeforeItemErase(TBaseVirtualTree *Sender,
+          TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
+          TColor &ItemColor, TItemEraseAction &EraseAction);
    private:  	// User declarations
 
       MinosEventListener  EL_ContestPageChanged;
