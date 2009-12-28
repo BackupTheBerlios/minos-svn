@@ -1,4 +1,14 @@
+Hi Mike,
 
+Since I have been using Minos in the Xmas cumulatives I have noticed that each time you save an entry it defaults to the \minos\logs folder, rather than retaining the default of the last one used. (I file submitted logs elsewhere).
+
+The ‘band in use’ marker has improved multi-band operation, but it occurred to me that perhaps there would be added advantage from highlighting/colouring the selected tab that is in use?
+
+
+We have had previous discussions about the stats and duplicates displays; not only do they lose their settings on each invocation they have different settings for each contest that is open. I would view these as constants across all invocations, like overall windows size – what say?
+
+Ken
+===========================================================================
 2010 calendar; make URLs for years configurable; make a new year just a config change!
 
 //================================================================
