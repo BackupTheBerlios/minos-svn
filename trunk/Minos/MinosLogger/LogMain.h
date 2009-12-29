@@ -186,6 +186,8 @@ class TLogContainer : public TForm
    void __fastcall EditContactActionExecute(TObject *Sender);
    void __fastcall ScrollingContestTabsActionExecute(TObject *Sender);
    void __fastcall ShowOperatorsActionExecute(TObject *Sender);
+   void __fastcall ContestPageControlDrawTab(TCustomTabControl *Control,
+          int TabIndex, const TRect &Rect, bool Active);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );

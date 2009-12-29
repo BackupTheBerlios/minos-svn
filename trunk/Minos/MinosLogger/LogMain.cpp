@@ -1119,3 +1119,28 @@ void __fastcall TLogContainer::ShowOperatorsActionExecute(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TLogContainer::ContestPageControlDrawTab(
+      TCustomTabControl *Control, int TabIndex, const TRect &Rect, bool Active)
+{
+   if (Active)
+   {
+      Control->Canvas->Brush->Color = clAqua;
+      Control->Canvas->FillRect(Rect);
+   }
+   else
+   {
+//      Control->Canvas->Brush->Color = clBlue;
+      Control->Canvas->FillRect(Rect);
+   }
+   TTabSheet *ttc = ContestPageControl->Pages[TabIndex];
+   if (ttc)
+   {
+      Control->Canvas->TextRect(
+            Rect,
+            Rect.Left + (Rect.Right - Rect.Left - Control->Canvas->TextWidth(ttc->Caption)) / 2,
+            Rect.Top + (Rect.Bottom - Rect.Top - Control->Canvas->TextHeight(ttc->Caption)) / 2,
+            ttc->Caption);
+   }
+}
+//---------------------------------------------------------------------------
+

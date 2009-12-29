@@ -28,12 +28,14 @@ object LogContainer: TLogContainer
     Align = alClient
     DockSite = True
     HotTrack = True
+    OwnerDraw = True
     ParentShowHint = False
     PopupMenu = TabPopup
     ShowHint = True
     TabOrder = 0
     TabStop = False
     OnChange = ContestPageControlChange
+    OnDrawTab = ContestPageControlDrawTab
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
   end
