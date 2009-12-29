@@ -1,3 +1,14 @@
+I need an SDR mute application, linked to PTT out. Is the first "non local" minos app, or does it make use of remote access to the SDR server?
+===========================================================================
+Read Only
+
+Write an "Entry generated" record to the log whe the EDI is produced; then switch to RO. Also make RO once the entry date has passed. Allow the operator to set "log complete", and act effectively as entry produced. 
+
+Then it loads and automatically goes RO, and closes the file. Could do with a separate RO list (or an RO modifier) to open on restart.
+
+Have a new menu entry, open completed log for edit - needs to close the existing RO log (if any) and then open it in NOT RO mode. Once closed again (or on restart) it DOES NOT persist open.
+
+===========================================================================
 Hi Mike,
 
 Since I have been using Minos in the Xmas cumulatives I have noticed that each time you save an entry it defaults to the \minos\logs folder, rather than retaining the default of the last one used. (I file submitted logs elsewhere).
