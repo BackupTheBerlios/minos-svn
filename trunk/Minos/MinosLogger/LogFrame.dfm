@@ -146,9 +146,6 @@ object SingleLogFrame: TSingleLogFrame
                   Width = 262
                   ExplicitTop = 111
                   ExplicitWidth = 262
-                  inherited PeriodSetButton: TButton
-                    TabStop = False
-                  end
                   inherited P1Edit: TLabeledEdit
                     TabStop = False
                     EditLabel.Width = 59
@@ -158,10 +155,10 @@ object SingleLogFrame: TSingleLogFrame
                   end
                   inherited P2Edit: TLabeledEdit
                     TabStop = False
-                    EditLabel.Width = 55
-                    EditLabel.ExplicitLeft = 61
-                    EditLabel.ExplicitTop = 7
-                    EditLabel.ExplicitWidth = 55
+                    EditLabel.Width = 59
+                    EditLabel.ExplicitLeft = 79
+                    EditLabel.ExplicitTop = -2
+                    EditLabel.ExplicitWidth = 59
                   end
                 end
                 inherited RecheckTimer: TTimer
@@ -315,7 +312,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end
