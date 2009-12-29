@@ -117,19 +117,26 @@ void __fastcall TStatsDispFrame::RecheckTimerTimer( TObject */*Sender*/ )
    reInitialise();
 }
 //---------------------------------------------------------------------------
-void __fastcall TStatsDispFrame::PeriodSetButtonClick( TObject */*Sender*/ )
-{
-   MinosParameters::getMinosParameters() ->setStatsPeriod1( P1Edit->Text.ToIntDef( 10 ) );
-   MinosParameters::getMinosParameters() ->setStatsPeriod2( P2Edit->Text.ToIntDef( 60 ) );
-   //   reInitialise(); // no point as it will have focus
-}
-//---------------------------------------------------------------------------
 void __fastcall TStatsDispFrame::P2EditKeyPress( TObject */*Sender*/, char &Key )
 {
    if ( Key == '\b' || ( Key >= '0' && Key <= '9' ) )
       return ;
 
    Key = 0;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TStatsDispFrame::P1EditExit(TObject */*Sender*/)
+{
+   MinosParameters::getMinosParameters() ->setStatsPeriod1( P1Edit->Text.ToIntDef( 10 ) );
+   reInitialise();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TStatsDispFrame::P2EditExit(TObject */*Sender*/)
+{
+   MinosParameters::getMinosParameters() ->setStatsPeriod2( P2Edit->Text.ToIntDef( 60 ) );
+   reInitialise();
 }
 //---------------------------------------------------------------------------
 

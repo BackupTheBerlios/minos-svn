@@ -22,13 +22,13 @@ class TStatsDispFrame : public TFrame
    __published:  	// IDE-managed Components
       TTimer *RecheckTimer;
       TPanel *Panel1;
-      TButton *PeriodSetButton;
       TLabeledEdit *P1Edit;
       TLabeledEdit *P2Edit;
       TLabel *SLabel1;
       void __fastcall RecheckTimerTimer( TObject *Sender );
-      void __fastcall PeriodSetButtonClick( TObject *Sender );
       void __fastcall P2EditKeyPress( TObject *Sender, char &Key );
+   void __fastcall P1EditExit(TObject *Sender);
+   void __fastcall P2EditExit(TObject *Sender);
    private:  	// User declarations
       BaseContestLog *ct;
    public:  		// User declarations

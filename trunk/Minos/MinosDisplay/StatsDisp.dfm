@@ -28,38 +28,30 @@ object StatsDispFrame: TStatsDispFrame
     DesignSize = (
       250
       46)
-    object PeriodSetButton: TButton
-      Left = 115
-      Top = 22
-      Width = 36
-      Height = 22
-      Anchors = [akLeft, akBottom]
-      Caption = 'Set'
-      TabOrder = 0
-      OnClick = PeriodSetButtonClick
-    end
     object P1Edit: TLabeledEdit
-      Left = 2
-      Top = 23
+      Left = 8
+      Top = 15
       Width = 50
       Height = 21
       Anchors = [akLeft, akBottom]
       EditLabel.Width = 47
       EditLabel.Height = 13
       EditLabel.Caption = 'P 1 (mins)'
-      TabOrder = 1
+      TabOrder = 0
+      OnExit = P1EditExit
       OnKeyPress = P2EditKeyPress
     end
     object P2Edit: TLabeledEdit
-      Left = 61
-      Top = 23
+      Left = 79
+      Top = 14
       Width = 49
       Height = 21
       Anchors = [akLeft, akBottom]
-      EditLabel.Width = 44
+      EditLabel.Width = 47
       EditLabel.Height = 13
-      EditLabel.Caption = 'P2 (mins)'
-      TabOrder = 2
+      EditLabel.Caption = 'P 2 (mins)'
+      TabOrder = 1
+      OnExit = P2EditExit
       OnKeyPress = P2EditKeyPress
     end
   end
