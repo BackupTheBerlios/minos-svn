@@ -1266,69 +1266,70 @@ void LoggerContestLog::processMinosStanza( const std::string &methodName, MinosT
    else
       if ( methodName == "MinosLogMode" )
       {}
-   if ( methodName == "MinosLogQTH" )
-   {
-      mt->getStructArgMemberValue( "stationQTH1", sqth1 );
-      mt->getStructArgMemberValue( "stationQTH2", sqth2 );
-      mt->getStructArgMemberValue( "ASL", entASL );
-   }
-   else
-      if ( methodName == "MinosLogEntry" )
-      {
-         mt->getStructArgMemberValue( "entrant", entrant );
-         mt->getStructArgMemberValue( "myName", entName );
-         mt->getStructArgMemberValue( "myCall", entCall );
-         mt->getStructArgMemberValue( "myAddress1", entAddr1 );
-         mt->getStructArgMemberValue( "myAddress2", entAddr2 );
-         mt->getStructArgMemberValue( "myCity", entCity );
-         mt->getStructArgMemberValue( "myCountry", entCountry );
-         mt->getStructArgMemberValue( "myPostCode", entPostCode );
-         mt->getStructArgMemberValue( "myPhone", entPhone );
-         mt->getStructArgMemberValue( "myEmail", entEMail );
-      }
       else
-         if ( methodName == "MinosLogStation" )
+         if ( methodName == "MinosLogQTH" )
          {
-            mt->getStructArgMemberValue( "transmitter", entTx );
-            mt->getStructArgMemberValue( "receiver", entRx );
-            mt->getStructArgMemberValue( "antenna", entAnt );
-            mt->getStructArgMemberValue( "AGL", entAGL );
+            mt->getStructArgMemberValue( "stationQTH1", sqth1 );
+            mt->getStructArgMemberValue( "stationQTH2", sqth2 );
+            mt->getStructArgMemberValue( "ASL", entASL );
          }
          else
-            if ( methodName == "MinosLogOperators" )
+            if ( methodName == "MinosLogEntry" )
             {
-               mt->getStructArgMemberValue( "ops1", ops1 );
-               mt->getStructArgMemberValue( "ops2", ops2 );
-               mt->getStructArgMemberValue( "currentOp1", currentOp1 );
-               mt->getStructArgMemberValue( "currentOp2", currentOp2 );
+               mt->getStructArgMemberValue( "entrant", entrant );
+               mt->getStructArgMemberValue( "myName", entName );
+               mt->getStructArgMemberValue( "myCall", entCall );
+               mt->getStructArgMemberValue( "myAddress1", entAddr1 );
+               mt->getStructArgMemberValue( "myAddress2", entAddr2 );
+               mt->getStructArgMemberValue( "myCity", entCity );
+               mt->getStructArgMemberValue( "myCountry", entCountry );
+               mt->getStructArgMemberValue( "myPostCode", entPostCode );
+               mt->getStructArgMemberValue( "myPhone", entPhone );
+               mt->getStructArgMemberValue( "myEmail", entEMail );
             }
             else
-               if ( methodName == "MinosLogCurrent" )
+               if ( methodName == "MinosLogStation" )
                {
-                  mt->getStructArgMemberValue( "condx1", entCondx1 );
-                  mt->getStructArgMemberValue( "condx2", entCondx2 );
-                  mt->getStructArgMemberValue( "condx3", entCondx3 );
-                  mt->getStructArgMemberValue( "condx4", entCondx4 );
+                  mt->getStructArgMemberValue( "transmitter", entTx );
+                  mt->getStructArgMemberValue( "receiver", entRx );
+                  mt->getStructArgMemberValue( "antenna", entAnt );
+                  mt->getStructArgMemberValue( "AGL", entAGL );
                }
                else
-                  if ( methodName == "MinosLogBundles" )
+                  if ( methodName == "MinosLogOperators" )
                   {
-                     mt->getStructArgMemberValue( "VHFContestName", VHFContestName );
-                     mt->getStructArgMemberValue( "entryBundle", entryBundleName );
-                     mt->getStructArgMemberValue( "QTHBundle", QTHBundleName );
-                     mt->getStructArgMemberValue( "stationBundle", stationBundleName );
-
+                     mt->getStructArgMemberValue( "ops1", ops1 );
+                     mt->getStructArgMemberValue( "ops2", ops2 );
+                     mt->getStructArgMemberValue( "currentOp1", currentOp1 );
+                     mt->getStructArgMemberValue( "currentOp2", currentOp2 );
                   }
                   else
-                     if ( methodName == "MinosLogComment" )
+                     if ( methodName == "MinosLogCurrent" )
                      {
-                        // should have been dealt with in BaseContest
+                        mt->getStructArgMemberValue( "condx1", entCondx1 );
+                        mt->getStructArgMemberValue( "condx2", entCondx2 );
+                        mt->getStructArgMemberValue( "condx3", entCondx3 );
+                        mt->getStructArgMemberValue( "condx4", entCondx4 );
                      }
                      else
-                        if ( methodName == "MinosLogQSO" )
+                        if ( methodName == "MinosLogBundles" )
                         {
-                           // should have been dealt with in BaseContest
+                           mt->getStructArgMemberValue( "VHFContestName", VHFContestName );
+                           mt->getStructArgMemberValue( "entryBundle", entryBundleName );
+                           mt->getStructArgMemberValue( "QTHBundle", QTHBundleName );
+                           mt->getStructArgMemberValue( "stationBundle", stationBundleName );
+
                         }
+                        else
+                           if ( methodName == "MinosLogComment" )
+                           {
+                              // should have been dealt with in BaseContest
+                           }
+                           else
+                              if ( methodName == "MinosLogQSO" )
+                              {
+                                 // should have been dealt with in BaseContest
+                              }
 }
 //====================================================================
 void LoggerContestLog::setStanza( unsigned int stanza, int stanzaStart )
