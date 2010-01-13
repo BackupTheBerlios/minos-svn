@@ -89,6 +89,7 @@ class BaseContestLog
    protected:
       int stanzaCount;
       unsigned long nextBlock;
+      bool suppressReadOnly;
 
    public:
       int slotno;
@@ -143,7 +144,7 @@ class BaseContestLog
       virtual void setDirty();
       bool isReadOnly( void )
       {
-         return readOnly.getValue();
+         return readOnly.getValue() && ! suppressReadOnly;
       }
       void setReadOnly( bool s = true )
       {

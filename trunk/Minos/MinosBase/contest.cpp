@@ -20,7 +20,7 @@ bool LtLogSeq::operator() ( const BaseContact* s1, const BaseContact* s2 ) const
 }
 
 BaseContestLog::BaseContestLog( void ) :
-      readOnly( false ),
+      readOnly( false ), suppressReadOnly(false),
       nextBlock( 1 ),
       unfilledCount(0),
       stanzaCount( 0 ), slotno( -1 ), locValid( false ),
@@ -894,60 +894,61 @@ void BaseContestLog::processMinosStanza( const std::string &methodName, MinosTes
       {
          mt->getStructArgMemberValue( "readOnly", readOnly );
       }
-   if ( methodName == "MinosLogQTH" )
-   {
-      if ( mt->getStructArgMemberValue( "locator", myloc.loc ) )
-         validateLoc();
-      mt->getStructArgMemberValue( "district", location );
-      mt->getStructArgMemberValue( "location", location ); // doubled up...
-   }
-   else
-      if ( methodName == "MinosLogEntry" )
-      {
-         mt->getStructArgMemberValue( "call", mycall.fullCall );
-      }
       else
-         if ( methodName == "MinosLogStation" )
+         if ( methodName == "MinosLogQTH" )
          {
-            mt->getStructArgMemberValue( "power", power );
+            if ( mt->getStructArgMemberValue( "locator", myloc.loc ) )
+               validateLoc();
+            mt->getStructArgMemberValue( "district", location );
+            mt->getStructArgMemberValue( "location", location ); // doubled up...
          }
          else
-            if ( methodName == "MinosLogOperators" )
-            {}
+            if ( methodName == "MinosLogEntry" )
+            {
+               mt->getStructArgMemberValue( "call", mycall.fullCall );
+            }
             else
-               if ( methodName == "MinosLogCurrent" )
-               {}
+               if ( methodName == "MinosLogStation" )
+               {
+                  mt->getStructArgMemberValue( "power", power );
+               }
                else
-                  if ( methodName == "MinosLogBundles" )
+                  if ( methodName == "MinosLogOperators" )
                   {}
                   else
-                     if ( methodName == "MinosLogComment" )
-                     {
-                        BaseContact * rct = pcontactAtSeq( logSequence );
-                        if ( !rct )
-                        {
-                           makeContact( false, rct );
-                           rct->setLogSequence( logSequence );
-                           ctList.insert( rct );
-                           nextBlock++;
-                        }
-                        rct->processMinosStanza( methodName, mt );
-
-                     }
+                     if ( methodName == "MinosLogCurrent" )
+                     {}
                      else
-                        if ( methodName == "MinosLogQSO" )
-                        {
-                           BaseContact * rct = pcontactAtSeq( logSequence );
-                           if ( !rct )
+                        if ( methodName == "MinosLogBundles" )
+                        {}
+                        else
+                           if ( methodName == "MinosLogComment" )
                            {
-                              makeContact( false, rct );
-                              rct->setLogSequence( logSequence );
-                              ctList.insert( rct );
-                              nextBlock++;
-                           }
-                           rct->processMinosStanza( methodName, mt );
+                              BaseContact * rct = pcontactAtSeq( logSequence );
+                              if ( !rct )
+                              {
+                                 makeContact( false, rct );
+                                 rct->setLogSequence( logSequence );
+                                 ctList.insert( rct );
+                                 nextBlock++;
+                              }
+                              rct->processMinosStanza( methodName, mt );
 
-                        }
+                           }
+                           else
+                              if ( methodName == "MinosLogQSO" )
+                              {
+                                 BaseContact * rct = pcontactAtSeq( logSequence );
+                                 if ( !rct )
+                                 {
+                                    makeContact( false, rct );
+                                    rct->setLogSequence( logSequence );
+                                    ctList.insert( rct );
+                                    nextBlock++;
+                                 }
+                                 rct->processMinosStanza( methodName, mt );
+
+                              }
 }
 
 //====================================================================
