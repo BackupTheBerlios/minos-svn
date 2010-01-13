@@ -1,22 +1,114 @@
-I need an SDR mute application, linked to PTT out. Is the first "non local" minos app, or does it make use of remote access to the SDR server?
+===========================================================================
+Thanks for the new version Mike
+
+Here is my first pass; obviously I will not start on documentation until (at least) we have a stable version.
+
+Ken
+
+J
+
+
+1.      Tab highlight is excellent, although I am not sure I would have chosen that colour J
+
+2.      Swapping between contests causes a loss of any partial data entered.
+
+3.      Double click on CSL for transfer is not working properly (haven’t tried it for ‘other’):
+
+a.      First single click to select an entry returns to first with none highlighted
+
+b.      Double click does not fill QSO; behaviour depends on which of list (of four in my test) is selected:
+
+i.      First does nothing as far as I can see; leaves pink bar on first
+
+ii.     Intermediate does nothing; leaves blue bar on first
+
+iii.    Last enters details of first to QSO; leaves ONLY that first entry, highlighted in pink.
+
+iv.     The above behaviours do not seem to be consistent; they seem to depend on the interval between clicks.
+
+
+4.      The sticky panel settings have a number of problems:
+
+a.      Stats panel only consistent once ‘activated’ for a given open contest (may be intentional?)
+
+b.      Stats settings not retained across close/re-open
+
+c.      Worked/unworked sub-panel positioning not consistent; tick boxes are (maybe don’t want them to be?)
+
+d.      Width of CSL panel consistent across contests; width of internal columns not retained. Appears to be same on ‘other’ panel.
+
+e.       retained
+
+
+5.      On the stats/locators panel, ‘unworked only’ doesn’t seem to do anything (this is not new on this version). Did it ever do anything (I think I remember that it did once)? If it only applies to districts then the tick box should be hidden for locators.
+
+6.      On VHF calendar download:
+
+a.      Text doesn’t fit on buttons (and file version)
+
+b.      Panel doesn’t show all content within default width
+
+c.      ‘Fast forward’ to non-loaded year gives ‘failed to load’ but changes year display (maybe correct?)
+
+
+7.      Reg1test format does not generate full filename, others (not sure if all) do.
+
+8.      New printed format is good, but date format should be dd-mmm-(yy)yy in my view.
+
+9.      I think there are some inconsistencies between 432 and 435 MHz, but I have not managed to pin them down.
+
+10.     Latest calendar goes to 2012; is that ‘safe’?
+
+11.     RMB edit didn’t do what I thought it meant – will have to document this carefully J
+
+12.     Not clear to me what scrolling tabs does (maybe not enough data in my test contests?)
+
+
+13.     Cryptic notes for my benefit only (when trying to reproduce a possible problem with catch-up/after event):
+
+a.      Maybe depends on post entry rather than current time
+
+b.      Enter 2, leaves serial at 1
+
+c.      1,2 set to 5 creates 4,5, but not 3 then next went to 6
+
+d.      Re-entered 3,4, went to end (4 dupe)
+
+e.      Time handling (and date (use previous)
+
+f.      Define op
+
+
+14.     Read only behaviour.
+
+a.      If automatically make RO when EDI file produced then a bit of a problem for re-work (although the file/override probably covers it). Probably requires a confirmation or a deliberate ‘do not RO’?
+
+b.      If RO is a selected option or can be disabled what if user doesn’t do it – leave them to their own devices I assume?
+
+c.      Certainly beyond entry date seems good; will make file RO be an option in Minos (on file menu)?
+
+d.      Call it ‘protect’ or ‘archive’ rather than RO?I need an SDR mute application, linked to PTT out. Is the first "non local" minos app, or does it make use of remote access to the SDR server?
 ===========================================================================
 Read Only
 
-Write an "Entry generated" record to the log whe the EDI is produced; then switch to RO. Also make RO once the entry date has passed. Allow the operator to set "log complete", and act effectively as entry produced. 
+Write an "Entry generated" record to the log whe the EDI is produced; then switch to RO. Also make RO once the entry date has passed. Also allow the operator to set "log complete", and act effectively as entry produced. 
 
 Then it loads and automatically goes RO, and closes the file. Could do with a separate RO list (or an RO modifier) to open on restart.
 
 Have a new menu entry, open completed log for edit - needs to close the existing RO log (if any) and then open it in NOT RO mode. Once closed again (or on restart) it DOES NOT persist open.
+
+
+*** Add a "suppress read only" flag; if we always use "isReadOnly()" then should be OK. Use an event to switch TO RO. Suppress RO needs to be set very early, to allow contest to be opened in correct mode.
 
 ===========================================================================
 Hi Mike,
 
 Since I have been using Minos in the Xmas cumulatives I have noticed that each time you save an entry it defaults to the \minos\logs folder, rather than retaining the default of the last one used. (I file submitted logs elsewhere).
 
-The ‘band in use’ marker has improved multi-band operation, but it occurred to me that perhaps there would be added advantage from highlighting/colouring the selected tab that is in use?
+Done: The ‘band in use’ marker has improved multi-band operation, but it occurred to me that perhaps there would be added advantage from highlighting/colouring the selected tab that is in use?
 
 
-We have had previous discussions about the stats and duplicates displays; not only do they lose their settings on each invocation they have different settings for each contest that is open. I would view these as constants across all invocations, like overall windows size – what say?
+Maybe done? We have had previous discussions about the stats and duplicates displays; not only do they lose their settings on each invocation they have different settings for each contest that is open. I would view these as constants across all invocations, like overall windows size – what say?
 
 Ken
 ===========================================================================
@@ -37,6 +129,10 @@ Insert before/insert after; "easy" enough to do, but what needs doing to all fol
 Next version - 1.4.0.0
 
 Event message modifications - big change, but should be nothing visible
+
+Tab highlight more prominent
+
+Splitters etc sticky cross contest
 
 Dble click on QSO in "other" grid does transfer
 
