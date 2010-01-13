@@ -53,8 +53,10 @@
 <!-- 09.024 06/11/2009 added google calendar and ical link -->
 <!-- 09.025 12/11/2009 Removed spurious space at end of 2m UKAC description-->
 <!-- 09.026 13/11/2009 Moved 2nd 50MHz contest forward one week to avoid clash with RSGB Convention-->
+<!-- 09.027 14/12/2009 had changed 4m cumulatives deadline to 7 days by mistake - change back to 16 days-->
+<!-- 09.027 11/01/2010 Added S10 and UKAC Overall Club Championship-->
 <calendar>
-<version>09.026 13/11/2009</version>
+<version>09.027 11/01/2010</version>
 <icalurl>http://www.google.com/calendar/ical/t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>13/11/09: 2nd 50MHz contest moved forward 1 week</notes_list>
@@ -193,6 +195,16 @@ b.        Stations enter the UKAC contests in the normal way, but need to includ
 c.        Stations who enter on behalf of an affiliated society must be members of the affiliated society, but not necessarily RSGB members themselves.
 
 d.        All 12 sessions will count towards the total club score.
+
+</long_description>
+</special_rule>
+<special_rule>
+<name>S10</name>
+<description>Overall UKAC Club Championship</description>
+<long_description>
+a.        The scores from each of the individual UKACs will count towards an overall UKAC Club Championship. The scores from the 6m, 4m, 2m, 70cms and 23/13cms UKACs will be normalised to give an overall Club Score. 
+
+b.        Certificates will be awarded to the top 3 Clubs. 
 
 </long_description>
 </special_rule>
@@ -625,6 +637,19 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <special_rules_list>Backpacker</special_rules_list>
 <award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
 </contest_series>
+<contest_series>
+<name>overallukac</name>
+<description>UKAC Club Championship</description>
+<contest_list>4mukac</contest_list>
+<contest_list>6mukac</contest_list>
+<contest_list>2mukac</contest_list>
+<contest_list>70cmsukac</contest_list>
+<contest_list>uhfukac</contest_list>
+<section_list>AO</section_list>
+<section_list>AR</section_list>
+<special_rules_list>S10</special_rules_list>
+<award_list>Certificates to overall winning Club and Runners Up</award_list>
+</contest_series>
 <contest>
 <name>VHFNFDReg</name>
 <description>VHF NFD Registration</description>
@@ -679,7 +704,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </scoring>
   <special_rules_list>S5</special_rules_list>
   <band_list>70</band_list>
-  <entry_date>7 days after each activity period</entry_date>
+  <entry_date>16 days after each activity period</entry_date>
 </contest>
 <contest>
   <name>afs432MHz</name>
