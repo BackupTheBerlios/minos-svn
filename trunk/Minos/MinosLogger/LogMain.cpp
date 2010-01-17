@@ -434,7 +434,7 @@ void __fastcall TLogContainer::HelpAboutActionExecute( TObject */*Sender*/ )
 void __fastcall TLogContainer::FileOpen1BeforeExecute( TObject */*Sender*/ )
 {
    FileOpen1->Dialog->InitialDir = getDefaultDirectory( false );
-   FileOpen1->Dialog->DefaultExt = "GJV";
+   FileOpen1->Dialog->DefaultExt = "minos";
    FileOpen1->Dialog->Filter = "Minos contest files (*.minos)|*.MINOS|"
                                "Reg1Test Files (*.edi)|*.EDI|"
                                "GJV contest files (*.gjv)|*.GJV|"
@@ -455,6 +455,7 @@ void __fastcall TLogContainer::FileOpen1Cancel( TObject */*Sender*/ )
 {
    TContestApp::getContestApp() ->writeContestList();
 }
+//---------------------------------------------------------------------------
 
 void __fastcall TLogContainer::ListOpen1BeforeExecute( TObject */*Sender*/ )
 {
