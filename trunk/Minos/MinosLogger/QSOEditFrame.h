@@ -47,6 +47,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       bool doGJVOKButtonClick( TObject *Sender );
       void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();
+      virtual void updateQSODisplay();
 };
 //---------------------------------------------------------------------------
 #endif

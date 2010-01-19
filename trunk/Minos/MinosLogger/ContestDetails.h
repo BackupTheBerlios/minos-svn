@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 
 #ifndef ContestDetailsH
-#define ContestDetailsH 
+#define ContestDetailsH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -39,7 +39,7 @@ class TContestEntryDetails : public TForm
       TCheckBox *LocatorMult;
       TGroupBox *OptionsGroupBox;
       TGroupBox *FieldsGroupBox;
-      TCheckBox *ReadOnlyOption;
+   TCheckBox *ProtectedOption;
       TCheckBox *RSTField;
       TCheckBox *SerialField;
       TCheckBox *LocatorField;
@@ -62,7 +62,6 @@ class TContestEntryDetails : public TForm
    TGroupBox *LocatorGroupBox;
    TCheckBox *AllowLoc8CB;
    TCheckBox *AllowLoc4CB;
-   TCheckBox *MultiBandCheckBox4;
    TLabeledEdit *StartDateEdit;
    TLabeledEdit *EndDateEdit;
    TButton *StartDateButton;
@@ -83,14 +82,18 @@ class TContestEntryDetails : public TForm
    void __fastcall EndDateButtonClick(TObject *Sender);
    void __fastcall StartDateButtonClick(TObject *Sender);
    void __fastcall CallsignEditExit(TObject *Sender);
+   void __fastcall ProtectedOptionClick(TObject *Sender);
    private:   	// User declarations
 //      TCalendarForm *CalendarDlg;
       LoggerContestLog * contest;
       LoggerContestLog * inputcontest;
       String sectionList;
+      bool saveContestOK;
+
       TWinControl * getNextFocus();
       void setDetails( const IndividualContest &ic );
       void setDetails( );
+      void enableControls();
       TWinControl * getDetails( );
    public:   		// User declarations
       __fastcall TContestEntryDetails( TComponent* Owner );

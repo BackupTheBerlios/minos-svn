@@ -37,6 +37,11 @@ void TGJVQSOLogFrame::initialise( BaseContestLog * contest,  bool /*catchup*/ )
    refreshOps();
 }
 //---------------------------------------------------------------------------
+void TGJVQSOLogFrame::updateQSODisplay()
+{
+   TGJVEditFrame::updateQSODisplay();
+}
+//---------------------------------------------------------------------------
 void TGJVQSOLogFrame::logScreenEntry( )
 {
    if (!contest || contest->isReadOnly() )
@@ -139,7 +144,7 @@ void TGJVQSOLogFrame::logCurrentContact( )
 //==============================================================================
 void TGJVQSOLogFrame::startNextEntry( )
 {
-   if (contest->unfilledCount <= 0)
+   if (contest->unfilledCount <= 0 || contest->isReadOnly())
    {
       FirstUnfilledButton->Visible = false;
    }

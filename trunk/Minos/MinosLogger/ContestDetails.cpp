@@ -26,7 +26,8 @@
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
-      : TForm( Owner ), /*CalendarDlg( 0 ),*/ contest(0), inputcontest(0)
+      : TForm( Owner ), /*CalendarDlg( 0 ),*/ contest(0), inputcontest(0),
+      saveContestOK(false)
 {
 }
 //---------------------------------------------------------------------------
@@ -247,14 +248,11 @@ void TContestEntryDetails::setDetails(  )
 
    if ( contest->isGJVFile() )
    {
-      ReadOnlyOption->Checked = true ;   // bool         // Free!
-
-      ReadOnlyOption->Enabled = false;
-      OptionsGroupBox->Enabled = false;
+      contest->setUnwriteable(true) ;
    }
    else
    {
-      ReadOnlyOption->Checked = contest->isReadOnly() ;   // bool         // Free!
+      ProtectedOption->Checked = contest->isProtected() ;   // bool         // Free!
    }
    RSTField->Checked = contest->RSTField.getValue() ;   // bool                   // contest
    SerialField->Checked = contest->serialField.getValue() ;   // bool             // contest
@@ -263,6 +261,8 @@ void TContestEntryDetails::setDetails(  )
 
    MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
    SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
+
+   enableControls();
 }
 void TContestEntryDetails::setDetails( const IndividualContest &ic )
 {
@@ -454,8 +454,21 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->countryMult.setValue( DXCCMult->Checked );   // bool
 
    contest->locMult.setValue( LocatorMult->Checked ) ;   // bool
-   contest->setReadOnly( ReadOnlyOption->Checked ) ;   // bool  - NB this doesn't do very much useful - doesn't convert it to RO
 
+   if (ProtectedOption->Checked && !contest->isProtected())
+   {
+      contest->setProtected( true ) ;
+      saveContestOK  = true;
+   }
+   else if (!ProtectedOption->Checked && contest->isProtected())
+   {
+      contest->setProtected( false ) ;
+      saveContestOK  = true;
+   }
+   else if (!contest->isReadOnly()) // not protected, not unwriteable, protected but suppressed
+   {
+      saveContestOK  = true;
+   }
    /*
       ExchangeComboBox:
 
@@ -538,6 +551,13 @@ void __fastcall TContestEntryDetails::OKButtonClick( TObject * /*Sender*/ )
    }
    else
    {
+      if (saveContestOK)
+      {
+         bool temp = contest->isProtectedSuppressed();
+         contest->setProtectedSuppressed(true);
+         contest->commonSave( false );
+         contest->setProtectedSuppressed(temp);
+      }
       *inputcontest = *contest;
       ModalResult = mrOk;
    }
@@ -719,7 +739,67 @@ void __fastcall TContestEntryDetails::CallsignEditExit(TObject */*Sender*/)
    if (MainOpComboBox->Text.IsEmpty())
    {
       MainOpComboBox->Text = CallsignEdit->Text;
-   }  
+   }
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TContestEntryDetails::ProtectedOptionClick(TObject */*Sender*/)
+{
+   if (ProtectedOption->Checked && !contest->isProtected())
+   {
+      if (!mShowYesNoMessage(this, "Are you sure you want to protect this contest?" ))
+      {
+         ProtectedOption->Checked = contest->isProtected();
+      }
+   }
+   else if (!ProtectedOption->Checked && contest->isProtected())
+   {
+      if (!mShowYesNoMessage(this, "Are you sure you want to temporarily unprotect this contest?" ))
+      {
+         ProtectedOption->Checked = contest->isProtected();
+      }
+   }
+   enableControls();
+}
+//---------------------------------------------------------------------------
+void TContestEntryDetails::enableControls()
+{
+// Should protected be disabled if the contest is unwriteable?
+   bool protectedChecked = ProtectedOption->Checked;
+// enable/disable relevant fields based on protected
+   ContestNameEdit->Enabled = !protectedChecked;
+   BandComboBox->Enabled = !protectedChecked;
+   CallsignEdit->Enabled = !protectedChecked;
+   LocatorEdit->Enabled = !protectedChecked;
+   ExchangeEdit->Enabled = !protectedChecked;
+   ScoreOptions->Enabled = !protectedChecked;
+   MultGroupBox->Enabled = !protectedChecked;
+   DXCCMult->Enabled = !protectedChecked;
+   LocatorMult->Enabled = !protectedChecked;
+   FieldsGroupBox->Enabled = !protectedChecked;
+   RSTField->Enabled = !protectedChecked;
+   SerialField->Enabled = !protectedChecked;
+   LocatorField->Enabled = !protectedChecked;
+   QTHField->Enabled = !protectedChecked;
+
+   QTHBundleFrame->enableBundle(!protectedChecked);
+   StationBundleFrame->enableBundle(!protectedChecked);
+   EntryBundleFrame->enableBundle(!protectedChecked);
+
+   SectionComboBox->Enabled = !protectedChecked;
+   StartTimeCombo->Enabled = !protectedChecked;
+   EndTimeCombo->Enabled = !protectedChecked;
+   ExchangeComboBox->Enabled = !protectedChecked;
+   VHFCalendarButton->Enabled = !protectedChecked;
+   ContestNameSelected->Enabled = !protectedChecked;
+   LocatorGroupBox->Enabled = !protectedChecked;
+   AllowLoc8CB->Enabled = !protectedChecked;
+   AllowLoc4CB->Enabled = !protectedChecked;
+   StartDateEdit->Enabled = !protectedChecked;
+   EndDateEdit->Enabled = !protectedChecked;
+   StartDateButton->Enabled = !protectedChecked;
+   EndDateButton->Enabled = !protectedChecked;
+   MainOpComboBox->Enabled = !protectedChecked;
+   SecondOpComboBox->Enabled = !protectedChecked;
+}
 

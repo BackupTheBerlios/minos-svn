@@ -141,7 +141,7 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
    if ( stricmp( ext.c_str(), ".gjv" ) == 0 )
    {
       GJVFile = true;
-      setReadOnly();
+      setUnwriteable(true);
    }
    else
       if ( stricmp( ext.c_str(), ".minos" ) == 0 )
@@ -152,19 +152,19 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
          if ( stricmp( ext.c_str(), ".log" ) == 0 )
          {
             logFile = true;
-            setReadOnly();
+            setUnwriteable(true);
          }
          else
             if ( stricmp( ext.c_str(), ".adi" ) == 0 )
             {
                adifFile = true;
-               setReadOnly();
+               setUnwriteable(true);
             }
             else
                if ( stricmp( ext.c_str(), ".edi" ) == 0 )
                {
                   ediFile = true;
-                  setReadOnly();
+                  setUnwriteable(true);
                }
                else
                {
@@ -179,12 +179,12 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
       {
          if ( !( sbuf.st_mode & S_IWRITE ) )
          {
-            setReadOnly();
+            setUnwriteable(true);
          }
       }
 
       DWORD openMode = GENERIC_READ | GENERIC_WRITE;
-      if ( isReadOnly() )
+      if ( isUnwriteable() )
          openMode = GENERIC_READ;
 
       // populate the LoggerContestLog object from the file
@@ -255,7 +255,7 @@ bool LoggerContestLog::initialise( const std::string &fn, bool newFile, int slot
       validateLoc();
       // run_contest_dialog has already loaded the LoggerContestLog and set log_count
       // here, we display a "loading" box
-      if ( isReadOnly() )
+      if ( isUnwriteable() )     // Minos files can be unprotected if not realy RO
          closeFile();				// to preserve file handles
 
       if ( !loadOK )    // sets ct as well
@@ -471,6 +471,7 @@ bool LoggerContestLog::commonSave( bool newfile )
       else
          if ( minosFile )
          {
+#warning if we have just turned the contest Protected we DO need to write it here
             return minosSaveFile( newfile );
          }
    }

@@ -605,7 +605,7 @@ void DisplayContestContact::processMinosStanza( const std::string &methodName, M
       unsigned short cf = contactFlags.getValue();
       if ( mt->getStructArgMemberValue( "LocalComment", btemp ) )
          mt->setBit( cf, LOCAL_COMMENT, btemp );
-      if ( mt->getStructArgMemberValue( "DontPrint", btemp ) )
+      if ( mt->getStructArgMemberValue( "dontPrint", btemp ) )
          mt->setBit( cf, DONT_PRINT, btemp );
       contactFlags.setInitialValue( cf );
       mt->getStructArgMemberValue( "comment", comments );
@@ -635,7 +635,7 @@ void DisplayContestContact::processMinosStanza( const std::string &methodName, M
             mt->setBit( cf, NON_SCORING, btemp );
          if ( mt->getStructArgMemberValue( "manualScore", btemp ) )
             mt->setBit( cf, MANUAL_SCORE, btemp );
-         if ( mt->getStructArgMemberValue( "DontPrint", btemp ) )
+         if ( mt->getStructArgMemberValue( "dontPrint", btemp ) )
             mt->setBit( cf, DONT_PRINT, btemp );
          if ( mt->getStructArgMemberValue( "validDuplicate", btemp ) )
             mt->setBit( cf, VALID_DUPLICATE, btemp );

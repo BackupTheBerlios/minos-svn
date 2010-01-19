@@ -35,7 +35,6 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       ScreenContact *partialContact; // contact being edited on screen
       String sCurrFreq;
 
-      bool savePartial( void );
       bool restorePartial( void );
       void killPartial( void );
       void doGJVEditChange( TObject *Sender );
@@ -45,6 +44,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
    public: 		// User declarations
       __fastcall TGJVQSOLogFrame( TComponent* Owner );
       __fastcall ~TGJVQSOLogFrame();
+      bool savePartial( void );
       virtual void startNextEntry( );
       virtual void refreshOps();
       void doGJVCancelButtonClick( TObject *Sender );
@@ -53,6 +53,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void initialise( BaseContestLog * contest, bool catchup );
       void setFreq( String f );
       virtual void updateQSOTime();
+      virtual void updateQSODisplay();
 };
 //---------------------------------------------------------------------------
 #endif

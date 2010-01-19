@@ -72,7 +72,7 @@ void MinosTestExport::exportMode( HANDLE expfd )
 
    bool dirty = false;
 
-   ct->readOnly.addIfDirty( st, "readOnly", dirty );
+   ct->protectedContest.addIfDirty( st, "protectedContest", dirty );
    if ( dirty )
    {
       sendRequest( expfd, "MinosLogMode", st );
@@ -271,7 +271,7 @@ int MinosTestExport::exportComment( HANDLE expfd, const ContestContact *lct )
    if ( lct->contactFlags.isDirty() )
    {
       st->addMember( bool( lct->contactFlags.getValue( dirty ) & LOCAL_COMMENT != 0 ), "LocalComment" );
-      st->addMember( bool( lct->contactFlags .getValue( dirty ) & DONT_PRINT != 0 ), "DontPrint" );
+      st->addMember( bool( lct->contactFlags .getValue( dirty ) & DONT_PRINT != 0 ), "dontPrint" );
    }
    lct->comments.addIfDirty( st, "comment", dirty );
 
@@ -384,15 +384,7 @@ int MinosTestExport::exportTest( HANDLE expfd, int mindump, int maxdump )
 
    // export a sequence of Minos stanzas
 
-   // Don't want to export Minos as read only!
-   bool wasRO = ct->readOnly.getValue();
-
-   ct->readOnly.setValue( false );
-
    exportMode( expfd );
-
-   ct->readOnly.setValue( wasRO );
-
    exportContest( expfd );
    exportQTH( expfd );
    exportEntry( expfd );

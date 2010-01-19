@@ -63,25 +63,6 @@ void TGJVEditFrame::initialise( BaseContestLog * pcontest, bool bf )
    BrgSt->Caption = "";
    DistSt->Caption = "";
 
-   if ( contest->isReadOnly() )
-   {
-      DateEdit->Enabled = false;
-      TimeEdit->Enabled = false;
-      //CallsignEdit->Enabled = false;
-      RSTTXEdit->Enabled = false;
-      SerTXEdit->Enabled = false;
-      RSTRXEdit->Enabled = false;
-      SerRXEdit->Enabled = false;
-      //LocEdit->Enabled = false;
-      //QTHEdit->Enabled = false;
-      CommentsEdit->Enabled = false;
-      ModeComboBoxGJV->Enabled = false;
-      NonScoreCheckBox->Enabled = false;
-      DeletedCheckBox->Enabled = false;
-      GJVOKButton->Enabled = false;
-      GJVForceButton->Enabled = false;
-   }
-   QTHEdit->Enabled = ( contest->otherExchange .getValue() || contest->districtMult.getValue() );
 
    updateQSODisplay();
    SerTXEdit->Color = clBtnFace;
@@ -1267,6 +1248,30 @@ void TGJVEditFrame::updateQSODisplay()
    {
       QTHEdit->CharCase = ecNormal;
    }
+   DateEdit->Enabled = !contest->isReadOnly();
+   TimeEdit->Enabled = !contest->isReadOnly();
+   RSTTXEdit->Enabled = !contest->isReadOnly();
+   SerTXEdit->Enabled = !contest->isReadOnly();
+   RSTRXEdit->Enabled = !contest->isReadOnly();
+   SerRXEdit->Enabled = !contest->isReadOnly();
+   //CallsignEdit->Enabled = false;
+   //LocEdit->Enabled = false;
+   //QTHEdit->Enabled = false;
+   CommentsEdit->Enabled = !contest->isReadOnly();
+   ModeComboBoxGJV->Enabled = !contest->isReadOnly();
+   NonScoreCheckBox->Enabled = !contest->isReadOnly();
+   DeletedCheckBox->Enabled = !contest->isReadOnly();
+   GJVOKButton->Enabled = !contest->isReadOnly();
+   GJVForceButton->Enabled = !contest->isReadOnly();
+
+   QTHEdit->Enabled = ( contest->otherExchange .getValue() || contest->districtMult.getValue() );
+
+   CatchupButton->Visible = !contest->isReadOnly();
+
+   TimeNowButton->Enabled = !contest->isReadOnly();
+   ModeButton->Enabled = !contest->isReadOnly();
+   SecondOpComboBox->Enabled = !contest->isReadOnly();
+   MainOpComboBox->Enabled = !contest->isReadOnly();
 }
 
 void __fastcall TGJVEditFrame::TimeNowButtonClick(TObject *Sender)

@@ -189,7 +189,7 @@ class TLogContainer : public TForm
    void __fastcall ContestPageControlDrawTab(TCustomTabControl *Control,
           int TabIndex, const TRect &Rect, bool Active);
    private:  	// User declarations
-      BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno );
+      BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
       void closeSlot( TTabSheet *t, bool addToMRU );
       void preloadFiles( const std::string &conarg );

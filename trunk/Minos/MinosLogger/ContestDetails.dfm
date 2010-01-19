@@ -195,31 +195,17 @@ object ContestEntryDetails: TContestEntryDetails
     Left = 10
     Top = 357
     Width = 225
-    Height = 77
+    Height = 57
     Caption = 'Options'
-    Enabled = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clGrayText
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = []
-    ParentFont = False
     TabOrder = 18
-    object ReadOnlyOption: TCheckBox
+    object ProtectedOption: TCheckBox
       Left = 6
       Top = 25
       Width = 97
       Height = 17
-      Caption = 'Read Only'
+      Caption = 'Protected'
       TabOrder = 0
-    end
-    object MultiBandCheckBox4: TCheckBox
-      Left = 8
-      Top = 51
-      Width = 201
-      Height = 17
-      Caption = 'Multi-Band (see Band combo)'
-      TabOrder = 1
+      OnClick = ProtectedOptionClick
     end
   end
   object FieldsGroupBox: TGroupBox

@@ -126,7 +126,7 @@ class TGJVEditFrame : public TFrame
       virtual bool doGJVForceButtonClick( TObject *Sender );
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;
       virtual void updateQSOTime() = 0;
-      virtual void updateQSODisplay();
+      virtual void updateQSODisplay() = 0;
       virtual void closeContest()
       {
          contest = 0;

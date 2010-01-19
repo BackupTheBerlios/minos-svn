@@ -27,6 +27,15 @@ __fastcall TGJVQSOEditFrame::TGJVQSOEditFrame( TComponent* Owner )
    CatchupButton->Visible = false;
 }
 //---------------------------------------------------------------------------
+void TGJVQSOEditFrame::updateQSODisplay()
+{
+   TGJVEditFrame::updateQSODisplay();
+
+   CallsignEdit->Enabled = !contest->isReadOnly();
+   LocEdit->Enabled = !contest->isReadOnly();
+   QTHEdit->Enabled = !contest->isReadOnly();
+}
+//---------------------------------------------------------------------------
 void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
 {
 #warning Insert Before not yet implemented
@@ -153,7 +162,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
 {
    selectedContact = lct;   // contact from log list selected
 
-   if (contest->unfilledCount <= 0)
+   if (contest->unfilledCount <= 0 || contest->isReadOnly())
    {
       FirstUnfilledButton->Visible = false;
    }

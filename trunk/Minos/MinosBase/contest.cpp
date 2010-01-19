@@ -20,7 +20,7 @@ bool LtLogSeq::operator() ( const BaseContact* s1, const BaseContact* s2 ) const
 }
 
 BaseContestLog::BaseContestLog( void ) :
-      readOnly( false ), suppressReadOnly(false),
+      protectedContest( false ), suppressProtected(false),  unwriteable(false),
       nextBlock( 1 ),
       unfilledCount(0),
       stanzaCount( 0 ), slotno( -1 ), locValid( false ),
@@ -105,7 +105,7 @@ BaseContact *BaseContestLog::pcontactAtSeq( unsigned long logSequence )
 }
 void BaseContestLog::clearDirty()
 {
-   readOnly.clearDirty();
+   protectedContest.clearDirty();
    mycall.fullCall.clearDirty();
 
    name.clearDirty();
@@ -135,7 +135,7 @@ void BaseContestLog::clearDirty()
 }
 void BaseContestLog::setDirty()
 {
-   readOnly.setDirty();
+   protectedContest.setDirty();
    mycall.fullCall.setDirty();
    name.setDirty();
    location.setDirty();
@@ -892,7 +892,7 @@ void BaseContestLog::processMinosStanza( const std::string &methodName, MinosTes
    else
       if ( methodName == "MinosLogMode" )
       {
-         mt->getStructArgMemberValue( "readOnly", readOnly );
+         mt->getStructArgMemberValue( "protectedContest", protectedContest );
       }
       else
          if ( methodName == "MinosLogQTH" )

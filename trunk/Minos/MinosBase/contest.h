@@ -89,7 +89,8 @@ class BaseContestLog
    protected:
       int stanzaCount;
       unsigned long nextBlock;
-      bool suppressReadOnly;
+      bool suppressProtected;
+      bool unwriteable;
 
    public:
       int slotno;
@@ -108,7 +109,7 @@ class BaseContestLog
       // "Real" basic contest data that needs monitoring
       // and provide the "front sheet" data
 
-      MinosItem<bool> readOnly;
+      MinosItem<bool> protectedContest;
 
       MinosItem<std::string> name;         // name of contest
       MinosItem<std::string> location;
@@ -144,11 +145,39 @@ class BaseContestLog
       virtual void setDirty();
       bool isReadOnly( void )
       {
-         return readOnly.getValue() && ! suppressReadOnly;
+         return (protectedContest.getValue() && ! suppressProtected) || unwriteable;
       }
-      void setReadOnly( bool s = true )
+      bool isProtected( void )
       {
-         readOnly.setValue( s );
+         return protectedContest.getValue();
+      }
+      void setProtected( bool s  )
+      {
+         if (protectedContest.getValue() && !s)
+         {
+            suppressProtected = true;
+         }
+         else if (s)
+         {
+            suppressProtected = false;
+            protectedContest.setValue( true );
+         }
+      }
+      bool isProtectedSuppressed( void )
+      {
+         return suppressProtected;
+      }
+      void setProtectedSuppressed( bool s)
+      {
+         suppressProtected = s;
+      }
+      void setUnwriteable( bool s )
+      {
+         unwriteable = s ;
+      }
+      bool isUnwriteable( )
+      {
+         return unwriteable;
       }
       // end of contest details
 

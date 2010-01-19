@@ -478,13 +478,9 @@ void TContestApp::writeContestList()
    }
    preloadBundle.flushProfile();
 }
-LoggerContestLog * TContestApp::openFile( const std::string &fn, bool newFile, bool read_only, int slotno )
+LoggerContestLog * TContestApp::openFile( const std::string &fn, bool newFile, int slotno )
 {
    LoggerContestLog * contest = new LoggerContestLog();
-   // load always contests are defaulted to read only
-   // - ones that are opened due to last load are not
-   if ( read_only )
-      contest->setReadOnly();
 
    if ( !contest->initialise( fn, newFile, slotno ) )    // this adds it to the slot
    {

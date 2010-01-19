@@ -127,7 +127,7 @@ void TLogContainer::preloadFiles( const std::string &conarg )
          int slotno = atoi( slotlst[ i ].c_str() ) - 1;
          if ( slotno >= 0 )
          {
-            addSlot( 0, pathlst[ i ], false, false, slotno );
+            addSlot( 0, pathlst[ i ], false, slotno );
          }
       }
    }
@@ -146,7 +146,7 @@ void TLogContainer::preloadFiles( const std::string &conarg )
    if ( conarg.size() )
    {
       // open the "argument" one last - which will make it current
-      ct = addSlot( 0, conarg, false, false, -1 );
+      ct = addSlot( 0, conarg, false, -1 );
       TContestApp::getContestApp() ->writeContestList();	// or this one will not get included
    }
 
@@ -169,13 +169,13 @@ void __fastcall TLogContainer::FormClose( TObject */*Sender*/,
 
 }
 //---------------------------------------------------------------------------
-BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, bool read_only, int slotno )
+BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, int slotno )
 {
    static int namegen = 0;
    // openFile ends up calling ContestLog::initialise which then
    // calls TContestApp::insertContest
 
-   LoggerContestLog * contest = TContestApp::getContestApp() ->openFile( fname, newfile, read_only, slotno );
+   LoggerContestLog * contest = TContestApp::getContestApp() ->openFile( fname, newfile, slotno );
 
    if ( contest )
    {
@@ -188,7 +188,6 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
          {
             if ( ced->ShowModal() == mrOk )
             {
-               contest->commonSave( false );
                contest->scanContest();
                show = true;
             }
@@ -232,7 +231,7 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
             if ( expName.Length() )
             {
                closeSlot(t, true );
-               addSlot( 0, expName.c_str(), false, false, -1 );
+               addSlot( 0, expName.c_str(), false, -1 );
             }
          }
          ContestMRU->RemoveItem( fname.c_str() );
@@ -447,7 +446,7 @@ void __fastcall TLogContainer::FileOpen1Accept( TObject */*Sender*/ )
 {
    TWaitCursor fred;
    std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-   addSlot( pced.get(), FileOpen1->Dialog->FileName.c_str(), false, false, -1 );   // not automatically read only
+   addSlot( pced.get(), FileOpen1->Dialog->FileName.c_str(), false, -1 );   // not automatically read only
 }
 //---------------------------------------------------------------------------
 
@@ -537,7 +536,7 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
 
    String initName = InitialDir + "\\" + nfileName;
    std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-   BaseContestLog * c = addSlot( pced.get(), initName.c_str(), true, false, -1 );
+   BaseContestLog * c = addSlot( pced.get(), initName.c_str(), true, -1 );
 
    bool repeatDialog = (c != 0);
    while ( repeatDialog )
@@ -579,13 +578,13 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
          }
 
          // we want to (re)open it WITHOUT using the dialog!
-         addSlot( 0, suggestedfName.c_str(), false, false, -1 );   // not automatically read only
+         addSlot( 0, suggestedfName.c_str(), false, -1 );
          repeatDialog = false;
       }
       else
       {
             std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-            c = addSlot( pced.get(), initName.c_str(), false, false, -1 );
+            c = addSlot( pced.get(), initName.c_str(), false, -1 );
             repeatDialog = (c != 0);
       }
    }
@@ -828,7 +827,7 @@ void __fastcall TLogContainer::ContestMRUClick( TObject */*Sender*/,
    if ( FileExists( FileName ) )
    {
       std::auto_ptr <TContestEntryDetails> pced( new TContestEntryDetails( this ) );
-      addSlot( pced.get(), FileName.c_str(), false, false, -1 );   // not automatically read only
+      addSlot( pced.get(), FileName.c_str(), false, -1 );
    }
    else
    {

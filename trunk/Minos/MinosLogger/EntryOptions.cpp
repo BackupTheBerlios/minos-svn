@@ -255,10 +255,8 @@ String TEntryOptionsForm::doFileSave( )
       case EREG1TEST:
          {
             defext = "EDI";
-            // default file name as call
             ct->mycall.valRes = CS_NOT_VALIDATED;
             ct->mycall.validate( );
-            fname = ( ct->mycall.prefix2 + ct->mycall.number + ct->mycall.body ).c_str();
             filter = "Region 1 EDI files (*.edi)|*.EDI|All Files (*.*)|*.*" ;
          }
          break;

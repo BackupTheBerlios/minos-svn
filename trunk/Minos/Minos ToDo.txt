@@ -11,7 +11,7 @@ J
 
 1.      Tab highlight is excellent, although I am not sure I would have chosen that colour J
 
-2.      Swapping between contests causes a loss of any partial data entered.
+2.      (done) Swapping between contests causes a loss of any partial data entered.
 
 3.      Double click on CSL for transfer is not working properly (haven’t tried it for ‘other’):
 
@@ -45,11 +45,11 @@ e.       retained
 
 6.      On VHF calendar download:
 
-a.      Text doesn’t fit on buttons (and file version)
+a.      (done)Text doesn’t fit on buttons (and file version)
 
-b.      Panel doesn’t show all content within default width
+b.      (???) Panel doesn’t show all content within default width
 
-c.      ‘Fast forward’ to non-loaded year gives ‘failed to load’ but changes year display (maybe correct?)
+c.      (years should be present if they haven't been deleted)‘Fast forward’ to non-loaded year gives ‘failed to load’ but changes year display (maybe correct?)
 
 
 7.      Reg1test format does not generate full filename, others (not sure if all) do.
@@ -58,11 +58,11 @@ c.      ‘Fast forward’ to non-loaded year gives ‘failed to load’ but changes yea
 
 9.      I think there are some inconsistencies between 432 and 435 MHz, but I have not managed to pin them down.
 
-10.     Latest calendar goes to 2012; is that ‘safe’?
+10.     (no but...)Latest calendar goes to 2012; is that ‘safe’?
 
 11.     RMB edit didn’t do what I thought it meant – will have to document this carefully J
 
-12.     Not clear to me what scrolling tabs does (maybe not enough data in my test contests?)
+12.     (explain)Not clear to me what scrolling tabs does (maybe not enough data in my test contests?)
 
 
 13.     Cryptic notes for my benefit only (when trying to reproduce a possible problem with catch-up/after event):
@@ -88,7 +88,10 @@ b.      If RO is a selected option or can be disabled what if user doesn’t do it
 
 c.      Certainly beyond entry date seems good; will make file RO be an option in Minos (on file menu)?
 
-d.      Call it ‘protect’ or ‘archive’ rather than RO?I need an SDR mute application, linked to PTT out. Is the first "non local" minos app, or does it make use of remote access to the SDR server?
+d.      Call it ‘protect’ or ‘archive’ rather than RO?
+===========================================================================
+
+I need an SDR mute application, linked to PTT out. Is the first "non local" minos app, or does it make use of remote access to the SDR server?
 ===========================================================================
 Read Only
 
@@ -100,6 +103,8 @@ Have a new menu entry, open completed log for edit - needs to close the existing
 
 
 *** Add a "suppress read only" flag; if we always use "isReadOnly()" then should be OK. Use an event to switch TO RO. Suppress RO needs to be set very early, to allow contest to be opened in correct mode.
+
+Call it "protected" rather than RO. How do we manage to detect Protected contests in a file open dialog? Can we? Or do we just have the one "open" and an option to temporarily unprotect (I think this is what we will have to do)?
 
 ===========================================================================
 Hi Mike,
@@ -118,7 +123,9 @@ Ken
 //================================================================
 Bugs, etc to fix
 =================
-	
+Keyboard accelerators - e.g. Alt F is "File" and "Force".
+
+Change default name for EDI files to match the minos name
 
 Sticky splitters in monitor and chat
 
@@ -139,7 +146,7 @@ Dble click on QSO in "other" grid does transfer
 
 F12 does transfer
 
-RMB option for editting "other" grid contact
+RMB option for editting "other" grid contact (rather than double clicking)
 
 Operator setting moved from ops frame to main screen or contest details screen.
 
@@ -151,9 +158,11 @@ Post event and Uri mode simplification - catch-up button and unfilled button on 
 
 Scrolling tabs as an option, on RMB
 
-Read only simplification - or for now, don't allow it  to be set
+Read only now becomes "protected" and is sticky. It can be temporarily lifted so that back editting can be done.
 
 New printable output format on Produce Entry/export file
+
+EDI export entry keeps file name - robot will sort it out.
 //================================================================
 Next version - 1.3.1 Beta - new features etc
 

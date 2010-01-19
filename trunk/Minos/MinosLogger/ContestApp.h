@@ -133,7 +133,7 @@ class TContestApp : public MinosParameters
       void removeContest( BaseContestLog * p );
       void removeList( ContactList * p );
       void writeContestList();
-      LoggerContestLog * openFile( const std::string &fn, bool newFile, bool read_only, int slotno );
+      LoggerContestLog * openFile( const std::string &fn, bool newFile, int slotno );
       ContactList * openListFile( const std::string &fn, int slotno );
       void closeFile( BaseContestLog *contest );
       void closeListFile( ContactList *list );
