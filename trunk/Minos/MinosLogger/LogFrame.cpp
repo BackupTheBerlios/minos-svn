@@ -136,6 +136,8 @@ __fastcall TSingleLogFrame::~TSingleLogFrame()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 {
+   GJVQSOLogFrame->savePartial();
+   
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
    {
       return ;
@@ -1403,7 +1405,7 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeMouseDown( TObject */*Sender*/
 void __fastcall TSingleLogFrame::PublishTimerTimer( TObject */*Sender*/ )
 {
    LoggerContestLog * ct = dynamic_cast<LoggerContestLog *>( contest );
-   if ( ct && ct->isMinosFile() && !ct->isReadOnly() )
+   if ( ct && ct->isMinosFile() && !ct->isUnwriteable() && !ct->isProtected())
    {
       int stanzaCount = contest->getStanzaCount();
       if ( lastStanzaCount != stanzaCount )
@@ -1573,7 +1575,7 @@ void __fastcall TSingleLogFrame::EntryChoiceMenuPopup(TObject */*Sender*/)
    POINT mpos, mpos2;
    ::GetCursorPos( &mpos );
    mpos2 = OtherMatchTree->ScreenToClient( mpos );
-   if ( PtInRect( &( OtherMatchTree->ClientRect ), mpos2 ) )
+   if ( PtInRect( &( OtherMatchTree->ClientRect ), mpos2 ))
    {
       showEdit = true;
    }
@@ -1626,7 +1628,6 @@ void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & Event )
          pced->setDetails( ct );
          if ( pced->ShowModal() == mrOk )
          {
-            ct->commonSave( false );
             // and we need to do some re-init on the display
             updateQSODisplay();
             ct->scanContest();
@@ -1660,4 +1661,5 @@ void __fastcall TSingleLogFrame::ThisMatchTreeBeforeItemErase(
 
 }
 //---------------------------------------------------------------------------
+
 
