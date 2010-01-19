@@ -37,7 +37,7 @@ object CalendarForm: TCalendarForm
       748
       41)
     object CalendarVersionLabel: TLabel
-      Left = 266
+      Left = 292
       Top = 14
       Width = 125
       Height = 13
@@ -58,7 +58,7 @@ object CalendarForm: TCalendarForm
     object SelectButton: TButton
       Left = 14
       Top = 6
-      Width = 83
+      Width = 101
       Height = 25
       Caption = 'Select Contest'
       Default = True
@@ -69,22 +69,22 @@ object CalendarForm: TCalendarForm
     object GetCalendarButton: TButton
       Left = 121
       Top = 6
-      Width = 139
+      Width = 160
       Height = 25
       Caption = 'Download latest Calendar'
       TabOrder = 2
       OnClick = GetCalendarButtonClick
     end
     object YearEdit: TEdit
-      Left = 472
+      Left = 531
       Top = 10
-      Width = 121
+      Width = 65
       Height = 21
       TabOrder = 3
       Text = 'YearEdit'
     end
     object YearDownButton: TButton
-      Left = 432
+      Left = 496
       Top = 8
       Width = 26
       Height = 25
