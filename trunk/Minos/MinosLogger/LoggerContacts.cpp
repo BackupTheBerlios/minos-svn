@@ -32,7 +32,7 @@ static void catmult( char *multbuff, const std::string &text, int limit = 255 )
    strncat( multbuff, text.c_str(), limit );
    strcat( multbuff, "* " );
 }
-void ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
+void ContestContact::getPrintFileText( std::string &sdest, short maxlen )
 {
    BaseContestLog * clp = contest;
    int thisscore = 0;
@@ -42,7 +42,22 @@ void ContestContact::getRSGBLogText( std::string &sdest, short maxlen )
    memset( dest, ' ', maxlen - 1 );
    dest[ maxlen ] = 0;
 
-   if ( contactFlags.getValue() & COMMENT_ONLY )
+   if ( contactFlags.getValue() & DONT_PRINT )
+   {
+      memset( ContactBuffs::buff2, ' ', 120 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
+      placestr( ContactBuffs::buff2, "DON'T PRINT", 21, 14 );
+   }
+   else if ( contactFlags.getValue() & LOCAL_COMMENT  )
+   {
+      memset( ContactBuffs::buff2, ' ', 120 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
+      placestr( ContactBuffs::buff2, "LOCAL COMMENT", 21, 14 );
+      placestr( ContactBuffs::buff2, comments.getValue(), 29, 60 );
+   }
+   else if ( contactFlags.getValue() & COMMENT_ONLY )
    {
       memset( ContactBuffs::buff2, ' ', 120 );
       placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );

@@ -166,7 +166,7 @@ bool PrintFile::exportTest( HANDLE expfd )
       BaseContact *dct = ct->ctList[ i ];
       ContestContact *cct = dynamic_cast<ContestContact *>( dct );
 
-      if ( cct->contactFlags.getValue() & ( LOCAL_COMMENT | COMMENT_ONLY | DONT_PRINT ) )
+      if ( cct->contactFlags.getValue() & ( LOCAL_COMMENT | DONT_PRINT ) )
       {
          // should all COMMENT_ONLY records go into remarks?
          // and also comments on individual QSOs?
@@ -175,7 +175,7 @@ bool PrintFile::exportTest( HANDLE expfd )
 
       std::string sbuff;
 
-      cct->getRSGBLogText( sbuff, 120 );   // lbuff if "bsize" = 256
+      cct->getPrintFileText( sbuff, 120 );   // lbuff if "bsize" = 256
       if ( sbuff.length() != 0 )
       {
          sbuff = trimr( sbuff );			// No need to pad to 250!!
