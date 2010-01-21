@@ -174,21 +174,43 @@ std::string dtg::getDate( DTG dstyle, bool &d ) const
             temp_date = temp_date.substr(0, 6);
          }
          else
-         {
-            temp_date += dateValue [ 4 ];
-            temp_date += dateValue [ 5 ];
-            temp_date += '/';
-            temp_date += dateValue [ 2 ];
-            temp_date += dateValue [ 3 ];
-            temp_date += '/';
-            temp_date += dateValue [ 0 ];
-            temp_date += dateValue [ 1 ];
+            if (dstyle == DTGPRINT)
+            {
+               std::string prefix = "20";
 
-            for ( int i = 0; i < 8; i++ )
-               if ( temp_date[ i ] == 0 )
-                  temp_date[ i ] = ' ';
-            temp_date = temp_date.substr(0, 8);
-         }
+               if ( dateValue [ 0 ] >= '8' )
+                  prefix = "19";
+               temp_date += dateValue [ 4 ];
+               temp_date += dateValue [ 5 ];
+               temp_date += '/';
+               temp_date += dateValue [ 2 ];
+               temp_date += dateValue [ 3 ];
+               temp_date += '/';
+               temp_date += prefix;
+               temp_date += dateValue [ 0 ];
+               temp_date += dateValue [ 1 ];
+
+               for ( int i = 0; i < 10; i++ )
+                  if ( temp_date[ i ] == 0 )
+                     temp_date[ i ] = ' ';
+               temp_date = temp_date.substr(0, 10);
+            }
+            else
+            {
+               temp_date += dateValue [ 4 ];
+               temp_date += dateValue [ 5 ];
+               temp_date += '/';
+               temp_date += dateValue [ 2 ];
+               temp_date += dateValue [ 3 ];
+               temp_date += '/';
+               temp_date += dateValue [ 0 ];
+               temp_date += dateValue [ 1 ];
+
+               for ( int i = 0; i < 8; i++ )
+                  if ( temp_date[ i ] == 0 )
+                     temp_date[ i ] = ' ';
+               temp_date = temp_date.substr(0, 8);
+            }
    return temp_date;
 }
 std::string dtg::getDate( DTG dstyle ) const

@@ -54,7 +54,7 @@ c.      (years should be present if they haven't been deleted)‘Fast forward’ to 
 
 7.      (done)Reg1test format does not generate full filename, others (not sure if all) do.
 
-8.      (it currently "matches" old .log format. Probably want current short date format) New printed format is good, but date format should be dd-mmm-(yy)yy in my view.
+8.      (Some changes made; why dd-mmm-(yy)yy? Not a normal UK date format) New printed format is good, but date format should be dd-mmm-(yy)yy in my view.
 
 9.      (Probably! Nasty area)I think there are some inconsistencies between 432 and 435 MHz, but I have not managed to pin them down.
 

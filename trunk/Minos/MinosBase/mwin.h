@@ -143,7 +143,7 @@ class MinosItem
       }
 };
 //---------------------------------------------------------------------------
-enum DTG {DTGLOG, DTGDISP, DTGReg1Test, DTGFULL};
+enum DTG {DTGLOG, DTGDISP, DTGReg1Test, DTGFULL, DTGPRINT};
 class dtg
 {
    private:

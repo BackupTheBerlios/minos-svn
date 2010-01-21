@@ -45,25 +45,25 @@ void ContestContact::getPrintFileText( std::string &sdest, short maxlen )
    if ( contactFlags.getValue() & DONT_PRINT )
    {
       memset( ContactBuffs::buff2, ' ', 120 );
-      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
-      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGPRINT ), 0, 10 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGPRINT ), 11, 5 );
       placestr( ContactBuffs::buff2, "DON'T PRINT", 21, 14 );
    }
    else if ( contactFlags.getValue() & LOCAL_COMMENT  )
    {
       memset( ContactBuffs::buff2, ' ', 120 );
-      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
-      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
-      placestr( ContactBuffs::buff2, "LOCAL COMMENT", 21, 14 );
-      placestr( ContactBuffs::buff2, comments.getValue(), 29, 60 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 10 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 11, 5 );
+      placestr( ContactBuffs::buff2, "LOCAL COMMENT", 23, 14 );
+      placestr( ContactBuffs::buff2, comments.getValue(), 31, 60 );
    }
    else if ( contactFlags.getValue() & COMMENT_ONLY )
    {
       memset( ContactBuffs::buff2, ' ', 120 );
-      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 8 );
-      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 10, 5 );
-      placestr( ContactBuffs::buff2, "LOGGED COMMENT", 21, 14 );
-      placestr( ContactBuffs::buff2, comments.getValue(), 29, 60 );
+      placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), 0, 10 );
+      placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), 11, 5 );
+      placestr( ContactBuffs::buff2, "LOGGED COMMENT", 23, 14 );
+      placestr( ContactBuffs::buff2, comments.getValue(), 31, 60 );
 
    }
    else
@@ -145,8 +145,8 @@ void ContestContact::getPrintFileText( std::string &sdest, short maxlen )
 
       memset( ContactBuffs::buff2, ' ', 120 );
       int next = 0;
-      next = placestr( ContactBuffs::buff2, time.getDate( DTGDISP ), next, 8 );
-      next = placestr( ContactBuffs::buff2, time.getTime( DTGDISP ), next + 1, 5 );
+      next = placestr( ContactBuffs::buff2, time.getDate( DTGPRINT ), next, 10 );
+      next = placestr( ContactBuffs::buff2, time.getTime( DTGPRINT ), next + 1, 5 );
       next = placestr( ContactBuffs::buff2, cs.fullCall.getValue(), next + 1, 10 );
       next = placestr( ContactBuffs::buff2, reps.getValue(), next + 1, 3 );
       next = placestr( ContactBuffs::buff2, ContactBuffs::ssbuff, next, -4 );
