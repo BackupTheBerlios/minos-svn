@@ -278,18 +278,21 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject *Sender )
          if (loc != LocEdit->Text.Trim())
          {
             LocEdit->Text = loc;
-            doGJVEditChange( LocEdit );
+            doGJVEditChange( LocEdit );   // start the match thread
          }
       }
    }
    if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
    {
-      GJVEditChange( Sender );   // start the match thread
+#warning Why did we do a "onchange" here in "onexit"?
+//      GJVEditChange( Sender );   // start the match thread
       valid( cmCheckValid ); // make sure all single and cross field
-      doAutofill();
+      doAutofill();           // should only be time to be filled
    }
    MinosLoggerEvents::SendShowErrorList();
-   MinosLoggerEvents::SendReportOverstrike(overstrike, contest);
+   MinosLoggerEvents::SendReportOverstrike(overstrike, contest); // Why?
+
+   // make sure the mode button shows the correct "flip" value
    if (ModeComboBoxGJV->Text == "A1A")
    {
       ModeButton->Caption = "J3E";
@@ -1274,6 +1277,7 @@ void TGJVEditFrame::updateQSODisplay()
    MainOpComboBox->Enabled = !contest->isReadOnly();
 }
 
+//---------------------------------------------------------------------------
 void __fastcall TGJVEditFrame::TimeNowButtonClick(TObject *Sender)
 {
    setTimeNow();

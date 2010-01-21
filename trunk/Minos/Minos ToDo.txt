@@ -9,11 +9,11 @@ Ken
 J
 
 
-1.      Tab highlight is excellent, although I am not sure I would have chosen that colour J
+1.      ( <g> )Tab highlight is excellent, although I am not sure I would have chosen that colour J
 
 2.      (done) Swapping between contests causes a loss of any partial data entered.
 
-3.      Double click on CSL for transfer is not working properly (haven’t tried it for ‘other’):
+3.      (fixed, I hope - silly bug)Double click on CSL for transfer is not working properly (haven’t tried it for ‘other’):
 
 a.      First single click to select an entry returns to first with none highlighted
 
@@ -41,7 +41,7 @@ d.      Width of CSL panel consistent across contests; width of internal columns
 e.       retained
 
 
-5.      On the stats/locators panel, ‘unworked only’ doesn’t seem to do anything (this is not new on this version). Did it ever do anything (I think I remember that it did once)? If it only applies to districts then the tick box should be hidden for locators.
+5.      (Correct - it applies to all relevant stats tabs)On the stats/locators panel, ‘unworked only’ doesn’t seem to do anything (this is not new on this version). Did it ever do anything (I think I remember that it did once)? If it only applies to districts then the tick box should be hidden for locators.
 
 6.      On VHF calendar download:
 
@@ -52,15 +52,15 @@ b.      (???) Panel doesn’t show all content within default width
 c.      (years should be present if they haven't been deleted)‘Fast forward’ to non-loaded year gives ‘failed to load’ but changes year display (maybe correct?)
 
 
-7.      Reg1test format does not generate full filename, others (not sure if all) do.
+7.      (done)Reg1test format does not generate full filename, others (not sure if all) do.
 
-8.      New printed format is good, but date format should be dd-mmm-(yy)yy in my view.
+8.      (it currently "matches" old .log format. Probably want current short date format) New printed format is good, but date format should be dd-mmm-(yy)yy in my view.
 
-9.      I think there are some inconsistencies between 432 and 435 MHz, but I have not managed to pin them down.
+9.      (Probably! Nasty area)I think there are some inconsistencies between 432 and 435 MHz, but I have not managed to pin them down.
 
 10.     (no but...)Latest calendar goes to 2012; is that ‘safe’?
 
-11.     RMB edit didn’t do what I thought it meant – will have to document this carefully J
+11.     (What did you think it meant?)RMB edit didn’t do what I thought it meant – will have to document this carefully J
 
 12.     (explain)Not clear to me what scrolling tabs does (maybe not enough data in my test contests?)
 
@@ -125,7 +125,9 @@ Bugs, etc to fix
 =================
 Keyboard accelerators - e.g. Alt F is "File" and "Force".
 
-Change default name for EDI files to match the minos name
+(done)Change default name for EDI files to match the minos name
+
+Look at stickiness of stats panel splitters
 
 Sticky splitters in monitor and chat
 
@@ -136,17 +138,15 @@ Insert before/insert after; "easy" enough to do, but what needs doing to all fol
 //================================================================
 Next version - 1.4.0.0
 
-Event message modifications - big change, but should be nothing visible
+Event message modifications - big change, but should be nothing visible (except bugs)
 
 Tab highlight more prominent
 
 Splitters etc sticky cross contest
 
-Dble click on QSO in "other" grid does transfer
+Dble click on QSO in "other" grid does transfer, not edit; RMB option for editting "other" grid contact
 
-F12 does transfer
-
-RMB option for editting "other" grid contact (rather than double clicking)
+F12 does match transfer from the entry highlighted in pink
 
 Operator setting moved from ops frame to main screen or contest details screen.
 
@@ -156,9 +156,9 @@ Station call is the default initial operator
 
 Post event and Uri mode simplification - catch-up button and unfilled button on QSO edit area. Uri mode still not that obvious to initiate
 
-Scrolling tabs as an option, on RMB
+Scrolling tabs as an option, on RMB. This makes all the tabs form a single line at the top, with scroll arrows, rather than multiple lines.
 
-Read only now becomes "protected" and is sticky. It can be temporarily lifted so that back editting can be done.
+Read only now becomes "protected" and is stored properly with the contest. It can be temporarily lifted so that back editting can be done. For now, you have to set it manually; may in future make it automatically set on producing the entry or after the entry date has passed. What do the users think?
 
 New printable output format on Produce Entry/export file
 

@@ -376,6 +376,8 @@ void TSingleLogFrame::showMatchHeaders( )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
 {
+   // Display the current contest QSO matches - both "this" and "other"
+
    // We want a node structure where the LoggerContestLog includes the number of matches
    // and we can tag "DUPLICATE" or whatever on the end of the LoggerContestLog name
 
@@ -507,6 +509,8 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
 //---------------------------------------------------------------------------
 void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
 {
+   // display the current archive list
+
    // We want a node structure where the LoggerContestLog includes the number of matches
    // and we can tag "DUPLICATE" or whatever on the end of the LoggerContestLog name
 
