@@ -510,6 +510,7 @@ object LogContainer: TLogContainer
     end
   end
   object MainMenu1: TMainMenu
+    AutoHotkeys = maManual
     Left = 16
     Top = 32
     object File1: TMenuItem
