@@ -471,7 +471,6 @@ bool LoggerContestLog::commonSave( bool newfile )
       else
          if ( minosFile )
          {
-#warning if we have just turned the contest Protected we DO need to write it here
             return minosSaveFile( newfile );
          }
    }

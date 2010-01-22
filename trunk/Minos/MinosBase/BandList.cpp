@@ -36,6 +36,8 @@ BandList::~BandList()
 bool BandList::parseFile( const std::string &fname )
 {
 #warning we need to check for file exists ands complain if not
+// but we cannot do it from here - maybe publish an event?
+
    HANDLE bandFile = CreateFile( fname.c_str(),
                                 GENERIC_READ,
                                 FILE_SHARE_READ,

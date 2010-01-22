@@ -32,6 +32,8 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    int year = YearEdit->Text.ToIntDef(2000);
    vhf = Calendar(year);
    bool loaded = false;
+
+   #warning can we automate calendar years depending on configured and present files/URLs?
    if (year > 2009)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests10.xml" );
@@ -135,6 +137,7 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 
    String fpath = ExtractFilePath( appFName );
 
+   #warning we want these URLs to be configurable
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml");

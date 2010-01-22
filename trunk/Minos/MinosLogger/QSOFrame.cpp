@@ -216,7 +216,7 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TGJVEditFrame::EditControlExit( TObject *Sender )
+void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
 {
    if (!contest)
    {
@@ -284,8 +284,6 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject *Sender )
    }
    if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
    {
-#warning Why did we do a "onchange" here in "onexit"?
-//      GJVEditChange( Sender );   // start the match thread
       valid( cmCheckValid ); // make sure all single and cross field
       doAutofill();           // should only be time to be filled
    }
@@ -1166,7 +1164,6 @@ void TGJVEditFrame::contactValid( void )
          lgTraceerr( ERR_20 );    // "Invalid district multiplier"
          qthIl->tIfValid = false;
       }
-      #warning we also need to check for district out of country
       // What do we allow as valid? Should we error wrong postcode/country combination?
    }
    else
