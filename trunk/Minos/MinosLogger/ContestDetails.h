@@ -89,6 +89,7 @@ class TContestEntryDetails : public TForm
       LoggerContestLog * inputcontest;
       String sectionList;
       bool saveContestOK;
+      bool suppressProtectedOnClick;
 
       TWinControl * getNextFocus();
       void setDetails( const IndividualContest &ic );

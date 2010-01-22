@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 __fastcall TContestEntryDetails::TContestEntryDetails( TComponent* Owner)
       : TForm( Owner ), /*CalendarDlg( 0 ),*/ contest(0), inputcontest(0),
-      saveContestOK(false)
+      saveContestOK(false), suppressProtectedOnClick(false)
 {
 }
 //---------------------------------------------------------------------------
@@ -246,13 +246,15 @@ void TContestEntryDetails::setDetails(  )
 
    PowerEdit->Text = contest->power.getValue().c_str();
 
-   if ( contest->isGJVFile() )
+   if ( contest->isMinosFile() )
    {
-      contest->setUnwriteable(true) ;
+      suppressProtectedOnClick = true;
+      ProtectedOption->Checked = contest->isProtected() && !contest->isProtectedSuppressed();
+      suppressProtectedOnClick = false;
    }
    else
    {
-      ProtectedOption->Checked = contest->isProtected() ;   // bool         // Free!
+      ProtectedOption->Enabled = false;
    }
    RSTField->Checked = contest->RSTField.getValue() ;   // bool                   // contest
    SerialField->Checked = contest->serialField.getValue() ;   // bool             // contest
@@ -544,6 +546,17 @@ TWinControl * TContestEntryDetails::getNextFocus()
 void __fastcall TContestEntryDetails::OKButtonClick( TObject * /*Sender*/ )
 {
    // make sure we have the minimum required information
+
+   if (ProtectedOption->Checked && ! contest->isProtected())
+   {
+      if (!mShowYesNoMessage(this, "This contest will be marked as protected.\r\n"
+                                    "This is a permanent change that may be temporarily overridden.\r\n"
+                                    "Please confirm this change by pressing \"Ok\"." ))
+      {
+         return;
+      }
+   }
+
    TWinControl *nextD = getDetails( );
    if ( nextD )
    {
@@ -745,21 +758,25 @@ void __fastcall TContestEntryDetails::CallsignEditExit(TObject */*Sender*/)
 
 void __fastcall TContestEntryDetails::ProtectedOptionClick(TObject */*Sender*/)
 {
-   if (ProtectedOption->Checked && !contest->isProtected())
+   if (!suppressProtectedOnClick)
    {
-      if (!mShowYesNoMessage(this, "Are you sure you want to protect this contest?" ))
+      if (ProtectedOption->Checked )
       {
-         ProtectedOption->Checked = contest->isProtected();
+         // move to protected
+         if (!mShowYesNoMessage(this, "Are you sure you want to protect this contest?" ))
+         {
+            ProtectedOption->Checked = contest->isProtected() && !contest->isProtectedSuppressed();
+         }
       }
-   }
-   else if (!ProtectedOption->Checked && contest->isProtected())
-   {
-      if (!mShowYesNoMessage(this, "Are you sure you want to temporarily unprotect this contest?" ))
+      else // unchecked
       {
-         ProtectedOption->Checked = contest->isProtected();
+         if (!mShowYesNoMessage(this, "Are you sure you want to disable protection for this contest?" ))
+         {
+            ProtectedOption->Checked = contest->isProtected() && !contest->isProtectedSuppressed();
+         }
       }
+      enableControls();
    }
-   enableControls();
 }
 //---------------------------------------------------------------------------
 void TContestEntryDetails::enableControls()
