@@ -123,7 +123,7 @@ Ken
 //================================================================
 Bugs, etc to fix
 =================
-Keyboard accelerators - e.g. Alt F is "File" and "Force".
+(done) Keyboard accelerators - e.g. Alt F is "File" and "Force".
 
 (done)Change default name for EDI files to match the minos name
 
@@ -142,7 +142,7 @@ Event message modifications - big change, but should be nothing visible (except 
 
 Tab highlight more prominent
 
-Splitters etc sticky cross contest
+Most splitters etc sticky cross contest
 
 Dble click on QSO in "other" grid does transfer, not edit; RMB option for editting "other" grid contact
 
