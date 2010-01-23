@@ -1607,13 +1607,8 @@ void TSingleLogFrame::EditMatchContact()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & Event )
 {
-   ActionEvent1<BaseContestLog *, EN_NextContactDetailsOnLeft> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_NextContactDetailsOnLeft> &> ( Event );
-   BaseContestLog *ct = S.getData();
-
-   if (ct == contest)
-   {
-      OnShowTimer->Enabled = true;
-   }
+//   ActionEventV<EN_NextContactDetailsOnLeft> & S = dynamic_cast<ActionEventV<EN_NextContactDetailsOnLeft> &> ( Event );
+   OnShowTimer->Enabled = true;
 }
 
 //---------------------------------------------------------------------------
