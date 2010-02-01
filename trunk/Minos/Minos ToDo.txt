@@ -1,3 +1,6 @@
+Right click/contest details on a tab doesn't show the correct contest - seen when trying to protect old contests
+Need and on tab indication of protected contests - a different colour? Dark grey perhaps; maybe bracket the name. Plus need an indication of temp unprotected.
+===========================================================================
 Text on calendar screen buttons overflows -presumably following font regularisation
 ===========================================================================
 Thanks for the new version Mike
