@@ -816,6 +816,7 @@ void __fastcall TLogContainer::ContestPageControlMouseDown( TObject */*Sender*/,
       // need to select the RC tab
       int RCtab = ContestPageControl->IndexOfTabAt( X, Y );
       ContestPageControl->TabIndex = RCtab;
+      MinosLoggerEvents::SendContestPageChanged();
       enableActions();
    }
 }
@@ -1129,7 +1130,23 @@ void __fastcall TLogContainer::ContestPageControlDrawTab(
    }
    else
    {
-//      Control->Canvas->Brush->Color = clBlue;
+      TSingleLogFrame *f = findLogFrame(ContestPageControl->Pages[TabIndex]);
+      if (f && f->getContest()->isProtected())
+      {
+         if (f->getContest()->isProtectedSuppressed())
+         {
+            Control->Canvas->Brush->Color = clLime;
+         }
+         else
+         {
+            Control->Canvas->Brush->Color = clMoneyGreen;
+         }
+
+      }
+      else
+      {
+         Control->Canvas->Brush->Color = clSkyBlue;
+      }
       Control->Canvas->FillRect(Rect);
    }
    TTabSheet *ttc = ContestPageControl->Pages[TabIndex];

@@ -1,7 +1,26 @@
-Right click/contest details on a tab doesn't show the correct contest - seen when trying to protect old contests
-Need and on tab indication of protected contests - a different colour? Dark grey perhaps; maybe bracket the name. Plus need an indication of temp unprotected.
+We DEFINITELY need a colour choice dialog...
+	live contest
+	current active contest
+	protected contest
+	protected suppressed contest
+	QSO editted
+	QSO forced
+	splitter flyover
+	splitter
+	focussed control label
+	outside contest DTG
+	band combo
+	new mult
+	hints
+	match Xfer and match xfer selected
+	And probably others...
+	
+And the holy grail - font choice! Can we do this globally? Doubt it without self sizing controls (wait for Qt!).
+
+done Right click/contest details on a tab doesn't show the correct contest - seen when trying to protect old contests
+done Need and on tab indication of protected contests - a different colour? Dark grey perhaps; maybe bracket the name. Plus need an indication of temp unprotected.
 ===========================================================================
-Text on calendar screen buttons overflows -presumably following font regularisation
+done Text on calendar screen buttons overflows -presumably following font regularisation
 ===========================================================================
 Thanks for the new version Mike
 
@@ -143,7 +162,7 @@ Next version - 1.4.0.0
 
 Event message modifications - big change, but should be nothing visible (except bugs)
 
-Tab highlight more prominent
+Tab highlight more prominent; different colours for different states.
 
 Most splitters etc sticky cross contest
 
