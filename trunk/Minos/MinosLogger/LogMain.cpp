@@ -1131,7 +1131,7 @@ void __fastcall TLogContainer::ContestPageControlDrawTab(
    else
    {
       TSingleLogFrame *f = findLogFrame(ContestPageControl->Pages[TabIndex]);
-      if (f && f->getContest()->isProtected())
+      if (f && f->getContest() && f->getContest()->isProtected())
       {
          if (f->getContest()->isProtectedSuppressed())
          {
