@@ -457,19 +457,26 @@ TWinControl * TContestEntryDetails::getDetails( )
 
    contest->locMult.setValue( LocatorMult->Checked ) ;   // bool
 
-   if (ProtectedOption->Checked && !contest->isProtected())
+   if (ProtectedOption->Checked && contest->isProtected() && contest->isProtectedSuppressed())
    {
-      contest->setProtected( true ) ;
-      saveContestOK  = true;
+      contest->setProtectedSuppressed(false);
    }
-   else if (!ProtectedOption->Checked && contest->isProtected())
+   else
    {
-      contest->setProtected( false ) ;
-      saveContestOK  = true;
-   }
-   else if (!contest->isReadOnly()) // not protected, not unwriteable, protected but suppressed
-   {
-      saveContestOK  = true;
+      if (ProtectedOption->Checked && !contest->isProtected())
+      {
+         contest->setProtected( true ) ;
+         saveContestOK  = true;
+      }
+      else if (!ProtectedOption->Checked && contest->isProtected())
+      {
+         contest->setProtected( false ) ;
+         saveContestOK  = true;
+      }
+      else if (!contest->isReadOnly()) // not protected, not unwriteable, protected but suppressed
+      {
+         saveContestOK  = true;
+      }
    }
    /*
       ExchangeComboBox:
