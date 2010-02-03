@@ -136,10 +136,10 @@ __fastcall TSingleLogFrame::~TSingleLogFrame()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 {
-   GJVQSOLogFrame->savePartial();
-   
+
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
    {
+      GJVQSOLogFrame->savePartial();
       return ;
    }
 
@@ -147,12 +147,17 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
    TContestApp::getContestApp() ->setCurrentContest( ct );
 
    if ( logColumnsChanged )
-      showQSOs();
+   {
+      GJVQSOLogFrame->killPartial();
+      showQSOs();             // this does a restorePartial
+      logColumnsChanged = false;
+   }
 
    if (splittersChanged)
    {
       getSplitters();
    }
+
 
    OnShowTimer->Enabled = true;
    GJVQSOLogFrame->CallsignEdit->SetFocus();

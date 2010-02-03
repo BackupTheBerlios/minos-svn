@@ -14,7 +14,7 @@
 TLogMonitorFrame *LogMonitorFrame;
 //---------------------------------------------------------------------------
 __fastcall TLogMonitorFrame::TLogMonitorFrame( TComponent* Owner )
-      : TFrame( Owner )
+      : TFrame( Owner ), myLogColumnsChanged(false)
 {}
 void TLogMonitorFrame::initialise( BaseContestLog * pcontest )
 {
@@ -48,7 +48,8 @@ void __fastcall TLogMonitorFrame::QSOTreeColumnResize( TVTHeader *Sender,
    // preserve the column size in the ini file
    MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumn" + String( Column ) ).c_str(), - 1 );
    MinosParameters::getMinosParameters() ->setDisplayColumnWidth( ( "LogColumnWidth" + String( Column ) ).c_str(), Sender->Columns->Items[ Column ] ->Width );
-   MinosLoggerEvents::SendLogColumnsChanged();
+   myLogColumnsChanged = true;
+   LogColumnsChangeTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogMonitorFrame::QSOTreeDblClick( TObject */*Sender*/ )
@@ -143,6 +144,18 @@ void TLogMonitorFrame::showQSOs()
 
    QSOTree->EndUpdate();
    QSOTree->Header->Options = ( QSOTree->Header->Options << hoVisible );
+   myLogColumnsChanged = false;
 }
 
+
+void __fastcall TLogMonitorFrame::LogColumnsChangeTimerTimer(TObject *Sender)
+{
+   LogColumnsChangeTimer->Enabled = false;
+   if (myLogColumnsChanged)
+   {
+      MinosLoggerEvents::SendLogColumnsChanged();
+      myLogColumnsChanged = false;
+   }
+}
+//---------------------------------------------------------------------------
 

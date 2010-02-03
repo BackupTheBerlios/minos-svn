@@ -35,8 +35,6 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       ScreenContact *partialContact; // contact being edited on screen
       String sCurrFreq;
 
-      bool restorePartial( void );
-      void killPartial( void );
       void doGJVEditChange( TObject *Sender );
       void logCurrentContact();
       void logScreenEntry( );
@@ -45,6 +43,8 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       __fastcall TGJVQSOLogFrame( TComponent* Owner );
       __fastcall ~TGJVQSOLogFrame();
       bool savePartial( void );
+      bool restorePartial( void );
+      void killPartial( void );
       virtual void startNextEntry( );
       virtual void refreshOps();
       void doGJVCancelButtonClick( TObject *Sender );

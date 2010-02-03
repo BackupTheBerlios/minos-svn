@@ -35,4 +35,9 @@ object LogMonitorFrame: TLogMonitorFrame
         Width = 505
       end>
   end
+  object LogColumnsChangeTimer: TTimer
+    OnTimer = LogColumnsChangeTimerTimer
+    Left = 32
+    Top = 32
+  end
 end

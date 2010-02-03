@@ -14,12 +14,14 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "VirtualTrees.hpp"
+#include <ExtCtrls.hpp>
 
 //---------------------------------------------------------------------------
 class TLogMonitorFrame : public TFrame
 {
    __published: 	// IDE-managed Components
       TVirtualStringTree *QSOTree;
+   TTimer *LogColumnsChangeTimer;
       void __fastcall QSOTreeBeforeItemErase( TBaseVirtualTree *Sender,
                                               TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
                                               TColor &ItemColor, TItemEraseAction &EraseAction );
@@ -32,8 +34,10 @@ class TLogMonitorFrame : public TFrame
       void __fastcall QSOTreePaintText( TBaseVirtualTree *Sender,
                                         const TCanvas *TargetCanvas, PVirtualNode Node, TColumnIndex Column,
                                         TVSTTextType TextType );
+   void __fastcall LogColumnsChangeTimerTimer(TObject *Sender);
    private: 	// User declarations
       BaseContestLog * contest;
+      bool myLogColumnsChanged;
    public: 		// User declarations
       //   __fastcall TLogMonitorFrame(TComponent* Owner, LoggerContestLog * contest);
       __fastcall TLogMonitorFrame( TComponent* Owner );
