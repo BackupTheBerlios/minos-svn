@@ -80,6 +80,7 @@ object CalendarForm: TCalendarForm
       Top = 10
       Width = 65
       Height = 21
+      ReadOnly = True
       TabOrder = 3
       Text = 'YearEdit'
     end

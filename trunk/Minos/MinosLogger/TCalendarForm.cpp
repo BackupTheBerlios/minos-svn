@@ -16,7 +16,7 @@
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
-      : TForm( Owner ), vhf(2000)
+      : TForm( Owner ), vhf(2010)
 {
    TDateTime tnow = TDateTime::CurrentDateTime();
    YearEdit->Text = tnow.FormatString("yyyy");
@@ -29,7 +29,7 @@ void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 {
-   int year = YearEdit->Text.ToIntDef(2000);
+   int year = YearEdit->Text.ToIntDef(2010);
    vhf = Calendar(year);
    bool loaded = false;
 
@@ -165,7 +165,7 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
    year -= 1;
    if (year < 2008)
    {
-      year = 2008;
+      year = 2010;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
@@ -176,9 +176,9 @@ void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
    int year = YearEdit->Text.ToIntDef(2010);
    year += 1;
-   if (year > 2012)
+   if (year > 2010)
    {
-      year = 2012;
+      year = 2008;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
