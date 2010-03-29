@@ -12,6 +12,7 @@
 
 #include "RCVersion.h"
 #include "PrintFile.h"
+extern std::string fileHeader;
 
 enum PrintFile_order
 {
@@ -133,6 +134,9 @@ bool PrintFile::exportTest( HANDLE expfd )
    linelist[ ( int ) CDXCs ] = PrintFileLine( "Claimed number of DXCCs                 ", makeStr( nctry )); /*, "Claimed no. of DXCCs; Bonus for each new DXCC;DXCC multiplier"*/
    linelist[ ( int ) CToSc ] = PrintFileLine( "Claimed total score                     ", makeStr( ct->contestScore * ltot ) ); /*, "Claimed total score"*/
    linelist[ ( int ) CODXC ] = PrintFileLine( "Best DX - Callsign; Locator; Distance   ", bestdx ? ( ( bestdx->cs.fullCall.getValue() + ";" + bestdx->loc.loc.getValue() + ";" + makeStr( bestdx->contactScore.getValue() ).c_str() ).c_str() ) : ";;" ); /*, "(Best DX) Callsign; Locator; Distance"*/
+
+   wr.lwrite(fileHeader.c_str());
+   wr.lwriteLine();
 
    for ( int i = 0; i < LineCount; i++ )
    {
