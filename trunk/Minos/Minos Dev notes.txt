@@ -3,6 +3,11 @@ Other points
 
 Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
 
+QS1R linkage
+==============================
+
+I have server 2.3.0.1 port 43065
+
 Actions and messages in logger
 ==============================
 

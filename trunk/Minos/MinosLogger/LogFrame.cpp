@@ -422,6 +422,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
    PVirtualNode lastTopNode = 0;
 
    {  // scoping only
+      // set up "this contest" top node
       MatchContact *pc0 = matchCollection->pcontactAt( 0 );
       lastTopNode = ThisMatchTree->AddChild( NULL );
       MatchNodeData * pc = ( MatchNodeData * ) ThisMatchTree->GetNodeData( lastTopNode );
@@ -432,7 +433,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
       last_pc = contest;
    }
 
-   PVirtualNode thisnode = 0;             // not currently used
+//   PVirtualNode thisnode = 0;             // not currently used
    PVirtualNode othernode = 0;
 
    for ( int i = 0; i < matchCollection->getContactCount(); i++ )
@@ -443,23 +444,23 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
       {
          PVirtualNode LastNode = ThisMatchTree->AddChild( lastTopNode );
          MatchNodeData * thispc = ( MatchNodeData * ) ThisMatchTree->GetNodeData( LastNode );
-         thispc->matchedContest = pc->getContactLog();
+         thispc->matchedContest = clp;
          thispc->matchedContact = pc->getBaseContact();
          thispc->top = false;
          pc->treePointer = thispc;
-         if ( !thisnode )
-         {
-            thisnode = LastNode;         // not curently used
-         }
+//         if ( !thisnode )
+//         {
+//            thisnode = LastNode;         // not curently used
+//         }
       }
       else
       {
          if ( !last_pc || last_pc != clp )
          {
-            // set up a contest node
+            // set up a contest node for "other"
             lastTopNode = OtherMatchTree->AddChild( NULL );
             MatchNodeData * thispc = ( MatchNodeData * ) OtherMatchTree->GetNodeData( lastTopNode );
-            thispc->matchedContest = pc->getContactLog();
+            thispc->matchedContest = clp;
             thispc->matchedContact = 0;
             thispc->top = true;
             WMatchSplitter->Restore();     // hide the other list
@@ -470,7 +471,7 @@ void TSingleLogFrame::showMatchQSOs( TMatchCollection *matchCollection )
             // and the contact node
             PVirtualNode LastNode = OtherMatchTree->AddChild( lastTopNode );
             MatchNodeData * thispc = ( MatchNodeData * ) OtherMatchTree->GetNodeData( LastNode );
-            thispc->matchedContest = pc->getContactLog();
+            thispc->matchedContest = clp;
             thispc->matchedContact = pc->getBaseContact();
             thispc->top = false;
             pc->treePointer = thispc;
@@ -539,22 +540,24 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
 
    ArchiveMatchTree->BeginUpdate();
 
-   PVirtualNode othernode = 0;
+   ContactList * last_pc = 0;
+   PVirtualNode archnode = 0;
    PVirtualNode lastTopNode = 0;
-
-   {  // scoping only
-      MatchContact *pc0 = matchCollection->pcontactAt( 0 );
-      lastTopNode = ArchiveMatchTree->AddChild( NULL );
-      MatchNodeListData * pc = ( MatchNodeListData * ) ArchiveMatchTree->GetNodeData( lastTopNode );
-      ContactList * mclp = pc0->getContactList();
-      pc->matchedList = mclp;
-      pc->matchedContact = 0;
-      pc->top = true;         // say no matches
-   }
 
    for ( int i = 0; i < matchCollection->getContactCount(); i++ )
    {
       MatchContact *pc = matchCollection->pcontactAt( i );
+      ContactList * clp = pc->getContactList();
+      if ( last_pc != clp )
+      {
+         PVirtualNode LastNode = ArchiveMatchTree->AddChild( NULL );
+         lastTopNode = LastNode;
+         last_pc = clp;
+         MatchNodeListData * thispc = ( MatchNodeListData * ) ArchiveMatchTree->GetNodeData( LastNode );
+         thispc->matchedList = clp;
+         thispc->matchedContact = 0;
+         thispc->top = true;
+      }
       if ( pc )
       {
          // and the contact node
@@ -564,15 +567,15 @@ void TSingleLogFrame::showMatchList( TMatchCollection *matchCollection )
          thispc->matchedContact = pc->getListContact();
          thispc->top = false;
          pc->treePointer = thispc;
-         if ( !othernode )
+         if ( !archnode )
          {
-            othernode = LastNode;
+            archnode = LastNode;
          }
       }
    }
-   if ( othernode )
+   if ( archnode )
    {
-      archiveTreeClickNode = othernode;
+      archiveTreeClickNode = archnode;
 
       ArchiveMatchTree->FocusedNode = archiveTreeClickNode;
       ArchiveMatchTree->Selected[ archiveTreeClickNode ] = true;
@@ -1610,7 +1613,7 @@ void TSingleLogFrame::EditMatchContact()
    otherMatchTreeSelect( otherTreeClickNode );
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & Event )
+void TSingleLogFrame::NextContactDetailsOnLeft_Event ( MinosEventBase & /*Event*/ )
 {
 //   ActionEventV<EN_NextContactDetailsOnLeft> & S = dynamic_cast<ActionEventV<EN_NextContactDetailsOnLeft> &> ( Event );
    OnShowTimer->Enabled = true;
