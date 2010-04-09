@@ -48,10 +48,11 @@ void __fastcall TMyRCVersion::initialise( void )
    unsigned int vSize;
 #if defined (_UNICODE)
    wchar_t appFName[ 255 ];
+   wchar_t * subBlockName = new wchar_t[ 255 ];
 #else
    char appFName[ 255 ];
-#endif
    char * subBlockName = new char[ 255 ];
+#endif
    HINSTANCE hInstance = 0; // default to application
    switch ( FInfoFrom )
    {
@@ -64,7 +65,9 @@ void __fastcall TMyRCVersion::initialise( void )
    }
    int nLen = ::GetModuleFileName( hInstance, appFName, 255 );
    appFName[ nLen ] = '\0';
-//   OemToChar( appFName, appFName );
+#if !defined (_UNICODE)
+   OemToChar( appFName, appFName );
+#endif
    DWORD dwSize = ::GetFileVersionInfoSize( appFName, &fvHandle );
    if ( dwSize )
    {
@@ -76,10 +79,8 @@ void __fastcall TMyRCVersion::initialise( void )
          // which writes to the string pointed to by subBlockName.
          //
          #if defined (_UNICODE)
-            wchar_t subBlockName[255];
             wcscpy(subBlockName, _T("\\VarFileInfo\\Translation"));
          #else
-            char subBlockName[255];
             strcpy(subBlockName, _T("\\VarFileInfo\\Translation"));
          #endif
          if ( !::VerQueryValue( FVData, subBlockName, ( void * * ) & TransBlock, &vSize ) )
@@ -111,12 +112,14 @@ String __fastcall TMyRCVersion::getValue(const wchar_t * itemName)
 String __fastcall TMyRCVersion::getValue(const char * itemName)
 #endif
 {
-  WideString itemValue;
-
+  String itemValue;
   if (FVData)
   {
-      unsigned int vSize;
     #if defined(_UNICODE)
+#warning do we need the parts newed as for ascii?
+
+
+      unsigned int vSize;
       wchar_t subBlockName[255];
       wchar_t * ItemValue = 0;
       swprintf(subBlockName, _T("\\StringFileInfo\\%08lx\\%s"), TransBlock,(LPTSTR)itemName);
@@ -129,11 +132,20 @@ String __fastcall TMyRCVersion::getValue(const char * itemName)
          delete [] temp;
       }
     #else
-     char subBlockName [255];
-     char * ItemValue = 0;
-     sprintf(subBlockName, "\\StringFileInfo\\%08lx\\%s", TransBlock,(LPSTR)itemName);
-     if ( ::VerQueryValue(FVData, subBlockName,(void * *)&ItemValue, &vSize) )
-        itemValue = String(ItemValue,vSize-1);
+      unsigned int vSize;
+      char * subBlockName = new char[ 255 ];
+      char * ItemValue = new char[ 2000 ];
+      char *p1 = &ItemValue[ 0 ];
+
+      ItemValue[ 0 ] = '\0';
+      if ( FVData )
+      {
+         sprintf( subBlockName, "\\StringFileInfo\\%08lx\\%s", *TransBlock, ( LPSTR ) itemName );
+         if ( ::VerQueryValue( FVData, subBlockName, ( void * * ) & ItemValue, &vSize ) )
+            itemValue = ItemValue;
+      }
+      delete [] subBlockName;
+      delete [] p1;
     #endif
   }
 
