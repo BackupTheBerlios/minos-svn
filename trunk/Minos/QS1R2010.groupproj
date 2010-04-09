@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{E039C78F-6859-4641-B280-0715030BBF0A}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="QS1RProxy\QS1RProxy.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="QS1RSync\QS1RSync.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="QS1RProxy">
+			<MSBuild Projects="QS1RProxy\QS1RProxy.cbproj"/>
+		</Target>
+		<Target Name="QS1RProxy:Clean">
+			<MSBuild Targets="Clean" Projects="QS1RProxy\QS1RProxy.cbproj"/>
+		</Target>
+		<Target Name="QS1RProxy:Make">
+			<MSBuild Targets="Make" Projects="QS1RProxy\QS1RProxy.cbproj"/>
+		</Target>
+		<Target Name="QS1RSync">
+			<MSBuild Projects="QS1RSync\QS1RSync.cbproj"/>
+		</Target>
+		<Target Name="QS1RSync:Clean">
+			<MSBuild Targets="Clean" Projects="QS1RSync\QS1RSync.cbproj"/>
+		</Target>
+		<Target Name="QS1RSync:Make">
+			<MSBuild Targets="Make" Projects="QS1RSync\QS1RSync.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="QS1RProxy;QS1RSync"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="QS1RProxy:Clean;QS1RSync:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="QS1RProxy:Make;QS1RSync:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
