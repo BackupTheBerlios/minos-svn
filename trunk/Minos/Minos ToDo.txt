@@ -1,3 +1,28 @@
+1.4 release notes
+
+Read only now becomes "protected" and is stored properly with the contest. It can be temporarily lifted so that back editting can be done. For now, you have to set it manually; I may in future make it automatically set on producing the entry or after the entry date has passed. What do the users think?
+
+Tab highlighting is more prominent with tab colours - a darkish blue for normal contests, darkish green for protected contests, bright green for protected contests that are temporarily unprotected, bright blue for the current contest
+
+Operator setting moved from ops frame to main screen or contest details screen, and I hope it all works again.
+
+Sticky "show operators" on Right Mouse Button for main screen
+
+Station call is the default initial operator
+
+Dble click on QSO in "other" grid does transfer, not edit; Right Mouse Button option for editting "other" grid contact
+
+Post event and unfilled QSO simplification - catch-up button and unfilled button on QSO edit area.
+
+Scrolling tabs as an option, on Right Mouse Button. This makes all the tabs form a single line at the top, with scroll arrows, rather than multiple lines.
+
+New printable output format on Produce Entry/export file
+
+EDI export entry keeps the file name - robot will sort it out if not to standards.
+
+Bug fixes
+
+===========================================================================
 VK9AA comes out against VK9N, when he should be in VK9C
 ===========================================================================
 We DEFINITELY need a colour choice dialog...
