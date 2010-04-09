@@ -24,11 +24,11 @@ std::ostream & MLogFile::createLogFile( const std::string & prefix, int keepDays
 {
    //Close();
    TDateTime dt = TDateTime::CurrentDateTime();
-   String tidyPrefix = prefix.c_str() + String( "*" );
+   AnsiString tidyPrefix = prefix.c_str() + String( "*" );
    tidyFiles( tidyPrefix.c_str(), keepDays );
    fLogFileName = generateLogFileName( prefix ).c_str();
 
-   std::string sDir = ExtractFileDir( fLogFileName.c_str() ).c_str();
+   std::string sDir = AnsiString(ExtractFileDir( fLogFileName.c_str() )).c_str();
    if ( !DirectoryExists( sDir.c_str() ) )
       CreateDir( sDir.c_str() );
 
@@ -73,12 +73,12 @@ std::ostream & MLogFile::log( const std::string &s )
 }
 
 //---------------------------------------------------------------------------
-/*static */String MLogFile::generateLogFileName(   const std::string & prefix )
+/*static */AnsiString MLogFile::generateLogFileName(   const std::string & prefix )
 {
    TDateTime dt = TDateTime::CurrentDateTime();
    String s( prefix.c_str() );
    s += dt.FormatString( "yyyymmdd_hhnnss" ) + ".log";
-   return s;
+   return AnsiString(s);
 }
 //---------------------------------------------------------------------------
 /*static */void MLogFile::tidyFiles(   const std::string & prefix,   int keepDays )

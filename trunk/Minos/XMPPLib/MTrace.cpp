@@ -39,7 +39,7 @@ void enableTrace( const std::string &where )
       {
          path += where.c_str();
       }
-      mLogFile.createLogFile( path.c_str(), 10 );
+      mLogFile.createLogFile( AnsiString(path).c_str(), 10 );
       logEnabled = true;
    }
 }

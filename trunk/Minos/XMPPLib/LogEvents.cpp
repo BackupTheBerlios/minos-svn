@@ -80,7 +80,7 @@ static HANDLE minosCloseEvent;
 void createCloseEvent()
 {
    if ( !minosCloseEvent )
-      minosCloseEvent = CreateEvent( NULL, TRUE, FALSE, "MinosClosedownEvent" ); // manual reset, initially false
+      minosCloseEvent = CreateEvent( NULL, TRUE, FALSE, _T("MinosClosedownEvent") ); // manual reset, initially false
 }
 //---------------------------------------------------------------------------
 void signalCloseEvent()

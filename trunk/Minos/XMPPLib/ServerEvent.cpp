@@ -24,9 +24,10 @@ std::string makeUuid()
    CoCreateGuid( &uuid );
 
    unsigned char *pid = 0;
-   UuidToString( &uuid, &pid );
+
+   UuidToStringA( &uuid, &pid );
    std::string myUuid = ( char * ) pid;
-   RpcStringFree( &pid );
+   RpcStringFreeA( &pid );
 
    return myUuid;
 }
@@ -43,7 +44,7 @@ std::string getServerId()
    Reg->RootKey = HKEY_CURRENT_USER;
    if ( Reg->OpenKeyReadOnly( "SOFTWARE\\G0GJV\\Minos\\Server" ) )
    {
-      myUuid = Reg->ReadString( key ).c_str();
+      myUuid = AnsiString(Reg->ReadString( key )).c_str();
    }
    if ( myUuid.size() == 0 )
    {
@@ -72,7 +73,7 @@ HANDLE makeServerEvent( bool create )
       if ( !serverEvent )
       {
          // we should set up th ACLs etc so we could run serevr as a service
-         serverEvent = CreateEvent( 0, TRUE, FALSE, serverEventName.c_str() ); // Named Manual reset
+         serverEvent = CreateEventA( 0, TRUE, FALSE, serverEventName.c_str() ); // Named Manual reset
       }
    }
    else
@@ -91,7 +92,7 @@ bool checkServerReady()
    static std::string serverEventName = getServerId();
 
    bool ret = false;
-   HANDLE serverEvent = CreateEvent( 0, TRUE, FALSE, serverEventName.c_str() ); // Named Manual reset
+   HANDLE serverEvent = CreateEventA( 0, TRUE, FALSE, serverEventName.c_str() ); // Named Manual reset
    if ( serverEvent )
    {
       if ( GetLastError() == ERROR_ALREADY_EXISTS )
@@ -108,7 +109,7 @@ HANDLE makeServerShowEvent( )
    if ( !serverShowEvent )
    {
       // we should set up th ACLs etc so we could run serevr as a service
-      serverShowEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
+      serverShowEvent = CreateEventA( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
    }
    return serverShowEvent;
 }
@@ -117,7 +118,7 @@ bool getShowServers()
    static std::string serverShowEventName = getServerId() + "Show";
 
    bool ret = false;
-   HANDLE serverShowEvent = CreateEvent( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
+   HANDLE serverShowEvent = CreateEventA( 0, TRUE, FALSE, serverShowEventName.c_str() ); // Named Manual reset
    if ( serverShowEvent )
    {
       if (WaitForSingleObject(serverShowEvent, 0) == WAIT_OBJECT_0)

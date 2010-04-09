@@ -46,7 +46,11 @@ void __fastcall TMyRCVersion::initialise( void )
 
    DWORD fvHandle;
    unsigned int vSize;
+#if defined (_UNICODE)
+   wchar_t appFName[ 255 ];
+#else
    char appFName[ 255 ];
+#endif
    char * subBlockName = new char[ 255 ];
    HINSTANCE hInstance = 0; // default to application
    switch ( FInfoFrom )
@@ -60,7 +64,7 @@ void __fastcall TMyRCVersion::initialise( void )
    }
    int nLen = ::GetModuleFileName( hInstance, appFName, 255 );
    appFName[ nLen ] = '\0';
-   OemToChar( appFName, appFName );
+//   OemToChar( appFName, appFName );
    DWORD dwSize = ::GetFileVersionInfoSize( appFName, &fvHandle );
    if ( dwSize )
    {
@@ -71,7 +75,13 @@ void __fastcall TMyRCVersion::initialise( void )
          // is on VerQueryValue will work under Win16.  This works around a problem in Microsoft's ver.dll
          // which writes to the string pointed to by subBlockName.
          //
-         strcpy( subBlockName, "\\VarFileInfo\\Translation" );
+         #if defined (_UNICODE)
+            wchar_t subBlockName[255];
+            wcscpy(subBlockName, _T("\\VarFileInfo\\Translation"));
+         #else
+            char subBlockName[255];
+            strcpy(subBlockName, _T("\\VarFileInfo\\Translation"));
+         #endif
          if ( !::VerQueryValue( FVData, subBlockName, ( void * * ) & TransBlock, &vSize ) )
          {
             delete[] FVData;
@@ -95,80 +105,94 @@ void __fastcall TMyRCVersion::SetInfoFrom( eInfoFrom e )
    initialise();
 }
 //---------------------------------------------------------------------------
-String __fastcall TMyRCVersion::getValue( const char * itemName )
+#if defined(_UNICODE)
+String __fastcall TMyRCVersion::getValue(const wchar_t * itemName)
+#else
+String __fastcall TMyRCVersion::getValue(const char * itemName)
+#endif
 {
-   unsigned int vSize;
-   char * subBlockName = new char[ 255 ];
-   char * ItemValue = new char[ 2000 ];
-   char *p1 = &ItemValue[ 0 ];
+  WideString itemValue;
 
-   ItemValue[ 0 ] = '\0';
-   String itemValue;
-   if ( FVData )
-   {
-      sprintf( subBlockName, "\\StringFileInfo\\%08lx\\%s", *TransBlock, ( LPSTR ) itemName );
-      if ( ::VerQueryValue( FVData, subBlockName, ( void * * ) & ItemValue, &vSize ) )
-         itemValue = ItemValue;
-   }
-   delete [] subBlockName;
-   delete [] p1;
+  if (FVData)
+  {
+      unsigned int vSize;
+    #if defined(_UNICODE)
+      wchar_t subBlockName[255];
+      wchar_t * ItemValue = 0;
+      swprintf(subBlockName, _T("\\StringFileInfo\\%08lx\\%s"), TransBlock,(LPTSTR)itemName);
+      if ( ::VerQueryValue(FVData, subBlockName,(void * *)&ItemValue, &vSize) )
+      {
+         wchar_t *temp = new wchar_t[vSize + 1];
+         wcsncpy(temp, ItemValue, vSize);
+         temp[vSize] = 0;
+         itemValue = WideString(temp);
+         delete [] temp;
+      }
+    #else
+     char subBlockName [255];
+     char * ItemValue = 0;
+     sprintf(subBlockName, "\\StringFileInfo\\%08lx\\%s", TransBlock,(LPSTR)itemName);
+     if ( ::VerQueryValue(FVData, subBlockName,(void * *)&ItemValue, &vSize) )
+        itemValue = String(ItemValue,vSize-1);
+    #endif
+  }
 
-   return itemValue;
+  return itemValue;
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetLegalCopyright( void )
 {
-   return getValue( "LegalCopyright" );
+   return getValue( _T("LegalCopyright") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetCompanyName( void )
 {
-   return getValue( "CompanyName" );
+   return getValue( _T("CompanyName") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetFileDescription( void )
 {
-   return getValue( "FileDescription" );
+   return getValue( _T("FileDescription") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetFileVersion( void )
 {
-   return getValue( "FileVersion" );
+   return getValue( _T("FileVersion") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetInternalName( void )
 {
-   return getValue( "InternalName" );
+   return getValue( _T("InternalName") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetLegalTrademarks( void )
 {
-   return getValue( "LegalTrademarks" );
+   return getValue( _T("LegalTrademarks") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetOriginalFilename( void )
 {
-   return getValue( "OriginalFilename" );
+   return getValue( _T("OriginalFilename") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetProductName( void )
 {
-   return getValue( "ProductName" );
+   return getValue( _T("ProductName") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetProductVersion( void )
 {
-   return getValue( "ProductVersion" );
+   return getValue( _T("ProductVersion") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetComments( void )
 {
-   return getValue( "Comments" );
+   return getValue( _T("Comments") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetSpecialBuild( void )
 {
-   return getValue( "SpecialBuild" );
+   return getValue( _T("SpecialBuild") );
 }
 //---------------------------------------------------------------------------
 String __fastcall TMyRCVersion::GetMajorVersion( void )

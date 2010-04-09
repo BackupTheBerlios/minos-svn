@@ -59,7 +59,11 @@ class TMyRCVersion
       virtual __fastcall ~TMyRCVersion();
       void __fastcall initialise( void );
       // returns any string value from version info
-      String __fastcall getValue( const char * itemName );
+    #if defined(_UNICODE)
+       String __fastcall getValue(const wchar_t * itemName);
+    #else
+       String __fastcall getValue(const char * itemName);
+    #endif
 
       __property eInfoFrom InfoFrom = {write = SetInfoFrom, read = FInfoFrom};
       __property String CompanyName = {write = setValue, read = GetCompanyName};
