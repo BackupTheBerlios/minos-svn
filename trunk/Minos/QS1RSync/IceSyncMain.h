@@ -32,6 +32,8 @@ __published:	// IDE-managed Components
    void __fastcall TransferButtonClick(TObject *Sender);
    void __fastcall OmniRigRigTypeChange(TObject *Sender, long RigNumber);
    void __fastcall OmniRigStatusChange(TObject *Sender, long RigNumber);
+   void __fastcall OmniRigParamsChange(TObject *Sender, long RigNumber, long Params);
+
 private:	// User declarations
    Ice::CommunicatorPtr ic;
    QS1R::RadioCommanderPrx qs1r;

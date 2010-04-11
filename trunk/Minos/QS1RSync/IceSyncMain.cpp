@@ -65,7 +65,7 @@ long TQRigSyncMain::getQS1RFreq()
    float freq = 0.0;
    try
    {
-      float freq = qs1r->getFrequency(0);
+      freq = qs1r->getFrequency(0);
       QFLabel->Caption = String(freq);
    }
    catch (const Ice::Exception& ex)
@@ -160,7 +160,14 @@ void __fastcall TQRigSyncMain::OmniRigRigTypeChange(TObject *Sender, long RigNum
 
 void __fastcall TQRigSyncMain::OmniRigStatusChange(TObject *Sender, long RigNumber)
 {
-   bool ptt = OmniRig->Rig1->Tx;
+//
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::OmniRigParamsChange(TObject *Sender, long RigNumber,
+          long Params)
+{
+   bool ptt = OmniRig->Rig1->Tx & RigParamX::PM_TX;
    if (qs1r)
    {
       try
@@ -183,6 +190,7 @@ void __fastcall TQRigSyncMain::OmniRigStatusChange(TObject *Sender, long RigNumb
          ShowMessage(msg);
       }
    }
+
 }
 //---------------------------------------------------------------------------
 

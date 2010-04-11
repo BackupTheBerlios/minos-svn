@@ -83,6 +83,7 @@ object QRigSyncMain: TQRigSyncMain
     ConnectKind = ckRunningOrNew
     OnRigTypeChange = OmniRigRigTypeChange
     OnStatusChange = OmniRigStatusChange
+    OnParamsChange = OmniRigParamsChange
     Left = 360
     Top = 16
   end
