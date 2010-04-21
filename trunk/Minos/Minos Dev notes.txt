@@ -3,50 +3,11 @@ Other points
 
 Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
 
-QS1R linkage
-==============================
-
-I have server 2.3.0.1 port 43065
-
-Actions and messages in logger
-==============================
-
-I think we need to release what we currently have before starting on this. Maybe a beta release once I've had a contest to test it on?
-
-Are these two things linked - is this an in program broker? Should it be treated that way? At the very least it may be a common programming model!
-
-Does the RQ event system give us problems? I think a queue based system may well be better, as it may work better across threads? Or do we need a threaded listener concept, so that a threaded listener gets its events queued and signalled?
-
-What about race conditions? We need to separate out the actions properly, and make sure we don't get bad action chains.
-
-Two aims - separate model and view, and separate control actions from both model and view. Don't know if this gives us a full MVC architecture or not!
-
-Most of the complications are
-	Key pressed, and hence a log field has changed
-	Focus change within QSO (return/tab/mouse)
-	Actual logging of a contact (add QSO to contest)
-	Button or menu action that changes selection
-	Gain/loss of current contest status
-	
-	SplitterChanged
-	now we want
-	ContestChanged
-	HeadersChanged
-	
-	
-- Keep all messages within the current contest - others aren't interested until they become current. May also want to send to a net gateway, e.g. so a second PC can see what is being typed in a monitor app (internal message <-> broker <-> broker <-> internal message).
-
-We register listeners, and they all look, and say "not for me" if the contest is wrong. I think this works - we then don't need the nasty "all frames" loops for splitter and header position changes.
-
-Do we even make QSO log to disk part of this? contest and qso pick up change and action messages from the display?
-
-I think it also means that we could manage multiple logging stations by integrating broker comms into this, and having a serial claim protocol.
-
 
 Revised server message broker
 =============================
 
-List of sockets; poll for received data and queue free (able to transmit)
+C:\berlios\Minos\Mind Map\New Minos Server.mm
 
 Received data goes on central dispatch queue of all incoming and recycled  messages
 
@@ -68,3 +29,29 @@ If socket fails
 	
 Central dispatch thread looks at incoming queue
 		Can we consolidate matching UUIDs from recycled messages?
+		
+==============================
+Don't need jabber IDs; everything is done from queue/topic name. Links aren't (usually) one - one
+
+1-1 links can be set up "ad hoc" - receiver creates, sends name to producer
+
+topics/queues must be lightweight, and able to come and go quickly
+==============================
+How does all this work in practice?
+
+Keyer (e.g.) sets up a topic and sends what it currently publishes. Logger (and others) must be able to subscribe to "local" keyer(and vice versa). I think this means that keyer sets up a topic name that is the same everywhere, but there are two parts (jabber ids anyone?); topic name and station name. Others can subscribe to "station" or "local" or "all" (all used e.g. for chat).
+
+Apps must be able to enquire all stations. Is this a local protocol? What about "remote" (multiple hop away) stations - how do we find them? Stations need to beacon, then their name should arrive at all directly and indirectly linked stations. Should we also beacon all subscribed topics? Then if no one subscribed to a topic, don't pass it on?
+==============================
+Messages do not have to be XML; do we use an XML frame? WE should at least have block framing and block length in messages to make parsing easier. An XML frame means that any contained XML has to be escaped or encoded (e.g. base64)
+
+No reason not to use our current system - &&len payload&&, but get rid of the XMPP payload. We still need some red tape:
+
+Topic name
+Message GUUID
+Pass-on flag
+Originator app/server
+server list
+
+	Sequence id - up to the payload?
+	timestamp - again payload
