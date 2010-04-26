@@ -341,7 +341,12 @@ void TGJVQSOLogFrame::updateQSOTime()
    time.setDate( DateEdit->Text.c_str(), DTGDISP );
    time.setTime( TimeEdit->Text.SubString(1, 5).c_str(), DTGDISP );
 
-   bool timeOK = contest->checkTime(time);
+   bool timeOK = false;
+
+   if (contest)
+   {
+      timeOK = contest->checkTime(time);
+   }
 
    if (timeOK)
    {
