@@ -1,0 +1,70 @@
+Other points
+============
+
+Why don't we use MonitorFrame in the logger? We use it in MinosMonitor! And especially if we can tie it in with actions.
+
+QS1R linkage
+==============================
+
+I have server 2.3.0.1 port 43065
+
+Actions and messages in logger
+==============================
+
+I think we need to release what we currently have before starting on this. Maybe a beta release once I've had a contest to test it on?
+
+Are these two things linked - is this an in program broker? Should it be treated that way? At the very least it may be a common programming model!
+
+Does the RQ event system give us problems? I think a queue based system may well be better, as it may work better across threads? Or do we need a threaded listener concept, so that a threaded listener gets its events queued and signalled?
+
+What about race conditions? We need to separate out the actions properly, and make sure we don't get bad action chains.
+
+Two aims - separate model and view, and separate control actions from both model and view. Don't know if this gives us a full MVC architecture or not!
+
+Most of the complications are
+	Key pressed, and hence a log field has changed
+	Focus change within QSO (return/tab/mouse)
+	Actual logging of a contact (add QSO to contest)
+	Button or menu action that changes selection
+	Gain/loss of current contest status
+	
+	SplitterChanged
+	now we want
+	ContestChanged
+	HeadersChanged
+	
+	
+- Keep all messages within the current contest - others aren't interested until they become current. May also want to send to a net gateway, e.g. so a second PC can see what is being typed in a monitor app (internal message <-> broker <-> broker <-> internal message).
+
+We register listeners, and they all look, and say "not for me" if the contest is wrong. I think this works - we then don't need the nasty "all frames" loops for splitter and header position changes.
+
+Do we even make QSO log to disk part of this? contest and qso pick up change and action messages from the display?
+
+I think it also means that we could manage multiple logging stations by integrating broker comms into this, and having a serial claim protocol.
+
+
+Revised server message broker
+=============================
+
+List of sockets; poll for received data and queue free (able to transmit)
+
+Received data goes on central dispatch queue of all incoming and recycled  messages
+
+Timer to put keep alive messages onto all empty output queues which haven't recently sent a message
+
+When socket is free to transmit look at its output queue; transmit first from queue.
+
+This isn't reliable, unless we add a concept of transactions that get acked. Can we rely on anything important being re-requested (like we do with monitored logs)? Actually if we CAN rely on that, we don't have to be concerned about the complicated recycling message mechanisms - we just ditch the queue and that server won't get the messages in the queue. Other messages will repeat. Chat messages may get lost though.
+
+If socket fails 
+	if a server message:
+		First attempt to reconnect, and then send message
+		Otherwise recycle queue onto dispatch queue
+			- without any servers in list except ourselves
+			- with a "please pass on" flag set
+			- and delete this socket and its queue 
+			- ignore any queued keep alive messages
+	if an application message then it implies that the app has disappeared; clear the queue
+	
+Central dispatch thread looks at incoming queue
+		Can we consolidate matching UUIDs from recycled messages?

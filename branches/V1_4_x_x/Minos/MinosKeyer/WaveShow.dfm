@@ -1,0 +1,65 @@
+object WaveShowForm: TWaveShowForm
+  Left = 0
+  Top = 0
+  Caption = 'WaveShowForm'
+  ClientHeight = 286
+  ClientWidth = 426
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Verdana'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 410
+    Height = 270
+    Align = alClient
+    TabOrder = 0
+    object WavPanel: TPaintBox
+      Left = 1
+      Top = 1
+      Width = 408
+      Height = 268
+      Align = alClient
+      OnPaint = WavPanelPaint
+      ExplicitLeft = 176
+      ExplicitTop = 128
+      ExplicitWidth = 105
+      ExplicitHeight = 105
+    end
+  end
+  object VScrollBar: TScrollBar
+    Left = 410
+    Top = 0
+    Width = 16
+    Height = 270
+    Align = alRight
+    Kind = sbVertical
+    Min = 1
+    PageSize = 0
+    Position = 1
+    TabOrder = 1
+    TabStop = False
+    OnChange = VScrollBarChange
+    OnScroll = VScrollBarScroll
+  end
+  object HScrollBar: TScrollBar
+    Left = 0
+    Top = 270
+    Width = 426
+    Height = 16
+    Align = alBottom
+    PageSize = 0
+    TabOrder = 2
+    TabStop = False
+    OnChange = HScrollBarChange
+    OnScroll = HScrollBarScroll
+  end
+end

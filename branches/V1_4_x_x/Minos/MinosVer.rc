@@ -1,0 +1,47 @@
+#include "MinosVer.h"
+/////////////////////////////////////////////////////////////////////////////
+// $Id$
+//
+// PROJECT NAME 		Minos Amateur Radio Control and Logging System
+//
+// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2010
+//
+/////////////////////////////////////////////////////////////////////////////
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION MINOSVERSIONMAJ,MINOSVERSIONMIN,MINOSINCREMENT,MINOSBUILDNO
+ PRODUCTVERSION MINOSVERSIONMAJ,MINOSVERSIONMIN,MINOSINCREMENT,MINOSBUILDNO
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x10001L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "CompanyName", "G0GJV\0"
+            VALUE "FileDescription", MINOSFILEDESCRIPTION
+            VALUE "FileVersion", MINOSRCVERSION
+            VALUE "InternalName", MINOSINTERNALNAME
+            VALUE "LegalCopyright", "Copyright © 2005 - 2010 Mike Goodey G0GJV\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", MINOSORIGINALFILENAME
+            VALUE "ProductName", "Minos Contest Logger\0"
+            VALUE "Comments", "Virtual Tree View © Mike Lischke (www.soft-gems.net)\0"
+#ifdef MINOSSPECIALBUILD
+			VALUE "SpecialBuild", MINOSSPECIALBUILD
+#endif
+            VALUE "ProductVersion", MINOSVERSION
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
+END
