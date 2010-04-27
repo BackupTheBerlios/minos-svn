@@ -261,10 +261,28 @@ void TContestEntryDetails::setDetails(  )
    LocatorField->Checked = contest->locatorField.getValue() ;   // bool         // contest
    QTHField->Checked = contest->QTHField.getValue() ;   // bool                   // contest
 
-   MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
-   SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
+   refreshOps();
 
    enableControls();
+}
+void TContestEntryDetails::refreshOps()
+{
+   // refill the op combo boxes from the current contest, and select the correct op
+   if (contest)
+   {
+      MainOpComboBox->Clear();
+      SecondOpComboBox->Clear();
+      for ( OperatorIterator i = contest->oplist.begin(); i != contest->oplist.end(); i++ )
+      {
+         if ( ( *i ).size() )
+         {
+            MainOpComboBox->Items->Add( ( *i ).c_str() );
+            SecondOpComboBox->Items->Add( ( *i ).c_str() );
+         }
+      }
+      MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
+      SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
+   }
 }
 void TContestEntryDetails::setDetails( const IndividualContest &ic )
 {

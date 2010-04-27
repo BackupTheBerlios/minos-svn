@@ -94,6 +94,7 @@ class TContestEntryDetails : public TForm
       TWinControl * getNextFocus();
       void setDetails( const IndividualContest &ic );
       void setDetails( );
+      void refreshOps();
       void enableControls();
       TWinControl * getDetails( );
    public:   		// User declarations

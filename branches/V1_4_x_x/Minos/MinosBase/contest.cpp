@@ -574,7 +574,7 @@ void BaseContestLog::scanContest( void )
    nextScan = -1;
    unfilledCount = 0;
 
-   oplist.clear();
+//   oplist.clear();
    std::string curop1 = currentOp1.getValue();
    oplist.insert( curop1 );
    std::string curop2 = currentOp2.getValue();

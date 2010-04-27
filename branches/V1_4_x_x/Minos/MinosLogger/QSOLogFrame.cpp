@@ -382,27 +382,33 @@ void __fastcall TGJVQSOLogFrame::FirstUnfilledButtonClick(TObject */*Sender*/)
 
 void __fastcall TGJVQSOLogFrame::MainOpComboBoxExit(TObject */*Sender*/)
 {
-   std::string op1 = MainOpComboBox->Text.c_str();
-   contest->currentOp1.setValue( op1 );
-   if ( op1.size() )
+   if (contest)
    {
-      contest->oplist.insert( op1 );
+      std::string op1 = MainOpComboBox->Text.c_str();
+      contest->currentOp1.setValue( op1 );
+      if ( op1.size() )
+      {
+         contest->oplist.insert( op1 );
+      }
+      contest->commonSave(false);
+      refreshOps();
    }
-   contest->commonSave(false);
-   refreshOps();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TGJVQSOLogFrame::SecondOpComboBoxExit(TObject */*Sender*/)
 {
-   std::string op2 = SecondOpComboBox->Text.c_str();
-   contest->currentOp2.setValue( op2 );
-   if ( op2.size() )
+   if (contest)
    {
-      contest->oplist.insert( op2 );
+      std::string op2 = SecondOpComboBox->Text.c_str();
+      contest->currentOp2.setValue( op2 );
+      if ( op2.size() )
+      {
+         contest->oplist.insert( op2 );
+      }
+      contest->commonSave(false);
+      refreshOps();
    }
-   contest->commonSave(false);
-   refreshOps();
 }
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::refreshOps()
