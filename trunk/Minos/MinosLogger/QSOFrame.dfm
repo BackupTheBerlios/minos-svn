@@ -351,20 +351,20 @@ object GJVEditFrame: TGJVEditFrame
       Top = 3
       Width = 64
       Height = 21
+      CharCase = ecUpperCase
       ItemHeight = 13
       TabOrder = 21
       TabStop = False
-      OnKeyPress = OpComboBoxKeyPress
     end
     object MainOpComboBox: TComboBox
       Left = 298
       Top = 3
       Width = 65
       Height = 21
+      CharCase = ecUpperCase
       ItemHeight = 13
       TabOrder = 20
       TabStop = False
-      OnKeyPress = OpComboBoxKeyPress
     end
   end
 end

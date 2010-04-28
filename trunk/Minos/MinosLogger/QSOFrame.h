@@ -64,7 +64,6 @@ class TGJVEditFrame : public TFrame
       void __fastcall LocEditChange( TObject *Sender );
       void __fastcall TimeNowButtonClick(TObject *Sender);
       void __fastcall ModeButtonClick(TObject *Sender);
-      void __fastcall OpComboBoxKeyPress(TObject *Sender, char &Key);
    private: 	// User declarations
       MinosEventListener  EL_ValidateError;
       void ValidateError_Event ( MinosEventBase & Event );
@@ -127,10 +126,7 @@ class TGJVEditFrame : public TFrame
       virtual void doGJVCancelButtonClick( TObject *Sender ) = 0;
       virtual void updateQSOTime() = 0;
       virtual void updateQSODisplay() = 0;
-      virtual void closeContest()
-      {
-         contest = 0;
-      }
+      virtual void closeContest();
 };
 //---------------------------------------------------------------------------
 #endif

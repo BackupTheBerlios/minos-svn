@@ -1289,14 +1289,6 @@ void __fastcall TGJVEditFrame::ModeButtonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-void __fastcall TGJVEditFrame::OpComboBoxKeyPress(TObject */*Sender*/,
-      char &Key)
-{
-   Key = toupper( Key );
-}
-//---------------------------------------------------------------------------
 void TGJVEditFrame::refreshOps()
 {
    // refill the op combo boxes from the current contest, and select the correct op
@@ -1321,5 +1313,12 @@ void TGJVEditFrame::refreshOps()
    }
 }
 
+//---------------------------------------------------------------------------
+void TGJVEditFrame::closeContest()
+{
+   TimeNowButton->Enabled = true;
+   TimeNowButton->SetFocus();
+   contest = 0;
+}
 //---------------------------------------------------------------------------
 
