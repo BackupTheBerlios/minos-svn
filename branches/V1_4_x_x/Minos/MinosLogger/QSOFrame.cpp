@@ -1316,6 +1316,7 @@ void TGJVEditFrame::refreshOps()
 //---------------------------------------------------------------------------
 void TGJVEditFrame::closeContest()
 {
+   TimeNowButton->Enabled = true;
    TimeNowButton->SetFocus();
    contest = 0;
 }

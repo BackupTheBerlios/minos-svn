@@ -352,7 +352,7 @@ object GJVEditFrame: TGJVEditFrame
       Width = 64
       Height = 21
       CharCase = ecUpperCase
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 21
       TabStop = False
     end
@@ -362,7 +362,7 @@ object GJVEditFrame: TGJVEditFrame
       Width = 65
       Height = 21
       CharCase = ecUpperCase
-      ItemHeight = 13
+      ItemHeight = 0
       TabOrder = 20
       TabStop = False
     end
