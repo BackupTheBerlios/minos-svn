@@ -332,8 +332,9 @@ void __fastcall TLogContainer::CloseAllActionExecute(TObject */*Sender*/)
    TWaitCursor fred;
    while ( ContestPageControl->PageCount)
    {
-      TTabSheet *ctab = ContestPageControl->Pages[ ContestPageControl->PageCount - 1 ];
-      closeSlot(ctab, true);
+      // Keep closing the current (and hence visible) contest
+      TTabSheet * t = ContestPageControl->ActivePage;
+      closeSlot(t, true);
    }
    ContestPageControlChange( this );
    enableActions();
