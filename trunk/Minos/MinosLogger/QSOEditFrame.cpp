@@ -158,9 +158,9 @@ void TGJVQSOEditFrame::logCurrentContact( )
    logScreenEntry( );
 }
 //---------------------------------------------------------------------------
-void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
+void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
 {
-   selectedContact = lct;   // contact from log list selected
+   selectedContact = slct;   // contact from log list selected
 
    if (contest->unfilledCount <= 0 || contest->isReadOnly())
    {
@@ -172,7 +172,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
    }
    updateTimeAllowed = false;   // whatever the time says, leave it alone
 
-   screenContact.copyFromArg( *lct );
+   screenContact.copyFromArg( *slct );
    showScreenEntry();
    MainOpComboBox->Text = screenContact.op1.c_str();
    SecondOpComboBox->Text = screenContact.op2.c_str();
@@ -187,10 +187,10 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
       // full dtg gives -ve, none gives 0
       if ( tne == 0 )
       {
-         BaseContact * lct = getPriorContact();
-         if ( lct )
+         BaseContact * pct = getPriorContact();
+         if ( pct )
          {
-            screenContact.time = lct->time;
+            screenContact.time = pct->time;
             DateEdit->Text = screenContact.time.getDate( DTGDISP ).c_str();
             TimeEdit->Text = screenContact.time.getTime( DTGDISP ).c_str();
          }
@@ -251,7 +251,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *lct )
       TimeEdit->Font->Color = clRed;
    }
 
-   MinosLoggerEvents::SendAfterSelectContact(lct, contest);
+   MinosLoggerEvents::SendAfterSelectContact(slct, contest);
    selectField( 0 );
 }
 //---------------------------------------------------------------------------
