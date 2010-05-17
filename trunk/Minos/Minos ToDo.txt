@@ -1,3 +1,7 @@
+Rethink logSequence and nextBlock; nextBlock is a hangover from the "old" logger.
+We should just need to use logSequence, and maintain a "max" value for it.
+Then cancelled catch ups wouldn't keep incrementing it.
+===========================================================================
 1.4 release notes
 
 Read only now becomes "protected" and is stored properly with the contest. It can be temporarily lifted so that back editting can be done. For now, you have to set it manually; I may in future make it automatically set on producing the entry or after the entry date has passed. What do the users think?

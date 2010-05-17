@@ -62,8 +62,9 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, /*this,*/ catchup );
+#warning is this the correct contact to select? Shouldn't it be the last contact
    GJVQSOEditFrame->selectEntry( firstContact );
-   if (GJVQSOEditFrame->isCatchup())
+   if (catchup)
    {
       Caption = "Catch-up (Post Entry)";
    }
@@ -79,9 +80,16 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TQSOEditDlg::FormClose( TObject */*Sender*/, TCloseAction &/*Action*/ )
+void __fastcall TQSOEditDlg::FormClose( TObject *Sender, TCloseAction &/*Action*/ )
 {
-   //   GJVQSOEditFrame->selectedContact = 0;
+   if (catchup)
+   {
+      LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+      DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( GJVQSOEditFrame->selectedContact );
+      ct->removeContact(lct);
+      ct->maxSerial--;
+   }
+   MinosLoggerEvents::SendAfterLogContact(contest);
 }
 //---------------------------------------------------------------------------
 void TQSOEditDlg::AfterSelectContact_Event( MinosEventBase & Event)
@@ -235,12 +243,6 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVCancelButtonClick(
    TObject *Sender )
 {
    GJVQSOEditFrame->doGJVCancelButtonClick( Sender );
-   if (catchup)
-   {
-      LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
-      DisplayContestContact * lct = dynamic_cast<DisplayContestContact*>( GJVQSOEditFrame->selectedContact );
-      ct->removeContact(lct);
-   }
    ModalResult = mrCancel;
 }
 //---------------------------------------------------------------------------

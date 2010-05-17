@@ -116,7 +116,6 @@ class TGJVEditFrame : public TFrame
       void clearCurrentField();
       void lgTraceerr( int err );
       void setTimeNow();
-      bool isCatchup(){return catchup;}
 
       void selectField( TWinControl *v );
       virtual void initialise( BaseContestLog * contest, bool catchup );
