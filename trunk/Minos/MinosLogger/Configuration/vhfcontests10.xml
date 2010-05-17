@@ -55,8 +55,9 @@
 <!-- 09.026 13/11/2009 Moved 2nd 50MHz contest forward one week to avoid clash with RSGB Convention-->
 <!-- 09.027 14/12/2009 had changed 4m cumulatives deadline to 7 days by mistake - change back to 16 days-->
 <!-- 09.027 11/01/2010 Added S10 and UKAC Overall Club Championship-->
+<!-- 09.028 29/04/2010 changed URL of arrl DXCC listing-->
 <calendar>
-<version>09.027 11/01/2010</version>
+<version>09.028 29/04/2010</version>
 <icalurl>http://www.google.com/calendar/ical/t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>13/11/09: 2nd 50MHz contest moved forward 1 week</notes_list>
@@ -65,7 +66,7 @@
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
-A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
+A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt 
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/10rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
@@ -85,7 +86,7 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <description>Post Codes, Countries and Locators</description>
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
-A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
+A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/10rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
@@ -96,7 +97,7 @@ A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/10rul
 <description>Countries and Locators</description>
 <long_description>
 Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band
-A full list of DXCCs can be found here http://www.arrl.org/awards/dxcc/dxcclist.txt
+A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 </long_description>
 <scoring_description> multiplied by the number of Countries plus QTH locator squares</scoring_description>
 </mult_type>
