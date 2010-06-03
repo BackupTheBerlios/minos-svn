@@ -29,20 +29,20 @@ object GJVEditFrame: TGJVEditFrame
     end
     object BrgSt: TLabel
       Left = 526
-      Top = 20
+      Top = 26
       Width = 46
       Height = 13
       Caption = '(999XT)'
     end
     object DistSt: TLabel
       Left = 482
-      Top = 20
+      Top = 26
       Width = 45
       Height = 13
       Caption = '(99999)'
     end
     object SecondOpLabel: TLabel
-      Left = 378
+      Left = 388
       Top = 6
       Width = 28
       Height = 13
@@ -347,9 +347,9 @@ object GJVEditFrame: TGJVEditFrame
       TabStop = False
     end
     object SecondOpComboBox: TComboBox
-      Left = 407
+      Left = 417
       Top = 3
-      Width = 64
+      Width = 84
       Height = 21
       CharCase = ecUpperCase
       ItemHeight = 13
@@ -359,7 +359,7 @@ object GJVEditFrame: TGJVEditFrame
     object MainOpComboBox: TComboBox
       Left = 298
       Top = 3
-      Width = 65
+      Width = 84
       Height = 21
       CharCase = ecUpperCase
       ItemHeight = 13
