@@ -947,6 +947,7 @@ void BaseContestLog::processMinosStanza( const std::string &methodName, MinosTes
                                     makeContact( false, rct );
                                     rct->setLogSequence( logSequence );
                                     ctList.insert( rct );
+                                    // Was just nextBlock++ - no test
                                     if (logSequence >> 16 >= nextBlock)
                                     {
                                        nextBlock = (logSequence >> 16) + 1;

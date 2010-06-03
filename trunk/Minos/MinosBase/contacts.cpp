@@ -157,7 +157,7 @@ CountryEntry *findCtryPrefix( const callsign &cs )
 
          int clen = testpart.length();
          int minlen;
-
+#warning do we need to set minlen to 1?
          for ( minlen = 0; minlen < clen; minlen++ )
          {
             // go past any leading digits
