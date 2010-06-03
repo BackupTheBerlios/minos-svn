@@ -57,8 +57,6 @@ class TContestEntryDetails : public TForm
       TLabel *StartTimeLabel;
       TLabel *EndTimeLabel;
       TComboBox *ExchangeComboBox;
-      TButton *VHFCalendarButton;
-      TEdit *ContestNameSelected;
    TGroupBox *LocatorGroupBox;
    TCheckBox *AllowLoc8CB;
    TCheckBox *AllowLoc4CB;
@@ -70,6 +68,9 @@ class TContestEntryDetails : public TForm
    TComboBox *MainOpComboBox;
    TLabel *Label2;
    TComboBox *SecondOpComboBox;
+   TPanel *Panel1;
+   TButton *VHFCalendarButton;
+   TEdit *ContestNameSelected;
       void __fastcall OKButtonClick( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
