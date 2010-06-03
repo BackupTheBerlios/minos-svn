@@ -2,7 +2,7 @@ object ContestEntryDetails: TContestEntryDetails
   Left = 437
   Top = 174
   Caption = 'Details of Contest Entry'
-  ClientHeight = 515
+  ClientHeight = 565
   ClientWidth = 695
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,49 +17,49 @@ object ContestEntryDetails: TContestEntryDetails
   TextHeight = 13
   object BandLabel: TLabel
     Left = 335
-    Top = 106
+    Top = 154
     Width = 29
     Height = 13
     Caption = 'Band'
   end
   object SectionLabel: TLabel
     Left = 519
-    Top = 106
+    Top = 154
     Width = 42
     Height = 13
     Caption = 'Section'
   end
   object StartTimeLabel: TLabel
     Left = 127
-    Top = 197
+    Top = 245
     Width = 60
     Height = 13
     Caption = 'Start Time'
   end
   object EndTimeLabel: TLabel
     Left = 340
-    Top = 197
+    Top = 245
     Width = 53
     Height = 13
     Caption = 'End Time'
   end
   object Label1: TLabel
     Left = 492
-    Top = 206
+    Top = 254
     Width = 81
     Height = 13
     Caption = 'Main Operator'
   end
   object Label2: TLabel
     Left = 492
-    Top = 270
+    Top = 318
     Width = 97
     Height = 13
     Caption = 'Second Operator'
   end
   object OKButton: TButton
     Left = 56
-    Top = 478
+    Top = 526
     Width = 75
     Height = 25
     Caption = 'OK'
@@ -69,7 +69,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object CancelButton: TButton
     Left = 544
-    Top = 478
+    Top = 526
     Width = 75
     Height = 25
     Cancel = True
@@ -80,7 +80,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object EntDetailButton: TButton
     Left = 261
-    Top = 478
+    Top = 526
     Width = 153
     Height = 25
     Caption = 'Entry Details'
@@ -89,7 +89,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object ContestNameEdit: TLabeledEdit
     Left = 15
-    Top = 119
+    Top = 167
     Width = 265
     Height = 21
     EditLabel.Width = 81
@@ -99,16 +99,16 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object BandComboBox: TComboBox
     Left = 335
-    Top = 119
+    Top = 167
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 5
   end
   object CallsignEdit: TLabeledEdit
     Left = 15
-    Top = 162
+    Top = 210
     Width = 121
     Height = 21
     CharCase = ecUpperCase
@@ -120,7 +120,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object LocatorEdit: TLabeledEdit
     Left = 159
-    Top = 162
+    Top = 210
     Width = 121
     Height = 21
     CharCase = ecUpperCase
@@ -131,7 +131,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object ExchangeEdit: TLabeledEdit
     Left = 300
-    Top = 162
+    Top = 210
     Width = 233
     Height = 21
     EditLabel.Width = 222
@@ -141,7 +141,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object ScoreOptions: TRadioGroup
     Left = 10
-    Top = 264
+    Top = 312
     Width = 225
     Height = 82
     Caption = 'Scoring'
@@ -153,7 +153,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object MultGroupBox: TGroupBox
     Left = 434
-    Top = 357
+    Top = 405
     Width = 249
     Height = 97
     Caption = 'Multipliers and Exchange'
@@ -193,7 +193,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object OptionsGroupBox: TGroupBox
     Left = 10
-    Top = 357
+    Top = 405
     Width = 225
     Height = 57
     Caption = 'Options'
@@ -210,7 +210,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object FieldsGroupBox: TGroupBox
     Left = 241
-    Top = 357
+    Top = 405
     Width = 187
     Height = 105
     Caption = 'Optional Fields'
@@ -265,117 +265,120 @@ object ContestEntryDetails: TContestEntryDetails
     Left = 8
     Top = 8
     Width = 681
-    Height = 92
+    Height = 129
     TabOrder = 3
     inline QTHBundleFrame: TSettingBundleFrame
       Left = 344
-      Top = 32
+      Top = 53
       Width = 333
-      Height = 23
-      TabOrder = 4
+      Height = 40
+      TabOrder = 2
       TabStop = True
       ExplicitLeft = 344
-      ExplicitTop = 32
-      inherited BundleNameLabel: TLabel
-        Width = 75
-        ExplicitWidth = 75
-      end
-      inherited BundleSection: THistoryComboBox
-        OnChange = BundleFrameBundleSectionChange
-      end
-      inherited BundleEdit: TButton
-        OnClick = BundleFrameBundleEditClick
+      ExplicitTop = 53
+      ExplicitHeight = 40
+      inherited Panel1: TPanel
+        inherited BundleSection: THistoryComboBox
+          OnChange = BundleFrameBundleSectionChange
+        end
+        inherited BundleEdit: TButton
+          OnClick = BundleFrameBundleEditClick
+        end
       end
     end
     inline StationBundleFrame: TSettingBundleFrame
       Left = 6
-      Top = 32
+      Top = 53
       Width = 333
-      Height = 23
-      TabOrder = 3
+      Height = 40
+      TabOrder = 1
       TabStop = True
       ExplicitLeft = 6
-      ExplicitTop = 32
-      inherited BundleNameLabel: TLabel
-        Width = 75
-        ExplicitWidth = 75
-      end
-      inherited BundleSection: THistoryComboBox
-        OnChange = BundleFrameBundleSectionChange
-      end
-      inherited BundleEdit: TButton
-        Left = 264
-        OnClick = BundleFrameBundleEditClick
-        ExplicitLeft = 264
+      ExplicitTop = 53
+      ExplicitHeight = 40
+      inherited Panel1: TPanel
+        inherited BundleSection: THistoryComboBox
+          OnChange = BundleFrameBundleSectionChange
+        end
+        inherited BundleEdit: TButton
+          OnClick = BundleFrameBundleEditClick
+        end
       end
     end
     inline EntryBundleFrame: TSettingBundleFrame
       Left = 344
       Top = 4
       Width = 333
-      Height = 23
-      TabOrder = 2
+      Height = 40
+      TabOrder = 0
       TabStop = True
       ExplicitLeft = 344
       ExplicitTop = 4
-      inherited BundleNameLabel: TLabel
-        Width = 75
-        ExplicitWidth = 75
-      end
-      inherited BundleSection: THistoryComboBox
-        OnChange = BundleFrameBundleSectionChange
-      end
-      inherited BundleEdit: TButton
-        OnClick = BundleFrameBundleEditClick
+      ExplicitHeight = 43
+      inherited Panel1: TPanel
+        inherited BundleSection: THistoryComboBox
+          OnChange = BundleFrameBundleSectionChange
+        end
+        inherited BundleEdit: TButton
+          OnClick = BundleFrameBundleEditClick
+        end
       end
     end
     object BSHelpButton: TButton
       Left = 237
-      Top = 59
+      Top = 98
       Width = 202
       Height = 25
       Caption = 'How to use these settings?'
-      TabOrder = 5
+      TabOrder = 3
       OnClick = BSHelpButtonClick
     end
-    object VHFCalendarButton: TButton
-      Left = 239
-      Top = 5
-      Width = 89
-      Height = 18
-      Caption = 'VHF Calendar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      OnClick = VHFCalendarButtonClick
-    end
-    object ContestNameSelected: TEdit
+    object Panel1: TPanel
       Left = 8
-      Top = 5
-      Width = 225
-      Height = 21
-      TabStop = False
-      ReadOnly = True
-      TabOrder = 0
+      Top = 6
+      Width = 331
+      Height = 40
+      BevelOuter = bvLowered
+      TabOrder = 4
+      object VHFCalendarButton: TButton
+        Left = 235
+        Top = 9
+        Width = 89
+        Height = 18
+        Caption = 'VHF Calendar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = VHFCalendarButtonClick
+      end
+      object ContestNameSelected: TEdit
+        Left = 4
+        Top = 9
+        Width = 225
+        Height = 21
+        TabStop = False
+        ReadOnly = True
+        TabOrder = 1
+      end
     end
   end
   object SectionComboBox: TComboBox
     Left = 519
-    Top = 119
+    Top = 167
     Width = 150
     Height = 21
     Style = csDropDownList
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 6
   end
   object PowerEdit: TLabeledEdit
     Left = 562
-    Top = 162
+    Top = 210
     Width = 121
     Height = 21
     EditLabel.Width = 35
@@ -385,23 +388,23 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object StartTimeCombo: TComboBox
     Left = 124
-    Top = 214
+    Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 11
   end
   object EndTimeCombo: TComboBox
     Left = 337
-    Top = 214
+    Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 12
   end
   object LocatorGroupBox: TGroupBox
     Left = 241
-    Top = 264
+    Top = 312
     Width = 187
     Height = 82
     Caption = 'Locator Length'
@@ -425,7 +428,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object StartDateEdit: TLabeledEdit
     Left = 15
-    Top = 214
+    Top = 262
     Width = 72
     Height = 21
     EditLabel.Width = 59
@@ -436,7 +439,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object EndDateEdit: TLabeledEdit
     Left = 229
-    Top = 214
+    Top = 262
     Width = 72
     Height = 21
     EditLabel.Width = 52
@@ -447,7 +450,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object StartDateButton: TButton
     Left = 95
-    Top = 214
+    Top = 262
     Width = 21
     Height = 20
     Caption = '...'
@@ -456,7 +459,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object EndDateButton: TButton
     Left = 308
-    Top = 214
+    Top = 262
     Width = 21
     Height = 20
     Caption = '...'
@@ -465,20 +468,20 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object MainOpComboBox: TComboBox
     Left = 492
-    Top = 230
+    Top = 278
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 13
   end
   object SecondOpComboBox: TComboBox
     Left = 492
-    Top = 294
+    Top = 342
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 14
   end
 end

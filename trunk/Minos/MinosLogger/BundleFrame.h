@@ -15,7 +15,8 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include "Hstcbo.hpp"
-#include <Dialogs.hpp> 
+#include <Dialogs.hpp>
+#include <ExtCtrls.hpp> 
 //---------------------------------------------------------------------------
 class TSettingBundleFrame : public TFrame
 {
@@ -23,6 +24,7 @@ class TSettingBundleFrame : public TFrame
       TLabel *BundleNameLabel;
       THistoryComboBox *BundleSection;
       TButton *BundleEdit;
+   TPanel *Panel1;
       void __fastcall BundleSectionChange( TObject *Sender );
       void __fastcall BundleEditClick( TObject *Sender );
    private:  	// User declarations
