@@ -591,7 +591,7 @@ void DisplayContestContact::processMinosStanza( const std::string &methodName, M
    std::string updtg;
 
    int itemp;
-   if ( mt->getStructArgMemberValue( "lseq", itemp ) )
+   if ( mt->getStructArgMemberValue( "lseq", itemp ) )     // should already be done...
       logSequence = ( unsigned long ) itemp;
    mt->getStructArgMemberValueDTG( "uDTG", updtg );
 
