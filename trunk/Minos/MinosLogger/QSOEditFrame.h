@@ -40,6 +40,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       void logCurrentContact( );
       void logScreenEntry( );
       BaseContact *getPriorContact();
+      BaseContact *getNextContact();
    public: 		// User declarations
       __fastcall TGJVQSOEditFrame( TComponent* Owner );
       virtual void selectEntry( BaseContact *lct );

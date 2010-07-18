@@ -80,7 +80,7 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TQSOEditDlg::FormClose( TObject *Sender, TCloseAction &/*Action*/ )
+void __fastcall TQSOEditDlg::FormClose( TObject */*Sender*/, TCloseAction &/*Action*/ )
 {
    if (catchup)
    {
@@ -275,13 +275,6 @@ void __fastcall TQSOEditDlg::FormKeyUp( TObject */*Sender*/, WORD &Key,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TQSOEditDlg::GJVQSOEditFrameNextButtonClick( TObject *Sender )
-{
-   GJVQSOEditFrame->NextButtonClick( Sender );
-
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TQSOEditDlg::QSOHistoryTreeBeforeItemErase(
    TBaseVirtualTree *Sender, TCanvas */*TargetCanvas*/, PVirtualNode Node,
    TRect &/*ItemRect*/, TColor &ItemColor, TItemEraseAction &EraseAction )
@@ -320,4 +313,12 @@ void TQSOEditDlg::selectCatchup( BaseContestLog * c )
    selectContact(c, lct);
    GJVQSOEditFrame->FirstUnfilledButton->Enabled = false;
 }
+
+void __fastcall TQSOEditDlg::GJVQSOEditFrameGJVCancelButtonClick(
+      TObject *Sender)
+{
+  GJVQSOEditFrame->doGJVCancelButtonClick(Sender);
+
+}
+//---------------------------------------------------------------------------
 

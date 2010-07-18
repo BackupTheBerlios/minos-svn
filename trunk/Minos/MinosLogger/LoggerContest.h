@@ -154,6 +154,7 @@ class LoggerContestLog : public BaseContestLog
 
       virtual void makeContact( bool time_now, BaseContact *& );
       DisplayContestContact *addContact( int newctno, int extra_flags, bool save_new, bool catchup );
+      DisplayContestContact *addContactBetween( BaseContact *prior, BaseContact *next );
       void removeContact( DisplayContestContact * );
 
 };

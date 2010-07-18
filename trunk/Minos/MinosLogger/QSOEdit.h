@@ -42,11 +42,11 @@ class TQSOEditDlg : public TForm
       void __fastcall GJVQSOEditFrame1GJVCancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormKeyUp( TObject *Sender, WORD &Key, TShiftState Shift );
-      void __fastcall GJVQSOEditFrameNextButtonClick( TObject *Sender );
       void __fastcall QSOHistoryTreeBeforeItemErase( TBaseVirtualTree *Sender,
             TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
             TColor &ItemColor, TItemEraseAction &EraseAction );
    void __fastcall InitialiseTimerTimer(TObject *Sender);
+   void __fastcall GJVQSOEditFrameGJVCancelButtonClick(TObject *Sender);
    private: 	// User declarations
 
       MinosEventListener  EL_AfterSelectContact;

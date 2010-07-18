@@ -452,6 +452,35 @@ DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags
 
    return lct;
 }
+DisplayContestContact *LoggerContestLog::addContactBetween( BaseContact *prior, BaseContact *next )
+{
+   // add the contact number as an new empty contact, with disk block and log_seq
+
+   if (!next)
+   {
+      ShowMessage("Attempt to insert after last contact - not allowed. Pease report a bug!");
+      return 0;
+   }
+   bool timenow = false;
+
+   DisplayContestContact *lct;
+   makeContact( timenow, ( BaseContact * ) lct );
+
+   lct->serials.setValue( "" );
+
+   unsigned long pls =  prior?prior->getLogSequence():0;
+   unsigned long nls =  next->getLogSequence();
+
+   unsigned long seq = (pls + nls)/2;
+
+   lct->setLogSequence( seq );
+
+   lct->commonSave();		// make sure contact is correct
+   ctList.insert( lct );
+   commonSave( false );
+
+   return lct;
+}
 //==========================================================================
 void LoggerContestLog::removeContact( DisplayContestContact *lct )
 {

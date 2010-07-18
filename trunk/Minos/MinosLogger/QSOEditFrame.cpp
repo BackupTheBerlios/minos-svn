@@ -38,15 +38,19 @@ void TGJVQSOEditFrame::updateQSODisplay()
 //---------------------------------------------------------------------------
 void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
 {
-#warning Insert Before not yet implemented
-   ShowMessage( "Insert Before not yet implemented" );
+   BaseContact *pct = getPriorContact();
+   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+   DisplayContestContact *newct = ct->addContactBetween(pct, selectedContact);
+   selectEntry(newct);
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TGJVQSOEditFrame::InsertAfterButtonClick( TObject */*Sender*/ )
 {
-#warning Insert After not yet implemented
-   ShowMessage( "Insert After not yet implemented" );
+   BaseContact *nct = getNextContact();
+   LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
+   DisplayContestContact *newct = ct->addContactBetween(selectedContact, nct);
+   selectEntry(newct);
 }
 //---------------------------------------------------------------------------
 
@@ -104,6 +108,22 @@ void __fastcall TGJVQSOEditFrame::PriorButtonClick( TObject */*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
+BaseContact *TGJVQSOEditFrame::getNextContact()
+{
+   for ( LogIterator i = contest->ctList.begin(); i != contest->ctList.end(); i++ )
+   {
+      if ( ( *i ) ->getLogSequence() == screenContact.getLogSequence() )
+      {
+         i++;
+         if ( i != contest->ctList.end() )
+         {
+            return (*i);
+         }
+         return 0;
+      }
+   }
+   return 0;
+}
 
 void __fastcall TGJVQSOEditFrame::NextButtonClick( TObject */*Sender*/ )
 {
@@ -112,21 +132,15 @@ void __fastcall TGJVQSOEditFrame::NextButtonClick( TObject */*Sender*/ )
    {
       return ;
    }
-   for ( LogIterator i = contest->ctList.begin(); i != contest->ctList.end(); i++ )
+   BaseContact *lct = getNextContact();
+   if ( lct )
    {
-      if ( ( *i ) ->getLogSequence() == screenContact.getLogSequence() )
-      {
-         i++;
-         if ( i == contest->ctList.end() )
-         {
-            ShowMessage( "End of QSOs" );
-            i--;
-         }
-         selectEntry( ( *i ) );
-         return ;
-      }
+      selectEntry( lct );
    }
-   ShowMessage( "End of QSOs" );
+   else
+   {
+      ShowMessage( "End of QSOs" );
+   }
 }
 //---------------------------------------------------------------------------
 void TGJVQSOEditFrame::killPartial( void )
@@ -174,6 +188,11 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
 
    screenContact.copyFromArg( *slct );
    showScreenEntry();
+
+   PriorButton->Enabled = getPriorContact();
+   NextButton->Enabled = getNextContact();
+   InsertAfterButton->Enabled = getNextContact();  // dont allow insert after last contact
+
    MainOpComboBox->Text = screenContact.op1.c_str();
    SecondOpComboBox->Text = screenContact.op2.c_str();
    if ( !contest->isReadOnly() && (screenContact.contactFlags & TO_BE_ENTERED || catchup))
@@ -356,4 +375,5 @@ void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject */*Sender*/)
    refreshOps();
 }
 //---------------------------------------------------------------------------
+
 

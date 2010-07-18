@@ -1,4 +1,25 @@
+Opening out contacts:
+	Post Entry doesn't notice, doesn't ask
+	And when you drop back, the serial is back where it was
+	And if you then open out contacts you get the same serial in twice
+	And should you be able to NOT open out contacts (so you don't get a set of dead contacts when you aren't going to fill in)? 
+	Can we use a single dialog box somehow?
 ===========================================================================
+It looks as though KZ has never been recognised as a US callsign (GJV-E has
+the same issue), and hence not as a DXCC multiplier.
+
+To quote from the A1CG guys who were actually out last weekend (I wasn't):
+
+  We worked KZ4RR in Florida in the recent 50 MHz trophy
+contest but Minos did not recognise this as a country.  It recognised
+  NP3CW in Puerto Rica, who we also worked, and it recognises
+K but not KZ.
+
+Presumably it is just a table configuration issue?
+===========================================================================
+Facility to defeat fly by hints? Maybe us status bar insttead (which is where they will be on Qt)?
+===========================================================================
+(done)
 Right justify the bundle labels, so they come "close" to the bundle combos. Maybe put frames round them as well?
 
 ===========================================================================

@@ -63,54 +63,68 @@ object QSOEditDlg: TQSOEditDlg
       Height = 190
       ExplicitWidth = 580
       ExplicitHeight = 190
-      inherited GJVOKButton: TButton
-        Left = 159
-        Top = 149
-        OnClick = GJVQSOEditFrame1GJVOKButtonClick
-        ExplicitLeft = 159
-        ExplicitTop = 149
+      inherited TimeNowButton: TButton [5]
       end
-      inherited GJVForceButton: TButton
-        Left = 213
-        Top = 149
-        OnClick = GJVQSOEditFrame1GJVForceButtonClick
-        ExplicitLeft = 213
-        ExplicitTop = 149
+      inherited ModeButton: TButton [6]
       end
-      inherited GJVCancelButton: TButton
-        Left = 269
-        Top = 149
+      inherited FirstUnfilledButton: TButton [7]
+        TabOrder = 15
+      end
+      inherited CatchupButton: TButton [8]
+      end
+      inherited SecondOpComboBox: TComboBox [9]
+        TabOrder = 16
+      end
+      inherited MainOpComboBox: TComboBox [10]
+        TabOrder = 17
+      end
+      inherited SerRXEdit: TLabeledEdit [12]
+      end
+      inherited RSTRXEdit: TLabeledEdit [13]
+      end
+      inherited SerTXEdit: TLabeledEdit [14]
+      end
+      inherited RSTTXEdit: TLabeledEdit [15]
+      end
+      inherited CallsignEdit: TLabeledEdit [16]
+      end
+      inherited TimeEdit: TLabeledEdit [17]
+      end
+      inherited GJVCancelButton: TButton [18]
+        TabOrder = 24
         OnClick = GJVQSOEditFrame1GJVCancelButtonClick
-        ExplicitLeft = 269
-        ExplicitTop = 149
+      end
+      inherited GJVForceButton: TButton [19]
+        TabOrder = 23
+        OnClick = GJVQSOEditFrame1GJVForceButtonClick
+      end
+      inherited GJVOKButton: TButton [20]
+        TabOrder = 22
+        OnClick = GJVQSOEditFrame1GJVOKButtonClick
+      end
+      inherited DeletedCheckBox: TCheckBox [21]
+      end
+      inherited NonScoreCheckBox: TCheckBox [22]
+      end
+      inherited DateEdit: TLabeledEdit [23]
+      end
+      inherited InsertAfterButton: TButton [24]
+        TabOrder = 19
+      end
+      inherited NextButton: TButton [25]
+        TabOrder = 21
+      end
+      inherited PriorButton: TButton [26]
+        TabOrder = 20
       end
       inherited InsertBeforeButton: TButton
-        Left = 389
-        Top = 118
-        Visible = False
-        ExplicitLeft = 389
-        ExplicitTop = 118
+        TabOrder = 18
       end
-      inherited InsertAfterButton: TButton
-        Left = 389
-        Top = 149
-        Visible = False
-        OnClick = nil
-        ExplicitLeft = 389
-        ExplicitTop = 149
+      inherited ModeComboBoxGJV: TComboBox [28]
       end
-      inherited PriorButton: TButton
-        Left = 492
-        Top = 113
-        ExplicitLeft = 492
-        ExplicitTop = 113
+      inherited CommentsEdit: TLabeledEdit [29]
       end
-      inherited NextButton: TButton
-        Left = 492
-        Top = 149
-        OnClick = GJVQSOEditFrameNextButtonClick
-        ExplicitLeft = 492
-        ExplicitTop = 149
+      inherited QTHEdit: TLabeledEdit [30]
       end
     end
   end
