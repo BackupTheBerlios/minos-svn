@@ -56,8 +56,9 @@
 <!-- 09.027 14/12/2009 had changed 4m cumulatives deadline to 7 days by mistake - change back to 16 days-->
 <!-- 09.027 11/01/2010 Added S10 and UKAC Overall Club Championship-->
 <!-- 09.028 29/04/2010 changed URL of arrl DXCC listing-->
+<!-- 09.029 30/05/2010 Changed words for use of SCC and /P suffix-->
 <calendar>
-<version>09.028 29/04/2010</version>
+<version>09.029 20/05/2010</version>
 <icalurl>http://www.google.com/calendar/ical/t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>13/11/09: 2nd 50MHz contest moved forward 1 week</notes_list>
@@ -265,20 +266,21 @@ Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switc
 <name>SO</name>
 <description>Single Op Others</description>
 <long_description> Single Operators not located at a fixed station address as defined in the SF section.
-Stations not operating as a fixed station must use the /P callsign suffix. This does not preclude the use of /A or /M where appropriate.
+Stations entering in this section must use the /P, /A or /M  callsign suffix as appropriate.
 </long_description>
 </section>
 <section>
 <name>O</name>
 <description>Open</description>
-<long_description> This section is for portable stations and multi-operator fixed stations
-Stations not operating as a fixed station must use the /P callsign suffix. Entrants may omit the /P suffix if using a special contest callsign, that is callsigns consisting of a single 'G' or 'M', a regional locator (if operating outside England) and a single suffix letter. This does not preclude the use of /A or /M where appropriate.
+<long_description> This section is for portable stations and multi-operator fixed stations.
+Stations not operating from permanent and substantial buildings located at the main station address as shown on the licence validation document must use the /P, /A or /M suffix as appropriate.
+Entrants may omit the suffix if using a Special Contest Callsign (e.g. G8P) where such callsigns are allowed in a particular the contest by the Licence NOV.
 </long_description>
 </section>
 <section>
 <name>A</name>
 <description>All</description>
-<long_description> This contest has a single section for all stations, single or multi-operator, fixed or portable in any combination
+<long_description> This contest has a single section for all stations, single or multi-operator, fixed or portable in any combination. Stations not operating from permanent and substantial buildings located at the main station address as shown on the licence validation document must use the /P, /A or /M suffix as appropriate. Entrants may omit the suffix if using a Special Contest Callsign (e.g. G8P) where such callsigns are allowed in a particular contest by the Licence NOV.
 </long_description>
 </section>
 <section>
@@ -311,6 +313,7 @@ e) Antenna height: Driven element no more than 4m above the ground
 f) No operation from a motor vehicle. The vehicle supply must not be used to power any equipment used during the contest or to recharge batteries for the equipment.
 g) All equipment used during the contest must be battery, wind or solar powered.
 h) Equipment must be carried and operated at least 100m from the transportation vehicle. 
+i) Stations entering in this section must use the /P callsign suffix 
 </long_description>
 <power>3</power>
 <height>4</height>
@@ -326,6 +329,7 @@ d) One or more antennas with no more than 20 half-wave elements (or equivalent) 
 e) Antenna height: Driven element no more than 6m above the ground
 f) Operation from a motor vehicle permitted.  
 g) All equipment used during the contest must be battery, wind or solar powered.  If equipment is powered from a vehicle supply, the engine must be switched off for the duration of the contest.
+h) Stations entering in this section must use the /P callsign suffix. 
 </long_description>
 <power>10</power>
 <height>6</height>
@@ -349,6 +353,8 @@ g) All equipment used during the contest must be battery, wind or solar powered.
 432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
 
 1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+
+Stations entering in this section must use the /P callsign suffix. 
 </long_description>
 </section>
 <section>
@@ -439,6 +445,8 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 432MHz (70cm) 1400 Saturday to 1400 Sunday (all mode)
 
 1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
+
+Stations entering in this section must use the /P callsign suffix. 
 </long_description>
 <power>100</power>
 <height>10</height>
@@ -467,6 +475,8 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
 
 (v) Each band may be operated for no more than 16 hours (except for 6m and 4m: see 7.3 (iv) above) during the contest period. Each rest period must last at least 1 hour.
+
+Stations entering in this section must use the /P callsign suffix. 
 </long_description>
 <power>25</power>
 <height>10</height>
@@ -497,6 +507,8 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all mode)
 
 (v) Note that 2m, 70cm or 23cm stations entered in the Low Power section may be operated for no more than 16 hours during the contest period. Each rest period must last at least 1 hour.
+
+Stations entering in this section must use the /P callsign suffix. 
 </long_description>
 <overall_section>yes</overall_section>
 </section>
