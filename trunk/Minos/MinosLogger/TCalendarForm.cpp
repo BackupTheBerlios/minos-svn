@@ -29,12 +29,16 @@ void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
 //---------------------------------------------------------------------------
 void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 {
-   int year = YearEdit->Text.ToIntDef(2010);
+   int year = YearEdit->Text.ToIntDef(2011);
    vhf = Calendar(year);
    bool loaded = false;
 
    #warning can we automate calendar years depending on configured and present files/URLs?
-   if (year > 2009)
+   if (year > 2010)
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests11.xml" );
+   }
+   if (year == 2010)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests10.xml" );
    }
@@ -141,6 +145,7 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml");
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml");
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
@@ -165,7 +170,7 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
    year -= 1;
    if (year < 2008)
    {
-      year = 2010;
+      year = 2011;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
@@ -176,7 +181,7 @@ void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
    int year = YearEdit->Text.ToIntDef(2010);
    year += 1;
-   if (year > 2010)
+   if (year > 2011)
    {
       year = 2008;
    }
