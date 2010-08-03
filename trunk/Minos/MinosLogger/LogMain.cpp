@@ -549,6 +549,12 @@ void __fastcall TLogContainer::FileNewActionExecute( TObject */*Sender*/ )
       if ( c->DTGStart.getValue().size() )
       {
          suggestedfName += CanonicalToTDT( c->DTGStart.getValue().c_str() ).FormatString( "yyyymmmdd" );
+         #warning M0XDF date bug here?
+         /*
+            When you create a contest and pick 03-Aug-10 and fill in the details,
+            and click ok (or is it close), the save as pop appears and gives a
+            default file name of G6BRA_2010Mar08_145 MHz.minos
+         */
       }
       else
       {
