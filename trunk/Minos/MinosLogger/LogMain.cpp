@@ -490,6 +490,10 @@ String TLogContainer::getDefaultDirectory( bool IsList )
       TContestApp::getContestApp() ->loggerBundle.getStringProfile( elpLogDirectory, temp );
    String fileName = temp.c_str();
 
+   // we default to ".\\logs" or ".\\lists. On Vista this won't be relative to
+   // the executable, but to the user data directory (I think). This is why Minos
+   // invents a very strange default directory which you then cannot find.
+
    if ( fileName.Length() && DirectoryExists( fileName ) )
    {
       // need to check possible validity of directory string
