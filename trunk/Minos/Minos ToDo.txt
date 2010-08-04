@@ -1,3 +1,11 @@
+===========================================================================
+M0XDF running under Wine:
+I've just confirmed what I suspected last month.
+When you create a contest and pick 03-Aug-10 and fill in the details, 
+and click ok (or is it close), the save as pop appears and gives a 
+default file name of G6BRA_2010Mar08_145 MHz.minos
+===========================================================================
+
 Opening out contacts:
 	Post Entry doesn't notice, doesn't ask
 	And when you drop back, the serial is back where it was
