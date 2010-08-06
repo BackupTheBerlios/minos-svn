@@ -726,6 +726,10 @@ void __fastcall TContestEntryDetails::BundleFrameBundleSectionChange(
 {
    TComboBox *cb = dynamic_cast<TComboBox *>(Sender);
    TSettingBundleFrame *bf = dynamic_cast<TSettingBundleFrame *>(cb->Parent);
+   if (!bf && cb->Parent && cb->Parent->Parent)
+   {
+      bf = dynamic_cast<TSettingBundleFrame *>(cb->Parent->Parent);
+   }
    if (bf)
    {
       bf->BundleSectionChange(Sender);
@@ -751,6 +755,10 @@ void __fastcall TContestEntryDetails::BundleFrameBundleEditClick(
 {
    TButton *cb = dynamic_cast<TButton *>(Sender );
    TSettingBundleFrame *bf = dynamic_cast<TSettingBundleFrame *>(cb->Parent);
+   if (!bf && cb->Parent && cb->Parent->Parent)
+   {
+      bf = dynamic_cast<TSettingBundleFrame *>(cb->Parent->Parent);
+   }
    if (bf)
    {
       bf->BundleEditClick(Sender);
