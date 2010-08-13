@@ -933,7 +933,6 @@ void __fastcall TSingleLogFrame::OtherMatchTreeGetText(
             CellText = ( clp->name.getValue() ).c_str();
       }
       else
-         if ( !pc->top )
          {
             std::string cell;
             BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
@@ -1003,25 +1002,7 @@ void __fastcall TSingleLogFrame::ArchiveMatchTreeGetText(
       {
          std::string cell;
          BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
-         if ( ArchiveMatchTreeColumns[ Column ].fieldId == egComments )
-         {
-            std::string exch;
-            clp->getMatchField( pc->matchedContact, egExchange, exch, ct );
-            std::string cmnt;
-            clp->getMatchField( pc->matchedContact, egComments, cmnt, ct );
-            if ( exch.size() )
-            {
-               cell = exch + "(" + cmnt + ")";
-            }
-            else
-            {
-               cell = cmnt;
-            }
-         }
-         else
-         {
-            clp->getMatchField( pc->matchedContact, ArchiveMatchTreeColumns[ Column ].fieldId, cell, ct );     // col 0 is the tree lines
-         }
+         clp->getMatchField( pc->matchedContact, ArchiveMatchTreeColumns[ Column ].fieldId, cell, ct );     // col 0 is the tree lines
          CellText = cell.c_str();
       }
    }
