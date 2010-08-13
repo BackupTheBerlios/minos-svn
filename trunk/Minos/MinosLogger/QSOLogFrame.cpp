@@ -370,6 +370,9 @@ void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
 
    contest->scanContest();
 
+   screenContact.initialise(contest);
+   showScreenEntry();
+
    refreshOps();
    selectField( 0 );
 }

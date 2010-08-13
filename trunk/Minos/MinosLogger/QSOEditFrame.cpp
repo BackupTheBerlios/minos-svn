@@ -155,6 +155,12 @@ void TGJVQSOEditFrame::logScreenEntry( )
 
    selectedContact->copyFromArg( screenContact );
    selectedContact->commonSave();
+
+   int ctmax = atoi( screenContact.serials.c_str() );
+
+   if ( ctmax > contest->maxSerial )
+      contest->maxSerial = ctmax;
+
    MinosLoggerEvents::SendAfterLogContact(contest);
 }
 //==============================================================================
