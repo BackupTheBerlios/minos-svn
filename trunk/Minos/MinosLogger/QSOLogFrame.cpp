@@ -367,6 +367,10 @@ void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
    qdlg->selectCatchup( contest );
 
    qdlg->ShowModal();
+
+   contest->scanContest();
+
+   refreshOps();
    selectField( 0 );
 }
 //---------------------------------------------------------------------------

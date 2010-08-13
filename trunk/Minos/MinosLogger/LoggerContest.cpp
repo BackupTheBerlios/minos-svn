@@ -440,6 +440,12 @@ DisplayContestContact *LoggerContestLog::addContact( int newctno, int extraFlags
       maxSerial = newctno;
    }
    lct->contactFlags.setValue( lct->contactFlags.getValue() | extraFlags );
+
+   if (catchup)
+   {
+      lct->op1 = currentOp1;
+      lct->op2 = currentOp2;
+   }
    if ( saveNew )
    {
       lct->commonSave();		// make sure contact is correct

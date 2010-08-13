@@ -359,6 +359,10 @@ void __fastcall TGJVQSOEditFrame::MainOpComboBoxExit(TObject */*Sender*/)
    {
       contest->oplist.insert( op1 );
    }
+   if (catchup)
+   {
+      contest->currentOp1.setValue(op1);
+   }
    contest->commonSave(false);
    refreshOps();
 }
@@ -370,6 +374,10 @@ void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject */*Sender*/)
    if ( op2.size() )
    {
       contest->oplist.insert( op2 );
+   }
+   if (catchup)
+   {
+      contest->currentOp2.setValue(op2);
    }
    contest->commonSave(false);
    refreshOps();
