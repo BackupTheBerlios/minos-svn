@@ -45,9 +45,11 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     end
     inherited SecondOpComboBox: TComboBox
       TabOrder = 23
+      OnExit = SecondOpComboBoxExit
     end
     inherited MainOpComboBox: TComboBox
       TabOrder = 24
+      OnExit = MainOpComboBoxExit
     end
     object InsertBeforeButton: TButton
       Left = 368
