@@ -1,9 +1,17 @@
 ===========================================================================
+http://www.nedprod.com/programs/portable/nedmalloc/index.html
+Fast memory allocator - may be interesting!
+C:\Downloads\Radio\nedmalloc_v105_svn1078.zip
+===========================================================================
+Archive list display - showed G4DDN| IO91PK | RG | RG(20) for G4DDN, IO91PK, RG, 20
+===========================================================================
 M0XDF running under Wine:
 I've just confirmed what I suspected last month.
 When you create a contest and pick 03-Aug-10 and fill in the details, 
 and click ok (or is it close), the save as pop appears and gives a 
 default file name of G6BRA_2010Mar08_145 MHz.minos
+===========================================================================
+Enter one contact, then go to catch up - no operator carried in
 ===========================================================================
 
 Opening out contacts:
@@ -25,7 +33,7 @@ K but not KZ.
 
 Presumably it is just a table configuration issue?
 ===========================================================================
-Facility to defeat fly by hints? Maybe us status bar insttead (which is where they will be on Qt)?
+Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
 ===========================================================================
 (done)
 Right justify the bundle labels, so they come "close" to the bundle combos. Maybe put frames round them as well?

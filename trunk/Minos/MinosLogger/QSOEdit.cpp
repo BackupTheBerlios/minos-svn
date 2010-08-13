@@ -62,8 +62,8 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    // when the conatct was zero - not sure if still needed
    InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, /*this,*/ catchup );
-#warning is this the correct contact to select? Shouldn't it be the last contact
-   GJVQSOEditFrame->selectEntry( firstContact );
+
+   GJVQSOEditFrame->selectEntry( firstContact );   // first contact for the dialog to deal with
    if (catchup)
    {
       Caption = "Catch-up (Post Entry)";
