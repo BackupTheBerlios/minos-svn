@@ -7,6 +7,7 @@
 # 2C,G
 # 2X,M
 # 2Y,2E
+# These mappings are used for duplicate checking
 GR,G
 GX,G
 MX,M

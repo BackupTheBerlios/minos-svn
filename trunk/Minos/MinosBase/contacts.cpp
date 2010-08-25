@@ -152,6 +152,23 @@ CountryEntry *findCtryPrefix( const callsign &cs )
          // some kind of synonym decision tree needs to be built
          // This is getting VERY nasty; maybe we just say to enter the actual call
          // as a synonym (but of what... we need a placeholder for the main country)!
+
+// replacement algorithm - HF inspired
+// just keep stripping it back until we get a match
+
+         testpart = cs.fullCall.getValue();
+         testpart = trimr( testpart );
+
+         int clen = testpart.length();
+         while ( ( clen >= 1 ) && ( !csyn ) )
+         {
+            // we need to stop when we get to the basic prefix...
+            // otherwise RVI6ABC ends up matching R, which is UA
+            testpart[ clen ] = 0;
+            clen--;
+            csyn = MultLists::getMultLists() ->searchCountrySynonym(testpart );
+         }
+/*
          testpart = cs.fullCall.getValue();
          testpart = trimr( testpart );
 
@@ -182,6 +199,7 @@ CountryEntry *findCtryPrefix( const callsign &cs )
          {
             csyn = MultLists::getMultLists() ->searchCountrySynonym( cs.prefix );
          }
+*/
       }
    }
    ctryMult = ( csyn ) ? ( csyn->country ) : 0;
