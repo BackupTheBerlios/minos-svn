@@ -26,6 +26,7 @@ TQRigSyncMain *QRigSyncMain;
 __fastcall TQRigSyncMain::TQRigSyncMain(TComponent* Owner)
    : TForm(Owner), muted(false), ic(0)
 {
+   static bool failSeen = false;
    enableTrace( ".\\TraceLog\\QS1RSync_" );
    try
    {
@@ -40,13 +41,22 @@ __fastcall TQRigSyncMain::TQRigSyncMain(TComponent* Owner)
    }
    catch (const Ice::Exception& ex)
    {
+
       trace(std::string("Connection to QS1R failed : ") + ex.what());
-      ShowMessage(ex.what());
+      if (!failSeen)
+      {
+         failSeen = true;
+         ShowMessage(ex.what());
+      }
    }
    catch (const char* msg)
    {
       trace(std::string("Connection to QS1R failed : ") + msg);
-      ShowMessage(msg);
+      if (!failSeen)
+      {
+         failSeen = true;
+         ShowMessage(msg);
+      }
    }
 }
 __fastcall TQRigSyncMain::~TQRigSyncMain()
@@ -127,6 +137,8 @@ void __fastcall TQRigSyncMain::RigSelectButtonClick(TObject *Sender)
 
 void __fastcall TQRigSyncMain::FormShow(TObject *Sender)
 {
+   Top = Screen->Height - Height;
+   Left = (Screen->Width - Width)/2;
 
    OmniRig->Connect();
    RigLabel->Caption = OmniRig->Rig1->RigType;
