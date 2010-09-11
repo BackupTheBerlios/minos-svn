@@ -52,7 +52,7 @@ void __fastcall TContestEntryDetails::StartDateButtonClick(TObject */*Sender*/)
    DateSelectDlg->CalendarDate = test;
    if ( DateSelectDlg->ShowModal() == mrOk )
    {
-	   StartDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yy" );
+	   StartDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yyyy" );
    }
 }
 //---------------------------------------------------------------------------
@@ -72,7 +72,7 @@ void __fastcall TContestEntryDetails::EndDateButtonClick(TObject */*Sender*/)
    DateSelectDlg->CalendarDate = test;
    if ( DateSelectDlg->ShowModal() == mrOk )
    {
-	   EndDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yy" );
+	   EndDateEdit->Text = DateSelectDlg->CalendarDate.FormatString( "dd/mm/yyyy" );
    }
 }
 //---------------------------------------------------------------------------
@@ -166,7 +166,7 @@ void TContestEntryDetails::setDetails(  )
 
    if ( contest->DTGStart.getValue().size() )
    {
-      StartDateEdit->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString("dd/mm/yy");
+      StartDateEdit->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString("dd/mm/yyyy");
       StartTimeCombo->Text = CanonicalToTDT( contest->DTGStart.getValue().c_str() ).FormatString( "hh:nn" );
    }
    else
@@ -176,7 +176,7 @@ void TContestEntryDetails::setDetails(  )
    }
    if ( contest->DTGEnd.getValue().size() )
    {
-      EndDateEdit->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString("dd/mm/yy"); // short date format, hours:minutes
+      EndDateEdit->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString("dd/mm/yyyy"); // short date format, hours:minutes
       EndTimeCombo->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString( "hh:nn" ); // short date format, hours:minutes
    }
    else
