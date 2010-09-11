@@ -274,7 +274,7 @@ Stations entering in this section must use the /P, /A or /M  callsign suffix as 
 <description>Open</description>
 <long_description> This section is for portable stations and multi-operator fixed stations.
 Stations not operating from permanent and substantial buildings located at the main station address as shown on the licence validation document must use the /P, /A or /M suffix as appropriate.
-Entrants may omit the suffix if using a Special Contest Callsign (e.g. G8P) where such callsigns are allowed in a particular the contest by the Licence NOV.
+Entrants may omit the suffix if using a Special Contest Callsign (e.g. G8P) where such callsigns are allowed in a particular contest by the Licence NOV.
 </long_description>
 </section>
 <section>
