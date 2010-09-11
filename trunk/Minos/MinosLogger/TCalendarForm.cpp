@@ -126,7 +126,7 @@ bool TCalendarForm::downloadCalendar(String calendarURL, String dest)
    }
    catch ( Exception & e )
    {
-      ShowMessage( "HTPP Get of " + calendarURL + " failed: " + e.Message );
+      ShowMessage( "Download of calendar " + calendarURL + " failed: " + e.Message );
    }
    return false;
 }
