@@ -91,7 +91,9 @@ static void initClock( void )
 }
 bool TContestApp::initialise()
 {
+   // Force the short date format to be as we expect
 
+   ShortDateFormat = "dd/MM/yyyy";
    // Under Linux/Wine (in particular) the current working directory may not
    // be where expected. So reset it to where it should be
 
