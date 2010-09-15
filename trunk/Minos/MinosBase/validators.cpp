@@ -69,7 +69,7 @@ bool Validator::validate( String str )
          return !allSpaces( str.c_str() );
 
       case vtNumeric:
-         return validNumber( str.c_str(), false, true );
+         return validNumber( str.c_str());
 
       case vtDate:
          {
@@ -150,7 +150,7 @@ bool Validator::validate( String str )
          return true;
 
       case vtSN:
-         if ( validNumber( str.c_str(), false, true ) )
+         if ( validNumber( str.c_str() ) )
          {
             return true;
          }
@@ -194,10 +194,10 @@ bool Validator::validate( String str )
    }
    return false;
 }
-bool Validator::allSpaces( const char *str )
+bool Validator::allSpaces( const std::string &str )
 {
    int i;
-   int n = strlen( str );
+   int n = str.length();
    for ( i = 0; i < n && ( str[ i ] == ' ' ); i++ )
    {}
    if ( i >= n )
@@ -205,16 +205,22 @@ bool Validator::allSpaces( const char *str )
 
    return false;
 }
-bool Validator::validNumber( const char *str, bool zallowed, bool zerror )
+bool Validator::validNumber( const std::string &str, bool trailingAlphaAllowed)
 {
    int i = 0;
-   int maxi = strlen( str );
+   int maxi = str.length();
    bool num_found = false;
    bool space_found = false;
    bool NonZ = false;
+   bool invCharFound = false;
 
+// bool zallowed = false, bool zerror = true )
    for ( i = 0; i < maxi; i++ )
    {
+      if (str[i] != ' ' && !isdigit( str[ i ]))
+      {
+         invCharFound = true;
+      }
       if ( ( num_found ) && ( str[ i ] == ' ' ) )
       {
          space_found = true;
@@ -232,8 +238,18 @@ bool Validator::validNumber( const char *str, bool zallowed, bool zerror )
          num_found = true;
       }
    }
-   if ( num_found && ( NonZ || ( zallowed && !zerror ) ) )
+   if ( num_found && NonZ && !invCharFound )
       return true;
+      
+   if (trailingAlphaAllowed)
+   {
+      std::string S = trim(str);
+      if (isalpha(S[S.length() - 1]))
+      {
+         S = S.substr(0, S.length() - 1);
+         return(validNumber(S));
+      }
+   }
    return false;
 }
 /*static*/bool Validator::validateRST(  String t )
@@ -264,7 +280,7 @@ bool Validator::validNumber( const char *str, bool zallowed, bool zerror )
       }
    }
    if ( picvalid )
-      picvalid = validNumber( t.c_str(), false, true );
+      picvalid = validNumber( t.c_str(), true );
    if ( picvalid )
    {
       // must be more than one digit in a RST

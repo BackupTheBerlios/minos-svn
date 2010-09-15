@@ -99,8 +99,8 @@ enum validatorTypes {vtNone, vtNotEmpty, vtNumeric, vtDate, vtTime, vtCallsign,
 
 class Validator
 {
-      static bool validNumber( const char *S, bool zallowed, bool zerror );
-      static bool allSpaces( const char *S );
+      static bool validNumber( const std::string &S, bool trailingAlphaAllowed = false);
+      static bool allSpaces( const std::string &S );
       bool status;
       validatorTypes vt;
    public:

@@ -496,8 +496,9 @@ bool TGJVEditFrame::doGJVOKButtonClick( TObject *Sender )
       bool pastCurrent = false;
       for ( std::vector <ValidatedControl *>::iterator vcp = vcs.begin(); vcp != vcs.end(); vcp++ )
       {
-         if ( ( *vcp ) ->wc->ReadOnly || !( *vcp ) ->wc->Visible )
+         if ( /*( *vcp ) ->wc->ReadOnly ||*/ !( *vcp ) ->wc->Visible )
          {
+//         #error but if date or time are invalid...
             continue;
          }
          if ( onCurrent )
