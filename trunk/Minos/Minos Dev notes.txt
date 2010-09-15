@@ -1,3 +1,8 @@
+Apache Thrift (http://incubator.apache.org) - cross language RPC server and client code generation
+
+ZeroMQ - serverless comms framework
+
+
 Other points
 ============
 
