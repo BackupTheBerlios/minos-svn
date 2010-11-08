@@ -2,11 +2,12 @@ V1.5 Release notes
 
 2011 calendar
 Date format forced so it will work as UK dates no matter what the OS thinks
+Date and Time taken at end of QSO (not at the start as previously); remove "date now"
 Prettification of bundles
 Operator combos are now larger
 Add next/prior, but no consequential bulk changes
-Catchup and serial numbers - bug
-Archive display - bug
+Catchup and serial numbers - bug fix
+Archive display - bug fix
 HF style prefix handling
 ===========================================================================
 Archive list display - showed G4DDN| IO91PK | RG | RG(20) for G4DDN, IO91PK, RG, 20
