@@ -95,6 +95,35 @@ void TGJVQSOLogFrame::logScreenEntry( )
    MinosLoggerEvents::SendAfterLogContact(ct);
    startNextEntry( );	// select the "next"
 }
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::getScreenContactTime()
+{
+   screenContact.time.setDate( DateLabel->Caption.c_str(), DTGDISP );
+   screenContact.time.setTime( TimeLabel->Caption.c_str(), DTGDISP );
+}
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::showScreenContactTime( ScreenContact &temp )
+{
+   // display the contents of the contest->screenContact
+
+   DateLabel->Caption = temp.time.getDate( DTGDISP ).c_str();
+   TimeLabel->Caption = temp.time.getTime( DTGDISP ).c_str();
+}
+//==============================================================================
+void TGJVQSOLogFrame::checkTimeEditEnter(TLabeledEdit */*tle*/, bool &/*ovr*/)
+{
+
+}
+//==============================================================================
+void TGJVQSOLogFrame::checkTimeEditExit()
+{
+
+}
+//==============================================================================
+bool TGJVQSOLogFrame::isTimeEdit(TLabeledEdit */*tle*/)
+{
+   return false;
+}
 //==============================================================================
 void TGJVQSOLogFrame::logCurrentContact( )
 {
@@ -166,8 +195,6 @@ void TGJVQSOLogFrame::startNextEntry( )
 }
 void TGJVQSOLogFrame::doGJVCancelButtonClick( TObject */*Sender*/ )
 {
-   DateEdit->ReadOnly = true;
-   TimeEdit->ReadOnly = true;
    SerTXEdit->ReadOnly = true;
 
    ScreenContact *temp = 0;
@@ -320,26 +347,14 @@ void TGJVQSOLogFrame::updateQSOTime()
    // If not we wish to show as red
    // We need to do this in log displays as well
 
-   if ( updateTimeAllowed )
-   {
-      static bool tick = true;
-      dtg tnow( true );
-      DateEdit->Color = clBtnFace;
-      TimeEdit->Color = clBtnFace;
-      DateEdit->Text = tnow.getDate( DTGDISP ).c_str();
-      std::string t = tnow.getTime( DTGDISP ) + ( tick ? ':' : ' ' );
-      TimeEdit->Text = t.c_str();
-      tick = !tick;
-   }
-   else
-   {
-      TimeEdit->Text = TimeEdit->Text.SubString( 1, 5 );   // take off any :
-      DateEdit->Color = clWindow;
-      TimeEdit->Color = clWindow;
-   }
+   dtg tnow( true );
+   DateLabel->Caption = tnow.getDate( DTGDISP ).c_str();
+   std::string t = tnow.getTime( DTGDISP );
+   TimeLabel->Caption = t.c_str();
+
    dtg time(false);
-   time.setDate( DateEdit->Text.c_str(), DTGDISP );
-   time.setTime( TimeEdit->Text.SubString(1, 5).c_str(), DTGDISP );
+   time.setDate( DateLabel->Caption.c_str(), DTGDISP );
+   time.setTime( TimeLabel->Caption.SubString(1, 5).c_str(), DTGDISP );
 
    bool timeOK = false;
 
@@ -350,13 +365,13 @@ void TGJVQSOLogFrame::updateQSOTime()
 
    if (timeOK)
    {
-      DateEdit->Font->Color = clWindowText;
-      TimeEdit->Font->Color = clWindowText;
+      DateLabel->Font->Color = clWindowText;
+      TimeLabel->Font->Color = clWindowText;
    }
    else
    {
-      DateEdit->Font->Color = clRed;
-      TimeEdit->Font->Color = clRed;
+      DateLabel->Font->Color = clRed;
+      TimeLabel->Font->Color = clRed;
    }
 }
 //---------------------------------------------------------------------------
@@ -426,6 +441,11 @@ void TGJVQSOLogFrame::refreshOps()
       MainOpComboBox->Text = contest->currentOp1.getValue().c_str();
       SecondOpComboBox->Text = contest->currentOp2.getValue().c_str();
    }
+}
+//---------------------------------------------------------------------------
+void TGJVQSOLogFrame::setDTGNotValid(ScreenContact */*vcct*/)
+{
+// nothing needed
 }
 //---------------------------------------------------------------------------
 

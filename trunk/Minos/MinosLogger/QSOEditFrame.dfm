@@ -8,9 +8,6 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     Height = 193
     ExplicitWidth = 574
     ExplicitHeight = 193
-    inherited TimeEdit: TLabeledEdit
-      Hint = 'Date/Time is read only - double click to modify'
-    end
     inherited GJVOKButton: TButton
       Left = 139
       Top = 149
@@ -20,7 +17,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     inherited GJVForceButton: TButton
       Left = 193
       Top = 149
-      TabOrder = 21
+      TabOrder = 20
       ExplicitLeft = 193
       ExplicitTop = 149
     end
@@ -34,21 +31,16 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       ExplicitTop = 149
       ExplicitWidth = 91
     end
-    inherited DateEdit: TLabeledEdit
-      Hint = 'Date/Time is read only - double click to modify'
-    end
     inherited FirstUnfilledButton: TButton
+      TabOrder = 13
       OnClick = FirstUnfilledButtonClick
     end
-    inherited CatchupButton: TButton
-      TabOrder = 25
-    end
     inherited SecondOpComboBox: TComboBox
-      TabOrder = 23
+      TabOrder = 21
       OnExit = SecondOpComboBoxExit
     end
     inherited MainOpComboBox: TComboBox
-      TabOrder = 24
+      TabOrder = 19
       OnExit = MainOpComboBoxExit
     end
     object InsertBeforeButton: TButton
@@ -57,7 +49,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 90
       Height = 25
       Caption = 'Insert Before'
-      TabOrder = 16
+      TabOrder = 14
       OnClick = InsertBeforeButtonClick
     end
     object InsertAfterButton: TButton
@@ -66,7 +58,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 90
       Height = 25
       Caption = 'Insert After'
-      TabOrder = 17
+      TabOrder = 15
       OnClick = InsertAfterButtonClick
     end
     object PriorButton: TButton
@@ -75,7 +67,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 75
       Height = 25
       Caption = 'Prior'
-      TabOrder = 19
+      TabOrder = 17
       TabStop = False
       OnClick = PriorButtonClick
     end
@@ -85,9 +77,61 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 75
       Height = 25
       Caption = 'Next'
-      TabOrder = 20
+      TabOrder = 18
       TabStop = False
       OnClick = NextButtonClick
+    end
+    object TimeEdit: TLabeledEdit
+      Left = 139
+      Top = 41
+      Width = 46
+      Height = 21
+      Hint = 
+        'Date/Time is read only - double click to modify, or use right mo' +
+        'use button to set to "now"'
+      TabStop = False
+      AutoSelect = False
+      EditLabel.Width = 28
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Time'
+      LabelPosition = lpLeft
+      MaxLength = 5
+      ParentShowHint = False
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 23
+      OnChange = TimeEditChange
+      OnDblClick = TimeEditDblClick
+      OnEnter = EditControlEnter
+      OnExit = EditControlExit
+      OnKeyDown = EditKeyDown
+      OnKeyPress = TimeEditKeyPress
+    end
+    object DateEdit: TLabeledEdit
+      Left = 34
+      Top = 41
+      Width = 64
+      Height = 21
+      Hint = 
+        'Date/Time is read only - double click to modify, or use right mo' +
+        'use button to set to "now"'
+      TabStop = False
+      AutoSelect = False
+      EditLabel.Width = 27
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Date'
+      LabelPosition = lpLeft
+      MaxLength = 10
+      ParentShowHint = False
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 24
+      OnChange = DateEditChange
+      OnDblClick = DateEditDblClick
+      OnEnter = EditControlEnter
+      OnExit = EditControlExit
+      OnKeyDown = EditKeyDown
+      OnKeyPress = GJVEditKeyPress
     end
   end
   object ROFieldTimer: TTimer

@@ -24,7 +24,6 @@ class TGJVEditFrame : public TFrame
       TLabel *ModeLabel;
       TLabel *BrgSt;
       TLabel *DistSt;
-      TLabeledEdit *TimeEdit;
       TLabeledEdit *CallsignEdit;
       TLabeledEdit *RSTTXEdit;
       TLabeledEdit *SerTXEdit;
@@ -37,10 +36,8 @@ class TGJVEditFrame : public TFrame
       TButton *GJVOKButton;
       TButton *GJVForceButton;
       TButton *GJVCancelButton;
-      TLabeledEdit *DateEdit;
       TCheckBox *NonScoreCheckBox;
       TCheckBox *DeletedCheckBox;
-      TButton *TimeNowButton;
       TButton *ModeButton;
       TButton *FirstUnfilledButton;
       TButton *CatchupButton;
@@ -52,32 +49,22 @@ class TGJVEditFrame : public TFrame
       void __fastcall EditControlExit( TObject *Sender );
       void __fastcall EditKeyDown( TObject *Sender, WORD &Key,
                                    TShiftState Shift );
-      void __fastcall DateEditDblClick( TObject *Sender );
-      void __fastcall TimeEditDblClick( TObject *Sender );
-      void __fastcall TimeEditKeyPress( TObject *Sender, char &Key );
       void __fastcall GJVEditKeyPress( TObject *Sender, char &Key );
       void __fastcall SerTXEditDblClick( TObject *Sender );
       void __fastcall GJVEditChange( TObject *Sender );
-      void __fastcall DateEditChange( TObject *Sender );
-      void __fastcall TimeEditChange( TObject *Sender );
       void __fastcall SerTXEditChange( TObject *Sender );
       void __fastcall LocEditChange( TObject *Sender );
-      void __fastcall TimeNowButtonClick(TObject *Sender);
       void __fastcall ModeButtonClick(TObject *Sender);
    private: 	// User declarations
       MinosEventListener  EL_ValidateError;
       void ValidateError_Event ( MinosEventBase & Event );
       ErrorList errs;
 
-      ValidatedControl *dateIl;
-      ValidatedControl *timeIl;
       ValidatedControl *csIl;
       ValidatedControl *rsIl, *ssIl, *rrIl, *srIl;
       ValidatedControl *locIl;
       ValidatedControl *qthIl;
       ValidatedControl *cmntIl;
-
-      std::vector <ValidatedControl *> vcs;
 
       String oldloc;
       bool locValid;
@@ -92,6 +79,8 @@ class TGJVEditFrame : public TFrame
       bool validateControls( validTypes command );
       void contactValid( void );
    protected: 	// User declarations
+      std::vector <ValidatedControl *> vcs;
+
       BaseContestLog * contest;
       bool overstrike;
       TWinControl *current;
@@ -102,9 +91,15 @@ class TGJVEditFrame : public TFrame
       void calcLoc( void );
       void doAutofill( void );
       void fillRst( TLabeledEdit *rIl, std::string &rep, const std::string &mode );
-      void getScreenEntry();
-      void showScreenEntry( );
+      virtual void getScreenEntry();
+      virtual void showScreenEntry( );
+      virtual void getScreenContactTime() = 0;
+      virtual void showScreenContactTime( ScreenContact &) = 0;
+      virtual void checkTimeEditEnter(TLabeledEdit *tle, bool &ovr) = 0;
+      virtual bool isTimeEdit(TLabeledEdit *tle) = 0;
+      virtual void checkTimeEditExit() = 0;
       bool checkLogEntry(bool checkDTG );
+      virtual void setDTGNotValid(ScreenContact *vcct) = 0;
    public: 		// User declarations
       ScreenContact screenContact;  // contact being edited on screen
       BaseContact *selectedContact;   // contact from log list selected
@@ -115,9 +110,8 @@ class TGJVEditFrame : public TFrame
       void setMode( String m );
       void clearCurrentField();
       void lgTraceerr( int err );
-      void setTimeNow();
 
-      void selectField( TWinControl *v );
+      virtual void selectField( TWinControl *v );
       virtual void initialise( BaseContestLog * contest, bool catchup );
       virtual void refreshOps();
       virtual bool doGJVOKButtonClick( TObject *Sender );
@@ -126,6 +120,7 @@ class TGJVEditFrame : public TFrame
       virtual void updateQSOTime() = 0;
       virtual void updateQSODisplay() = 0;
       virtual void closeContest();
+
 };
 //---------------------------------------------------------------------------
 #endif

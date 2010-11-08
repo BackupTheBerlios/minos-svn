@@ -112,7 +112,6 @@ class TLogContainer : public TForm
       TMenuItem *AnalyseMinosLog2;
       TMenuItem *AnalyseMinosLog3;
       TMenuItem *SetTimeToNow1;
-      TAction *SetTimeNowAction;
       TAction *NextContactDetailsOnLeftAction;
       TFileOpen *ListOpen1;
       TMenuItem *OpenList1;
@@ -170,7 +169,6 @@ class TLogContainer : public TForm
       void __fastcall FormResize( TObject *Sender );
       void __fastcall NextUnfilledActionExecute( TObject *Sender );
       void __fastcall FileNewActionExecute( TObject *Sender );
-      void __fastcall SetTimeNowActionExecute( TObject *Sender );
       void __fastcall NextContactDetailsOnLeftActionExecute( TObject *Sender );
       void __fastcall ListOpen1BeforeExecute( TObject *Sender );
       void __fastcall ListOpen1Accept( TObject *Sender );

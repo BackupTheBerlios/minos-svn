@@ -26,6 +26,9 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TButton *BandMapButton;
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
+   TLabel *DateLabel;
+   TLabel *TimeLabel;
+   TLabel *Label1;
       void __fastcall BandMapButtonClick( TObject *Sender );
       void __fastcall CatchupButtonClick(TObject *Sender);
       void __fastcall FirstUnfilledButtonClick(TObject *Sender);
@@ -38,7 +41,13 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void doGJVEditChange( TObject *Sender );
       void logCurrentContact();
       void logScreenEntry( );
-
+   protected:
+      virtual void getScreenContactTime();
+      virtual void showScreenContactTime( ScreenContact &);
+      virtual void checkTimeEditEnter(TLabeledEdit *tle, bool &ovr);
+      virtual void checkTimeEditExit();
+      virtual bool isTimeEdit(TLabeledEdit *tle);
+      virtual void setDTGNotValid(ScreenContact *vcct);
    public: 		// User declarations
       __fastcall TGJVQSOLogFrame( TComponent* Owner );
       __fastcall ~TGJVQSOLogFrame();

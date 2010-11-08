@@ -74,11 +74,6 @@ void MinosLoggerEvents::SendMakeEntry(BaseContestLog *c)
 	ActionEvent1<BaseContestLog *, EN_MakeEntry>::Send(c);
 }
 //---------------------------------------------------------------------------
-void MinosLoggerEvents::SendSetTimeNow(BaseContestLog *c)
-{
-	ActionEvent1<BaseContestLog *,EN_SetTimeNow>::Send(c);
-}
-//---------------------------------------------------------------------------
 void MinosLoggerEvents::SendNextUnfilled(BaseContestLog *c)
 {
 	ActionEvent1<BaseContestLog *, EN_NextUnfilled>::Send(c);

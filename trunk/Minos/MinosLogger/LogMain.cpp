@@ -377,7 +377,6 @@ void TLogContainer::enableActions()
    ContestDetailsAction->Enabled = f;
    GoToSerialAction->Enabled = f;
    MakeEntryAction->Enabled = f;
-   SetTimeNowAction->Enabled = f;
 
    ManageListsAction->Enabled = ( TContestApp::getContestApp() ->getOccupiedListSlotCount() > 0 );
 
@@ -966,14 +965,6 @@ void __fastcall TLogContainer::WmMove( TMessage &/*Msg*/ )
    FormResize( this );
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TLogContainer::SetTimeNowActionExecute( TObject */*Sender*/ )
-{
-   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
-   MinosLoggerEvents::SendSetTimeNow(ct);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TLogContainer::NextContactDetailsOnLeftActionExecute( TObject */*Sender*/ )
 {
    bool ncdol = !isNextContactDetailsOnLeft();

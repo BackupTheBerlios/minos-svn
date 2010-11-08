@@ -57,7 +57,6 @@ class TSingleLogFrame : public TFrame
       TSplitter *LogAreaSplitter;
       TPanel *NextContactDetailsPanel;
       TPopupMenu *EntryChoiceMenu;
-      TMenuItem *SetTimeNow;
       TMenuItem *Go1;
       TTimer *NextContactDetailsTimer;
       TPanel *MatchPanel;
@@ -90,7 +89,6 @@ class TSingleLogFrame : public TFrame
    TComboBox *BandCombo;
    TMenuItem *N1;
    TMenuItem *N2;
-   TMenuItem *N3;
    TMenuItem *N4;
    TImage *Splitter_Image;
    TPanel *ArchiveMatchPanel;
@@ -107,7 +105,6 @@ class TSingleLogFrame : public TFrame
       void __fastcall ThisMatchTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
       void __fastcall LogAreaSplitterMoved( TObject *Sender );
-      void __fastcall SetTimeNowClick( TObject *Sender );
       void __fastcall ThisMatchTreeDblClick( TObject *Sender );
       void __fastcall ThisMatchTreeMouseDown( TObject *Sender, TMouseButton Button,
                                               TShiftState Shift, int X, int Y );
@@ -193,9 +190,6 @@ class TSingleLogFrame : public TFrame
 
       MinosEventListener  EL_MakeEntry;
       void MakeEntry_Event ( MinosEventBase & Event );
-
-      MinosEventListener  EL_SetTimeNow;
-      void SetTimeNow_Event ( MinosEventBase & Event );
 
       MinosEventListener  EL_NextUnfilled;
       void NextUnfilled_Event ( MinosEventBase & Event );

@@ -31,7 +31,6 @@ public:
    static void SendContestDetails(BaseContestLog *);
    static void SendGoToSerial(BaseContestLog *);
    static void SendMakeEntry(BaseContestLog *);
-   static void SendSetTimeNow(BaseContestLog *);
    static void SendNextUnfilled(BaseContestLog *);
    static void SendFormKey(WORD *, BaseContestLog *);
    static void SendSetMode(String, BaseContestLog *);

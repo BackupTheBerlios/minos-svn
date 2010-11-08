@@ -63,68 +63,69 @@ object QSOEditDlg: TQSOEditDlg
       Height = 190
       ExplicitWidth = 580
       ExplicitHeight = 190
-      inherited TimeNowButton: TButton [5]
+      inherited RSTTXEdit: TLabeledEdit [5]
       end
-      inherited ModeButton: TButton [6]
+      inherited CallsignEdit: TLabeledEdit [6]
       end
-      inherited FirstUnfilledButton: TButton [7]
-        TabOrder = 15
+      inherited TimeEdit: TLabeledEdit [7]
+        TabOrder = 22
       end
-      inherited CatchupButton: TButton [8]
-      end
-      inherited SecondOpComboBox: TComboBox [9]
-        TabOrder = 16
-      end
-      inherited MainOpComboBox: TComboBox [10]
-        TabOrder = 17
-      end
-      inherited SerRXEdit: TLabeledEdit [12]
-      end
-      inherited RSTRXEdit: TLabeledEdit [13]
-      end
-      inherited SerTXEdit: TLabeledEdit [14]
-      end
-      inherited RSTTXEdit: TLabeledEdit [15]
-      end
-      inherited CallsignEdit: TLabeledEdit [16]
-      end
-      inherited TimeEdit: TLabeledEdit [17]
-      end
-      inherited GJVCancelButton: TButton [18]
-        TabOrder = 24
+      inherited GJVCancelButton: TButton [8]
+        TabOrder = 20
         OnClick = GJVQSOEditFrame1GJVCancelButtonClick
       end
-      inherited GJVForceButton: TButton [19]
+      inherited GJVForceButton: TButton [9]
         TabOrder = 23
         OnClick = GJVQSOEditFrame1GJVForceButtonClick
       end
-      inherited GJVOKButton: TButton [20]
-        TabOrder = 22
+      inherited GJVOKButton: TButton [10]
+        TabOrder = 21
         OnClick = GJVQSOEditFrame1GJVOKButtonClick
       end
-      inherited DeletedCheckBox: TCheckBox [21]
+      inherited DeletedCheckBox: TCheckBox [11]
       end
-      inherited NonScoreCheckBox: TCheckBox [22]
+      inherited NonScoreCheckBox: TCheckBox [12]
       end
-      inherited DateEdit: TLabeledEdit [23]
+      inherited DateEdit: TLabeledEdit [13]
       end
-      inherited InsertAfterButton: TButton [24]
+      inherited InsertAfterButton: TButton [14]
+        TabOrder = 16
+      end
+      inherited NextButton: TButton [15]
         TabOrder = 19
       end
-      inherited NextButton: TButton [25]
-        TabOrder = 21
+      inherited PriorButton: TButton [16]
       end
-      inherited PriorButton: TButton [26]
-        TabOrder = 20
+      inherited SerTXEdit: TLabeledEdit [17]
       end
-      inherited InsertBeforeButton: TButton
+      inherited ModeComboBoxGJV: TComboBox [18]
+      end
+      inherited CommentsEdit: TLabeledEdit [19]
+      end
+      inherited QTHEdit: TLabeledEdit [20]
+      end
+      inherited RSTRXEdit: TLabeledEdit [21]
+      end
+      inherited SerRXEdit: TLabeledEdit [22]
+      end
+      inherited MainOpComboBox: TComboBox
+        TabOrder = 14
+      end
+      inherited SecondOpComboBox: TComboBox [24]
         TabOrder = 18
       end
-      inherited ModeComboBoxGJV: TComboBox [28]
+      inherited CatchupButton: TButton [25]
+        TabOrder = 13
       end
-      inherited CommentsEdit: TLabeledEdit [29]
+      inherited FirstUnfilledButton: TButton [26]
+        TabOrder = 12
       end
-      inherited QTHEdit: TLabeledEdit [30]
+      inherited ModeButton: TButton [27]
+      end
+      inherited LocEdit: TLabeledEdit [28]
+      end
+      inherited InsertBeforeButton: TButton [29]
+        TabOrder = 15
       end
     end
   end

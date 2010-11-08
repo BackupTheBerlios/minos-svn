@@ -31,6 +31,8 @@ void TGJVQSOEditFrame::updateQSODisplay()
 {
    TGJVEditFrame::updateQSODisplay();
 
+   DateEdit->Enabled = !contest->isReadOnly();
+   TimeEdit->Enabled = !contest->isReadOnly();
    CallsignEdit->Enabled = !contest->isReadOnly();
    LocEdit->Enabled = !contest->isReadOnly();
    QTHEdit->Enabled = !contest->isReadOnly();
@@ -190,7 +192,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
    {
       FirstUnfilledButton->Visible = true;
    }
-   updateTimeAllowed = false;   // whatever the time says, leave it alone
+//   updateTimeAllowed = false;   // whatever the time says, leave it alone
 
    screenContact.copyFromArg( *slct );
    showScreenEntry();
@@ -286,6 +288,10 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
    screenContact.op1 = MainOpComboBox->Text.c_str();
    screenContact.op2 = SecondOpComboBox->Text.c_str();
    bool unfilled = screenContact.contactFlags & TO_BE_ENTERED ;
+
+   DateEdit->ReadOnly = !catchup;
+   TimeEdit->ReadOnly = !catchup;
+
    bool OKok = TGJVEditFrame::doGJVOKButtonClick( Sender );
    if ( OKok && unfilled )
    {
@@ -316,6 +322,36 @@ void TGJVQSOEditFrame::doGJVEditChange( TObject *Sender )
       // force bearing calc
       calcLoc();
    }
+}
+//---------------------------------------------------------------------------
+void TGJVQSOEditFrame::getScreenContactTime()
+{
+   screenContact.time.setDate( DateEdit->Text.c_str(), DTGDISP );
+   screenContact.time.setTime( TimeEdit->Text.c_str(), DTGDISP );
+}
+//---------------------------------------------------------------------------
+void TGJVQSOEditFrame::showScreenContactTime( ScreenContact &temp )
+{
+   // display the contents of the contest->screenContact
+
+   DateEdit->Text = temp.time.getDate( DTGDISP ).c_str();
+   TimeEdit->Text = temp.time.getTime( DTGDISP ).c_str();
+}
+//==============================================================================
+void TGJVQSOEditFrame::checkTimeEditEnter(TLabeledEdit *tle, bool &ovr)
+{
+   if ( tle == DateEdit || tle == TimeEdit )
+   {
+      ovr = true;
+   }
+
+}
+//==============================================================================
+void TGJVQSOEditFrame::checkTimeEditExit()
+{
+   bool tbe = screenContact.contactFlags & TO_BE_ENTERED;
+   DateEdit->ReadOnly = !catchup && !tbe;
+   TimeEdit->ReadOnly = !catchup && !tbe;
 }
 //==============================================================================
 
@@ -355,6 +391,10 @@ void __fastcall TGJVQSOEditFrame::ROFieldTimerTimer( TObject */*Sender*/ )
 void TGJVQSOEditFrame::initialise( BaseContestLog * contest, bool bf )
 {
    TGJVEditFrame::initialise(contest, /*edScreen,*/ bf);
+   dateIl = new ValidatedControl( DateEdit, vtDate );
+   vcs.push_back( dateIl );
+   timeIl = new ValidatedControl( TimeEdit, vtTime );
+   vcs.push_back( timeIl );
 }
 //---------------------------------------------------------------------------
 
@@ -390,4 +430,167 @@ void __fastcall TGJVQSOEditFrame::SecondOpComboBoxExit(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TGJVQSOEditFrame::TimeEditDblClick(TObject */*Sender*/)
+{
+   if ( contest->isReadOnly() )
+   {
+      return ;
+   }
+   updateTimeAllowed = false;
+   updateQSOTime();
+   TimeEdit->ReadOnly = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOEditFrame::DateEditDblClick(TObject */*Sender*/)
+{
+   if ( contest->isReadOnly() )
+   {
+      return ;
+   }
+   SerTXEdit->ReadOnly = false;
+   SerTXEdit->Color = clWindow;
+}
+//---------------------------------------------------------------------------
+bool TGJVQSOEditFrame::isTimeEdit(TLabeledEdit */*tle*/)
+{
+   return false;
+}
+//---------------------------------------------------------------------------
+void __fastcall TGJVQSOEditFrame::TimeEditKeyPress(TObject *Sender, char &Key)
+{
+   if ( Key == '+' || Key == '-' )
+   {
+      dtg thisdtg( false );
+      thisdtg.setDate( DateEdit->Text.c_str(), DTGDISP );
+      thisdtg.setTime( TimeEdit->Text.c_str(), DTGDISP );
+      time_t contactTime;
+      thisdtg.getDtg( contactTime );
+      if ( Key == '+' )
+      {
+         contactTime += 60;
+      }
+      else
+         if ( Key == '-' )
+         {
+            contactTime -= 60;
+         }
+      thisdtg.setDtg( contactTime );
+      DateEdit->Text = thisdtg.getDate( DTGDISP ).c_str();
+      TimeEdit->Text = thisdtg.getTime( DTGDISP ).c_str();
+   }
+   GJVEditKeyPress( Sender, Key );
+   if ( Key == '+' || Key == '-' )
+   {
+      Key = 0;
+   }
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOEditFrame::DateEditChange(TObject */*Sender*/)
+{
+   if ( updateTimeAllowed || contest->isReadOnly() )
+   {
+      return ;
+   }
+   DateEdit->ReadOnly = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TGJVQSOEditFrame::TimeEditChange(TObject */*Sender*/)
+{
+   if ( updateTimeAllowed || contest->isReadOnly() )
+   {
+      return ;
+   }
+   TimeEdit->ReadOnly = false;
+}
+//---------------------------------------------------------------------------
+void TGJVQSOEditFrame::selectField( TWinControl *v )
+{
+   int dtgne = -1;
+
+   if ( catchup )
+   {
+      dtgne = screenContact.time.notEntered();
+   }
+
+   if ( v == 0 )
+   {
+      if ( contest->isReadOnly() )
+      {
+         v = CallsignEdit;
+      }
+      else
+         if ( catchup )
+         {
+            v = ( ( dtgne != -1 ) && ( dtgne <= 1 ) ) ? DateEdit : TimeEdit;
+         }
+         else
+            if ( screenContact.contactFlags & TO_BE_ENTERED )
+               v = TimeEdit;
+            else
+               v = CallsignEdit;
+
+   }
+   if ( !v || ( current == v ) )
+   {
+      if (v)
+         v->SetFocus();
+      return ;
+   }
+
+   if ( ( current == CallsignEdit ) || ( current == LocEdit ) )
+   {
+      valid( cmCheckValid ); // make sure all single and cross field
+      doAutofill();
+   }
+
+   if ( v == TimeEdit )
+   {
+      ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
+      ( ( TLabeledEdit * ) v ) ->Color = clWindow;
+      if (dtgne == 0 || dtgne == 1)
+      {
+         TimeEdit->SelStart = 0;
+         TimeEdit->SelLength = 1;
+      }
+   }
+   if ( v == DateEdit )
+   {
+      ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
+      ( ( TLabeledEdit * ) v ) ->Color = clWindow;
+      if (dtgne == 0 || dtgne == 2)
+      {
+         DateEdit->SelStart = 0;
+         DateEdit->SelLength = 1;
+      }
+   }
+   if ( v == SerTXEdit )
+   {
+      ( ( TLabeledEdit * ) v ) ->ReadOnly = false;
+      ( ( TLabeledEdit * ) v ) ->Color = clWindow;
+   }
+   if ( v->Enabled )
+   {
+      v->SetFocus();
+      current = v;
+   }
+   MinosLoggerEvents::SendShowErrorList();
+}
+//---------------------------------------------------------------------------
+void TGJVQSOEditFrame::setDTGNotValid(ScreenContact *vcct)
+{
+   // date
+   // time
+   int tne = vcct->time.notEntered(); // partial dtg will give fe
+   // full dtg gives -ve, none gives 0
+   if ( tne == 1 )
+      dateIl->tIfValid = false;
+   if ( tne == 2 )
+      timeIl->tIfValid = false;
+}
+//---------------------------------------------------------------------------
 

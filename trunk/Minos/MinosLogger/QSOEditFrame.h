@@ -26,6 +26,8 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       TButton *PriorButton;
       TButton *NextButton;
       TTimer *ROFieldTimer;
+   TLabeledEdit *TimeEdit;
+   TLabeledEdit *DateEdit;
       void __fastcall InsertBeforeButtonClick( TObject *Sender );
       void __fastcall InsertAfterButtonClick( TObject *Sender );
       void __fastcall FirstUnfilledButtonClick( TObject *Sender );
@@ -34,7 +36,21 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       void __fastcall ROFieldTimerTimer( TObject *Sender );
    void __fastcall MainOpComboBoxExit(TObject *Sender);
    void __fastcall SecondOpComboBoxExit(TObject *Sender);
+   void __fastcall TimeEditDblClick(TObject *Sender);
+   void __fastcall DateEditDblClick(TObject *Sender);
+   void __fastcall TimeEditKeyPress(TObject *Sender, char &Key);
+   void __fastcall DateEditChange(TObject *Sender);
+   void __fastcall TimeEditChange(TObject *Sender);
+   protected:
+      virtual void getScreenContactTime();
+      virtual void showScreenContactTime( ScreenContact &);
+      virtual void checkTimeEditEnter(TLabeledEdit *tle, bool &ovr);
+      virtual void checkTimeEditExit();
+      virtual bool isTimeEdit(TLabeledEdit *tle);
+      virtual void setDTGNotValid(ScreenContact *vcct);
    private: 	// User declarations
+      ValidatedControl *dateIl;
+      ValidatedControl *timeIl;
       void killPartial( void );
       void doGJVEditChange( TObject *Sender );
       void logCurrentContact( );
@@ -49,6 +65,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       void doGJVCancelButtonClick( TObject *Sender );
       virtual void updateQSOTime();
       virtual void updateQSODisplay();
+      virtual void selectField( TWinControl *v );
 };
 //---------------------------------------------------------------------------
 #endif

@@ -38,7 +38,6 @@ object LogContainer: TLogContainer
     OnDrawTab = ContestPageControlDrawTab
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
-    ExplicitHeight = 427
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -65,7 +64,6 @@ object LogContainer: TLogContainer
     UseSystemFont = False
     OnDblClick = CorrectDateTimeActionExecute
     OnResize = StatusBar1Resize
-    ExplicitTop = 427
   end
   object ActionManager: TActionManager
     ActionBars = <
@@ -382,10 +380,6 @@ object LogContainer: TLogContainer
       Caption = 'Create New Contest...'
       OnExecute = FileNewActionExecute
     end
-    object SetTimeNowAction: TAction
-      Caption = 'Set Time To Now'
-      OnExecute = SetTimeNowActionExecute
-    end
     object NextContactDetailsOnLeftAction: TAction
       Caption = 'Next Contact Details On Left'
       OnExecute = NextContactDetailsOnLeftActionExecute
@@ -472,7 +466,7 @@ object LogContainer: TLogContainer
       Caption = '-'
     end
     object SetTimeToNow1: TMenuItem
-      Action = SetTimeNowAction
+      Caption = 'Set Time To Now'
     end
     object GoToSerial1: TMenuItem
       Action = GoToSerialAction

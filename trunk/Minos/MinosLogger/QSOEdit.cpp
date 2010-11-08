@@ -224,6 +224,8 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrame1GJVForceButtonClick(
 {
    if ( GJVQSOEditFrame->doGJVForceButtonClick( Sender ) )
    {
+      GJVQSOEditFrame->DateEdit->ReadOnly = !catchup;
+      GJVQSOEditFrame->TimeEdit->ReadOnly = !catchup;
       if (catchup)
       {
          LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );

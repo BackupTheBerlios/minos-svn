@@ -312,7 +312,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -340,6 +340,12 @@ object SingleLogFrame: TSingleLogFrame
             Height = 154
             ExplicitWidth = 584
             ExplicitHeight = 154
+            inherited GJVCancelButton: TButton
+              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
+            end
+            inherited GJVForceButton: TButton
+              OnClick = GJVQSOLogFrame1GJVForceButtonClick
+            end
             inherited MatchXferButton: TBitBtn
               OnClick = GJVQSOLogFrame1MatchXferButtonClick
             end
@@ -353,15 +359,6 @@ object SingleLogFrame: TSingleLogFrame
               inherited AutoBandmapTime: TCheckBox
                 OnClick = AutoBandmapTimeClick
               end
-            end
-            inherited GJVForceButton: TButton
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited GJVCancelButton: TButton
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited TimeNowButton: TButton
-              OnClick = SetTimeNowClick
             end
           end
         end
@@ -550,13 +547,6 @@ object SingleLogFrame: TSingleLogFrame
       Action = LogContainer.AnalyseMinosLogAction
     end
     object N2: TMenuItem
-      Caption = '-'
-    end
-    object SetTimeNow: TMenuItem
-      Caption = 'Set Time to Now'
-      OnClick = SetTimeNowClick
-    end
-    object N3: TMenuItem
       Caption = '-'
     end
     object Go1: TMenuItem

@@ -72,7 +72,6 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
       EL_ContestDetails ( EN_ContestDetails, & ContestDetails_Event ),
       EL_GoToSerial ( EN_GoToSerial, & GoToSerial_Event ),
       EL_MakeEntry ( EN_MakeEntry, & MakeEntry_Event ),
-      EL_SetTimeNow ( EN_SetTimeNow, & SetTimeNow_Event ),
       EL_NextUnfilled ( EN_NextUnfilled, & NextUnfilled_Event ),
       EL_FormKey ( EN_FormKey, & FormKey_Event ),
       EL_SetMode ( EN_SetMode, & SetMode_Event ),
@@ -1137,23 +1136,6 @@ void __fastcall TSingleLogFrame::AutoBandmapTuneClick( TObject */*Sender*/ )
 void __fastcall TSingleLogFrame::AutoBandmapTimeClick( TObject */*Sender*/ )
 {
    TContestApp::getContestApp() ->displayBundle.setBoolProfile( edpAutoBandMapTime, GJVQSOLogFrame->AutoBandmapTime->Checked );
-}
-//---------------------------------------------------------------------------
-void TSingleLogFrame::SetTimeNow_Event ( MinosEventBase & Event )
-{
-   ActionEvent1<BaseContestLog *, EN_SetTimeNow> & S = dynamic_cast<ActionEvent1<BaseContestLog *, EN_SetTimeNow> &> ( Event );
-   BaseContestLog *ct = S.getData();
-
-   if (ct == contest)
-   {
-      SetTimeNowClick(0);
-
-   }
-}
-//---------------------------------------------------------------------------
-void __fastcall TSingleLogFrame::SetTimeNowClick( TObject */*Sender*/ )
-{
-   GJVQSOLogFrame->setTimeNow();
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::FormKey_Event( MinosEventBase & Event)

@@ -25,7 +25,6 @@ enum MinosEventNumber
    EN_ContestDetails,
    EN_GoToSerial,
    EN_MakeEntry,
-   EN_SetTimeNow,
    EN_NextUnfilled,
    EN_FormKey,
    EN_SetMode,
