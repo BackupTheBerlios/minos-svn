@@ -176,5 +176,6 @@ extern TDateTime localToUTC( TDateTime t );
 extern void setYear( int y );
 extern int getMonth( const std::string &m );
 extern int getDate( int month, int day, int week );
+extern int getDayOfWeek( TDateTime dtg );
 
 #endif

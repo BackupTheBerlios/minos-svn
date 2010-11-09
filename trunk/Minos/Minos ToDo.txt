@@ -10,6 +10,16 @@ Catchup and serial numbers - bug fix
 Archive display - bug fix
 HF style prefix handling
 ===========================================================================
+Extend DST dates beyond 2012; we need to find a way of getting the last xxx of a month
+Try month after week 1 day 6+1 and then - 7 days ?
+===========================================================================
+Does Pete allow for day 6-1? I think he has 6+4 or some such somewhere in HF
+80m CW Sprint - 
+    <month_list>Sep</month_list>
+     <month_list>Nov</month_list>
+     <start_day>4+13</start_day>
+     <start_week>2</start_week>
+===========================================================================
 Archive list display - showed G4DDN| IO91PK | RG | RG(20) for G4DDN, IO91PK, RG, 20
 ===========================================================================
 M0XDF running under Wine:

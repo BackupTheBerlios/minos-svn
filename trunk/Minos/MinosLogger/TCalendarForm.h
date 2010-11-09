@@ -43,7 +43,7 @@ class TCalendarForm : public TForm
    void __fastcall YearDownButtonClick(TObject *Sender);
    void __fastcall YearUpButtonClick(TObject *Sender);
    private: 	// User declarations
-      bool downloadCalendar(String URL, String dest);
+      bool downloadCalendar(String URL, String dest, bool showError);
    public: 		// User declarations
       __fastcall TCalendarForm( TComponent* Owner );
       Calendar vhf;

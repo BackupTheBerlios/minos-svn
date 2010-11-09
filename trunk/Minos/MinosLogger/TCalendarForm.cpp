@@ -16,7 +16,7 @@
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
-      : TForm( Owner ), vhf(2010)
+      : TForm( Owner ), vhf(2011)
 {
    TDateTime tnow = TDateTime::CurrentDateTime();
    YearEdit->Text = tnow.FormatString("yyyy");
@@ -34,7 +34,11 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    bool loaded = false;
 
    #warning can we automate calendar years depending on configured and present files/URLs?
-   if (year > 2010)
+   if (year > 2011)
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests12.xml" );
+   }
+   if (year == 2011)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests11.xml" );
    }
@@ -111,7 +115,7 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
-bool TCalendarForm::downloadCalendar(String calendarURL, String dest)
+bool TCalendarForm::downloadCalendar(String calendarURL, String dest, bool showError)
 {
    try
    {
@@ -126,7 +130,10 @@ bool TCalendarForm::downloadCalendar(String calendarURL, String dest)
    }
    catch ( Exception & e )
    {
-      ShowMessage( "Download of calendar " + calendarURL + " failed: " + e.Message );
+      if (showError)
+      {
+         ShowMessage( "Download of calendar " + calendarURL + " failed: " + e.Message );
+      }
    }
    return false;
 }
@@ -142,10 +149,11 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
    String fpath = ExtractFilePath( appFName );
 
    #warning we want these URLs to be configurable
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml");
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml");
+//   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
+//   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml", true);
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml", true);
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests12.xml", fpath + "Configuration\\vhfcontests12.xml", false);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
@@ -166,11 +174,11 @@ void __fastcall TCalendarForm::CalendarGridDblClick( TObject * /*Sender*/ )
 
 void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 {
-   int year = YearEdit->Text.ToIntDef(2010);
+   int year = YearEdit->Text.ToIntDef(2011);
    year -= 1;
    if (year < 2008)
    {
-      year = 2011;
+      year = 2012;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
@@ -179,9 +187,9 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 
 void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
-   int year = YearEdit->Text.ToIntDef(2010);
+   int year = YearEdit->Text.ToIntDef(2011);
    year += 1;
-   if (year > 2011)
+   if (year > 2012)
    {
       year = 2008;
    }

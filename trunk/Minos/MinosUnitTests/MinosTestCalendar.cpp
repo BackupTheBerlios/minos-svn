@@ -90,7 +90,7 @@ void CalendarTestParams::testContests()
    CPPUNIT_ASSERT_EQUAL( true, loaded );
 
    int nc = vhf.contests.size();
-   CPPUNIT_ASSERT_EQUAL( 29, nc );
+   CPPUNIT_ASSERT_EQUAL( 33, nc );
 
    std::string lp144( "lp144" );
    Contest &qrp144 = vhf.contests[ lp144 ];
@@ -157,4 +157,32 @@ void CalendarTestParams::testContests2009()
    CPPUNIT_ASSERT_EQUAL( lp144, qrp144.name );
 
 }
+int fsun(int month)
+{
+   int fSunday = getDate(month, 7, 1);    // month, day, week
+   return fSunday;
+}
+void CalendarTestParams::testBST()
+{
+   for (int i = 0; i < 40; i++)
+   {
+      setYear(2005 + i);
+      {
+         int fs = fsun(4);
+         int lsMarch = fs + 31 - 7;
+         TDateTime t(2005 + i, 3, lsMarch);
+         int dow = getDayOfWeek(t);
+         CPPUNIT_ASSERT_EQUAL( 7, dow );
+         CPPUNIT_ASSERT_EQUAL( true, dow >= 1 && dow <= 7);
+      }
+      {
+         int fs = fsun(11);
+         int lsOct = fs + 31 - 7;
+         TDateTime t(2005 + i, 10, lsOct);
+         int dow = getDayOfWeek(t);
+         CPPUNIT_ASSERT_EQUAL( 7, dow );
+         CPPUNIT_ASSERT_EQUAL( true, dow >= 1 && dow <= 7);
+      }
+   }
 
+}

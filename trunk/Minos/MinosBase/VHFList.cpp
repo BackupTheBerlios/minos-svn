@@ -74,11 +74,20 @@ int getDayOfWeek( TDateTime dtg )
 }
 int getDate( int month, int day, int week )
 {
+   // Day 1 is Monday
+
    // day 6 week 1 means "first Saturday of the month"
    // and day 2 week 1 means "first Tuesday of the month".
    // week 2 day 2 would mean "2nd Tuesday of the month".
    // day 6+1 is Sunday after Saturday
+
+   // day 1+3 week 3 is  Thursday after 3rd Monday
+
+   // Sept 2010 day 4+13 week 2 is 13 days after 2nd Thursday (Sep 22 2010)
+
    // return the date of the month/day/week
+
+
    TDateTime startMonth( curYear, month, 1 );
    int dw = getDayOfWeek( startMonth ) - 1;    // make it 0 based
 
@@ -114,19 +123,9 @@ last Sundays in March and October respectively. These dates are in line with
 those already operating in the United Kingdom. The 9th Directive provides
 that these start and end dates should apply indefinitely.
 */
-// years 2006, 7, 8, 9, 10, 11, 12
-int DSTStart[ 7 ] = {26, 25, 30, 29, 28, 27, 25};
-int DSTEnd[ 7 ] = {29, 28, 26, 25, 31, 30, 28};
 
 TDateTime localToUTC( TDateTime t )
 {
-   /*
-      void __fastcall DecodeDate(unsigned short* year, unsigned short*
-           month, unsigned short* day) const;
-      void __fastcall DecodeTime(unsigned short* hour, unsigned short*
-           min, unsigned short* sec, unsigned short* msec) const;
-
-   */
    unsigned short year;
    unsigned short month;
    unsigned short day;
@@ -139,30 +138,29 @@ TDateTime localToUTC( TDateTime t )
    t.DecodeTime( &hour, &min, &sec, &msec );
 
    bool isDst = false;
-
-   unsigned int yoffset = year - 2006;          // base year for DST figures
-
-   if ( year < 2006 || yoffset >= sizeof( DSTStart ) / sizeof( int ) )
-   {
-      static dstShown = 0;
-      if (dstShown != calendarYear)
-         ShowMessage( "DST conversions only currently defined from 2006 until 2012!" );
-      dstShown = calendarYear;
-      return t;
-   }
    if ( month > 3 && month < 10 )
    {
       isDst = true;
    }
    else
-      if ( month == 3 && day >= DSTStart[ yoffset ] )
+      if ( month == 3)
       {
-         isDst = true;
-      }
-      else
-         if ( month == 10 && day < DSTEnd[ yoffset ] )
+         int fSundayApril = getDate(4, 7, 1);
+         int lsM = fSundayApril + 31 - 7 ;
+         if (day >= lsM )
          {
             isDst = true;
+         }
+      }
+      else
+         if ( month == 10)
+         {
+            int fSundayNovember = getDate(11, 7, 1);
+            int lsO = fSundayNovember + 31 - 7 ;
+            if ( day < lsO )
+            {
+               isDst = true;
+            }
          }
    if ( isDst )
    {
@@ -414,7 +412,7 @@ bool Calendar::parseFile( const std::string &fname )
 
                   // NB - band list overrides time list!
                   // Logic here won't cope with a full calendar, but is OK for VHFCC
-
+/*
                   std::string startWeek;
                   std::string startDay;
                   std::string startTime;
@@ -474,6 +472,71 @@ bool Calendar::parseFile( const std::string &fname )
                      istartDate++;
                      istartDay++;
                   }
+  */
+                  std::string startWeek;
+                  std::string startDay;
+                  std::string startTime;
+                  std::string timeType;
+                  std::string duration;
+
+                  ContestBand &blst = bands[ ( *bl ).name ];
+                  if ( blst.timeList.size() )
+                  {
+                     TimeList & b = blst.timeList[ 0 ];
+
+                     startWeek = b.startWeek;
+                     startDay = b.startDay;
+                     startTime = b.startTime;
+                     duration = b.duration;
+                     timeType = b.timeType;
+                  }
+                  else
+                  {
+                     startWeek = ( *tl ).startWeek;
+                     startDay = ( *tl ).startDay;
+                     startTime = ( *tl ).startTime;
+                     duration = ( *tl ).duration;
+                     timeType = ( *tl ).timeType;
+                  }
+
+
+                  std::string startday1 = startDay;
+                  std::string startday2;
+                  int istartday1, istartday2;
+
+                  unsigned int ppos = startDay.find("+");
+                  if (ppos != std::string::npos)
+                  {
+                     startday1 = startDay.substr(0, ppos);
+                     startday2 = startDay.substr(ppos + 1, startDay.size());
+                     istartday1 = atoi(startday1.c_str());
+                     istartday2 = atoi(startday2.c_str());
+                  }
+                  else
+                  {
+                     istartday1 = atoi(startday1.c_str());
+                     istartday2 = 0;
+                  }
+                  if (istartday1 == 0)
+                  {
+                     continue;
+                  }
+
+                  int istartWeek = atoi( startWeek.c_str() );
+                  if ( istartWeek == 0 )
+                  {
+                     continue;
+                  }
+
+
+                  //               std::string bstartWeek = (*bl).startWeek; // or iterate its timeList
+                  int istartDate = getDate( sm, istartday1, istartWeek );
+                  if ( istartDate == 0 )
+                  {
+                     continue;
+                  }
+
+                  istartDate += istartday2;
 
                   IndividualContest ic;
 
