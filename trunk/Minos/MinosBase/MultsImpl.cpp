@@ -900,4 +900,20 @@ int MultListsImpl::getDistListIndexOf( DistrictEntry *e )
 {
    return distList.indexOf( e );
 }
+bool MultListsImpl::isUKprefix(const callsign &cs)
+{
+   CountryEntry *ctry = findCtryPrefix( cs );
+   if (!ctry)
+   {
+      return false;
+   }
+   for (unsigned int i = 0; i < sizeof(distCounts)/sizeof(DistCount); i++)
+   {
+      if (stricmp(ctry->basePrefix, distCounts[i].prefix ) == 0)
+      {
+         return true;
+      }
+   }
+	return false;
+}
 

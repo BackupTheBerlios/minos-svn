@@ -329,55 +329,59 @@ void DisplayContestContact::check( )
       }
    }
 
-   // now look at the locator list
-   TEMPBUFF( letters, 3 );
-   TEMPBUFF( numbers, 3 );
-
-   std::string sloc = loc.loc.getValue();
-   letters[ 0 ] = sloc[ 0 ];
-   letters[ 1 ] = sloc[ 1 ];
-   letters[ 2 ] = 0;
-
-   numbers[ 0 ] = sloc[ 2 ];
-   numbers[ 1 ] = sloc[ 3 ];
-   numbers[ 2 ] = 0;
-
-   int lsi;
-
-   LocSquare *ls = 0;
-
-   for ( LocSquareIterator i = clp->locs.llist.begin(); i != clp->locs.llist.end(); i++ )
+#warning TO TO check for GLocMult here
+   if (!clp->GLocMult.getValue() || cs.isUK())
    {
-      if ( strncmpi( ( *i ) ->loc, letters, 2 ) == 0 )
-      {
-         ls = ( *i );
-         break;
-      }
-   }
+      // now look at the locator list
+      TEMPBUFF( letters, 3 );
+      TEMPBUFF( numbers, 3 );
 
-   if ( !ls )
-   {
-      if ( isalpha( letters[ 0 ] ) && isalpha( letters[ 1 ] ) )
-      {
-         ls = new LocSquare( letters );
-         clp->locs.llist.insert( ls );
-      }
-   }
+      std::string sloc = loc.loc.getValue();
+      letters[ 0 ] = sloc[ 0 ];
+      letters[ 1 ] = sloc[ 1 ];
+      letters[ 2 ] = 0;
 
-   if ( ls )
-   {
-      unsigned char * npt = ls->map( numbers );
-      if ( npt )
+      numbers[ 0 ] = sloc[ 2 ];
+      numbers[ 1 ] = sloc[ 3 ];
+      numbers[ 2 ] = 0;
+
+      int lsi;
+
+      LocSquare *ls = 0;
+
+      for ( LocSquareIterator i = clp->locs.llist.begin(); i != clp->locs.llist.end(); i++ )
       {
-         if ( QSOValid && ( *npt < 255 ) )
+         if ( strncmpi( ( *i ) ->loc, letters, 2 ) == 0 )
          {
-            if ( ( *npt ) ++ == 0 )
+            ls = ( *i );
+            break;
+         }
+      }
+
+      if ( !ls )
+      {
+         if ( isalpha( letters[ 0 ] ) && isalpha( letters[ 1 ] ) )
+         {
+            ls = new LocSquare( letters );
+            clp->locs.llist.insert( ls );
+         }
+      }
+
+      if ( ls )
+      {
+         unsigned char * npt = ls->map( numbers );
+         if ( npt )
+         {
+            if ( QSOValid && ( *npt < 255 ) )
             {
-               clp->nlocs++;
-               if ( clp->locMult.getValue() )
+               if ( ( *npt ) ++ == 0 )
                {
-                  multCount++;
-                  newLoc = true;
+                  clp->nlocs++;
+                  if ( clp->locMult.getValue() )
+                  {
+                     multCount++;
+                     newLoc = true;
+                  }
                }
             }
          }

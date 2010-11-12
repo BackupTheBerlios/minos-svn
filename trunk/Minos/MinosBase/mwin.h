@@ -218,6 +218,7 @@ class callsign
       ~callsign();
 
       char validate( );
+      bool isUK() const;
 };
 //---------------------------------------------------------------------------
 class locator

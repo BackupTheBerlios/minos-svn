@@ -319,6 +319,7 @@ class MultListsImpl: public MultLists
       virtual CountryEntry * getCtryListAt( int index );
       virtual int getCtryListIndexOf( CountryEntry * );
       virtual int getDistListIndexOf( DistrictEntry * );
+      virtual bool isUKprefix(const callsign &cs);
 
 };
 #endif

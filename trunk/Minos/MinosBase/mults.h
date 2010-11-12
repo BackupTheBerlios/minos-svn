@@ -179,5 +179,6 @@ class MultLists
       virtual CountryEntry * getCtryListAt( int index ) = 0;
       virtual int getCtryListIndexOf( CountryEntry * ) = 0;
       virtual int getDistListIndexOf( DistrictEntry * ) = 0;
+      virtual bool isUKprefix(const callsign &cs) = 0;
 };
 #endif

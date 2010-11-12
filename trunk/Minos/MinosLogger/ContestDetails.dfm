@@ -103,7 +103,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 5
   end
   object CallsignEdit: TLabeledEdit
@@ -153,14 +153,14 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object MultGroupBox: TGroupBox
     Left = 434
-    Top = 405
+    Top = 384
     Width = 249
-    Height = 97
+    Height = 126
     Caption = 'Multipliers and Exchange'
     TabOrder = 17
     object DXCCMult: TCheckBox
       Left = 16
-      Top = 19
+      Top = 28
       Width = 177
       Height = 17
       Caption = 'DXCC Multiplier'
@@ -168,7 +168,7 @@ object ContestEntryDetails: TContestEntryDetails
     end
     object LocatorMult: TCheckBox
       Left = 16
-      Top = 40
+      Top = 49
       Width = 193
       Height = 17
       Caption = 'Locator Multiplier'
@@ -176,7 +176,7 @@ object ContestEntryDetails: TContestEntryDetails
     end
     object ExchangeComboBox: TComboBox
       Left = 16
-      Top = 63
+      Top = 96
       Width = 230
       Height = 21
       Style = csDropDownList
@@ -189,6 +189,14 @@ object ContestEntryDetails: TContestEntryDetails
         'PostCode Multipliers'
         'Other Exchange Multiplier'
         'Exchange Required (no multiplier)')
+    end
+    object GLocMult: TCheckBox
+      Left = 16
+      Top = 70
+      Width = 97
+      Height = 17
+      Caption = 'G Locs only'
+      TabOrder = 3
     end
   end
   object OptionsGroupBox: TGroupBox
@@ -278,6 +286,8 @@ object ContestEntryDetails: TContestEntryDetails
       ExplicitTop = 53
       ExplicitHeight = 40
       inherited Panel1: TPanel
+        Height = 40
+        ExplicitHeight = 40
         inherited BundleSection: THistoryComboBox
           OnChange = BundleFrameBundleSectionChange
         end
@@ -297,6 +307,8 @@ object ContestEntryDetails: TContestEntryDetails
       ExplicitTop = 53
       ExplicitHeight = 40
       inherited Panel1: TPanel
+        Height = 40
+        ExplicitHeight = 40
         inherited BundleSection: THistoryComboBox
           OnChange = BundleFrameBundleSectionChange
         end
@@ -314,8 +326,10 @@ object ContestEntryDetails: TContestEntryDetails
       TabStop = True
       ExplicitLeft = 344
       ExplicitTop = 4
-      ExplicitHeight = 43
+      ExplicitHeight = 40
       inherited Panel1: TPanel
+        Height = 40
+        ExplicitHeight = 40
         inherited BundleSection: THistoryComboBox
           OnChange = BundleFrameBundleSectionChange
         end
@@ -373,7 +387,7 @@ object ContestEntryDetails: TContestEntryDetails
     Height = 21
     Style = csDropDownList
     CharCase = ecUpperCase
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 6
   end
   object PowerEdit: TLabeledEdit
@@ -391,7 +405,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 11
   end
   object EndTimeCombo: TComboBox
@@ -399,7 +413,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 12
   end
   object LocatorGroupBox: TGroupBox
@@ -472,7 +486,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 13
   end
   object SecondOpComboBox: TComboBox
@@ -481,7 +495,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 14
   end
 end

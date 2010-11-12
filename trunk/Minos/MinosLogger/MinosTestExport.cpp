@@ -103,6 +103,7 @@ void MinosTestExport::exportContest( HANDLE expfd )
    ct->districtMult.addIfDirty( st, "districtMult", dirty );
    ct->countryMult.addIfDirty( st, "DXCCMult", dirty );
    ct->locMult.addIfDirty( st, "locMult", dirty );
+   ct->GLocMult.addIfDirty( st, "GLocMult", dirty );
    ct->otherExchange.addIfDirty( st, "QTHReq", dirty );
    ct->allowLoc4.addIfDirty( st, "AllowLoc4", dirty );
    ct->allowLoc8.addIfDirty( st, "AllowLoc8", dirty );

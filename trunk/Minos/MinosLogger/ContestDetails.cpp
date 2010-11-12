@@ -241,8 +241,9 @@ void TContestEntryDetails::setDetails(  )
       {
          ExchangeComboBox->ItemIndex = 0;
       }
-   DXCCMult->Checked = contest->countryMult.getValue() ;   // bool               // contest
-   LocatorMult->Checked = contest->locMult.getValue() ;   // bool                // contest
+   DXCCMult->Checked = contest->countryMult.getValue() ;
+   LocatorMult->Checked = contest->locMult.getValue() ;
+   GLocMult->Checked = contest->GLocMult.getValue();
 
    PowerEdit->Text = contest->power.getValue().c_str();
 
@@ -333,6 +334,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       contest->districtMult.setValue( true );
       contest->countryMult.setValue( true );
       contest->locMult.setValue( false );
+      contest->GLocMult.setValue( false );
    }
    else if ( ic.mults == "M2" )
    {
@@ -340,6 +342,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       contest->districtMult.setValue( false );
       contest->countryMult.setValue( false );
       contest->locMult.setValue( true );
+      contest->GLocMult.setValue( false );
    }
    else if ( ic.mults == "M3" )
    {
@@ -347,6 +350,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       contest->districtMult.setValue( true );
       contest->countryMult.setValue( true );
       contest->locMult.setValue( true );
+      contest->GLocMult.setValue( false );
    }
    else if ( ic.mults == "M4" )
    {
@@ -354,13 +358,22 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       contest->districtMult.setValue( false );
       contest->countryMult.setValue( true );
       contest->locMult.setValue( true );
-
+      contest->GLocMult.setValue( false );
+   }
+   else if ( ic.mults == "M5" )
+   {
+      // G Locs only
+      contest->districtMult.setValue( false );
+      contest->countryMult.setValue( false );
+      contest->locMult.setValue( true );
+      contest->GLocMult.setValue( true );
    }
    else
    {
       contest->districtMult.setValue( false );
       contest->countryMult.setValue( false );
       contest->locMult.setValue( false );
+      contest->GLocMult.setValue( false );
    }
    /*
       ExchangeComboBox:
@@ -386,6 +399,7 @@ void TContestEntryDetails::setDetails( const IndividualContest &ic )
       }
    DXCCMult->Checked = contest->countryMult.getValue() ;
    LocatorMult->Checked = contest->locMult.getValue() ;
+   GLocMult->Checked = contest->GLocMult.getValue() ;
 
    RSTField->Checked = true ;
    SerialField->Checked = true ;
@@ -474,6 +488,7 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->countryMult.setValue( DXCCMult->Checked );   // bool
 
    contest->locMult.setValue( LocatorMult->Checked ) ;   // bool
+   contest->GLocMult.setValue( GLocMult->Checked ) ;   // bool
 
    if (ProtectedOption->Checked && contest->isProtected() && contest->isProtectedSuppressed())
    {

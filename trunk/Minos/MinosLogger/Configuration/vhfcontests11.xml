@@ -57,18 +57,18 @@
 <!-- 09.027 11/01/2010 Added S10 and UKAC Overall Club Championship-->
 <!-- 09.028 29/04/2010 changed URL of arrl DXCC listing-->
 <!-- 09.029 30/05/2010 Changed words for use of SCC and /P suffix-->
+<!-- 11.001 06/11/2010 changes for 2011-->
 <calendar>
-<version>09.029 20/05/2010</version>
+<version>11.001 06/11/2010</version>
 <icalurl>http://www.google.com/calendar/ical/t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
-<notes_list>13/11/09: 2nd 50MHz contest moved forward 1 week</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt 
-A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/10rules/postcode.htm
+A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
@@ -88,7 +88,7 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
-A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/10rules/postcode.htm
+A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
 <exchange>first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
@@ -101,6 +101,14 @@ Country and QTH Locator Multiplier. The multiplier for a band is the sum of the 
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 </long_description>
 <scoring_description> multiplied by the number of Countries plus QTH locator squares</scoring_description>
+</mult_type>
+<mult_type>
+<name>M5</name>
+<description>UK QTH Locators</description>
+<long_description>
+UK QTH Locator Multipliers. The multiplier is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band. Only contacts with UK stations count for multipliers.
+</long_description>
+<scoring_description> multiplied by the number of UK Locator Squares</scoring_description>
 </mult_type>
 <special_rule>
 <name>S1</name>
@@ -172,7 +180,7 @@ For IARU organised VHF/UHF contests, overseas stations are expected to enter via
 <name>S8</name>
 <description>Activity contest</description>
 <long_description>
-These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
+These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz and 13cms and up on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
 
 A UK station is required to be at one or both ends of a QSO for it to be valid.
 
@@ -206,7 +214,7 @@ d.        All 12 sessions will count towards the total club score.
 <name>S10</name>
 <description>Overall UKAC Club Championship</description>
 <long_description>
-a.        The scores from each of the individual UKACs will count towards an overall UKAC Club Championship. The scores from the 6m, 4m, 2m, 70cms and 23/13cms UKACs will be normalised to give an overall Club Score. 
+a.        The scores from each of the individual UKACs will count towards an overall UKAC Club Championship. The scores from the 6m, 4m, 2m, 70cms, 23cms and UHF UKACs will be normalised to give an overall Club Score. 
 
 b.        Certificates will be awarded to the top 3 Clubs. 
 
@@ -216,21 +224,21 @@ b.        Certificates will be awarded to the top 3 Clubs.
 <name>Backpacker</name>
 <description>Special Backpackers Rules</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/10rules/BACKPACK.htm
+http://www.rsgbcc.org/vhf/rules/11rules/BACKPACK.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHFNFD</name>
 <description>Special Rules for VHF NFD</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/10rules/VHFNFD.htm
+http://www.rsgbcc.org/vhf/rules/11rules/VHFNFD.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHF CHAMPIONSHIP</name>
 <description>Special Rules for VHF Championship</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/10rules/championship.htm
+http://www.rsgbcc.org/vhf/rules/11rules/championship.htm
 </long_description>
 </special_rule>
 <special_rule>
@@ -240,6 +248,15 @@ http://www.rsgbcc.org/vhf/rules/10rules/championship.htm
 Maximum output Power 25W at the TX.
 </long_description>
 </special_rule>
+<section>
+<name>AX</name>
+<description>UKAC DXers </description>
+<long_description> 
+Maximum output power as permitted by standard licence conditions.
+No antenna restrictions. 
+Active use of the DX cluster and chat channels such as ON4KST is allowed, so long as no information that forms part of the contest exchange s passeed via these means. 
+Scores in this section will not count towards a club score (S9)</long_description>
+</section>
 <section>
 <name>AO</name>
 <description>UKAC Open </description>
@@ -253,6 +270,16 @@ No antenna restrictions.
 <description>UKAC Restricted</description>
 <long_description> 
 The power output must not exceed 100W PEP at the transmitter, except on 4m where output power is restricted to 40W.
+Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter. 
+</long_description>
+<power>100</power>
+<singleantenna>1</singleantenna>
+</section>
+<section>
+<name>AQ</name>
+<description>UKAC QRP</description>
+<long_description> 
+The power output must not exceed 10W PEP at the transmitter, except on 4m where output power is restricted to 4W.
 Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter. 
 </long_description>
 <power>100</power>
@@ -305,7 +332,7 @@ In multi-band contests the same single 6 hour period must be used on all bands.
 </section>
 <section>
 <name>3B</name>
-<description>3W Backpacker</description>
+<description>2m 3W Backpacker</description>
 <long_description> 
 a) Duration: 4 hours. 
 b) Mode: All Mode 
@@ -318,6 +345,24 @@ h) Equipment must be carried and operated at least 100m from the transportation 
 i) Stations entering in this section must use the /P callsign suffix 
 </long_description>
 <power>3</power>
+<height>4</height>
+</section>
+<section>
+<name>10B</name>
+<description>50MHz Backpacker</description>
+<long_description> 
+a) Duration: 2.5 hours. Coordinated with the 6m UKAC contests during May, June, July and August.
+b) Mode: All Mode 
+c) 10W maximum output from the transmitter 
+d) Single antenna with no more than 20 half-wave elements (or equivalent)
+e) Antenna height: Driven element no more than 4m above the ground
+f) No operation from a motor vehicle. The vehicle supply must not be used to power any equipment used during the contest or to recharge batteries for the equipment.
+g) All equipment used during the contest must be battery, wind or solar powered.
+h) Equipment must be carried and operated at least 100m from the transportation vehicle. 
+i) Stations entering in this section must use the /P callsign suffix 
+h) The 50MHz Backpacker's Trophy will be awarded to the leading station in section 10B with the best three normalised scores out of a maximum of four sessions. 
+</long_description>
+<power>10</power>
 <height>4</height>
 </section>
 <section>
@@ -659,9 +704,11 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <contest_list>6mukac</contest_list>
 <contest_list>2mukac</contest_list>
 <contest_list>70cmsukac</contest_list>
+<contest_list>23cmsukac</contest_list>
 <contest_list>uhfukac</contest_list>
 <section_list>AO</section_list>
 <section_list>AR</section_list>
+<section_list>AQ</section_list>
 <special_rules_list>S10</special_rules_list>
 <award_list>Certificates to overall winning Club and Runners Up</award_list>
 </contest_series>
@@ -997,13 +1044,15 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
+<section_list>AQ</section_list>
+<section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
   <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>144</band_list>
-  <mult>M2</mult>
+  <mult>M5</mult>
 <award_list>G6NB Trophy will be awarded to the winner of the Club Championship.</award_list>
 <award_list>The Foundation Shield will be awarded to the leading Foundation Licensee</award_list>
 <award_list>The Intermediate Shield will be awarded to the leading Intermediate Licensee</award_list>
@@ -1033,18 +1082,20 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
+<section_list>AQ</section_list>
+<section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
    <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>432</band_list>
-  <mult>M2</mult>
+  <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 </contest>
 <contest>
-  <name>uhfukac</name>
-  <description>UHF UKAC</description>
+  <name>23cmsukac</name>
+  <description>1.3GHz UKAC</description>
   <time_list>
     <month_list>Jan</month_list>
     <month_list>Feb</month_list>
@@ -1066,14 +1117,57 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
+<section_list>AQ</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
   <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>1296</band_list>
+  <mult>M5</mult>
+<entry_date>7 days after each activity period</entry_date>
+</contest>
+<contest>
+  <name>uhfukac</name> 
+<description>UHF UKAC</description> 
+<time_list>
+    <month_list>Jan</month_list>
+    <month_list>Feb</month_list>
+    <month_list>Mar</month_list>
+    <month_list>Apr</month_list>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
+    <month_list>Sep</month_list>
+    <month_list>Oct</month_list>
+    <month_list>Nov</month_list>
+    <month_list>Dec</month_list>
+    <start_day>2</start_day>
+    <start_week>4</start_week>
+    <start_time>2000</start_time>
+    <time_type>local</time_type>
+    <duration>2.0</duration>
+  </time_list>
+  <section_list>AO</section_list>
+  <section_list>AR</section_list>
+<section_list>AQ</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S9</special_rules_list>
   <band_list>2320</band_list>
-  <mult>M2</mult>
+  <band_list>3400</band_list>
+  <band_list>5760</band_list>
+  <band_list>10368</band_list>
+  <band_list>24GHz</band_list>
+  <band_list>47GHz</band_list>
+  <band_list>76GHz</band_list>
+  <band_list>120GHz</band_list>
+  <band_list>144GHz</band_list>
+  <band_list>248GHz</band_list>
+  <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 </contest>
 <contest>
@@ -1100,13 +1194,16 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
+<section_list>AQ</section_list>
+<section_list>AX</section_list>
+<section_list>10B</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
   <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>50</band_list>
-  <mult>M2</mult>
+  <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 </contest>
 <contest>
@@ -1133,13 +1230,15 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
+<section_list>AQ</section_list>
+<section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
   <special_rules_list>S8</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>70</band_list>
-  <mult>M2</mult>
+  <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 </contest>
 <contest>
@@ -1245,7 +1344,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
     <mult>M3</mult>
-<award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
+<award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
@@ -1268,7 +1367,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
     <mult>M4</mult>
-<award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
+<award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
@@ -1291,7 +1390,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
     <mult>M4</mult>
-<award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
+<award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
@@ -1299,12 +1398,12 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <description>4th 144MHz Backpackers</description>
   <short_description>4th 144MHz Backpackers</short_description>
   <time_list>
-    <month_list>Aug</month_list>
-    <start_day>6+1</start_day>
-    <start_week>3</start_week>
-    <start_time>1100</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
+	<month_list>Aug</month_list>
+	<start_day>6</start_day>
+	<start_week>1</start_week>
+	<start_time>1300</start_time>
+	<time_type>GMT</time_type>
+	<duration>4</duration>
   </time_list>
   <section_list>3B</section_list>
   <section_list>10H</section_list>
@@ -1314,7 +1413,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
     <mult>M3</mult>
-<award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
+<award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
@@ -1337,28 +1436,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>Backpacker</special_rules_list>
   <band_list>144</band_list>
     <mult>M4</mult>
-<award_list>Backpackers Trophy is awarded to the overall winner of the 3B Section</award_list>
-<entry_date>16 days</entry_date>
-</contest>
-<contest>
-  <name>50backpack</name>
-  <description>50MHz Backpackers</description>
-  <time_list>
-    <month_list>Jun</month_list>
-    <start_day>6+1</start_day>
-    <start_week>3</start_week>
-    <start_time>1000</start_time>
-    <time_type>GMT</time_type>
-    <duration>4</duration>
-  </time_list>
-  <section_list>3B</section_list>
-  <scoring>
-    <perkms>1</perkms>
-  </scoring>
-  <special_rules_list>Backpacker</special_rules_list>
-  <band_list>50</band_list>
-    <mult>M4</mult>
-<award_list>50MHz Backpackers Trophy </award_list>
+<award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>

@@ -38,11 +38,11 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests12.xml" );
    }
-   if (year == 2011)
+   else if (year == 2011)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests11.xml" );
    }
-   if (year == 2010)
+   else if (year == 2010)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests10.xml" );
    }
@@ -63,7 +63,7 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    CalendarVersionLabel->Caption = ("File Version " + vhf.version).c_str();
    CalendarGrid->RowCount = vhf.calendar.size() + 1;
    CalendarGrid->ColCount = 8;
-   CalendarGrid->ColWidths[ 0 ] = CalendarGrid->Canvas->TextWidth( "144MHz UK Activity Contest and Club ChampionshipXXX" );
+   CalendarGrid->ColWidths[ 0 ] = CalendarGrid->Canvas->TextWidth( "432MHz UK Activity Contest and Club ChampionshipXXX" );
    CalendarGrid->ColWidths[ 1 ] = CalendarGrid->Canvas->TextWidth( "248GHZZZ" );
    CalendarGrid->ColWidths[ 2 ] = CalendarGrid->Canvas->TextWidth( "99/99/9999 99:99XXX" );
    CalendarGrid->ColWidths[ 3 ] = CalendarGrid->Canvas->TextWidth( "99/99/9999 99:99XXX" );
@@ -152,7 +152,7 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 //   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
 //   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml", true);
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml", true);
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11-prov.xml", fpath + "Configuration\\vhfcontests11.xml", true);
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests12.xml", fpath + "Configuration\\vhfcontests12.xml", false);
    FormShow( Sender );
 }

@@ -132,6 +132,7 @@ class BaseContestLog
       MinosItem<bool> otherExchange;
       MinosItem<bool> countryMult;
       MinosItem<bool> locMult;
+      MinosItem<bool> GLocMult;
       MinosItem<bool> districtMult;
       MinosItem<bool> powerWatts;
       MinosItem<SCOREMODE> scoreMode;
