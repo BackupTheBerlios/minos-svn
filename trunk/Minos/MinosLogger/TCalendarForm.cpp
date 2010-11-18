@@ -152,7 +152,7 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 //   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
 //   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml", true);
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11-prov.xml", fpath + "Configuration\\vhfcontests11.xml", true);
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml", true);
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests12.xml", fpath + "Configuration\\vhfcontests12.xml", false);
    FormShow( Sender );
 }

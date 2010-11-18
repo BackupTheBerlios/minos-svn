@@ -8,29 +8,10 @@ Operator combos are now larger
 Add next/prior, but no consequential bulk changes
 Catchup and serial numbers - bug fix
 Archive display - bug fix
-HF style prefix handling
-===========================================================================
-Extend DST dates beyond 2012; we need to find a way of getting the last xxx of a month
-Try month after week 1 day 6+1 and then - 7 days ?
-===========================================================================
-Does Pete allow for day 6-1? I think he has 6+4 or some such somewhere in HF
-80m CW Sprint - 
-    <month_list>Sep</month_list>
-     <month_list>Nov</month_list>
-     <start_day>4+13</start_day>
-     <start_week>2</start_week>
-===========================================================================
-Archive list display - showed G4DDN| IO91PK | RG | RG(20) for G4DDN, IO91PK, RG, 20
-===========================================================================
-M0XDF running under Wine:
-I've just confirmed what I suspected last month.
-When you create a contest and pick 03-Aug-10 and fill in the details, 
-and click ok (or is it close), the save as pop appears and gives a 
-default file name of G6BRA_2010Mar08_145 MHz.minos
+HF style prefix handling, should improve recognition of odd prefixes
 ===========================================================================
 Enter one contact, then go to catch up - no operator carried in
 ===========================================================================
-
 Opening out contacts:
 	Post Entry doesn't notice, doesn't ask
 	And when you drop back, the serial is back where it was
@@ -38,23 +19,7 @@ Opening out contacts:
 	And should you be able to NOT open out contacts (so you don't get a set of dead contacts when you aren't going to fill in)? 
 	Can we use a single dialog box somehow?
 ===========================================================================
-It looks as though KZ has never been recognised as a US callsign (GJV-E has
-the same issue), and hence not as a DXCC multiplier.
-
-To quote from the A1CG guys who were actually out last weekend (I wasn't):
-
-  We worked KZ4RR in Florida in the recent 50 MHz trophy
-contest but Minos did not recognise this as a country.  It recognised
-  NP3CW in Puerto Rica, who we also worked, and it recognises
-K but not KZ.
-
-Presumably it is just a table configuration issue?
-===========================================================================
 Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
-===========================================================================
-(done)
-Right justify the bundle labels, so they come "close" to the bundle combos. Maybe put frames round them as well?
-
 ===========================================================================
 Rethink logSequence and nextBlock; nextBlock is a hangover from the "old" logger.
 We should just need to use logSequence, and maintain a "max" value for it.
@@ -84,8 +49,6 @@ EDI export entry keeps the file name - robot will sort it out if not to standard
 
 Bug fixes
 
-===========================================================================
-VK9AA comes out against VK9N, when he should be in VK9C
 ===========================================================================
 We DEFINITELY need a colour choice dialog...
 	live contest
@@ -214,8 +177,6 @@ Use RSGB addresses for calendar; slide calendars looked for based on current dat
 Make calendar URLs configurable (somewhere - registry? Probably not! But need an editor for them - button on TCalendarForm?)
 
 Can we make "old" contests read only? i.e. if "after time" by some amount then make them RO unless overridden? Lose the RO check box!
-
-Insert contact(s) before(/after?), with option to renumber following up to an unfilled contact
 
 ?? free floating crib sheet
 
