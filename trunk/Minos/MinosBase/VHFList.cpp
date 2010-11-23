@@ -384,12 +384,37 @@ bool Calendar::parseFile( const std::string &fname )
                      for ( unsigned int j = 0; j < ( *i ).second.sectionList.size(); j++ )
                      {
                         std::string n = ( *i ).second.sectionList[ j ].name;
+                        std::map<std::string, Section>::iterator s = sections.find(n);
+
+                        if (s == sections.end())
+                        {
+                           continue;
+                        }
+                        int mls = (*s).second.monthList.size();
+                        if (mls)
+                        {
+                           bool monthOK = false;
+                           for (std::vector<MonthList>::iterator ml = (*s).second.monthList.begin(); ml != (*s).second.monthList.end(); ml++)
+                           {
+                              if (strupr((*ml).month) == strupr(monthTable[sm - 1]) )
+                              {
+                                 monthOK = true;
+                                 break;
+                              }
+                           }
+                           if (!monthOK)
+                           {
+                              continue;
+                           }
+                        }
                         if ( !sections[ n ].overall )
                         {
                            ic.sections += n;
                            ic.sections += ",";
                         }
                      }
+                     // check if the section has a month_list
+
                      ic.sections = ic.sections.substr( 0, ic.sections.size() - 1 );   // lose any trailing comma
                      ic.mults = ( *i ).second.mult;
                      for ( unsigned int j = 0; j < ( *i ).second.specialRulesList.size(); j++ )
@@ -411,68 +436,6 @@ bool Calendar::parseFile( const std::string &fname )
                {
 
                   // NB - band list overrides time list!
-                  // Logic here won't cope with a full calendar, but is OK for VHFCC
-/*
-                  std::string startWeek;
-                  std::string startDay;
-                  std::string startTime;
-                  std::string timeType;
-                  std::string duration;
-
-                  ContestBand &blst = bands[ ( *bl ).name ];
-                  if ( blst.timeList.size() )
-                  {
-                     TimeList & b = blst.timeList[ 0 ];
-
-                     startWeek = b.startWeek;
-                     startDay = b.startDay;
-                     startTime = b.startTime;
-                     duration = b.duration;
-                     timeType = b.timeType;
-                  }
-                  else
-                  {
-                     startWeek = ( *tl ).startWeek;
-                     startDay = ( *tl ).startDay;
-                     startTime = ( *tl ).startTime;
-                     duration = ( *tl ).duration;
-                     timeType = ( *tl ).timeType;
-                  }
-
-
-                  int istartWeek = atoi( startWeek.c_str() );
-                  if ( istartWeek == 0 )
-                  {
-                     continue;
-                  }
-
-                  int istartDay;
-                  if ( startDay == "6+1" )
-                  {
-                     istartDay = 6;
-                  }
-                  else
-                  {
-                     istartDay = atoi( startDay.c_str() );
-                     if ( istartDay == 0 )
-                     {
-                        continue;
-                     }
-                  }
-
-                  //               std::string bstartWeek = (*bl).startWeek; // or iterate its timeList
-                  int istartDate = getDate( sm, istartDay, istartWeek );
-                  if ( istartDate == 0 )
-                  {
-                     continue;
-                  }
-
-                  if ( startDay == "6+1" )
-                  {
-                     istartDate++;
-                     istartDay++;
-                  }
-  */
                   std::string startWeek;
                   std::string startDay;
                   std::string startTime;
@@ -573,6 +536,29 @@ bool Calendar::parseFile( const std::string &fname )
                   for ( unsigned int j = 0; j < ( *i ).second.sectionList.size(); j++ )
                   {
                      std::string n = ( *i ).second.sectionList[ j ].name;
+                     std::map<std::string, Section>::iterator s = sections.find(n);
+
+                     if (s == sections.end())
+                     {
+                        continue;
+                     }
+                     int mls = (*s).second.monthList.size();
+                     if (mls)
+                     {
+                        bool monthOK = false;
+                        for (std::vector<MonthList>::iterator ml = (*s).second.monthList.begin(); ml != (*s).second.monthList.end(); ml++)
+                        {
+                           if (strupr((*ml).month) == strupr(monthTable[sm - 1]))
+                           {
+                              monthOK = true;
+                              break;
+                           }
+                        }
+                        if (!monthOK)
+                        {
+                           continue;
+                        }
+                     }
                      if ( !sections[ n ].overall )
                      {
                         ic.sections += n;
@@ -606,7 +592,15 @@ bool IndividualContest::operator<( const IndividualContest& rhs ) const
 {
    // p1 is from list; p2 is the one being searched for
 
-   return start < rhs.start;
+   if (start != rhs.start)
+   {
+      return start < rhs.start;
+   }
+   if (description != rhs.description)
+   {
+      return description < rhs.description;
+   }
+   return bands < rhs.bands;
 }
 bool Calendar::parseMultType( TiXmlElement * tix )
 {
@@ -714,10 +708,17 @@ bool Calendar::parseSection( TiXmlElement * tix )
                            s.overall = true;
                         }
                         else
-                        {
-                           std::string eval = e->Value();
-                           continue;
-                        }
+                           if ( checkElementName( e, "month_list" ) )
+                           {
+                              MonthList m;
+                              m.month = e->GetText();
+                              s.monthList.push_back( m );
+                           }
+                           else
+                              {
+                                 std::string eval = e->Value();
+                                 continue;
+                              }
    }
    sections[ s.name ] = s;
    return true;

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE calendar [
-<!ELEMENT calendar (version, icalurl?, googleurl?, notes_list+, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
+<!ELEMENT calendar (version, icalurl?, googleurl?, notes_list?, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
 <!ELEMENT mult_type (name, description, long_description, exchange?, scoring_description?)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT description (#PCDATA)>
 <!ELEMENT long_description (#PCDATA)>
 <!ELEMENT band_list (#PCDATA)>
 <!ELEMENT special_rule (name, description, long_description)>
-<!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?)>
+<!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?, month_list*)>
 <!ELEMENT contest (name, description, short_description?, time_list*, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?)>
 <!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
 <!ELEMENT contest_series (name, description, contest_list+, section_list*, special_rules_list*, award_list*)>
@@ -58,10 +58,12 @@
 <!-- 09.028 29/04/2010 changed URL of arrl DXCC listing-->
 <!-- 09.029 30/05/2010 Changed words for use of SCC and /P suffix-->
 <!-- 11.001 06/11/2010 changes for 2011-->
+<!-- 11.002 19/11/2010 changed name of UHF UKAC, removed time in S9 , added serial number to the exchange for M1-M5-->
+<!-- 11.003 19/11/2010 added <months_list> to section 10B -->
 <calendar>
-<version>11.001 06/11/2010</version>
-<icalurl>http://www.google.com/calendar/ical/t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com/public/basic.ics</icalurl>
-<googleurl>http://www.google.com/calendar/embed?src=t83bhqbd2o2bvbopb42emcq674%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
+<version>11.003 19/11/2010</version>
+<icalurl>http://www.google.com/calendar/ical/54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com/public/basic.ics</icalurl>
+<googleurl>http://www.google.com/calendar/embed?src=54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -70,7 +72,7 @@ Post Code and Country Multipliers. The multiplier for a band is the sum of the n
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt 
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
-<exchange>first 2 letters of your Postcode</exchange>
+<exchange> serial number, QTH Locator and first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
 </scoring_description>
 </mult_type>
@@ -80,6 +82,7 @@ A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rul
 <long_description>
 QTH Locator Multiplier. The multiplier for a band is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band
 </long_description>
+<exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of Locator Squares</scoring_description>
 </mult_type>
 <mult_type>
@@ -90,7 +93,7 @@ Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the 
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
-<exchange>first 2 letters of your Postcode</exchange>
+<exchange>serial number, QTH Locator and first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
 </mult_type>
 <mult_type>
@@ -100,6 +103,7 @@ A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rul
 Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 </long_description>
+<exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of Countries plus QTH locator squares</scoring_description>
 </mult_type>
 <mult_type>
@@ -108,6 +112,7 @@ A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxccl
 <long_description>
 UK QTH Locator Multipliers. The multiplier is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band. Only contacts with UK stations count for multipliers.
 </long_description>
+<exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of UK Locator Squares</scoring_description>
 </mult_type>
 <special_rule>
@@ -180,7 +185,7 @@ For IARU organised VHF/UHF contests, overseas stations are expected to enter via
 <name>S8</name>
 <description>Activity contest</description>
 <long_description>
-These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz and 13cms and up on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
+These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz and 13cms and up (2000-2200) on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
 
 A UK station is required to be at one or both ends of a QSO for it to be valid.
 
@@ -200,7 +205,7 @@ Certificates will be awarded to the overall winners and runners-up in each secti
 <name>S9</name>
 <description>Club Championship</description>
 <long_description>
-a.        The individual entries by a club's members to the UK activity contests which take place on from 2000-2230 LOCAL time on each Tuesday in every month all count towards a society's overall score for the year for each UKAC. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the Contest Committee web site www.rsgbcc.org/vhf/results for each band.
+a.        The individual entries by a club's members to the UK activity contests which take place on each Tuesday in every month all count towards a society's overall score for the year for each UKAC. To maximise the club score, it's important for the club contest organiser to get as many members to come on for as many sessions as possible. A rolling club listing will be maintained on the Contest Committee web site www.rsgbcc.org/vhf/results for each band.
 
 b.        Stations enter the UKAC contests in the normal way, but need to include an AFS (affiliated society) name in the cover sheet of their entry. Entries to all sections of the UKAC count towards the overall club score which is the simple sum of the normalised scores of each team member operating that month. 
 
@@ -214,10 +219,30 @@ d.        All 12 sessions will count towards the total club score.
 <name>S10</name>
 <description>Overall UKAC Club Championship</description>
 <long_description>
-a.        The scores from each of the individual UKACs will count towards an overall UKAC Club Championship. The scores from the 6m, 4m, 2m, 70cms, 23cms and UHF UKACs will be normalised to give an overall Club Score. 
+a.        The scores from each of the individual UKACs will count towards an overall UKAC Club Championship. The scores from the 6m, 4m, 2m, 70cms, 23cms and 13cms up UKACs will be normalised to give an overall Club Score. 
 
 b.        Certificates will be awarded to the top 3 Clubs. 
 
+</long_description>
+</special_rule>
+<special_rule>
+<name>S11</name>
+<description>Activity contest</description>
+<long_description>
+These contests are timed to co-incide with the two hours of a number of European activity contests.  They take place on the 4th Tuesdays from 2000-2200 local time .
+
+A UK station is required to be at one or both ends of a QSO for it to be valid.
+
+Please submit an entry after each session in which you are active. In order to speed adjudication entries must be sent within 7 days of the contest.
+
+Scores will be normalised for each section in each session as follows.
+Score for each section/session = ((number of entrants+1)-(position of entrant))*1000/(number of entrants)
+At the end of the year, on each band an overall score will be calculated from the best 8 normalised session scores.
+It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
+
+Stations may change section and move location between individual activity periods.
+
+Certificates will be awarded to the overall winners and runners-up in each section and on each band in the same way as per the general rules. No certificates will be awarded for the individual events.
 </long_description>
 </special_rule>
 <special_rule>
@@ -254,7 +279,7 @@ Maximum output Power 25W at the TX.
 <long_description> 
 Maximum output power as permitted by standard licence conditions.
 No antenna restrictions. 
-Active use of the DX cluster and chat channels such as ON4KST is allowed, so long as no information that forms part of the contest exchange s passeed via these means. 
+Active use of the DX cluster and chat channels such as ON4KST is allowed, so long as no information that forms part of the contest exchange is passed via these means. 
 Scores in this section will not count towards a club score (S9)</long_description>
 </section>
 <section>
@@ -276,8 +301,8 @@ Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switc
 <singleantenna>1</singleantenna>
 </section>
 <section>
-<name>AQ</name>
-<description>UKAC QRP</description>
+<name>AL</name>
+<description>UKAC Low Power</description>
 <long_description> 
 The power output must not exceed 10W PEP at the transmitter, except on 4m where output power is restricted to 4W.
 Only one antenna may be used (i.e. no stacked, bayed or colinear arrays or switching between two or more antennas). A slot fed Yagi or Quad antenna is permitted. Dish or Backfire antennas must not exceed 2m diameter. 
@@ -360,10 +385,15 @@ f) No operation from a motor vehicle. The vehicle supply must not be used to pow
 g) All equipment used during the contest must be battery, wind or solar powered.
 h) Equipment must be carried and operated at least 100m from the transportation vehicle. 
 i) Stations entering in this section must use the /P callsign suffix 
-h) The 50MHz Backpacker's Trophy will be awarded to the leading station in section 10B with the best three normalised scores out of a maximum of four sessions. 
+j) The 50MHz Backpacker's Trophy will be awarded to the leading station in section 10B with the best three normalised scores out of a maximum of four sessions. 
+k) All logs received in this section will be normalised with other logs in this section to calculate the backpacker score and in the AL section for the purpose of calculating the contribution towards a club score. 
 </long_description>
 <power>10</power>
 <height>4</height>
+    <month_list>May</month_list>
+    <month_list>Jun</month_list>
+    <month_list>Jul</month_list>
+    <month_list>Aug</month_list>
 </section>
 <section>
 <name>10H</name>
@@ -708,7 +738,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <contest_list>uhfukac</contest_list>
 <section_list>AO</section_list>
 <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
 <special_rules_list>S10</special_rules_list>
 <award_list>Certificates to overall winning Club and Runners Up</award_list>
 </contest_series>
@@ -1044,7 +1074,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
 <section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>
@@ -1082,7 +1112,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
 <section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>
@@ -1117,7 +1147,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1129,7 +1159,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </contest>
 <contest>
   <name>uhfukac</name> 
-<description>UHF UKAC</description> 
+<description>2.3GHz+ UKAC</description> 
 <time_list>
     <month_list>Jan</month_list>
     <month_list>Feb</month_list>
@@ -1151,11 +1181,11 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
-  <special_rules_list>S8</special_rules_list>
+  <special_rules_list>S11</special_rules_list>
   <special_rules_list>S9</special_rules_list>
   <band_list>2320</band_list>
   <band_list>3400</band_list>
@@ -1194,7 +1224,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
 <section_list>AX</section_list>
 <section_list>10B</section_list>
   <scoring>
@@ -1230,7 +1260,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   </time_list>
   <section_list>AO</section_list>
   <section_list>AR</section_list>
-<section_list>AQ</section_list>
+<section_list>AL</section_list>
 <section_list>AX</section_list>
   <scoring>
     <perkms>1</perkms>

@@ -26,11 +26,17 @@ class SpecialRule
       std::string description;
       std::string longDescription;
 };
+class MonthList
+{
+   public:
+      std::string month;
+};
 class Section
 {
    public:
       Section() : singleAntenna( false ), overall( false )
       {}
+      std::vector<MonthList> monthList;
 
       std::string name;
       std::string description;
@@ -39,11 +45,6 @@ class Section
       std::string height;
       bool singleAntenna;
       bool overall;
-};
-class MonthList
-{
-   public:
-      std::string month;
 };
 class StartDateList
 {
