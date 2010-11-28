@@ -61,8 +61,9 @@
 <!-- 11.002 19/11/2010 changed name of UHF UKAC, removed time in S9 , added serial number to the exchange for M1-M5-->
 <!-- 11.003 19/11/2010 added <months_list> to section 10B -->
 <!-- 11.004 23/11/2010 Change xml name os 23cms to uhfukac and 13cms and above to shfukac so that alerts still wort for 23cms ukac, added Bolton Wireless Trophy -->
+<!-- 11.005 28/11/2010 Qualified meaning of UK for M5 -->
 <calendar>
-<version>11.004 23/11/2010</version>
+<version>11.005 28/11/2010</version>
 <icalurl>http://www.google.com/calendar/ical/54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <mult_type>
@@ -111,7 +112,7 @@ A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxccl
 <name>M5</name>
 <description>UK QTH Locators</description>
 <long_description>
-UK QTH Locator Multipliers. The multiplier is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band. Only contacts with UK stations count for multipliers.
+UK QTH Locator Multipliers. The multiplier is the sum of the number of different large locator squares (e.g. JO01,IO91 etc.) worked on that band. Only contacts with UK stations (G, GW, GM, GI, GD, GU, GJ) count for multipliers.
 </long_description>
 <exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of UK Locator Squares</scoring_description>
