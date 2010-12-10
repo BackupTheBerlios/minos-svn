@@ -98,6 +98,7 @@ void TGJVQSOLogFrame::logScreenEntry( )
 //---------------------------------------------------------------------------
 void TGJVQSOLogFrame::getScreenContactTime()
 {
+   updateQSOTime();
    screenContact.time.setDate( DateLabel->Caption.c_str(), DTGDISP );
    screenContact.time.setTime( TimeLabel->Caption.c_str(), DTGDISP );
 }
