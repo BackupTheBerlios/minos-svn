@@ -509,39 +509,9 @@ std::string BaseContestLog::dateRange( DTG dstyle )
 
 void BaseContestLog::setScore( std::string &buff )
 {
-   // do this first, as the same buff gets used for summary prints...
-
-   char brcc1 = '(';
-   char brcc2 = ')';
-   char brcc3 = '(';
-   char brcc4 = ')';
-   char brloc1 = '(';
-   char brloc2 = ')';
-
-   int mults = 0;
-   if ( countryMult.getValue() )
-   {
-      brcc1 = brcc2 = ' ';
-      mults += nctry;
-   }
-   if ( districtMult.getValue() )
-   {
-      brcc3 = brcc4 = ' ';
-      mults += ndistrict;
-   }
-   if ( locMult.getValue() )
-   {
-      brloc1 = brloc2 = ' ';
-      mults += nlocs;
-   }
-   mults = std::max(mults, 1);
-
-   long totalScore = contestScore*mults;
-
-   buff = ( boost::format( "Score: %ld pts :%c%d countries%c:%c%d districts%c:%c%d locators%c = %ld" )
-            % contestScore % brcc1 % nctry % brcc2 % brcc3 % ndistrict %
-            brcc4 % brloc1 % nlocs % brloc2 % totalScore ).str();
-
+   ContestScore cs(this, TDateTime::CurrentDateTime());
+   getScoresTo(cs, TDateTime::CurrentDateTime());
+   buff = cs.disp();
 }
 // and we need to do this a bit more often to pick up unfilled properly
 void BaseContestLog::scanContest( void )
@@ -647,6 +617,90 @@ void BaseContestLog::scanContest( void )
    {
       currentOp1.setValue( curop1 );
    }
+}
+void BaseContestLog::getScoresTo(ContestScore &cs, TDateTime limit)
+{
+// #warning doesn't pick up invalid QSOs - e.g. needs district and doesn't have one
+   cs.nctry = 0;
+   cs.ndistrict = 0;
+   cs.nlocs = 0;
+   cs.nqsos = 0;
+   cs.contestScore = 0;
+
+   int nextScan = -1;
+
+   while ( nextScan >= -1 )
+   {
+      // get the next contact in sequence and do any required scan checks
+      nextScan++;
+      if ( nextScan >= getContactCount() )
+      {
+         // end of scan
+
+         nextScan = -2;
+
+         break;
+      }
+      BaseContact *nct = ctList[ nextScan ];
+      if ( !nct )
+         break ;
+
+// NB this doesn't cope with crazy times from test contests and QSOs
+
+      TDateTime start = CanonicalToTDT( DTGStart.getValue().c_str() );
+
+      std::string dtgstr = nct->time.getDate(DTGFULL) + nct->time.getTime(DTGLOG);
+      TDateTime ncheck = CanonicalToTDT( dtgstr.c_str() );
+
+      TDateTime elapsed = ncheck - start;
+      if (elapsed > limit)
+      {
+         nextScan = -2; // continue; we want to include this one
+         break;
+      }
+
+
+      if ( nct->contactFlags.getValue() & ( NON_SCORING | DONT_PRINT | LOCAL_COMMENT | COMMENT_ONLY | TO_BE_ENTERED ) )
+      {
+         continue;
+      }
+//      if (nct->cs.valRes == ERR_DUPCS)
+      if (nct->cs.valRes != CS_OK)
+      {
+         continue;
+      }
+
+      int score =  nct->contactScore.getValue();
+      if (score > 0)
+      {
+         cs.contestScore += score;
+         cs.nctry += nct->newCtry?1:0;
+         cs.ndistrict += nct->newDistrict?1:0;
+         cs.nlocs += nct->newLoc?1:0;
+         cs.nqsos++;
+
+      }
+   }
+   cs.nmults = 0;
+   if ( countryMult.getValue() )
+   {
+      cs.brcc1 = cs.brcc2 = ' ';
+      cs.nmults += cs.nctry;
+   }
+   if ( districtMult.getValue() )
+   {
+      cs.brcc3 = cs.brcc4 = ' ';
+      cs.nmults += cs.ndistrict;
+   }
+   if ( locMult.getValue() )
+   {
+      cs.brloc1 = cs.brloc2 = ' ';
+      cs.nmults += cs.nlocs;
+   }
+   cs.nmults = std::max(cs.nmults, 1);
+
+   cs.totalScore = cs.contestScore*cs.nmults;
+
 }
 //============================================================
 DupContact::DupContact( BaseContact *c ) : dct( c ), sct( 0 )
@@ -1011,6 +1065,27 @@ bool BaseContestLog::checkTime(const dtg &t)
    {
       return false;
    }
+}
+//====================================================================
+ContestScore::ContestScore(BaseContestLog *ct, TDateTime limit)
+{
+   brcc1 = '(';
+   brcc2 = ')';
+   brcc3 = '(';
+   brcc4 = ')';
+   brloc1 = '(';
+   brloc2 = ')';
+
+   ct->getScoresTo(*this, limit);
+   name = ct->publishedName;
+}
+std::string ContestScore::disp()
+{
+   std::string buff = ( boost::format( "Score: Qsos: %d; %ld pts :%c%d countries%c:%c%d districts%c:%c%d locators%c = %ld" )
+            %nqsos % contestScore % brcc1 % nctry % brcc2 % brcc3 % ndistrict %
+            brcc4 % brloc1 % nlocs % brloc2 % totalScore ).str();
+
+   return buff;
 }
 //====================================================================
 

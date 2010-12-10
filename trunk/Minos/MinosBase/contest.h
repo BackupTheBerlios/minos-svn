@@ -17,6 +17,7 @@ class BaseContact;
 class ContestContact;
 class ScreenContact;
 class DisplayContestContact;
+class ContestScore;
 class DupContact
 {
    public:
@@ -281,6 +282,8 @@ class BaseContestLog
       void setScore( std::string & );
       bool isCurDup( BaseContact *) const;
 
+      virtual void getScoresTo(ContestScore &cs, TDateTime limit);
+
       // manipulation of contact list
 
       int getContactCount( void );
@@ -303,6 +306,28 @@ class BaseContestLog
       std::string dateRange( DTG dstyle );
       bool checkTime(const dtg &t);
 
+};
+class ContestScore
+{
+   public:
+      char brcc1;
+      char brcc2;
+      char brcc3;
+      char brcc4;
+      char brloc1;
+      char brloc2;
+
+      std::string name;
+      int nqsos;
+      int contestScore;
+      int nctry;
+      int ndistrict;
+      int nlocs;
+      int nmults;
+      int totalScore;
+
+      ContestScore(BaseContestLog *, TDateTime limit);
+      std::string disp();
 };
 
 #endif
