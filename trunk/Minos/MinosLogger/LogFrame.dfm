@@ -99,7 +99,6 @@ object SingleLogFrame: TSingleLogFrame
           inherited MultPages: TPageControl
             Width = 310
             Height = 165
-            ActivePage = MultDispFrame.StatsTab
             TabStop = False
             ExplicitWidth = 310
             ExplicitHeight = 165
@@ -128,24 +127,14 @@ object SingleLogFrame: TSingleLogFrame
               end
             end
             inherited StatsTab: TTabSheet
-              ExplicitWidth = 262
-              ExplicitHeight = 157
               inherited StatsDispFrame: TStatsDispFrame
-                Width = 262
-                Height = 157
                 TabStop = False
-                ExplicitWidth = 262
-                ExplicitHeight = 157
                 inherited SLabel1: TLabel
-                  Width = 262
-                  Height = 111
                   ExplicitWidth = 4
                 end
                 inherited Panel1: TPanel
-                  Top = 111
-                  Width = 262
                   ExplicitTop = 111
-                  ExplicitWidth = 262
+                  ExplicitWidth = 242
                   inherited P1Edit: TLabeledEdit
                     TabStop = False
                     EditLabel.Width = 59
@@ -169,6 +158,25 @@ object SingleLogFrame: TSingleLogFrame
             inherited ErrTab: TTabSheet
               inherited ErrList: TListBox
                 TabStop = False
+              end
+            end
+            inherited CompSheet: TTabSheet
+              inherited CompFrame: TCompFrame
+                Left = 0
+                Top = 0
+                Width = 248
+                Height = 182
+                Align = alClient
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 248
+                ExplicitHeight = 182
+                inherited CompGrid: TVirtualStringTree
+                  Width = 248
+                  Height = 182
+                  ExplicitWidth = 248
+                  ExplicitHeight = 182
+                end
               end
             end
           end
@@ -224,8 +232,12 @@ object SingleLogFrame: TSingleLogFrame
         inherited QSOTree: TVirtualStringTree
           Width = 429
           Height = 275
+          HintMode = hmHint
+          ParentShowHint = False
+          ShowHint = True
           OnDblClick = LogMonitorQSOTreeDblClick
           OnEnter = LogMonitorQSOTreeEnter
+          OnGetHint = LogMonitorQSOTreeGetHint
           OnKeyDown = LogMonitorQSOTreeKeyDown
           OnMouseDown = LogMonitorQSOTreeMouseDown
           ExplicitWidth = 429
@@ -312,7 +324,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end
@@ -340,18 +352,6 @@ object SingleLogFrame: TSingleLogFrame
             Height = 154
             ExplicitWidth = 584
             ExplicitHeight = 154
-            inherited GJVCancelButton: TButton
-              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
-            end
-            inherited GJVForceButton: TButton
-              OnClick = GJVQSOLogFrame1GJVForceButtonClick
-            end
-            inherited MatchXferButton: TBitBtn
-              OnClick = GJVQSOLogFrame1MatchXferButtonClick
-            end
-            inherited GJVOKButton: TButton
-              OnClick = GJVQSOLogFrame1GJVOKButtonClick
-            end
             inherited BandMapPanel: TPanel
               inherited AutoBandmapTune: TCheckBox
                 OnClick = AutoBandmapTuneClick
@@ -359,6 +359,18 @@ object SingleLogFrame: TSingleLogFrame
               inherited AutoBandmapTime: TCheckBox
                 OnClick = AutoBandmapTimeClick
               end
+            end
+            inherited GJVOKButton: TButton
+              OnClick = GJVQSOLogFrame1GJVOKButtonClick
+            end
+            inherited MatchXferButton: TBitBtn
+              OnClick = GJVQSOLogFrame1MatchXferButtonClick
+            end
+            inherited GJVForceButton: TButton
+              OnClick = GJVQSOLogFrame1GJVForceButtonClick
+            end
+            inherited GJVCancelButton: TButton
+              OnClick = GJVQSOLogFrame1GJVCancelButtonClick
             end
           end
         end

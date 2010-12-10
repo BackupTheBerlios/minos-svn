@@ -159,6 +159,9 @@ class TSingleLogFrame : public TFrame
    void __fastcall ThisMatchTreeBeforeItemErase(TBaseVirtualTree *Sender,
           TCanvas *TargetCanvas, PVirtualNode Node, TRect &ItemRect,
           TColor &ItemColor, TItemEraseAction &EraseAction);
+   void __fastcall LogMonitorQSOTreeGetHint(TBaseVirtualTree *Sender,
+          PVirtualNode Node, TColumnIndex Column,
+          TVTTooltipLineBreakStyle &LineBreakStyle, WideString &HintText);
    private:  	// User declarations
 
       MinosEventListener  EL_ContestPageChanged;

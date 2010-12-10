@@ -9,6 +9,8 @@
 #include "logger_pch.h"
 #pragma hdrstop
 
+#include "MinosVer.h"   // updated by SubWCRev
+
 #include "ContestDetails.h"
 
 #include "LogEvents.h"
@@ -1631,5 +1633,34 @@ void __fastcall TSingleLogFrame::ThisMatchTreeBeforeItemErase(
 
 }
 //---------------------------------------------------------------------------
+void __fastcall TSingleLogFrame::LogMonitorQSOTreeGetHint(
+      TBaseVirtualTree */*Sender*/, PVirtualNode Node, TColumnIndex /*Column*/,
+      TVTTooltipLineBreakStyle &/*LineBreakStyle*/, WideString &HintText)
+{
+#ifdef BETA_VERSION
+   BaseContact * lct = dynamic_cast<BaseContact*>( contest->pcontactAt( Node->Index ) );
+   if ( lct )
+   {
+// NB this doesn't cope with crazy times from test contests and QSOs
 
+      TDateTime start = CanonicalToTDT( contest->DTGStart.getValue().c_str() );
+
+      std::string dtgstr = lct->time.getDate(DTGFULL) + lct->time.getTime(DTGLOG);
+      TDateTime check = CanonicalToTDT( dtgstr.c_str() );
+
+      TDateTime diff = check - start;
+
+      // we now need to go through all contests and work it out for each
+      ContestScore cs(contest, TDateTime::CurrentDateTime());
+      std::string buff = cs.disp();
+
+      HintText = buff.c_str();
+   }
+   else
+   {
+      HintText = "";
+   }
+#endif
+}
+//---------------------------------------------------------------------------
 
