@@ -1,5 +1,11 @@
-For 1.5, urgent - month_list tag on sections for 50MHz 10B section
-How do we sort the calendar list?
+V1.6
+
+No DTG on add before/after (use the dtg from the reference contact?)
+Double click on date in edit doesn't turn off RO
+
+G6HNUs problem - how did he get M1MHZ with no DTG?
+
+Maybe the comparative stats if it works well enough - otherwise we may need to branch
 ==================================================================
 V1.5 Release notes
 

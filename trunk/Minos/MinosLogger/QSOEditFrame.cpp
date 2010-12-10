@@ -43,6 +43,7 @@ void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
    BaseContact *pct = getPriorContact();
    LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
    DisplayContestContact *newct = ct->addContactBetween(pct, selectedContact);
+   newct->contactFlags.setValue(newct->contactFlags.getValue()|TO_BE_ENTERED);
    selectEntry(newct);
 }
 //---------------------------------------------------------------------------
@@ -52,6 +53,7 @@ void __fastcall TGJVQSOEditFrame::InsertAfterButtonClick( TObject */*Sender*/ )
    BaseContact *nct = getNextContact();
    LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
    DisplayContestContact *newct = ct->addContactBetween(selectedContact, nct);
+   newct->contactFlags.setValue(newct->contactFlags.getValue()|TO_BE_ENTERED);
    selectEntry(newct);
 }
 //---------------------------------------------------------------------------
@@ -438,8 +440,8 @@ void __fastcall TGJVQSOEditFrame::TimeEditDblClick(TObject */*Sender*/)
       return ;
    }
    updateTimeAllowed = false;
-   updateQSOTime();
    TimeEdit->ReadOnly = false;
+   updateQSOTime();
 }
 //---------------------------------------------------------------------------
 
@@ -449,8 +451,9 @@ void __fastcall TGJVQSOEditFrame::DateEditDblClick(TObject */*Sender*/)
    {
       return ;
    }
-   SerTXEdit->ReadOnly = false;
-   SerTXEdit->Color = clWindow;
+   updateTimeAllowed = false;
+   DateEdit->ReadOnly = false;
+   updateQSOTime();
 }
 //---------------------------------------------------------------------------
 bool TGJVQSOEditFrame::isTimeEdit(TLabeledEdit */*tle*/)
