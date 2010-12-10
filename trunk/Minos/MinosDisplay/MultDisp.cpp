@@ -1,3 +1,4 @@
+#pragma link "CompDisp"
 /////////////////////////////////////////////////////////////////////////////
 // $Id$
 //
@@ -9,6 +10,7 @@
 
 #include "display_pch.h"
 #pragma hdrstop
+#include "MinosVer.h"   // updated by SubWCRev
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -96,16 +98,22 @@ __fastcall TMultDispFrame::TMultDispFrame( TComponent* Owner )
 	WFilterSplitter->HighlightColor = clSkyBlue;
 
    WFilterSplitter->Minimize();
+
+#ifndef BETA_VERSION
+   CompSheet->TabVisible = false;
+#endif
 }
 void TMultDispFrame::setContest( BaseContestLog *pct )
 {
    ct = pct;
    StatsDispFrame->setContest( ct );
+   CompFrame->setContest( ct );
    initFilters();
    reInitialiseCountries();
    reInitialiseDistricts();
    reInitialiseLocators();
    reInitialiseStats();
+   reInitialiseComp();
 }
 //---------------------------------------------------------------------------
 static GridColumn CountryTreeColumns[ ectMultMaxCol ] =
@@ -172,7 +180,7 @@ void TMultDispFrame::reInitialiseDistricts()
       // clear down
       return ;
    }
-   DistrictMultTree->RootNodeCount = MultLists::getMultLists() ->getDistListSize();
+//   DistrictMultTree->RootNodeCount = MultLists::getMultLists() ->getDistListSize();
 
    DistrictMultTree->BeginUpdate();
 
@@ -217,9 +225,15 @@ void TMultDispFrame::reInitialiseLocators()
    LocatorMultTree->ValidateNode( 0, true );
    LocatorMultTree->FullExpand();
 }
+//---------------------------------------------------------------------------
 void TMultDispFrame::reInitialiseStats()
 {
    StatsDispFrame->reInitialise();
+}
+//---------------------------------------------------------------------------
+void TMultDispFrame::reInitialiseComp()
+{
+   CompFrame->reInitialise();
 }
 //---------------------------------------------------------------------------
 void TMultDispFrame::refreshMults()

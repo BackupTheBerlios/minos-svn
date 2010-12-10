@@ -20,6 +20,7 @@
 #include "UWhisperSplitter.hpp"
 #include <Graphics.hpp>
 #include <ComCtrls.hpp>
+#include "CompDisp.h"
 //---------------------------------------------------------------------------
 class TMultDispFrame : public TFrame
 {
@@ -47,6 +48,8 @@ class TMultDispFrame : public TFrame
       TTimer *FilterTimer;
       TCheckBox *WorkedCB;
    TImage *Splitter_Image;
+   TTabSheet *CompSheet;
+   TCompFrame *CompFrame;
       void __fastcall CountryMultTreeGetNodeDataSize( TBaseVirtualTree *Sender,
             int &NodeDataSize );
       void __fastcall CountryMultTreeGetText( TBaseVirtualTree *Sender,
@@ -97,6 +100,7 @@ class TMultDispFrame : public TFrame
       void reInitialiseDistricts();
       void reInitialiseLocators();
       void reInitialiseStats();
+      void reInitialiseComp();
    public:  		// User declarations
       __fastcall TMultDispFrame( TComponent* Owner );
       void refreshMults();

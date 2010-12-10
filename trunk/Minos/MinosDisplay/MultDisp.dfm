@@ -175,10 +175,6 @@ object MultDispFrame: TMultDispFrame
     object ErrTab: TTabSheet
       Caption = 'Errors'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ErrList: TListBox
         Left = 0
         Top = 0
@@ -187,6 +183,19 @@ object MultDispFrame: TMultDispFrame
         Align = alClient
         ItemHeight = 13
         TabOrder = 0
+      end
+    end
+    object CompSheet: TTabSheet
+      Caption = 'Comparison'
+      ImageIndex = 5
+      inline CompFrame: TCompFrame
+        Left = -72
+        Top = -58
+        Width = 320
+        Height = 240
+        TabOrder = 0
+        ExplicitLeft = -72
+        ExplicitTop = -58
       end
     end
   end

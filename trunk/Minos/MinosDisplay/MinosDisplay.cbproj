@@ -30,7 +30,7 @@
     <DCC_UnitSearchPath>..\MinosBase;C:\Minos\MinosDisplay;C:\Documents and Settings\mjg\My Documents\Borland Studio Projects;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
     <PackageLibs>vcl.lib;rtl.lib;JvCoreD11R.lib;vcldb.lib;dbrtl.lib;vclx.lib;VTV.lib</PackageLibs>
     <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
-    <IncludePath>$(VTV)\Source;$(TINYXML);..\WhisperSplitter</IncludePath>
+    <IncludePath>$(VTV)\Source;$(TINYXML);..;..\WhisperSplitter;..\MinosDisplay</IncludePath>
     <BCC_PCHCache>true</BCC_PCHCache>
     <AllPackageLibs>vcl.lib;rtl.lib;JvCoreD11R.lib;vcldb.lib;dbrtl.lib;vclx.lib;VTV.lib</AllPackageLibs>
     <TASM_IncludePath>..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Boost\include;C:\Program Files\Soft Gems\Virtual Treeview\Source</TASM_IncludePath>
@@ -74,18 +74,25 @@
     <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
     <Borland.ProjectType>CppStaticLibrary</Borland.ProjectType>
     <BorlandProject>
-<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">..\XMPPLib;..\minosbase;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include;..\..\vcl\RADStudio2007</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item1">..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)t\include;$(VTV)\Virtual Treeview\Source</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item0">obj</HistoryLists_hlBCC_OutputDir></HistoryLists_hlBCC_OutputDir><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">3</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(VTV)\Source;$(TINYXML);..\WhisperSplitter</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">$(VTV)\Source;$(TINYXML)</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">$(VTV)\Source</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">..\XMPPLib;..\minosbase;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)\include;..\..\vcl\RADStudio2007</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item1">..\XMPPLib;..\iksemel\src;..\minosbase;..\iksemel\include;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(BOOST)t\include;$(VTV)\Virtual Treeview\Source</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item0">obj</HistoryLists_hlBCC_OutputDir></HistoryLists_hlBCC_OutputDir><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">4</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(VTV)\Source;$(TINYXML);..;..\WhisperSplitter;..\MinosDisplay</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">$(VTV)\Source;$(TINYXML);..\WhisperSplitter</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">$(VTV)\Source;$(TINYXML)</HistoryLists_hlIncludePath>  <HistoryLists_hlIncludePath Name="Item3">$(VTV)\Source</HistoryLists_hlIncludePath>
+    </HistoryLists_hlIncludePath><HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength><HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength></HistoryLists_hlBCC_MaxIdentifierLength></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
   </ProjectExtensions>
   <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
   <ItemGroup>
+    <CppCompile Include="CompDisp.cpp">
+      <Form>CompFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>CompDisp.h</DependentOn>
+      <BuildOrder>1</BuildOrder>
+    </CppCompile>
     <CppCompile Include="DisplayContestContact.cpp">
       <DependentOn>DisplayContestContact.h</DependentOn>
-      <BuildOrder>1</BuildOrder>
+      <BuildOrder>2</BuildOrder>
     </CppCompile>
     <CppCompile Include="MDateSelectForm.cpp">
       <Form>DateSelectForm</Form>
       <DependentOn>MDateSelectForm.h</DependentOn>
-      <BuildOrder>2</BuildOrder>
+      <BuildOrder>3</BuildOrder>
     </CppCompile>
     <CppCompile Include="MinosDisplay.cpp">
       <BuildOrder>0</BuildOrder>
@@ -93,51 +100,52 @@
     <CppCompile Include="MMessageDialog.cpp">
       <Form>MessageDialog</Form>
       <DependentOn>MMessageDialog.h</DependentOn>
-      <BuildOrder>3</BuildOrder>
+      <BuildOrder>4</BuildOrder>
     </CppCompile>
     <CppCompile Include="MonitoredContest.cpp">
       <DependentOn>MonitoredContest.h</DependentOn>
-      <BuildOrder>4</BuildOrder>
+      <BuildOrder>5</BuildOrder>
     </CppCompile>
     <CppCompile Include="MonitoredLog.cpp">
       <DependentOn>MonitoredLog.h</DependentOn>
-      <BuildOrder>7</BuildOrder>
+      <BuildOrder>8</BuildOrder>
     </CppCompile>
     <CppCompile Include="MonitoredStation.cpp">
       <DependentOn>MonitoredStation.h</DependentOn>
-      <BuildOrder>8</BuildOrder>
+      <BuildOrder>9</BuildOrder>
     </CppCompile>
     <CppCompile Include="MonitorFrame.cpp">
       <DependentOn>MonitorFrame.h</DependentOn>
-      <BuildOrder>5</BuildOrder>
+      <BuildOrder>6</BuildOrder>
     </CppCompile>
     <CppCompile Include="MonitorLogFrame.cpp">
       <Form>LogMonitorFrame</Form>
       <DependentOn>MonitorLogFrame.h</DependentOn>
-      <BuildOrder>6</BuildOrder>
+      <BuildOrder>7</BuildOrder>
     </CppCompile>
     <CppCompile Include="MShowMessageDlg.cpp">
       <Form>MinosShowMessage</Form>
       <DependentOn>MShowMessageDlg.h</DependentOn>
-      <BuildOrder>9</BuildOrder>
+      <BuildOrder>10</BuildOrder>
     </CppCompile>
     <CppCompile Include="MultDisp.cpp">
       <Form>MultDispFrame</Form>
       <DependentOn>MultDisp.h</DependentOn>
-      <BuildOrder>10</BuildOrder>
+      <BuildOrder>11</BuildOrder>
     </CppCompile>
     <CppCompile Include="StatsDisp.cpp">
       <Form>StatsDispFrame</Form>
       <DependentOn>StatsDisp.h</DependentOn>
-      <BuildOrder>11</BuildOrder>
+      <BuildOrder>12</BuildOrder>
     </CppCompile>
     <CppCompile Include="TreeUtils.cpp">
       <DependentOn>TreeUtils.h</DependentOn>
-      <BuildOrder>12</BuildOrder>
+      <BuildOrder>13</BuildOrder>
     </CppCompile>
     <DelphiCompile Include="..\WhisperSplitter\UWhisperSplitter.pas">
-      <BuildOrder>13</BuildOrder>
+      <BuildOrder>14</BuildOrder>
     </DelphiCompile>
+    <FormResources Include="CompDisp.dfm" />
     <FormResources Include="MDateSelectForm.dfm" />
     <FormResources Include="MMessageDialog.dfm" />
     <FormResources Include="MonitorLogFrame.dfm" />
