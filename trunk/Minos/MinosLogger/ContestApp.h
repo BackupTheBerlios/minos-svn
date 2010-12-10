@@ -109,6 +109,7 @@ class TContestApp : public MinosParameters
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
+      virtual std::vector<BaseContestLog *> getContestList();
 
       TContestApp();
       bool initialise();

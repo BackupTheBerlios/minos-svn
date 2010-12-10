@@ -94,4 +94,9 @@ bool MinosParametersAdapter::isListOpen( const std::string /*fn*/ )
 {
    return false;
 }
+std::vector<BaseContestLog *> MinosParametersAdapter::getContestList()
+{
+   std::vector<BaseContestLog *> logList;
+   return logList;
+}
 

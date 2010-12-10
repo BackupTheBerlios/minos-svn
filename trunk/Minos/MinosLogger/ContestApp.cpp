@@ -480,6 +480,20 @@ void TContestApp::writeContestList()
    }
    preloadBundle.flushProfile();
 }
+std::vector<BaseContestLog *> TContestApp::getContestList()
+{
+   std::vector<BaseContestLog *> logList;
+   for ( unsigned int i = 0; i < contestSlotList.size(); i++ )
+   {
+      ContestSlot *cs = contestSlotList[ i ];
+      BaseContestLog * ct = cs->slot;
+      if ( !ct )
+         continue;
+
+      logList.push_back(ct);
+   }
+   return logList;
+}
 LoggerContestLog * TContestApp::openFile( const std::string &fn, bool newFile, int slotno )
 {
    LoggerContestLog * contest = new LoggerContestLog();

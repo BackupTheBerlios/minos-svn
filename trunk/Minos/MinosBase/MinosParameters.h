@@ -55,6 +55,7 @@ class MinosParameters
       virtual bool insertList( ContactList *p, unsigned int sno ) = 0;
       virtual bool isContestOpen( const std::string fn ) = 0;
       virtual bool isListOpen( const std::string fn ) = 0;
+      virtual std::vector<BaseContestLog *> getContestList() = 0;
 };
 class MinosParametersAdapter : public MinosParameters
 {
@@ -83,5 +84,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual bool insertList( ContactList *p, unsigned int sno );
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
+      virtual std::vector<BaseContestLog *> getContestList();
 };
 #endif
