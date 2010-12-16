@@ -227,7 +227,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
          {
             // use contest start time
             TDateTime DTGStart = CanonicalToTDT(contest->DTGStart.getValue().c_str());
-            DateEdit->Text = DTGStart.FormatString("dd/mm/yyyy");
+            DateEdit->Text = DTGStart.FormatString("dd/mm/yy");
             TimeEdit->Text = DTGStart.FormatString("hh:nn");
             dtg time(false);
             time.setDate( DateEdit->Text.c_str(), DTGDISP );
