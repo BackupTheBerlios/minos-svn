@@ -86,9 +86,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 41
       Width = 46
       Height = 21
-      Hint = 
-        'Date/Time is read only - double click to modify, or use right mo' +
-        'use button to set to "now"'
+      Hint = 'Date/Time is read only - double click to modify'
       TabStop = False
       AutoSelect = False
       EditLabel.Width = 28
@@ -112,9 +110,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Top = 41
       Width = 64
       Height = 21
-      Hint = 
-        'Date/Time is read only - double click to modify, or use right mo' +
-        'use button to set to "now"'
+      Hint = 'Date/Time is read only - double click to modify'
       TabStop = False
       AutoSelect = False
       EditLabel.Width = 27
