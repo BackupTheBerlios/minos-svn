@@ -2,7 +2,7 @@ object LogContainer: TLogContainer
   Left = 327
   Top = 345
   Caption = 'Minos Contest Logger'
-  ClientHeight = 466
+  ClientHeight = 486
   ClientWidth = 772
   Color = clBtnFace
   UseDockManager = True
@@ -24,7 +24,7 @@ object LogContainer: TLogContainer
     Left = 0
     Top = 0
     Width = 772
-    Height = 447
+    Height = 467
     Align = alClient
     DockSite = True
     HotTrack = True
@@ -38,10 +38,11 @@ object LogContainer: TLogContainer
     OnDrawTab = ContestPageControlDrawTab
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
+    ExplicitHeight = 447
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 447
+    Top = 467
     Width = 772
     Height = 19
     Hint = 'Click to correct date/time'
@@ -64,6 +65,7 @@ object LogContainer: TLogContainer
     UseSystemFont = False
     OnDblClick = CorrectDateTimeActionExecute
     OnResize = StatusBar1Resize
+    ExplicitTop = 447
   end
   object ActionManager: TActionManager
     ActionBars = <
@@ -464,9 +466,6 @@ object LogContainer: TLogContainer
     end
     object N5: TMenuItem
       Caption = '-'
-    end
-    object SetTimeToNow1: TMenuItem
-      Caption = 'Set Time To Now'
     end
     object GoToSerial1: TMenuItem
       Action = GoToSerialAction

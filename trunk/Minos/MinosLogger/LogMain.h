@@ -111,7 +111,6 @@ class TLogContainer : public TForm
       TAction *FileNewAction;
       TMenuItem *AnalyseMinosLog2;
       TMenuItem *AnalyseMinosLog3;
-      TMenuItem *SetTimeToNow1;
       TAction *NextContactDetailsOnLeftAction;
       TFileOpen *ListOpen1;
       TMenuItem *OpenList1;
