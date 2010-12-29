@@ -670,15 +670,32 @@ void BaseContestLog::getScoresTo(ContestScore &cs, TDateTime limit)
          continue;
       }
 
-      int score =  nct->contactScore.getValue();
-      if (score > 0)
+     if ( locatorField.getValue() || nct->contactScore.getValue() >= 0 )   		// don't add -1 scores in, but DO add zero km
+         // as it is 1 point.
       {
-         cs.contestScore += score;
+         int cscore = nct->contactScore.getValue();
+         switch ( scoreMode.getValue() )
+         {
+            case PPKM:
+               {
+                  if ( nct->contactFlags.getValue() & XBAND )
+                  {
+                     cscore = ( cscore + 1 ) / 2;
+                  }
+                  cs.contestScore += cscore;
+               }
+               break;
+
+            case PPQSO:
+               if ( cscore > 0 )
+                  cs.contestScore++;
+               break;
+
+         }
          cs.nctry += nct->newCtry?1:0;
          cs.ndistrict += nct->newDistrict?1:0;
          cs.nlocs += nct->newLoc?1:0;
          cs.nqsos++;
-
       }
    }
    cs.nmults = 0;
