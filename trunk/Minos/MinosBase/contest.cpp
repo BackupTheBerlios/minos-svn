@@ -612,6 +612,14 @@ void BaseContestLog::scanContest( void )
       nct->newCtry = false;
       nct->newLoc = false;
       nct->check( );
+
+//      nct->baddtg = false;
+      if (nct->time.notEntered() == 0)
+      {
+         nct->time = nct->getHistory()[0].updtime;
+         nct->time.clearDirty();
+         nct->time.setBadDtg();
+      }
    }
    if (currentOp1.getValue().size() == 0)
    {
