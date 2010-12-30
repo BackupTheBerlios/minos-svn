@@ -149,6 +149,8 @@ class dtg
    private:
       MinosItem<std::string> sdate;
       MinosItem<std::string> stime;
+
+      bool baddtg;
    public:
       static const double daySecs;
 
@@ -173,6 +175,11 @@ class dtg
       {
          sdate.setValue( d.sdate.getValue() );
          stime.setValue( d.stime.getValue() );
+
+         if (notEntered() == 0)
+         {
+            baddtg = true;
+         }
       }
       int notEntered( void );  // returns the "entered" state
 
@@ -190,10 +197,18 @@ class dtg
          sdate.clearDirty();
          stime.clearDirty();
       }
+      void setBadDtg()
+      {
+         baddtg = true;
+      }
+      bool isBadDtg()
+      {
+         return baddtg;
+      }
 
       dtg( bool now );
-      //    dtg(const dtg&);
-      //    dtg& operator =(const dtg&);
+      dtg(const dtg&);
+      dtg& operator =(const dtg&);
       ~dtg();
 };
 //---------------------------------------------------------------------------

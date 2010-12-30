@@ -84,7 +84,7 @@ char locator::validate( void )
    return tdt;
 }
 // We really need to hold FULL dates internally!
-dtg::dtg( bool now )
+dtg::dtg( bool now ): baddtg(false)
 {
    if ( now )
    {
@@ -96,6 +96,7 @@ dtg::dtg( bool now )
    {
       setDate( "", DTGDISP );
       setTime( "", DTGDISP );
+      baddtg = true;
    }
 }
 void dtg::setIsoDTG( const std::string &d )
@@ -317,6 +318,7 @@ void dtg::setDate( const std::string &d, DTG dstyle )
          temp = d.substr( 0, 6 );
       }
    sdate.setValue( temp );
+   baddtg = false;
 }
 
 void dtg::setTime( const std::string &t, DTG dstyle )
@@ -345,6 +347,7 @@ void dtg::setTime( const std::string &t, DTG dstyle )
          temp = t2.substr( 0, 6 );
       }
    stime.setValue( temp );
+   baddtg = false;
 }
 void dtg::setDtg( time_t cttime )
 {
@@ -407,12 +410,19 @@ int dtg::notEntered( void )
    return -1;     // both entered
 }
 // default versions are good enough for now!
-//dtg::dtg(const dtg&)
-//{
-//}
-//dtg& dtg::operator =(const dtg&)
-//{
-//}
+dtg::dtg(const dtg&rhs)
+{
+   sdate = rhs.sdate;
+   stime = rhs.stime;
+   baddtg = false;
+}
+dtg& dtg::operator =(const dtg&rhs)
+{
+   sdate = rhs.sdate;
+   stime = rhs.stime;
+   baddtg = false;
+   return *this;
+}
 dtg::~dtg()
 {}
 //============================================================
