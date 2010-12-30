@@ -64,8 +64,8 @@
 <!-- 11.005 28/11/2010 Qualified meaning of UK for M5 -->
 <calendar>
 <version>11.005 28/11/2010</version>
-<icalurl>http://www.google.com/calendar/ical/54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com/public/basic.ics</icalurl>
-<googleurl>http://www.google.com/calendar/embed?src=54thr7ige2bh2nc84kdvm3k6p4%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
+<icalurl>http://www.google.com/calendar/ical/mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com/public/basic.ics</icalurl>
+<googleurl>http://www.google.com/calendar/embed?src=mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -1163,7 +1163,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </contest>
 <contest>
   <name>shfukac</name> 
-<description>2.3GHz+ UKAC</description> 
+<description>SHF UKAC</description> 
 <time_list>
     <month_list>Jan</month_list>
     <month_list>Feb</month_list>
@@ -1195,12 +1195,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>3400</band_list>
   <band_list>5760</band_list>
   <band_list>10368</band_list>
-  <band_list>24GHz</band_list>
-  <band_list>47GHz</band_list>
-  <band_list>76GHz</band_list>
-  <band_list>120GHz</band_list>
-  <band_list>144GHz</band_list>
-  <band_list>248GHz</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 </contest>
