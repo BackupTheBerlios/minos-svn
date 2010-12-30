@@ -90,11 +90,14 @@ void __fastcall TLogMonitorFrame::QSOTreePaintText( TBaseVirtualTree */*Sender*/
       switch ( QSOTreeColumns[ Column ].fieldId )
       {
          case egTime:
+/*
             if (ct->time.isBadDtg())
             {
                TargetCanvas->Font->Color = clBlue;
             }
-            else if (!contest->checkTime(ct->time))
+            else
+*/
+            if (!contest->checkTime(ct->time))
             {
                TargetCanvas->Font->Color = multhighlight;
             }
