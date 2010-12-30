@@ -52,17 +52,12 @@ void TGJVQSOLogFrame::logScreenEntry( )
    if ( ctmax > contest->maxSerial )
       contest->maxSerial = ctmax;
 
-   // NB contact will be saved - soon
-
-   // will be used to hold the screen contact
    LoggerContestLog *ct = dynamic_cast<LoggerContestLog *>( contest );
    if ( !ct )
    {
       return ;
    }
    DisplayContestContact *lct = ct->addContact( ctmax, 0, false, false );	// "current" doesn't get flag, don't save ContestLog yet
-
-   dtg saved( screenContact.time );		// dtg from current contact
 
    bool contactmodeCW = ( screenContact.reps.size() == 3 && screenContact.repr.size() == 3 );
    bool curmodeCW = ( stricmp( screenContact.mode, "A1A" ) == 0 );
@@ -90,6 +85,11 @@ void TGJVQSOLogFrame::logScreenEntry( )
    screenContact.op2 = ct->currentOp2.getValue();
 
    lct->copyFromArg( screenContact );
+   lct->time.setDirty(); // As we may have created the contact with the same time as the screen contact
+                         // This then becomes "not dirty", so we end up not saving the dtg.
+                         // But this only happens when seconds are :00, as the main log
+                         // is only to a minute resolution 
+
    lct->commonSave();				// which also saves the ContestLog
 
    MinosLoggerEvents::SendAfterLogContact(ct);
