@@ -1,3 +1,16 @@
+==================================================================
+1.5.2
+
+Bug fix release:
+
+Point/QSO mode now shows correctly on status line
+Date/time on catch up
+Occasional not logging the date/time of a QSO
+Where this has happened, show the time in blue
+==================================================================
+M1MHz                   The bearing display is only a true bearing and we found it particularly useful in “GJV LOG” where you could alter the offset to display a correct heading for the rotator needle/scale where estimated during contest setup.
+
+==================================================================
 (49890)
 
 My son had his first four QSOs ever on Tuesday in the UKAC and we

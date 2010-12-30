@@ -21,5 +21,5 @@
 #define MINOSVERSIONBUILD "1.5.2 build $WCREV$"
 #define MINOSRCVERSION "1.5.2.$WCREV$\0"
 
-#define BETA_VERSION
+//#define BETA_VERSION
 
