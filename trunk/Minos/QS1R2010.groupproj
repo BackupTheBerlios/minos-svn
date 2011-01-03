@@ -9,6 +9,9 @@
 			<Projects Include="QS1RSync\QS1RSync.cbproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="QS1RIVSync\QS1RIVSync.cbproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
 		<Target Name="QS1RSync:Make">
 			<MSBuild Targets="Make" Projects="QS1RSync\QS1RSync.cbproj"/>
 		</Target>
+		<Target Name="QS1RIVSync">
+			<MSBuild Projects="QS1RIVSync\QS1RIVSync.cbproj"/>
+		</Target>
+		<Target Name="QS1RIVSync:Clean">
+			<MSBuild Targets="Clean" Projects="QS1RIVSync\QS1RIVSync.cbproj"/>
+		</Target>
+		<Target Name="QS1RIVSync:Make">
+			<MSBuild Targets="Make" Projects="QS1RIVSync\QS1RIVSync.cbproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="QS1RProxy;QS1RSync"/>
+			<CallTarget Targets="QS1RProxy;QS1RSync;QS1RIVSync"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="QS1RProxy:Clean;QS1RSync:Clean"/>
+			<CallTarget Targets="QS1RProxy:Clean;QS1RSync:Clean;QS1RIVSync:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="QS1RProxy:Make;QS1RSync:Make"/>
+			<CallTarget Targets="QS1RProxy:Make;QS1RSync:Make;QS1RIVSync:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
