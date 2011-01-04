@@ -1,83 +1,14 @@
 ==================================================================
-1.5.2
+M1MHz                   The bearing display is only a true bearing and we found it 
+particularly useful in “GJV LOG” where you could alter the offset to display a 
+correct heading for the rotator needle/scale where estimated during contest setup.
 
-Bug fix release:
-
-Point/QSO mode now shows correctly on status line
-Date/time on catch up
-Occasional not logging the date/time of a QSO
-Where this has happened, show the time in blue
-==================================================================
-M1MHz                   The bearing display is only a true bearing and we found it particularly useful in “GJV LOG” where you could alter the offset to display a correct heading for the rotator needle/scale where estimated during contest setup.
-
-==================================================================
-(49890)
-
-My son had his first four QSOs ever on Tuesday in the UKAC and we
-tried to enter them afterwards into Minos using the catchup method
-but no matter what I tried, I couldn't get it to accept the date. That's using the latest release version.
-
-==================================================================
-V1.5.1
-
-No DTG on add before/after (use the dtg from the reference contact?)
-Double click on date in edit doesn't turn off RO
-
-G6HNUs problem - how did he get M1MHZ with no DTG?
-
-Maybe the comparative stats if it works well enough - otherwise we may need to branch
-==================================================================
-V1.5 Release notes
-
-2011 calendar
-Date format forced so it will work as UK dates no matter what the OS thinks
-Date and Time taken at end of QSO (not at the start as previously); remove "date now"
-Prettification of bundles
-Operator combos are now larger
-Add next/prior, but no consequential bulk changes
-Catchup and serial numbers - bug fix
-Archive display - bug fix
-HF style prefix handling, should improve recognition of odd prefixes
-===========================================================================
-Enter one contact, then go to catch up - no operator carried in
-===========================================================================
-Opening out contacts:
-	Post Entry doesn't notice, doesn't ask
-	And when you drop back, the serial is back where it was
-	And if you then open out contacts you get the same serial in twice
-	And should you be able to NOT open out contacts (so you don't get a set of dead contacts when you aren't going to fill in)? 
-	Can we use a single dialog box somehow?
 ===========================================================================
 Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
 ===========================================================================
 Rethink logSequence and nextBlock; nextBlock is a hangover from the "old" logger.
 We should just need to use logSequence, and maintain a "max" value for it.
 Then cancelled catch ups wouldn't keep incrementing it.
-===========================================================================
-1.4 release notes
-
-Read only now becomes "protected" and is stored properly with the contest. It can be temporarily lifted so that back editting can be done. For now, you have to set it manually; I may in future make it automatically set on producing the entry or after the entry date has passed. What do the users think?
-
-Tab highlighting is more prominent with tab colours - a darkish blue for normal contests, darkish green for protected contests, bright green for protected contests that are temporarily unprotected, bright blue for the current contest
-
-Operator setting moved from ops frame to main screen or contest details screen, and I hope it all works again.
-
-Sticky "show operators" on Right Mouse Button for main screen
-
-Station call is the default initial operator
-
-Dble click on QSO in "other" grid does transfer, not edit; Right Mouse Button option for editting "other" grid contact
-
-Post event and unfilled QSO simplification - catch-up button and unfilled button on QSO edit area.
-
-Scrolling tabs as an option, on Right Mouse Button. This makes all the tabs form a single line at the top, with scroll arrows, rather than multiple lines.
-
-New printable output format on Produce Entry/export file
-
-EDI export entry keeps the file name - robot will sort it out if not to standards.
-
-Bug fixes
-
 ===========================================================================
 We DEFINITELY need a colour choice dialog...
 	live contest
@@ -136,67 +67,6 @@ Sticky splitters in monitor and chat
 Auto copy MinosLines on compilation
 
 Insert before/insert after; "easy" enough to do, but what needs doing to all following? Do we need bulk increment of serial numbers? Or do we want a multi-select that allows such things?
-
-//================================================================
-Next version - 1.4.0.0
-
-Event message modifications - big change, but should be nothing visible (except bugs)
-
-Read only now becomes "protected" and is stored properly with the contest. It can be temporarily lifted so that back editting can be done. For now, you have to set it manually; may in future make it automatically set on producing the entry or after the entry date has passed. What do the users think?
-
-*** Are tab colours new to the public in this release? YES! so we need a bit more explanation ***
-Tab highlight more prominent; different colours for different states.
-
-Post event and Uri mode simplification - catch-up button and unfilled button on QSO edit area. Uri mode still not that obvious to initiate
-
-Operator setting moved from ops frame to main screen or contest details screen.
-
-Sticky "show operators" on RMB for main screen
-
-Station call is the default initial operator
-
-Scrolling tabs as an option, on RMB. This makes all the tabs form a single line at the top, with scroll arrows, rather than multiple lines.
-
-New printable output format on Produce Entry/export file; Does this do what people want?
-
-F12 does match transfer from the entry highlighted in pink
-
-EDI export entry keeps file name - robot will sort it out.
-
-Most splitters etc sticky cross contest
-
-Dble click on QSO in "other" grid does transfer, not edit; RMB option for editting "other" grid contact
-
-
-//================================================================
-Next version - 1.3.1 Beta - new features etc
-
-Using a branch "svn+ssh://g0gjv@svn.berlios.de/svnroot/repos/minos/branches/V1_3_1_x"
-
-//================================================================
-Next version - 1.3.0 - new features etc
-
-1.3.0.165
-
-Duplicate bug when coming off the QSO Edit dialog
-
-Uses rsgbcc URL for contest files
-
-"time now" button/accelerator
-
-"mode change" button/accelerator
-
-Revise display of current band; above cribsheet looks good;
-
-Locators - if replacing 1/I and 0/O makes a good locator then do it!
-
-Mults don't get reset when choosing from calendar
-
-New style splitters, all should be sticky
-
-New style calendar
-
-Reduced number of support files (so hopefully all smaller)
 
 //==================================================================
 *****************  Documentation for networking  *******************
