@@ -83,6 +83,12 @@ class TMultDispFrame : public TFrame
       void __fastcall FilterClick( TObject *Sender );
       void __fastcall FilterTimerTimer( TObject *Sender );
    void __fastcall FilterSplitterMoved(TObject *Sender);
+   void __fastcall CountryMultTreeMouseDown(TObject *Sender,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
+   void __fastcall DistrictMultTreeMouseDown(TObject *Sender,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
+   void __fastcall LocatorMultTreeMouseDown(TObject *Sender,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
    private:  	// User declarations
       MinosEventListener  EL_ShowErrorList;
       void ShowErrorList_Event ( MinosEventBase & Event );

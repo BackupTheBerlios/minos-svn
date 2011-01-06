@@ -38,6 +38,10 @@ enum MinosEventNumber
    EN_ScrollToDistrict,
    EN_MatchStarting,
 
+   EN_CountrySelect,
+   EN_DistrictSelect,
+   EN_LocatorSelect,
+
    EN_Op1Change,
    EN_Op2Change,
    EN_ShowOperators,

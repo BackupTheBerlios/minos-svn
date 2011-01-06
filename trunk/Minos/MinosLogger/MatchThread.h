@@ -61,7 +61,7 @@ class Matcher
 {
       bool matchRequired;  // use getter and setter below
    protected:
-      enum MatchPhase {Exact, NoSuffix, NoLoc, Body, Country};
+      enum MatchPhase {Exact, NoSuffix, NoLoc, Body, Country, District, Locator};
       enum ContestPhase {Starting, MainContest, Rest};
 
       MatchPhase mp;
@@ -133,6 +133,15 @@ class TMatchThread : public TThread
    private:
       MinosEventListener  EL_ScreenContactChanged;
       void ScreenContactChanged_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_CountrySelect;
+      void CountrySelect_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_DistrictSelect;
+      void DistrictSelect_Event ( MinosEventBase & Event );
+
+      MinosEventListener  EL_LocatorSelect;
+      void LocatorSelect_Event ( MinosEventBase & Event );
 
       static void startMatch( CountryEntry *ce = 0 );
 

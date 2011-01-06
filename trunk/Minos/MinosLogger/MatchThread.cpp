@@ -33,7 +33,10 @@ TMatchThread *TMatchThread::matchThread = 0;
 
 __fastcall TMatchThread::TMatchThread()
       : TThread(  /*CreateSuspended*/ false ), myMatches( 0 ), myListMatches( 0 ), mct(0),
-      EL_ScreenContactChanged ( EN_ScreenContactChanged, & ScreenContactChanged_Event )
+      EL_ScreenContactChanged ( EN_ScreenContactChanged, & ScreenContactChanged_Event ),
+      EL_CountrySelect ( EN_CountrySelect, & CountrySelect_Event ),
+      EL_DistrictSelect ( EN_DistrictSelect, & DistrictSelect_Event ),
+      EL_LocatorSelect ( EN_LocatorSelect, & LocatorSelect_Event )
 {
    Priority = tpLower;
    logMatch = new LogMatcher();
@@ -67,6 +70,44 @@ void TMatchThread::ScreenContactChanged_Event ( MinosEventBase & Event )
       }
    }
 }
+//---------------------------------------------------------------------------
+void TMatchThread::CountrySelect_Event ( MinosEventBase & Event )
+{
+   ActionEvent2<std::string,  BaseContestLog *, EN_CountrySelect> & S = dynamic_cast<ActionEvent2<std::string, BaseContestLog *, EN_CountrySelect> &> ( Event );
+   std::string sel = S.getData();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   if (S.getContext() == ct)
+   {
+      mct = 0;
+      CountryEntry *ce = MultLists::getMultLists() ->getCtryForPrefix( sel );
+      startMatch(ce);
+   }
+}
+
+//---------------------------------------------------------------------------
+void TMatchThread::DistrictSelect_Event ( MinosEventBase & Event )
+{
+   ActionEvent2<std::string,  BaseContestLog *, EN_DistrictSelect> & S = dynamic_cast<ActionEvent2<std::string, BaseContestLog *, EN_DistrictSelect> &> ( Event );
+   std::string sel = S.getData();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   if (S.getContext() == ct)
+   {
+
+   }
+}
+
+//---------------------------------------------------------------------------
+void TMatchThread::LocatorSelect_Event ( MinosEventBase & Event )
+{
+   ActionEvent2<std::string,  BaseContestLog *, EN_LocatorSelect> & S = dynamic_cast<ActionEvent2<std::string, BaseContestLog *, EN_LocatorSelect> &> ( Event );
+   std::string sel = S.getData();
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   if (S.getContext() == ct)
+   {
+
+   }
+}
+
 //---------------------------------------------------------------------------
 // limit the total  number of hits
 const int MATCH_LIM = 20;
@@ -337,7 +378,6 @@ void Matcher::initMatch( void )
       {
          return ;
       }
-      clearmatchall();
 
       if ( !TContestApp::getContestApp() ->getCurrentContest() )
       {
@@ -347,7 +387,7 @@ void Matcher::initMatch( void )
 
       if ( !ce )
       {
-
+         clearmatchall();
          // we need to have been sent this... in a start match action?
          ScreenContact * mct = TMatchThread::getMatchThread()->mct;
          if ( !mct )
@@ -566,6 +606,8 @@ bool LogMatcher::idleMatch( int limit )
                      // else we have already done what we can, so drop through
 
                   case Country:
+                  case District:
+                  case Locator:
                   case Body:
                      {
                         // we have finished.
@@ -580,7 +622,7 @@ bool LogMatcher::idleMatch( int limit )
                setMatchRequired( false );
 
                BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
-               if ( bool( ct ) && ( mp != Country ) )
+               if ( bool( ct ) && ( mp != Country )  && ( mp != District )  && ( mp != Locator ) )
                   addMatch( ct->DupSheet.getCurDup(), ct );	// in case it isn't already
 
                std::string buff;
@@ -591,8 +633,21 @@ bool LogMatcher::idleMatch( int limit )
                {
                   // conteste focused the top line of matches here
                   // want to manage plurals, and local/other contests
+                  std::string matchSuffix = "Possible";
+                  if (mp == Country)
+                  {
+                     matchSuffix = "Country";
+                  }
+                  else if (mp == District)
+                  {
+                     matchSuffix = "District";
+                  }
+                  else if (mp == Locator)
+                  {
+                     matchSuffix = "Locator";
+                  }
                   buff = ( boost::format( " - %s%d %s matches" ) % ( ( cnt > MATCH_LIM ) ? ">" : "" ) % thisContestMatched
-                           % ( ( mp == Exact ) ? "" : ( ( mp == Country ) ? "Country" : "Possible" ) ) ).str();
+                           % ( ( mp == Exact ) ? "" : matchSuffix.c_str() ) ).str();
                }
                else
                {
@@ -656,7 +711,7 @@ bool LogMatcher::idleMatch( int limit )
 
          // now do the match
 
-         if ( mp != Country )
+         if ( mp != Country && mp != District && mp != Locator )
          {
             bool csmatch = false;
             bool locmatch = false;
@@ -701,7 +756,7 @@ bool LogMatcher::idleMatch( int limit )
                   break;
             }
          }
-         else
+         else if (mp == Country)
          {
             if ( cct->ctryMult && ( cct->ctryMult == ce ) )
             {
@@ -710,6 +765,26 @@ bool LogMatcher::idleMatch( int limit )
                   break;
             }
 
+         }
+         else if (mp == District)
+         {
+/*            if ( cct->ctryMult && ( cct->ctryMult == ce ) )
+            {
+               addMatch( cct, ccon );
+               if ( matchCollection->matchList.size() > MATCH_LIM )
+                  break;
+            }
+*/
+         }
+         else if (mp == Locator)
+         {
+/*            if ( cct->ctryMult && ( cct->ctryMult == ce ) )
+            {
+               addMatch( cct, ccon );
+               if ( matchCollection->matchList.size() > MATCH_LIM )
+                  break;
+            }
+*/
          }
       }
    }
@@ -761,7 +836,7 @@ bool ListMatcher::idleMatch( int limit )
          return false;
 
       int cnt = matchCollection->matchList.size();
-      if ( ( firstMatch == Starting ) && ( ( mp == Exact ) || ( mp == Country ) ) )
+      if ( ( firstMatch == Starting ) && ( ( mp == Exact ) || ( mp == Country ) || ( mp == District ) || ( mp == Locator ) ) )
       {
          contestIndex = 0;
          contactIndex = 0;
@@ -881,6 +956,8 @@ bool ListMatcher::idleMatch( int limit )
                      // else we have already done what we can, so drop through
 
                   case Country:
+                  case District:
+                  case Locator:
                   case Body:
                      {
                         // we have finished.
@@ -945,7 +1022,8 @@ bool ListMatcher::idleMatch( int limit )
             return true;
 
          // now do the match
-
+#warning need country, district, locator matches
+// And why aren't we doing a QTH match mere?
          bool csmatch = false;
          bool locmatch = false;
 

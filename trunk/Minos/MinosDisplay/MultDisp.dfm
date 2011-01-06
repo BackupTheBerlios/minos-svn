@@ -39,17 +39,13 @@ object MultDispFrame: TMultDispFrame
     Top = 0
     Width = 296
     Height = 190
-    ActivePage = DistrictTab
+    ActivePage = LocatorsTab
     Align = alClient
     MultiLine = True
     TabOrder = 0
     TabPosition = tpRight
     object CountriesTab: TTabSheet
       Caption = 'Countries'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object CountryMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -75,16 +71,13 @@ object MultDispFrame: TMultDispFrame
         OnGetNodeDataSize = CountryMultTreeGetNodeDataSize
         OnInitChildren = CountryMultTreeInitChildren
         OnInitNode = CountryMultTreeInitNode
+        OnMouseDown = CountryMultTreeMouseDown
         Columns = <>
       end
     end
     object DistrictTab: TTabSheet
       Caption = 'Districts'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -109,16 +102,13 @@ object MultDispFrame: TMultDispFrame
         OnGetNodeDataSize = DistrictMultTreeGetNodeDataSize
         OnInitChildren = DistrictMultTreeInitChildren
         OnInitNode = DistrictMultTreeInitNode
+        OnMouseDown = DistrictMultTreeMouseDown
         Columns = <>
       end
     end
     object LocatorsTab: TTabSheet
       Caption = 'Locators'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LocatorMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -141,6 +131,7 @@ object MultDispFrame: TMultDispFrame
         OnGetNodeDataSize = LocatorMultTreeGetNodeDataSize
         OnInitChildren = LocatorMultTreeInitChildren
         OnInitNode = LocatorMultTreeInitNode
+        OnMouseDown = LocatorMultTreeMouseDown
         Columns = <>
       end
     end

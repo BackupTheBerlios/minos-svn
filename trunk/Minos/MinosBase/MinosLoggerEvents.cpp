@@ -144,4 +144,19 @@ void MinosLoggerEvents::SendShowOperators()
 	ActionEventV<EN_ShowOperators>::Send();
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendCountrySelect(std::string cty, BaseContestLog *c)
+{
+	ActionEvent2<std::string, BaseContestLog *, EN_CountrySelect>::Send(cty, c);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendDistrictSelect(std::string dist, BaseContestLog *c)
+{
+	ActionEvent2<std::string, BaseContestLog *, EN_DistrictSelect>::Send(dist, c);
+}
+//---------------------------------------------------------------------------
+void MinosLoggerEvents::SendLocSelect(std::string loc, BaseContestLog *c)
+{
+	ActionEvent2<std::string, BaseContestLog *, EN_LocatorSelect>::Send(loc, c);
+}
+//---------------------------------------------------------------------------
 

@@ -1,8 +1,24 @@
 ==================================================================
+Make sure use of MinosLogger.ini is documented! Will be VERY useful
+on Vista/Windows 7 (but test it...)
+e.g.
+[Default]
+Log Directory=c:\temp
+==================================================================
+Want worked by country; either from select on mults list(s) or by sort on match?
+SINGLE click on dxcc/postcode will do; locs are a bit more difficult
+as they aren't a grid. With PC and loc, we can always just type in
+but single click is easier.
+Need to keep the "listings" until we return to the QSO properly
+so we can scroll, sort, etc as required
+==================================================================
 M1MHz                   The bearing display is only a true bearing and we found it 
 particularly useful in “GJV LOG” where you could alter the offset to display a 
 correct heading for the rotator needle/scale where estimated during contest setup.
 
+Where do we set and store this? MinosLogger.ini? Need a config editor for it.
+Is this as for the bundle editor? But with only one bundle allowed? What would
+multiple logger bundles mean, and how would we choose one(section=bundle under default?)?
 ===========================================================================
 Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
 ===========================================================================

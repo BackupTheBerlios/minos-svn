@@ -531,7 +531,33 @@ void TMultDispFrame::showErrorList( ErrorList &errs )
 
 void __fastcall TMultDispFrame::FilterSplitterMoved(TObject */*Sender*/)
 {
-//   
+//
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMultDispFrame::CountryMultTreeMouseDown(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+   PVirtualNode cty = CountryMultTree->GetNodeAt( X, Y );
+   std::string disp = MultLists::getMultLists() ->getCtryListText( cty->Index, CountryTreeColumns[ 0 ].fieldId, ct );
+   MinosLoggerEvents::SendCountrySelect(disp, ct);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMultDispFrame::DistrictMultTreeMouseDown(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+   PVirtualNode dist = DistrictMultTree->GetNodeAt( X, Y );
+   std::string disp = MultLists::getMultLists() ->getDistListText( dist->Index, DistrictTreeColumns[ 0 ].fieldId, ct );
+   MinosLoggerEvents::SendDistrictSelect(disp, ct);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMultDispFrame::LocatorMultTreeMouseDown(TObject *Sender,
+      TMouseButton Button, TShiftState Shift, int X, int Y)
+{
+   PVirtualNode loc = LocatorMultTree->GetNodeAt( X, Y );
+   // and we need more cleverness for locs
 }
 //---------------------------------------------------------------------------
 
