@@ -692,6 +692,11 @@ void __fastcall TLogContainer::LocCalcActionExecute( TObject */*Sender*/ )
    {
       LocCalcForm = new TLocCalcForm( 0 );
    }
+   BaseContestLog * ct = TContestApp::getContestApp() ->getCurrentContest();
+   if (ct)
+   {
+      LocCalcForm->S1Loc->Text = ct->myloc.loc.getValue().c_str();
+   }
    LocCalcForm->Visible = true;
    LocCalcForm->BringToFront();
 }
