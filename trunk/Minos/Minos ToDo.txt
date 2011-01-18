@@ -16,7 +16,7 @@ M1MHz                   The bearing display is only a true bearing and we found 
 particularly useful in “GJV LOG” where you could alter the offset to display a 
 correct heading for the rotator needle/scale where estimated during contest setup.
 
-Where do we set and store this? MinosLogger.ini? Need a config editor for it.
+Where do we set and store this? MinosLogger.ini (epLOGGERPROFILE)? Need a config editor for it.
 Is this as for the bundle editor? But with only one bundle allowed? What would
 multiple logger bundles mean, and how would we choose one(section=bundle under default?)?
 ===========================================================================

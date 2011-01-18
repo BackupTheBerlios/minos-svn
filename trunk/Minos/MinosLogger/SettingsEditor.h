@@ -43,6 +43,7 @@ class TSettingsEditDlg : public TForm
       void __fastcall FormMouseDown( TObject *Sender, TMouseButton Button,
                                      TShiftState Shift, int X, int Y );
    private:  	// User declarations
+      bool currSectionOnly;
       SettingsBundle *bundle;
       std::string initialSection;
       void showSections();
@@ -56,6 +57,7 @@ class TSettingsEditDlg : public TForm
       int oldY;
    public:  		// User declarations
       __fastcall TSettingsEditDlg( TComponent* Owner, SettingsBundle *b );
+      void ShowCurrentSectionOnly();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TSettingsEditDlg *SettingsEditDlg;

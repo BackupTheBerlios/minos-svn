@@ -30,6 +30,7 @@
 #include "StatsDisp.h"
 #include "MinosTestImport.h"
 #include "TManageListsDlg.h" 
+#include "SettingsEditor.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "LogFrame"
@@ -484,9 +485,14 @@ String TLogContainer::getDefaultDirectory( bool IsList )
 {
    std::string temp;
    if ( IsList )
+   {
       TContestApp::getContestApp() ->loggerBundle.getStringProfile( elpListDirectory, temp );
+
+   }
    else
+   {
       TContestApp::getContestApp() ->loggerBundle.getStringProfile( elpLogDirectory, temp );
+   }
    String fileName = temp.c_str();
 
    // we default to ".\\logs" or ".\\lists. On Vista this won't be relative to
@@ -1162,4 +1168,23 @@ void __fastcall TLogContainer::ContestPageControlDrawTab(
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TLogContainer::OptionsActionExecute(TObject */*Sender*/)
+{
+// Start bundle editor for MinosLogger.ini
+   std::auto_ptr <TSettingsEditDlg> ed ( new TSettingsEditDlg( this, &TContestApp::getContestApp() ->loggerBundle ) );
+   #warning How do we initialise this with default section?
+   ed->ShowCurrentSectionOnly();
+   ed->ShowModal();
+   #warning Do we re-initialise to apply changes?
+   // Or do we insist on a full reload?
+   /*
+   if ( ed->ShowModal() == mrOk )
+   {
+      initialise();
+      return true;
+   }
+   */
+}
+//---------------------------------------------------------------------------
 

@@ -38,7 +38,6 @@ object LogContainer: TLogContainer
     OnDrawTab = ContestPageControlDrawTab
     OnMouseDown = ContestPageControlMouseDown
     OnMouseMove = ContestPageControlMouseMove
-    ExplicitHeight = 447
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -65,7 +64,6 @@ object LogContainer: TLogContainer
     UseSystemFont = False
     OnDblClick = CorrectDateTimeActionExecute
     OnResize = StatusBar1Resize
-    ExplicitTop = 447
   end
   object ActionManager: TActionManager
     ActionBars = <
@@ -419,6 +417,11 @@ object LogContainer: TLogContainer
       Caption = 'Show Operators'
       OnExecute = ShowOperatorsActionExecute
     end
+    object OptionsAction: TAction
+      Category = 'Tools'
+      Caption = 'Options...'
+      OnExecute = OptionsActionExecute
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
@@ -543,6 +546,9 @@ object LogContainer: TLogContainer
       end
       object N1: TMenuItem
         Caption = '-'
+      end
+      object Options1: TMenuItem
+        Action = OptionsAction
       end
       object Exit1: TMenuItem
         Action = FileExit1

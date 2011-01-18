@@ -18,17 +18,33 @@
 TSettingsEditDlg *SettingsEditDlg;
 //---------------------------------------------------------------------------
 __fastcall TSettingsEditDlg::TSettingsEditDlg( TComponent* Owner, SettingsBundle *b )
-      : TForm( Owner ), bundle( b ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 )
+      : TForm( Owner ), bundle( b ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
+         currSectionOnly(false)
+
 {
    initialSection = bundle->getSection();
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( SectionGrid );
 }
 //---------------------------------------------------------------------------
+void TSettingsEditDlg::ShowCurrentSectionOnly()
+{
+   currSectionOnly = true;
+}
+//---------------------------------------------------------------------------
 void TSettingsEditDlg::showSections()
 {
    SectionsList->Items->Clear();
-   std::vector<std::string> sections = bundle->getSections( );
+   std::vector<std::string> sections;
+
+   if (currSectionOnly)
+   {
+      sections.push_back(initialSection);
+   }
+   else
+   {
+      sections = bundle->getSections( );
+   }
 
    Caption = Caption + ( " - " + bundle->getBundle() + " for " + bundle->getSection() ).c_str();
 
@@ -47,7 +63,13 @@ void TSettingsEditDlg::showSection()
 {
    // Select this section to display on tree
    int offset = SectionsList->ItemIndex;
-   if ( offset > 0 )
+   if (currSectionOnly)
+   {
+      bundle->openSection( initialSection );
+      SectionGrid->Visible = true;
+      showDetails();
+   }
+   else if ( offset > 0 )
    {
       std::vector<std::string> sections = bundle->getSections( );
       std::string sect = sections[ offset ];
@@ -61,8 +83,9 @@ void TSettingsEditDlg::showSection()
       SectionGrid->Visible = false;
    }
 
-   DeleteButton->Enabled = ( offset > 0 );
-   CopyButton->Enabled = ( offset > 0 );
+   NewSectionButton->Enabled = !currSectionOnly;
+   DeleteButton->Enabled = currSectionOnly?false:( offset > 0 );
+   CopyButton->Enabled = currSectionOnly?false:( offset > 0 );
 }
 //---------------------------------------------------------------------------
 void __fastcall TSettingsEditDlg::OKButtonClick( TObject */*Sender*/ )
@@ -101,7 +124,7 @@ void __fastcall TSettingsEditDlg::SectionsListClick( TObject */*Sender*/ )
 void TSettingsEditDlg::showDetails()
 {
    int offset = SectionsList->ItemIndex;
-   if ( offset > 0 )
+   if ( offset > 0 || currSectionOnly)
    {
       std::vector<int> entries = bundle->getBundleEntries();
       SectionGrid->RowCount = entries.size() + 1;
@@ -126,7 +149,7 @@ void TSettingsEditDlg::showDetails()
 void TSettingsEditDlg::getDetails()
 {
    int offset = SectionsList->ItemIndex;
-   if ( offset > 0 )
+   if ( offset > 0 || currSectionOnly)
    {
       std::vector<int> entries = bundle->getBundleEntries();
       for ( unsigned int r = 0; r < entries.size(); r++ )
@@ -143,7 +166,7 @@ void __fastcall TSettingsEditDlg::CopyButtonClick( TObject */*Sender*/ )
    getDetails();  // save what is set already
 
    int offset = SectionsList->ItemIndex;
-   if ( offset > 0 )
+   if ( offset > 0 && !currSectionOnly)
    {
       std::string Value = "new section";
       if ( enquireDialog( this, "Please give a name for the new section", Value ) )
@@ -241,7 +264,7 @@ void __fastcall TSettingsEditDlg::SectionGridMouseMove( TObject */*Sender*/,
 
 
       int offset = SectionsList->ItemIndex;
-      if ( offset > 0 )
+      if ( offset > 0 || currSectionOnly)
       {
          try
          {

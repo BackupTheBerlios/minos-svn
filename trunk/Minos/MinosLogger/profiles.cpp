@@ -644,6 +644,7 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
    {
       case epLOGGERPROFILE:
 
+      #warning Logger.Ini entries need hints
          entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "hint" ) );
          entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "hint" ) );
          entries.push_back( ProfileEntry( elpDisplayFile, "DisplayFile", ".\\Configuration\\Display.ini", "hint" ) );
@@ -1018,6 +1019,10 @@ std::vector<std::string> SettingsBundle::getSections( )
          const std::string sname = ( *thisSect ) ->name;
          slist.push_back( sname );
       }
+   }
+   if (currsection.size() && std::find(slist.begin(), slist.end(), currsection) == slist.end())
+   {
+      slist.push_back(currsection);
    }
    return slist;
 }

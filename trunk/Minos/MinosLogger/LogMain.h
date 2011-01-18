@@ -138,6 +138,8 @@ class TLogContainer : public TForm
    TMenuItem *Multiplecontesttablines1;
    TAction *ShowOperatorsAction;
    TMenuItem *ShowOperators1;
+   TAction *OptionsAction;
+   TMenuItem *Options1;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -185,6 +187,7 @@ class TLogContainer : public TForm
    void __fastcall ShowOperatorsActionExecute(TObject *Sender);
    void __fastcall ContestPageControlDrawTab(TCustomTabControl *Control,
           int TabIndex, const TRect &Rect, bool Active);
+   void __fastcall OptionsActionExecute(TObject *Sender);
    private:  	// User declarations
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
