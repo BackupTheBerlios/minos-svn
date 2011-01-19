@@ -62,10 +62,13 @@
 <!-- 11.003 19/11/2010 added <months_list> to section 10B -->
 <!-- 11.004 23/11/2010 Change xml name os 23cms to uhfukac and 13cms and above to shfukac so that alerts still wort for 23cms ukac, added Bolton Wireless Trophy -->
 <!-- 11.005 28/11/2010 Qualified meaning of UK for M5 -->
+<!-- 11.006 01/01/2011 changed woatds for S8-->
+<!-- 11.007 02/01/2011 changed the date of the 4th 4m cumulatives to 6+1-->
 <calendar>
-<version>11.005 28/11/2010</version>
+<version>11.007 02/01/2011</version>
 <icalurl>http://www.google.com/calendar/ical/mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
+<notes_list>Calendar amended 02/01/11, 3rd 70MHz Cumulative contest moved forward 1 week</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -74,7 +77,7 @@ Post Code and Country Multipliers. The multiplier for a band is the sum of the n
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt 
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
-<exchange> serial number, QTH Locator and first 2 letters of your Postcode</exchange>
+<exchange> serial number and QTH Locator plus first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
 </scoring_description>
 </mult_type>
@@ -95,7 +98,7 @@ Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the 
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist.txt
 A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
 </long_description>
-<exchange>serial number, QTH Locator and first 2 letters of your Postcode</exchange>
+<exchange> serial number and QTH Locator plus first 2 letters of your Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
 </mult_type>
 <mult_type>
@@ -187,7 +190,7 @@ For IARU organised VHF/UHF contests, overseas stations are expected to enter via
 <name>S8</name>
 <description>Activity contest</description>
 <long_description>
-These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz / 2.3 GHz on the 3rd Tuesday, 50 MHz and 13cms and up (2000-2200) on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
+These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz on the 3rd Tuesday, 50 MHz and 13cms to 3cms (2000-2200) on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
 
 A UK station is required to be at one or both ends of a QSO for it to be valid.
 
@@ -779,7 +782,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <time_list>
     <month_list>May</month_list>
     <month_list>Jun</month_list>
-    <start_day>7</start_day>
+    <start_day>6+1</start_day>
     <start_week>4</start_week>
     <start_time>1400</start_time>
     <time_type>GMT</time_type>
