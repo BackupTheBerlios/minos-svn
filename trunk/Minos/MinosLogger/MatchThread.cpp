@@ -985,7 +985,7 @@ bool ListMatcher::idleMatch( int limit )
       ListSlot *cs = TContestApp::getContestApp() ->listSlotList.at( contestIndex );
       ccon = cs->slot;
 
-      while ( limit > 0 )
+      while ( limit > 0  && !ce)
       {
 //         limit -= 1;
          if ( !ccon ||
