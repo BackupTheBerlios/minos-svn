@@ -1022,7 +1022,6 @@ bool ListMatcher::idleMatch( int limit )
             return true;
 
          // now do the match
-#warning need country, district, locator matches
 // And why aren't we doing a QTH match mere?
          bool csmatch = false;
          bool locmatch = false;
