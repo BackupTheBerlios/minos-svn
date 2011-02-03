@@ -330,7 +330,6 @@ void DisplayContestContact::check( )
    }
 
 #warning TO TO check for GLocMult here
-   if (!clp->GLocMult.getValue() || cs.isUK())
    {
       // now look at the locator list
       TEMPBUFF( letters, 3 );
@@ -369,19 +368,26 @@ void DisplayContestContact::check( )
 
       if ( ls )
       {
-         unsigned char * npt = ls->map( numbers );
+         LocCount * npt = ls->map( numbers );
          if ( npt )
          {
-            if ( QSOValid && ( *npt < 255 ) )
+            if ( QSOValid )
             {
-               if ( ( *npt ) ++ == 0 )
+               if (!clp->GLocMult.getValue() || cs.isUK())
                {
-                  clp->nlocs++;
-                  if ( clp->locMult.getValue() )
+                  if ( ( npt->valid ) ++ == 0 )
                   {
-                     multCount++;
-                     newLoc = true;
+                     clp->nlocs++;
+                     if ( clp->locMult.getValue() )
+                     {
+                        multCount++;
+                        newLoc = true;
+                     }
                   }
+               }
+               else
+               {
+                  ( npt->invalid ) ++ ;
                }
             }
          }

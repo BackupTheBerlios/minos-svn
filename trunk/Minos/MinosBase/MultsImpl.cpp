@@ -741,7 +741,7 @@ LocSquare::LocSquare( const std::string &locId )
    loc[ 2 ] = 0;
 }
 
-unsigned char *LocSquare::map( char *num )
+LocCount *LocSquare::map( char *num )
 {
    if ( !isdigit( num[ 0 ] ) || !isdigit( num[ 1 ] ) )
       return 0;
@@ -749,7 +749,7 @@ unsigned char *LocSquare::map( char *num )
    return &numbers[ num[ 0 ] - '0' ][ num[ 1 ] - '0' ];
 }
 
-unsigned char *LocSquare::map( int num )
+LocCount *LocSquare::map( int num )
 {
    if ( ( num < 0 ) || ( num >= 100 ) )
       return 0;
@@ -764,7 +764,10 @@ void LocSquare::clear( void )
    int i, j;
    for ( i = 0; i < 10; i++ )
       for ( j = 0; j < 10; j++ )
-         numbers[ i ][ j ] = 0;
+      {
+         numbers[ i ][ j ].valid = 0;
+         numbers[ i ][ j ].invalid = 0;
+      }
 }
 
 bool LocSquare::operator<( const LocSquare& rhs ) const

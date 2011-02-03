@@ -124,17 +124,24 @@ class CountrySynonym
       bool operator!=( const CountrySynonym& rhs ) const;
 };
 
+class LocCount
+{
+   public:
+      unsigned short valid;
+      unsigned short invalid;
+      LocCount():valid(0), invalid(0){}
+};
 class LocSquare
 {
    public:
       LocSquare( const std::string &loc );
-      unsigned char *map( int num ); // give count char for loc num
-      unsigned char *map( char *num ); // give count char for loc num
+      LocCount *map( int num ); // give count char for loc num
+      LocCount *map( char *num ); // give count char for loc num
       void clear( void );
 
       char loc[ 3 ]; // two letter main square
 
-      unsigned char numbers[ 10 ][ 10 ]; // map of parts worked
+      LocCount numbers[ 10 ][ 10 ]; // map of parts worked
       bool operator<( const LocSquare& rhs ) const;
       bool operator==( const LocSquare& rhs ) const;
       bool operator!=( const LocSquare& rhs ) const;

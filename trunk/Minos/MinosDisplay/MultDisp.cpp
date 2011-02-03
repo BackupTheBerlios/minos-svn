@@ -391,8 +391,8 @@ void __fastcall TMultDispFrame::LocatorMultTreeInitNode(
       bool loconline = false;
       for (int i = 0; i < 10; i++)
       {
-         unsigned char *lc = ct->locs.llist[ ParentNode->Index ] ->map( Node->Index * 10 + i );
-         if ( lc && *lc != 0 )
+         LocCount *lc = ct->locs.llist[ ParentNode->Index ] ->map( Node->Index * 10 + i );
+         if ( lc && (lc->valid != 0 || lc->invalid != 0))
             loconline = true;
 
       }
@@ -422,11 +422,11 @@ void __fastcall TMultDispFrame::LocatorMultTreeGetText(
       String dispLine;
       for (int i = 0; ct->locs.llist.size() && i < 10; i++)
       {
-         unsigned char *lc = ct->locs.llist[ Node->Parent->Index ] ->map( Node->Index * 10 + i );
+         LocCount *lc = ct->locs.llist[ Node->Parent->Index ] ->map( Node->Index * 10 + i );
          AnsiString disp;
          disp.printf( "%2.2d", Node->Index * 10 + i );
-         if ( lc && *lc )
-            dispLine += disp + " (" + *lc + ") ";
+         if ( lc && (lc->valid || lc->invalid))
+            dispLine += disp + " (" + lc->valid + (lc->invalid?(AnsiString("/") + lc->invalid):AnsiString("")) + ") ";
       }
       CellText = dispLine;
    }
