@@ -1,4 +1,9 @@
 ==================================================================
+?? Have profile flags to say "don't display if at default"/"don't (re)write default key/value"
+?? Indicate default/non default in editor
+Add calendar URLs and years as global INI options
+allow tab between keys in editor! Maybe redo as an editable string grid?
+==================================================================
 Make sure use of MinosLogger.ini is documented! Will be VERY useful
 on Vista/Windows 7 (but test it...)
 e.g.
