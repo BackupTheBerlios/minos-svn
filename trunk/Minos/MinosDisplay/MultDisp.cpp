@@ -114,6 +114,7 @@ void TMultDispFrame::setContest( BaseContestLog *pct )
    reInitialiseLocators();
    reInitialiseStats();
    reInitialiseComp();
+   Invalidate();
 }
 //---------------------------------------------------------------------------
 static GridColumn CountryTreeColumns[ ectMultMaxCol ] =

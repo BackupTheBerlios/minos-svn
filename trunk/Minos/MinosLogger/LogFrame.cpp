@@ -1603,6 +1603,7 @@ void TSingleLogFrame::ContestDetails_Event ( MinosEventBase & Event )
             // and we need to do some re-init on the display
             updateQSODisplay();
             ct->scanContest();
+            MultDispFrame->refreshMults();
          }
       }
    }

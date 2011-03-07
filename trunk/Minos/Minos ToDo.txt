@@ -1,4 +1,8 @@
 ==================================================================
+(done) Check that when you turn "G locs only" on/off they respond (status line does...)
+Better header text for loc/distance in country and district display
+Double click on contest in Vista default directory says "already open"?
+==================================================================
 ?? Have profile flags to say "don't display if at default"/"don't (re)write default key/value"
 ?? Indicate default/non default in editor
 Add calendar URLs and years as global INI options
