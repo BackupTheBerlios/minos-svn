@@ -55,6 +55,11 @@ void __fastcall TLogContainer::FormShow( TObject */*Sender*/ )
 void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
 {
    StartupTimer->Enabled = false;
+   // Override the system value
+   DateSeparator = '/';
+   ShortDateFormat = "dd/MM/yyyy";
+   TimeSeparator = ':';
+   ShortTimeFormat = "hh:mm";
    if ( TContestApp::getContestApp() )
    {
       //      ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
