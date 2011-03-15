@@ -239,7 +239,7 @@ void __fastcall TSettingsEditDlg::GridHintTimerTimer( TObject */*Sender*/ )
          if ( PtInRect( &( QGrid->ClientRect ), mpos2 ) )
          {
             std::vector<std::string>hints = bundle->getBundleHints( );
-            if (HintRow < (int)hints.size())
+            if (HintRow > 0 && HintRow <= (int)hints.size())
             {
                QGrid->Hint = hints[ HintRow - 1 ].c_str();
                GridHintWindow->SetXY( mpos.x, mpos.y );
