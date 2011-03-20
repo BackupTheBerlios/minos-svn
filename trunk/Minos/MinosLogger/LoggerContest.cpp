@@ -74,6 +74,7 @@ void LoggerContestLog::clearDirty()
    entPhone.clearDirty();
    entEMail.clearDirty();
    sectionList.clearDirty();
+   bearingOffset.clearDirty();
    BaseContestLog::clearDirty();
 }
 void LoggerContestLog::setDirty()
@@ -107,6 +108,7 @@ void LoggerContestLog::setDirty()
    entCountry.setDirty();
    entPhone.setDirty();
    entEMail.setDirty();
+   bearingOffset.setDirty();
 
    BaseContestLog::setDirty();
 }
@@ -114,7 +116,7 @@ bool LoggerContestLog::initialise( int sno )
 {
    if ( !TContestApp::getContestApp() ->insertContest( this, sno ) )
    {
-      return false;
+	  return false;
    }
    slotno = sno;
    return true;
@@ -333,16 +335,17 @@ void LoggerContestLog::setINIDetails()
 
       QTHBundle.getStringProfile( eqpStationQTH1, sqth1 );
       QTHBundle.getStringProfile( eqpStationQTH2, sqth2 );
-      QTHBundle.getStringProfile( eqpASL, entASL );
+	  QTHBundle.getStringProfile( eqpASL, entASL );
    }
 
    if ( stationBundle.getSection() != noneBundle )
    {
-      stationBundle.getStringProfile( espPower, power );
-      stationBundle.getStringProfile( espTransmitter, entTx );
-      stationBundle.getStringProfile( espReceiver, entRx );
-      stationBundle.getStringProfile( espAntenna, entAnt );
-      stationBundle.getStringProfile( espAGL, entAGL );
+	  stationBundle.getStringProfile( espPower, power );
+	  stationBundle.getStringProfile( espTransmitter, entTx );
+	  stationBundle.getStringProfile( espReceiver, entRx );
+	  stationBundle.getStringProfile( espAntenna, entAnt );
+	  stationBundle.getStringProfile( espAGL, entAGL );
+	  stationBundle.getIntProfile(espOffset, bearingOffset);
    }
 }
 /*
@@ -1130,7 +1133,7 @@ bool LoggerContestLog::importLOG( HANDLE hLogFile )
                   band.setValue( text );
                }
                else
-                  if ( strupr( stemp ).find( "SECTION ENTERED" ) == 0 )
+				  if ( strupr( stemp ).find( "SECTION ENTERED" ) == 0 )
                   {
                      entSect.setValue( text );
                   }
@@ -1185,7 +1188,7 @@ bool LoggerContestLog::importLOG( HANDLE hLogFile )
                                        else
                                           if ( strupr( stemp ).find( "QTH HEIGHT" ) == 0 )
                                           {
-                                             entASL.setValue( text );
+											 entASL.setValue( text );
                                           }
                                           else
                                              if ( strupr( stemp ).find( "BRIEF DETAILS OF TRANSMITTER USED" ) == 0 )
@@ -1306,37 +1309,38 @@ void LoggerContestLog::processMinosStanza( const std::string &methodName, MinosT
          {
             mt->getStructArgMemberValue( "stationQTH1", sqth1 );
             mt->getStructArgMemberValue( "stationQTH2", sqth2 );
-            mt->getStructArgMemberValue( "ASL", entASL );
-         }
-         else
-            if ( methodName == "MinosLogEntry" )
-            {
-               mt->getStructArgMemberValue( "entrant", entrant );
-               mt->getStructArgMemberValue( "myName", entName );
-               mt->getStructArgMemberValue( "myCall", entCall );
-               mt->getStructArgMemberValue( "myAddress1", entAddr1 );
-               mt->getStructArgMemberValue( "myAddress2", entAddr2 );
-               mt->getStructArgMemberValue( "myCity", entCity );
-               mt->getStructArgMemberValue( "myCountry", entCountry );
-               mt->getStructArgMemberValue( "myPostCode", entPostCode );
-               mt->getStructArgMemberValue( "myPhone", entPhone );
-               mt->getStructArgMemberValue( "myEmail", entEMail );
-            }
-            else
-               if ( methodName == "MinosLogStation" )
-               {
-                  mt->getStructArgMemberValue( "transmitter", entTx );
-                  mt->getStructArgMemberValue( "receiver", entRx );
-                  mt->getStructArgMemberValue( "antenna", entAnt );
-                  mt->getStructArgMemberValue( "AGL", entAGL );
-               }
-               else
-                  if ( methodName == "MinosLogOperators" )
-                  {
-                     mt->getStructArgMemberValue( "ops1", ops1 );
-                     mt->getStructArgMemberValue( "ops2", ops2 );
-                     mt->getStructArgMemberValue( "currentOp1", currentOp1 );
-                     oplist.insert(currentOp1.getValue());
+			mt->getStructArgMemberValue( "ASL", entASL );
+		 }
+		 else
+			if ( methodName == "MinosLogEntry" )
+			{
+			   mt->getStructArgMemberValue( "entrant", entrant );
+			   mt->getStructArgMemberValue( "myName", entName );
+			   mt->getStructArgMemberValue( "myCall", entCall );
+			   mt->getStructArgMemberValue( "myAddress1", entAddr1 );
+			   mt->getStructArgMemberValue( "myAddress2", entAddr2 );
+			   mt->getStructArgMemberValue( "myCity", entCity );
+			   mt->getStructArgMemberValue( "myCountry", entCountry );
+			   mt->getStructArgMemberValue( "myPostCode", entPostCode );
+			   mt->getStructArgMemberValue( "myPhone", entPhone );
+			   mt->getStructArgMemberValue( "myEmail", entEMail );
+			}
+			else
+			   if ( methodName == "MinosLogStation" )
+			   {
+				  mt->getStructArgMemberValue( "transmitter", entTx );
+				  mt->getStructArgMemberValue( "receiver", entRx );
+				  mt->getStructArgMemberValue( "antenna", entAnt );
+				  mt->getStructArgMemberValue( "AGL", entAGL );
+				  mt->getStructArgMemberValue( "offset", bearingOffset);
+			   }
+			   else
+				  if ( methodName == "MinosLogOperators" )
+				  {
+					 mt->getStructArgMemberValue( "ops1", ops1 );
+					 mt->getStructArgMemberValue( "ops2", ops2 );
+					 mt->getStructArgMemberValue( "currentOp1", currentOp1 );
+					 oplist.insert(currentOp1.getValue());
                      mt->getStructArgMemberValue( "currentOp2", currentOp2 );
                      oplist.insert(currentOp2.getValue());
                   }

@@ -470,7 +470,8 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
                      if ( contest == curcon )
                      {
                         // use the existing data
-						brgbuff.printf( "%03.3d\xB0", varBrg( bearing ) );
+						int offset = contest->bearingOffset.getValue();
+						brgbuff.printf( "%03.3d\xB0", varBrg( bearing + offset ) );
                      }
                      else
                      {
@@ -491,7 +492,8 @@ std::string DisplayContestContact::getField( int ACol, const BaseContestLog *con
                            {
                               curcon->disbear( lon, lat, dist, brg );
                            }
-                           brgbuff.printf( "%03.3d\xB0", varBrg( brg ) );
+						   int offset = curcon->bearingOffset.getValue();
+						   brgbuff.printf( "%03.3d\xB0", varBrg( brg + offset ) );
                         }
                      }
                   }

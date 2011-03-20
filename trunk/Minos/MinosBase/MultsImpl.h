@@ -150,7 +150,7 @@ class MultList : public codeproject::sorted_vector < itemtype, true, MultCmp <it
                      brgscoreValid = False;
                   if ( brgscoreValid && ( valRes == LOC_OK ) )
                   {
-                     sprintf( brgbuff, "%03.3d\xb0", varBrg( useBearing ) );
+                     sprintf( brgbuff, "%03.3d\xb0", varBrg( useBearing + ct->bearingOffset.getValue()) );
                   }
                   else
                      brgbuff[ 0 ] = 0;

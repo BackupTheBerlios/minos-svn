@@ -57,7 +57,8 @@ std::string ListContact::getField( int ACol, const BaseContestLog *const curcon 
 #warning  what here? (lres == LOC_SHORT)
 
                   }
-               brgbuff.printf( "%03.3d\xB0", varBrg( brg ) );
+			   int offset = curcon->bearingOffset.getValue();
+			   brgbuff.printf( "%03.3d\xB0", varBrg( brg + offset) );
             }
             res = brgbuff.c_str();
          }

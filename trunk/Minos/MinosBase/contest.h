@@ -140,6 +140,8 @@ class BaseContestLog
       MinosItem<std::string> DTGStart;
       MinosItem<std::string> DTGEnd;
 
+	  MinosItem<int> bearingOffset;
+
       // dirty info is only relevant when it is being editted
       // but needs to stay with the data
 

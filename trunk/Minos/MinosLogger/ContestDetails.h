@@ -72,6 +72,7 @@ class TContestEntryDetails : public TForm
    TButton *VHFCalendarButton;
    TEdit *ContestNameSelected;
    TCheckBox *GLocMult;
+	TLabeledEdit *AntOffsetEdit;
       void __fastcall OKButtonClick( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );

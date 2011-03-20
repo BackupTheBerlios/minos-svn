@@ -727,7 +727,8 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
          entries.push_back( ProfileEntry( espReceiver, "Receiver", "", "Receive Equipment" ) );
          entries.push_back( ProfileEntry( espAntenna, "Antenna", "", "Antenna details" ) );
          entries.push_back( ProfileEntry( espAGL, "AGL", 0, "Antenna Height AGL (metres)" ) );
-         break;
+		 entries.push_back( ProfileEntry( espOffset, "Bearing Offset", 0, "Amount to offset antenna bearings" ) );
+		 break;
    }
 }
 bool BundleFile::openProfile( const std::string &fname, const std::string &bname )

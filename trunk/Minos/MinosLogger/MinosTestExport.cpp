@@ -180,6 +180,7 @@ void MinosTestExport::exportStation( HANDLE expfd )
    ct->entRx.addIfDirty( st, "receiver", dirty );
    ct->entAnt.addIfDirty( st, "antenna", dirty );
    ct->entAGL.addIfDirty( st, "AGL", dirty );
+   ct->bearingOffset.addIfDirty(st, "offset", dirty );
 
    if ( dirty )
    {

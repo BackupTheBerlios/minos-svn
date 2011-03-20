@@ -133,7 +133,7 @@ void TContestEntryDetails::setDetails(  )
    else
    {
       //BandComboBox->ItemIndex = 0;
-      BandComboBox->Style = Stdctrls::csDropDown;    // was csDropDownList
+	  BandComboBox->Style = Stdctrls::csDropDown;    // was csDropDownList
       BandComboBox->Text = contest->band.getValue().c_str();
    }
 
@@ -176,7 +176,7 @@ void TContestEntryDetails::setDetails(  )
    }
    if ( contest->DTGEnd.getValue().size() )
    {
-      EndDateEdit->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString("dd/mm/yyyy"); // short date format, hours:minutes
+	  EndDateEdit->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString("dd/mm/yyyy"); // short date format, hours:minutes
       EndTimeCombo->Text = CanonicalToTDT( contest->DTGEnd.getValue().c_str() ).FormatString( "hh:nn" ); // short date format, hours:minutes
    }
    else
@@ -262,6 +262,7 @@ void TContestEntryDetails::setDetails(  )
    LocatorField->Checked = contest->locatorField.getValue() ;   // bool         // contest
    QTHField->Checked = contest->QTHField.getValue() ;   // bool                   // contest
 
+   AntOffsetEdit->Text = contest->bearingOffset.getValue();	// int
    refreshOps();
 
    enableControls();
@@ -502,7 +503,7 @@ TWinControl * TContestEntryDetails::getDetails( )
          saveContestOK  = true;
       }
       else if (!ProtectedOption->Checked && contest->isProtected())
-      {
+	  {
          contest->setProtected( false ) ;
          saveContestOK  = true;
       }
@@ -548,6 +549,7 @@ TWinControl * TContestEntryDetails::getDetails( )
    contest->QTHField.setValue( QTHField->Checked ) ;   // bool
 
    contest->power.setValue( PowerEdit->Text.c_str() );
+   contest->bearingOffset.setValue(atoi(AntOffsetEdit->Text .c_str()));	// int
 
    contest->currentOp1.setValue(MainOpComboBox->Text.c_str());
    contest->currentOp2.setValue(SecondOpComboBox->Text.c_str());
@@ -866,5 +868,6 @@ void TContestEntryDetails::enableControls()
    EndDateButton->Enabled = !protectedChecked;
    MainOpComboBox->Enabled = !protectedChecked;
    SecondOpComboBox->Enabled = !protectedChecked;
+   AntOffsetEdit->Enabled = !protectedChecked;
 }
 

@@ -44,7 +44,7 @@ char lonlat( const std::string &inqra, double &lon, double &lat )
          break;
    }
    if ( l <= 0 )
-      return ( ERR_NOLOC );
+	  return ( ERR_NOLOC );
 
    char locres = LOC_OK;
 
@@ -77,7 +77,7 @@ char lonlat( const std::string &inqra, double &lon, double &lat )
                return ERR_LOC_RANGE;
             locres = LOC_PARTIAL;
 
-            fp1++;	// already set to centre
+			fp1++;	// already set to centre
             wp1++;
             wp2++;
             wp3++;
@@ -88,7 +88,7 @@ char lonlat( const std::string &inqra, double &lon, double &lat )
                return ( ERR_LOC_RANGE );                 /* invalid locator */
             else
                *( fp1++ ) = ( double ) ( *( wp1++ ) - ( double ) * ( wp2++ ) ); /* convert to double */
-         }
+		 }
 
       }
 
@@ -121,7 +121,7 @@ char lonlat( const std::string &inqra, double &lon, double &lat )
    }
    if ( l == 8 && allowLoc8 )
    {
-      return locres;
+	  return locres;
    }
    if ( l == 6 )
    {
@@ -154,7 +154,7 @@ int normBrg( int mbear )
 {
    if ( mbear < 0 )
       mbear += 360;
-   if ( mbear > 360 )
+   if ( mbear >= 360 )
       mbear -= 360;
    return mbear;
 }

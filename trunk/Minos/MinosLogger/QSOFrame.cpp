@@ -731,7 +731,7 @@ void TGJVEditFrame::calcLoc( )
       double latitude;
       double longitude;
       double dist;
-      int brg;
+	  int brg;
 
       int locValres = lonlat( gridref.c_str(), longitude, latitude );
       if ( ( locValres ) != LOC_OK )
@@ -762,11 +762,18 @@ void TGJVEditFrame::calcLoc( )
                   sct.contactScore = dist;
                }
 
-            }
+			}
 
-            TEMPBUFF( rev, 10 );
-            strcpy( rev, ( MinosParameters::getMinosParameters() ->getMagneticVariation() ) ? "M" : "T" );
-            int vb = varBrg( brg );
+			int offset = contest->bearingOffset.getValue();
+
+			TEMPBUFF( rev, 10 );
+			rev[0] = 0;
+			if (offset)
+			{
+				strcat( rev, "O");
+			}
+			strcat( rev, ( MinosParameters::getMinosParameters() ->getMagneticVariation() ) ? "M" : "T" );
+			int vb = varBrg( brg + offset);
             if ( TContestApp::getContestApp() ->reverseBearing )
             {
                vb = normBrg( vb - 180 );

@@ -28,6 +28,9 @@ correct heading for the rotator needle/scale where estimated during contest setu
 Where do we set and store this? MinosLogger.ini (epLOGGERPROFILE)? Need a config editor for it.
 Is this as for the bundle editor? But with only one bundle allowed? What would
 multiple logger bundles mean, and how would we choose one(section=bundle under default?)?
+
+For what Bob wants, I think it would be under "station" as a bearing offset?
+Done - but we want an additional status bar entry for it
 ===========================================================================
 Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
 ===========================================================================
