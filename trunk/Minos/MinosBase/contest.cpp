@@ -39,6 +39,7 @@ BaseContestLog::BaseContestLog( void ) :
       kms1( 0 ), kms2( 0 ), kms1p( 0 ), kms2p( 0 ),
       mults1( 0 ), mults2( 0 ), mults1p( 0 ), mults2p( 0 )
 {
+   bearingOffset.setValue(0);
    mode.setValue( "J3E" );
    int i;
 
