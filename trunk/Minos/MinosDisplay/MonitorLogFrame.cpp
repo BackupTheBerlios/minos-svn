@@ -155,7 +155,7 @@ void TLogMonitorFrame::showQSOs()
 }
 
 
-void __fastcall TLogMonitorFrame::LogColumnsChangeTimerTimer(TObject *Sender)
+void __fastcall TLogMonitorFrame::LogColumnsChangeTimerTimer(TObject */*Sender*/)
 {
    LogColumnsChangeTimer->Enabled = false;
    if (myLogColumnsChanged)

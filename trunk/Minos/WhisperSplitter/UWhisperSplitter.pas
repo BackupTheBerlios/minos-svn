@@ -1,5 +1,4 @@
 unit UWhisperSplitter;
-
 {
   Official Notice:
 
@@ -119,7 +118,7 @@ unit UWhisperSplitter;
 {$ENDIF}
 
 interface
-
+{$TYPEINFO ON}
 uses
 {$IFNDEF PRE_D2006}
   Windows, Classes, ExtCtrls, Graphics, Controls;

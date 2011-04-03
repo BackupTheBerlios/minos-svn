@@ -95,9 +95,9 @@ void __fastcall TMonitoringFrame::InitTimerTimer( TObject */*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMonitoringFrame::MultSplitterMoved(TObject *Sender)
+void __fastcall TMonitoringFrame::MultSplitterMoved(TObject */*Sender*/)
 {
-//
+#warning splitter position should be persisted   
 }
 //---------------------------------------------------------------------------
 

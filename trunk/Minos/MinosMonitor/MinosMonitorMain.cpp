@@ -682,9 +682,9 @@ void __fastcall TMonitorMain::FocusCurrentButtonClick(TObject */*Sender*/)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMonitorMain::Splitter1Moved(TObject *Sender)
+void __fastcall TMonitorMain::Splitter1Moved(TObject */*Sender*/)
 {
-//   
+#warning splitter position should be persisted   
 }
 //---------------------------------------------------------------------------
 

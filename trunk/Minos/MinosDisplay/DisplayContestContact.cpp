@@ -329,7 +329,6 @@ void DisplayContestContact::check( )
       }
    }
 
-#warning TO TO check for GLocMult here
    {
       // now look at the locator list
       TEMPBUFF( letters, 3 );

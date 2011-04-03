@@ -84,7 +84,7 @@ void TCompFrame::reInitialise()
 #endif
 }
 //---------------------------------------------------------------------------
-void __fastcall TCompFrame::RecheckTimerTimer(TObject *Sender)
+void __fastcall TCompFrame::RecheckTimerTimer(TObject */*Sender*/)
 {
    if ( !Visible )
       return ;
@@ -94,15 +94,15 @@ void __fastcall TCompFrame::RecheckTimerTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCompFrame::CompGridGetNodeDataSize(TBaseVirtualTree *Sender,
+void __fastcall TCompFrame::CompGridGetNodeDataSize(TBaseVirtualTree */*Sender*/,
       int &NodeDataSize)
 {
    NodeDataSize = 0;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCompFrame::CompGridGetText(TBaseVirtualTree *Sender,
-      PVirtualNode Node, TColumnIndex Column, TVSTTextType TextType,
+void __fastcall TCompFrame::CompGridGetText(TBaseVirtualTree */*Sender*/,
+      PVirtualNode Node, TColumnIndex Column, TVSTTextType /*TextType*/,
       WideString &CellText)
 {
    CellText = "";
@@ -140,16 +140,16 @@ void __fastcall TCompFrame::CompGridGetText(TBaseVirtualTree *Sender,
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCompFrame::CompGridInitChildren(TBaseVirtualTree *Sender,
-      PVirtualNode Node, DWORD &ChildCount)
+void __fastcall TCompFrame::CompGridInitChildren(TBaseVirtualTree */*Sender*/,
+      PVirtualNode /*Node*/, DWORD &/*ChildCount*/)
 {
 //
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TCompFrame::CompGridInitNode(TBaseVirtualTree *Sender,
-      PVirtualNode ParentNode, PVirtualNode Node,
-      TVirtualNodeInitStates &InitialStates)
+void __fastcall TCompFrame::CompGridInitNode(TBaseVirtualTree */*Sender*/,
+      PVirtualNode /*ParentNode*/, PVirtualNode /*Node*/,
+      TVirtualNodeInitStates &/*InitialStates*/)
 {
 //
 }
