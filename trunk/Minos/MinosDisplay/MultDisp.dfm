@@ -46,6 +46,10 @@ object MultDispFrame: TMultDispFrame
     TabPosition = tpRight
     object CountriesTab: TTabSheet
       Caption = 'Countries'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object CountryMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -78,6 +82,10 @@ object MultDispFrame: TMultDispFrame
     object DistrictTab: TTabSheet
       Caption = 'Districts'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -109,6 +117,10 @@ object MultDispFrame: TMultDispFrame
     object LocatorsTab: TTabSheet
       Caption = 'Locators'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object LocatorMultTree: TVirtualStringTree
         Left = 0
         Top = 0

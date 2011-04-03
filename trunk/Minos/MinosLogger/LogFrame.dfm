@@ -120,10 +120,14 @@ object SingleLogFrame: TSingleLogFrame
             inherited LocatorsTab: TTabSheet
               ExplicitLeft = 4
               ExplicitTop = 4
-              ExplicitWidth = 248
-              ExplicitHeight = 182
+              ExplicitWidth = 242
+              ExplicitHeight = 157
               inherited LocatorMultTree: TVirtualStringTree
+                Width = 242
+                Height = 157
                 TabStop = False
+                ExplicitWidth = 242
+                ExplicitHeight = 157
               end
             end
             inherited StatsTab: TTabSheet
@@ -133,8 +137,6 @@ object SingleLogFrame: TSingleLogFrame
                   ExplicitWidth = 4
                 end
                 inherited Panel1: TPanel
-                  ExplicitTop = 111
-                  ExplicitWidth = 242
                   inherited P1Edit: TLabeledEdit
                     TabStop = False
                     EditLabel.Width = 59
@@ -324,7 +326,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -336,12 +338,6 @@ object SingleLogFrame: TSingleLogFrame
           Width = 584
           Height = 154
           Align = alClient
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Verdana'
-          Font.Style = []
-          ParentFont = False
           PopupMenu = EntryChoiceMenu
           TabOrder = 1
           TabStop = True
@@ -414,13 +410,9 @@ object SingleLogFrame: TSingleLogFrame
           BevelKind = bkFlat
           Header.AutoSizeIndex = 0
           Header.DefaultHeight = 17
-          Header.Font.Charset = DEFAULT_CHARSET
-          Header.Font.Color = clWindowText
-          Header.Font.Height = -11
-          Header.Font.Name = 'Verdana'
-          Header.Font.Style = []
           Header.MainColumn = -1
           Header.Options = [hoColumnResize, hoDrag]
+          Header.ParentFont = True
           ParentShowHint = False
           PopupMenu = EntryChoiceMenu
           ShowHint = True
@@ -466,13 +458,9 @@ object SingleLogFrame: TSingleLogFrame
           BevelKind = bkFlat
           Header.AutoSizeIndex = 0
           Header.DefaultHeight = 17
-          Header.Font.Charset = DEFAULT_CHARSET
-          Header.Font.Color = clWindowText
-          Header.Font.Height = -11
-          Header.Font.Name = 'Verdana'
-          Header.Font.Style = []
           Header.MainColumn = -1
           Header.Options = [hoColumnResize, hoDrag]
+          Header.ParentFont = True
           ParentShowHint = False
           PopupMenu = EntryChoiceMenu
           ShowHint = True
@@ -508,13 +496,9 @@ object SingleLogFrame: TSingleLogFrame
             BevelKind = bkFlat
             Header.AutoSizeIndex = 0
             Header.DefaultHeight = 17
-            Header.Font.Charset = DEFAULT_CHARSET
-            Header.Font.Color = clWindowText
-            Header.Font.Height = -11
-            Header.Font.Name = 'Verdana'
-            Header.Font.Style = []
             Header.MainColumn = -1
             Header.Options = [hoColumnResize, hoDrag]
+            Header.ParentFont = True
             ParentShowHint = False
             PopupMenu = EntryChoiceMenu
             ShowHint = True

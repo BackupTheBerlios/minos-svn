@@ -3,12 +3,6 @@ object GJVEditFrame: TGJVEditFrame
   Top = 0
   Width = 577
   Height = 153
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Verdana'
-  Font.Style = []
-  ParentFont = False
   TabOrder = 0
   TabStop = True
   object G0GJVPanel: TPanel
@@ -23,47 +17,47 @@ object GJVEditFrame: TGJVEditFrame
     object ModeLabel: TLabel
       Left = 245
       Top = 45
-      Width = 30
-      Height = 13
+      Width = 31
+      Height = 16
       Caption = 'Mode'
     end
     object BrgSt: TLabel
       Left = 526
       Top = 26
-      Width = 46
-      Height = 13
+      Width = 47
+      Height = 16
       Caption = '(999XT)'
     end
     object DistSt: TLabel
       Left = 482
       Top = 26
       Width = 45
-      Height = 13
+      Height = 16
       Caption = '(99999)'
     end
     object SecondOpLabel: TLabel
       Left = 388
       Top = 6
       Width = 28
-      Height = 13
+      Height = 16
       Caption = 'Op2:'
     end
     object OperatorLabel: TLabel
       Left = 269
       Top = 6
       Width = 28
-      Height = 13
+      Height = 16
       Caption = 'Op1:'
     end
     object CallsignEdit: TLabeledEdit
       Left = 4
       Top = 83
       Width = 94
-      Height = 21
+      Height = 24
       AutoSelect = False
       CharCase = ecUpperCase
       EditLabel.Width = 72
-      EditLabel.Height = 13
+      EditLabel.Height = 16
       EditLabel.Caption = 'Callsign (F1)'
       TabOrder = 4
       OnChange = GJVEditChange
@@ -76,10 +70,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 108
       Top = 83
       Width = 36
-      Height = 21
+      Height = 24
       AutoSelect = False
-      EditLabel.Width = 56
-      EditLabel.Height = 13
+      EditLabel.Width = 58
+      EditLabel.Height = 16
       EditLabel.Caption = 'RS(T)(F2)'
       TabOrder = 5
       OnEnter = EditControlEnter
@@ -91,12 +85,12 @@ object GJVEditFrame: TGJVEditFrame
       Left = 170
       Top = 83
       Width = 54
-      Height = 21
+      Height = 24
       Hint = 'Serial TX is read only - double click if you need to modify it'
       TabStop = False
       AutoSelect = False
-      EditLabel.Width = 52
-      EditLabel.Height = 13
+      EditLabel.Width = 53
+      EditLabel.Height = 16
       EditLabel.Caption = 'Serial TX'
       ParentShowHint = False
       ReadOnly = True
@@ -113,10 +107,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 254
       Top = 83
       Width = 54
-      Height = 21
+      Height = 24
       AutoSelect = False
-      EditLabel.Width = 56
-      EditLabel.Height = 13
+      EditLabel.Width = 58
+      EditLabel.Height = 16
       EditLabel.Caption = 'RS(T)(F3)'
       TabOrder = 7
       OnEnter = EditControlEnter
@@ -128,10 +122,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 337
       Top = 83
       Width = 54
-      Height = 21
+      Height = 24
       AutoSelect = False
       EditLabel.Width = 53
-      EditLabel.Height = 13
+      EditLabel.Height = 16
       EditLabel.Caption = 'Serial RX'
       TabOrder = 8
       OnEnter = EditControlEnter
@@ -143,11 +137,11 @@ object GJVEditFrame: TGJVEditFrame
       Left = 420
       Top = 83
       Width = 65
-      Height = 21
+      Height = 24
       AutoSelect = False
       CharCase = ecUpperCase
-      EditLabel.Width = 46
-      EditLabel.Height = 13
+      EditLabel.Width = 47
+      EditLabel.Height = 16
       EditLabel.Caption = 'Loc (F5)'
       TabOrder = 9
       OnChange = LocEditChange
@@ -160,10 +154,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 504
       Top = 83
       Width = 62
-      Height = 21
+      Height = 24
       AutoSelect = False
-      EditLabel.Width = 55
-      EditLabel.Height = 13
+      EditLabel.Width = 54
+      EditLabel.Height = 16
       EditLabel.Caption = 'Exchange'
       TabOrder = 10
       OnChange = GJVEditChange
@@ -176,10 +170,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 4
       Top = 120
       Width = 121
-      Height = 21
+      Height = 24
       AutoSelect = False
-      EditLabel.Width = 62
-      EditLabel.Height = 13
+      EditLabel.Width = 61
+      EditLabel.Height = 16
       EditLabel.Caption = 'Comments'
       TabOrder = 11
       OnEnter = EditControlEnter
@@ -191,8 +185,8 @@ object GJVEditFrame: TGJVEditFrame
       Left = 278
       Top = 41
       Width = 52
-      Height = 21
-      ItemHeight = 13
+      Height = 24
+      ItemHeight = 16
       TabOrder = 0
       TabStop = False
       Text = 'J3E'
@@ -288,9 +282,9 @@ object GJVEditFrame: TGJVEditFrame
       Left = 417
       Top = 3
       Width = 84
-      Height = 21
+      Height = 24
       CharCase = ecUpperCase
-      ItemHeight = 13
+      ItemHeight = 16
       TabOrder = 18
       TabStop = False
     end
@@ -298,9 +292,9 @@ object GJVEditFrame: TGJVEditFrame
       Left = 298
       Top = 3
       Width = 84
-      Height = 21
+      Height = 24
       CharCase = ecUpperCase
-      ItemHeight = 13
+      ItemHeight = 16
       TabOrder = 17
       TabStop = False
     end
