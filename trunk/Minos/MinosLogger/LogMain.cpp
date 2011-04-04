@@ -29,7 +29,7 @@
 #include "SendRPCDM.h"
 #include "StatsDisp.h"
 #include "MinosTestImport.h"
-#include "TManageListsDlg.h" 
+#include "TManageListsDlg.h"
 #include "SettingsEditor.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -42,6 +42,11 @@ __fastcall TLogContainer::TLogContainer( TComponent* Owner )
       : TForm( Owner ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
       syncCaption( false ), syncMode( false ), saveResize( false )
 {
+   Scaled = false;
+   if (Screen->PixelsPerInch != PixelsPerInch)
+   {
+      ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
+   }
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
 }
@@ -230,6 +235,11 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
          t->PageControl = ContestPageControl;
          ContestPageControl->ActivePage = t;
          ContestPageControlChange( this );
+
+         if (Screen->PixelsPerInch != PixelsPerInch)
+         {
+            f->ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
+         }
 
          if ( contest->needsExport() )      // imported from an alien format (e.g. .log)
          {

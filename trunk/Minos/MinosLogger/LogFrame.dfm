@@ -1,8 +1,8 @@
 object SingleLogFrame: TSingleLogFrame
   Left = 0
   Top = 0
-  Width = 750
-  Height = 550
+  Width = 790
+  Height = 470
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -28,8 +28,8 @@ object SingleLogFrame: TSingleLogFrame
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 750
-    Height = 550
+    Width = 790
+    Height = 470
     Align = alClient
     BevelOuter = bvNone
     ParentShowHint = False
@@ -37,31 +37,31 @@ object SingleLogFrame: TSingleLogFrame
     TabOrder = 0
     object LogAreaSplitter: TSplitter
       Left = 0
-      Top = 431
-      Width = 750
-      Height = 8
+      Top = 373
+      Width = 790
+      Height = 4
       Cursor = crVSplit
       Align = alBottom
       Color = clBtnFace
       MinSize = 1
       ParentColor = False
       OnMoved = LogAreaSplitterMoved
-      ExplicitTop = 273
+      ExplicitTop = 369
     end
     object TopPanel: TPanel
       Left = 0
       Top = 0
-      Width = 750
-      Height = 431
+      Width = 790
+      Height = 373
       Align = alClient
       Caption = 'TopPanel'
       ParentColor = True
       TabOrder = 0
       object MultSplitter: TSplitter
-        Left = 430
+        Left = 470
         Top = 1
         Width = 9
-        Height = 275
+        Height = 216
         Hint = 'Click here to show/hide stats and multipliers'
         Align = alRight
         Color = clBtnFace
@@ -72,36 +72,37 @@ object SingleLogFrame: TSingleLogFrame
         ExplicitHeight = 300
       end
       object MultPanel: TPanel
-        Left = 439
+        Left = 479
         Top = 1
         Width = 310
-        Height = 275
+        Height = 216
         Align = alRight
         BevelOuter = bvNone
         Caption = 'MultPanel'
         TabOrder = 0
+        ExplicitHeight = 195
         inline MultDispFrame: TMultDispFrame
           Left = 0
           Top = 0
           Width = 310
-          Height = 275
+          Height = 216
           Align = alClient
           TabOrder = 0
           TabStop = True
           ExplicitWidth = 310
-          ExplicitHeight = 275
+          ExplicitHeight = 195
           inherited FilterSplitter: TSplitter
-            Top = 165
+            Top = 106
             Width = 310
             ExplicitTop = 161
             ExplicitWidth = 310
           end
           inherited MultPages: TPageControl
             Width = 310
-            Height = 165
+            Height = 106
             TabStop = False
             ExplicitWidth = 310
-            ExplicitHeight = 165
+            ExplicitHeight = 85
             inherited CountriesTab: TTabSheet
               ExplicitLeft = 4
               ExplicitTop = 4
@@ -120,14 +121,14 @@ object SingleLogFrame: TSingleLogFrame
             inherited LocatorsTab: TTabSheet
               ExplicitLeft = 4
               ExplicitTop = 4
-              ExplicitWidth = 242
-              ExplicitHeight = 157
+              ExplicitWidth = 182
+              ExplicitHeight = 77
               inherited LocatorMultTree: TVirtualStringTree
-                Width = 242
-                Height = 157
+                Width = 202
+                Height = 98
                 TabStop = False
-                ExplicitWidth = 242
-                ExplicitHeight = 157
+                ExplicitWidth = 182
+                ExplicitHeight = 77
               end
             end
             inherited StatsTab: TTabSheet
@@ -183,9 +184,9 @@ object SingleLogFrame: TSingleLogFrame
             end
           end
           inherited FilterPanel: TPanel
-            Top = 175
+            Top = 116
             Width = 310
-            ExplicitTop = 175
+            ExplicitTop = 95
             ExplicitWidth = 310
             inherited UnworkedCB: TCheckBox
               Width = 121
@@ -222,18 +223,18 @@ object SingleLogFrame: TSingleLogFrame
       inline LogMonitor: TLogMonitorFrame
         Left = 1
         Top = 1
-        Width = 429
-        Height = 275
+        Width = 469
+        Height = 216
         Align = alClient
         TabOrder = 1
         TabStop = True
         ExplicitLeft = 1
         ExplicitTop = 1
-        ExplicitWidth = 429
-        ExplicitHeight = 275
+        ExplicitWidth = 469
+        ExplicitHeight = 195
         inherited QSOTree: TVirtualStringTree
-          Width = 429
-          Height = 275
+          Width = 469
+          Height = 216
           HintMode = hmHint
           ParentShowHint = False
           ShowHint = True
@@ -242,23 +243,25 @@ object SingleLogFrame: TSingleLogFrame
           OnGetHint = LogMonitorQSOTreeGetHint
           OnKeyDown = LogMonitorQSOTreeKeyDown
           OnMouseDown = LogMonitorQSOTreeMouseDown
-          ExplicitWidth = 429
-          ExplicitHeight = 275
+          ExplicitLeft = 3
+          ExplicitTop = -6
+          ExplicitWidth = 469
+          ExplicitHeight = 213
         end
       end
       object LogDetailPanel: TPanel
         Left = 1
-        Top = 276
-        Width = 748
-        Height = 154
+        Top = 217
+        Width = 788
+        Height = 155
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 2
         object NextContactDetailsSplitter: TSplitter
-          Left = 584
+          Left = 624
           Top = 0
           Width = 9
-          Height = 154
+          Height = 155
           Hint = 'Click here to show/hide Next Contact Details'
           Align = alRight
           Color = clBtnFace
@@ -269,19 +272,20 @@ object SingleLogFrame: TSingleLogFrame
           ExplicitHeight = 112
         end
         object NextContactDetailsPanel: TPanel
-          Left = 593
+          Left = 633
           Top = 0
           Width = 155
-          Height = 154
+          Height = 155
           Align = alRight
           BevelOuter = bvLowered
           BevelWidth = 3
           TabOrder = 0
+          ExplicitHeight = 154
           object NextContactDetailsLabel: TLabel
             Left = 3
             Top = 38
             Width = 149
-            Height = 113
+            Height = 114
             Hint = 
               'Next contact details (use Right Mouse Button if you want to move' +
               ' it)'
@@ -335,19 +339,34 @@ object SingleLogFrame: TSingleLogFrame
         inline GJVQSOLogFrame: TGJVQSOLogFrame
           Left = 0
           Top = 0
-          Width = 584
-          Height = 154
+          Width = 624
+          Height = 155
           Align = alClient
           PopupMenu = EntryChoiceMenu
           TabOrder = 1
           TabStop = True
-          ExplicitWidth = 584
+          ExplicitWidth = 624
           ExplicitHeight = 154
           inherited G0GJVPanel: TPanel
-            Width = 584
-            Height = 154
-            ExplicitWidth = 584
+            Width = 624
+            Height = 155
+            ExplicitWidth = 624
             ExplicitHeight = 154
+            inherited ModeLabel: TLabel
+              Width = 30
+              ExplicitWidth = 30
+            end
+            inherited SecondOpLabel: TLabel
+              Width = 28
+              ExplicitWidth = 28
+            end
+            inherited OperatorLabel: TLabel
+              Width = 28
+              ExplicitWidth = 28
+            end
+            inherited MatchXferButton: TBitBtn
+              OnClick = GJVQSOLogFrame1MatchXferButtonClick
+            end
             inherited BandMapPanel: TPanel
               inherited AutoBandmapTune: TCheckBox
                 OnClick = AutoBandmapTuneClick
@@ -356,11 +375,56 @@ object SingleLogFrame: TSingleLogFrame
                 OnClick = AutoBandmapTimeClick
               end
             end
+            inherited CallsignEdit: TLabeledEdit
+              EditLabel.Width = 72
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 72
+            end
+            inherited RSTTXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 108
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited SerTXEdit: TLabeledEdit
+              EditLabel.Width = 52
+              EditLabel.ExplicitLeft = 176
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 52
+            end
+            inherited RSTRXEdit: TLabeledEdit
+              EditLabel.Width = 56
+              EditLabel.ExplicitLeft = 254
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 56
+            end
+            inherited SerRXEdit: TLabeledEdit
+              EditLabel.Width = 53
+              EditLabel.ExplicitLeft = 337
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 53
+            end
+            inherited LocEdit: TLabeledEdit
+              EditLabel.Width = 46
+              EditLabel.ExplicitLeft = 420
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 46
+            end
+            inherited QTHEdit: TLabeledEdit
+              EditLabel.Width = 55
+              EditLabel.ExplicitLeft = 504
+              EditLabel.ExplicitTop = 67
+              EditLabel.ExplicitWidth = 55
+            end
+            inherited CommentsEdit: TLabeledEdit
+              EditLabel.Width = 62
+              EditLabel.ExplicitLeft = 4
+              EditLabel.ExplicitTop = 110
+              EditLabel.ExplicitWidth = 62
+            end
             inherited GJVOKButton: TButton
               OnClick = GJVQSOLogFrame1GJVOKButtonClick
-            end
-            inherited MatchXferButton: TBitBtn
-              OnClick = GJVQSOLogFrame1MatchXferButtonClick
             end
             inherited GJVForceButton: TButton
               OnClick = GJVQSOLogFrame1GJVForceButtonClick
@@ -374,17 +438,17 @@ object SingleLogFrame: TSingleLogFrame
     end
     object MatchPanel: TPanel
       Left = 0
-      Top = 439
-      Width = 750
-      Height = 111
+      Top = 377
+      Width = 790
+      Height = 93
       Align = alBottom
       Caption = 'MatchPanel'
       TabOrder = 1
       object ArchiveMatchSplitter: TSplitter
-        Left = 576
+        Left = 616
         Top = 1
         Width = 9
-        Height = 109
+        Height = 91
         Hint = 'Click here to show/hide archive matches'
         Align = alRight
         Color = clBtnFace
@@ -392,19 +456,21 @@ object SingleLogFrame: TSingleLogFrame
         ParentColor = False
         OnMoved = ArchiveMatchSplitterMoved
         ExplicitLeft = 552
+        ExplicitHeight = 109
       end
       object ArchiveMatchPanel: TPanel
-        Left = 585
+        Left = 625
         Top = 1
         Width = 164
-        Height = 109
+        Height = 91
         Align = alRight
         TabOrder = 0
+        ExplicitHeight = 109
         object ArchiveMatchTree: TVirtualStringTree
           Left = 1
           Top = 1
           Width = 162
-          Height = 107
+          Height = 89
           Hint = 'Matching archive entries'
           Align = alClient
           BevelKind = bkFlat
@@ -424,22 +490,24 @@ object SingleLogFrame: TSingleLogFrame
           OnGetText = ArchiveMatchTreeGetText
           OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
           OnMouseDown = ArchiveMatchTreeMouseDown
+          ExplicitHeight = 107
           Columns = <>
         end
       end
       object ContestMatchPanel: TPanel
         Left = 1
         Top = 1
-        Width = 575
-        Height = 109
+        Width = 615
+        Height = 91
         Align = alClient
         Caption = 'ContestMatchPanel'
         TabOrder = 1
+        ExplicitHeight = 109
         object MatchSplitter: TSplitter
-          Left = 395
+          Left = 435
           Top = 1
           Width = 9
-          Height = 107
+          Height = 89
           Hint = 'Click here to show/hide other contest matches'
           Align = alRight
           Color = clBtnFace
@@ -447,12 +515,13 @@ object SingleLogFrame: TSingleLogFrame
           ParentColor = False
           OnMoved = MatchSplitterMoved
           ExplicitLeft = 152
+          ExplicitHeight = 107
         end
         object ThisMatchTree: TVirtualStringTree
           Left = 1
           Top = 1
-          Width = 394
-          Height = 107
+          Width = 434
+          Height = 89
           Hint = 'Matching QSOs in current contest'
           Align = alClient
           BevelKind = bkFlat
@@ -477,20 +546,22 @@ object SingleLogFrame: TSingleLogFrame
           OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
           OnKeyDown = ThisMatchTreeKeyDown
           OnMouseDown = ThisMatchTreeMouseDown
+          ExplicitHeight = 107
           Columns = <>
         end
         object OtherMatchPanel: TPanel
-          Left = 404
+          Left = 444
           Top = 1
           Width = 170
-          Height = 107
+          Height = 89
           Align = alRight
           TabOrder = 1
+          ExplicitHeight = 107
           object OtherMatchTree: TVirtualStringTree
             Left = 1
             Top = 1
             Width = 168
-            Height = 105
+            Height = 87
             Hint = 'Matching QSOs in any other loaded contests'
             Align = alClient
             BevelKind = bkFlat
@@ -513,6 +584,7 @@ object SingleLogFrame: TSingleLogFrame
             OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
             OnKeyDown = OtherMatchTreeKeyDown
             OnMouseDown = OtherMatchTreeMouseDown
+            ExplicitHeight = 105
             Columns = <>
           end
         end

@@ -1,63 +1,65 @@
 object GJVEditFrame: TGJVEditFrame
   Left = 0
   Top = 0
-  Width = 577
-  Height = 153
+  Width = 620
+  Height = 156
   TabOrder = 0
   TabStop = True
   object G0GJVPanel: TPanel
     Left = 0
     Top = 0
-    Width = 577
-    Height = 153
+    Width = 620
+    Height = 156
     Align = alClient
     BevelKind = bkFlat
     BevelOuter = bvNone
     TabOrder = 0
     object ModeLabel: TLabel
-      Left = 245
-      Top = 45
-      Width = 31
-      Height = 16
+      Left = 194
+      Top = 40
+      Width = 26
+      Height = 13
       Caption = 'Mode'
     end
     object BrgSt: TLabel
       Left = 526
       Top = 26
-      Width = 47
-      Height = 16
+      Width = 38
+      Height = 13
+      AutoSize = False
       Caption = '(999XT)'
     end
     object DistSt: TLabel
       Left = 482
       Top = 26
-      Width = 45
-      Height = 16
+      Width = 38
+      Height = 13
+      AutoSize = False
       Caption = '(99999)'
     end
     object SecondOpLabel: TLabel
-      Left = 388
+      Left = 467
       Top = 6
-      Width = 28
-      Height = 16
+      Width = 24
+      Height = 13
       Caption = 'Op2:'
     end
     object OperatorLabel: TLabel
-      Left = 269
+      Left = 329
       Top = 6
-      Width = 28
-      Height = 16
+      Width = 24
+      Height = 13
       Caption = 'Op1:'
     end
     object CallsignEdit: TLabeledEdit
       Left = 4
       Top = 83
       Width = 94
-      Height = 24
+      Height = 21
       AutoSelect = False
       CharCase = ecUpperCase
-      EditLabel.Width = 72
-      EditLabel.Height = 16
+      EditLabel.Width = 59
+      EditLabel.Height = 13
       EditLabel.Caption = 'Callsign (F1)'
       TabOrder = 4
       OnChange = GJVEditChange
@@ -70,10 +72,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 108
       Top = 83
       Width = 36
-      Height = 24
+      Height = 21
       AutoSelect = False
-      EditLabel.Width = 58
-      EditLabel.Height = 16
+      EditLabel.Width = 47
+      EditLabel.Height = 13
       EditLabel.Caption = 'RS(T)(F2)'
       TabOrder = 5
       OnEnter = EditControlEnter
@@ -82,15 +84,15 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object SerTXEdit: TLabeledEdit
-      Left = 170
+      Left = 176
       Top = 83
       Width = 54
-      Height = 24
+      Height = 21
       Hint = 'Serial TX is read only - double click if you need to modify it'
       TabStop = False
       AutoSelect = False
-      EditLabel.Width = 53
-      EditLabel.Height = 16
+      EditLabel.Width = 41
+      EditLabel.Height = 13
       EditLabel.Caption = 'Serial TX'
       ParentShowHint = False
       ReadOnly = True
@@ -107,10 +109,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 254
       Top = 83
       Width = 54
-      Height = 24
+      Height = 21
       AutoSelect = False
-      EditLabel.Width = 58
-      EditLabel.Height = 16
+      EditLabel.Width = 47
+      EditLabel.Height = 13
       EditLabel.Caption = 'RS(T)(F3)'
       TabOrder = 7
       OnEnter = EditControlEnter
@@ -122,10 +124,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 337
       Top = 83
       Width = 54
-      Height = 24
+      Height = 21
       AutoSelect = False
-      EditLabel.Width = 53
-      EditLabel.Height = 16
+      EditLabel.Width = 42
+      EditLabel.Height = 13
       EditLabel.Caption = 'Serial RX'
       TabOrder = 8
       OnEnter = EditControlEnter
@@ -137,11 +139,11 @@ object GJVEditFrame: TGJVEditFrame
       Left = 420
       Top = 83
       Width = 65
-      Height = 24
+      Height = 21
       AutoSelect = False
       CharCase = ecUpperCase
-      EditLabel.Width = 47
-      EditLabel.Height = 16
+      EditLabel.Width = 39
+      EditLabel.Height = 13
       EditLabel.Caption = 'Loc (F5)'
       TabOrder = 9
       OnChange = LocEditChange
@@ -154,10 +156,10 @@ object GJVEditFrame: TGJVEditFrame
       Left = 504
       Top = 83
       Width = 62
-      Height = 24
+      Height = 21
       AutoSelect = False
-      EditLabel.Width = 54
-      EditLabel.Height = 16
+      EditLabel.Width = 47
+      EditLabel.Height = 13
       EditLabel.Caption = 'Exchange'
       TabOrder = 10
       OnChange = GJVEditChange
@@ -168,12 +170,12 @@ object GJVEditFrame: TGJVEditFrame
     end
     object CommentsEdit: TLabeledEdit
       Left = 4
-      Top = 120
+      Top = 126
       Width = 121
-      Height = 24
+      Height = 21
       AutoSelect = False
-      EditLabel.Width = 61
-      EditLabel.Height = 16
+      EditLabel.Width = 50
+      EditLabel.Height = 13
       EditLabel.Caption = 'Comments'
       TabOrder = 11
       OnEnter = EditControlEnter
@@ -182,11 +184,11 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object ModeComboBoxGJV: TComboBox
-      Left = 278
-      Top = 41
+      Left = 248
+      Top = 37
       Width = 52
-      Height = 24
-      ItemHeight = 16
+      Height = 21
+      ItemHeight = 13
       TabOrder = 0
       TabStop = False
       Text = 'J3E'
@@ -213,7 +215,7 @@ object GJVEditFrame: TGJVEditFrame
     object GJVForceButton: TButton
       Left = 196
       Top = 116
-      Width = 50
+      Width = 58
       Height = 25
       Hint = 'Force logging the QSO, even when incomplete'
       Caption = '&Force...'
@@ -223,7 +225,7 @@ object GJVEditFrame: TGJVEditFrame
       TabStop = False
     end
     object GJVCancelButton: TButton
-      Left = 256
+      Left = 272
       Top = 116
       Width = 55
       Height = 25
@@ -233,9 +235,9 @@ object GJVEditFrame: TGJVEditFrame
       TabStop = False
     end
     object NonScoreCheckBox: TCheckBox
-      Left = 401
-      Top = 43
-      Width = 94
+      Left = 371
+      Top = 45
+      Width = 117
       Height = 17
       TabStop = False
       Caption = 'Non Scoring'
@@ -243,17 +245,17 @@ object GJVEditFrame: TGJVEditFrame
     end
     object DeletedCheckBox: TCheckBox
       Left = 504
-      Top = 43
-      Width = 65
+      Top = 45
+      Width = 80
       Height = 17
       TabStop = False
       Caption = 'Deleted'
       TabOrder = 3
     end
     object ModeButton: TButton
-      Left = 341
-      Top = 39
-      Width = 33
+      Left = 311
+      Top = 35
+      Width = 36
       Height = 25
       Caption = 'A1A'
       TabOrder = 1
@@ -261,9 +263,9 @@ object GJVEditFrame: TGJVEditFrame
       OnClick = ModeButtonClick
     end
     object FirstUnfilledButton: TButton
-      Left = 145
+      Left = 185
       Top = 1
-      Width = 113
+      Width = 132
       Height = 25
       Caption = 'First Unfilled QSO'
       TabOrder = 15
@@ -272,29 +274,29 @@ object GJVEditFrame: TGJVEditFrame
     object CatchupButton: TButton
       Left = 6
       Top = 1
-      Width = 129
+      Width = 162
       Height = 25
       Caption = 'Catch-up (Post Entry)'
       TabOrder = 16
       TabStop = False
     end
     object SecondOpComboBox: TComboBox
-      Left = 417
+      Left = 506
       Top = 3
       Width = 84
-      Height = 24
+      Height = 21
       CharCase = ecUpperCase
-      ItemHeight = 16
+      ItemHeight = 13
       TabOrder = 18
       TabStop = False
     end
     object MainOpComboBox: TComboBox
-      Left = 298
+      Left = 368
       Top = 3
       Width = 84
-      Height = 24
+      Height = 21
       CharCase = ecUpperCase
-      ItemHeight = 16
+      ItemHeight = 13
       TabOrder = 17
       TabStop = False
     end

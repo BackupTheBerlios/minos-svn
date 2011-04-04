@@ -1,34 +1,20 @@
 inherited GJVQSOEditFrame: TGJVQSOEditFrame
-  Width = 574
+  Width = 629
   Height = 193
-  ExplicitWidth = 574
+  ExplicitWidth = 629
   ExplicitHeight = 193
   inherited G0GJVPanel: TPanel
-    Width = 574
+    Width = 629
     Height = 193
     ExplicitWidth = 574
     ExplicitHeight = 193
-    inherited GJVOKButton: TButton
-      Left = 139
-      Top = 149
-      ExplicitLeft = 139
-      ExplicitTop = 149
-    end
     inherited GJVForceButton: TButton
-      Left = 193
-      Top = 149
       TabOrder = 20
-      ExplicitLeft = 193
-      ExplicitTop = 149
     end
     inherited GJVCancelButton: TButton
-      Left = 253
-      Top = 149
       Width = 91
       Caption = 'Return to Log'
       TabOrder = 22
-      ExplicitLeft = 253
-      ExplicitTop = 149
       ExplicitWidth = 91
     end
     inherited FirstUnfilledButton: TButton
@@ -89,7 +75,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Hint = 'Date/Time is read only - double click to modify'
       TabStop = False
       AutoSelect = False
-      EditLabel.Width = 28
+      EditLabel.Width = 22
       EditLabel.Height = 13
       EditLabel.Caption = 'Time'
       LabelPosition = lpLeft
@@ -113,7 +99,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Hint = 'Date/Time is read only - double click to modify'
       TabStop = False
       AutoSelect = False
-      EditLabel.Width = 27
+      EditLabel.Width = 23
       EditLabel.Height = 13
       EditLabel.Caption = 'Date'
       LabelPosition = lpLeft
