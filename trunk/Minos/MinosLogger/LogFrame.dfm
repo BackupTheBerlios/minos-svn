@@ -80,7 +80,6 @@ object SingleLogFrame: TSingleLogFrame
         BevelOuter = bvNone
         Caption = 'MultPanel'
         TabOrder = 0
-        ExplicitHeight = 195
         inline MultDispFrame: TMultDispFrame
           Left = 0
           Top = 0
@@ -90,7 +89,7 @@ object SingleLogFrame: TSingleLogFrame
           TabOrder = 0
           TabStop = True
           ExplicitWidth = 310
-          ExplicitHeight = 195
+          ExplicitHeight = 216
           inherited FilterSplitter: TSplitter
             Top = 106
             Width = 310
@@ -102,7 +101,7 @@ object SingleLogFrame: TSingleLogFrame
             Height = 106
             TabStop = False
             ExplicitWidth = 310
-            ExplicitHeight = 85
+            ExplicitHeight = 106
             inherited CountriesTab: TTabSheet
               ExplicitLeft = 4
               ExplicitTop = 4
@@ -231,7 +230,7 @@ object SingleLogFrame: TSingleLogFrame
         ExplicitLeft = 1
         ExplicitTop = 1
         ExplicitWidth = 469
-        ExplicitHeight = 195
+        ExplicitHeight = 216
         inherited QSOTree: TVirtualStringTree
           Width = 469
           Height = 216
@@ -330,7 +329,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 23
+              ItemHeight = 0
               TabOrder = 0
               TabStop = False
             end
@@ -346,12 +345,12 @@ object SingleLogFrame: TSingleLogFrame
           TabOrder = 1
           TabStop = True
           ExplicitWidth = 624
-          ExplicitHeight = 154
+          ExplicitHeight = 155
           inherited G0GJVPanel: TPanel
             Width = 624
             Height = 155
             ExplicitWidth = 624
-            ExplicitHeight = 154
+            ExplicitHeight = 155
             inherited ModeLabel: TLabel
               Width = 30
               ExplicitWidth = 30

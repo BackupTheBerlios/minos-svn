@@ -26,8 +26,8 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       TButton *BandMapButton;
       TCheckBox *AutoBandmapTune;
       TCheckBox *AutoBandmapTime;
-   TLabel *DateLabel;
-   TLabel *TimeLabel;
+   TStaticText *DateLabel;
+   TStaticText *TimeLabel;
       void __fastcall BandMapButtonClick( TObject *Sender );
       void __fastcall CatchupButtonClick(TObject *Sender);
       void __fastcall FirstUnfilledButtonClick(TObject *Sender);
@@ -60,7 +60,7 @@ class TGJVQSOLogFrame : public TGJVEditFrame
       void transferDetails( const ListContact * lct, const ContactList *matct );
       void initialise( BaseContestLog * contest, bool catchup );
       void setFreq( String f );
-      virtual void updateQSOTime();
+      virtual void updateQSOTime(bool fromTimer = false);
       virtual void updateQSODisplay();
 };
 //---------------------------------------------------------------------------

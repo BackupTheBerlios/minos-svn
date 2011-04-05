@@ -16,24 +16,24 @@ object GJVEditFrame: TGJVEditFrame
     TabOrder = 0
     object ModeLabel: TLabel
       Left = 194
-      Top = 40
+      Top = 42
       Width = 26
       Height = 13
       Caption = 'Mode'
     end
     object BrgSt: TLabel
-      Left = 526
-      Top = 26
-      Width = 38
-      Height = 13
+      Left = 506
+      Top = 121
+      Width = 60
+      Height = 22
       AutoSize = False
       Caption = '(999XT)'
     end
     object DistSt: TLabel
-      Left = 482
-      Top = 26
-      Width = 38
-      Height = 13
+      Left = 432
+      Top = 121
+      Width = 56
+      Height = 22
       AutoSize = False
       Caption = '(99999)'
     end
@@ -84,7 +84,7 @@ object GJVEditFrame: TGJVEditFrame
       OnKeyPress = GJVEditKeyPress
     end
     object SerTXEdit: TLabeledEdit
-      Left = 176
+      Left = 184
       Top = 83
       Width = 54
       Height = 21
@@ -186,7 +186,7 @@ object GJVEditFrame: TGJVEditFrame
     object ModeComboBoxGJV: TComboBox
       Left = 248
       Top = 37
-      Width = 52
+      Width = 57
       Height = 21
       ItemHeight = 13
       TabOrder = 0
@@ -236,24 +236,24 @@ object GJVEditFrame: TGJVEditFrame
     end
     object NonScoreCheckBox: TCheckBox
       Left = 371
-      Top = 45
+      Top = 41
       Width = 117
-      Height = 17
+      Height = 18
       TabStop = False
       Caption = 'Non Scoring'
       TabOrder = 2
     end
     object DeletedCheckBox: TCheckBox
       Left = 504
-      Top = 45
+      Top = 42
       Width = 80
-      Height = 17
+      Height = 16
       TabStop = False
       Caption = 'Deleted'
       TabOrder = 3
     end
     object ModeButton: TButton
-      Left = 311
+      Left = 318
       Top = 35
       Width = 36
       Height = 25

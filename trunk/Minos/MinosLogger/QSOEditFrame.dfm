@@ -6,7 +6,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
   inherited G0GJVPanel: TPanel
     Width = 629
     Height = 193
-    ExplicitWidth = 574
+    ExplicitWidth = 629
     ExplicitHeight = 193
     inherited GJVForceButton: TButton
       TabOrder = 20
@@ -30,8 +30,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       OnExit = MainOpComboBoxExit
     end
     object InsertBeforeButton: TButton
-      Left = 368
-      Top = 118
+      Left = 24
+      Top = 153
       Width = 90
       Height = 25
       Caption = 'Insert Before'
@@ -39,8 +39,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       OnClick = InsertBeforeButtonClick
     end
     object InsertAfterButton: TButton
-      Left = 368
-      Top = 149
+      Left = 139
+      Top = 153
       Width = 90
       Height = 25
       Caption = 'Insert After'
@@ -48,8 +48,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       OnClick = InsertAfterButtonClick
     end
     object PriorButton: TButton
-      Left = 472
-      Top = 118
+      Left = 392
+      Top = 153
       Width = 75
       Height = 25
       Caption = 'Prior'
@@ -58,8 +58,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       OnClick = PriorButtonClick
     end
     object NextButton: TButton
-      Left = 472
-      Top = 149
+      Left = 491
+      Top = 153
       Width = 75
       Height = 25
       Caption = 'Next'

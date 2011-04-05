@@ -342,7 +342,7 @@ void __fastcall TGJVQSOLogFrame::BandMapButtonClick( TObject *Sender )
 }
 //---------------------------------------------------------------------------
 
-void TGJVQSOLogFrame::updateQSOTime()
+void TGJVQSOLogFrame::updateQSOTime(bool fromTimer)
 {
    // Check if dtg is within the contest time
    // If not we wish to show as red
@@ -364,15 +364,18 @@ void TGJVQSOLogFrame::updateQSOTime()
       timeOK = contest->checkTime(time);
    }
 
-   if (timeOK)
+   if (fromTimer)
    {
-      DateLabel->Font->Color = clWindowText;
-      TimeLabel->Font->Color = clWindowText;
-   }
-   else
-   {
-      DateLabel->Font->Color = clRed;
-      TimeLabel->Font->Color = clRed;
+      if (timeOK)
+      {
+         DateLabel->Font->Color = clWindowText;
+         TimeLabel->Font->Color = clWindowText;
+      }
+      else
+      {
+         DateLabel->Font->Color = clRed;
+         TimeLabel->Font->Color = clRed;
+      }
    }
 }
 //---------------------------------------------------------------------------

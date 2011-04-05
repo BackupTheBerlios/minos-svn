@@ -1318,12 +1318,12 @@ void TSingleLogFrame::GoNextUnfilled()
 
 void __fastcall TSingleLogFrame::TimerUpdateQSOTimerTimer(TObject */*Sender*/)
 {
-   updateQSOTime();
+   updateQSOTime(true);
 }
 //---------------------------------------------------------------------------
-void TSingleLogFrame::updateQSOTime()
+void TSingleLogFrame::updateQSOTime(bool fromTimer)
 {
-   GJVQSOLogFrame->updateQSOTime();
+   GJVQSOLogFrame->updateQSOTime(fromTimer);
 }
 //---------------------------------------------------------------------------
 void TSingleLogFrame::updateQSODisplay()

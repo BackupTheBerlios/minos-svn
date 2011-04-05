@@ -279,7 +279,7 @@ class TSingleLogFrame : public TFrame
       void setMode( String m );
       void setFreq( String f );
       void updateTrees();
-      void updateQSOTime();
+      void updateQSOTime(bool fromTimer = false);
       void updateQSODisplay();
 
       bool getStanza( unsigned int stanza, std::string &stanzaData );

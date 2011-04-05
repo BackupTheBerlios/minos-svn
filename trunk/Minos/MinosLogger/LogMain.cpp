@@ -47,6 +47,10 @@ __fastcall TLogContainer::TLogContainer( TComponent* Owner )
    {
       ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
    }
+   if (Screen->PixelsPerInch != PixelsPerInch)
+   {
+      ShowMessage("Screen->PixelsPerInch != PixelsPerInch");
+   }
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
 }
@@ -236,11 +240,13 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
          ContestPageControl->ActivePage = t;
          ContestPageControlChange( this );
 
+         /*
          if (Screen->PixelsPerInch != PixelsPerInch)
          {
+         ShowMessage("Scaling");
             f->ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
          }
-
+         */
          if ( contest->needsExport() )      // imported from an alien format (e.g. .log)
          {
             String expName = f->makeEntry( true );

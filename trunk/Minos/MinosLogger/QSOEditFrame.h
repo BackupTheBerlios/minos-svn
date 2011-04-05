@@ -63,7 +63,7 @@ class TGJVQSOEditFrame : public TGJVEditFrame
       virtual void initialise( BaseContestLog * contest, bool catchup );
       bool doGJVOKButtonClick( TObject *Sender );
       void doGJVCancelButtonClick( TObject *Sender );
-      virtual void updateQSOTime();
+      virtual void updateQSOTime(bool fromTimer = false);
       virtual void updateQSODisplay();
       virtual void selectField( TWinControl *v );
 };

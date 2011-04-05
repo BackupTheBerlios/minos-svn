@@ -1,22 +1,6 @@
 inherited GJVQSOLogFrame: TGJVQSOLogFrame
   inherited G0GJVPanel: TPanel
-    object DateLabel: TLabel [5]
-      Left = 8
-      Top = 45
-      Width = 57
-      Height = 14
-      AutoSize = False
-      Caption = '00/00/00'
-    end
-    object TimeLabel: TLabel [6]
-      Left = 69
-      Top = 45
-      Width = 39
-      Height = 14
-      AutoSize = False
-      Caption = '00:00'
-    end
-    object MatchXferButton: TBitBtn [7]
+    object MatchXferButton: TBitBtn [5]
       Left = 335
       Top = 109
       Width = 74
@@ -30,7 +14,7 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
       TabStop = False
       WordWrap = True
     end
-    object BandMapPanel: TPanel [8]
+    object BandMapPanel: TPanel [6]
       Left = 424
       Top = 111
       Width = 177
@@ -64,6 +48,25 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
         Caption = 'Time'
         TabOrder = 2
       end
+    end
+    object TimeLabel: TStaticText [7]
+      Left = 108
+      Top = 42
+      Width = 48
+      Height = 14
+      AutoSize = False
+      Caption = '00:00'
+      TabOrder = 22
+    end
+    object DateLabel: TStaticText [8]
+      Left = 6
+      Top = 42
+      Width = 82
+      Height = 14
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '00/00/00'
+      TabOrder = 21
     end
   end
 end
