@@ -22,18 +22,18 @@ object GJVEditFrame: TGJVEditFrame
       Caption = 'Mode'
     end
     object BrgSt: TLabel
-      Left = 506
-      Top = 121
+      Left = 494
+      Top = 27
       Width = 60
-      Height = 22
+      Height = 12
       AutoSize = False
       Caption = '(999XT)'
     end
     object DistSt: TLabel
-      Left = 432
-      Top = 121
+      Left = 420
+      Top = 27
       Width = 56
-      Height = 22
+      Height = 12
       AutoSize = False
       Caption = '(99999)'
     end

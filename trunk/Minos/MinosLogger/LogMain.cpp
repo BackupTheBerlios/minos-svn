@@ -43,20 +43,30 @@ __fastcall TLogContainer::TLogContainer( TComponent* Owner )
       syncCaption( false ), syncMode( false ), saveResize( false )
 {
    Scaled = false;
-   if (Screen->PixelsPerInch != PixelsPerInch)
-   {
-      ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
-   }
-   if (Screen->PixelsPerInch != PixelsPerInch)
-   {
-      ShowMessage("Screen->PixelsPerInch != PixelsPerInch");
-   }
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
 }
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::FormShow( TObject */*Sender*/ )
 {
+   if ( TContestApp::getContestApp() )
+   {
+      int multiplier = MinosParameters::getMinosParameters() ->getFontMultiplier();
+      if (multiplier <= 200 && multiplier >= 100)
+      {
+         MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+         /*
+    // NB this doesn't to work on the menu(s) as they don't derive from TWinControl
+    // AND they don't have a design size or a menu
+         MinosParameters::getMinosParameters() ->applyFontMultiplier(MainMenu1);
+         MinosParameters::getMinosParameters() ->applyFontMultiplier(TabPopup);
+         */
+      }
+      else
+      {
+         mShowMessage("Font size multiplier must be >= 100 and <= 200");
+      }
+   }
    StartupTimer->Enabled = true;
 
 }
@@ -1194,18 +1204,12 @@ void __fastcall TLogContainer::OptionsActionExecute(TObject */*Sender*/)
 {
 // Start bundle editor for MinosLogger.ini
    std::auto_ptr <TSettingsEditDlg> ed ( new TSettingsEditDlg( this, &TContestApp::getContestApp() ->loggerBundle ) );
-   #warning How do we initialise this with default section?
+
    ed->ShowCurrentSectionOnly();
-   ed->ShowModal();
-   #warning Do we re-initialise to apply changes?
-   // Or do we insist on a full reload?
-   /*
-   if ( ed->ShowModal() == mrOk )
+   if (ed->ShowModal() == mrOk)
    {
-      initialise();
-      return true;
+      mShowMessage("You may need to close and reload Minos to have these settings applied");
    }
-   */
 }
 //---------------------------------------------------------------------------
 

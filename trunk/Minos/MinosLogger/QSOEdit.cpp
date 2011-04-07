@@ -52,6 +52,7 @@ void TQSOEditDlg::selectContact( BaseContestLog * ccontest, DisplayContestContac
 //---------------------------------------------------------------------------
 void __fastcall TQSOEditDlg::FormShow( TObject */*Sender*/ )
 {
+   MinosParameters::getMinosParameters()->applyFontMultiplier(this);
    InitialiseTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------

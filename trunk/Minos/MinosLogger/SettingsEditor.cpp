@@ -190,6 +190,7 @@ void __fastcall TSettingsEditDlg::CopyButtonClick( TObject */*Sender*/ )
 
 void __fastcall TSettingsEditDlg::FormShow( TObject */*Sender*/ )
 {
+   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
    showSections();
    showDetails();
 }

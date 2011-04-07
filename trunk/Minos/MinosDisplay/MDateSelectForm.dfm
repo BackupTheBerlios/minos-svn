@@ -17,8 +17,8 @@ object DateSelectForm: TDateSelectForm
   object DateLabel: TLabel
     Left = 100
     Top = 200
-    Width = 98
-    Height = 19
+    Width = 110
+    Height = 18
     Caption = '11/22/1933'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

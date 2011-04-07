@@ -22,6 +22,7 @@ __fastcall TClockDlg::TClockDlg( TComponent* Owner )
 //---------------------------------------------------------------------------
 void __fastcall TClockDlg::FormShow( TObject */*Sender*/ )
 {
+   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
    //   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
    //   Font->Assign( TContestApp::getContestApp() ->sysfont );
 

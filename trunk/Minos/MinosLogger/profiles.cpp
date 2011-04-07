@@ -657,6 +657,7 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
 		 entries.push_back( ProfileEntry( elpOperatorSection, "OperatorSection", "Default", "section to use in operators file" ) );
 		 entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "File containing log and list pre-loads" ) );
 		 entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "Section to use in preload file" ) );
+       entries.push_back( ProfileEntry( elpSizeMultiplier, "SizeMultiplier", 100, "Increase font size by this percentage") );
 
 		 break;
 	  case epPRELOADPROFILE:

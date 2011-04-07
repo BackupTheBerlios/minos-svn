@@ -56,6 +56,8 @@ class MinosParameters
       virtual bool isContestOpen( const std::string fn ) = 0;
       virtual bool isListOpen( const std::string fn ) = 0;
       virtual std::vector<BaseContestLog *> getContestList() = 0;
+      virtual int getFontMultiplier() = 0;
+      virtual void applyFontMultiplier(TWinControl *) = 0;
 };
 class MinosParametersAdapter : public MinosParameters
 {
@@ -85,5 +87,7 @@ class MinosParametersAdapter : public MinosParameters
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
       virtual std::vector<BaseContestLog *> getContestList();
+      virtual int getFontMultiplier();
+      virtual void applyFontMultiplier(TWinControl *);
 };
 #endif

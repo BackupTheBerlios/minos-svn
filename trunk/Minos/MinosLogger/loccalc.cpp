@@ -211,6 +211,7 @@ void __fastcall TLocCalcForm::CancelButtonClick( TObject */*Sender*/ )
 
 void __fastcall TLocCalcForm::FormShow( TObject *Sender )
 {
+   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
    Modal = FormState.Contains( fsModal );
    CalcButtonClick(Sender);
 

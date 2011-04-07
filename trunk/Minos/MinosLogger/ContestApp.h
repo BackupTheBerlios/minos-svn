@@ -110,6 +110,8 @@ class TContestApp : public MinosParameters
       virtual bool isContestOpen( const std::string fn );
       virtual bool isListOpen( const std::string fn );
       virtual std::vector<BaseContestLog *> getContestList();
+      virtual int getFontMultiplier();
+      virtual void applyFontMultiplier(TWinControl *);
 
       TContestApp();
       bool initialise();
@@ -140,6 +142,7 @@ class TContestApp : public MinosParameters
       void closeListFile( ContactList *list );
 
       void setCurrentContest( BaseContestLog * );
+
 };
 extern double bigClockCorr;
 

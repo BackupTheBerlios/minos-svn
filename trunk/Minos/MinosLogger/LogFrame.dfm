@@ -363,9 +363,6 @@ object SingleLogFrame: TSingleLogFrame
               Width = 28
               ExplicitWidth = 28
             end
-            inherited MatchXferButton: TBitBtn
-              OnClick = GJVQSOLogFrame1MatchXferButtonClick
-            end
             inherited BandMapPanel: TPanel
               inherited AutoBandmapTune: TCheckBox
                 OnClick = AutoBandmapTuneClick
@@ -373,6 +370,9 @@ object SingleLogFrame: TSingleLogFrame
               inherited AutoBandmapTime: TCheckBox
                 OnClick = AutoBandmapTimeClick
               end
+            end
+            inherited MatchXferButton: TBitBtn
+              OnClick = GJVQSOLogFrame1MatchXferButtonClick
             end
             inherited CallsignEdit: TLabeledEdit
               EditLabel.Width = 72

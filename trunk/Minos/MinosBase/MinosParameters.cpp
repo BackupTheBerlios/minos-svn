@@ -99,4 +99,11 @@ std::vector<BaseContestLog *> MinosParametersAdapter::getContestList()
    std::vector<BaseContestLog *> logList;
    return logList;
 }
+int MinosParametersAdapter::getFontMultiplier()
+{
+   return 100;
+}
+void MinosParametersAdapter::applyFontMultiplier(TWinControl *t)
+{
+}
 

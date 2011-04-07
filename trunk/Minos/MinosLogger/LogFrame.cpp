@@ -123,6 +123,9 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
    WLogAreaSplitter->Restore();
 
    showMatchHeaders();
+
+   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+
    OnShowTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
