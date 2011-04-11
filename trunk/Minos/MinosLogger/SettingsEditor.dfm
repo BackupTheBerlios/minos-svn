@@ -24,11 +24,15 @@ object SettingsEditDlg: TSettingsEditDlg
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
+    DesignSize = (
+      736
+      41)
     object OKButton: TButton
       Left = 616
       Top = 10
       Width = 75
       Height = 25
+      Anchors = [akTop, akRight]
       Caption = '&OK'
       Default = True
       TabOrder = 0
@@ -57,6 +61,7 @@ object SettingsEditDlg: TSettingsEditDlg
       Top = 10
       Width = 75
       Height = 25
+      Anchors = [akTop, akRight]
       Cancel = True
       Caption = 'Cancel'
       ModalResult = 2

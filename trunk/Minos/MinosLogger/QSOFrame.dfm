@@ -23,7 +23,7 @@ object GJVEditFrame: TGJVEditFrame
     end
     object BrgSt: TLabel
       Left = 494
-      Top = 27
+      Top = 31
       Width = 60
       Height = 12
       AutoSize = False
@@ -31,7 +31,7 @@ object GJVEditFrame: TGJVEditFrame
     end
     object DistSt: TLabel
       Left = 420
-      Top = 27
+      Top = 31
       Width = 56
       Height = 12
       AutoSize = False
@@ -236,7 +236,7 @@ object GJVEditFrame: TGJVEditFrame
     end
     object NonScoreCheckBox: TCheckBox
       Left = 371
-      Top = 41
+      Top = 48
       Width = 117
       Height = 18
       TabStop = False
@@ -245,7 +245,7 @@ object GJVEditFrame: TGJVEditFrame
     end
     object DeletedCheckBox: TCheckBox
       Left = 504
-      Top = 42
+      Top = 49
       Width = 80
       Height = 16
       TabStop = False

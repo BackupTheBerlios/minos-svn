@@ -42,7 +42,6 @@ __fastcall TLogContainer::TLogContainer( TComponent* Owner )
       : TForm( Owner ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
       syncCaption( false ), syncMode( false ), saveResize( false )
 {
-   Scaled = false;
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
 }
