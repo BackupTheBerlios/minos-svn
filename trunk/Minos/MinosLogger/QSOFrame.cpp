@@ -197,6 +197,7 @@ void __fastcall TGJVEditFrame::EditControlEnter( TObject *Sender )
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );
    if ( tle )
    {
+      tle->EditLabel->Font = MinosParameters::getMinosParameters() ->getSysFont();
       tle->EditLabel->Font->Color = clGreen;
 
    }
@@ -218,6 +219,7 @@ void __fastcall TGJVEditFrame::EditControlExit( TObject */*Sender*/ )
    TLabeledEdit *tle = dynamic_cast<TLabeledEdit *>( current );
    if ( tle )
    {
+      tle->EditLabel->Font = MinosParameters::getMinosParameters() ->getSysFont();
       tle->EditLabel->Font->Color = clWindowText;
    }
    if ( current == LocEdit )

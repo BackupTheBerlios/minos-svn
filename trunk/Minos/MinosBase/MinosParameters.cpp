@@ -106,4 +106,8 @@ int MinosParametersAdapter::getFontMultiplier()
 void MinosParametersAdapter::applyFontMultiplier(TWinControl *t)
 {
 }
+TFont *MinosParametersAdapter::getSysFont()
+{
+   return 0;
+}
 

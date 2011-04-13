@@ -45,6 +45,7 @@ public:
    static void SendOp1Change(std::string op1, BaseContestLog *);
    static void SendOp2Change(std::string op2, BaseContestLog *);
    static void SendShowOperators();
+   static void SendFontChanged();
 
    static void SendCountrySelect(std::string cty, BaseContestLog *c);
    static void SendDistrictSelect(std::string dist, BaseContestLog *c);

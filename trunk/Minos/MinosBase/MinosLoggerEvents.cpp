@@ -159,4 +159,9 @@ void MinosLoggerEvents::SendLocSelect(std::string loc, BaseContestLog *c)
 	ActionEvent2<std::string, BaseContestLog *, EN_LocatorSelect>::Send(loc, c);
 }
 //---------------------------------------------------------------------------
+void MinosLoggerEvents::SendFontChanged()
+{
+	ActionEventV<EN_FontChanged>::Send();
+}
+//---------------------------------------------------------------------------
 

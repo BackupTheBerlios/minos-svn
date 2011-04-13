@@ -40,7 +40,8 @@ TLogContainer *LogContainer = 0;
 //---------------------------------------------------------------------------
 __fastcall TLogContainer::TLogContainer( TComponent* Owner )
       : TForm( Owner ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
-      syncCaption( false ), syncMode( false ), saveResize( false )
+      syncCaption( false ), syncMode( false ), saveResize( false ),
+      EL_FontChanged ( EN_FontChanged, & FontChanged_Event )
 {
    GridHintWindow = new TGridHint( this );
    GridHintWindow->SetHintControl( ContestPageControl );
@@ -51,6 +52,10 @@ void __fastcall TLogContainer::FormShow( TObject */*Sender*/ )
    if ( TContestApp::getContestApp() )
    {
       int multiplier = MinosParameters::getMinosParameters() ->getFontMultiplier();
+      if (multiplier == 0)
+      {
+         multiplier = 100;
+      }
       if (multiplier <= 200 && multiplier >= 100)
       {
          MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
@@ -80,7 +85,8 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
    ShortTimeFormat = "hh:mm";
    if ( TContestApp::getContestApp() )
    {
-      //      ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
+      MinosLoggerEvents::SendFontChanged();
+
       int L = Left, T = Top, W = Width, H = Height;
       TContestApp::getContestApp() ->displayBundle.getIntProfile( edpLeft, L );
       TContestApp::getContestApp() ->displayBundle.getIntProfile( edpTop, T );
@@ -89,7 +95,6 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
       SetBounds( L, T, W, H );
       Repaint();
       saveResize = true;
-      //      Font->Assign( TContestApp::getContestApp() ->sysfont );
       if ( TAboutBox::ShowAboutBox( this, true ) == false )
       {
          Close();
@@ -1211,4 +1216,35 @@ void __fastcall TLogContainer::OptionsActionExecute(TObject */*Sender*/)
    }
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::FontEdit1Accept(TObject */*Sender*/)
+{
+   // first save the font
+
+   TContestApp::getContestApp()->sysfont->Assign(FontEdit1->Dialog->Font);
+   TContestApp::getContestApp() ->loggerBundle.setStringProfile( elpFontName, TContestApp::getContestApp()->sysfont->Name.c_str() );
+   TContestApp::getContestApp() ->loggerBundle.setIntProfile( elpFontSize, TContestApp::getContestApp()->sysfont->Size );
+
+   TFontStyles s = TContestApp::getContestApp()->sysfont->Style;
+   TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpFontBold, s.Contains(fsBold));
+   TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpFontItalic, s.Contains(fsItalic));
+
+   // and then tell everyone
+   MinosLoggerEvents::SendFontChanged();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TLogContainer::FontEdit1BeforeExecute(TObject */*Sender*/)
+{
+//  // set up to the current system font
+   FontEdit1->Dialog->Font->Assign(TContestApp::getContestApp()->sysfont);
+   FontEdit1->Dialog->Options = FontEdit1->Dialog->Options >> fdEffects;
+}
+//---------------------------------------------------------------------------
+void TLogContainer::FontChanged_Event ( MinosEventBase & /*Event*/ )
+{
+   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+//   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
+//   Font->Assign( TContestApp::getContestApp() ->sysfont );
+}
 

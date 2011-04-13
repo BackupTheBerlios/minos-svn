@@ -422,6 +422,18 @@ object LogContainer: TLogContainer
       Caption = 'Options...'
       OnExecute = OptionsActionExecute
     end
+    object FontEdit1: TFontEdit
+      Category = 'Dialog'
+      Caption = 'Select &Font...'
+      Dialog.Font.Charset = DEFAULT_CHARSET
+      Dialog.Font.Color = clWindowText
+      Dialog.Font.Height = -11
+      Dialog.Font.Name = 'Tahoma'
+      Dialog.Font.Style = []
+      Hint = 'Font Select'
+      BeforeExecute = FontEdit1BeforeExecute
+      OnAccept = FontEdit1Accept
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
@@ -607,6 +619,9 @@ object LogContainer: TLogContainer
       end
       object AnalyseMinosLog1: TMenuItem
         Action = AnalyseMinosLogAction
+      end
+      object SelectFont1: TMenuItem
+        Action = FontEdit1
       end
     end
     object Help1: TMenuItem

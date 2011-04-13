@@ -58,6 +58,7 @@ class MinosParameters
       virtual std::vector<BaseContestLog *> getContestList() = 0;
       virtual int getFontMultiplier() = 0;
       virtual void applyFontMultiplier(TWinControl *) = 0;
+      virtual TFont *getSysFont() = 0;
 };
 class MinosParametersAdapter : public MinosParameters
 {
@@ -89,5 +90,6 @@ class MinosParametersAdapter : public MinosParameters
       virtual std::vector<BaseContestLog *> getContestList();
       virtual int getFontMultiplier();
       virtual void applyFontMultiplier(TWinControl *);
+      virtual TFont *getSysFont();
 };
 #endif

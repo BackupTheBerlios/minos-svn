@@ -39,17 +39,13 @@ object MultDispFrame: TMultDispFrame
     Top = 0
     Width = 296
     Height = 190
-    ActivePage = LocatorsTab
+    ActivePage = StatsTab
     Align = alClient
     MultiLine = True
     TabOrder = 0
     TabPosition = tpRight
     object CountriesTab: TTabSheet
       Caption = 'Countries'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object CountryMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -58,13 +54,9 @@ object MultDispFrame: TMultDispFrame
         Align = alClient
         Header.AutoSizeIndex = 0
         Header.DefaultHeight = 17
-        Header.Font.Charset = DEFAULT_CHARSET
-        Header.Font.Color = clWindowText
-        Header.Font.Height = -11
-        Header.Font.Name = 'Verdana'
-        Header.Font.Style = []
         Header.MainColumn = -1
         Header.Options = [hoColumnResize, hoDblClickResize, hoDrag]
+        Header.ParentFont = True
         TabOrder = 0
         TabStop = False
         TreeOptions.AutoOptions = [toAutoScrollOnExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
@@ -82,10 +74,6 @@ object MultDispFrame: TMultDispFrame
     object DistrictTab: TTabSheet
       Caption = 'Districts'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DistrictMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -94,13 +82,9 @@ object MultDispFrame: TMultDispFrame
         Align = alClient
         Header.AutoSizeIndex = 0
         Header.DefaultHeight = 17
-        Header.Font.Charset = DEFAULT_CHARSET
-        Header.Font.Color = clWindowText
-        Header.Font.Height = -11
-        Header.Font.Name = 'Verdana'
-        Header.Font.Style = []
         Header.MainColumn = -1
         Header.Options = [hoColumnResize, hoDblClickResize, hoDrag]
+        Header.ParentFont = True
         TabOrder = 0
         TreeOptions.AutoOptions = [toAutoScrollOnExpand, toAutoTristateTracking, toAutoDeleteMovedNodes]
         TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toGridExtensions, toInitOnSave, toToggleOnDblClick, toWheelPanning]
@@ -117,10 +101,6 @@ object MultDispFrame: TMultDispFrame
     object LocatorsTab: TTabSheet
       Caption = 'Locators'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object LocatorMultTree: TVirtualStringTree
         Left = 0
         Top = 0
@@ -199,6 +179,9 @@ object MultDispFrame: TMultDispFrame
         TabOrder = 0
         ExplicitLeft = -72
         ExplicitTop = -58
+        inherited CompGrid: TVirtualStringTree
+          Header.ParentFont = True
+        end
       end
     end
   end

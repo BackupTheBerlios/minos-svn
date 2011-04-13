@@ -269,6 +269,8 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
       timeOK = contest->checkTime(time);
    }
 
+//   DateEdit->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
+//   TimeEdit->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
    if (timeOK)
    {
       DateEdit->Font->Color = clWindowText;

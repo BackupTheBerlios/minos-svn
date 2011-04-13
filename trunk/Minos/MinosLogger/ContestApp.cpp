@@ -190,17 +190,30 @@ bool TContestApp::initialise()
    BundleFile::bundleFiles[ epSTATIONPROFILE ] ->openProfile( stationfile, "Station details" );
    //----------------------------------
 
-   /*
    std::string temp;
    int itemp;
-   displayBundle.getStringProfile( edpFontName, temp );
+   loggerBundle.getStringProfile( elpFontName, temp );
    if ( temp.size() )
       sysfont->Name = temp.c_str();
 
-   displayBundle.getIntProfile( edpFontSize, itemp );
+   loggerBundle.getIntProfile( elpFontSize, itemp );
    if ( itemp != 0 )
       sysfont->Size = itemp;
-   */
+
+   bool bold = false;
+   bool italic = false;
+   loggerBundle.getBoolProfile(elpFontBold, bold);
+   loggerBundle.getBoolProfile(elpFontItalic, italic);
+
+   if (bold)
+   {
+      sysfont->Style = sysfont->Style << fsBold;
+   }
+   if (italic)
+   {
+      sysfont->Style = sysfont->Style << fsItalic;
+   }
+
    initClock();
    TMatchThread::InitialiseMatchThread();
 
@@ -650,5 +663,25 @@ void TContestApp::applyFontMultiplier(TWinControl *t)
    int multiplier = getFontMultiplier();
    if (multiplier > 100)
       t->ScaleBy(multiplier, 100);
+
+   TForm *form = dynamic_cast<TForm *>(t);
+   if (form)
+   {
+      form->ScaleBy( sysfont->Size, form->Font->Size );
+      form->Font->Assign( sysfont );
+   }
+   else
+   {
+      TFrame *frame = dynamic_cast<TFrame *>(t);
+      if (frame)
+      {
+         frame->ScaleBy( sysfont->Size, frame->Font->Size );
+         frame->Font->Assign( sysfont );
+      }
+   }
+}
+TFont *TContestApp::getSysFont()
+{
+   return sysfont;
 }
 

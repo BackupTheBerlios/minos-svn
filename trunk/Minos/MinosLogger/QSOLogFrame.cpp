@@ -366,6 +366,8 @@ void TGJVQSOLogFrame::updateQSOTime(bool fromTimer)
 
    if (fromTimer)
    {
+      DateLabel->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
+      TimeLabel->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
       if (timeOK)
       {
          DateLabel->Font->Color = clWindowText;

@@ -140,6 +140,8 @@ class TLogContainer : public TForm
    TMenuItem *ShowOperators1;
    TAction *OptionsAction;
    TMenuItem *Options1;
+   TFontEdit *FontEdit1;
+   TMenuItem *SelectFont1;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -188,7 +190,12 @@ class TLogContainer : public TForm
    void __fastcall ContestPageControlDrawTab(TCustomTabControl *Control,
           int TabIndex, const TRect &Rect, bool Active);
    void __fastcall OptionsActionExecute(TObject *Sender);
+   void __fastcall FontEdit1Accept(TObject *Sender);
+   void __fastcall FontEdit1BeforeExecute(TObject *Sender);
    private:  	// User declarations
+      MinosEventListener  EL_FontChanged;
+      void FontChanged_Event ( MinosEventBase & Event );
+
       BaseContestLog * addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, int slotno );
       ContactList * addListSlot( TContactListDetails *ced, const std::string &fname, int slotno );
       void closeSlot( TTabSheet *t, bool addToMRU );

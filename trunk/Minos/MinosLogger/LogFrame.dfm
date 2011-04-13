@@ -6,7 +6,7 @@ object SingleLogFrame: TSingleLogFrame
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Verdana'
+  Font.Name = 'Tahoma'
   Font.Style = []
   ParentFont = False
   TabOrder = 0
@@ -102,24 +102,12 @@ object SingleLogFrame: TSingleLogFrame
             TabStop = False
             ExplicitWidth = 310
             ExplicitHeight = 106
-            inherited CountriesTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
-              ExplicitWidth = 248
-              ExplicitHeight = 182
-            end
             inherited DistrictTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
-              ExplicitWidth = 248
-              ExplicitHeight = 182
               inherited DistrictMultTree: TVirtualStringTree
                 TabStop = False
               end
             end
             inherited LocatorsTab: TTabSheet
-              ExplicitLeft = 4
-              ExplicitTop = 4
               ExplicitWidth = 182
               ExplicitHeight = 77
               inherited LocatorMultTree: TVirtualStringTree
@@ -133,23 +121,18 @@ object SingleLogFrame: TSingleLogFrame
             inherited StatsTab: TTabSheet
               inherited StatsDispFrame: TStatsDispFrame
                 TabStop = False
-                inherited SLabel1: TLabel
-                  ExplicitWidth = 4
-                end
                 inherited Panel1: TPanel
                   inherited P1Edit: TLabeledEdit
                     TabStop = False
-                    EditLabel.Width = 59
-                    EditLabel.ExplicitLeft = 2
-                    EditLabel.ExplicitTop = 7
-                    EditLabel.ExplicitWidth = 59
+                    EditLabel.ExplicitLeft = 8
+                    EditLabel.ExplicitTop = -1
+                    EditLabel.ExplicitWidth = 47
                   end
                   inherited P2Edit: TLabeledEdit
                     TabStop = False
-                    EditLabel.Width = 59
                     EditLabel.ExplicitLeft = 79
                     EditLabel.ExplicitTop = -2
-                    EditLabel.ExplicitWidth = 59
+                    EditLabel.ExplicitWidth = 47
                   end
                 end
                 inherited RecheckTimer: TTimer
@@ -166,16 +149,16 @@ object SingleLogFrame: TSingleLogFrame
               inherited CompFrame: TCompFrame
                 Left = 0
                 Top = 0
-                Width = 248
-                Height = 182
+                Width = 202
+                Height = 98
                 Align = alClient
                 ExplicitLeft = 0
                 ExplicitTop = 0
                 ExplicitWidth = 248
                 ExplicitHeight = 182
                 inherited CompGrid: TVirtualStringTree
-                  Width = 248
-                  Height = 182
+                  Width = 202
+                  Height = 98
                   ExplicitWidth = 248
                   ExplicitHeight = 182
                 end
@@ -351,18 +334,6 @@ object SingleLogFrame: TSingleLogFrame
             Height = 155
             ExplicitWidth = 624
             ExplicitHeight = 155
-            inherited ModeLabel: TLabel
-              Width = 30
-              ExplicitWidth = 30
-            end
-            inherited SecondOpLabel: TLabel
-              Width = 28
-              ExplicitWidth = 28
-            end
-            inherited OperatorLabel: TLabel
-              Width = 28
-              ExplicitWidth = 28
-            end
             inherited BandMapPanel: TPanel
               inherited AutoBandmapTune: TCheckBox
                 OnClick = AutoBandmapTuneClick
@@ -375,52 +346,44 @@ object SingleLogFrame: TSingleLogFrame
               OnClick = GJVQSOLogFrame1MatchXferButtonClick
             end
             inherited CallsignEdit: TLabeledEdit
-              EditLabel.Width = 72
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 72
+              EditLabel.ExplicitWidth = 59
             end
             inherited RSTTXEdit: TLabeledEdit
-              EditLabel.Width = 56
               EditLabel.ExplicitLeft = 108
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
+              EditLabel.ExplicitWidth = 47
             end
             inherited SerTXEdit: TLabeledEdit
-              EditLabel.Width = 52
-              EditLabel.ExplicitLeft = 176
+              EditLabel.ExplicitLeft = 184
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 52
+              EditLabel.ExplicitWidth = 41
             end
             inherited RSTRXEdit: TLabeledEdit
-              EditLabel.Width = 56
               EditLabel.ExplicitLeft = 254
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 56
+              EditLabel.ExplicitWidth = 47
             end
             inherited SerRXEdit: TLabeledEdit
-              EditLabel.Width = 53
               EditLabel.ExplicitLeft = 337
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 53
+              EditLabel.ExplicitWidth = 42
             end
             inherited LocEdit: TLabeledEdit
-              EditLabel.Width = 46
               EditLabel.ExplicitLeft = 420
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 46
+              EditLabel.ExplicitWidth = 39
             end
             inherited QTHEdit: TLabeledEdit
-              EditLabel.Width = 55
               EditLabel.ExplicitLeft = 504
               EditLabel.ExplicitTop = 67
-              EditLabel.ExplicitWidth = 55
+              EditLabel.ExplicitWidth = 47
             end
             inherited CommentsEdit: TLabeledEdit
-              EditLabel.Width = 62
               EditLabel.ExplicitLeft = 4
               EditLabel.ExplicitTop = 110
-              EditLabel.ExplicitWidth = 62
+              EditLabel.ExplicitWidth = 50
             end
             inherited GJVOKButton: TButton
               OnClick = GJVQSOLogFrame1GJVOKButtonClick

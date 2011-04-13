@@ -747,6 +747,9 @@ void __fastcall TSingleLogFrame::NextContactDetailsTimerTimer( TObject */*Sender
    */
    if ( contest )
    {
+      NextContactDetailsLabel->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
+      NextContactDetailsLabel->Font->Size = MinosParameters::getMinosParameters() ->getSysFont()->Size * 2;
+      NextContactDetailsLabel->Font->Style = NextContactDetailsLabel->Font->Style << fsBold;
       if ( contest->isReadOnly() )
       {
          GJVQSOLogFrame->BandMapPanel->Visible = false;
@@ -1332,6 +1335,10 @@ void TSingleLogFrame::updateQSOTime(bool fromTimer)
 void TSingleLogFrame::updateQSODisplay()
 {
    BandCombo->Clear();
+   BandCombo->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
+   BandCombo->Font->Color = clBlue;
+   BandCombo->Font->Size = BandCombo->Font->Size * 14 / 8;
+
    std::string cb = trim(contest->band.getValue());
    BandList &blist = BandList::getBandList();
    BandInfo bi;

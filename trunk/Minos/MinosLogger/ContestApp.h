@@ -112,6 +112,7 @@ class TContestApp : public MinosParameters
       virtual std::vector<BaseContestLog *> getContestList();
       virtual int getFontMultiplier();
       virtual void applyFontMultiplier(TWinControl *);
+      virtual TFont *getSysFont();
 
       TContestApp();
       bool initialise();

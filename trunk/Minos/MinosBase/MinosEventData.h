@@ -42,6 +42,8 @@ enum MinosEventNumber
    EN_DistrictSelect,
    EN_LocatorSelect,
 
+   EN_FontChanged,
+
    EN_Op1Change,
    EN_Op2Change,
    EN_ShowOperators,
