@@ -44,9 +44,7 @@ void __fastcall TForceLogDlg::CancelButtonClick( TObject */*Sender*/ )
 
 void __fastcall TForceLogDlg::FormShow( TObject */*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
-   //   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
-   //   Font->Assign( TContestApp::getContestApp() ->sysfont );
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    CheckBox3->SetFocus();
 }
 //---------------------------------------------------------------------------

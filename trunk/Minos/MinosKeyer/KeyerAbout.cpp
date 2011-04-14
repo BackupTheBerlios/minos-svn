@@ -42,8 +42,6 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner )
 
 void __fastcall TAboutBox::FormShow( TObject */*Sender*/ )
 {
-   //   ScaleBy(ContestApp->sysfont->Size, Font->Size);
-   //   Font->Assign(ContestApp->sysfont);
    WebLabel->Font->Color = clBlue;
    WebLabel->Font->Style = WebLabel->Font->Style << fsUnderline;
 }

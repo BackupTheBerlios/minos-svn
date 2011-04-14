@@ -61,7 +61,7 @@ bool enquireDialog( TComponent* Owner, const String &prompt, int &Value )
 //---------------------------------------------------------------------------
 void __fastcall TEnquireDlg::FormShow( TObject */*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    ActiveControl = EnqValue;
 }
 //---------------------------------------------------------------------------

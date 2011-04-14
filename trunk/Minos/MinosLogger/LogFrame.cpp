@@ -124,7 +124,7 @@ __fastcall TSingleLogFrame::TSingleLogFrame( TComponent* Owner, BaseContestLog *
 
    showMatchHeaders();
 
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
 
    OnShowTimer->Enabled = true;
 }

@@ -101,11 +101,9 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
 
 void __fastcall TAboutBox::FormShow( TObject */*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    PageControl1->ActivePage = AboutTabSheet;
    TConfigFrame1->initialise();
-   //   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
-   //   Font->Assign( TContestApp::getContestApp() ->sysfont );
    WebLabel->Font->Color = clBlue;
    WebLabel->Font->Style = WebLabel->Font->Style << fsUnderline;
 

@@ -43,7 +43,7 @@ void TManageListsDlg::DrawList()
 //---------------------------------------------------------------------------
 void __fastcall TManageListsDlg::FormShow( TObject */*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    DrawList();
 }
 //---------------------------------------------------------------------------

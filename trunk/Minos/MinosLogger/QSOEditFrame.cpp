@@ -359,7 +359,7 @@ void TGJVQSOEditFrame::checkTimeEditExit()
 }
 //==============================================================================
 
-void TGJVQSOEditFrame::updateQSOTime(bool fromTimer)
+void TGJVQSOEditFrame::updateQSOTime(bool /*fromTimer*/)
 {
    if ( DateEdit->ReadOnly )
    {

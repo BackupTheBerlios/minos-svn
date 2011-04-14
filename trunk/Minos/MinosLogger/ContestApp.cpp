@@ -652,18 +652,8 @@ void TContestApp::mshowMessage( String mess, TComponent* Owner )
 {
    mShowMessage( mess, Owner );
 }
-int TContestApp::getFontMultiplier()
+void TContestApp::applyFontChange(TWinControl *t)
 {
-   int multiplier;
-   loggerBundle.getIntProfile( elpSizeMultiplier, multiplier );
-   return multiplier;
-}
-void TContestApp::applyFontMultiplier(TWinControl *t)
-{
-   int multiplier = getFontMultiplier();
-   if (multiplier > 100)
-      t->ScaleBy(multiplier, 100);
-
    TForm *form = dynamic_cast<TForm *>(t);
    if (form)
    {

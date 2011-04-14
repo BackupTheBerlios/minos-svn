@@ -165,7 +165,7 @@ __fastcall TDateSelectForm::TDateSelectForm(TComponent* Owner)
 
 void __fastcall TDateSelectForm::FormShow(TObject */*Sender*/)
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
 	UpdateCalendar();
 }
 //---------------------------------------------------------------------------

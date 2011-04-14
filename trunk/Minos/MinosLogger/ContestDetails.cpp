@@ -628,9 +628,7 @@ void __fastcall TContestEntryDetails::CancelButtonClick( TObject * /*Sender*/ )
 
 void __fastcall TContestEntryDetails::FormShow( TObject * /*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
-   //   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
-   //   Font->Assign( TContestApp::getContestApp() ->sysfont );
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
 
    QTHBundleFrame->initialise( "QTH", &contest->QTHBundle, &contest->QTHBundleName );
    StationBundleFrame->initialise( "Station", &contest->stationBundle, &contest->stationBundleName );

@@ -51,25 +51,7 @@ void __fastcall TLogContainer::FormShow( TObject */*Sender*/ )
 {
    if ( TContestApp::getContestApp() )
    {
-      int multiplier = MinosParameters::getMinosParameters() ->getFontMultiplier();
-      if (multiplier == 0)
-      {
-         multiplier = 100;
-      }
-      if (multiplier <= 200 && multiplier >= 100)
-      {
-         MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
-         /*
-    // NB this doesn't to work on the menu(s) as they don't derive from TWinControl
-    // AND they don't have a design size or a menu
-         MinosParameters::getMinosParameters() ->applyFontMultiplier(MainMenu1);
-         MinosParameters::getMinosParameters() ->applyFontMultiplier(TabPopup);
-         */
-      }
-      else
-      {
-         mShowMessage("Font size multiplier must be >= 100 and <= 200");
-      }
+      MinosParameters::getMinosParameters() ->applyFontChange(this);
    }
    StartupTimer->Enabled = true;
 
@@ -129,7 +111,7 @@ void TLogContainer::preloadFiles( const std::string &conarg )
    // and here we want to pre-load lists and contests from the INI file
    // based on what was last open
 
-#warning getProfileEntries gets the Current entry as well... not good
+// getProfileEntries gets the Current entry as well... not good
    std::vector<std::string> slotlst = TContestApp::getContestApp() ->preloadBundle.getProfileEntries();
    std::vector<std::string> pathlst;
    for ( std::vector<std::string>::iterator i = slotlst.begin(); i != slotlst.end(); i++ )
@@ -254,13 +236,6 @@ BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::s
          ContestPageControl->ActivePage = t;
          ContestPageControlChange( this );
 
-         /*
-         if (Screen->PixelsPerInch != PixelsPerInch)
-         {
-         ShowMessage("Scaling");
-            f->ScaleBy(Screen->PixelsPerInch, PixelsPerInch);
-         }
-         */
          if ( contest->needsExport() )      // imported from an alien format (e.g. .log)
          {
             String expName = f->makeEntry( true );
@@ -1243,8 +1218,6 @@ void __fastcall TLogContainer::FontEdit1BeforeExecute(TObject */*Sender*/)
 //---------------------------------------------------------------------------
 void TLogContainer::FontChanged_Event ( MinosEventBase & /*Event*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
-//   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
-//   Font->Assign( TContestApp::getContestApp() ->sysfont );
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
 }
 

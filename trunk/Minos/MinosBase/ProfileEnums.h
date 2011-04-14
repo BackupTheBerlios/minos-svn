@@ -17,7 +17,7 @@ enum LOGGERPROFILE {
    elpListDirectory, elpLogDirectory,
    elpEntryFile,
    elpStationFile, elpQTHFile,
-   elpSizeMultiplier, elpFontName, elpFontSize, elpFontBold, elpFontItalic
+   elpFontName, elpFontSize, elpFontBold, elpFontItalic
 };
 enum PRELOADPROFILE {eppCurrent, epp1 , epp2 , epp3 , epp4 , epp5 , epp6 , epp7 , epp8 , epp9 , epp10};
 

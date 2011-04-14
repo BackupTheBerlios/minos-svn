@@ -18,7 +18,7 @@
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
       : TForm( Owner ), vhf(2011)
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    TDateTime tnow = TDateTime::CurrentDateTime();
    YearEdit->Text = tnow.FormatString("yyyy");
 }

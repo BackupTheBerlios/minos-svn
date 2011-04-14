@@ -1,9 +1,11 @@
 ==================================================================
+Break lat/long up into multiple edits (YMC)
+allow decimal lat/long
+==================================================================
 Font selection
 Menus - but these are under the control of Windows
 fly by hints
 sizing on the status bar (clock gets eaten, or the score gets eaten...)
-Check interaction with large font scaling
 maybe move away from the font changed event
 ==================================================================
 (done) Check that when you turn "G locs only" on/off they respond (status line does...)

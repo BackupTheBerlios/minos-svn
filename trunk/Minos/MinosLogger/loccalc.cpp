@@ -211,12 +211,9 @@ void __fastcall TLocCalcForm::CancelButtonClick( TObject */*Sender*/ )
 
 void __fastcall TLocCalcForm::FormShow( TObject *Sender )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    Modal = FormState.Contains( fsModal );
    CalcButtonClick(Sender);
-
-   //   ScaleBy( TContestApp::getContestApp() ->sysfont->Size, Font->Size );
-   //   Font->Assign( TContestApp::getContestApp() ->sysfont );
 }
 //---------------------------------------------------------------------------
 

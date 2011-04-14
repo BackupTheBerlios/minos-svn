@@ -24,7 +24,7 @@ __fastcall TEntryOptionsForm::TEntryOptionsForm( TComponent* Owner, LoggerContes
 //---------------------------------------------------------------------------
 void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
 {
-   MinosParameters::getMinosParameters() ->applyFontMultiplier(this);
+   MinosParameters::getMinosParameters() ->applyFontChange(this);
    if ( !ct )
       return ;
    DetailGrid->RowCount = 32;
