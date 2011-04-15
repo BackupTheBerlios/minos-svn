@@ -21,6 +21,7 @@ class TMinosShowMessage : public TForm
       TButton *Button1;
    TMemo *Memo1;
       void __fastcall Button1Click( TObject *Sender );
+   void __fastcall FormShow(TObject *Sender);
    private:  	// User declarations
    public:  		// User declarations
       __fastcall TMinosShowMessage( TComponent* Owner );

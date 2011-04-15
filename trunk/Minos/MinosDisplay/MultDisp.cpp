@@ -35,6 +35,23 @@ ContList contlist[ CONTINENTS ] =
    };
 bool showWorked = false;
 bool showUnworked = false;
+static GridColumn DistrictTreeColumns[ ectMultMaxCol - 1 ] =
+   {
+      GridColumn( ectCall, "XXXXXXX", "Code", taLeftJustify ),
+      GridColumn( ectWorked, "Wk CtX", "Wkd", taCenter ),
+      GridColumn( ectLocator, "MM00MM00", "Locator", taLeftJustify ),
+      GridColumn( ectBearing, "BRGXXX", "brg", taCenter ),
+      GridColumn( ectName, "This is a Very Very long District", "District", taLeftJustify ),
+   };
+static GridColumn CountryTreeColumns[ ectMultMaxCol ] =
+   {
+      GridColumn( ectCall, "XXXXXX", "Call", taLeftJustify ),
+      GridColumn( ectWorked, "Wk CtX", "Wkd", taCenter ),
+      GridColumn( ectLocator, "MM00MM00", "Locator", taLeftJustify ),
+      GridColumn( ectBearing, "BRGXXX", "brg", taCenter ),
+      GridColumn( ectName, "This is a very long country", "Country", taLeftJustify ),
+      GridColumn( ectOtherCalls, "This is a very very very very long country name", "Other calls", taLeftJustify /*taRightJustify*/ )
+   };
 void TMultDispFrame::initFilters()
 {
    filterClickEnabled = false;
@@ -102,91 +119,7 @@ __fastcall TMultDispFrame::TMultDispFrame( TComponent* Owner )
 #ifndef BETA_VERSION
    CompSheet->TabVisible = false;
 #endif
-}
-void TMultDispFrame::setContest( BaseContestLog *pct )
-{
-   ct = pct;
-   StatsDispFrame->setContest( ct );
-   CompFrame->setContest( ct );
-   initFilters();
-   reInitialiseCountries();
-   reInitialiseDistricts();
-   reInitialiseLocators();
-   reInitialiseStats();
-   reInitialiseComp();
-   Invalidate();
-}
-//---------------------------------------------------------------------------
-static GridColumn CountryTreeColumns[ ectMultMaxCol ] =
-   {
-      GridColumn( ectCall, "XXXXXX", "Call", taLeftJustify ),
-      GridColumn( ectWorked, "Wk CtX", "Wkd", taCenter ),
-      GridColumn( ectLocator, "MM00MM00", "Locator", taLeftJustify ),
-      GridColumn( ectBearing, "BRGXXX", "brg", taCenter ),
-      GridColumn( ectName, "This is a very long country", "Country", taLeftJustify ),
-      GridColumn( ectOtherCalls, "This is a very very very very long country name", "Other calls", taLeftJustify /*taRightJustify*/ )
-   };
-void TMultDispFrame::reInitialiseCountries()
-{
-   CountryMultTree->RootNodeCount = 0;
-   if ( !ct )
-   {
-      // clear down
-      return ;
-   }
-   CountryMultTree->BeginUpdate();
-
-   CountryMultTree->RootNodeCount = MultLists::getMultLists() ->getCtryListSize();
-
-   CountryMultTree->Header->Columns->Clear();
-   CountryMultTree->Margin = 0;
-   CountryMultTree->TextMargin = 4;
-   for ( int i = 0; i < ectMultMaxCol; i++ )
-   {
-      TVirtualTreeColumn *NewColumn = CountryMultTree->Header->Columns->Add();
-      NewColumn->Alignment = CountryTreeColumns[ i ].alignment;
-      NewColumn->Margin = 0;
-      NewColumn->Spacing = 0;
-
-      //      int temp = -1;
-      //      String key = "CountryColumn" + String( i );
-      //      MinosParameters::getMinosParameters() ->getIntProfile( key.c_str(), temp, -1 );
-
-      //      if ( temp > 0 )
-      //         NewColumn->Width = temp;
-      //      else
-      NewColumn->Width = CountryMultTree->Canvas->TextWidth( CountryTreeColumns[ i ].width );
-
-      NewColumn->Text = CountryTreeColumns[ i ].title;
-   }
-   CountryMultTree->EndUpdate();
-   CountryMultTree->Header->Options = ( CountryMultTree->Header->Options << hoVisible );
-
-
-   CountryMultTree->ValidateNode( 0, true );
-}
-static GridColumn DistrictTreeColumns[ ectMultMaxCol - 1 ] =
-   {
-      GridColumn( ectCall, "XXXXXXX", "Code", taLeftJustify ),
-      GridColumn( ectWorked, "Wk CtX", "Wkd", taCenter ),
-      GridColumn( ectLocator, "MM00MM00", "Locator", taLeftJustify ),
-      GridColumn( ectBearing, "BRGXXX", "brg", taCenter ),
-      GridColumn( ectName, "This is a Very Very long District", "District", taLeftJustify ),
-   };
-void TMultDispFrame::reInitialiseDistricts()
-{
-   DistrictMultTree->RootNodeCount = 0;
-   if ( !ct )
-   {
-      // clear down
-      return ;
-   }
-//   DistrictMultTree->RootNodeCount = MultLists::getMultLists() ->getDistListSize();
-
    DistrictMultTree->BeginUpdate();
-
-   DistrictMultTree->RootNodeCount = MultLists::getMultLists() ->getDistListSize();
-
    DistrictMultTree->Header->Columns->Clear();
    DistrictMultTree->Margin = 0;
    DistrictMultTree->TextMargin = 4;
@@ -211,7 +144,66 @@ void TMultDispFrame::reInitialiseDistricts()
    DistrictMultTree->EndUpdate();
    DistrictMultTree->Header->Options = ( DistrictMultTree->Header->Options << hoVisible );
 
+   CountryMultTree->BeginUpdate();
+   CountryMultTree->Header->Columns->Clear();
+   CountryMultTree->Margin = 0;
+   CountryMultTree->TextMargin = 4;
+   for ( int i = 0; i < ectMultMaxCol; i++ )
+   {
+      TVirtualTreeColumn *NewColumn = CountryMultTree->Header->Columns->Add();
+      NewColumn->Alignment = CountryTreeColumns[ i ].alignment;
+      NewColumn->Margin = 0;
+      NewColumn->Spacing = 0;
 
+      //      int temp = -1;
+      //      String key = "CountryColumn" + String( i );
+      //      MinosParameters::getMinosParameters() ->getIntProfile( key.c_str(), temp, -1 );
+
+      //      if ( temp > 0 )
+      //         NewColumn->Width = temp;
+      //      else
+      NewColumn->Width = CountryMultTree->Canvas->TextWidth( CountryTreeColumns[ i ].width );
+
+      NewColumn->Text = CountryTreeColumns[ i ].title;
+   }
+   CountryMultTree->EndUpdate();
+   CountryMultTree->Header->Options = ( CountryMultTree->Header->Options << hoVisible );
+}
+void TMultDispFrame::setContest( BaseContestLog *pct )
+{
+   ct = pct;
+   StatsDispFrame->setContest( ct );
+   CompFrame->setContest( ct );
+   initFilters();
+   reInitialiseCountries();
+   reInitialiseDistricts();
+   reInitialiseLocators();
+   reInitialiseStats();
+   reInitialiseComp();
+   Invalidate();
+}
+//---------------------------------------------------------------------------
+void TMultDispFrame::reInitialiseCountries()
+{
+   CountryMultTree->RootNodeCount = 0;
+   if ( !ct )
+   {
+      // clear down
+      return ;
+   }
+
+   CountryMultTree->RootNodeCount = MultLists::getMultLists() ->getCtryListSize();
+   CountryMultTree->ValidateNode( 0, true );
+}
+void TMultDispFrame::reInitialiseDistricts()
+{
+   DistrictMultTree->RootNodeCount = 0;
+   if ( !ct )
+   {
+      // clear down
+      return ;
+   }
+   DistrictMultTree->RootNodeCount = MultLists::getMultLists() ->getDistListSize();
    DistrictMultTree->ValidateNode( 0, true );
 }
 void TMultDispFrame::reInitialiseLocators()

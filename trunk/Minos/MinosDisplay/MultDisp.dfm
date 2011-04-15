@@ -179,9 +179,6 @@ object MultDispFrame: TMultDispFrame
         TabOrder = 0
         ExplicitLeft = -72
         ExplicitTop = -58
-        inherited CompGrid: TVirtualStringTree
-          Header.ParentFont = True
-        end
       end
     end
   end
