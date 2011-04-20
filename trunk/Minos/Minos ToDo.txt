@@ -1,4 +1,6 @@
 ==================================================================
+We want an option(options?) to control visibility in a KML export
+==================================================================
 Break lat/long up into multiple edits (YMC)
 allow decimal lat/long
 ==================================================================
