@@ -1,4 +1,6 @@
 ==================================================================
+Uri mode - force an invalid contact and carry on and we keep going back to that contact.
+==================================================================
 We want an option(options?) to control visibility in a KML export
 ==================================================================
 Break lat/long up into multiple edits (YMC)
