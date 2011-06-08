@@ -204,6 +204,8 @@ int placestr( char *buff, const std::string &str, int start, int len )
    return start + len;
 }
 //      int scnt = parseLine( buffer, '=', a, 2, 0, sep2seen );
+#warning I want to rewrite parseLine to use strings...
+
 int parseLine( char *buff, char sep, char **a, int count, char sep2, bool &sep2seen )
 {
    int i = 0;

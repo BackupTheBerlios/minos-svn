@@ -1,10 +1,17 @@
 ==================================================================
+various places we have getline into a 256 byte buffer. This for one
+kills Steve's generated CSL files. Others are probably OK 
+==================================================================
 Uri mode - force an invalid contact and carry on and we keep going back to that contact.
+Top of check boxes says "Unfilled - enter later". Just uncheck it when forcing...
 ==================================================================
 We want an option(options?) to control visibility in a KML export
 ==================================================================
 Break lat/long up into multiple edits (YMC)
-allow decimal lat/long
+allow decimal lat/long             
+Need to break up single latlong field into deg/mins/secs
+Plus EW and NS check boxes - but allow negative degrees, or E/W/N/S texts
+On exit logic has to change as latlong will normally take several steps to complete
 ==================================================================
 Font selection
 Menus - but these are under the control of Windows

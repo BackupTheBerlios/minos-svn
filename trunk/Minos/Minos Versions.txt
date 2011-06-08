@@ -17,7 +17,7 @@ all the QSOs with that country, under whatever prefix (e.g. click
 on G for G, M, 2E, etc).
                                 
 Antenna bearing offset in station bundle; has O suffix in QSO frame (e.g. 60degOT)
-No suffix in lists.
+No suffix on bearing in lists.
 ==================================================================
 1.5.2
 

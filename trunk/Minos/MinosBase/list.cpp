@@ -81,28 +81,17 @@ bool ContactList::cslLoad( void )
    String fn = ExtractFileName( cfileName.c_str() );
    name = fn.c_str();
 
-   while ( istr.getline( buff, 255 ) )
+   std::string sbuff;
+
+   while ( getline( istr, sbuff ) )
    {
-      buff[ 254 ] = 0;
-
-      int len = strlen( buff );
-
-      int i;
-      for ( i = 0; i < len; i++ )
+      sbuff = trim(sbuff);
+      if (sbuff.size() == 0 || trim(sbuff)[0] == '#')
       {
-       if ( !isspace( buff[ i ] ) )
-         break;
+         continue;
       }
-      if ( i == len )
-       continue;				// blank line
-
-      if ( buff[ 0 ] == '#' )
-       continue;   // skip comment lines
-
-
       std::vector<std::string> parts;
 
-      std::string sbuff = std::string(buff);
       try
       {
          typedef boost::tokenizer< boost::escaped_list_separator<char> > tokenizer ;
