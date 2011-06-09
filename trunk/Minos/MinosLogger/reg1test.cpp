@@ -181,8 +181,6 @@ bool reg1test::exportTest( HANDLE expfd )
    String ProductName = RCVersion.ProductName;
    String Version = RCVersion.FileVersion;
 
-   String pver = "Produced by " + ProductName + " version " + Version;
-   wr.lwrite( pver.c_str() );
 
    /*
       [QSORecords;Number of QSO records following]QSO records identifier;number of QSO records following
@@ -212,6 +210,11 @@ bool reg1test::exportTest( HANDLE expfd )
       sbuff = trimr( sbuff );			// No need to pad to 250!!
       wr.lwrite( sbuff.c_str() );
    }
+   // [END] isn't a part of the Reg1Test spec, but everyone else seems to have it!
+   // Adjudication software copes either way round.
+   
+   String pver = "[END;" + ProductName + " by G0GJV, version " + Version + "]";
+   wr.lwrite( pver.c_str() );
 
    return true;
 
