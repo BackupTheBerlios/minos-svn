@@ -51,10 +51,11 @@ object LogContainer: TLogContainer
         Width = 450
       end
       item
+        Alignment = taCenter
         Width = 75
       end
       item
-        Alignment = taRightJustify
+        Alignment = taCenter
         Width = 50
       end>
     ParentFont = True

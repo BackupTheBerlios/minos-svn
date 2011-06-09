@@ -1096,8 +1096,11 @@ void __fastcall TLogContainer::ShiftLeftAction( TObject */*Sender*/ )
 
 void __fastcall TLogContainer::StatusBar1Resize(TObject */*Sender*/)
 {
-   int w1 = StatusBar1->Canvas->TextWidth("XXOverwriteXX");
-   int w2 = StatusBar1->Canvas->TextWidth("XXXXX25/12/1953 01:00:00 UTCXXXXXX");
+   StatusBar1->Canvas->Font = StatusBar1->Font;
+   
+   int w1 = StatusBar1->Canvas->TextWidth("OverwriteXX");
+   int w2 = StatusBar1->Canvas->TextWidth("25/12/1953 01:00:00 UTCXXXXXX");
+
    StatusBar1->Panels->Items[0]->Width = StatusBar1->Width - w1 - w2;
    StatusBar1->Panels->Items[1]->Width = w1;
    // and Items[2] fills the rest
@@ -1219,5 +1222,6 @@ void __fastcall TLogContainer::FontEdit1BeforeExecute(TObject */*Sender*/)
 void TLogContainer::FontChanged_Event ( MinosEventBase & /*Event*/ )
 {
    MinosParameters::getMinosParameters() ->applyFontChange(this);
+   StatusBar1Resize(this);
 }
 

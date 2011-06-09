@@ -1,4 +1,6 @@
 ==================================================================
+Would be very nice to get column sorting going everywhere - but we need a clear reset.
+==================================================================
 various places we have getline into a 256 byte buffer. This for one
 kills Steve's generated CSL files. Others are probably OK 
 ==================================================================
