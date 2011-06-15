@@ -15,11 +15,10 @@ Need to break up single latlong field into deg/mins/secs
 Plus EW and NS check boxes - but allow negative degrees, or E/W/N/S texts
 On exit logic has to change as latlong will normally take several steps to complete
 ==================================================================
-Font selection
+done Font selection
+done sizing on the status bar (clock gets eaten, or the score gets eaten...)
 Menus - but these are under the control of Windows
 fly by hints
-sizing on the status bar (clock gets eaten, or the score gets eaten...)
-maybe move away from the font changed event
 ==================================================================
 (done) Check that when you turn "G locs only" on/off they respond (status line does...)
 Better header text for loc/distance in country and district display
