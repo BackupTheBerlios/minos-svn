@@ -1,4 +1,21 @@
-==================================================================
+I may have found an odd error in Minos version 1.4.0.263 (which is the latest on my machine! but not necessarily latest version).
+ 
+In the 6 metre contest this month, I worked a string of CW stations several times in amongst the usual number of SSB stations. The QSOs have logged the RST correctly as 599 (or whatever) rather than 59 etc.. However when I put the QSO in edit mode it shows the mode as J3E. You can see this from examination of any string of CW QSOs, the first seems OK but the remainder have the correct RST but mode shown as J3E. See also the same QSOs in the ADIF.
+ 
+I don't remember doing any mode change between QSOs and in fact in some case the QSOs are close enough together in time for that to be unlikely.
+ 
+I only found this by uploading the QSOs in ADIF form to both my main log and to eqsl and LOTW and discovering that some QSOs in eqsl did not match!!! The mode was SSB instead of CW for CW QSOs.
+ 
+I am prepared to believe I may have done something wrong as I don't use Minos too often these days.
+ 
+I am also curious how one should log mixed mode e.g. ssb receive and CW TX in Minos as this happens quite often with weak stations (like me) working QRO stations like MD6V or G4BRA!! I suspect this will always trip up the log checking programme unless you have set it up to cope with this sort of oddity.
+ 
+Enclosed are my logs for 18 Jun in both monos and ADI format.
+ 
+Your log checker should throw up a number of QSO errors when it checks my entry for the 50Mhz trophy!!! I have not time to correct it now so please move it to a check log. (unless you want to fix it for me ;-)    )
+ 
+I am off to Isle of Arran tomorrow so listen for GM4DDL on 6m and possibly 2m - also on HF most of the week including SOTA operations as GM4DDL/P
+ ==================================================================
 Would be very nice to get column sorting going everywhere - but we need a clear reset.
 ==================================================================
 various places we have getline into a 256 byte buffer. This for one
