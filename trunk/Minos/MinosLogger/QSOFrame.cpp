@@ -164,9 +164,10 @@ void TGJVEditFrame::showScreenEntry( void )
       LocEdit->Text = trim( temp.loc.loc.getValue() ).c_str();  // also forces update of score etc
       QTHEdit->Text = trim( temp.extraText ).c_str();
       CommentsEdit->Text = trim( temp.comments ).c_str();
-      ModeComboBoxGJV->Text = trim( temp.mode ).c_str();
       NonScoreCheckBox->Checked = temp.contactFlags & NON_SCORING;
       DeletedCheckBox->Checked = temp.contactFlags & DONT_PRINT;
+
+      setMode(trim( temp.mode ).c_str());
 
       // and now we want to put the selection on each at the END of the text
       for ( std::vector <ValidatedControl *>::iterator vcp = vcs.begin(); vcp != vcs.end(); vcp++ )
@@ -1106,6 +1107,15 @@ bool TGJVEditFrame::checkLogEntry(bool checkDTG)
 void TGJVEditFrame::setMode( String m )
 {
    ModeComboBoxGJV->Text = m;
+   // make sure the mode button shows the correct "flip" value
+   if (ModeComboBoxGJV->Text == "A1A")
+   {
+      ModeButton->Caption = "J3E";
+   }
+   else
+   {
+      ModeButton->Caption = "A1A";
+   }
 }
 
 void TGJVEditFrame::clearCurrentField()
