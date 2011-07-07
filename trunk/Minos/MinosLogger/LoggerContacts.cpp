@@ -119,13 +119,13 @@ void ContestContact::getPrintFileText( std::string &sdest, short maxlen )
 
       if ( multCount )
       {
-         if ( newCtry )
+         if ( clp->countryMult.getValue() && newCtry )
             catmult( multbuff, ctryMult->basePrefix );
 
-         if ( newDistrict )
+         if ( clp->districtMult.getValue() && newDistrict )
             catmult( multbuff, districtMult->districtCode );
 
-         if ( newLoc )
+         if ( clp->locMult.getValue() && newLoc )
          {
             catmult( multbuff, loc.loc.getValue(), 4 );
          }
@@ -338,15 +338,15 @@ void ContestContact::getReg1TestText( std::string &sdest )
    sdest += ContactBuffs::scorebuff;
 
    sdest += ';';
-   if ( newDistrict )
+   if ( clp->districtMult.getValue() && newDistrict )
       sdest += 'N';
    sdest += ';';
 
-   if ( newLoc )
+   if (  clp->locMult.getValue() && newLoc )
       sdest += 'N';
    sdest += ';';
 
-   if ( newCtry )
+   if ( clp->countryMult.getValue() && newCtry )
       sdest += 'N';
    sdest += ';';
 

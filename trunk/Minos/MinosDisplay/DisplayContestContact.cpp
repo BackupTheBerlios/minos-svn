@@ -277,8 +277,8 @@ void DisplayContestContact::check( )
          if ( clp->districtMult.getValue() )
          {
             multCount++;
-            newDistrict = true;
          }
+         newDistrict = true;
       }
    }
 
@@ -290,8 +290,8 @@ void DisplayContestContact::check( )
          if ( clp->countryMult.getValue() )
          {
             multCount++;
-            newCtry = true;
          }
+         newCtry = true;
       }
    }
    clp->DupSheet.checkCurDup( this, 0, true ); // add to duplicates list
@@ -380,8 +380,8 @@ void DisplayContestContact::check( )
                      if ( clp->locMult.getValue() )
                      {
                         multCount++;
-                        newLoc = true;
                      }
+                     newLoc = true;
                   }
                }
                else

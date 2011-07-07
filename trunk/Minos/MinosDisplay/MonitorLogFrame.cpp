@@ -103,15 +103,15 @@ void __fastcall TLogMonitorFrame::QSOTreePaintText( TBaseVirtualTree */*Sender*/
             }
             break;
          case egCall:
-            if ( ct->newCtry )
+            if ( contest->countryMult.getValue() && ct->newCtry )
                TargetCanvas->Font->Color = multhighlight;
             break;
          case egExchange:
-            if ( ct->newDistrict )
+            if ( contest->districtMult.getValue() && ct->newDistrict )
                TargetCanvas->Font->Color = multhighlight;
             break;
          case egLoc:
-            if ( ct->newLoc )
+            if ( contest->locMult.getValue() && ct->newLoc )
                TargetCanvas->Font->Color = multhighlight;
             break;
       }
