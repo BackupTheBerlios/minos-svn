@@ -1,3 +1,7 @@
+Sanity check of splitter positions - all I'm doing is screwing it up further; check on release version
+
+ ==================================================================
+MikeP CW complaints - looks OK
 I may have found an odd error in Minos version 1.4.0.263 (which is the latest on my machine! but not necessarily latest version).
  
 In the 6 metre contest this month, I worked a string of CW stations several times in amongst the usual number of SSB stations. The QSOs have logged the RST correctly as 599 (or whatever) rather than 59 etc.. However when I put the QSO in edit mode it shows the mode as J3E. You can see this from examination of any string of CW QSOs, the first seems OK but the remainder have the correct RST but mode shown as J3E. See also the same QSOs in the ADIF.

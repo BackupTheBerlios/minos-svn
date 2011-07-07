@@ -1,10 +1,12 @@
 ==================================================================
-1.5.4(?) or 1.5.3 non-beta
+1.5.4
 Font selection and scaling
 Support of large screen fonts
 some layouts re-arranged
+Long(unlimited)) CSL list lines accepted
+minor bug fixes
 ==================================================================
-1.5.3
+1.5.3 (only released privately as a Beta)
 
 Force date format; now works on machines with non-UK date/time formats (but still
 uses UK formats on display)
