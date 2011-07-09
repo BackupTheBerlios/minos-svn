@@ -91,12 +91,4 @@ object QRigSyncMain: TQRigSyncMain
     OnTimer = Timer1Timer
     Top = 2
   end
-  object OmniRig: TOmniRigX
-    AutoConnect = False
-    ConnectKind = ckRunningOrNew
-    OnRigTypeChange = OmniRigRigTypeChange
-    OnStatusChange = OmniRigStatusChange
-    OnParamsChange = OmniRigParamsChange
-    Top = 42
-  end
 end

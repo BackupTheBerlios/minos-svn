@@ -30,8 +30,8 @@
 			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
 			<DynamicRTL>true</DynamicRTL>
 			<UsePackages>true</UsePackages>
-			<IncludePath>..\XMPPLib\;.;$(CG_BOOST_ROOT)\boost\tr1\tr1;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;$(CG_BOOST_ROOT);C:\ThirdParty\tinyxml;$(IncludePath)</IncludePath>
-			<ILINK_LibraryPath>..\XMPPLib\;$(BDS)\lib\obj;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<IncludePath>C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\;..\XMPPLib\;.;$(CG_BOOST_ROOT)\boost\tr1\tr1;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;$(CG_BOOST_ROOT);C:\ThirdParty\tinyxml;$(IncludePath)</IncludePath>
+			<ILINK_LibraryPath>C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\;..\XMPPLib\;$(BDS)\lib\obj;$(ILINK_LibraryPath)</ILINK_LibraryPath>
 			<BCC_wpar>false</BCC_wpar>
 			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
 			<BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
@@ -61,24 +61,32 @@
 			<TASM_Debugging>None</TASM_Debugging>
 		</PropertyGroup>
 		<ItemGroup>
-			<CppCompile Include="..\XMPPLib\stringcast.cpp">
-				<DependentOn>..\XMPPLib\stringcast.h</DependentOn>
-				<BuildOrder>10</BuildOrder>
+			<CppCompile Include="..\XMPPLib\MTrace.cpp">
+				<DependentOn>..\XMPPLib\MTrace.h</DependentOn>
+				<BuildOrder>8</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="SyncMain.cpp">
 				<Form>QRigSyncMain</Form>
 				<DependentOn>SyncMain.h</DependentOn>
 				<BuildOrder>6</BuildOrder>
 			</CppCompile>
-			<CppCompile Include="..\XMPPLib\MTrace.cpp">
-				<DependentOn>..\XMPPLib\MTrace.h</DependentOn>
-				<BuildOrder>8</BuildOrder>
+			<CppCompile Include="C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\OmniRig_OCX.cpp">
+				<DependentOn>C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\OmniRig_OCX.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\OmniRig_TLB.cpp">
+				<DependentOn>C:\Users\mjgadmin\Documents\RAD Studio\7.0\Imports\OmniRig_TLB.h</DependentOn>
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="QS1RIVSync.cpp">
+				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<ResFiles Include="QS1RIVSync.res">
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
-			<CppCompile Include="QS1RIVSync.cpp">
-				<BuildOrder>0</BuildOrder>
+			<CppCompile Include="..\XMPPLib\stringcast.cpp">
+				<DependentOn>..\XMPPLib\stringcast.h</DependentOn>
+				<BuildOrder>10</BuildOrder>
 			</CppCompile>
 			<CppCompile Include="..\XMPPLib\MLogFile.cpp">
 				<DependentOn>..\XMPPLib\MLogFile.h</DependentOn>
