@@ -4,7 +4,8 @@ Font selection and scaling
 Support of large screen fonts
 some layouts re-arranged
 Long(unlimited)) CSL list lines accepted
-minor bug fixes
+minor bug fixes : 
+  scrolling of QSOs in catch-up
 ==================================================================
 1.5.3 (only released privately as a Beta)
 

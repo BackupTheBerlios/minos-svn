@@ -282,7 +282,7 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
       TimeEdit->Font->Color = clRed;
    }
 
-   MinosLoggerEvents::SendAfterSelectContact(slct, contest);
+   MinosLoggerEvents::SendAfterSelectContact(catchup?0:slct, contest);
    selectField( 0 );
 }
 //---------------------------------------------------------------------------
