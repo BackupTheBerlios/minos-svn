@@ -7,6 +7,7 @@ While I'm at it, why no indication on screen that we are in catch up mode?
 Sanity check of splitter positions - all I'm doing is screwing it up further; check on release version
 
 ==================================================================
+Done - initial mode not being marked as dirty
 MikeP CW complaints
 I may have found an odd error in Minos version 1.4.0.263 (which is the latest on my machine! but not necessarily latest version).
  

@@ -16,27 +16,19 @@ DisplayContestContact::DisplayContestContact( BaseContestLog * ct, bool time_now
       modificationCount( 0 )
 {
    BaseContestLog * clp = ct;
-   if ( clp )
-   {
-      mode.setInitialValue( clp->mode.getValue() );
-   }
-   else
-      ShowMessage( "Contact constructor with no contest" );
 
-   int ms = 0;
-
-   if ( clp )
-   {
-      ms = clp->maxSerial + 1;
-   }
+   int ms = clp->maxSerial + 1;
 
    serialr.setInitialValue( std::string( SERIALLENGTH, ' ' ) );
    repr.setInitialValue( "5  " );
    reps.setInitialValue( "5  " );
-   clearDirty();         // is this correct? Or should we clear the serial as well
+   clearDirty();
+
    char temp[ 10 ];
    sprintf( temp, "%03.3d", ms );
    serials.setValue( temp );
+
+   mode.setValue( clp->mode.getValue() );
 }
 DisplayContestContact::~DisplayContestContact()
 {}
