@@ -37,8 +37,9 @@ class QSOHistoryNode
 }
 ;
 //---------------------------------------------------------------------------
-__fastcall TQSOEditDlg::TQSOEditDlg( TComponent* Owner )
-      : TForm( Owner ), firstContact( 0 ), contest( 0 ), catchup(false),
+__fastcall TQSOEditDlg::TQSOEditDlg( TComponent* Owner, bool catchup, bool unfilled )
+      : TForm( Owner ), firstContact( 0 ), contest( 0 ),
+      catchup(catchup), unfilled(unfilled),
       EL_AfterSelectContact ( EN_AfterSelectContact, & AfterSelectContact_Event )
 {}
 //---------------------------------------------------------------------------
@@ -52,6 +53,8 @@ void TQSOEditDlg::selectContact( BaseContestLog * ccontest, DisplayContestContac
 //---------------------------------------------------------------------------
 void __fastcall TQSOEditDlg::FormShow( TObject */*Sender*/ )
 {
+   GJVQSOEditFrame->unfilled = unfilled;
+   GJVQSOEditFrame->catchup = catchup;
    MinosParameters::getMinosParameters()->applyFontChange(this);
    InitialiseTimer->Enabled = true;
 }
@@ -69,7 +72,7 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    {
       Caption = "Catch-up (Post Entry)";
    }
-   else if ( firstContact ->contactFlags.getValue() & TO_BE_ENTERED )
+   else if ( unfilled )
    {
       Caption = "Completing unfilled contacts";
    }
@@ -298,7 +301,7 @@ void __fastcall TQSOEditDlg::QSOHistoryTreeBeforeItemErase(
 //---------------------------------------------------------------------------
 void TQSOEditDlg::selectCatchup( BaseContestLog * c )
 {
-   // Kick off Post Entry/Uri/catchup
+   // Kick off Post Entry/catchup
    // We need to create a new contact, and set the "post entry" flag
    // and then trigger the qso edit dialog on it
 
@@ -314,7 +317,7 @@ void TQSOEditDlg::selectCatchup( BaseContestLog * c )
 
    DisplayContestContact *lct = ct->addContact( ctmax, 0, false, catchup );
    selectContact(c, lct);
-   GJVQSOEditFrame->FirstUnfilledButton->Enabled = false;
+//   GJVQSOEditFrame->FirstUnfilledButton->Enabled = false;
 }
 
 void __fastcall TQSOEditDlg::GJVQSOEditFrameGJVCancelButtonClick(

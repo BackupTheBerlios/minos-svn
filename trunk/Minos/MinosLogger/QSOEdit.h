@@ -55,9 +55,10 @@ class TQSOEditDlg : public TForm
       BaseContestLog * contest;
       BaseContact *firstContact;
       bool catchup;
+      bool unfilled;
       void refreshOps( ScreenContact &screenContact );
    public: 		// User declarations
-      __fastcall TQSOEditDlg( TComponent* Owner );
+      __fastcall TQSOEditDlg( TComponent* Owner, bool catchup, bool unfilled );
       void selectContact( BaseContestLog * contest, DisplayContestContact *lct );
       void setContest( BaseContestLog * c )
       {

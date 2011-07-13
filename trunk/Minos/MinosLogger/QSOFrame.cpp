@@ -21,7 +21,8 @@
 __fastcall TGJVEditFrame::TGJVEditFrame( TComponent* Owner )
       : TFrame( Owner ), selectedContact( 0 ),
       updateTimeAllowed( true ), overstrike( false ),
-      EL_ValidateError ( EN_ValidateError, & ValidateError_Event )
+      EL_ValidateError ( EN_ValidateError, & ValidateError_Event ),
+      catchup(false), unfilled(false)
 {
    Parent = ( TWinControl * ) Owner;               // This makes the JEDI splitter work!
 }
@@ -1148,8 +1149,6 @@ void TGJVEditFrame::updateQSODisplay()
    GJVForceButton->Enabled = !contest->isReadOnly();
 
    QTHEdit->Enabled = ( contest->otherExchange .getValue() || contest->districtMult.getValue() );
-
-   CatchupButton->Visible = !contest->isReadOnly();
 
    ModeButton->Enabled = !contest->isReadOnly();
    SecondOpComboBox->Enabled = !contest->isReadOnly();

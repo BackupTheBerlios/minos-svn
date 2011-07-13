@@ -85,8 +85,6 @@ class TGJVEditFrame : public TFrame
       bool overstrike;
       TWinControl *current;
       bool updateTimeAllowed;
-      bool catchup;
-
       bool valid( validTypes command );
       void calcLoc( void );
       void doAutofill( void );
@@ -103,6 +101,8 @@ class TGJVEditFrame : public TFrame
    public: 		// User declarations
       ScreenContact screenContact;  // contact being edited on screen
       BaseContact *selectedContact;   // contact from log list selected
+      bool catchup;
+      bool unfilled;
 
       __fastcall TGJVEditFrame( TComponent* Owner );
       __fastcall ~TGJVEditFrame();

@@ -24,7 +24,6 @@
 __fastcall TGJVQSOEditFrame::TGJVQSOEditFrame( TComponent* Owner )
       : TGJVEditFrame( Owner )
 {
-   CatchupButton->Visible = false;
 }
 //---------------------------------------------------------------------------
 void TGJVQSOEditFrame::updateQSODisplay()
@@ -186,15 +185,8 @@ void TGJVQSOEditFrame::selectEntry( BaseContact *slct )
 {
    selectedContact = slct;   // contact from log list selected
 
-   if (contest->unfilledCount <= 0 || contest->isReadOnly())
-   {
-      FirstUnfilledButton->Visible = false;
-   }
-   else
-   {
-      FirstUnfilledButton->Visible = true;
-   }
-//   updateTimeAllowed = false;   // whatever the time says, leave it alone
+   FirstUnfilledButton->Visible = false;
+   CatchupButton->Visible = false;
 
    screenContact.copyFromArg( *slct );
    showScreenEntry();
@@ -291,7 +283,7 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
    getScreenEntry();
    screenContact.op1 = MainOpComboBox->Text.c_str();
    screenContact.op2 = SecondOpComboBox->Text.c_str();
-   bool unfilled = screenContact.contactFlags & TO_BE_ENTERED ;
+//   bool unfilled = screenContact.contactFlags & TO_BE_ENTERED ;
 
    DateEdit->ReadOnly = !catchup;
    TimeEdit->ReadOnly = !catchup;
@@ -301,9 +293,9 @@ bool TGJVQSOEditFrame::doGJVOKButtonClick( TObject *Sender )
    {
       // If Uri mode then continue to the next...
       FirstUnfilledButtonClick( Sender );
-      unfilled = screenContact.contactFlags & TO_BE_ENTERED;
+      bool stillUnfilled = screenContact.contactFlags & TO_BE_ENTERED;
 
-      return !unfilled;   // so we don't close the dialog
+      return !stillUnfilled;   // so we don't close the dialog
    }
    return OKok;
 }

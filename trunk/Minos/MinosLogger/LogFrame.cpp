@@ -216,7 +216,7 @@ void TSingleLogFrame::showQSOs()
 //---------------------------------------------------------------------------
 void TSingleLogFrame::EditContact( BaseContact *lct )
 {
-   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this, false, false ) );
    ContestContact *ct = dynamic_cast<ContestContact *>( lct );
    qdlg->selectContact( contest, ct );
 
@@ -1304,7 +1304,7 @@ void TSingleLogFrame::GoNextUnfilled()
    BaseContact * nuc = contest->findNextUnfilledContact( );
    if ( nuc )
    {
-      std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+      std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this, false, true ) );
       qdlg->setContest( contest );
       qdlg->setFirstContact( nuc );
       qdlg->ShowModal();

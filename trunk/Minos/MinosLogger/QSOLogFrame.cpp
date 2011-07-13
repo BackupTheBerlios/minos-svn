@@ -384,7 +384,7 @@ void TGJVQSOLogFrame::updateQSOTime(bool fromTimer)
 
 void __fastcall TGJVQSOLogFrame::CatchupButtonClick(TObject */*Sender*/)
 {
-   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this ) );
+   std::auto_ptr <TQSOEditDlg> qdlg( new TQSOEditDlg( this, true, false ) );
    qdlg->selectCatchup( contest );
 
    qdlg->ShowModal();
