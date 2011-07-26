@@ -1,3 +1,6 @@
+MessageBox doesn't get the font change - QSOFrame 1083 (QSO has changed)
+especially needs this.
+Font change lost in edit frame!
 ==================================================================
 Done - I think
 Being well past my sell by date, I find logging in real time a non starter. Just writing info down is hard enough, never mind my one finger typeing..!! The speed that some stations speak their info also doesn't help. But, to the point. When you enter contacts in real time, the main upper window scrolls upwards, so you can always see the last few stations you have logged. When you use "catch up (post entry)" the entrys fill the main window, then disappear off the bottom. As I like to keep a check as I go along that I haven't missed a entering a contact, not an unknown thing to happen, it means jumping in and out of the catch up window. Would there be any chance of them scrolling off the top of the main window, rather than off the bottom..?
