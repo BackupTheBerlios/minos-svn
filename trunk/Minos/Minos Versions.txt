@@ -6,11 +6,11 @@ some layouts re-arranged
 Long(unlimited)) CSL list lines accepted
 minor bug fixes : 
   scrolling of QSOs in catch-up
+  propogation of CW across multiple QSOs
 ==================================================================
 1.5.3 (only released privately as a Beta)
 
-Force date format; now works on machines with non-UK date/time formats (but still
-uses UK formats on display)
+Force date format; now works on machines with non-UK date/time formats (but still uses UK formats on display)
 
 MinosLogger.ini exposed under file|options; in particular exposes default
 log and lists paths.
@@ -19,8 +19,7 @@ Click on a country in the multiplier display and the matches will display
 all the QSOs with that country, under whatever prefix (e.g. click
 on G for G, M, 2E, etc).
                                 
-Antenna bearing offset in station bundle; has O suffix in QSO frame (e.g. 60degOT)
-No suffix on bearing in lists.
+Antenna bearing offset in station bundle; has O suffix in QSO frame (e.g. 60degOT); no suffix on bearing in lists.
 ==================================================================
 1.5.2
 

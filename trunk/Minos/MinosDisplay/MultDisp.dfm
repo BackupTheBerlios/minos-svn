@@ -142,16 +142,32 @@ object MultDispFrame: TMultDispFrame
         ExplicitHeight = 182
         inherited SLabel1: TLabel
           Width = 248
-          Height = 136
+          Height = 128
+          ExplicitWidth = 248
+          ExplicitHeight = 130
         end
         inherited Panel1: TPanel
-          Top = 136
+          Top = 128
           Width = 248
-          ExplicitTop = 136
+          Height = 54
+          ExplicitTop = 128
           ExplicitWidth = 248
+          ExplicitHeight = 54
           DesignSize = (
             248
-            46)
+            54)
+          inherited P1Edit: TLabeledEdit
+            Top = 23
+            EditLabel.ExplicitLeft = 8
+            EditLabel.ExplicitTop = 7
+            EditLabel.ExplicitWidth = 47
+          end
+          inherited P2Edit: TLabeledEdit
+            Top = 22
+            EditLabel.ExplicitLeft = 79
+            EditLabel.ExplicitTop = 6
+            EditLabel.ExplicitWidth = 47
+          end
         end
       end
     end
