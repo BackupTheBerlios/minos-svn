@@ -2,7 +2,7 @@ object QRigSyncMain: TQRigSyncMain
   Left = 0
   Top = 0
   Caption = 'QS1R <-> Main Rig sync '
-  ClientHeight = 124
+  ClientHeight = 94
   ClientWidth = 633
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

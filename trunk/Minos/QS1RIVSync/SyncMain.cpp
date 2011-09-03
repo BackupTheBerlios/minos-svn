@@ -49,7 +49,8 @@ __fastcall TQRigSyncMain::TQRigSyncMain(TComponent* Owner)
             }
             ftf = temp.ToIntDef(0);
          }
-         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
+         double f = (fCentre + ftf);
+         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf) + " freq " + FormatFloat("#0,000,000", f);
 
    Timer1->Enabled = true;
 }
@@ -195,32 +196,6 @@ void __fastcall TQRigSyncMain::ClientSocket1Read(TObject *Sender,
          sockbuffer[ retlen ] = 0;
 
          lastF =  sockbuffer;
-         // And parse into center frequency and offset
-         /*
-         OK
-         fHz=28123456
-         tf=-123456
-         */
-/*   enableTrace( ".\\TraceLog\\QS1RIVSync_" );
-
-         lastF = "OK\n"
-         "fHz=28123456\n"
-         "tf=-123456";
-
-         int fOffset = lastF.Pos("fHz=");
-         if (fOffset > 0)
-         {
-            String temp = lastF.SubString(fOffset + 4, 8);
-            fCentre = temp.ToIntDef(0);
-         }
-         int tfOffset = lastF.Pos("tf=");
-         if (tfOffset > 0)
-         {
-            String temp = lastF.SubString(tfOffset + 3, 100);
-            ftf = temp.ToIntDef(0);
-         }
-         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
-*/
          int fOffset = lastF.Pos("fHz=");
          int tfOffset = lastF.Pos("tf=");
          if (fOffset > 0 && tfOffset > 0)
@@ -242,7 +217,8 @@ void __fastcall TQRigSyncMain::ClientSocket1Read(TObject *Sender,
             }
             ftf = temp.ToIntDef(0);
          }
-         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
+         double f = (fCentre + ftf);
+         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf) + " freq " + FormatFloat("#0,000,000", f);
       }
    }
    catch ( Exception & e )
