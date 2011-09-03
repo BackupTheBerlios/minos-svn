@@ -1,0 +1,34 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{1d9e55b1-9f0b-4a4b-9f40-6e21f13f3b38}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="QS1RIVSync.cbproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="QS1RIVSync">
+    <MSBuild Projects="QS1RIVSync.cbproj" Targets="" />
+  </Target>
+  <Target Name="QS1RIVSync:Clean">
+    <MSBuild Projects="QS1RIVSync.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="QS1RIVSync:Make">
+    <MSBuild Projects="QS1RIVSync.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="QS1RIVSync" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="QS1RIVSync:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="QS1RIVSync:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>
