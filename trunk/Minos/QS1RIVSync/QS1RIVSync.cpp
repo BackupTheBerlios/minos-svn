@@ -2,16 +2,15 @@
 
 #include <vcl.h>
 #pragma hdrstop
-#include <tchar.h>
 //---------------------------------------------------------------------------
 USEFORM("SyncMain.cpp", QRigSyncMain);
 //---------------------------------------------------------------------------
-WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
+WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
    try
    {
        Application->Initialize();
-       Application->MainFormOnTaskBar = true;
+       SetApplicationMainFormOnTaskBar(Application, true);
        Application->CreateForm(__classid(TQRigSyncMain), &QRigSyncMain);
        Application->Run();
    }

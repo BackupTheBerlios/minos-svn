@@ -3,8 +3,8 @@
 #include "XMPP_pch.h"
 #pragma hdrstop
 #include "inifiles.hpp"
-
 #include "SyncMain.h"
+#include "qs_defines.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "OmniRig_OCX"
@@ -24,7 +24,33 @@ TQRigSyncMain *QRigSyncMain;
 __fastcall TQRigSyncMain::TQRigSyncMain(TComponent* Owner)
    : TForm(Owner)
 {
-   enableTrace( ".\\TraceLog\\QS1RIVSync_" );
+         lastF = "OK\r\n"
+         "fHz=28123456\r\n"
+         "tf=-123456\r\n";
+
+         int fOffset = lastF.Pos("fHz=");
+         int tfOffset = lastF.Pos("tf=");
+         if (fOffset > 0 && tfOffset > 0)
+         {
+            String temp = lastF.SubString(fOffset + 4, tfOffset - fOffset - 4);
+            int l = temp.Length();
+            while ((temp[l] == '\r') || (temp[l] == '\n'))
+            {
+               temp = temp.SubString(1, l - 1);
+               l = temp.Length();
+            }
+            fCentre = temp.ToIntDef(0);
+            temp = lastF.SubString(tfOffset + 3, 100);
+            l = temp.Length();
+            while ((temp[l] == '\r') || (temp[l] == '\n'))
+            {
+               temp = temp.SubString(1, l - 1);
+               l = temp.Length();
+            }
+            ftf = temp.ToIntDef(0);
+         }
+         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
+
    Timer1->Enabled = true;
 }
 __fastcall TQRigSyncMain::~TQRigSyncMain()
@@ -51,8 +77,7 @@ void __fastcall TQRigSyncMain::Timer1Timer(TObject *Sender)
    freq = OmniRig->Rig1->FreqA;
    QF1Label->Caption = String(freq);
 
-   freq = OmniRig->Rig2->FreqA;
-   QF2Label->Caption = String(freq);
+   QS1RFLabel->Caption = lastF;
 
    inTimer = false;
 }
@@ -75,7 +100,6 @@ void __fastcall TQRigSyncMain::FormShow(TObject *Sender)
 
    OmniRig->Connect();
    Rig1Label->Caption = OmniRig->Rig1->RigType;
-   Rig2Label->Caption = OmniRig->Rig2->RigType;
 }
 //---------------------------------------------------------------------------
 
@@ -91,16 +115,15 @@ void __fastcall TQRigSyncMain::Transfer12ButtonClick(TObject *Sender)
 
    freq = OmniRig->Rig1->FreqA;
 
-   OmniRig->Rig2->FreqA = freq;
+   // and we would need to send it to the QS1R
+//   OmniRig->Rig2->FreqA = freq;
 
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TQRigSyncMain::Transfer21ButtonClick(TObject *Sender)
 {
-   long freq = 0;
-
-   freq = OmniRig->Rig2->FreqA;
+   long freq = fCentre + ftf;
 
    OmniRig->Rig1->FreqA = freq;
 }
@@ -108,7 +131,6 @@ void __fastcall TQRigSyncMain::Transfer21ButtonClick(TObject *Sender)
 void __fastcall TQRigSyncMain::OmniRigRigTypeChange(TObject *Sender, long RigNumber)
 {
    Rig1Label->Caption = OmniRig->Rig1->RigType;
-   Rig2Label->Caption = OmniRig->Rig2->RigType;
 }
 //---------------------------------------------------------------------------
 
@@ -121,10 +143,134 @@ void __fastcall TQRigSyncMain::OmniRigStatusChange(TObject *Sender, long RigNumb
 void __fastcall TQRigSyncMain::OmniRigParamsChange(TObject *Sender, long RigNumber,
           long Params)
 {
-//
-   bool ptt1 = OmniRig->Rig1->Tx & RigParamX::PM_TX;
-   bool ptt2 = OmniRig->Rig2->Tx & RigParamX::PM_TX;
+//   bool ptt1 = OmniRig->Rig1->Tx & PM_TX;
+//   bool ptt2 = OmniRig->Rig2->Tx & PM_TX;
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ConnectQS1RButtonClick(TObject *Sender)
+{
+// // start up the QS1R socket
+   if (ClientSocket1->Active)
+   {
+      ClientSocket1->Close();
+   }
+   else
+   {
+      ClientSocket1->Port = RX1_CMD_SERV_TCP_PORT + 2;
+      ClientSocket1->Host = "localhost";
+
+      ClientSocket1->Open();
+   }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ClientSocket1Connect(TObject *Sender,
+      TCustomWinSocket *Socket)
+{
+   ConnectQS1RButton->Caption = "Disconnect QS1R";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ClientSocket1Disconnect(TObject *Sender,
+      TCustomWinSocket *Socket)
+{
+   ConnectQS1RButton->Caption = "Connect QS1R";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ClientSocket1Read(TObject *Sender,
+      TCustomWinSocket *Socket)
+{
+   static char sockbuffer[ 4096 ];
+   //Hz=5.02e+07
+   //tf=-121700
+
+   try
+   {
+      int retlen = ClientSocket1->Socket->ReceiveBuf( sockbuffer, 4095 );
+      if ( retlen > 0 )
+      {
+         sockbuffer[ retlen ] = 0;
+
+         lastF =  sockbuffer;
+         // And parse into center frequency and offset
+         /*
+         OK
+         fHz=28123456
+         tf=-123456
+         */
+/*   enableTrace( ".\\TraceLog\\QS1RIVSync_" );
+
+         lastF = "OK\n"
+         "fHz=28123456\n"
+         "tf=-123456";
+
+         int fOffset = lastF.Pos("fHz=");
+         if (fOffset > 0)
+         {
+            String temp = lastF.SubString(fOffset + 4, 8);
+            fCentre = temp.ToIntDef(0);
+         }
+         int tfOffset = lastF.Pos("tf=");
+         if (tfOffset > 0)
+         {
+            String temp = lastF.SubString(tfOffset + 3, 100);
+            ftf = temp.ToIntDef(0);
+         }
+         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
+*/
+         int fOffset = lastF.Pos("fHz=");
+         int tfOffset = lastF.Pos("tf=");
+         if (fOffset > 0 && tfOffset > 0)
+         {
+            String temp = lastF.SubString(fOffset + 4, tfOffset - fOffset - 4);
+            int l = temp.Length();
+            while ((temp[l] == '\r') || (temp[l] == '\n'))
+            {
+               temp = temp.SubString(1, l - 1);
+               l = temp.Length();
+            }
+            fCentre = temp.ToIntDef(0);
+            temp = lastF.SubString(tfOffset + 3, 100);
+            l = temp.Length();
+            while ((temp[l] == '\r') || (temp[l] == '\n'))
+            {
+               temp = temp.SubString(1, l - 1);
+               l = temp.Length();
+            }
+            ftf = temp.ToIntDef(0);
+         }
+         lastF = "fCentre " + String(fCentre) + "\r\n tf " + String(ftf);
+      }
+   }
+   catch ( Exception & e )
+   {
+//      Log( "**** TQRigSyncMain::ClientSocket1Read - Exception: " + e.Message );
+   }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ClientSocket1Write(TObject *Sender,
+      TCustomWinSocket *Socket)
+{
+   // we can write...
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::ApplicationEvents1Exception(TObject *Sender,
+      Exception *E)
+{
+//   
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQRigSyncMain::Timer2Timer(TObject *Sender)
+{
+   // Poll the QS1R
+   String mess = ">UpdateRxFreq\n?fHz\n?tf\n";
+   ClientSocket1->Socket->SendBuf( mess.c_str(), mess.Length() );
 }
 //---------------------------------------------------------------------------
 

@@ -10,6 +10,12 @@
 #include <ExtCtrls.hpp>
 #include "OmniRig_OCX.h"
 #include <OleServer.hpp>
+#include <IdBaseComponent.hpp>
+#include <IdComponent.hpp>
+#include <IdTCPClient.hpp>
+#include <IdTCPConnection.hpp>
+#include <ScktComp.hpp>
+#include <AppEvnts.hpp>
 //---------------------------------------------------------------------------
 class TQRigSyncMain : public TForm
 {
@@ -22,9 +28,13 @@ __published:	// IDE-managed Components
    TLabel *QF1Label;
    TOmniRigX *OmniRig;
    TLabel *Label1;
-   TLabel *Rig2Label;
-   TLabel *QF2Label;
-   TButton *Transfer21Button;
+   TButton *ConnectQS1RButton;
+   TButton *Transfer21;
+   TClientSocket *ClientSocket1;
+   TApplicationEvents *ApplicationEvents1;
+   TLabel *QS1RLabel;
+   TLabel *QS1RFLabel;
+   TTimer *Timer2;
    void __fastcall CloseButtonClick(TObject *Sender);
    void __fastcall Timer1Timer(TObject *Sender);
    void __fastcall RigSelectButtonClick(TObject *Sender);
@@ -35,10 +45,23 @@ __published:	// IDE-managed Components
    void __fastcall OmniRigStatusChange(TObject *Sender, long RigNumber);
    void __fastcall OmniRigParamsChange(TObject *Sender, long RigNumber, long Params);
    void __fastcall Transfer21ButtonClick(TObject *Sender);
+   void __fastcall ConnectQS1RButtonClick(TObject *Sender);
+   void __fastcall ClientSocket1Connect(TObject *Sender,
+          TCustomWinSocket *Socket);
+   void __fastcall ClientSocket1Disconnect(TObject *Sender,
+          TCustomWinSocket *Socket);
+   void __fastcall ClientSocket1Read(TObject *Sender, TCustomWinSocket *Socket);
+   void __fastcall ClientSocket1Write(TObject *Sender,
+          TCustomWinSocket *Socket);
+   void __fastcall ApplicationEvents1Exception(TObject *Sender, Exception *E);
+   void __fastcall Timer2Timer(TObject *Sender);
 
 private:	// User declarations
    bool muted;
    long getQS1RFreq();
+   String lastF;
+   int fCentre;
+   int ftf;
 
 public:		// User declarations
    __fastcall TQRigSyncMain(TComponent* Owner);
