@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
+    <Projects Include="C:\Documents and Settings\mjg\My Documents\RAD Studio\Projects\TOmniRig.cbproj" />
     <Projects Include="GJVAudio.cbproj" />
     <Projects Include="GJVControls.cbproj" />
     <Projects Include="VTV.cbproj" />
@@ -51,14 +52,23 @@
   <Target Name="VTVD:Make">
     <MSBuild Projects="VTVD.cbproj" Targets="Make" />
   </Target>
+  <Target Name="TOmniRig">
+    <MSBuild Projects="C:\Documents and Settings\mjg\My Documents\RAD Studio\Projects\TOmniRig.cbproj" Targets="" />
+  </Target>
+  <Target Name="TOmniRig:Clean">
+    <MSBuild Projects="C:\Documents and Settings\mjg\My Documents\RAD Studio\Projects\TOmniRig.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="TOmniRig:Make">
+    <MSBuild Projects="C:\Documents and Settings\mjg\My Documents\RAD Studio\Projects\TOmniRig.cbproj" Targets="Make" />
+  </Target>
   <Target Name="Build">
-    <CallTarget Targets="GJVControls;GJVAudio;VTV;VTVD" />
+    <CallTarget Targets="GJVControls;GJVAudio;VTV;VTVD;TOmniRig" />
   </Target>
   <Target Name="Clean">
-    <CallTarget Targets="GJVControls:Clean;GJVAudio:Clean;VTV:Clean;VTVD:Clean" />
+    <CallTarget Targets="GJVControls:Clean;GJVAudio:Clean;VTV:Clean;VTVD:Clean;TOmniRig:Clean" />
   </Target>
   <Target Name="Make">
-    <CallTarget Targets="GJVControls:Make;GJVAudio:Make;VTV:Make;VTVD:Make" />
+    <CallTarget Targets="GJVControls:Make;GJVAudio:Make;VTV:Make;VTVD:Make;TOmniRig:Make" />
   </Target>
   <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
 </Project>
