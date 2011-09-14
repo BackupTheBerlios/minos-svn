@@ -613,14 +613,14 @@ bool INIFile::writePrivateProfileString( const char *Section,
 
 
 //=============================================================================
-ProfileEntry::ProfileEntry( int id, const char *n, const char *d, const char *h )
-      : id( id ), name( n ), sdefaultval( d ), hint( h ), pt( petString )
+ProfileEntry::ProfileEntry( int id, const char *n, const char *d, const char * dname, const char *h )
+      : id( id ), name( n ), sdefaultval( d ), hint( h ), pt( petString ), dispname(dname)
 {}
-ProfileEntry::ProfileEntry( int id, const char *n, int d, const char *h )
-      : id( id ), name( n ), idefaultval( d ), sdefaultval( makeStr( d ) ), hint( h ), pt( petInteger )
+ProfileEntry::ProfileEntry( int id, const char *n, int d, const char * dname, const char *h )
+      : id( id ), name( n ), idefaultval( d ), sdefaultval( makeStr( d ) ), hint( h ), pt( petInteger ), dispname(dname)
 {}
-ProfileEntry::ProfileEntry( int id, const char *n, bool d, const char *h )
-      : id( id ), name( n ), bdefaultval( d ), sdefaultval( makeStr( d ) ), hint( h ), pt( petBool )
+ProfileEntry::ProfileEntry( int id, const char *n, bool d, const char * dname, const char *h )
+      : id( id ), name( n ), bdefaultval( d ), sdefaultval( makeStr( d ) ), hint( h ), pt( petBool ), dispname(dname)
 {}
 void ProfileEntry::createEntry( SettingsBundle *s )
 {
@@ -644,92 +644,92 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
    {
 	  case epLOGGERPROFILE:
 
-		 entries.push_back( ProfileEntry( elpListDirectory, "List Directory", ".\\Lists", "Default archive list directory" ) );
-		 entries.push_back( ProfileEntry( elpLogDirectory, "Log Directory", ".\\Logs", "Default logs directory" ) );
+		 entries.push_back( ProfileEntry( elpListDirectory, "List Directory", ".\\Lists", "", "Default archive list directory" ) );
+		 entries.push_back( ProfileEntry( elpLogDirectory, "Log Directory", ".\\Logs", "", "Default logs directory" ) );
 
-		 entries.push_back( ProfileEntry( elpEntryFile, "EntryFile", ".\\Configuration\\Entry.ini", "File containing entry settings" ) );
-		 entries.push_back( ProfileEntry( elpStationFile, "StationFile", ".\\Configuration\\Station.ini", "File containing station settings" ) );
-		 entries.push_back( ProfileEntry( elpQTHFile, "QTHFile", ".\\Configuration\\QTH.ini", "File containing QTH settings" ) );
+		 entries.push_back( ProfileEntry( elpEntryFile, "EntryFile", ".\\Configuration\\Entry.ini", "", "File containing entry settings" ) );
+		 entries.push_back( ProfileEntry( elpStationFile, "StationFile", ".\\Configuration\\Station.ini", "", "File containing station settings" ) );
+		 entries.push_back( ProfileEntry( elpQTHFile, "QTHFile", ".\\Configuration\\QTH.ini", "", "File containing QTH settings" ) );
 
-		 entries.push_back( ProfileEntry( elpDisplayFile, "DisplayFile", ".\\Configuration\\Display.ini", "File containing saved display settings" ) );
-		 entries.push_back( ProfileEntry( elpDisplaySection, "DisplaySection", "Default", "Section to use in display file" ) );
-		 entries.push_back( ProfileEntry( elpOperatorFile, "OperatorFile", ".\\Configuration\\Operator.ini", "File containing operators" ) );
-		 entries.push_back( ProfileEntry( elpOperatorSection, "OperatorSection", "Default", "section to use in operators file" ) );
-		 entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "File containing log and list pre-loads" ) );
-		 entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "Section to use in preload file" ) );
-       entries.push_back( ProfileEntry( elpFontName, "FontName", "Verdana", "Font name" ) );
-       entries.push_back( ProfileEntry( elpFontSize, "FontSize", 8, "Font Size (points)" ) );
-       entries.push_back( ProfileEntry( elpFontBold, "FontBold", false, "Font Bold" ) );
-       entries.push_back( ProfileEntry( elpFontItalic, "FontItalic", false, "Font Italic" ) );
+		 entries.push_back( ProfileEntry( elpDisplayFile, "DisplayFile", ".\\Configuration\\Display.ini", "", "File containing saved display settings" ) );
+		 entries.push_back( ProfileEntry( elpDisplaySection, "DisplaySection", "Default", "", "Section to use in display file" ) );
+		 entries.push_back( ProfileEntry( elpOperatorFile, "OperatorFile", ".\\Configuration\\Operator.ini", "", "File containing operators" ) );
+		 entries.push_back( ProfileEntry( elpOperatorSection, "OperatorSection", "Default", "", "section to use in operators file" ) );
+		 entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "", "File containing log and list pre-loads" ) );
+		 entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "", "Section to use in preload file" ) );
+       entries.push_back( ProfileEntry( elpFontName, "FontName", "Verdana", "", "Font name" ) );
+       entries.push_back( ProfileEntry( elpFontSize, "FontSize", 8, "", "Font Size (points)" ) );
+       entries.push_back( ProfileEntry( elpFontBold, "FontBold", false, "", "Font Bold" ) );
+       entries.push_back( ProfileEntry( elpFontItalic, "FontItalic", false, "", "Font Italic" ) );
 
 		 break;
 	  case epPRELOADPROFILE:
-		 entries.push_back( ProfileEntry( eppCurrent, "Current", 0, "hint" ) );
-         entries.push_back( ProfileEntry( epp1, "1", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp2, "2", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp3, "3", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp4, "4", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp5, "5", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp6, "6", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp7, "7", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp8, "8", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp9, "9", "", "hint" ) );
-         entries.push_back( ProfileEntry( epp10, "10", "", "hint" ) );
+		 entries.push_back( ProfileEntry( eppCurrent, "Current", 0, "", "hint" ) );
+         entries.push_back( ProfileEntry( epp1, "1", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp2, "2", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp3, "3", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp4, "4", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp5, "5", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp6, "6", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp7, "7", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp8, "8", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp9, "9", "", "", "hint" ) );
+         entries.push_back( ProfileEntry( epp10, "10", "", "", "hint" ) );
          break;
       case epDISPLAYPROFILE:
-         entries.push_back( ProfileEntry( edpTop, "Top", 10, "Top of Logger window" ) );
-         entries.push_back( ProfileEntry( edpLeft, "Left", 25, "Left of Logger window" ) );
-         entries.push_back( ProfileEntry( edpWidth, "Width", 780, "Width of Logger window" ) );
-         entries.push_back( ProfileEntry( edpHeight, "Height", 590, "Height of Logger window" ) );
-         entries.push_back( ProfileEntry( edpShowContinentEU, "ShowContinentEU", true, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowContinentAS, "ShowContinentAS", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowContinentAF, "ShowContinentAF", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowContinentOC, "ShowContinentOC", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowContinentSA, "ShowContinentSA", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowContinentNA, "ShowContinentNA", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowWorked, "ShowWorked", true, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowUnworked, "ShowUnworked", true, "hint" ) );
-         entries.push_back( ProfileEntry( edpNextContactDetailsOnLeft, "ShowNextContactDetailsOnLeft", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpScrollingContestTabs, "ScrollingContestTabs", false, "hint" ) );
-         entries.push_back( ProfileEntry( edpShowOperators, "ShowOperators", true, "hint" ) );
+         entries.push_back( ProfileEntry( edpTop, "Top", 10, "", "Top of Logger window" ) );
+         entries.push_back( ProfileEntry( edpLeft, "Left", 25, "", "Left of Logger window" ) );
+         entries.push_back( ProfileEntry( edpWidth, "Width", 780, "", "Width of Logger window" ) );
+         entries.push_back( ProfileEntry( edpHeight, "Height", 590, "", "Height of Logger window" ) );
+         entries.push_back( ProfileEntry( edpShowContinentEU, "ShowContinentEU", true, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowContinentAS, "ShowContinentAS", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowContinentAF, "ShowContinentAF", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowContinentOC, "ShowContinentOC", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowContinentSA, "ShowContinentSA", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowContinentNA, "ShowContinentNA", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowWorked, "ShowWorked", true, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowUnworked, "ShowUnworked", true, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpNextContactDetailsOnLeft, "ShowNextContactDetailsOnLeft", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpScrollingContestTabs, "ScrollingContestTabs", false, "", "hint" ) );
+         entries.push_back( ProfileEntry( edpShowOperators, "ShowOperators", true, "", "hint" ) );
 
-         entries.push_back( ProfileEntry( edpEditor, "Editor", "Notepad.exe", "Default editor" ) );
-         entries.push_back( ProfileEntry( edpAutoBandMapTuneAmount, "AutoBandMapTuneAmount", 2000, "Send to band map on tune more than x Hz " ) );
-         entries.push_back( ProfileEntry( edpAutoBandMapTune, "AutoBandMapTune", false, "Enable send to band map on tune" ) );
-         entries.push_back( ProfileEntry( edpAutoBandMapTimeLapse, "AutoBandMapTimeLapse", 20, "Send to band map on leaving more than x seconds " ) );
-         entries.push_back( ProfileEntry( edpAutoBandMapTime, "AutoBandMapTime", false, "Enable send to band map on time lapse" ) );
-         entries.push_back( ProfileEntry( edpStatisticsPeriod1, "Statistics Period 1", 10, "Statistics Period 1" ) );
-         entries.push_back( ProfileEntry( edpStatisticsPeriod2, "Statistics Period 2", 60, "Statistics Period 2" ) );
+         entries.push_back( ProfileEntry( edpEditor, "Editor", "Notepad.exe", "", "Default editor" ) );
+         entries.push_back( ProfileEntry( edpAutoBandMapTuneAmount, "AutoBandMapTuneAmount", 2000, "", "Send to band map on tune more than x Hz " ) );
+         entries.push_back( ProfileEntry( edpAutoBandMapTune, "AutoBandMapTune", false, "", "Enable send to band map on tune" ) );
+         entries.push_back( ProfileEntry( edpAutoBandMapTimeLapse, "AutoBandMapTimeLapse", 20, "", "Send to band map on leaving more than x seconds " ) );
+         entries.push_back( ProfileEntry( edpAutoBandMapTime, "AutoBandMapTime", false, "", "Enable send to band map on time lapse" ) );
+         entries.push_back( ProfileEntry( edpStatisticsPeriod1, "Statistics Period 1", 10, "", "Statistics Period 1" ) );
+         entries.push_back( ProfileEntry( edpStatisticsPeriod2, "Statistics Period 2", 60, "", "Statistics Period 2" ) );
          break;
       case epENTRYPROFILE:
-         entries.push_back( ProfileEntry( eepCall, "Call", "", "Call sign used" ) );
-         entries.push_back( ProfileEntry( eepEntrant, "Entrant", "", "Name of club/group" ) );
-         entries.push_back( ProfileEntry( eepMyName, "MyName", "", "Name of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyCall, "MyCall", "", "Callsign of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepCall, "Call", "", "Call Used", "Call sign used" ) );
+         entries.push_back( ProfileEntry( eepEntrant, "Entrant", "", "On Behalf Of (Club)", "Name of club/group" ) );
+         entries.push_back( ProfileEntry( eepMyName, "MyName", "", "My Name", "Name of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyCall, "MyCall", "", "My Call", "Callsign of responsible operator" ) );
 
-         entries.push_back( ProfileEntry( eepMyAddress1, "MyAddress1", "", "Address line 1 of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyAddress2, "MyAddress2", "", "Address line 2 of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyCity, "MyCity", "", "City of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyCountry, "MyCountry", "", "Country of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyPostCode, "MyPostCode", "", "Post Code of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyPhone, "MyPhone", "", "Phone no. of responsible operator" ) );
-         entries.push_back( ProfileEntry( eepMyEmail, "MyEmail", "", "eMail address of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyAddress1, "MyAddress1", "", "My Address", "Address line 1 of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyAddress2, "MyAddress2", "", "My Address", "Address line 2 of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyCity, "MyCity", "", "My City", "City of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyCountry, "MyCountry", "", "My Country", "Country of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyPostCode, "MyPostCode", "", "My Postcode", "Post Code of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyPhone, "MyPhone", "", "My Phone", "Phone no. of responsible operator" ) );
+         entries.push_back( ProfileEntry( eepMyEmail, "MyEmail", "", "My Email", "eMail address of responsible operator" ) );
          break;
       case epQTHPROFILE:
-         entries.push_back( ProfileEntry( eqpLocator, "Locator", "", "Locator" ) );
-         entries.push_back( ProfileEntry( eqpDistrict, "District", "", "District Exchange" ) );
-         entries.push_back( ProfileEntry( eqpLocation, "Location", "", "Descriptive Location Exchange" ) );
-         entries.push_back( ProfileEntry( eqpStationQTH1, "StationQTH1", "", "Address line 1/2 of station" ) );
-         entries.push_back( ProfileEntry( eqpStationQTH2, "StationQTH2", "", "Address line 2/2 of station" ) );
-         entries.push_back( ProfileEntry( eqpASL, "ASL", 0, "QTH height ASL (metres)" ) );
+         entries.push_back( ProfileEntry( eqpLocator, "Locator", "", "", "Locator" ) );
+         entries.push_back( ProfileEntry( eqpDistrict, "District", "", "", "District Exchange" ) );
+         entries.push_back( ProfileEntry( eqpLocation, "Location", "", "", "Descriptive Location Exchange" ) );
+         entries.push_back( ProfileEntry( eqpStationQTH1, "StationQTH1", "", "Station QTH", "Address line 1/2 of station" ) );
+         entries.push_back( ProfileEntry( eqpStationQTH2, "StationQTH2", "", "Station QTH", "Address line 2/2 of station" ) );
+         entries.push_back( ProfileEntry( eqpASL, "ASL", 0, "QTH Height ASL (metres)", "QTH height ASL (metres)" ) );
          break;
       case epSTATIONPROFILE:
-         entries.push_back( ProfileEntry( espPower, "Power", 0, "Transmit Power (Watts)" ) );
-         entries.push_back( ProfileEntry( espTransmitter, "Transmitter", "", "Transmit Equipment" ) );
-         entries.push_back( ProfileEntry( espReceiver, "Receiver", "", "Receive Equipment" ) );
-         entries.push_back( ProfileEntry( espAntenna, "Antenna", "", "Antenna details" ) );
-         entries.push_back( ProfileEntry( espAGL, "AGL", 0, "Antenna Height AGL (metres)" ) );
-		 entries.push_back( ProfileEntry( espOffset, "Bearing Offset", 0, "Amount to offset antenna bearings" ) );
+         entries.push_back( ProfileEntry( espPower, "Power", 0, "Transmitter Power", "Transmit Power (Watts)" ) );
+         entries.push_back( ProfileEntry( espTransmitter, "Transmitter", "", "", "Transmit Equipment" ) );
+         entries.push_back( ProfileEntry( espReceiver, "Receiver", "", "", "Receive Equipment" ) );
+         entries.push_back( ProfileEntry( espAntenna, "Antenna", "", "", "Antenna details" ) );
+         entries.push_back( ProfileEntry( espAGL, "AGL", 0, "Antenna Height AGL (metres)", "Antenna Height AGL (metres)" ) );
+		 entries.push_back( ProfileEntry( espOffset, "Bearing Offset", 0, "Antenna Bearing Offset", "Amount to offset antenna bearings" ) );
 		 break;
    }
 }
@@ -757,7 +757,7 @@ boost::shared_ptr<BundleFile>BundleFile::getBundleFile( PROFILES p )
 }
 ProfileEntry &BundleFile::GetKey( int p )
 {
-   static ProfileEntry NullEntry( -1, "", 0, "" );
+   static ProfileEntry NullEntry( -1, "", 0,"",  "" );
    for ( unsigned int i = 0; i < entries.size(); i++ )
    {
       if ( entries[ i ].id == p )
@@ -838,14 +838,20 @@ bool SettingsBundle::checkKeyExists( const char *key )
    }
    return bundleFile->iniFile->checkKeyExists( currsection.c_str(), key );
 }
-std::string SettingsBundle::nameOf( int enumKey )
+std::string SettingsBundle::displayNameOf( int enumKey )
 {
    if ( bool( bundleFile ) && currsection != noneBundle )
    {
       for ( std::vector<ProfileEntry>::iterator i = bundleFile->entries.begin(); i != bundleFile->entries.end(); i++ )
       {
          if ( ( *i ).id == enumKey )
+         {
+            if (( *i ).dispname.size())
+            {
+               return ( *i ).dispname;
+            }
             return ( *i ).name;
+         }
       }
    }
    return "";

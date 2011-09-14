@@ -136,7 +136,7 @@ void TSettingsEditDlg::showDetails()
       for ( unsigned int r = 0; r < entries.size(); r++ )
       {
          //                    col row
-         SectionGrid->Cells[ 0 ][ r + 1 ] = bundle->nameOf( entries[ r ] ).c_str();
+         SectionGrid->Cells[ 0 ][ r + 1 ] = bundle->displayNameOf( entries[ r ] ).c_str();
          std::string val;
          bundle->getStringProfile( entries[ r ], val );
          //                    col row

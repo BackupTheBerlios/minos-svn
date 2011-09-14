@@ -18,6 +18,7 @@ class ProfileEntry
    public:
       int id;
       std::string name;
+      std::string dispname;
 
       std::string sdefaultval;
       int idefaultval;
@@ -25,9 +26,9 @@ class ProfileEntry
 
       std::string hint;
       void createEntry( SettingsBundle * );
-      ProfileEntry( int id, const char *n, const char *d, const char *h );
-      ProfileEntry( int id, const char *n, int d, const char *h );
-      ProfileEntry( int id, const char *n, bool d, const char *h );
+      ProfileEntry( int id, const char *n, const char *d, const char * dname, const char *h );
+      ProfileEntry( int id, const char *n, int d, const char * dname, const char *h );
+      ProfileEntry( int id, const char *n, bool d, const char * dname, const char *h );
 };
 class INIFile;
 
@@ -71,7 +72,7 @@ class SettingsBundle
       void closeProfile( void );
 
       bool checkKeyExists( const char *key );
-      std::string nameOf( int enumKey );
+      std::string displayNameOf( int enumKey );
       void getBoolProfile( const char *key, bool &value, bool def );
       void getBoolProfile( const char *key, MinosItem<bool> &value, bool def );
       void setBoolProfile( const char *key, bool value );
