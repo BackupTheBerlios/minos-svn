@@ -1,3 +1,5 @@
+59(9) autofil can cause problems - make autofill optional(somehow)
+==================================================================
 MessageBox doesn't get the font change - QSOFrame 1083 (QSO has changed)
 especially needs this.
 done - Font change lost in edit frame!
