@@ -1,10 +1,15 @@
-Make next public release 1.5.4
 ==================================================================
-1.5.3  - release notes to G4BRA
+==================================================================
+1.5.4
 - Font selection and scaling; Support of large screen fonts; hence some layouts re-arranged. Look at Tools|Select Font.
+
 Fonts selection works mostly; I know that menus are still in the system defined font, as are some "standard" dialogs. If you use this, let me know where I've missed it.
 
+Font selection has also lead to some layout changes to make it work properly.
+
 - Long(unlimited)) CSL list lines accepted
+
+- Signal Report autofill made optional, and initially defaulted to "off"; look on "Tools" menu to re-enable it
 
 - Force date format; now works on machines with non-UK date/time formats (but still uses UK formats on display)
 
@@ -18,15 +23,8 @@ MinosLogger.ini (File|Options) is rather "raw", and not very friendly.
 minor bug fixes : 
   scrolling of QSOs in catch-up
   propogation of CW across multiple QSOs
-==================================================================
-1.5.4 (now going to be 1.5.3)
-Font selection and scaling
-Support of large screen fonts
-some layouts re-arranged
-Long(unlimited)) CSL list lines accepted
-minor bug fixes : 
-  scrolling of QSOs in catch-up
-  propogation of CW across multiple QSOs
+  numerics not allowed in callsign body
+  Must be a numeric portion in call (2LO becomes illegal!)
 ==================================================================
 1.5.3 (only released privately as a Beta)
 

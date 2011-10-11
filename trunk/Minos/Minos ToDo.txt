@@ -1,4 +1,7 @@
-59(9) autofil can cause problems - make autofill optional(somehow)
+==================================================================
+Better callsign checking - don't allow trailing numerics 
+==================================================================
+done 59(9) autofil can cause problems - make autofill optional(somehow)
 ==================================================================
 MessageBox doesn't get the font change - QSOFrame 1083 (QSO has changed)
 especially needs this.
