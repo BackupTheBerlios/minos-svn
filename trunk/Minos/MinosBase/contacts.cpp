@@ -168,38 +168,6 @@ CountryEntry *findCtryPrefix( const callsign &cs )
             clen--;
             csyn = MultLists::getMultLists() ->searchCountrySynonym(testpart );
          }
-/*
-         testpart = cs.fullCall.getValue();
-         testpart = trimr( testpart );
-
-         int clen = testpart.length();
-         int minlen;
-#warning do we need to set minlen to 1?
-         for ( minlen = 0; minlen < clen; minlen++ )
-         {
-            // go past any leading digits
-            if ( !isdigit( testpart[ minlen ] ) )
-               break;
-         }
-         for ( ; minlen < clen; minlen++ )
-         {
-            // and then to end of leading alpha part
-            if ( !isalpha( testpart[ minlen ] ) )
-               break;
-         }
-         while ( ( clen >= minlen ) && ( !csyn ) )
-         {
-            // we need to stop when we get to the basic prefix...
-            // otherwise RVI6ABC ends up matching R, which is UA
-            testpart[ clen ] = 0;
-            clen--;
-            csyn = MultLists::getMultLists() ->searchCountrySynonym( testpart );
-         }
-         if ( !csyn )
-         {
-            csyn = MultLists::getMultLists() ->searchCountrySynonym( cs.prefix );
-         }
-*/
       }
    }
    ctryMult = ( csyn ) ? ( csyn->country ) : 0;

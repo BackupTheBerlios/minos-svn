@@ -598,13 +598,10 @@ char callsign::validate( )
    }
 
    valRes = ERR_CSDIGIT;
-   if ( number.length() == 0 )
+   int numlen = number.length();
+
+   if ( numlen == 0 )
       return valRes;
-
-   // trim any numbers off tail of prefix (CEPT)
-
-   // But with e.g. HB0 and HB9 both being new countries, HB0/G0GJV is valid(?)
-   // So I think that we have to trust the user(YUCK!)
 
    // Replace real prefix2 with the dup check prefix2 - for dup checking
    // Need to implement the G list here...
@@ -614,19 +611,27 @@ char callsign::validate( )
       syn->getDupPrefix( prefix2 );
    }
 
-   // We maybe ought to do the WGV trick here - apart from /P, etc the shortest
-   // part of prefix/suffix is the country of operation
-   // But I think we have it reasonably correct... until someone comes up
-   // with a counter-example
+   // CountryEntry *findCtryPrefix (in contacts.cpp) does get the country by
+   // stripping back the full call (or prefix/suffix as appropriate)
+   // one by one...
 
    valRes = CS_OK;
-   if ( ( prefix.length() == 0 ) || ( prefix2.length() == 0 ) || ( number.length() == 0 )
-        || ( body.length() == 0 ) )   	// suffix can be null
+   if ( ( prefix.length() == 0 ) || ( prefix2.length() == 0 ) || ( body.length() == 0 ) )   	// suffix can be null
    {
       valRes = ERR_INVCS;
    }
 
-   return ( valRes );
+   // And also want to look for
+   //     trailing number in body
+   //
+   for (unsigned int i= 0; i < body.length(); i++)
+   {
+      if (!isalpha(body[i]))
+      {
+         valRes = ERR_INVCS;
+      }
+   }
+   return valRes ;
 }
 //============================================================
 bool callsign::isUK() const
