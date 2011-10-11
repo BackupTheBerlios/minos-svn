@@ -437,7 +437,7 @@ object LogContainer: TLogContainer
     end
     object ReportAutofillAction: TAction
       Category = 'Tools'
-      Caption = 'Report AutoFill'
+      Caption = 'Signall Report AutoFill'
       OnExecute = ReportAutofillActionExecute
     end
   end
