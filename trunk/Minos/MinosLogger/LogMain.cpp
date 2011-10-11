@@ -89,6 +89,12 @@ void __fastcall TLogContainer::StartupTimerTimer( TObject */*Sender*/ )
       bool so = isShowOperators();
       ShowOperatorsAction->Checked = so;
 
+      bool autoFill;
+      TContestApp::getContestApp() ->loggerBundle.getBoolProfile( elpAutoFill, autoFill );
+      ReportAutofill->Checked = autoFill;
+      TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpAutoFill, autoFill );
+      TContestApp::getContestApp() ->loggerBundle.flushProfile();
+
       SendDM = new TSendDM( this );
       if ( contestAppLoadFiles() )
       {
@@ -1206,6 +1212,7 @@ void __fastcall TLogContainer::FontEdit1Accept(TObject */*Sender*/)
    TFontStyles s = TContestApp::getContestApp()->sysfont->Style;
    TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpFontBold, s.Contains(fsBold));
    TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpFontItalic, s.Contains(fsItalic));
+   TContestApp::getContestApp() ->loggerBundle.flushProfile();
 
    // and then tell everyone
    MinosLoggerEvents::SendFontChanged();
@@ -1224,4 +1231,16 @@ void TLogContainer::FontChanged_Event ( MinosEventBase & /*Event*/ )
    MinosParameters::getMinosParameters() ->applyFontChange(this);
    StatusBar1Resize(this);
 }
+
+void __fastcall TLogContainer::ReportAutofillActionExecute(TObject */*Sender*/)
+{
+   bool autoFill;
+   TContestApp::getContestApp() ->loggerBundle.getBoolProfile( elpAutoFill, autoFill );
+
+   autoFill = !autoFill;
+   ReportAutofill->Checked = autoFill;
+   TContestApp::getContestApp() ->loggerBundle.setBoolProfile( elpAutoFill, autoFill );
+   TContestApp::getContestApp() ->loggerBundle.flushProfile();
+}
+//---------------------------------------------------------------------------
 

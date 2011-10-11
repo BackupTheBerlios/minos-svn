@@ -891,14 +891,19 @@ void TGJVEditFrame::fillRst( TLabeledEdit *rIl, std::string &rep, const std::str
    std::string newrep;
    if ( current == rIl )
    {
-      if ( !Validator::validateRST( rIl->Text.Trim() ) )
+      bool autoFill;
+      TContestApp::getContestApp() ->loggerBundle.getBoolProfile( elpAutoFill, autoFill );
+      if (autoFill)
       {
-         if ( ( rep.size() == 1 ) && isdigit( rep[ 0 ] ) )
+         if ( !Validator::validateRST( rIl->Text.Trim() ) )
          {
-            newrep = rep[ 0 ];
-            newrep += "9";
-            rIl->Text = newrep.c_str();
-            rep = newrep;
+            if ( ( rep.size() == 1 ) && isdigit( rep[ 0 ] ) )
+            {
+               newrep = rep[ 0 ];
+               newrep += "9";
+               rIl->Text = newrep.c_str();
+               rep = newrep;
+            }
          }
       }
       if ( ( stricmp( fmode, "A1A" ) == 0 ) && Validator::validateRST( rIl->Text.Trim() )
@@ -918,28 +923,7 @@ void TGJVEditFrame::doAutofill( void )
    if ( contest->isReadOnly() )
       return ;
    ScreenContact *vcct = &screenContact;
-   /*
-   if ( ( vcct->contactFlags & TO_BE_ENTERED ) ||  catchup)
-   {
-      // don't think we do anything here
-   }
-   else
-      if ( ( current == CallsignEdit )
-           && ( vcct->cs.validate( ) != ERR_NOCS ) )
-      {
-         // if no dtg and we are on cs, then autofill dtg
-         int tne = vcct->time.notEntered(); // partial dtg will give fe
-         // full dtg gives -ve, none gives 0
-         if ( updateTimeAllowed || tne == 0 )
-         {
-            updateTimeAllowed = false;
-            updateQSOTime();
-            vcct->time = dtg( true );
-            DateEdit->Text = vcct->time.getDate( DTGDISP ).c_str();
-            TimeEdit->Text = vcct->time.getTime( DTGDISP ).c_str();
-         }
-      }
-    */
+
    //rst sent (autofill S9)
 
    fillRst( RSTTXEdit, vcct->reps, vcct->mode );

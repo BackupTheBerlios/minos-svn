@@ -142,6 +142,8 @@ class TLogContainer : public TForm
    TMenuItem *Options1;
    TFontEdit *FontEdit1;
    TMenuItem *SelectFont1;
+   TMenuItem *ReportAutofill;
+   TAction *ReportAutofillAction;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall HelpAboutActionExecute( TObject *Sender );
@@ -192,6 +194,7 @@ class TLogContainer : public TForm
    void __fastcall OptionsActionExecute(TObject *Sender);
    void __fastcall FontEdit1Accept(TObject *Sender);
    void __fastcall FontEdit1BeforeExecute(TObject *Sender);
+   void __fastcall ReportAutofillActionExecute(TObject *Sender);
    private:  	// User declarations
       MinosEventListener  EL_FontChanged;
       void FontChanged_Event ( MinosEventBase & Event );

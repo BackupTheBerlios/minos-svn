@@ -647,20 +647,21 @@ BundleFile::BundleFile( PROFILES p )  //: iniFile( 0 )
 		 entries.push_back( ProfileEntry( elpListDirectory, "List Directory", ".\\Lists", "", "Default archive list directory" ) );
 		 entries.push_back( ProfileEntry( elpLogDirectory, "Log Directory", ".\\Logs", "", "Default logs directory" ) );
 
-		 entries.push_back( ProfileEntry( elpEntryFile, "EntryFile", ".\\Configuration\\Entry.ini", "", "File containing entry settings" ) );
-		 entries.push_back( ProfileEntry( elpStationFile, "StationFile", ".\\Configuration\\Station.ini", "", "File containing station settings" ) );
-		 entries.push_back( ProfileEntry( elpQTHFile, "QTHFile", ".\\Configuration\\QTH.ini", "", "File containing QTH settings" ) );
+		 entries.push_back( ProfileEntry( elpEntryFile, "EntryFile", ".\\Configuration\\Entry.ini", "Entry settings file", "File containing entry settings" ) );
+		 entries.push_back( ProfileEntry( elpStationFile, "StationFile", ".\\Configuration\\Station.ini", "Station settings file", "File containing station settings" ) );
+		 entries.push_back( ProfileEntry( elpQTHFile, "QTHFile", ".\\Configuration\\QTH.ini", "QTH settings file", "File containing QTH settings" ) );
 
-		 entries.push_back( ProfileEntry( elpDisplayFile, "DisplayFile", ".\\Configuration\\Display.ini", "", "File containing saved display settings" ) );
-		 entries.push_back( ProfileEntry( elpDisplaySection, "DisplaySection", "Default", "", "Section to use in display file" ) );
-		 entries.push_back( ProfileEntry( elpOperatorFile, "OperatorFile", ".\\Configuration\\Operator.ini", "", "File containing operators" ) );
-		 entries.push_back( ProfileEntry( elpOperatorSection, "OperatorSection", "Default", "", "section to use in operators file" ) );
-		 entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "", "File containing log and list pre-loads" ) );
-		 entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "", "Section to use in preload file" ) );
-       entries.push_back( ProfileEntry( elpFontName, "FontName", "Verdana", "", "Font name" ) );
-       entries.push_back( ProfileEntry( elpFontSize, "FontSize", 8, "", "Font Size (points)" ) );
-       entries.push_back( ProfileEntry( elpFontBold, "FontBold", false, "", "Font Bold" ) );
-       entries.push_back( ProfileEntry( elpFontItalic, "FontItalic", false, "", "Font Italic" ) );
+		 entries.push_back( ProfileEntry( elpDisplayFile, "DisplayFile", ".\\Configuration\\Display.ini", "Display settings file", "File containing saved display settings" ) );
+		 entries.push_back( ProfileEntry( elpDisplaySection, "DisplaySection", "Default", "Display file section", "Section to use in display file" ) );
+		 entries.push_back( ProfileEntry( elpOperatorFile, "OperatorFile", ".\\Configuration\\Operator.ini", "Operators file", "File containing operators" ) );
+		 entries.push_back( ProfileEntry( elpOperatorSection, "OperatorSection", "Default", "Operators file section", "section to use in operators file" ) );
+		 entries.push_back( ProfileEntry( elpPreloadFile, "PreloadFile", ".\\Configuration\\Preload.ini", "Log and List preload file", "File containing log and list pre-loads" ) );
+		 entries.push_back( ProfileEntry( elpPreloadSection, "PreloadSection", "Default", "Preload file section", "Section to use in preload file" ) );
+       entries.push_back( ProfileEntry( elpFontName, "FontName", "Verdana", "Font Name", "Font name" ) );
+       entries.push_back( ProfileEntry( elpFontSize, "FontSize", 8, "Font Size (Points)", "Font Size (points)" ) );
+       entries.push_back( ProfileEntry( elpFontBold, "FontBold", false, "Bold font", "Font Bold" ) );
+       entries.push_back( ProfileEntry( elpFontItalic, "FontItalic", false, "Italic font", "Font Italic" ) );
+       entries.push_back( ProfileEntry( elpAutoFill, "AutoFill", false, "Auto Fill signal report", "Auto Fill signal report on return" ) );
 
 		 break;
 	  case epPRELOADPROFILE:

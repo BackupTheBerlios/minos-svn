@@ -435,6 +435,11 @@ object LogContainer: TLogContainer
       BeforeExecute = FontEdit1BeforeExecute
       OnAccept = FontEdit1Accept
     end
+    object ReportAutofillAction: TAction
+      Category = 'Tools'
+      Caption = 'Report AutoFill'
+      OnExecute = ReportAutofillActionExecute
+    end
   end
   object TimeDisplayTimer: TTimer
     OnTimer = TimeDisplayTimerTimer
@@ -623,6 +628,9 @@ object LogContainer: TLogContainer
       end
       object SelectFont1: TMenuItem
         Action = FontEdit1
+      end
+      object ReportAutofill: TMenuItem
+        Action = ReportAutofillAction
       end
     end
     object Help1: TMenuItem
