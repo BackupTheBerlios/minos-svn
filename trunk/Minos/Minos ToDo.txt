@@ -2,60 +2,19 @@ G4APJ Somewhat belatedly, a problem I noticed during the 50MHz AFS.
 
 When I invoked the 'F12 function' (by whatever method) the Postal Code did
 not get loaded.
-==================================================================
-What is wrong with my operator transfer code
-1. Can't remove operators
-2. Doesn't work well with existing contests
 
-?? have line for "operators in QSOs" - can't separate operator 1 and operator 2!
-Then entrant can transfer these using cut/paste.
-
-If NOTHING manually entered then just transfer ops across as they are. 
-==================================================================
-Transfer operators from QSOs to cover sheet!
-==================================================================
-done Better callsign checking - don't allow trailing numerics 
-==================================================================
-done 59(9) autofil can cause problems - make autofill optional(somehow)
 ==================================================================
 MessageBox doesn't get the font change - QSOFrame 1083 (QSO has changed)
 especially needs this.
 done - Font change lost in edit frame!
 ==================================================================
-Done - I think
-Being well past my sell by date, I find logging in real time a non starter. Just writing info down is hard enough, never mind my one finger typeing..!! The speed that some stations speak their info also doesn't help. But, to the point. When you enter contacts in real time, the main upper window scrolls upwards, so you can always see the last few stations you have logged. When you use "catch up (post entry)" the entrys fill the main window, then disappear off the bottom. As I like to keep a check as I go along that I haven't missed a entering a contact, not an unknown thing to happen, it means jumping in and out of the catch up window. Would there be any chance of them scrolling off the top of the main window, rather than off the bottom..?
-
-==================================================================
 Sanity check of splitter positions - all I'm doing is screwing it up further; check on release version
 
-==================================================================
-Done - initial mode not being marked as dirty
-MikeP CW complaints
-I may have found an odd error in Minos version 1.4.0.263 (which is the latest on my machine! but not necessarily latest version).
- 
-In the 6 metre contest this month, I worked a string of CW stations several times in amongst the usual number of SSB stations. The QSOs have logged the RST correctly as 599 (or whatever) rather than 59 etc.. However when I put the QSO in edit mode it shows the mode as J3E. You can see this from examination of any string of CW QSOs, the first seems OK but the remainder have the correct RST but mode shown as J3E. See also the same QSOs in the ADIF.
- 
-I don't remember doing any mode change between QSOs and in fact in some case the QSOs are close enough together in time for that to be unlikely.
- 
-I only found this by uploading the QSOs in ADIF form to both my main log and to eqsl and LOTW and discovering that some QSOs in eqsl did not match!!! The mode was SSB instead of CW for CW QSOs.
- 
-I am prepared to believe I may have done something wrong as I don't use Minos too often these days.
- 
-I am also curious how one should log mixed mode e.g. ssb receive and CW TX in Minos as this happens quite often with weak stations (like me) working QRO stations like MD6V or G4BRA!! I suspect this will always trip up the log checking programme unless you have set it up to cope with this sort of oddity.
- 
-Enclosed are my logs for 18 Jun in both monos and ADI format.
- 
-Your log checker should throw up a number of QSO errors when it checks my entry for the 50Mhz trophy!!! I have not time to correct it now so please move it to a check log. (unless you want to fix it for me ;-)    )
- 
-I am off to Isle of Arran tomorrow so listen for GM4DDL on 6m and possibly 2m - also on HF most of the week including SOTA operations as GM4DDL/P
  ==================================================================
 Would be very nice to get column sorting going everywhere - but we need a clear reset.
 ==================================================================
 various places we have getline into a 256 byte buffer. This for one
 kills Steve's generated CSL files. Others are probably OK 
-==================================================================
-Uri mode - force an invalid contact and carry on and we keep going back to that contact.
-Top of check boxes says "Unfilled - enter later". Just uncheck it when forcing...
 ==================================================================
 We want an option(options?) to control visibility in a KML export
 ==================================================================
@@ -70,7 +29,6 @@ done sizing on the status bar (clock gets eaten, or the score gets eaten...)
 Menus - but these are under the control of Windows
 fly by hints
 ==================================================================
-(done) Check that when you turn "G locs only" on/off they respond (status line does...)
 Better header text for loc/distance in country and district display
 Double click on contest in Vista default directory says "already open"?
 ==================================================================
@@ -84,24 +42,6 @@ on Vista/Windows 7 (but test it...)
 e.g.
 [Default]
 Log Directory=c:\temp
-==================================================================
-Want worked by country; either from select on mults list(s) or by sort on match?
-SINGLE click on dxcc/postcode will do; locs are a bit more difficult
-as they aren't a grid. With PC and loc, we can always just type in
-but single click is easier.
-Need to keep the "listings" until we return to the QSO properly
-so we can scroll, sort, etc as required
-==================================================================
-M1MHz                   The bearing display is only a true bearing and we found it 
-particularly useful in “GJV LOG” where you could alter the offset to display a 
-correct heading for the rotator needle/scale where estimated during contest setup.
-
-Where do we set and store this? MinosLogger.ini (epLOGGERPROFILE)? Need a config editor for it.
-Is this as for the bundle editor? But with only one bundle allowed? What would
-multiple logger bundles mean, and how would we choose one(section=bundle under default?)?
-
-For what Bob wants, I think it would be under "station" as a bearing offset?
-Done - but we want an additional status bar entry for it
 ===========================================================================
 Facility to defeat fly by hints? Maybe us status bar instead (which is where they will be on Qt)?
 ===========================================================================
@@ -126,7 +66,6 @@ We DEFINITELY need a colour choice dialog...
 	match Xfer and match xfer selected
 	And probably others...
 	
-And the holy grail - font choice! Can we do this globally? Doubt it without self sizing controls (wait for Qt!).
 ===========================================================================
 Thanks for the new version Mike
 
