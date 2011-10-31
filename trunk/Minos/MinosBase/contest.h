@@ -196,6 +196,9 @@ class BaseContestLog
 
       OperatorList oplist;
 
+      std::string opsQSO1;
+      std::string opsQSO2;
+
       int maxSerial;
       long contestScore;
 

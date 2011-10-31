@@ -20,6 +20,8 @@ MinosLogger.ini (File|Options) is rather "raw", and not very friendly.
 
 - Antenna bearing offset in station bundle; has O suffix in QSO frame (e.g. 60degOT); no suffix on bearing in lists.
 
+- Improved transfer of operator callsigns to the entry file
+
 minor bug fixes : 
   scrolling of QSOs in catch-up
   propogation of CW across multiple QSOs

@@ -62,8 +62,7 @@ bool reg1test::exportTest( HANDLE expfd )
    int ndistrict = 0;
    int nlocs = 0;
 
-   if ( ct->countryMult.getValue() )
-   {
+   if ( ct->countryMult.getValue() )   {
       ltot += ct->nctry ;
       nctry = ct->nctry;
    }
@@ -141,8 +140,17 @@ bool reg1test::exportTest( HANDLE expfd )
    linelist[ ( int ) RPhon ] = reg1testLine( "RPhon", ct->entPhone.getValue()  /*, "Phone no. of responsible operator"*/ );
 
    linelist[ ( int ) RHBBS ] = reg1testLine( "RHBBS", ct->entEMail.getValue()  /*, "EMAIL address of responsible operator"*/ );
-   linelist[ ( int ) MOpe1 ] = reg1testLine( "MOpe1", ct->ops1.getValue()  /*, "Operators line 1/2"*/ );
-   linelist[ ( int ) MOpe2 ] = reg1testLine( "MOpe2", ct->ops2.getValue()  /*, "Operators line 2/2"*/ );
+
+   std::string opsl1 = ct->ops1.getValue();
+   std::string opsl2 = ct->ops2.getValue();
+   if (opsl1.size() == 0 && opsl2.size() == 0)
+   {
+      opsl1 = ct->opsQSO1;
+      opsl2 = ct->opsQSO2;
+   }
+
+   linelist[ ( int ) MOpe1 ] = reg1testLine( "MOpe1", opsl1  /*, "Operators line 1/2"*/ );
+   linelist[ ( int ) MOpe2 ] = reg1testLine( "MOpe2", opsl2  /*, "Operators line 2/2"*/ );
    linelist[ ( int ) STXEq ] = reg1testLine( "STXEq", ct->entTx.getValue()  /*, "TX Equipment"*/ );
    linelist[ ( int ) SPowe ] = reg1testLine( "SPowe", ct->power.getValue()  /*, "TX Power (W)"*/ );
    linelist[ ( int ) SRXEq ] = reg1testLine( "SRXEq", ct->entRx.getValue()  /*, "RX Equipment"*/ );

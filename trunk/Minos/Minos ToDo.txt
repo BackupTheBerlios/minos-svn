@@ -1,5 +1,20 @@
+G4APJ Somewhat belatedly, a problem I noticed during the 50MHz AFS.
+
+When I invoked the 'F12 function' (by whatever method) the Postal Code did
+not get loaded.
 ==================================================================
-Better callsign checking - don't allow trailing numerics 
+What is wrong with my operator transfer code
+1. Can't remove operators
+2. Doesn't work well with existing contests
+
+?? have line for "operators in QSOs" - can't separate operator 1 and operator 2!
+Then entrant can transfer these using cut/paste.
+
+If NOTHING manually entered then just transfer ops across as they are. 
+==================================================================
+Transfer operators from QSOs to cover sheet!
+==================================================================
+done Better callsign checking - don't allow trailing numerics 
 ==================================================================
 done 59(9) autofil can cause problems - make autofill optional(somehow)
 ==================================================================

@@ -20,52 +20,52 @@
     <CfgParent>Base</CfgParent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Base)'!=''">
-    <OutputExt>exe</OutputExt>
     <DCC_Optimize>false</DCC_Optimize>
-    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
-    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
+    <OutputExt>exe</OutputExt>
     <Defines>TIXML_USE_STL</Defines>
-    <DCC_ObjPath>..\MinosBase;..\MinosMonitor;..\MinosConfig</DCC_ObjPath>
+    <ILINK_IntermediateOutputPath>obj</ILINK_IntermediateOutputPath>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
     <BCC_OutputDir>obj\</BCC_OutputDir>
-    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <DCC_ObjPath>..\MinosBase;..\MinosMonitor;..\MinosConfig</DCC_ObjPath>
     <DynamicRTL>true</DynamicRTL>
-    <BRCC_OutputDir>obj\</BRCC_OutputDir>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
     <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <BRCC_OutputDir>obj\</BRCC_OutputDir>
     <OptPCH>"vcl.h"="vcl3.h"</OptPCH>
-    <ILINK_AppType>Windows</ILINK_AppType>
     <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
-    <UsePackages>true</UsePackages>
-    <ILINK_ObjectSearchPath>..\MinosBase;..\MinosMonitor;..\MinosConfig;..\WhisperSplitter</ILINK_ObjectSearchPath>
-    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <ILINK_AppType>Windows</ILINK_AppType>
     <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <ILINK_ObjectSearchPath>..\MinosBase;..\MinosMonitor;..\MinosConfig;..\WhisperSplitter</ILINK_ObjectSearchPath>
+    <UsePackages>true</UsePackages>
     <FinalOutputDir>.</FinalOutputDir>
-    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
-    <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
     <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+    <TASM_AdditionalSwitches> /w2 obj\</TASM_AdditionalSwitches>
+    <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;dbrtl.bpi;vcldb.bpi;vclib.bpi;vclactnband.bpi;vcldbx.bpi;VTV.bpi;GJVControls.bpi;GJVAudio.bpi</PackageImports>
     <DCC_UnitSearchPath>..\MinosBase;..\MinosMonitor;..\MinosConfig;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
-    <BRCC_UserSuppliedOptions> ..\MinosConfig</BRCC_UserSuppliedOptions>
-    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
     <PackageLibs>IndyCore.lib;IndySystem.lib;IndyProtocols.lib</PackageLibs>
-    <DCC_DcuOutput>obj\</DCC_DcuOutput>
-    <BCC_PCHCache>true</BCC_PCHCache>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <BRCC_UserSuppliedOptions> ..\MinosConfig</BRCC_UserSuppliedOptions>
     <IncludePath>$(VTV)\Source;..\..\vcl\RADStudio2007;..\WhisperSplitter;..</IncludePath>
-    <AllPackageLibs>vcl.lib;rtl.lib;vcldb.lib;dbrtl.lib;vclx.lib;vclactnband.lib;VTV.lib;GJVControls.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib</AllPackageLibs>
-    <BRCC_IncludePath>C:\Boost\include;..\iksemel\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;..\minosconfig;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Program Files\Soft Gems\Virtual Treeview\Source</BRCC_IncludePath>
-    <TASM_IncludePath>..\MinosConfig</TASM_IncludePath>
-    <DCC_IncludePath>..\MinosBase;..\MinosMonitor;..\MinosConfig;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
-    <ILINK_MapFileType>DetailedSegments</ILINK_MapFileType>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <DCC_DcuOutput>obj\</DCC_DcuOutput>
     <BCC_IncludePath>$(BOOST)\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(VTV)\Source;$(TINYXML)</BCC_IncludePath>
-    <ILINK_LibraryPath>..\MinosBase;..\MinosMonitor;..\MinosDisplay;..\XMPPLib;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BDS)\lib\psdk;$(TINYXML);..\WhisperSplitter</ILINK_LibraryPath>
-    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <ILINK_MapFileType>DetailedSegments</ILINK_MapFileType>
+    <DCC_IncludePath>..\MinosBase;..\MinosMonitor;..\MinosConfig;.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <TASM_IncludePath>..\MinosConfig</TASM_IncludePath>
+    <BRCC_IncludePath>C:\Boost\include;..\iksemel\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;..\minosconfig;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Program Files\Soft Gems\Virtual Treeview\Source</BRCC_IncludePath>
+    <AllPackageLibs>vcl.lib;rtl.lib;vcldb.lib;dbrtl.lib;vclx.lib;vclactnband.lib;VTV.lib;GJVControls.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib</AllPackageLibs>
     <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-    <Multithreaded>true</Multithreaded>
-    <TASM_Defines>_DEBUG HAVE_CONFIG_H</TASM_Defines>
-    <BRCC_Defines>_DEBUG;HAVE_CONFIG_H</BRCC_Defines>
-    <DCC_ObjOutput>obj\</DCC_ObjOutput>
+    <BCC_InternalDefines>NO_STRICT</BCC_InternalDefines>
+    <ILINK_LibraryPath>..\MinosBase;..\MinosMonitor;..\MinosDisplay;..\XMPPLib;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BDS)\lib\psdk;$(TINYXML);..\WhisperSplitter</ILINK_LibraryPath>
     <ILINK_MapWithMangledNames>true</ILINK_MapWithMangledNames>
+    <DCC_ObjOutput>obj\</DCC_ObjOutput>
+    <BRCC_Defines>_DEBUG;HAVE_CONFIG_H</BRCC_Defines>
+    <TASM_Defines>_DEBUG HAVE_CONFIG_H</TASM_Defines>
+    <Multithreaded>true</Multithreaded>
     <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
-    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
     <DCC_ResourcePath>..\MinosBase;..\MinosMonitor;..\MinosConfig</DCC_ResourcePath>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Cfg_1)'!=''">
     <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
@@ -79,8 +79,8 @@
     <TASM_Debugging>Full</TASM_Debugging>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Cfg_2)'!=''">
-    <DCC_Optimize>true</DCC_Optimize>
     <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <DCC_Optimize>true</DCC_Optimize>
     <BCC_InlineFunctionExpansion>true</BCC_InlineFunctionExpansion>
     <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
     <DCC_DebugInformation>false</DCC_DebugInformation>
@@ -95,6 +95,18 @@
     <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
     <BorlandProject>
 <BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2057</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Count">19</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item0">$(VTV)\Source;..\..\vcl\RADStudio2007;..\WhisperSplitter;..</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item1">$(VTV)\Source;..\..\vcl\RADStudio2007;..\WhisperSplitter</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item2">$(VTV)\Source;..\..\vcl\RADStudio2007</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item3">$(VTV)\Source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item4">..\MinosConfig;$(VTV)\Source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item5">..\MinosConfig</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item6">..\MinosConfig;c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source;..\iksemel;..\XMPPLib;..\iksemel\include</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item7">..\MinosConfig;c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source;..\iksemel;..\XMPPLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item8">c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source;..\iksemel;..\XMPPLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item9">c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source;..\iksemel;..\XMPPLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item10">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source;..\iksemel;..\XMPPLib</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item11">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item12">C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source;C:\Program Files\Soft Gems\Theme Manager\Source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item13">C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item14">E:\Program Files\Borland\CBuilder6\Projects;..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item15">..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons;..\..\tporpheus\source</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item16">..;$(BCB)\include;$(BCB)\include\vcl;C:\vcl\addons</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item17">E:\PROGRAM FILES\BORLAND\CBuilder6\Examples\Docking;..;MinosLogger;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath><HistoryLists_hlIncludePath Name="Item18">E:\PROGRAM FILES\BORLAND\CBuilder6\Examples\Docking;..\;MinosLogger;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath></HistoryLists_hlIncludePath><HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Count">12</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item0">..\MinosConfig;c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source;..\iksemel\src;..\XMPPLib;C:\Boost\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item1">c:\vcl\splitters;c:\vcl;..\TestRig;c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source;..\iksemel\src;..\XMPPLib;C:\Boost\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item2">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source;..\iksemel\src;..\XMPPLib;C:\Boost\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item3">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;$(BCB)\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source;..\iksemel\src;..\XMPPLib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item4">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source;..\iksemel\src;..\XMPPLib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item5">c:\vcl\trees;C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item6">C:\Program Files\Soft Gems\Virtual Treeview\Source;E:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item7">E:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item8">$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib;..\..\tporpheus\source</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item9">$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item10">E:\PROGRAM FILES\BORLAND\CBuilder6\Examples\Docking;..;MinosLogger;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath><HistoryLists_hlLibraryPath Name="Item11">E:\PROGRAM FILES\BORLAND\CBuilder6\Examples\Docking;..\;MinosLogger;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath></HistoryLists_hlLibraryPath><HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath><HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath></HistoryLists_hlDebugSourcePath><HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Count">2</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item0">_DEBUG;HAVE_CONFIG_H</HistoryLists_hlConditionals><HistoryLists_hlConditionals Name="Item1">_DEBUG</HistoryLists_hlConditionals></HistoryLists_hlConditionals><HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Count">1</HistoryLists_hlIntOutputDir><HistoryLists_hlIntOutputDir Name="Item0">obj</HistoryLists_hlIntOutputDir></HistoryLists_hlIntOutputDir><Debugging><Debugging Name="DebugSourceDirs">$(BCB)\source\vcl;C:\berlios\Minos\MinosBase\</Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><Source><Source Name="MainSource">MinosLogger.cpp</Source></Source><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">.</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">..\MinosBase;..\MinosMonitor;..\MinosDisplay;..\XMPPLib;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BDS)\lib\psdk;$(TINYXML);..\WhisperSplitter</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item1">$(BDS)\lib\debug;..\MinosBase;..\MinosMonitor;..\MinosDisplay;..\MinosConfig;..\iksemel\src;..\XMPPLib;$(GJVVCL);$(BDS)\lib\obj;$(BDS)\lib;$(BDS)\lib\psdk;$(JVCL)\jcl\lib\d11;$(JVCL)\jvcl\lib\d11</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item0">$(BOOST)\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(VTV)\Source;$(TINYXML)</HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_IncludePath Name="Item1">$(BOOST)\include;..\iksemel\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;..\minosconfig;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;$(GJVVCL);$(VTV)\Virtual Treeview\Source</HistoryLists_hlBCC_IncludePath></HistoryLists_hlBCC_IncludePath><HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Count">1</HistoryLists_hlBCC_OutputDir><HistoryLists_hlBCC_OutputDir Name="Item0">obj\</HistoryLists_hlBCC_OutputDir></HistoryLists_hlBCC_OutputDir><HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_IncludePath Name="Count">1</HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_IncludePath Name="Item0">C:\Boost\include;..\iksemel\include;..\XMPPLib;..\minosbase;..\minosdisplay;..\MinosMonitor;..\minosconfig;..\iksemel\src;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware;c:\vcl;C:\Program Files\Soft Gems\Virtual Treeview\Source</HistoryLists_hlBRCC_IncludePath></HistoryLists_hlBRCC_IncludePath><HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_Defines Name="Count">1</HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_Defines Name="Item0">_DEBUG;HAVE_CONFIG_H</HistoryLists_hlBRCC_Defines></HistoryLists_hlBRCC_Defines><HistoryLists_hlBRCC_OutputDir><HistoryLists_hlBRCC_OutputDir Name="Count">1</HistoryLists_hlBRCC_OutputDir><HistoryLists_hlBRCC_OutputDir Name="Item0">obj\</HistoryLists_hlBRCC_OutputDir></HistoryLists_hlBRCC_OutputDir><HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors></HistoryLists_hlILINK_MaxErrors><HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment></HistoryLists_hlILINK_FileAlignment><HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment></HistoryLists_hlILINK_ObjectAlignment><HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress></HistoryLists_hlILINK_BaseAddress><HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize></HistoryLists_hlILINK_HeapCommitSize><HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize></HistoryLists_hlILINK_HeapReserveSize><HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize></HistoryLists_hlILINK_StackCommitSize><HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize></HistoryLists_hlILINK_StackReserveSize><HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Count">1</HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlILINK_IntermediateOutputPath Name="Item0">obj</HistoryLists_hlILINK_IntermediateOutputPath></HistoryLists_hlILINK_IntermediateOutputPath><HistoryLists_hlDefines><HistoryLists_hlDefines Name="Count">1</HistoryLists_hlDefines><HistoryLists_hlDefines Name="Item0">TIXML_USE_STL</HistoryLists_hlDefines></HistoryLists_hlDefines><Excluded_Packages>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <Excluded_Packages Name="$(BDS)\bin\bcboffice2k100.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
       <Excluded_Packages Name="$(BDS)\bin\bcbofficexp100.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
       <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -151,7 +163,6 @@
       <BuildOrder>15</BuildOrder>
     </CppCompile>
     <CppCompile Include="EntryOptions.cpp">
-      <Form>EntryOptionsForm</Form>
       <BuildOrder>16</BuildOrder>
     </CppCompile>
     <CppCompile Include="ForceLog.cpp">
@@ -209,58 +220,64 @@
     <CppCompile Include="MinosTestExport.cpp">
       <BuildOrder>29</BuildOrder>
     </CppCompile>
-    <CppCompile Include="PrintFile.cpp">
-      <DependentOn>PrintFile.h</DependentOn>
+    <CppCompile Include="OptionsFrame.cpp">
+      <Form>OptionFrame</Form>
+      <DesignClass>TFrame</DesignClass>
+      <DependentOn>OptionsFrame.h</DependentOn>
       <BuildOrder>30</BuildOrder>
     </CppCompile>
-    <CppCompile Include="profiles.cpp">
+    <CppCompile Include="PrintFile.cpp">
+      <DependentOn>PrintFile.h</DependentOn>
       <BuildOrder>31</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="profiles.cpp">
+      <BuildOrder>32</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOEdit.cpp">
       <Form>QSOEditDlg</Form>
       <DependentOn>QSOEdit.h</DependentOn>
-      <BuildOrder>32</BuildOrder>
+      <BuildOrder>33</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOEditFrame.cpp">
       <Form>GJVQSOEditFrame</Form>
       <DependentOn>QSOEditFrame.h</DependentOn>
-      <BuildOrder>33</BuildOrder>
+      <BuildOrder>34</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOFrame.cpp">
       <Form>GJVEditFrame</Form>
       <DependentOn>QSOFrame.h</DependentOn>
-      <BuildOrder>35</BuildOrder>
+      <BuildOrder>36</BuildOrder>
     </CppCompile>
     <CppCompile Include="QSOLogFrame.cpp">
       <Form>GJVQSOLogFrame</Form>
       <DependentOn>QSOLogFrame.h</DependentOn>
-      <BuildOrder>34</BuildOrder>
+      <BuildOrder>35</BuildOrder>
     </CppCompile>
     <CppCompile Include="reg1test.cpp">
-      <BuildOrder>36</BuildOrder>
+      <BuildOrder>37</BuildOrder>
     </CppCompile>
     <CppCompile Include="SendRPCDM.cpp">
       <Form>SendDM</Form>
-      <BuildOrder>37</BuildOrder>
+      <BuildOrder>38</BuildOrder>
     </CppCompile>
     <CppCompile Include="SettingsEditor.cpp">
       <Form>SettingsEditDlg</Form>
-      <BuildOrder>38</BuildOrder>
+      <BuildOrder>39</BuildOrder>
     </CppCompile>
     <CppCompile Include="TCalendarForm.cpp">
       <Form>CalendarForm</Form>
       <DependentOn>TCalendarForm.h</DependentOn>
-      <BuildOrder>39</BuildOrder>
+      <BuildOrder>40</BuildOrder>
     </CppCompile>
     <CppCompile Include="TManageListsDlg.cpp">
       <Form>ManageListsDlg</Form>
       <DependentOn>TManageListsDlg.h</DependentOn>
-      <BuildOrder>41</BuildOrder>
+      <BuildOrder>42</BuildOrder>
     </CppCompile>
     <CppCompile Include="TMinosBandChooser.cpp">
       <Form>MinosBandChooser</Form>
       <DependentOn>TMinosBandChooser.h</DependentOn>
-      <BuildOrder>40</BuildOrder>
+      <BuildOrder>41</BuildOrder>
     </CppCompile>
     <LibFiles Include="..\MinosBase\MinosBase.lib">
       <BuildOrder>2</BuildOrder>
@@ -281,7 +298,6 @@
     <FormResources Include="ConfigMainFrame.dfm" />
     <FormResources Include="ContestDetails.dfm" />
     <FormResources Include="enqdlg.dfm" />
-    <FormResources Include="EntryOptions.dfm" />
     <FormResources Include="ForceLog.dfm" />
     <FormResources Include="ListDetails.dfm" />
     <FormResources Include="loccalc.dfm" />
@@ -289,6 +305,7 @@
     <FormResources Include="LoggerAbout.dfm" />
     <FormResources Include="LogMain.dfm" />
     <FormResources Include="MinosHelp.dfm" />
+    <FormResources Include="OptionsFrame.dfm" />
     <FormResources Include="QSOEdit.dfm" />
     <FormResources Include="QSOEditFrame.dfm" />
     <FormResources Include="QSOFrame.dfm" />

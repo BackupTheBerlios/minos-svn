@@ -39,6 +39,8 @@
 #include "RPCPubSub.h"
 #include "SendRPCDM.h"
 #include "bandlist.h"
+
+#include "EntryOptions.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "BundleFrame"

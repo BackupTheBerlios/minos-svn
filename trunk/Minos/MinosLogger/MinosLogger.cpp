@@ -16,7 +16,6 @@ USEFORM("ConfigElementFrame.cpp", ConfigElementFrm); /* TFrame: File Type */
 USEFORM("ConfigMainFrame.cpp", TConfigFrame); /* TFrame: File Type */
 USEFORM("ContestDetails.cpp", ContestEntryDetails);
 USEFORM("enqdlg.cpp", EnquireDlg);
-USEFORM("EntryOptions.cpp", EntryOptionsForm);
 USEFORM("ForceLog.cpp", ForceLogDlg);
 USEFORM("ListDetails.cpp", ContactListDetails);
 USEFORM("loccalc.cpp", LocCalcForm);
@@ -24,6 +23,7 @@ USEFORM("LogFrame.cpp", SingleLogFrame);
 USEFORM("LoggerAbout.cpp", AboutBox);
 USEFORM("LogMain.cpp", LogContainer);
 USEFORM("MinosHelp.cpp", MinosHelpForm);
+USEFORM("OptionsFrame.cpp", OptionFrame); /* TFrame: File Type */
 USEFORM("QSOEdit.cpp", QSOEditDlg);
 USEFORM("QSOEditFrame.cpp", GJVQSOEditFrame);
 USEFORM("QSOLogFrame.cpp", GJVQSOLogFrame);
