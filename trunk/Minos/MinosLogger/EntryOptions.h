@@ -8,7 +8,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef EntryOptionsH
-#define EntryOptionsH 
+#define EntryOptionsH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -16,26 +16,40 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include <Grids.hpp>
-#include <Dialogs.hpp> 
+#include <Dialogs.hpp>
+
+class TOptionFrame;
 //---------------------------------------------------------------------------
 class TEntryOptionsForm : public TForm
 {
    __published:  	// IDE-managed Components
-      TRadioGroup *EntryGroup;
-      TButton *CloseButton;
-      TStringGrid *DetailGrid;
-      TButton *CancelButton;
-      TSaveDialog *SaveDialog;
+   TScrollBox *OptionsScrollBox;
+   TPanel *Panel1;
+   TButton *CloseButton;
+   TTimer *GridHintTimer;
+   TSaveDialog *SaveDialog;
+   TButton *CancelButton;
+   TRadioGroup *EntryGroup;
       void __fastcall CloseButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
-      void __fastcall DetailGridSelectCell( TObject *Sender, int ACol, int ARow,
-                                            bool &CanSelect );
    private:  	// User declarations
       LoggerContestLog * ct;
-      //      void mod_operators();
+
+      std::vector<TOptionFrame *> options;
+
       ExportType expformat;
       bool minosSave;
+      void getContestOperators();
+      int opsQSOLine1;
+      int opsQSOLine2;
+      int opsEntryLine1;
+      int opsEntryLine2;
+      TGridHint *GridHintWindow;
+      int HintRow;
+      int HintCol;
+      int oldX;
+      int oldY;
    public:  		// User declarations
       __fastcall TEntryOptionsForm( TComponent* Owner, LoggerContestLog * , bool minosSave );
       String doFileSave( );

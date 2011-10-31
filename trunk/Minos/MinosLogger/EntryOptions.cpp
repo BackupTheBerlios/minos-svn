@@ -8,162 +8,223 @@
 /////////////////////////////////////////////////////////////////////////////
 #include "logger_pch.h"
 #pragma hdrstop
+#include<boost/tokenizer.hpp>
 
 #include "LoggerContest.h"
 #include "EntryOptions.h"
 #include "enqdlg.h"
-#include "reg1test.h" 
+#include "reg1test.h"
+#include "optionsframe.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TEntryOptionsForm *EntryOptionsForm;
 //---------------------------------------------------------------------------
 __fastcall TEntryOptionsForm::TEntryOptionsForm( TComponent* Owner, LoggerContestLog * cnt, bool saveMinos )
-      : TForm( Owner ), ct( cnt ), minosSave( saveMinos )
-{}
+      : TForm( Owner ), ct( cnt ), minosSave( saveMinos ), opsQSOLine1(-1), opsQSOLine2(-1),
+      opsEntryLine1(-1), opsEntryLine2(-1)
+//      , GridHintWindow( 0 ), oldX( 0 ), oldY( 0 )
+{
+//   GridHintWindow = new TGridHint( this );
+ //  GridHintWindow->SetHintControl( DetailGrid );
+}
+   // We want to treat ops1 and ops2 as CSV lists, and get all the ops
+   // Then we need to go through oplist and add any that we don't
+   // find in ops1/ops2
+   // Finally, sort the resulting list, and split between the two lines equally
+   // writing  back to ops1, ops2
+void TEntryOptionsForm::getContestOperators()
+{
+   OperatorList operators;
+
+   for ( OperatorIterator op = ct->oplist.begin(); op != ct->oplist.end(); op++ )
+   {
+      operators.insert(*op);
+   }
+
+   // now actual ops are a sorted list
+
+   std::string ops1;
+   std::string ops2;
+   unsigned int ls = operators.size();
+   for (unsigned int i = 0; i < ls; i++)
+   {
+      if (i <= ls/2)
+      {
+         ops1 += operators[i] + " ";
+      }
+      else
+      {
+         ops2 += operators[i] + " ";
+      }
+   }
+   ct->opsQSO1 = trim(ops1);
+   ct->opsQSO2 = trim(ops2);
+}
 //---------------------------------------------------------------------------
 void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
 {
    MinosParameters::getMinosParameters() ->applyFontChange(this);
    if ( !ct )
       return ;
-   DetailGrid->RowCount = 32;
-   DetailGrid->ColCount = 2;
 
-   int r = 0;
-   DetailGrid->Cells[ 0 ][ r ] = "Field";
-   DetailGrid->Cells[ 1 ][ r ] = "Value";
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Date Range (Calculated)";
-   DetailGrid->Cells[ 1 ][ r ] = ct->dateRange( DTGDISP ).c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Contest Name";
-   DetailGrid->Cells[ 1 ][ r ] = ct->name.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Band";
-   DetailGrid->Cells[ 1 ][ r ] = ct->band.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Entrant name (or group)";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entrant.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Station QTH 1";
-   DetailGrid->Cells[ 1 ][ r ] = ct->sqth1.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Station QTH 2";
-   DetailGrid->Cells[ 1 ][ r ] = ct->sqth2.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Section";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entSect.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Callsign";
-   DetailGrid->Cells[ 1 ][ r ] = ct->mycall.fullCall.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Locator";
-   DetailGrid->Cells[ 1 ][ r ] = ct->myloc.loc.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Exchange/code/QTH sent";
-   DetailGrid->Cells[ 1 ][ r ] = ct->location.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Transmitter";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entTx.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Transmit Power";
-   DetailGrid->Cells[ 1 ][ r ] = ct->power.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Receiver";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entRx.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Antenna";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entAnt.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Height above ground";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entAGL.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Height above sea level";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entASL.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Operators Line 1";
-   DetailGrid->Cells[ 1 ][ r ] = ct->ops1.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Operators Line 2";
-   DetailGrid->Cells[ 1 ][ r ] = ct->ops2.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Conditions/Comments";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCondx1.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Conditions/Comments";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCondx2.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Conditions/Comments";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCondx3.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Conditions/Comments";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCondx4.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Name for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entName.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Callsign for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCall.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Address 1 for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entAddr1.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Address 2 for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entAddr2.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "City for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCity.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Country for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entCountry.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Postcode for Correspondence";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entPostCode.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "Phone number for queries";
-   DetailGrid->Cells[ 1 ][ r ] = ct->entPhone.getValue().c_str();
-   r++;
-
-   DetailGrid->Cells[ 0 ][ r ] = "email address for queries";            //31
-   DetailGrid->Cells[ 1 ][ r ] = ct->entEMail.getValue().c_str();
-   r++;
-
-
-   if ( DetailGrid->RowCount != r )
+   int etop = 0;
+   for (int i = 0; i < 33; i++)
    {
-      ShowMessage( "Sizing of DetailGrid is wrong!" );
+      TOptionFrame *tcf = new TOptionFrame( this );
+      options.push_back(tcf);
+
+      tcf->Name = "entryopt" + String(i);
+      tcf->Parent = OptionsScrollBox;
+      tcf->Top = etop;
+      tcf->Width = OptionsScrollBox->Width;
+      etop += tcf->Height;
    }
+   int r = 0;
+
+   options[ r ]->OptionLabel->Caption = "Date Range (Calculated)";
+   options[ r ]->OptionEdit->Text = ct->dateRange( DTGDISP ).c_str();
+   options[ r ]->OptionEdit->ReadOnly = true;
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Contest Name";
+   options[ r ]->OptionEdit->Text = ct->name.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Band";
+   options[ r ]->OptionEdit->Text = ct->band.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Entrant name (or group)";
+   options[ r ]->OptionEdit->Text = ct->entrant.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Station QTH 1";
+   options[ r ]->OptionEdit->Text = ct->sqth1.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Station QTH 2";
+   options[ r ]->OptionEdit->Text = ct->sqth2.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Section";
+   options[ r ]->OptionEdit->Text = ct->entSect.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Callsign";
+   options[ r ]->OptionEdit->Text = ct->mycall.fullCall.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Locator";
+   options[ r ]->OptionEdit->Text = ct->myloc.loc.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Exchange/code/QTH sent";
+   options[ r ]->OptionEdit->Text = ct->location.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Transmitter";
+   options[ r ]->OptionEdit->Text = ct->entTx.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Transmit Power";
+   options[ r ]->OptionEdit->Text = ct->power.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Receiver";
+   options[ r ]->OptionEdit->Text = ct->entRx.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Antenna";
+   options[ r ]->OptionEdit->Text = ct->entAnt.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Height above ground";
+   options[ r ]->OptionEdit->Text = ct->entAGL.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Height above sea level";
+   options[ r ]->OptionEdit->Text = ct->entASL.getValue().c_str();
+   r++;
+
+   getContestOperators();
+
+   opsQSOLine1 = r;
+   options[ r ]->OptionLabel->Caption = "(From QSOs) Operators Line 1";
+   options[ r ]->OptionEdit->Text = ct->opsQSO1.c_str();
+   options[ r ]->OptionEdit->ReadOnly = true;
+   r++;
+
+   opsQSOLine2 = r;
+   options[ r ]->OptionLabel->Caption = "(From QSOs) Operators Line 2";
+   options[ r ]->OptionEdit->Text = ct->opsQSO2.c_str();
+   options[ r ]->OptionEdit->ReadOnly = true;
+   r++;
+
+   opsEntryLine1 = r;
+   options[ r ]->OptionLabel->Caption = "(Entry)Operators Line 1";
+   options[ r ]->OptionEdit->Text = ct->ops1.getValue().c_str();
+   r++;
+
+   opsEntryLine2 = r;
+   options[ r ]->OptionLabel->Caption = "(Entry)Operators Line 2";
+   options[ r ]->OptionEdit->Text = ct->ops2.getValue().c_str();
+   r++;
+
+
+   options[ r ]->OptionLabel->Caption = "Conditions/Comments";
+   options[ r ]->OptionEdit->Text = ct->entCondx1.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Conditions/Comments";
+   options[ r ]->OptionEdit->Text = ct->entCondx2.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Conditions/Comments";
+   options[ r ]->OptionEdit->Text = ct->entCondx3.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Conditions/Comments";
+   options[ r ]->OptionEdit->Text = ct->entCondx4.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Name for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entName.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Callsign for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entCall.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Address 1 for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entAddr1.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Address 2 for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entAddr2.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "City for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entCity.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Country for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entCountry.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Postcode for Correspondence";
+   options[ r ]->OptionEdit->Text = ct->entPostCode.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "Phone number for queries";
+   options[ r ]->OptionEdit->Text = ct->entPhone.getValue().c_str();
+   r++;
+
+   options[ r ]->OptionLabel->Caption = "email address for queries";            //31
+   options[ r ]->OptionEdit->Text = ct->entEMail.getValue().c_str();
+   r++;
+
+
    if ( minosSave )
    {
       EntryGroup->ItemIndex = EMINOS;
@@ -173,43 +234,47 @@ void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
    {
       EntryGroup->ItemIndex = EREG1TEST;
    }
-   DetailGrid->Row = 2;
 }
 //---------------------------------------------------------------------------
 void __fastcall TEntryOptionsForm::CloseButtonClick( TObject */*Sender*/ )
 {
-   int r = 1;
+   int r = 0;
    r++;  // date range not editable
-   ct->name.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->band.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entrant.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->sqth1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->sqth2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entSect.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->mycall.fullCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->myloc.loc.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->location.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entTx.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->power.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entRx.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAnt.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAGL.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entASL.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->ops1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->ops2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx3.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCondx4.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entName.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCall.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAddr1.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entAddr2.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCity.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entCountry.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entPostCode.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entPhone.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
-   ct->entEMail.setValue( DetailGrid->Cells[ 1 ][ r++ ].c_str() );
+   ct->name.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->band.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entrant.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->sqth1.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->sqth2.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entSect.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->mycall.fullCall.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->myloc.loc.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->location.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entTx.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->power.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entRx.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entAnt.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entAGL.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entASL.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+
+   ct->opsQSO1 = options[ r++ ]->OptionEdit->Text.c_str() ;
+   ct->opsQSO2 = options[ r++ ]->OptionEdit->Text.c_str() ;
+
+   ct->ops1.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->ops2.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+
+   ct->entCondx1.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCondx2.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCondx3.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCondx4.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entName.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCall.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entAddr1.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entAddr2.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCity.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entCountry.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entPostCode.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entPhone.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
+   ct->entEMail.setValue( options[ r++ ]->OptionEdit->Text.c_str() );
 
    //enum ExportType {EREG1TEST, EADIF, EG0GJV, EMINOS, EKML};
    expformat = ( ExportType ) EntryGroup->ItemIndex;
@@ -320,15 +385,9 @@ String TEntryOptionsForm::doFileSave( )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TEntryOptionsForm::DetailGridSelectCell( TObject */*Sender*/,
-      int ACol, int ARow, bool &CanSelect )
-{
-   if ( ACol == 0 || ARow == 0 || ARow == 1 )    // label column/row or date range cell
-   {
-      CanSelect = false;
-   }
-   else
-      CanSelect = true;
-}
-//---------------------------------------------------------------------------
+
+
+
+
+
 

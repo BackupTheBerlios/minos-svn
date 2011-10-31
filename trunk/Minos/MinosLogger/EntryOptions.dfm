@@ -13,74 +13,71 @@ object EntryOptionsForm: TEntryOptionsForm
   OldCreateOrder = False
   Position = poOwnerFormCenter
   OnShow = FormShow
-  DesignSize = (
-    579
-    547)
   PixelsPerInch = 96
   TextHeight = 13
-  object EntryGroup: TRadioGroup
-    Left = 431
-    Top = 32
-    Width = 144
-    Height = 313
-    Anchors = [akTop, akRight]
-    Caption = 'File Format'
-    ItemIndex = 0
-    Items.Strings = (
-      'Reg1Test(entry)'
-      'ADIF(export)'
-      'G0GJV(export)'
-      'Minos(export)'
-      'KML(GoogleEarth)'
-      'Printable(export)')
-    TabOrder = 0
-  end
-  object CloseButton: TButton
-    Left = 498
-    Top = 380
-    Width = 75
-    Height = 25
-    Anchors = [akRight, akBottom]
-    Caption = 'OK'
-    Default = True
-    TabOrder = 1
-    OnClick = CloseButtonClick
-    ExplicitLeft = 486
-  end
-  object DetailGrid: TStringGrid
+  object OptionsScrollBox: TScrollBox
     Left = 0
     Top = 0
-    Width = 425
+    Width = 410
     Height = 547
-    Align = alLeft
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    ColCount = 2
-    DefaultColWidth = 200
-    FixedRows = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goEditing, goAlwaysShowEditor, goThumbTracking]
-    TabOrder = 2
-    OnSelectCell = DetailGridSelectCell
-    ColWidths = (
-      200
-      258)
-    RowHeights = (
-      24
-      24
-      24
-      24
-      27)
+    Align = alClient
+    TabOrder = 0
   end
-  object CancelButton: TButton
-    Left = 498
-    Top = 452
-    Width = 75
-    Height = 25
-    Anchors = [akRight, akBottom]
-    Cancel = True
-    Caption = 'Cancel'
-    TabOrder = 3
-    OnClick = CancelButtonClick
-    ExplicitLeft = 486
+  object Panel1: TPanel
+    Left = 410
+    Top = 0
+    Width = 169
+    Height = 547
+    Align = alRight
+    Caption = 'Panel1'
+    TabOrder = 1
+    DesignSize = (
+      169
+      547)
+    object CloseButton: TButton
+      Left = 94
+      Top = 380
+      Width = 75
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = 'OK'
+      Default = True
+      TabOrder = 0
+      OnClick = CloseButtonClick
+    end
+    object CancelButton: TButton
+      Left = 94
+      Top = 452
+      Width = 75
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Cancel = True
+      Caption = 'Cancel'
+      TabOrder = 1
+      OnClick = CancelButtonClick
+    end
+    object EntryGroup: TRadioGroup
+      Left = 25
+      Top = 32
+      Width = 144
+      Height = 313
+      Anchors = [akTop, akRight]
+      Caption = 'File Format'
+      ItemIndex = 0
+      Items.Strings = (
+        'Reg1Test(entry)'
+        'ADIF(export)'
+        'G0GJV(export)'
+        'Minos(export)'
+        'KML(GoogleEarth)'
+        'Printable(export)')
+      TabOrder = 2
+    end
+  end
+  object GridHintTimer: TTimer
+    Enabled = False
+    Left = 448
+    Top = 424
   end
   object SaveDialog: TSaveDialog
     Filter = 'ADIF|*.adi|RSGB Log|*.log|Summary|*.txt'
