@@ -26,7 +26,6 @@ class TEntryOptionsForm : public TForm
    TScrollBox *OptionsScrollBox;
    TPanel *Panel1;
    TButton *CloseButton;
-   TTimer *GridHintTimer;
    TSaveDialog *SaveDialog;
    TButton *CancelButton;
    TRadioGroup *EntryGroup;

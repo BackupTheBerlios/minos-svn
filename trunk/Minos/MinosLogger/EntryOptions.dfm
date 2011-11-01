@@ -35,7 +35,7 @@ object EntryOptionsForm: TEntryOptionsForm
       169
       547)
     object CloseButton: TButton
-      Left = 94
+      Left = 54
       Top = 380
       Width = 75
       Height = 25
@@ -46,7 +46,7 @@ object EntryOptionsForm: TEntryOptionsForm
       OnClick = CloseButtonClick
     end
     object CancelButton: TButton
-      Left = 94
+      Left = 54
       Top = 452
       Width = 75
       Height = 25
@@ -74,16 +74,11 @@ object EntryOptionsForm: TEntryOptionsForm
       TabOrder = 2
     end
   end
-  object GridHintTimer: TTimer
-    Enabled = False
-    Left = 448
-    Top = 424
-  end
   object SaveDialog: TSaveDialog
     Filter = 'ADIF|*.adi|RSGB Log|*.log|Summary|*.txt'
     InitialDir = '.'
     Options = [ofOverwritePrompt, ofNoChangeDir, ofNoReadOnlyReturn, ofEnableSizing]
-    Left = 440
+    Left = 424
     Top = 376
   end
 end

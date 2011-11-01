@@ -23,16 +23,8 @@ TEntryOptionsForm *EntryOptionsForm;
 __fastcall TEntryOptionsForm::TEntryOptionsForm( TComponent* Owner, LoggerContestLog * cnt, bool saveMinos )
       : TForm( Owner ), ct( cnt ), minosSave( saveMinos ), opsQSOLine1(-1), opsQSOLine2(-1),
       opsEntryLine1(-1), opsEntryLine2(-1)
-//      , GridHintWindow( 0 ), oldX( 0 ), oldY( 0 )
 {
-//   GridHintWindow = new TGridHint( this );
- //  GridHintWindow->SetHintControl( DetailGrid );
 }
-   // We want to treat ops1 and ops2 as CSV lists, and get all the ops
-   // Then we need to go through oplist and add any that we don't
-   // find in ops1/ops2
-   // Finally, sort the resulting list, and split between the two lines equally
-   // writing  back to ops1, ops2
 void TEntryOptionsForm::getContestOperators()
 {
    OperatorList operators;
@@ -77,14 +69,17 @@ void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
       tcf->Name = "entryopt" + String(i);
       tcf->Parent = OptionsScrollBox;
       tcf->Top = etop;
-      tcf->Width = OptionsScrollBox->Width;
       etop += tcf->Height;
+      tcf->Align = alTop;
    }
    int r = 0;
 
    options[ r ]->OptionLabel->Caption = "Date Range (Calculated)";
    options[ r ]->OptionEdit->Text = ct->dateRange( DTGDISP ).c_str();
    options[ r ]->OptionEdit->ReadOnly = true;
+   options[ r ]->OptionEdit->Color = clBtnFace;
+   options[ r ]->OptionEdit->TabStop = false;
+
    r++;
 
    options[ r ]->OptionLabel->Caption = "Contest Name";
@@ -153,12 +148,16 @@ void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
    options[ r ]->OptionLabel->Caption = "(From QSOs) Operators Line 1";
    options[ r ]->OptionEdit->Text = ct->opsQSO1.c_str();
    options[ r ]->OptionEdit->ReadOnly = true;
+   options[ r ]->OptionEdit->Color = clBtnFace;
+   options[ r ]->OptionEdit->TabStop = false;
    r++;
 
    opsQSOLine2 = r;
    options[ r ]->OptionLabel->Caption = "(From QSOs) Operators Line 2";
    options[ r ]->OptionEdit->Text = ct->opsQSO2.c_str();
    options[ r ]->OptionEdit->ReadOnly = true;
+   options[ r ]->OptionEdit->Color = clBtnFace;
+   options[ r ]->OptionEdit->TabStop = false;
    r++;
 
    opsEntryLine1 = r;
@@ -171,6 +170,9 @@ void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
    options[ r ]->OptionEdit->Text = ct->ops2.getValue().c_str();
    r++;
 
+
+   // Focus here
+   ActiveControl = options[ r ]->OptionEdit;
 
    options[ r ]->OptionLabel->Caption = "Conditions/Comments";
    options[ r ]->OptionEdit->Text = ct->entCondx1.getValue().c_str();
