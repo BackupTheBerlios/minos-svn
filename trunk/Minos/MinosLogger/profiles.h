@@ -25,10 +25,12 @@ class ProfileEntry
       bool bdefaultval;
 
       std::string hint;
+      bool RO;
+
       void createEntry( SettingsBundle * );
-      ProfileEntry( int id, const char *n, const char *d, const char * dname, const char *h );
-      ProfileEntry( int id, const char *n, int d, const char * dname, const char *h );
-      ProfileEntry( int id, const char *n, bool d, const char * dname, const char *h );
+      ProfileEntry( int id, const char *n, const char *d, const char * dname, const char *h, bool RO );
+      ProfileEntry( int id, const char *n, int d, const char * dname, const char *h, bool RO );
+      ProfileEntry( int id, const char *n, bool d, const char * dname, const char *h, bool RO );
 };
 class INIFile;
 
