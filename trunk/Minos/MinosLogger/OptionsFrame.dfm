@@ -3,6 +3,8 @@ object OptionFrame: TOptionFrame
   Top = 0
   Width = 441
   Height = 24
+  ParentShowHint = False
+  ShowHint = True
   TabOrder = 0
   object OptionLabel: TLabel
     Left = 0
@@ -22,9 +24,6 @@ object OptionFrame: TOptionFrame
     Height = 24
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 168
-    ExplicitTop = 8
-    ExplicitWidth = 121
     ExplicitHeight = 21
   end
 end

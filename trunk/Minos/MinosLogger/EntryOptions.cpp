@@ -226,6 +226,10 @@ void __fastcall TEntryOptionsForm::FormShow( TObject */*Sender*/ )
    options[ r ]->OptionEdit->Text = ct->entEMail.getValue().c_str();
    r++;
 
+   for (int i = 0; i < 33; i++)
+   {
+      options[i]->Hint = options[i]->OptionLabel->Caption;
+   }
 
    if ( minosSave )
    {
