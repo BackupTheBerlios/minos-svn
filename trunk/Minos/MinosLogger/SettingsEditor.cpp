@@ -9,22 +9,20 @@
 #include "logger_pch.h"
 #pragma hdrstop
 
-#include "gridhint.h"
 #include "SettingsEditor.h"
-#include "enqdlg.h" 
+#include "enqdlg.h"
+#include "optionsframe.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TSettingsEditDlg *SettingsEditDlg;
 //---------------------------------------------------------------------------
 __fastcall TSettingsEditDlg::TSettingsEditDlg( TComponent* Owner, SettingsBundle *b )
-      : TForm( Owner ), bundle( b ), GridHintWindow( 0 ), oldX( 0 ), oldY( 0 ),
+      : TForm( Owner ), bundle( b ),
          currSectionOnly(false)
 
 {
    initialSection = bundle->getSection();
-   GridHintWindow = new TGridHint( this );
-   GridHintWindow->SetHintControl( SectionGrid );
 }
 //---------------------------------------------------------------------------
 void TSettingsEditDlg::ShowCurrentSectionOnly()
@@ -66,7 +64,7 @@ void TSettingsEditDlg::showSection()
    if (currSectionOnly)
    {
       bundle->openSection( initialSection );
-      SectionGrid->Visible = true;
+      OptionsScrollBox->Visible = true;
       showDetails();
    }
    else if ( offset > 0 )
@@ -74,13 +72,13 @@ void TSettingsEditDlg::showSection()
       std::vector<std::string> sections = bundle->getSections( );
       std::string sect = sections[ offset ];
       bundle->openSection( sect );
-      SectionGrid->Visible = true;
+      OptionsScrollBox->Visible = true;
       showDetails();
    }
    else
    {
+      OptionsScrollBox->Visible = false;
       bundle->openSection( noneBundle );
-      SectionGrid->Visible = false;
    }
 
    NewSectionButton->Enabled = !currSectionOnly;
@@ -123,39 +121,59 @@ void __fastcall TSettingsEditDlg::SectionsListClick( TObject */*Sender*/ )
 //---------------------------------------------------------------------------
 void TSettingsEditDlg::showDetails()
 {
+   for ( unsigned int i= 0; i < options.size(); i++ )
+   {
+      delete options[i];
+   }
+   options.clear();
    int offset = SectionsList->ItemIndex;
    if ( offset > 0 || currSectionOnly)
    {
       std::vector<int> entries = bundle->getBundleEntries();
-      SectionGrid->RowCount = entries.size() + 1;
-      SectionGrid->ColCount = 2;
-      //                    col row
-      SectionGrid->Cells[ 0 ][ 0 ] = "Field";
-      SectionGrid->Cells[ 1 ][ 0 ] = "Value";
 
-      for ( unsigned int r = 0; r < entries.size(); r++ )
+
+   int etop = 0;
+
+   std::vector<std::string>hints = bundle->getBundleHints( );
+
+   for ( unsigned int i= 0; i < entries.size(); i++ )
+   {
+      TOptionFrame *tcf = new TOptionFrame( this );
+      options.push_back(tcf);
+
+      tcf->Name = "entryopt" + String(i);
+      tcf->Parent = OptionsScrollBox;
+      tcf->Top = etop;
+      etop += tcf->Height;
+      tcf->Align = alTop;
+      std::string val;
+      bundle->getStringProfile( entries[ i ], val );
+      tcf->OptionLabel->Caption = bundle->displayNameOf( entries[ i ] ).c_str();
+      tcf->OptionEdit->Text =  val.c_str();
+      tcf->Hint = hints[i].c_str();
+      bool RO = bundle->isReadOnly(entries[ i ]);
+      tcf->OptionEdit->ReadOnly = RO;
+      if (RO)
       {
-         //                    col row
-         SectionGrid->Cells[ 0 ][ r + 1 ] = bundle->displayNameOf( entries[ r ] ).c_str();
-         std::string val;
-         bundle->getStringProfile( entries[ r ], val );
-         //                    col row
-         SectionGrid->Cells[ 1 ][ r + 1 ] = val.c_str();
+         tcf->OptionEdit->Color = clBtnFace;
       }
-
+   }
    }
 }
 //---------------------------------------------------------------------------
 void TSettingsEditDlg::getDetails()
 {
    int offset = SectionsList->ItemIndex;
-   if ( offset > 0 || currSectionOnly)
+   if (( offset > 0 || currSectionOnly) && options.size())
    {
       std::vector<int> entries = bundle->getBundleEntries();
       for ( unsigned int r = 0; r < entries.size(); r++ )
       {
+      /*
          // col row
          std::string val = SectionGrid->Cells[ 1 ][ r + 1 ].c_str();
+      */
+         std::string val = options[r]->OptionEdit->Text.c_str();
          bundle->setStringProfile( entries[ r ], val.c_str() );
       }
    }
@@ -217,82 +235,5 @@ void __fastcall TSettingsEditDlg::NewSectionButtonClick( TObject */*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TSettingsEditDlg::GridHintTimerTimer( TObject */*Sender*/ )
-{
-   // timer used to time out the grid hint - but we don't
-   GridHintTimer->Enabled = false;
-   if ( !GridHintWindow )
-      return ;
-   if ( GridHintWindow->Showing || !Application->Active )
-   {
-      GridHintWindow->Showing = false;
-   }
-   else
-   {
-      TStringGrid *QGrid = dynamic_cast<TStringGrid *>( GridHintWindow->GetHintControl() );
-      if ( QGrid )
-      {
-         POINT mpos, mpos2;
-         ::GetCursorPos( &mpos );
 
-         mpos2 = QGrid->ScreenToClient( mpos );
-
-         if ( PtInRect( &( QGrid->ClientRect ), mpos2 ) )
-         {
-            std::vector<std::string>hints = bundle->getBundleHints( );
-            if (HintRow > 0 && HintRow <= (int)hints.size())
-            {
-               QGrid->Hint = hints[ HintRow - 1 ].c_str();
-               GridHintWindow->SetXY( mpos.x, mpos.y );
-               GridHintWindow->Showing = true;
-            }
-         }
-      }
-   }
-}
-//---------------------------------------------------------------------------
-void __fastcall TSettingsEditDlg::SectionGridMouseMove( TObject */*Sender*/,
-      TShiftState /*Shift*/, int X, int Y )
-{
-   GridHintWindow->SetHintControl( SectionGrid );
-   if ( ( X != oldX ) || ( Y != oldY ) )
-   {
-      GridHintWindow->Showing = false;
-      GridHintTimer->Enabled = false;
-
-      oldX = X;
-      oldY = Y;
-
-
-      int offset = SectionsList->ItemIndex;
-      if ( offset > 0 || currSectionOnly)
-      {
-         try
-         {
-            SectionGrid->MouseToCell( X, Y, HintCol, HintRow );
-
-            if ( ( HintCol >= 0 ) && ( HintRow >= 1 ) )
-            {
-               // and we want to set the hint position to the current mouse position
-               GridHintTimer->Enabled = true;
-               GridHintTimer->Interval = 500;
-            }
-         }
-         catch ( ... )
-         {}
-      }
-   }
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TSettingsEditDlg::FormMouseDown( TObject */*Sender*/,
-      TMouseButton /*Button*/, TShiftState /*Shift*/, int /*X*/, int /*Y*/ )
-{
-   if ( GridHintWindow->Showing )
-   {
-      GridHintWindow->Showing = false;
-   }
-   GridHintTimer->Enabled = false;
-}
-//---------------------------------------------------------------------------
 

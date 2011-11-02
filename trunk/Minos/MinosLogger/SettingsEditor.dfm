@@ -12,7 +12,6 @@ object SettingsEditDlg: TSettingsEditDlg
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
-  OnMouseDown = FormMouseDown
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -95,32 +94,13 @@ object SettingsEditDlg: TSettingsEditDlg
       TabOrder = 0
       OnClick = SectionsListClick
     end
-    object SectionGrid: TStringGrid
+    object OptionsScrollBox: TScrollBox
       Left = 185
       Top = 1
       Width = 550
       Height = 473
       Align = alClient
-      ColCount = 2
-      DefaultColWidth = 200
-      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goEditing, goAlwaysShowEditor, goThumbTracking]
       TabOrder = 1
-      OnMouseMove = SectionGridMouseMove
-      ColWidths = (
-        200
-        258)
-      RowHeights = (
-        24
-        24
-        24
-        24
-        27)
     end
-  end
-  object GridHintTimer: TTimer
-    Enabled = False
-    OnTimer = GridHintTimerTimer
-    Left = 32
-    Top = 32
   end
 end

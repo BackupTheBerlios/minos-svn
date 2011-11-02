@@ -75,6 +75,7 @@ class SettingsBundle
 
       bool checkKeyExists( const char *key );
       std::string displayNameOf( int enumKey );
+      bool isReadOnly( int enumKey );
       void getBoolProfile( const char *key, bool &value, bool def );
       void getBoolProfile( const char *key, MinosItem<bool> &value, bool def );
       void setBoolProfile( const char *key, bool value );

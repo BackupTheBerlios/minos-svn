@@ -17,6 +17,7 @@
 #include <ExtCtrls.hpp>
 #include <Grids.hpp> 
 //---------------------------------------------------------------------------
+class TOptionFrame;
 class TSettingsEditDlg : public TForm
 {
    __published:  	// IDE-managed Components
@@ -25,11 +26,10 @@ class TSettingsEditDlg : public TForm
       TButton *CopyButton;
       TPanel *Panel2;
       TListBox *SectionsList;
-      TStringGrid *SectionGrid;
       TButton *DeleteButton;
       TButton *CancelButton;
       TButton *NewSectionButton;
-      TTimer *GridHintTimer;
+   TScrollBox *OptionsScrollBox;
       void __fastcall OKButtonClick( TObject *Sender );
       void __fastcall CopyButtonClick( TObject *Sender );
       void __fastcall SectionsListClick( TObject *Sender );
@@ -37,12 +37,8 @@ class TSettingsEditDlg : public TForm
       void __fastcall DeleteButtonClick( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall NewSectionButtonClick( TObject *Sender );
-      void __fastcall GridHintTimerTimer( TObject *Sender );
-      void __fastcall SectionGridMouseMove( TObject *Sender, TShiftState Shift,
-                                            int X, int Y );
-      void __fastcall FormMouseDown( TObject *Sender, TMouseButton Button,
-                                     TShiftState Shift, int X, int Y );
    private:  	// User declarations
+      std::vector<TOptionFrame *> options;
       bool currSectionOnly;
       SettingsBundle *bundle;
       std::string initialSection;
@@ -50,11 +46,6 @@ class TSettingsEditDlg : public TForm
       void showSection();
       void showDetails();
       void getDetails();
-      TGridHint *GridHintWindow;
-      int HintRow;
-      int HintCol;
-      int oldX;
-      int oldY;
    public:  		// User declarations
       __fastcall TSettingsEditDlg( TComponent* Owner, SettingsBundle *b );
       void ShowCurrentSectionOnly();

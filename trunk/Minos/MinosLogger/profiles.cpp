@@ -857,6 +857,20 @@ std::string SettingsBundle::displayNameOf( int enumKey )
    }
    return "";
 }
+bool SettingsBundle::isReadOnly( int enumKey )
+{
+   if ( bool( bundleFile ) && currsection != noneBundle )
+   {
+      for ( std::vector<ProfileEntry>::iterator i = bundleFile->entries.begin(); i != bundleFile->entries.end(); i++ )
+      {
+         if ( ( *i ).id == enumKey )
+         {
+            return ( *i ).RO;
+         }
+      }
+   }
+   return "";
+}
 
 void SettingsBundle::getBoolProfile( const char *key, bool &value, bool def )
 {
