@@ -14,6 +14,7 @@ class TOptionFrame : public TFrame
 __published:	// IDE-managed Components
    TLabel *OptionLabel;
    TEdit *OptionEdit;
+   TPanel *Panel1;
 private:	// User declarations
 public:		// User declarations
    __fastcall TOptionFrame(TComponent* Owner);

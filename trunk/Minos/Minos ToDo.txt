@@ -24,10 +24,8 @@ Need to break up single latlong field into deg/mins/secs
 Plus EW and NS check boxes - but allow negative degrees, or E/W/N/S texts
 On exit logic has to change as latlong will normally take several steps to complete
 ==================================================================
-done Font selection
-done sizing on the status bar (clock gets eaten, or the score gets eaten...)
-Menus - but these are under the control of Windows
-fly by hints
+Menus fonts - but these are under the control of Windows
+fly by hints fonts
 ==================================================================
 Better header text for loc/distance in country and district display
 Double click on contest in Vista default directory says "already open"?
