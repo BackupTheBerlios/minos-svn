@@ -22,7 +22,7 @@ MinosLogger.ini (File|Options) is rather "raw", and not very friendly.
 
 - Improved transfer of operator callsigns to the entry file
 
-- Improved (I hope) editing of entry file details
+- Improved editing of entry file details and settings
 
 minor bug fixes : 
   scrolling of QSOs in catch-up
