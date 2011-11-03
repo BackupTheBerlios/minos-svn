@@ -1,4 +1,4 @@
-G4APJ Somewhat belatedly, a problem I noticed during the 50MHz AFS.
+done G4APJ Somewhat belatedly, a problem I noticed during the 50MHz AFS.
 
 When I invoked the 'F12 function' (by whatever method) the Postal Code did
 not get loaded.

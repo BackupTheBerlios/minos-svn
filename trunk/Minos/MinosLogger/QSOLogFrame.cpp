@@ -282,7 +282,13 @@ void TGJVQSOLogFrame::transferDetails( const BaseContact * lct, const BaseContes
          )
       {
          if ( contest->QTHField.getValue() )
-            QTHEdit->Text = lct->extraText.getValue().c_str();
+         {
+            std::string exch = lct->extraText.getValue();
+            if (exch.size())
+            {
+               QTHEdit->Text = exch.c_str();
+            }
+         }
       }
    }
    valid( cmCheckValid ); // make sure all single and cross field
@@ -295,12 +301,29 @@ void TGJVQSOLogFrame::transferDetails( const BaseContact * lct, const BaseContes
 
    doGJVEditChange(CallsignEdit);
    doGJVEditChange(LocEdit);
+   doGJVEditChange(QTHEdit);
 }
 void TGJVQSOLogFrame::transferDetails( const ListContact * lct, const ContactList */*matct*/ )
 {
    CallsignEdit->Text = lct->cs.fullCall.getValue().c_str();
    LocEdit->Text = lct->loc.loc.getValue().c_str();
 
+   // only transfer qth info if required for this ContestLog
+   // and it might be valid...
+   if ( contest->districtMult.getValue() || contest->otherExchange.getValue() )
+   {
+      if ( contest->districtMult.getValue() || contest->otherExchange.getValue() )
+      {
+         if ( contest->QTHField.getValue() )
+         {
+            std::string exch = lct->extraText;
+            if (exch.size())
+            {
+               QTHEdit->Text = exch.c_str();
+            }
+         }
+      }
+   }
    valid( cmCheckValid ); // make sure all single and cross field
    // validation has been done
 
@@ -311,6 +334,7 @@ void TGJVQSOLogFrame::transferDetails( const ListContact * lct, const ContactLis
 
    doGJVEditChange(CallsignEdit);
    doGJVEditChange(LocEdit);
+   doGJVEditChange(QTHEdit);
 }
 //==============================================================================
 void TGJVQSOLogFrame::setFreq( String f )

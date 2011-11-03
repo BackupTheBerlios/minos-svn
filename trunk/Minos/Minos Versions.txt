@@ -29,6 +29,7 @@ minor bug fixes :
   propogation of CW across multiple QSOs
   numerics not allowed in callsign body
   Must be a numeric portion in call (2LO becomes illegal!)
+  match xfer from a list now transfers exchange as well if present
 ==================================================================
 1.5.3 (only released privately as a Beta)
 
