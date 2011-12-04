@@ -631,6 +631,7 @@ object LogContainer: TLogContainer
       end
       object ReportAutofill: TMenuItem
         Action = ReportAutofillAction
+        Caption = 'Signal Report AutoFill'
       end
     end
     object Help1: TMenuItem
