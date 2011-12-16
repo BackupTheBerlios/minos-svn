@@ -1725,7 +1725,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>144</band_list>
 <award_list>The G3MEH Trophy will awarded to the winning AFS entry</award_list>
 <entry_date>16 days</entry_date>
-<resultsFormatUsed>vhfafs</resultsFormatUsed>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
 <name>xmasfun</name>

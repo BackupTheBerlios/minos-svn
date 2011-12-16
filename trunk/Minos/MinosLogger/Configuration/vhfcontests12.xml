@@ -80,12 +80,16 @@
 <!-- 12.005 29/11/11 G4CLA - Set a minimum power limit in AR and AL UKAC section. Also allow antenna switching -->
 <!-- 12.006 07/12/11 G4CLA - Changed SHF UKACs to have only 2 sections, no aerial restitctions and change power limits. -->
 <!-- 12.007 10/12/11 G4CLA - Changed SHF UKACs use S8 instead of S11 -->
-<!-- 12.008 15/12/11 G4CLA - added caveat for multiple aerials in AO section and restricted switching to between fixed antennas -->
+<!-- 12.008 12/12/11 G4CLA - added caveat for multiple aerials in AO section and restricted switching to between fixed antennas -->
+<!-- 12.009 14/12/11 G4CLA - Fixed date for 4m section of VHF NFD-->
+<!-- 12.010 14/12/11 G4CLA - Added 6m CW contest-->
+<!-- 12.011 14/12/11 G4CLA - added ical and google link-->
 <calendar>
-<version>12.008 15/12/2011</version>
-<icalurl>http://www.google.com/calendar/ical/mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com/public/basic.ics</icalurl>
-<googleurl11>http://www.google.com/calendar/embed?src=mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com&amp;ctz=Europe/London</googleurl11>
+<version>12.009 14/12/2011</version>
+<icalurl>https://www.google.com/calendar/ical/o01j2pl414brlps13a3da29rjo%40group.calendar.google.com/public/basic.ics</icalurl>
+<googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
+<notes_list>13/12/11: Added 6m CW contest</notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -647,7 +651,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <wavelength>4</wavelength>
   <time_list>
     <month_list>Jul</month_list>
-    <start_day>7</start_day>
+    <start_day>6+1</start_day>
     <start_week>1</start_week>
     <start_time>0800</start_time>
     <time_type>GMT</time_type>
@@ -870,6 +874,25 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <perkms>1</perkms>
   </scoring>
   <band_list>70</band_list>
+<entry_date>16 days</entry_date>
+</contest>
+<contest>
+  <name>cw50MHz</name>
+  <description>50MHz Contest CW</description>
+  <time_list>
+    <month_list>Jun</month_list>
+    <start_day>6+1</start_day>
+    <start_week>4</start_week>
+    <start_time>0900</start_time>
+    <time_type>GMT</time_type>
+    <duration>3</duration>
+  </time_list>
+  <section_list>O</section_list>
+  <section_list>SF</section_list>
+  <scoring>
+    <perkms>1</perkms>
+  </scoring>
+  <band_list>50</band_list>
 <entry_date>16 days</entry_date>
 </contest>
 <contest>
