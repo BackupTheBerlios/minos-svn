@@ -469,7 +469,13 @@ void __fastcall TKeyControlForm::AutoRepeatCheckBoxClick( TObject */*Sender*/ )
 
 void __fastcall TKeyControlForm::DelayEditChange( TObject */*Sender*/ )
 {
-   setAutoRepeatDelay( DelayEdit->Text.ToIntDef(6) );
+   String temp = DelayEdit->Text;
+   int def = getAutoRepeatDelay();
+   int val = temp.ToIntDef(def);
+   if (val > 0)
+   {
+      setAutoRepeatDelay( val );
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TKeyControlForm::PipCheckBoxClick( TObject */*Sender*/ )

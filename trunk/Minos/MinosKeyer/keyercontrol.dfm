@@ -236,7 +236,6 @@ object KeyControlForm: TKeyControlForm
           Width = 49
           Height = 21
           TabOrder = 15
-          Text = '6'
           OnChange = DelayEditChange
         end
         object DelayUpDown: TUpDown
@@ -245,7 +244,6 @@ object KeyControlForm: TKeyControlForm
           Width = 16
           Height = 21
           Associate = DelayEdit
-          Position = 6
           TabOrder = 16
         end
       end
@@ -362,10 +360,6 @@ object KeyControlForm: TKeyControlForm
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label18: TLabel
         Left = 16
         Top = 74
@@ -400,7 +394,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -410,7 +404,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -420,7 +414,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -430,7 +424,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 3
         OnChange = DestinationComboBoxChange
       end
