@@ -253,7 +253,33 @@ std::string RPCParamStruct::analyse()
    std::string s;
    for ( std::vector<boost::shared_ptr<RPCParam> >::iterator i = elements.begin(); i != elements.end(); i++ )
    {
-      s += ( *i ) ->name + "<" + ( *i ) ->analyse() + ">";
+      if (( *i ) ->name == "lseq" )
+      {
+         int n = 0;
+         ( *i )->getInt(n);
+         std::string s1 = makeStr(n/65536);
+         std::string s2 = (n & 0x8000)?" 1":" 0";
+         std::string s3 = (n & 0x4000)?" 1":" 0";
+         std::string s4 = (n & 0x2000)?" 1":" 0";
+         std::string s5 = (n & 0x1000)?" 1":" 0";
+         std::string s6 = (n & 0x0800)?" 1":" 0";
+         std::string s7 = (n & 0x0400)?" 1":" 0";
+         std::string s8 = (n & 0x0200)?" 1":" 0";
+         std::string s9 = (n & 0x0100)?" 1":" 0";
+         std::string s10 = (n & 0x0080)?" 1":" 0";
+         std::string s11 = (n & 0x0040)?" 1":" 0";
+         std::string s12 = (n & 0x0020)?" 1":" 0";
+         std::string s13 = (n & 0x0010)?" 1":" 0";
+         std::string s14 = (n & 0x0008)?" 1":" 0";
+         std::string s15 = (n & 0x0004)?" 1":" 0";
+         std::string s16 = (n & 0x0002)?" 1":" 0";
+         std::string s17 = (n & 0x0001)?" 1":" 0";
+         s += ( *i ) ->name + "<" + s1 + " : " + s2  + s3  + s4  + s5  + s6  + s7  + s8  + s9  + s10 + s11 + s12  + s13  + s14  + s15  + s16  + s17 + " (" +  ( *i ) ->analyse() + ")>";
+      }
+      else
+      {
+         s += ( *i ) ->name + "<" + ( *i ) ->analyse() + ">";
+      }
    }
    return s;
 }

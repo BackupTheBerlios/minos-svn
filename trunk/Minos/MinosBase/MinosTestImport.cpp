@@ -326,6 +326,8 @@ void MinosTestImport::processLogMinosStanza( RPCRequest *rq )
 
    std::string log = rq->analyse();
 
+   #warning here is where we need to analyse the sequence number - or should we do it in the analyse with a callback
+   // to here with the name?
    trace( rq->methodName + " : " + log );
 }
 //==============================================================================
