@@ -34,7 +34,8 @@ void TGJVQSOEditFrame::updateQSODisplay()
    TimeEdit->Enabled = !contest->isReadOnly();
    CallsignEdit->Enabled = !contest->isReadOnly();
    LocEdit->Enabled = !contest->isReadOnly();
-   QTHEdit->Enabled = !contest->isReadOnly();
+//   QTHEdit->Enabled = !contest->isReadOnly();
+   QTHEdit->Enabled = !contest->isReadOnly() && ( contest->otherExchange .getValue() || contest->districtMult.getValue() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TGJVQSOEditFrame::InsertBeforeButtonClick( TObject */*Sender*/ )
