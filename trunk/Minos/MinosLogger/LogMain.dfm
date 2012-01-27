@@ -574,6 +574,8 @@ object LogContainer: TLogContainer
     end
     object Edit1: TMenuItem
       Caption = 'Edit'
+      Visible = False
+      OnClick = Edit1Click
       object Cut1: TMenuItem
         Action = EditCut1
       end

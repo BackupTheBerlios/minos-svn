@@ -872,6 +872,12 @@ void __fastcall TLogContainer::File1Click( TObject */*Sender*/ )
 {
    ReopenMenu->Enabled = ( ContestMRU->Items->Count != 0 );
 }
+
+//---------------------------------------------------------------------------
+void __fastcall TLogContainer::Edit1Click(TObject *Sender)
+{
+//  Disable everything unless we are in an edit control
+}
 //---------------------------------------------------------------------------
 void __fastcall TLogContainer::GridHintTimerTimer( TObject */*Sender*/ )
 {
@@ -1243,4 +1249,5 @@ void __fastcall TLogContainer::ReportAutofillActionExecute(TObject */*Sender*/)
    TContestApp::getContestApp() ->loggerBundle.flushProfile();
 }
 //---------------------------------------------------------------------------
+
 
