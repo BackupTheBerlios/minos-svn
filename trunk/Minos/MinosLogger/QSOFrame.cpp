@@ -1175,8 +1175,12 @@ void TGJVEditFrame::refreshOps()
 //---------------------------------------------------------------------------
 void TGJVEditFrame::closeContest()
 {
-   GJVCancelButton->Enabled = true;
-   GJVCancelButton->SetFocus();
+   BaseContestLog * currentContest = TContestApp::getContestApp() ->getCurrentContest();
+   if (contest == currentContest)
+   {
+      GJVCancelButton->Enabled = true;
+      GJVCancelButton->SetFocus();
+   }
    contest = 0;
 }
 //---------------------------------------------------------------------------
