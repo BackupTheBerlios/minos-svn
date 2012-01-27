@@ -666,6 +666,7 @@ bool ContestContact::GJVload( int diskBlock )
 }
 bool ContestContact::setField( int ACol, const std::string Value )
 {
+#warning never used! There to allow grid editting
    // This really ought to validate it first...
    switch ( ACol )
    {
