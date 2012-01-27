@@ -8,26 +8,67 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
     Height = 193
     ExplicitWidth = 629
     ExplicitHeight = 193
-    inherited GJVForceButton: TButton
-      TabOrder = 20
+    inherited RSTTXEdit: TLabeledEdit [5]
+      TabOrder = 7
     end
-    inherited GJVCancelButton: TButton
-      Width = 91
-      Caption = 'Return to Log'
-      TabOrder = 22
-      ExplicitWidth = 91
+    inherited SerTXEdit: TLabeledEdit [6]
+      TabOrder = 8
     end
-    inherited FirstUnfilledButton: TButton
-      TabOrder = 13
-      OnClick = FirstUnfilledButtonClick
+    inherited RSTRXEdit: TLabeledEdit [7]
+      TabOrder = 9
     end
-    inherited SecondOpComboBox: TComboBox
-      TabOrder = 21
+    inherited SecondOpComboBox: TComboBox [8]
+      TabOrder = 24
       OnExit = SecondOpComboBoxExit
     end
-    inherited MainOpComboBox: TComboBox
-      TabOrder = 19
+    inherited CatchupButton: TButton [9]
+      TabOrder = 21
+    end
+    inherited FirstUnfilledButton: TButton [10]
+      TabOrder = 22
+      OnClick = FirstUnfilledButtonClick
+    end
+    inherited CallsignEdit: TLabeledEdit [11]
+      TabOrder = 6
+    end
+    inherited DeletedCheckBox: TCheckBox [12]
+      TabOrder = 5
+    end
+    inherited NonScoreCheckBox: TCheckBox [13]
+      TabOrder = 4
+    end
+    inherited GJVCancelButton: TButton [14]
+      Width = 91
+      Caption = 'Return to Log'
+      TabOrder = 16
+      ExplicitWidth = 91
+    end
+    inherited GJVForceButton: TButton
+      TabOrder = 15
+    end
+    inherited MainOpComboBox: TComboBox [16]
+      TabOrder = 23
       OnExit = MainOpComboBoxExit
+    end
+    inherited SerRXEdit: TLabeledEdit [17]
+      TabOrder = 10
+    end
+    inherited LocEdit: TLabeledEdit [18]
+      TabOrder = 11
+    end
+    inherited QTHEdit: TLabeledEdit [19]
+      TabOrder = 12
+    end
+    inherited CommentsEdit: TLabeledEdit [20]
+      TabOrder = 13
+    end
+    inherited ModeComboBoxGJV: TComboBox [21]
+    end
+    inherited GJVOKButton: TButton [22]
+      TabOrder = 14
+    end
+    inherited ModeButton: TButton [23]
+      TabOrder = 3
     end
     object InsertBeforeButton: TButton
       Left = 24
@@ -35,7 +76,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 90
       Height = 25
       Caption = 'Insert Before'
-      TabOrder = 14
+      TabOrder = 17
+      TabStop = False
       OnClick = InsertBeforeButtonClick
     end
     object InsertAfterButton: TButton
@@ -44,7 +86,8 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 90
       Height = 25
       Caption = 'Insert After'
-      TabOrder = 15
+      TabOrder = 18
+      TabStop = False
       OnClick = InsertAfterButtonClick
     end
     object PriorButton: TButton
@@ -53,7 +96,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 75
       Height = 25
       Caption = 'Prior'
-      TabOrder = 17
+      TabOrder = 20
       TabStop = False
       OnClick = PriorButtonClick
     end
@@ -63,7 +106,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       Width = 75
       Height = 25
       Caption = 'Next'
-      TabOrder = 18
+      TabOrder = 19
       TabStop = False
       OnClick = NextButtonClick
     end
@@ -83,7 +126,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
-      TabOrder = 23
+      TabOrder = 1
       OnChange = TimeEditChange
       OnDblClick = TimeEditDblClick
       OnEnter = EditControlEnter
@@ -107,7 +150,7 @@ inherited GJVQSOEditFrame: TGJVQSOEditFrame
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
-      TabOrder = 24
+      TabOrder = 2
       OnChange = DateEditChange
       OnDblClick = DateEditDblClick
       OnEnter = EditControlEnter
