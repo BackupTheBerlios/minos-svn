@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE calendar [
-<!ELEMENT calendar (version, icalurl?, googleurl?, notes_list?, mult_type+, special_rule+, section+, band+, contest_series+, contest+)>
+<!ELEMENT calendar (version, icalurl?, googleurl?, notes_list*,  mult_type+, ColumnFormat+, resultsFormatType*, special_rule+, section+, band+, contest_series+, contest+)>
 <!ELEMENT mult_type (name, description, long_description, exchange?, scoring_description?)>
+<!ELEMENT ColumnFormat (name, Columns+ )>
 <!ELEMENT name (#PCDATA)>
+<!ELEMENT Columns EMPTY>
+<!ATTLIST Columns Index CDATA #IMPLIED>
+<!ATTLIST Columns Title CDATA #REQUIRED>
+<!ATTLIST Columns Nocolumn CDATA #IMPLIED>
+<!ATTLIST Columns Merge CDATA #IMPLIED>
+<!ATTLIST Columns Field CDATA #REQUIRED>
+<!ATTLIST Columns img CDATA #IMPLIED>
+<!ATTLIST Columns Align CDATA #IMPLIED>
 <!ELEMENT description (#PCDATA)>
 <!ELEMENT long_description (#PCDATA)>
 <!ELEMENT band_list (#PCDATA)>
 <!ELEMENT special_rule (name, description, long_description)>
+<!ELEMENT resultsFormatType (name, ColumnFormatUsed, TeamSize?, cumulativeField?, normType?)>
 <!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?, month_list*)>
-<!ELEMENT contest (name, description, short_description?, time_list*, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?)>
+<!ELEMENT contest (name, description, short_description?, time_list*, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?, club_contest?, resultsFormatUsed?)>
 <!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
 <!ELEMENT contest_series (name, description, contest_list+, section_list*, special_rules_list*, award_list*)>
 <!ELEMENT month_list (#PCDATA)>
@@ -39,6 +49,11 @@
 <!ELEMENT award_list (#PCDATA)>
 <!ELEMENT override (#PCDATA)>
 <!ELEMENT entry_date (#PCDATA)>
+<!ELEMENT ColumnFormatUsed (#PCDATA)>
+<!ELEMENT resultsFormatUsed (#PCDATA)>
+<!ELEMENT cumulativeField (#PCDATA)>
+<!ELEMENT TeamSize (#PCDATA)>
+<!ELEMENT normType (#PCDATA)>
 <!ELEMENT start_date_list (#PCDATA)>
 <!ELEMENT short_description (#PCDATA)>
 <!ELEMENT overall_section (#PCDATA)>
@@ -46,6 +61,7 @@
 <!ELEMENT googleurl (#PCDATA)>
 <!ELEMENT notes_list (#PCDATA)>
 <!ELEMENT version (#PCDATA)>
+<!ELEMENT club_contest (#PCDATA)>
 ]>
 <!-- RSGB VHF contest calendar and rules by G4CLA-->
 <!-- 09.022 14/10/2009 Changed words for 6 hour sections and added 4m cw contest -->
@@ -84,9 +100,14 @@
 <!-- 12.009 14/12/11 G4CLA - Fixed date for 4m section of VHF NFD-->
 <!-- 12.010 14/12/11 G4CLA - Added 6m CW contest-->
 <!-- 12.011 14/12/11 G4CLA - added ical and google link-->
+<!-- 12.012 17/12/11 G4CLA - add 2012-13 super league-->
+<!-- 12.013 28/12/11 G4CLA - changed urls to 2012-->
+<!-- 12.014 28/12/11 G4CLA - change carried over from 2011-->
+<!-- 12.015 28/12/11 G4CLA - added club_contest flag -->
+<!-- 12.016 11/01/12 G4CLA - copied ical from to local folder and give unique name  -->
 <calendar>
-<version>12.009 14/12/2011</version>
-<icalurl>https://www.google.com/calendar/ical/o01j2pl414brlps13a3da29rjo%40group.calendar.google.com/public/basic.ics</icalurl>
+<version>12.016 11/01/2012</version>
+<icalurl>http://www.rsgbcc.org/icals/rsgb_vhf_2012.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
 <notes_list>13/12/11: Added 6m CW contest</notes_list>
@@ -96,9 +117,9 @@
 <long_description>
 Post Code and Country Multipliers. The multiplier for a band is the sum of the number of different DXCC countries and UK post code areas worked on that band.
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist_2011e.txt
-A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
+A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/12rules/postcode.htm
 </long_description>
-<exchange> serial number and QTH Locator plus first 2 letters of your Postcode</exchange>
+<exchange> serial number and QTH Locator and UK stations send the first 2 letters of their Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes 
 </scoring_description>
 </mult_type>
@@ -117,9 +138,9 @@ QTH Locator Multiplier. The multiplier for a band is the sum of the number of di
 <long_description>
 Post Code, Country and QTH Locator Multiplier. The multiplier for a band is the sum of the number of different DXCC countries, U.K. post code areas, and large QTH locator squares (e.g. JO01,IO91 etc.) worked on that band.
 A full list of DXCCs can be found here http://www.arrl.org/files/file/DXCC/dxcclist_2011e.txt
-A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/11rules/postcode.htm
+A full list of Postcodes can be found here http://www.rsgbcc.org/vhf/rules/12rules/postcode.htm
 </long_description>
-<exchange> serial number and QTH Locator plus first 2 letters of your Postcode</exchange>
+<exchange> serial number and QTH Locator and UK stations send the first 2 letters of their Postcode</exchange>
 <scoring_description> multiplied by the number of Countries plus Postcodes plus QTH locator squares</scoring_description>
 </mult_type>
 <mult_type>
@@ -141,6 +162,76 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
 <exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of UK Locator Squares</scoring_description>
 </mult_type>
+<ColumnFormat>
+        <name>vhfmultsandnorm</name>
+        <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
+        <Columns Title = "Pos___" Field="position" Merge="left" Align="right" ></Columns>
+        <Columns Index="true" Title = "Callsign" Field ="call" Align = "left" ></Columns>
+        <Columns Title = "Loc" Field ="locator" Align = "center" ></Columns>
+        <Columns Title = "QSOS" Field = "Qs" Align = "right" ></Columns>
+        <Columns Title = "Score" Field="score" Align = "right" ></Columns>
+        <Columns Title = "Mults" Field="mults" Align = "right" ></Columns>
+        <Columns Title = "Total" Field="totalScore" Align = "right" ></Columns>
+        <Columns Title = "Norm" Field="normalisedScore" Align = "right" ></Columns>
+        <Columns Title = "ODX" Field="ODXCall" Align = "center" ></Columns>
+        <Columns Title = "Kms" Field="ODXKms" Align = "center" ></Columns>
+        <Columns Title = "Power" Field="power" Align = "center" ></Columns>
+        <Columns Title = "Group" Field="clubName" Align = "center" ></Columns>
+        <Columns Title = "Ant" Field="ant" Align = "center" img="tower.gif" ></Columns>
+        <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
+        <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
+</ColumnFormat>
+<ColumnFormat>
+        <name>vhfmults</name>
+        <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
+        <Columns Title = "Pos___" Field="position" Merge="left" Align="right" ></Columns>
+        <Columns Index="true" Title = "Callsign" Field ="call" Align = "left" ></Columns>
+        <Columns Title = "Loc" Field ="locator" Align = "center" ></Columns>
+        <Columns Title = "QSOS" Field = "Qs" Align = "right" ></Columns>
+        <Columns Title = "Score" Field="score" Align = "right" ></Columns>
+        <Columns Title = "Mults" Field="mults" Align = "right" ></Columns>
+        <Columns Title = "Total" Field="totalScore" Align = "right" ></Columns>
+        <Columns Title = "ODX" Field="ODXCall" Align = "center" ></Columns>
+        <Columns Title = "Kms" Field="ODXKms" Align = "center" ></Columns>
+        <Columns Title = "Power" Field="power" Align = "center" ></Columns>
+        <Columns Title = "Group" Field="clubName" Align = "center" ></Columns>
+        <Columns Title = "Ant" Field="ant" Align = "center" img="tower.gif" ></Columns>
+        <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
+        <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
+</ColumnFormat>
+<ColumnFormat>
+        <name>vhf</name>
+        <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
+        <Columns Title = "Pos___" Field="position" Merge="left" Align="right" ></Columns>
+        <Columns Index="true" Title = "Callsign" Field ="call" Align = "left" ></Columns>
+        <Columns Title = "Loc" Field ="locator" Align = "center" ></Columns>
+        <Columns Title = "QSOS" Field = "Qs" Align = "right" ></Columns>
+        <Columns Title = "Score" Field="score" Align = "right" ></Columns>
+        <Columns Title = "ODX" Field="ODXCall" Align = "center" ></Columns>
+        <Columns Title = "Kms" Field="ODXKms" Align = "center" ></Columns>
+        <Columns Title = "Power" Field="power" Align = "center" ></Columns>
+        <Columns Title = "Group" Field="clubName" Align = "center" ></Columns>
+        <Columns Title = "Ant" Field="ant" Align = "center" img="tower.gif" ></Columns>
+        <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
+        <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
+</ColumnFormat>
+<resultsFormatType>
+        <name>vhfukac</name>
+        <ColumnFormatUsed>vhfmultsandnorm</ColumnFormatUsed>
+        <cumulativeField>Norm</cumulativeField>
+        <normType>Pos</normType>
+</resultsFormatType>
+<resultsFormatType>
+        <name>vhfmults</name>
+        <ColumnFormatUsed>vhfmults</ColumnFormatUsed>
+</resultsFormatType>
+<resultsFormatType>
+        <name>vhfafs</name>
+        <ColumnFormatUsed>vhf</ColumnFormatUsed>
+        <TeamSize>4</TeamSize>
+        <cumulativeField>vhfafs</cumulativeField>
+        <normType>vhfafs</normType>
+</resultsFormatType>
 <special_rule>
 <name>S1</name>
 <description>1 Point per QSO</description>
@@ -211,7 +302,7 @@ For IARU organised VHF/UHF contests, overseas stations are expected to enter via
 <name>S8</name>
 <description>Activity contest</description>
 <long_description>
-These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz on the 3rd Tuesday, 50 MHz and 13cms to 3cms (2000-2230) on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
+These contests are timed to co-incide with the last two hours of a number of European activity contests, with an extra half hour at the end to encourage intra UK activity.  They take place on Tuesdays from 2000-2230 local time with 144 MHz on the 1st Tuesday of the month, 432 MHz on the 2nd Tuesday, 1.3 GHz on the 3rd Tuesday, 50 MHz and 13cms to 3cms on the 4th Tuesday, and 70 MHz where there is a 5th Tuesday in the month.
 
 A UK station is required to be at one or both ends of a QSO for it to be valid.
 
@@ -276,21 +367,21 @@ Certificates will be awarded to the overall winners and runners-up in each secti
 <name>Backpacker</name>
 <description>Special Backpackers Rules</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/11rules/BACKPACK.htm
+http://www.rsgbcc.org/vhf/rules/12rules/BACKPACK.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHFNFD</name>
 <description>Special Rules for VHF NFD</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/11rules/VHFNFD.htm
+http://www.rsgbcc.org/vhf/rules/12rules/VHFNFD.htm
 </long_description>
 </special_rule>
 <special_rule>
 <name>VHF CHAMPIONSHIP</name>
 <description>Special Rules for VHF Championship</description>
 <long_description>
-http://www.rsgbcc.org/vhf/rules/11rules/championship.htm
+http://www.rsgbcc.org/vhf/rules/12rules/championship.htm
 </long_description>
 </special_rule>
 <special_rule>
@@ -301,9 +392,15 @@ Maximum output Power 25W at the TX.
 </long_description>
 </special_rule>
 <special_rule>
-<name>AFS Super League</name>
+<name>AFS Super League 2011-12</name>
 <description>Special Rules for AFS Super League</description>
 <long_description>http://www.rsgbcc.org/hf/rules/2011/AFS-SuperLeague2011-2012.shtml
+</long_description>
+</special_rule>
+<special_rule>
+<name>AFS Super League 2012-13</name>
+<description>Special Rules for AFS Super League</description>
+<long_description>http://www.rsgbcc.org/hf/rules/2012/AFS-SuperLeague2012-2013.shtml
 </long_description>
 </special_rule>
 <section>
@@ -337,7 +434,7 @@ No antenna restrictions.
 <description>UKAC Restricted</description>
 <long_description> 
 The power output must be greater than 10W PEP (4W on 4m) and not more than 100W PEP (40W on 4m) at the output of the transmitter.
-Only one antenna may be used at any one time. You may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Stacked or bayed antenna arrays may not be used.  You may use a co-linear vertically polarised antenna. 
+Only one antenna may be used at any one time. If you do not use a rotatable antenna then you may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Switching between a rotatable antenna and any other antenna is not allowed. Stacked or bayed antenna arrays may not be used, but you may use a co-linear vertically polarised antenna.
 </long_description>
 <power>100(40W on 4m)</power>
 <singleantenna>1</singleantenna>
@@ -356,7 +453,7 @@ No antenna restrictions.
 <description>UKAC Low Power</description>
 <long_description> 
 The power output must not exceed 10W PEP at the transmitter, except on 4m where output power is restricted to 4W.
-Only one antenna may be used at any one time. You may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Stacked or bayed antenna arrays may not be used.  You may use a co-linear vertically polarised antenna. 
+Only one antenna may be used at any one time. If you do not use a rotatable antenna then you may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Switching between a rotatable antenna and any other antenna is not allowed. Stacked or bayed antenna arrays may not be used, but you may use a co-linear vertically polarised antenna.
 </long_description>
 <power>10</power>
 <singleantenna>1</singleantenna>
@@ -729,12 +826,20 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <wavelength>1.2mm</wavelength>
 </band>
 <contest_series>
-<name>AFSsuperleague</name>
-<description>AFS Super League</description>
+<name>AFSsuperleague1112</name>
+<description>AFS Super League 2011-12</description>
 <contest_list>afs432MHz</contest_list>
 <contest_list>afs144MHz</contest_list>
 <contest_list>2nd50MHz</contest_list>
-<special_rules_list>AFS Super League</special_rules_list>
+<special_rules_list>AFS Super League 2011-12</special_rules_list>
+</contest_series>
+<contest_series>
+<name>AFSsuperleague1213</name>
+<description>AFS Super League 2012-13</description>
+<contest_list>afs432MHz</contest_list>
+<contest_list>afs144MHz</contest_list>
+<contest_list>2nd50MHz</contest_list>
+<special_rules_list>AFS Super League 2012-13</special_rules_list>
 </contest_series>
 <contest_series>
 <name>vhfchampionship</name>
@@ -856,6 +961,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>432</band_list>
 <award_list>The G0ODQ Trophy will awarded to the winning AFS entry</award_list>
 <entry_date>16 days</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfafs</resultsFormatUsed>
 </contest>
 <contest>
   <name>1st70MHz</name>
@@ -1106,6 +1213,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>50</band_list>
   <mult>M3</mult>
 <entry_date>16 days</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfafs</resultsFormatUsed>
 </contest>
 <contest>
   <name>2mukac</name>
@@ -1144,6 +1253,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>The Foundation Shield will be awarded to the leading Foundation Licensee</award_list>
 <award_list>The Intermediate Shield will be awarded to the leading Intermediate Licensee</award_list>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>70cmsukac</name>
@@ -1179,6 +1290,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>432</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>uhfukac</name>
@@ -1213,6 +1326,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>1296</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>shfukac</name> 
@@ -1249,6 +1364,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>10368</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>6mukac</name>
@@ -1284,6 +1401,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>50</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>4mukac</name>
@@ -1319,6 +1438,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>70</band_list>
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfukac</resultsFormatUsed>
 </contest>
 <contest>
 <name>VHFNFD</name>
@@ -1402,6 +1523,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <band_list>144</band_list>
 <mult>M1</mult>
 <entry_date>16 days</entry_date>
+<resultsFormatUsed>vhfmults</resultsFormatUsed>
 </contest>
 <contest>
   <name>144backpack1</name>
@@ -1681,8 +1803,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <time_type>GMT</time_type>
     <duration>8</duration>
   </time_list>
-  <section_list>O</section_list>
   <section_list>SF</section_list>
+  <section_list>O</section_list>
   <scoring>
     <perkms>1</perkms>
   </scoring>
@@ -1690,6 +1812,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>144</band_list>
 <award_list>The G3MEH Trophy will awarded to the winning AFS entry</award_list>
 <entry_date>16 days</entry_date>
+<club_contest>afs</club_contest>
+<resultsFormatUsed>vhfafs</resultsFormatUsed>
 </contest>
 <contest>
 <name>xmasfun</name>
