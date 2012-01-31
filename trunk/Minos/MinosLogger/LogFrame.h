@@ -162,6 +162,7 @@ class TSingleLogFrame : public TFrame
    void __fastcall LogMonitorQSOTreeGetHint(TBaseVirtualTree *Sender,
           PVirtualNode Node, TColumnIndex Column,
           TVTTooltipLineBreakStyle &LineBreakStyle, WideString &HintText);
+   void __fastcall LogMonitorQSOTreeExit(TObject *Sender);
    private:  	// User declarations
 
       MinosEventListener  EL_ContestPageChanged;

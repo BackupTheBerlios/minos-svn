@@ -736,7 +736,8 @@ void TSingleLogFrame::goSerial( )
 
 void __fastcall TSingleLogFrame::NextContactDetailsTimerTimer( TObject */*Sender*/ )
 {
-   /*
+/*
+#warning       DIAGNOSTICS
       TWinControl *cur =  LogContainer->ActiveControl;
       if (cur)
       {
@@ -746,7 +747,8 @@ void __fastcall TSingleLogFrame::NextContactDetailsTimerTimer( TObject */*Sender
       {
    	  LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = "unknown";
       }
-   */
+
+*/
    if ( contest )
    {
       NextContactDetailsLabel->Font->Assign(MinosParameters::getMinosParameters() ->getSysFont());
@@ -1369,6 +1371,13 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeDblClick( TObject */*Sender*/ 
 void __fastcall TSingleLogFrame::LogMonitorQSOTreeEnter( TObject */*Sender*/ )
 {
    GJVQSOLogFrame->clearCurrentField();
+   LogContainer->Edit1->Enabled = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSingleLogFrame::LogMonitorQSOTreeExit(TObject *Sender)
+{
+   LogContainer->Edit1->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
@@ -1676,4 +1685,5 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeGetHint(
 #endif
 }
 //---------------------------------------------------------------------------
+
 

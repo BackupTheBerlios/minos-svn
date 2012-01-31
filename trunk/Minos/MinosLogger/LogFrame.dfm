@@ -102,37 +102,55 @@ object SingleLogFrame: TSingleLogFrame
             TabStop = False
             ExplicitWidth = 310
             ExplicitHeight = 106
+            inherited CountriesTab: TTabSheet
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
+            end
             inherited DistrictTab: TTabSheet
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
               inherited DistrictMultTree: TVirtualStringTree
                 TabStop = False
               end
             end
             inherited LocatorsTab: TTabSheet
-              ExplicitWidth = 182
-              ExplicitHeight = 77
+              ExplicitLeft = 4
+              ExplicitTop = 4
+              ExplicitWidth = 248
+              ExplicitHeight = 182
               inherited LocatorMultTree: TVirtualStringTree
-                Width = 202
-                Height = 98
                 TabStop = False
-                ExplicitWidth = 182
-                ExplicitHeight = 77
               end
             end
             inherited StatsTab: TTabSheet
+              ExplicitWidth = 202
+              ExplicitHeight = 98
               inherited StatsDispFrame: TStatsDispFrame
+                Width = 202
+                Height = 98
                 TabStop = False
+                ExplicitWidth = 202
+                ExplicitHeight = 98
+                inherited SLabel1: TLabel
+                  Width = 202
+                  Height = 44
+                end
                 inherited Panel1: TPanel
+                  Top = 44
+                  Width = 202
+                  ExplicitTop = 44
+                  ExplicitWidth = 202
                   inherited P1Edit: TLabeledEdit
                     TabStop = False
-                    EditLabel.ExplicitLeft = 8
                     EditLabel.ExplicitTop = -1
-                    EditLabel.ExplicitWidth = 47
                   end
                   inherited P2Edit: TLabeledEdit
                     TabStop = False
-                    EditLabel.ExplicitLeft = 79
                     EditLabel.ExplicitTop = -2
-                    EditLabel.ExplicitWidth = 47
                   end
                 end
                 inherited RecheckTimer: TTimer
@@ -149,16 +167,16 @@ object SingleLogFrame: TSingleLogFrame
               inherited CompFrame: TCompFrame
                 Left = 0
                 Top = 0
-                Width = 202
-                Height = 98
+                Width = 248
+                Height = 182
                 Align = alClient
                 ExplicitLeft = 0
                 ExplicitTop = 0
                 ExplicitWidth = 248
                 ExplicitHeight = 182
                 inherited CompGrid: TVirtualStringTree
-                  Width = 202
-                  Height = 98
+                  Width = 248
+                  Height = 182
                   ExplicitWidth = 248
                   ExplicitHeight = 182
                 end
@@ -168,7 +186,7 @@ object SingleLogFrame: TSingleLogFrame
           inherited FilterPanel: TPanel
             Top = 116
             Width = 310
-            ExplicitTop = 95
+            ExplicitTop = 116
             ExplicitWidth = 310
             inherited UnworkedCB: TCheckBox
               Width = 121
@@ -222,13 +240,12 @@ object SingleLogFrame: TSingleLogFrame
           ShowHint = True
           OnDblClick = LogMonitorQSOTreeDblClick
           OnEnter = LogMonitorQSOTreeEnter
+          OnExit = LogMonitorQSOTreeExit
           OnGetHint = LogMonitorQSOTreeGetHint
           OnKeyDown = LogMonitorQSOTreeKeyDown
           OnMouseDown = LogMonitorQSOTreeMouseDown
-          ExplicitLeft = 3
-          ExplicitTop = -6
           ExplicitWidth = 469
-          ExplicitHeight = 213
+          ExplicitHeight = 216
         end
       end
       object LogDetailPanel: TPanel
@@ -262,7 +279,6 @@ object SingleLogFrame: TSingleLogFrame
           BevelOuter = bvLowered
           BevelWidth = 3
           TabOrder = 0
-          ExplicitHeight = 154
           object NextContactDetailsLabel: TLabel
             Left = 3
             Top = 38
@@ -312,7 +328,7 @@ object SingleLogFrame: TSingleLogFrame
               Height = 31
               Align = alClient
               Style = csDropDownList
-              ItemHeight = 0
+              ItemHeight = 23
               TabOrder = 0
               TabStop = False
             end
@@ -427,7 +443,6 @@ object SingleLogFrame: TSingleLogFrame
         Height = 91
         Align = alRight
         TabOrder = 0
-        ExplicitHeight = 109
         object ArchiveMatchTree: TVirtualStringTree
           Left = 1
           Top = 1
@@ -452,7 +467,6 @@ object SingleLogFrame: TSingleLogFrame
           OnGetText = ArchiveMatchTreeGetText
           OnGetNodeDataSize = ArchiveMatchTreeGetNodeDataSize
           OnMouseDown = ArchiveMatchTreeMouseDown
-          ExplicitHeight = 107
           Columns = <>
         end
       end
@@ -464,7 +478,6 @@ object SingleLogFrame: TSingleLogFrame
         Align = alClient
         Caption = 'ContestMatchPanel'
         TabOrder = 1
-        ExplicitHeight = 109
         object MatchSplitter: TSplitter
           Left = 435
           Top = 1
@@ -508,7 +521,6 @@ object SingleLogFrame: TSingleLogFrame
           OnGetNodeDataSize = ThisMatchTreeGetNodeDataSize
           OnKeyDown = ThisMatchTreeKeyDown
           OnMouseDown = ThisMatchTreeMouseDown
-          ExplicitHeight = 107
           Columns = <>
         end
         object OtherMatchPanel: TPanel
@@ -518,7 +530,6 @@ object SingleLogFrame: TSingleLogFrame
           Height = 89
           Align = alRight
           TabOrder = 1
-          ExplicitHeight = 107
           object OtherMatchTree: TVirtualStringTree
             Left = 1
             Top = 1
@@ -546,7 +557,6 @@ object SingleLogFrame: TSingleLogFrame
             OnGetNodeDataSize = OtherMatchTreeGetNodeDataSize
             OnKeyDown = OtherMatchTreeKeyDown
             OnMouseDown = OtherMatchTreeMouseDown
-            ExplicitHeight = 105
             Columns = <>
           end
         end
