@@ -24,8 +24,6 @@ object AboutBox: TAboutBox
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 479
-    ExplicitHeight = 293
     DesignSize = (
       489
       303)
@@ -110,11 +108,11 @@ object AboutBox: TAboutBox
     object WebLabel: TLabel
       Left = 163
       Top = 260
-      Width = 128
+      Width = 106
       Height = 13
       Cursor = crHandPoint
       Anchors = [akLeft, akTop, akBottom]
-      Caption = 'http://www.Goodey.org.uk'
+      Caption = 'http://minos.berlios.de'
       OnClick = WebLabelClick
     end
   end
@@ -125,9 +123,6 @@ object AboutBox: TAboutBox
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 72
-    ExplicitTop = 299
-    ExplicitWidth = 219
     object OKButton: TButton
       Left = 212
       Top = 4
