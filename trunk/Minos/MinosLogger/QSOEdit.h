@@ -47,6 +47,7 @@ class TQSOEditDlg : public TForm
             TColor &ItemColor, TItemEraseAction &EraseAction );
    void __fastcall InitialiseTimerTimer(TObject *Sender);
    void __fastcall GJVQSOEditFrameGJVCancelButtonClick(TObject *Sender);
+   void __fastcall GJVQSOEditFrameROFieldTimerTimer(TObject *Sender);
    private: 	// User declarations
 
       MinosEventListener  EL_AfterSelectContact;

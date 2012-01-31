@@ -67,6 +67,12 @@ void __fastcall TQSOEditDlg::InitialiseTimerTimer(TObject */*Sender*/)
    InitialiseTimer->Enabled = false;
    GJVQSOEditFrame->initialise( contest, /*this,*/ catchup );
 
+   // Supress the tabstops we weren't able to manage in the form designed
+   // to discover where they went, uncomment the top block in
+   // GJVQSOEditFrameROFieldTimerTimer
+
+   GJVQSOEditFrame->TabStop = false;
+
    GJVQSOEditFrame->selectEntry( firstContact );   // first contact for the dialog to deal with
    if (catchup)
    {
@@ -325,6 +331,25 @@ void __fastcall TQSOEditDlg::GJVQSOEditFrameGJVCancelButtonClick(
 {
   GJVQSOEditFrame->doGJVCancelButtonClick(Sender);
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TQSOEditDlg::GJVQSOEditFrameROFieldTimerTimer(TObject *Sender)
+{
+  GJVQSOEditFrame->ROFieldTimerTimer(Sender);
+/*
+#warning       DIAGNOSTICS
+      TWinControl *cur =  ActiveControl;
+      if (cur)
+      {
+   	  LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = cur->Name;
+      }
+      else
+      {
+   	  LogContainer->StatusBar1->Panels->Items[ 1 ] ->Text = "unknown";
+      }
+
+*/
 }
 //---------------------------------------------------------------------------
 
