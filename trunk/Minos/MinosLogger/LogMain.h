@@ -195,7 +195,6 @@ class TLogContainer : public TForm
    void __fastcall FontEdit1Accept(TObject *Sender);
    void __fastcall FontEdit1BeforeExecute(TObject *Sender);
    void __fastcall ReportAutofillActionExecute(TObject *Sender);
-   void __fastcall Edit1Click(TObject *Sender);
    private:  	// User declarations
       MinosEventListener  EL_FontChanged;
       void FontChanged_Event ( MinosEventBase & Event );

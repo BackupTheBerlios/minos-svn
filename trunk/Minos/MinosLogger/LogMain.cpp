@@ -874,11 +874,6 @@ void __fastcall TLogContainer::File1Click( TObject */*Sender*/ )
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TLogContainer::Edit1Click(TObject *Sender)
-{
-//  Disable everything unless we are in an edit control
-}
-//---------------------------------------------------------------------------
 void __fastcall TLogContainer::GridHintTimerTimer( TObject */*Sender*/ )
 {
    // timer used to time out the grid hint - but we don't
