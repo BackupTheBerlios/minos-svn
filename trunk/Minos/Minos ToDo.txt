@@ -1,8 +1,41 @@
-done G4APJ Somewhat belatedly, a problem I noticed during the 50MHz AFS.
+==================================================================
+DPI awareness for Vista and Win7
 
-When I invoked the 'F12 function' (by whatever method) the Postal Code did
-not get loaded.
+This site is telling it better then I can.
+http://www.rw-designer.com/DPI-aware
+Look for:  Not DPI aware - Vista mode
+ 
+And this is the MickeySoft guide to DPI aware applications
+which they encourage people to write as they encourage users
+to change the DPI to get bigger fonts on high-res screens.
+http://msdn.microsoft.com/en-us/library/dd464660(v=vs.85).aspx
 
+HMODULE hUser32 = LoadLibrary(_T("user32.dll"));
+typedef BOOL (*SetProcessDPIAwareFunc)();
+SetProcessDPIAwareFunc setDPIAware = (SetProcessDPIAwareFunc)GetProcAddress(hUser32, "SetProcessDPIAware");
+if (setDPIAware)
+    setDPIAware();
+FreeLibrary(hUser32);
+
+==================================================================
+> how does one change the font on a menu
+
+I believe the only way You can do that is by owner drawing it.
+The default font name and size is controlled by the system.
+
+Set OwnerDraw = true;
+and then respond to the OnMesureItem and the OnDrawItem events
+on each menu item. p.s. they can all use the same event.
+
+But be aware of potential scaling problems, so test Your work
+on a machine with extra large font eg. 144DPI, thats what I use
+and believe me I've seen a lot of poor work.
+Some don't scale up the font and others have forgotten to respond
+to the OnMesureItem even which result in letters to big for the
+items.
+
+ ==================================================================
+G4DDN - editing of archive list leads to crash
 ==================================================================
 MessageBox doesn't get the font change - QSOFrame 1083 (QSO has changed)
 especially needs this.

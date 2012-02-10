@@ -1,4 +1,8 @@
 ==================================================================
+1.5.5 - bug fix release
+Some complaints of screen "going mad" when editting QSOs
+QSO Edit dialog and tabbing improved
+No edit menu when on QSO grid
 ==================================================================
 1.5.4
 - Font selection and scaling; Support of large screen fonts; hence some layouts re-arranged. Look at Tools|Select Font.
