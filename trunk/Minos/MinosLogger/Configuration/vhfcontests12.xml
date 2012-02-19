@@ -16,7 +16,7 @@
 <!ELEMENT long_description (#PCDATA)>
 <!ELEMENT band_list (#PCDATA)>
 <!ELEMENT special_rule (name, description, long_description)>
-<!ELEMENT resultsFormatType (name, ColumnFormatUsed, TeamSize?, cumulativeField?, normType?)>
+<!ELEMENT resultsFormatType (name, ColumnFormatUsed, TeamSize?, cumulativeField?, normType?, useContestID?)>
 <!ELEMENT section (name, description, long_description, power?, height?, singleantenna?, overall_section?, month_list*)>
 <!ELEMENT contest (name, description, short_description?, time_list*, section_list+, scoring, special_rules_list*, band_list+, mult?, mode?, iaru?, power?, award_list*, entry_date, override?, club_contest?, resultsFormatUsed?)>
 <!ELEMENT time_list (month_list+, ((start_day, start_week) | start_date_list+), start_time, time_type, duration, mult?)>
@@ -54,6 +54,7 @@
 <!ELEMENT cumulativeField (#PCDATA)>
 <!ELEMENT TeamSize (#PCDATA)>
 <!ELEMENT normType (#PCDATA)>
+<!ELEMENT useContestID (#PCDATA)>
 <!ELEMENT start_date_list (#PCDATA)>
 <!ELEMENT short_description (#PCDATA)>
 <!ELEMENT overall_section (#PCDATA)>
@@ -105,8 +106,10 @@
 <!-- 12.014 28/12/11 G4CLA - change carried over from 2011-->
 <!-- 12.015 28/12/11 G4CLA - added club_contest flag -->
 <!-- 12.016 11/01/12 G4CLA - copied ical from to local folder and give unique name  -->
+<!-- 12.017 01/02/12 G4CLA - removed the power exception text for 4m - do this in vhfenter now-->
+<!-- 12.018 02/02/12 G4CLA - added useContestID flag for shfukac-->
 <calendar>
-<version>12.016 11/01/2012</version>
+<version>12.018 02/02/2012</version>
 <icalurl>http://www.rsgbcc.org/icals/rsgb_vhf_2012.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
@@ -220,6 +223,13 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
         <ColumnFormatUsed>vhfmultsandnorm</ColumnFormatUsed>
         <cumulativeField>Norm</cumulativeField>
         <normType>Pos</normType>
+</resultsFormatType>
+<resultsFormatType>
+        <name>shfukac</name>
+        <ColumnFormatUsed>vhfmultsandnorm</ColumnFormatUsed>
+        <cumulativeField>Norm</cumulativeField>
+        <normType>Pos</normType>
+	<useContestID>SHF UKAC</useContestID>
 </resultsFormatType>
 <resultsFormatType>
         <name>vhfmults</name>
@@ -436,7 +446,7 @@ No antenna restrictions.
 The power output must be greater than 10W PEP (4W on 4m) and not more than 100W PEP (40W on 4m) at the output of the transmitter.
 Only one antenna may be used at any one time. If you do not use a rotatable antenna then you may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Switching between a rotatable antenna and any other antenna is not allowed. Stacked or bayed antenna arrays may not be used, but you may use a co-linear vertically polarised antenna.
 </long_description>
-<power>100(40W on 4m)</power>
+<power>100</power>
 <singleantenna>1</singleantenna>
 </section>
 <section>
@@ -622,7 +632,7 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 (vi) An award will be made to the leading Sweeper on each band and additionally bronze, silver and gold awards for contacting 50, 75 and 90% of registered NFD stations.
 
 </long_description>
-<power>100(40W on 4m)</power>
+<power>100</power>
 <singleantenna>1</singleantenna>
 </section>
 <section>
@@ -650,7 +660,7 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 
 Stations entering in this section must use the /P callsign suffix. 
 </long_description>
-<power>100(40W on 4m)</power>
+<power>100</power>
 <height>10</height>
 <singleantenna>1</singleantenna>
 </section>
@@ -1365,7 +1375,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <mult>M5</mult>
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
-<resultsFormatUsed>vhfukac</resultsFormatUsed>
+<resultsFormatUsed>shfukac</resultsFormatUsed>
 </contest>
 <contest>
   <name>6mukac</name>

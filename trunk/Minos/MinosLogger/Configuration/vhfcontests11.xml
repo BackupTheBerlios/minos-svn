@@ -95,8 +95,9 @@
 <!-- 11.022 10/12/11 G4CLA - Fotmatting rules added-->
 <!-- 11.023 12/12/11 G4CLA - Added normType-->
 <!-- 11.024 18/12/11 G4CLA - Added Column descriptions-->
+<!-- 11.025 17/02/12 G4CLA - Added format type for March 144/432-->
 <calendar>
-<version>11.024 18/12/2011</version>
+<version>11.025 17/02/2012</version>
 <icalurl>http://www.google.com/calendar/ical/mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com/public/basic.ics</icalurl>
 <googleurl>http://www.google.com/calendar/embed?src=mg5296eh75hhdoj8rjj3c2tvbc%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>Calendar amended 02/01/11, 3rd 70MHz Cumulative contest moved forward 1 week</notes_list>
@@ -207,10 +208,18 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
 	<Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
 </ColumnFormat>
 <resultsFormatType>
+	<name>multiband2</name>
+	<ColumnFormatUsed>vhf</ColumnFormatUsed>
+	<cumulativeField>Norm</cumulativeField>
+	<normType>1000</normType>
+        <useContestID>yes</useContestID>
+</resultsFormatType>
+<resultsFormatType>
 	<name>vhfukac</name>
 	<ColumnFormatUsed>vhfmultsandnorm</ColumnFormatUsed>
 	<cumulativeField>Norm</cumulativeField>
 	<normType>Pos</normType>
+        <useContestID>SHF UKAC</useContestID>
 </resultsFormatType>
 <resultsFormatType>
 	<name>vhfmults</name>
@@ -1480,6 +1489,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <band_list>144</band_list>
 <band_list>432</band_list>
 <entry_date>16 days</entry_date>
+<resultsFormatUsed>multiband2</resultsFormatUsed>
 </contest>
 <contest>
 <name>may144</name>
