@@ -1,3 +1,4 @@
+Disable F keys configurably (to allow voice keyer to run as well)
 ==================================================================
 DPI awareness for Vista and Win7
 
