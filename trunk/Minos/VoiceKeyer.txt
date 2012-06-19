@@ -1,0 +1,72 @@
+To use the Minos Voice Keyer you will the Minos "networking" distribution from Berlios.
+
+There are three parts to the operation, sound card, switching, and connection of all the programs..
+
+1. Sound card
+
+Full duplex card, DO NOT use Vista (as it sees a single card as two, and I can't make it loop back).
+
+This is how I do it; the general principles will remain the same, but your electronic engineering is almost certainly better than mine!
+
+Normal rig microphone goes to sound card microphone.
+
+Sound card output goes to Rig microphone input (almost certainly needs padding down)
+
+Up to you how you match, isolate etc, etc.
+
+2. Switching
+
+Minos support 4 switch technologies.
+
+1. "WindowsMonitor" - this is an on-screen representation.
+
+2. Serial port (not fully tested); USB serial port may work (depends on what lines are supported)
+
+3. Velleman K8055 (http://www.maplin.co.uk/module.aspx?moduleno=42857 or others) - PIC based USB connected controller
+
+4. USB Bit Whacker (http://greta.dhs.org/UBW/index.html)
+
+In all cases the line allocation is configurable.
+
+We need lines for:
+
+(from equipment to computer)
+
+PTTIn Connected to PTT switch on microphone
+
+L1  Play preset message 1
+L2  Play Preset message 2
+
+(from computer to equipment)
+
+PTTOut to allow computer to put rig in transmit.
+
+3. Initial testing.
+
+To try it all  out initially, just use a headset into the soundcard and the "WindowsMonitor" switching.set up via Configuration\keyerConfig.xml (in this setup the Minos keyer operates completely standalone).
+
+4, How it works
+
+ALL microphone activity is passed from the mic, through the soundcard/computer, and back out through the soundcard to the rig. For simple transmission I use "passthrough" and the signal never enters the computer.
+
+To record a keyer message, trigger the recording - either via the GUI, or press both L1 and L2 together, release them together, and then press the one you want the message to be assigned to. Timing is tolerant!
+
+Then press the PTT and start talking - it will record while the PTT is pressed. 
+
+To playback the message hit L1 or L2 (as appropriate).
+
+You will need to experiment with all the soundcard mixer settings on both record, playback, and passthrough to get suitable levels.
+
+Pip tone is generated internally in the computer, and when you release the PTT or the playback ends the soundard is switched round so that the pip "tail ends" the voice.
+
+Lots of configuration: Configuration\portConfig.xml controls the switching,  Configuration\keyerConfig.xml controls the keyer.
+
+Don't worry (for now) about all the apparent CW stuff - it is all for generating CW as an audio tone to feed through the rig in a voice mode.
+
+5. Linking all the programs together
+
+Once you have it working with the keyer stand alone, then you can start linking all the multiple programs together.
+
+Logger config - server, control, keyer
+port Config - as you need
+keyer config - use MinosControl
