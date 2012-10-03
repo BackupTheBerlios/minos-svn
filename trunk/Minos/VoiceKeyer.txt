@@ -10,7 +10,7 @@ This is how I do it; the general principles will remain the same, but your elect
 
 Normal rig microphone goes to sound card microphone.
 
-Sound card output goes to Rig microphone input (almost certainly needs padding down)
+Sound card output goes to Rig microphone input (it almost certainly needs padding down)
 
 Up to you how you match, isolate etc, etc.
 
