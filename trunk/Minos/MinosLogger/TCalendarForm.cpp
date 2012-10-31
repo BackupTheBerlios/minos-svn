@@ -180,7 +180,7 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
    year -= 1;
    if (year < 2008)
    {
-      year = 2012;
+      year = 2013;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
@@ -189,9 +189,9 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 
 void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
-   int year = YearEdit->Text.ToIntDef(2011);
+   int year = YearEdit->Text.ToIntDef(2012);
    year += 1;
-   if (year > 2012)
+   if (year > 2013)
    {
       year = 2008;
    }
