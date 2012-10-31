@@ -18,8 +18,8 @@
 
 #define MINOSBUILD "$WCREV$"
 #define MINOSBUILDNO $WCREV$
-#define MINOSVERSIONBUILD "1.5.5 build $WCREV$"
-#define MINOSRCVERSION "1.5.5.$WCREV$\0"
+#define MINOSVERSIONBUILD "1.5.6 build $WCREV$"
+#define MINOSRCVERSION "1.5.6.$WCREV$\0"
 
 //#define BETA_VERSION
 
