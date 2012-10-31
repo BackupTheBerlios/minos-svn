@@ -35,7 +35,11 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    bool loaded = false;
 
    #warning can we automate calendar years depending on configured and present files/URLs?
-   if (year > 2011)
+   if (year > 2012)
+   {
+      loaded = vhf.parseFile( ".\\configuration\\vhfContests13.xml" );
+   }
+   else if (year == 2012)
    {
       loaded = vhf.parseFile( ".\\configuration\\vhfContests12.xml" );
    }
@@ -150,11 +154,8 @@ void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
    String fpath = ExtractFilePath( appFName );
 
    #warning we want these URLs to be configurable
-//   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests.xml", fpath + "Configuration\\vhfcontests.xml");
-//   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests09.xml", fpath + "Configuration\\vhfcontests09.xml");
-//   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests10.xml", fpath + "Configuration\\vhfcontests10.xml", true);
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests11.xml", fpath + "Configuration\\vhfcontests11.xml", true);
    downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests12.xml", fpath + "Configuration\\vhfcontests12.xml", false);
+   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests13.xml", fpath + "Configuration\\vhfcontests13.xml", false);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
