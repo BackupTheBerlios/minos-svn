@@ -45,14 +45,14 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object Label1: TLabel
     Left = 492
-    Top = 254
+    Top = 238
     Width = 81
     Height = 13
     Caption = 'Main Operator'
   end
   object Label2: TLabel
     Left = 492
-    Top = 318
+    Top = 291
     Width = 97
     Height = 13
     Caption = 'Second Operator'
@@ -153,9 +153,9 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object MultGroupBox: TGroupBox
     Left = 434
-    Top = 384
+    Top = 364
     Width = 249
-    Height = 126
+    Height = 146
     Caption = 'Multipliers and Exchange'
     TabOrder = 17
     object DXCCMult: TCheckBox
@@ -168,7 +168,7 @@ object ContestEntryDetails: TContestEntryDetails
     end
     object LocatorMult: TCheckBox
       Left = 16
-      Top = 49
+      Top = 70
       Width = 193
       Height = 17
       Caption = 'Locator Multiplier'
@@ -176,7 +176,7 @@ object ContestEntryDetails: TContestEntryDetails
     end
     object ExchangeComboBox: TComboBox
       Left = 16
-      Top = 96
+      Top = 117
       Width = 230
       Height = 21
       Style = csDropDownList
@@ -192,11 +192,19 @@ object ContestEntryDetails: TContestEntryDetails
     end
     object GLocMult: TCheckBox
       Left = 16
-      Top = 70
-      Width = 97
+      Top = 91
+      Width = 209
       Height = 17
-      Caption = 'G Locs only'
+      Caption = 'UK Locs only (M5, M6)'
       TabOrder = 3
+    end
+    object NonGCtryMult: TCheckBox
+      Left = 16
+      Top = 48
+      Width = 201
+      Height = 17
+      Caption = 'Non UK Countries Only (M6)'
+      TabOrder = 4
     end
   end
   object OptionsGroupBox: TGroupBox
@@ -482,7 +490,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object MainOpComboBox: TComboBox
     Left = 492
-    Top = 278
+    Top = 261
     Width = 145
     Height = 21
     CharCase = ecUpperCase
@@ -491,7 +499,7 @@ object ContestEntryDetails: TContestEntryDetails
   end
   object SecondOpComboBox: TComboBox
     Left = 492
-    Top = 342
+    Top = 316
     Width = 145
     Height = 21
     CharCase = ecUpperCase

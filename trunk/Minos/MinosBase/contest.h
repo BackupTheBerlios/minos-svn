@@ -132,6 +132,7 @@ class BaseContestLog
       MinosItem<std::string> band;
       MinosItem<bool> otherExchange;
       MinosItem<bool> countryMult;
+      MinosItem<bool> nonGCountryMult;
       MinosItem<bool> locMult;
       MinosItem<bool> GLocMult;
       MinosItem<bool> districtMult;

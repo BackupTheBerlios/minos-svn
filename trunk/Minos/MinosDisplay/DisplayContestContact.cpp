@@ -278,12 +278,17 @@ void DisplayContestContact::check( )
    {
       if ( ( clp->countryWorked[ ctryMult->listOffset ] ) ++ == 0 )
       {
-         clp->nctry++;
-         if ( clp->countryMult.getValue() )
+         if (!clp->nonGCountryMult.getValue() || !cs.isUK())
          {
-            multCount++;
+            clp->nctry++;
+            if ( clp->countryMult.getValue() )
+            {
+               {
+                  multCount++;
+               }
+            }
+            newCtry = true;
          }
-         newCtry = true;
       }
    }
    clp->DupSheet.checkCurDup( this, 0, true ); // add to duplicates list

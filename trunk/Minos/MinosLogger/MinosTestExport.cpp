@@ -102,6 +102,7 @@ void MinosTestExport::exportContest( HANDLE expfd )
    ct->DTGEnd.addIfDirty( st, "endTime", dirty );
    ct->districtMult.addIfDirty( st, "districtMult", dirty );
    ct->countryMult.addIfDirty( st, "DXCCMult", dirty );
+   ct->nonGCountryMult.addIfDirty( st, "NonGCtryMult", dirty );
    ct->locMult.addIfDirty( st, "locMult", dirty );
    ct->GLocMult.addIfDirty( st, "GLocMult", dirty );
    ct->otherExchange.addIfDirty( st, "QTHReq", dirty );

@@ -27,7 +27,7 @@ BaseContestLog::BaseContestLog( void ) :
       ode( 0.0 ), odn( 0.0 ), sinodn( 0.0 ), cosodn( 0.0 ),
       allowLoc8( false ), allowLoc4 ( false ),
       RSTField( true ), serialField( true ), locatorField( true ), QTHField( true ),
-      otherExchange( false ), countryMult( false ),
+      otherExchange( false ), countryMult( false ), nonGCountryMult( false ),
       districtMult( false ), locMult( false ), GLocMult(false), scoreMode( PPKM ),
       powerWatts( true ), maxSerial( 0 ),
       contestScore( 0 ), ndistrict( 0 ), nctry( 0 ), nlocs( 0 ),
@@ -123,6 +123,7 @@ void BaseContestLog::clearDirty()
    band.clearDirty();
    otherExchange.clearDirty();
    countryMult.clearDirty();
+   nonGCountryMult.clearDirty();
    locMult.clearDirty();
    GLocMult.clearDirty();
    districtMult.clearDirty();
@@ -153,6 +154,7 @@ void BaseContestLog::setDirty()
    band.setDirty();
    otherExchange.setDirty();
    countryMult.setDirty();
+   nonGCountryMult.setDirty();
    locMult.setDirty();
    GLocMult.setDirty();
    districtMult.setDirty();
@@ -966,6 +968,7 @@ void BaseContestLog::processMinosStanza( const std::string &methodName, MinosTes
 
       mt->getStructArgMemberValue( "districtMult", districtMult );
       mt->getStructArgMemberValue( "DXCCMult", countryMult );
+      mt->getStructArgMemberValue( "NonGCtryMult", nonGCountryMult );
       mt->getStructArgMemberValue( "locMult", locMult );
       mt->getStructArgMemberValue( "GLocMult", GLocMult );
       mt->getStructArgMemberValue( "QTHReq", otherExchange );

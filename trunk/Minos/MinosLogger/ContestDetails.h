@@ -73,6 +73,7 @@ class TContestEntryDetails : public TForm
    TEdit *ContestNameSelected;
    TCheckBox *GLocMult;
 	TLabeledEdit *AntOffsetEdit;
+   TCheckBox *NonGCtryMult;
       void __fastcall OKButtonClick( TObject *Sender );
       void __fastcall CancelButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
