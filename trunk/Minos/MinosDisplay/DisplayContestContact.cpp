@@ -50,7 +50,7 @@ void DisplayContestContact::copyFromArg( ScreenContact &cct )
    repr.setValue( cct.repr );
    serialr.setValue( cct.serialr );
 
-   QSOValid = cct.QSOValid;
+   QSOValid = cct.screenQSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -138,7 +138,7 @@ bool DisplayContestContact::ne( const ScreenContact &mct, bool checkDTG ) const
    return false;  // i.e. equal
 }
 
-void DisplayContestContact::check( )
+void DisplayContestContact::checkContact( )
 {
    // check on country and district. If valid, return true,
    // having mapped any synonyms to their parents and
@@ -155,12 +155,15 @@ void DisplayContestContact::check( )
 
    QSOValid = false;             // initially, anyway
    int csret = cs.validate( );
-   if ( csret != CS_OK )
+#warning scanContest may already have set ERR_DUPCS
+   if ( csret != CS_OK && csret != ERR_DUPCS )
       checkret = ERR_13;
 
    int index;
    if ( !checkret )
    {
+// and if scanContest has set dup, then this won't fire tering a new QSO
+// But it DOES fire when checking on en
       BaseContact * valp = 0;
       valp = clp->validationPoint;
       if ( clp->DupSheet.checkCurDup( this, valp, false ) )
@@ -683,7 +686,7 @@ void DisplayContestContact::processMinosStanza( const std::string &methodName, M
             contest->maxSerial = maxct;
 
          contest->validationPoint = this;
-         check();
+         checkContact();                 // processMinosStanza - Do we need to? scanContest will repeat it. Except we push the contact in it's current state into history
          BaseContact bc( *this );   // this should get it now??
          getHistory().push_back( bc );
       }

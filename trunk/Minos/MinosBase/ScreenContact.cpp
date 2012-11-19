@@ -40,7 +40,7 @@ void ScreenContact::initialise( BaseContestLog *ct )
    comments = "";
    contactFlags = 0;
    forcedMult = "";
-   QSOValid = false;
+   screenQSOValid = false;
    newCtry = false;
    newDistrict = false;
    newLoc = false ;
@@ -77,7 +77,7 @@ void ScreenContact::copyFromArg( BaseContact &cct )
    repr = cct.repr.getValue();
    serialr = cct.serialr.getValue();
 
-   QSOValid = cct.QSOValid;
+   screenQSOValid = cct.QSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -120,7 +120,7 @@ void ScreenContact::copyFromArg( ScreenContact &cct )
    repr = cct.repr;
    serialr = cct.serialr;
 
-   QSOValid = cct.QSOValid;
+   screenQSOValid = cct.screenQSOValid;
 
    districtMult = cct.districtMult;
    ctryMult = cct.ctryMult;
@@ -141,7 +141,7 @@ void ScreenContact::copyFromArg( ScreenContact &cct )
    bearing = cct.bearing;
    mode = cct.mode;
 }
-void ScreenContact::check( )
+void ScreenContact::checkScreenContact( )
 {
    // check on country and district. If valid, return true,
    // having mapped any synonyms to their parents and
@@ -155,11 +155,13 @@ void ScreenContact::check( )
    if ( contactFlags & NON_SCORING )
       return ;
 
-   QSOValid = false;             // initially, anyway
+   screenQSOValid = false;             // initially, anyway
+   // cs HAS been validated in TGJVEditFrame::contactValid
    int csret = cs.validate( );
-   if ( csret != CS_OK )
+   if ( csret != CS_OK && csret != ERR_DUPCS)
       checkret = ERR_13;
 
+   // AND it has been dup checked
    int index;
    if ( !checkret )
    {
@@ -241,7 +243,7 @@ void ScreenContact::check( )
    if ( checkret )
       return ;
 
-   QSOValid = true;        // for now
+   screenQSOValid = true;        // for now
 
 }
 bool ScreenContact::isNextContact( void ) const
