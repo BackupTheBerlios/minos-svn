@@ -52,7 +52,7 @@ class DisplayContestContact: public BaseContact
       DisplayContestContact( BaseContestLog *contest, bool time_now );
       ~DisplayContestContact();
       virtual bool ne( const ScreenContact&, bool checkDTG ) const;
-      virtual void check( );
+      virtual void checkContact( );
 
       virtual void copyFromArg( ScreenContact & );
 

@@ -161,7 +161,7 @@ void __fastcall TQSOEditDlg::QSOHistoryTreeGetText( TBaseVirtualTree *Sender,
    {
       if ( qn->historyOffset == -1 )
       {
-         line = qn->root->updtime.getDate( DTGFULL ) + " " + qn->root->updtime.getTime( DTGFULL ) + " UTC";
+         line = qn->root->updtime.getDate( DTGACCURATE ) + " " + qn->root->updtime.getTime( DTGACCURATE ) + " UTC";
       }
       else
       {

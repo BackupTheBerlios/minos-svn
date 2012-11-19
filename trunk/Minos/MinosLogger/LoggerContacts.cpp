@@ -509,7 +509,7 @@ bool ContestContact::commonSave( )
          cs.valRes = CS_NOT_VALIDATED;
          loc.valRes = LOC_NOT_VALIDATED;
          loc.validate();
-         check( );
+         checkContact( );                    // in commonSave, AFTER saved, to update stats etc
       }
    }
    return ret;

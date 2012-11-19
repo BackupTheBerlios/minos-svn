@@ -137,7 +137,7 @@ class BaseContact
       }
       virtual void processMinosStanza( const std::string &methodName, MinosTestImport * const mt )
       {}
-      virtual void check( )
+      virtual void checkContact( )
       {}
       virtual void copyFromArg( ScreenContact & )
       {}

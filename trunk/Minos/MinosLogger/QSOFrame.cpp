@@ -1022,9 +1022,9 @@ void TGJVEditFrame::contactValid( void )
    // If multiplier ContestLog, multiplier (e.g. district if needed)
    // check anyway, this keeps country and loc charts up to date
 
-   vcct->check( );  // check multiplier, don't log it yet!
+   vcct->checkScreenContact( );  // TGJVEditFrame::contactValid, check multiplier, don't log it yet!
 
-   if ( contest->districtMult.getValue() && !vcct->QSOValid )
+   if ( contest->districtMult.getValue() && !vcct->screenQSOValid )
    {
       // no district when required
       // No CS means we should go to QTH, as its likely to be needed

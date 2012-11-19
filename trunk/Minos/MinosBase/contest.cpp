@@ -614,7 +614,7 @@ void BaseContestLog::scanContest( void )
       nct->newDistrict = false;
       nct->newCtry = false;
       nct->newLoc = false;
-      nct->check( );
+      nct->checkContact( );   // in scanContest
 
 //      nct->baddtg = false;
       if (nct->time.notEntered() == 0 && !(nct->contactFlags.getValue() & TO_BE_ENTERED))

@@ -237,18 +237,33 @@ std::string dtg::getTime( DTG dstyle, bool &d ) const
          temp_time += timeValue [ 2 ];
          temp_time += timeValue [ 3 ];
       }
-      else
+      else if (dstyle == DTGACCURATE)
       {
          temp_time += timeValue [ 0 ];
          temp_time += timeValue [ 1 ];
          temp_time += ':';
          temp_time += timeValue [ 2 ];
          temp_time += timeValue [ 3 ];
+         temp_time += ':';
+         temp_time += timeValue [ 4 ];
+         temp_time += timeValue [ 5 ];
 
-         for ( int i = 0; i < 5; i++ )
+         for ( int i = 0; i < 8; i++ )
             if ( temp_time[ i ] == 0 )
                temp_time[ i ] = ' ';
       }
+         else
+         {
+            temp_time += timeValue [ 0 ];
+            temp_time += timeValue [ 1 ];
+            temp_time += ':';
+            temp_time += timeValue [ 2 ];
+            temp_time += timeValue [ 3 ];
+
+            for ( int i = 0; i < 5; i++ )
+               if ( temp_time[ i ] == 0 )
+                  temp_time[ i ] = ' ';
+         }
    return temp_time;
 }
 std::string dtg::getTime( DTG dstyle ) const

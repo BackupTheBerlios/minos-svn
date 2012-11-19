@@ -20,7 +20,7 @@ class ScreenContact
       virtual ~ScreenContact();
       virtual void copyFromArg( BaseContact & );   // this MIGHT just get used for dummy, for ops
       virtual void copyFromArg( ScreenContact & );    // used for partialSave
-      void check( );
+      void checkScreenContact( );
       virtual bool isNextContact( void ) const;
       virtual void setLogSequence( unsigned long ul )
       {
@@ -52,7 +52,7 @@ class ScreenContact
       std::string op2;
       //------------------
 
-      bool QSOValid;
+      bool screenQSOValid;
       bool newCtry;
       bool newDistrict;
       bool newLoc;
