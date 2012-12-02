@@ -382,8 +382,24 @@ bool BaseContestLog::updateStat( BaseContact *cct )
          break;
 
    }
+   int sp1 = MinosParameters::getMinosParameters() ->getStatsPeriod1();
+   int sp2 = MinosParameters::getMinosParameters() ->getStatsPeriod2();
 
-   if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod1() * 60L )
+   // find the time since the beginning of the contest
+
+   TDateTime  contestStart = CanonicalToTDT(DTGStart.getValue().c_str());
+   TDateTime diff = TDateTime::CurrentDateTime() - contestStart;
+   int fromContestStart = (double(diff)) * 1440;
+   if (sp1 *2 > fromContestStart)
+   {
+      sp1 = fromContestStart/2;
+   }
+   if (sp2 *2 > fromContestStart)
+   {
+      sp2 = fromContestStart/2;
+   }
+
+   if ( tdiff < sp1 * 60L )
    {
       // need a common routine
       // This period
@@ -393,7 +409,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
       acted = true;
    }
    else
-      if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod1() * 60L * 2 )
+      if ( tdiff < sp1 * 60L * 2 )
       {
          // need a common routine
          // previous period
@@ -403,7 +419,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
          acted = true;
       }
 
-   if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod2() * 60L )
+   if ( tdiff < sp2 * 60L )
    {
       // need a common routine
       // this period
@@ -413,7 +429,7 @@ bool BaseContestLog::updateStat( BaseContact *cct )
       acted = true;
    }
    else
-      if ( tdiff < MinosParameters::getMinosParameters() ->getStatsPeriod2() * 60L * 2 )
+      if ( tdiff < sp2 * 60L * 2 )
       {
          // need a common routine
          // previous period

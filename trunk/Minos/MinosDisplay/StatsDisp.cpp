@@ -70,6 +70,19 @@ void TStatsDispFrame::reInitialise()
                            % "PE0/LX5ABC/P" % "9999" % "XX99XX" % 29999 % 9999.9
    #endif
                          ).str();
+      int sp1 = MinosParameters::getMinosParameters() ->getStatsPeriod1();
+      int sp2 = MinosParameters::getMinosParameters() ->getStatsPeriod2();
+      TDateTime  contestStart = CanonicalToTDT(ct->DTGStart.getValue().c_str());
+      TDateTime diff = TDateTime::CurrentDateTime() - contestStart;
+      int fromContestStart = (double(diff)) * 1440;
+      if (sp1 > fromContestStart/2)
+      {
+         sp1 = fromContestStart/2;
+      }
+      if (sp2 > fromContestStart/2)
+      {
+         sp2 = fromContestStart/2;
+      }
       if ( ltot )
       {
          double qmult = ( double ) nvalid / ltot;
@@ -78,7 +91,8 @@ void TStatsDispFrame::reInitialise()
          long Qs = ct->QSO1 ? ct->QSO1 : ct->QSO2;
          if ( Qs )
          {
-            int period = ct->kms1 ? MinosParameters::getMinosParameters() ->getStatsPeriod1() : MinosParameters::getMinosParameters() ->getStatsPeriod2();
+            // Why the selection of period in this way?  kms1 is the distance for the first period; use that unless it is zero
+            int period = ct->kms1 ? sp1 : sp2;
             double qmins = ( qmult * period ) / Qs;
             temp = ( boost::format( " (%.1f Mins)" ) % qmins ).str();
          }
@@ -96,9 +110,9 @@ void TStatsDispFrame::reInitialise()
       std::string lbuff = ( boost::format( "Last %d Mins: %d QSO %ld pts %d mults\r\n(Previous %d; %ld; %d)"
                                            "\nLast %d Mins: %d QSO %ld pts %d mults\r\n(Previous %d; %ld; %d )" )
    #ifndef MAX_DISPLAY_TEST
-                            % MinosParameters::getMinosParameters() ->getStatsPeriod1() % ct->QSO1 % ct->kms1 % ct->mults1
+                            % sp1 % ct->QSO1 % ct->kms1 % ct->mults1
                             % ct->QSO1p % ct->kms1p % ct->mults1p
-                            % MinosParameters::getMinosParameters() ->getStatsPeriod2() % ct->QSO2 % ct->kms2 % ct->mults2
+                            % sp2 % ct->QSO2 % ct->kms2 % ct->mults2
                             % ct->QSO2p % ct->kms2p % ct->mults2p
    #else
 
