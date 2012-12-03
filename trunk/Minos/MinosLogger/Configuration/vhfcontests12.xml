@@ -137,8 +137,13 @@
 <!-- 12.048 21/10/12 G4CLA - added clubdistance tag -->
 <!-- 12.049 22/10/12 G4CLA - added output formats for low power contests -->
 <!-- 12.050 31/10/12 G4CLA - added output formats for 2m trophy -->
+<!-- 12.051 01/11/12 G4CLA - changed results format and added auto_certs for 50MHz AFS-->
+<!-- 12.052 05/11/12 G4CLA - Auto certs for low power contests-->
+<!-- 12.053 15/11/12 G4CLA - Auto certs for 4m UKAC and cert info for UKAC sections-->
+<!-- 12.054 19/11/12 G4CLA - added HF contest club calls to superleague-->
+<!-- 12.055 28/11/12 G4CLA - added operators to backpackers results-->
 <calendar>
-<version>12.048 22/10/2012</version>
+<version>12.053 15/11/2012</version>
 <icalurl>http://www.rsgbcc.org/icals/rsgb_vhf_2012.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
@@ -288,7 +293,7 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
         <Columns Title = "Ant" Field="ant" Align = "center" img="tower.gif" ></Columns>
         <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
         <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
-        <Columns Title = "Operators" Field="Operators" Align = "left" Sections= "O,6O,A" ></Columns>
+        <Columns Title = "Operators" Field="Operators" Align = "left" Sections= "O,6O,A,3B,10H" ></Columns>
 </ColumnFormat>
 <ColumnFormat>
         <name>vhf</name>
@@ -370,6 +375,13 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
 <resultsFormatType>
         <name>vhfnomults</name>
         <ColumnFormatUsed>vhf</ColumnFormatUsed>
+</resultsFormatType>
+<resultsFormatType>
+        <name>vhfafsmults</name>
+        <ColumnFormatUsed>vhfmultsandnorm</ColumnFormatUsed>
+        <TeamSize>4</TeamSize>
+        <cumulativeField>vhfafs</cumulativeField>
+        <normType>vhfafs</normType>
 </resultsFormatType>
 <resultsFormatType>
         <name>vhfafs</name>
@@ -552,6 +564,7 @@ Maximum output power as permitted by standard licence conditions.
 No antenna restrictions. 
 Active use of the DX cluster and chat channels such as ON4KST is allowed, so long as no information that forms part of the contest exchange is passed via these means. 
 Scores in this section will not count towards a club score (S9)</long_description>
+<certfields>call</certfields>
 </section>
 <section>
 <name>AO</name>
@@ -561,6 +574,7 @@ The power output must be greater than 100W PEP (40W on 4m) and not more than 400
 No antenna restrictions.
 (If a stacked or bayed antenna system is used, the minimum power requirement is waived)
 </long_description>
+<certfields>call</certfields>
 </section>
 <section>
 <name>SAO</name>
@@ -580,6 +594,7 @@ Only one antenna may be used at any one time. If you do not use a rotatable ante
 </long_description>
 <power>100</power>
 <singleantenna>1</singleantenna>
+<certfields>call</certfields>
 </section>
 <section>
 <name>SAR</name>
@@ -600,6 +615,7 @@ Only one antenna may be used at any one time. If you do not use a rotatable ante
 </long_description>
 <power>10</power>
 <singleantenna>1</singleantenna>
+<certfields>call</certfields>
 </section>
 <section>
 <name>SF</name>
@@ -1162,6 +1178,39 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <table>Entries</table>
                 </collate_list>
 </seriesCollate>
+<seriesCollate>
+<name>superleague</name>
+                <collate_list>
+                        <name>Club Scores</name>
+                        <field>clubName</field>
+                        <display>Club</display>
+                        <filter>date=0</filter>
+                        <scorefield>runningPos</scorefield>
+                        <table>ClubScores</table>
+                </collate_list>
+</seriesCollate>
+<seriesResult>
+        <name>AFS Superleague 12/13</name>
+		<ctl>AFSsuperleague1213</ctl>
+        <id_list>
+                <name>50MHz</name>
+                <id>2nd50MHz</id>
+				<resultName>50MHz AFS Contest</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+				<collate_type>superleague</collate_type>
+                <spectrum>VHF</spectrum>
+        </id_list>
+       <id_list>
+                <name>Club Calls</name>
+                <id>clubcalls</id>
+                <resultName>Club Calls</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>HF</spectrum>
+        </id_list>
+</seriesResult>
 <seriesResult>
         <name>VHF Championship</name>
 		<ctl>vhfchampionship</ctl>
@@ -1620,6 +1669,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <band_list>70</band_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfnomults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>1st50MHz</name>
@@ -1798,8 +1848,9 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <mult>M3</mult>
 <entry_date>16 days</entry_date>
 <club_contest>afs</club_contest>
-<resultsFormatUsed>vhfafs</resultsFormatUsed>
+<resultsFormatUsed>vhfafsmults</resultsFormatUsed>
 <clubdistance>50m</clubdistance>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>2mukac</name>
@@ -2023,6 +2074,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>VHFNFD</name>
@@ -2257,6 +2309,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <power>25</power>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>lp432</name>
@@ -2282,6 +2335,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <power>25</power>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>70trophy</name>
