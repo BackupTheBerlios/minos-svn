@@ -101,9 +101,11 @@
 <!-- 12.051 01/11/12 G4CLA - changed results format and added auto_certs for 50MHz AFS-->
 <!-- 12.052 05/11/12 G4CLA - Auto certs for low power contests-->
 <!-- 13.001 05/11/12 G4CLA - added M6. Changed duration of 70cms and 2m afs contests-->
+<!-- 13.002 13/12/12 G4CLA - add ical and google calendar-->
 <calendar>
-<version>12.052 05/11/2012</version>
-<icalurl></icalurl>
+<version>13.002 03/12/2012</version>
+<icalurl>http://www.rsgbcc.org/icals/2013vhf.ics</icalurl>
+<googleurl>https://www.google.com/calendar/embed?src=2puobjml9pkpdvavmj0hf8ac1g%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>05/11/12: Changed duration and start time of 2m and 70cms AFS contests</notes_list>
 <mult_type>
 <name>M1</name>

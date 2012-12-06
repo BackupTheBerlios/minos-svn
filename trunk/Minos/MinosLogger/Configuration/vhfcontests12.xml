@@ -694,6 +694,7 @@ In multi-band contests the same single 6 hour period must be used on all bands.
 <section>
 <name>3B</name>
 <description>2m 3W Backpacker</description>
+<resdescription>Backpackers</resdescription>
 <long_description> 
 a) Duration: 4 hours. 
 b) Mode: All Mode 
@@ -712,6 +713,7 @@ i) Stations entering in this section must use the /P callsign suffix
 <section>
 <name>10H</name>
 <description>10W Hill Toppers</description>
+<resdescription>Hill Toppers</resdescription>
 <long_description> 
 a) Duration: 4 hours. 
 b) Mode: All Mode
