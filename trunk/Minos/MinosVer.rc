@@ -29,7 +29,7 @@ BEGIN
             VALUE "FileDescription", MINOSFILEDESCRIPTION
             VALUE "FileVersion", MINOSRCVERSION
             VALUE "InternalName", MINOSINTERNALNAME
-            VALUE "LegalCopyright", "Copyright © 2005 - 2012 Mike Goodey G0GJV\0"
+            VALUE "LegalCopyright", "Copyright © 2005 - 2013 Mike Goodey G0GJV\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", MINOSORIGINALFILENAME
             VALUE "ProductName", "Minos Contest Logger\0"
