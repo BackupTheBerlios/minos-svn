@@ -145,18 +145,16 @@ void TSingleLogFrame::ContestPageChanged_Event ( MinosEventBase & /*Event*/ )
 
    if ( Parent != LogContainer->ContestPageControl->ActivePage )
    {
-//      GJVQSOLogFrame->savePartial();  // we kill it on (re) entry, so not needed
+      GJVQSOLogFrame->savePartial();  // we kill it on (re) entry, so not needed
       return ;
    }
 
    BaseContestLog * ct = getContest();
    TContestApp::getContestApp() ->setCurrentContest( ct );
 
-   GJVQSOLogFrame->killPartial();  // on change of tabs kill the partial
-                                   // or we can mess up the final log action
    if ( logColumnsChanged )
    {
-//      GJVQSOLogFrame->killPartial();
+      GJVQSOLogFrame->killPartial();
       showQSOs();             // this does a restorePartial
       logColumnsChanged = false;
    }

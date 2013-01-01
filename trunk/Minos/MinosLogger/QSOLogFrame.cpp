@@ -92,6 +92,8 @@ void TGJVQSOLogFrame::logScreenEntry( )
 
    lct->commonSave();				// which also saves the ContestLog
 
+   killPartial();
+
    MinosLoggerEvents::SendAfterLogContact(ct);
    startNextEntry( );	// select the "next"
 }

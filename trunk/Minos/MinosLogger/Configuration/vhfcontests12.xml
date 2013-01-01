@@ -142,8 +142,14 @@
 <!-- 12.053 15/11/12 G4CLA - Auto certs for 4m UKAC and cert info for UKAC sections-->
 <!-- 12.054 19/11/12 G4CLA - added HF contest club calls to superleague-->
 <!-- 12.055 28/11/12 G4CLA - added operators to backpackers results-->
+<!-- 12.056 10/12/12 G4CLA - added xmas results format and contest series-->
+<!-- 12.057 12/12/12 G4CLA - added marconi CW results format -->
+<!-- 12.058 12/12/12 G4CLA - added Oct UHF results format -->
+<!-- 12.059 13/12/12 G4CLA - added 23cms and 13cms trophy results format -->
+<!-- 12.060 13/12/12 G4CLA - added individual results for the overall UKACs, certfields for SAO SAR-->
+<!-- 12.060 21/12/12 G4CLA - added 2m afs to superleague and low pwer results description for section LP-->
 <calendar>
-<version>12.053 15/11/2012</version>
+<version>12.060 15/12/2012</version>
 <icalurl>http://www.rsgbcc.org/icals/rsgb_vhf_2012.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
@@ -202,6 +208,23 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
 <exchange> serial number and QTH Locator</exchange>
 <scoring_description> multiplied by the number of UK Locator Squares</scoring_description>
 </mult_type>
+<ColumnFormat>
+        <name>xmasresults</name>
+        <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
+        <Columns Title = "Pos___" Field="position" Merge="left" Align="right" ></Columns>
+        <Columns Index="true" Title = "Callsign" Field ="call" Align = "left" ></Columns>
+        <Columns Title = "Loc" Field ="locator" Align = "center" ></Columns>
+        <Columns Title = "QSOS" Field = "Qs" Align = "right" ></Columns>
+        <Columns Title = "Mults" Field="mults" Align = "right" ></Columns>
+        <Columns Title = "Total" Field="totalScore" Align = "right" ></Columns>
+        <Columns Title = "Norm" Field="normalisedScore" Align = "right" ></Columns>
+        <Columns Title = "ODX" Field="ODXCall" Align = "center" ></Columns>
+        <Columns Title = "Kms" Field="ODXKms" Align = "center" ></Columns>
+        <Columns Title = "Power" Field="power" Align = "center" ></Columns>
+        <Columns Title = "Ant" Field="ant" Align = "center" ></Columns>
+        <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
+        <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
+</ColumnFormat>
 <ColumnFormat>
         <name>vhfmultsandnorm</name>
         <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
@@ -367,6 +390,14 @@ UK QTH Locator Multipliers. The multiplier is the sum of the number of different
         <normType>Pos</normType>
         <ScoresCount>8</ScoresCount>
 	<useContestID>SHF UKAC</useContestID>
+</resultsFormatType>
+<resultsFormatType>
+        <name>xmasfun</name>
+        <ColumnFormatUsed>xmasresults</ColumnFormatUsed>
+        <cumulativeField>Norm</cumulativeField>
+        <normType>1000UK</normType>
+        <ScoresCount>3</ScoresCount>
+	<useContestID>Christmas Cumulatives</useContestID>
 </resultsFormatType>
 <resultsFormatType>
         <name>vhfmults</name>
@@ -564,47 +595,56 @@ Maximum output power as permitted by standard licence conditions.
 No antenna restrictions. 
 Active use of the DX cluster and chat channels such as ON4KST is allowed, so long as no information that forms part of the contest exchange is passed via these means. 
 Scores in this section will not count towards a club score (S9)</long_description>
+<collate>callsign</collate>
 <certfields>call</certfields>
 </section>
 <section>
 <name>AO</name>
 <description>UKAC Open </description>
+<resdescription>Open</resdescription>
 <long_description> 
 The power output must be greater than 100W PEP (40W on 4m) and not more than 400W PEP (160W on 4m) at the output of the transmitter
 No antenna restrictions.
 (If a stacked or bayed antenna system is used, the minimum power requirement is waived)
 </long_description>
+<collate>callsign</collate>
 <certfields>call</certfields>
 </section>
 <section>
 <name>SAO</name>
 <description>SHF UKAC Open </description>
+<resdescription>Open</resdescription>
 <long_description> 
 The power output must be greater than 50W PEP on 13cms, greater than 10W on 9cms and 6cms and greater than 5w on 3cms and not more than 400W PEP at the output of the transmitter
 No antenna restrictions.
 </long_description>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>AR</name>
 <description>UKAC Restricted</description>
+<resdescription>Restricted</resdescription>
 <long_description> 
 The power output must be greater than 10W PEP (4W on 4m) and not more than 100W PEP (40W on 4m) at the output of the transmitter.
 Only one antenna may be used at any one time. If you do not use a rotatable antenna then you may switch between multiple fixed direction antennas (any combination of directional and omni-directional antennas). Switching between a rotatable antenna and any other antenna is not allowed. Stacked or bayed antenna arrays may not be used, but you may use a co-linear vertically polarised antenna.
 </long_description>
 <power>100</power>
 <singleantenna>1</singleantenna>
+<collate>callsign</collate>
 <certfields>call</certfields>
 </section>
 <section>
 <name>SAR</name>
 <description>SHF UKAC Restricted</description>
+<resdescription>Restricted</resdescription>
 <long_description> 
 The power output of the transmitter must be no more than 50W on 13cms, no more than 10w on 9cms and 6cms and no more than 5w on 3cms.
 No antenna restrictions.
 </long_description>
 <power>50W on 13cms, 10w on 9cms and 6cms or 5w on 3cms</power>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>AL</name>
@@ -616,6 +656,7 @@ Only one antenna may be used at any one time. If you do not use a rotatable ante
 <power>10</power>
 <singleantenna>1</singleantenna>
 <certfields>call</certfields>
+<collate>callsign</collate>
 </section>
 <section>
 <name>SF</name>
@@ -923,6 +964,7 @@ Stations entering in this section must use the /P callsign suffix.
 <section>
 <name>LP</name>
 <description>Single Operator, Fixed, 25W - Single Antenna</description>
+<resdescription>Low Power</resdescription>
 <long_description>
 This section is open to single operator fixed stations using 25W or less output and a single antenna. 
 When applied to the VHF Championship, if a station enters some contests with high power or extra antennas, and some with low power and a single antenna, only the low power, single antenna scores will count towards the championship.
@@ -1152,6 +1194,14 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <scorefield>GrandTotalScore</scorefield>
                         <table>ClubScores</table>
          </collate_list>
+		<collate_list>
+				<name>Individual Scores</name>
+				<field>call</field>
+				<display>Call</display>
+				<filter>date=0 </filter>
+				<scorefield>normalisedScore</scorefield>
+				<table>Entries</table>
+		</collate_list>
 </seriesCollate>
 <seriesCollate>
 <name>standard</name>
@@ -1195,6 +1245,15 @@ When applied to the VHF Championship, if a station enters some contests with hig
         <name>AFS Superleague 12/13</name>
 		<ctl>AFSsuperleague1213</ctl>
         <id_list>
+                <name>144MHz</name>
+                <id>afs144MHz</id>
+				<resultName>144MHz AFS</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+				<collate_type>superleague</collate_type>
+                <spectrum>VHF</spectrum>
+        </id_list>
+        <id_list>
                 <name>50MHz</name>
                 <id>2nd50MHz</id>
 				<resultName>50MHz AFS Contest</resultName>
@@ -1216,6 +1275,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <seriesResult>
         <name>VHF Championship</name>
 		<ctl>vhfchampionship</ctl>
+		<order>Section O,Section SF,Section LP</order>
         <id_list>
                 <name>March 144/432</name>
                 <id>mar144432</id>
@@ -1280,10 +1340,19 @@ When applied to the VHF Championship, if a station enters some contests with hig
                 <normaliseby></normaliseby>
 				<collate_type>sixand24hours</collate_type>
         </id_list>
+        <id_list>
+                <name>UHF Trophies</name>
+                <id>uhftrophy</id>
+				<resultName>23/13cms Trophy</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+				<collate_type>standard</collate_type>
+        </id_list>
 </seriesResult>
 <seriesResult>
         <name>144MHz Backpackers Championship</name>
         <ctl>144backpackchamp</ctl>
+		<order>Section 3B,Section 10H</order>
         <ScoresCount>3</ScoresCount>
         <id_list>
                 <name>1st</name>
@@ -1322,8 +1391,103 @@ When applied to the VHF Championship, if a station enters some contests with hig
         </id_list>
 </seriesResult>
 <seriesResult>
+        <name>Christmas Cumulatives Overall Results</name>
+        <ctl>overallxmas</ctl>
+		<order>O,SF</order>
+        <ScoresCount>4</ScoresCount>
+        <id_list>
+                <name>50MHz</name>
+                <id>xmasfun</id>
+				<resultName>Christmas Cumulatives 50 MHz&amp;Band=50 MHz</resultName>
+                <year>0</year>
+                <collate_list>
+                        <name>Section O</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="50 MHz" and Section="O" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+                <collate_list>
+                        <name>Section SF</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="50 MHz" and Section="SF" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+        </id_list>
+        <id_list>
+                <name>70MHz</name>
+                <id>xmasfun</id>
+				<resultName>Christmas Cumulatives 70 MHz&amp;Band=70 MHz</resultName>
+                <year>0</year>
+                <collate_list>
+                        <name>Section O</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="70 MHz" and Section="O" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+                <collate_list>
+                        <name>Section SF</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="70 MHz" and Section="SF" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+        </id_list>
+        <id_list>
+                <name>144MHz</name>
+                <id>xmasfun</id>
+				<resultName>Christmas Cumulatives 144 MHz&amp;Band=144 MHz</resultName>
+                <year>0</year>
+                <collate_list>
+                        <name>Section O</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="144 MHz" and Section="O" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+                <collate_list>
+                        <name>Section SF</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="144 MHz" and Section="SF" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+        </id_list>
+        <id_list>
+                <name>432MHz</name>
+                <id>xmasfun</id>
+				<resultName>Christmas Cumulatives 432 MHz&amp;Band=432 MHz</resultName>
+                <year>0</year>
+                <collate_list>
+                        <name>Section O</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="432 MHz" and Section="O" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+                <collate_list>
+                        <name>Section SF</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date=0 and band="432 MHz" and Section="SF" </filter>
+                        <scorefield>normalisedScore</scorefield>
+                        <table>Entries</table>
+                </collate_list>
+        </id_list>
+</seriesResult>
+<seriesResult>
         <name>SHF UKAC</name>
 		<ctl>shfukac</ctl>
+		<order>Club Scores,Section SAO,Section SAR</order>
         <id_list>
                 <name>13 cms</name>
                 <id>shfukac</id>
@@ -1448,6 +1612,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <seriesResult>
         <name>Overall UKAC</name>
 		<ctl>overallukac</ctl>
+		<order>Club Scores,Individual Scores</order>
         <id_list>
                 <name>50 MHz</name>
                 <id>6mukac</id>
@@ -1499,6 +1664,14 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <field>entrant</field>
                         <display>Club</display>
                         <filter>Section="Club Scores" and seriesName = "SHF UKAC"</filter>
+                        <scorefield>GrandTotalScore</scorefield>
+                        <table>SeriesScores</table>
+                </collate_list>
+                <collate_list>
+                        <name>Individual Scores</name>
+                        <field>callStub,`call`</field>
+                        <display>Call</display>
+                        <filter>Section!="Club Scores" and seriesName = "SHF UKAC"</filter>
                         <scorefield>GrandTotalScore</scorefield>
                         <table>SeriesScores</table>
                 </collate_list>
@@ -1696,7 +1869,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </contest>
 <contest>
   <name>mayuhf</name>
-  <description>432MHz-248GHz Contest</description>
+  <description>May 432MHz-248GHz Contest</description>
   <short_description>May UHF</short_description>
   <time_list>
     <month_list>May</month_list>
@@ -1725,10 +1898,11 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <band_list>248GHz</band_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>multiband2</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>octuhf</name>
-  <description>432MHz-248GHz IARU</description>
+  <description>Oct 432MHz-248GHz Contest</description>
   <short_description>Oct UHF</short_description>
   <time_list>
     <month_list>Oct</month_list>
@@ -1758,6 +1932,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <band_list>248GHz</band_list>
 <iaru>1</iaru>
 <entry_date>16 days</entry_date>
+<resultsFormatUsed>multiband2</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>70cmstrophy</name>
@@ -1805,6 +1981,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>VHF Contest Committee Cup is awarded to the overall winner on 23cms</award_list>
 <award_list>G6ZR Memorial Trophy is awarded to the overall winner on 13cms</award_list>
 <entry_date>16 days</entry_date>
+<resultsFormatUsed>multiband2</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>3cmstrophy</name>
@@ -1893,6 +2071,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>70cmsukac</name>
@@ -1930,6 +2109,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>uhfukac</name>
@@ -1966,6 +2146,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>shfukac</name> 
@@ -2003,6 +2184,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>shfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>6mukac</name>
@@ -2039,6 +2221,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>4mukac</name>
@@ -2447,6 +2630,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <iaru>1</iaru>
 <award_list>A certificate will be awarded each year to the station achieving the best overall score in the three RSGB VHF CW contests -- 4m, 6m and 2m</award_list>
 <entry_date>16 days</entry_date>
+<resultsFormatUsed>group</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>afs144MHz</name>
@@ -2472,6 +2657,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfafs</resultsFormatUsed>
 <clubdistance>50m</clubdistance>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>xmasfun</name>
@@ -2501,5 +2687,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <mult>M4</mult>
 <entry_date>16 days after the last activity period</entry_date>
 <override>0</override>
+<club_contest>no</club_contest>
+<resultsFormatUsed>xmasfun</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 </calendar>
