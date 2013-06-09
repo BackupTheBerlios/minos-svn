@@ -1,20 +1,25 @@
 inherited GJVQSOLogFrame: TGJVQSOLogFrame
   inherited G0GJVPanel: TPanel
-    object MatchXferButton: TBitBtn [5]
-      Left = 335
-      Top = 109
-      Width = 74
-      Height = 39
-      Hint = 'Get fields from current matching QSO'
-      Caption = 'Match &Xfer F12'
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 20
-      TabStop = False
-      WordWrap = True
+    object DateLabel: TStaticText [5]
+      Left = 6
+      Top = 42
+      Width = 82
+      Height = 14
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '00/00/00'
+      TabOrder = 21
     end
-    object BandMapPanel: TPanel [6]
+    object TimeLabel: TStaticText [6]
+      Left = 108
+      Top = 42
+      Width = 48
+      Height = 14
+      AutoSize = False
+      Caption = '00:00'
+      TabOrder = 22
+    end
+    object BandMapPanel: TPanel [7]
       Left = 424
       Top = 111
       Width = 177
@@ -49,24 +54,19 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
         TabOrder = 2
       end
     end
-    object TimeLabel: TStaticText [7]
-      Left = 108
-      Top = 42
-      Width = 48
-      Height = 14
-      AutoSize = False
-      Caption = '00:00'
-      TabOrder = 22
-    end
-    object DateLabel: TStaticText [8]
-      Left = 6
-      Top = 42
-      Width = 82
-      Height = 14
-      Alignment = taRightJustify
-      AutoSize = False
-      Caption = '00/00/00'
-      TabOrder = 21
+    object MatchXferButton: TBitBtn [8]
+      Left = 335
+      Top = 109
+      Width = 74
+      Height = 39
+      Hint = 'Get fields from current matching QSO'
+      Caption = 'Match &Xfer F12'
+      Enabled = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 20
+      TabStop = False
+      WordWrap = True
     end
     inherited GJVOKButton: TButton
       Left = 149
@@ -77,6 +77,12 @@ inherited GJVQSOLogFrame: TGJVQSOLogFrame
     end
     inherited CatchupButton: TButton
       OnClick = CatchupButtonClick
+    end
+    inherited SecondOpComboBox: TComboBox
+      OnExit = SecondOpComboBoxExit
+    end
+    inherited MainOpComboBox: TComboBox
+      OnExit = MainOpComboBoxExit
     end
   end
 end
