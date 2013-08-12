@@ -185,6 +185,19 @@ void __fastcall TLogContainer::FormClose( TObject */*Sender*/,
    closeContestApp();
 
 }
+void __fastcall TLogContainer::WmEndSession( TMessage & Msg )
+{
+   bool WindowsClosing = Msg.LParam == 0;
+
+	Msg.Result = 0;
+
+//   if ( WindowsClosing )
+   {
+      trace( "********************* Windows is Closing ***********************************" );
+      TCloseAction temp;
+      FormClose(0, temp);
+   }
+}
 //---------------------------------------------------------------------------
 BaseContestLog * TLogContainer::addSlot( TContestEntryDetails *ced, const std::string &fname, bool newfile, int slotno )
 {

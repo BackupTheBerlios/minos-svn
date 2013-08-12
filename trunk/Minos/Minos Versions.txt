@@ -1,4 +1,8 @@
 ==================================================================
+1.5.7      - bug fix release
+Fix bug that meant we couldn't add operators
+Sort the duplicate logging problkem of M0GHZ and others
+==================================================================
 1.5.6
 2013 calendar
 M6 multiplier

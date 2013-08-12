@@ -1,3 +1,28 @@
+Close down properly on OS close
+Try a proper locator map
+Scaleable; change granularity with scale; IO/IO80/IO80ST
+Colour loc squares on map for number of contacts
+Able to select by country?
+How do we get a usable map? Or can we leverage google and embed the map?
+If we don't have a map is a splatter diagm still meaningul?
+Or can we get a crude "loc squares" map 
+==================================================================
+Changes to do
+
+Odd crashes in lists; do I have a stack trace in the logs? Although that was on Grahams's laptop.
+
+QT conversion - then others MIGHT be willing to play as well. And it would achieve good refactoring (which will then rot)
+
+Locator map
+Control key map tables to allow reassignment
+Rig control - Omnirig is probably adequate
+Rotator control (don't think Omnirig does this, may need own code?)
+Voice keyer, calling freqs, etc
+Can we eliminate the voice keyer whistle? I think it is system/hardware, not software
+
+And eventually, get back into networking
+And HF? How do we go about cabrillo export in general?
+==================================================================
 Disable F keys configurably (to allow voice keyer to run as well)
 ==================================================================
 DPI awareness for Vista and Win7

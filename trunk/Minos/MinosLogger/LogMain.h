@@ -240,8 +240,11 @@ class TLogContainer : public TForm
       bool isShowOperators();
 
       void __fastcall WmMove( TMessage &Msg );
+      void __fastcall WmEndSession( TMessage & msg );
+
       BEGIN_MESSAGE_MAP
       MESSAGE_HANDLER( WM_MOVE, TMessage, WmMove )
+	   MESSAGE_HANDLER ( WM_ENDSESSION, TMessage, WmEndSession );
       END_MESSAGE_MAP( TForm )
 };
 //---------------------------------------------------------------------------
