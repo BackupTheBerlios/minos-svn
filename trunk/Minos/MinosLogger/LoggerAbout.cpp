@@ -75,6 +75,7 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
    {
       AutoStartTabSheet->TabVisible = false;
       LoggerOnlyButton->Visible = false;
+      ExitButton->Visible = onStartup;
    }
    else
    {
@@ -83,6 +84,7 @@ __fastcall TAboutBox::TAboutBox( TComponent *Owner, bool onStartup )
       if (  !onStartup || checkServerReady() )
       {
          LoggerOnlyButton->Visible = false; // as we are started we cannot now be logger only
+         ExitButton->Visible = false;
       }
       else
       {
