@@ -114,11 +114,32 @@
 <!-- 13.003 10/12/12 G4CLA - Change in method of calculating UKAC final scores. changed .htl links to .shtml-->
 <!-- 13.004 17/12/12 G4CLA - Change from 2012 cvalendar -->
 <!-- 13.005 29/12/12 G4CLA - Change from 2012 cvalendar -->
+<!-- 13.006 02/01/13 G4CLA - Added VHF CW series results-->
+<!-- 13.007 04/01/13 G4CLA - Added certs for sections 3B and 10H-->
+<!-- 13.008 07/01/13 G4CLA - moved 2nd 70MHz contests one week forward-->
+<!-- 13.009 20/01/13 G4CLA - added cw champs and more auto_certs-->
+<!-- 13.010 21/01/13 G4CLA - added 80m AFS contests and 70cms AFS to superleaue series result-->
+<!-- 13.011 22/01/13 G4CLA - changed names for 2m and 70cms AFS contests . They had short descriptions so should be ok in alerts-->
+<!-- 13.012 30/01/13 G4CLA - Add MS section of VHF NFD-->
+<!-- 13.013 18/02/13 G4CLA - changed wording of maximum number os sessions that count in UKACs-->
+<!-- 13.014 22/02/13 G4CLA - removed the <club_contest>no</clubcontest> from 4m and xmas cumulatives and added to May and Oct UHF contests-->
+<!-- 13.015 22/02/13 G4CLA - removed Dec 70MHz UKAC -->
+<!-- 13.016 18/03/13 G4CLA - add stats format for afs-->
+<!-- 13.017 18/03/13 G4CLA - had to put <club_contest>no</clubcontest> back for 4m culumatives lese results dont work-->
+<!-- 13.018 24/04/13 G4CLA - increase duration of 6m afs to 4 hours-->
+<!-- 13.018 29/04/13 G4CLA - Remove VHF CW chamop from individual contests, add highlight color for contest series -->
+<!-- 13.019 08/06/13 G4CLA - Collation of overall SHF UKAC Scores was wrong should sued date=0 !-->
+<!-- 13.020 02/08/13 G4CLA - always collate open section of VHF Champs on clubname !-->
+<!-- 13.021 14/08/13 G4CLA - only include UK stations in stndard VHF champs -->
+<!-- 13.022 15/08/13 G4CLA - added VHF NFD MS Section to results and centenary points and sweepers sections -->
 <calendar>
-<version>13.005 23/12/2012</version>
+<version>13.022 15/08/2013</version>
 <icalurl>http://www.rsgbcc.org/icals/2013vhf.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=2puobjml9pkpdvavmj0hf8ac1g%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>05/11/12: Changed duration and start time of 2m and 70cms AFS contests</notes_list>
+<notes_list>07/01/13: Move date of 2nd 70MHz contest forward one week</notes_list>
+<notes_list>28/02/13: Removed the December 70MHz UKAC </notes_list>
+<notes_list>24/04/13: Increase duration of 50MHz AFS to 4 hours </notes_list>
 <mult_type>
 <name>M1</name>
 <description>Post Codes and Countries</description>
@@ -257,21 +278,22 @@ UK QTH Locators plus non-UK countries. The multiplier is the sum of the number o
         <name>vhfnfd</name>
         <Columns Title = "Certificate Winner" Nocolumn="true" Merge="right" Field="cert" img="cert.gif" ></Columns>
         <Columns Title = "Pos___" Field="position" Merge="left" Align="right" ></Columns>
-        <Columns Title = "Group" Field="clubName" Align = "center" Sections= "Open,R,L" ></Columns>
+        <Columns Title = "Group" Field="clubName" Align = "center" Sections= "Open,R,L,MS" ></Columns>
         <Columns Index="true" Title = "Callsign" Field ="call" Align = "left" ></Columns>
         <Columns Title = "Loc" Field ="locator" Align = "center" ></Columns>
         <Columns Title = "QSOS" Field = "Qs" Align = "right" ></Columns>
         <Columns Title = "Score" Field="score" Align = "right" ></Columns>
-        <Columns Title = "Norm" Field="normalisedScore" Align = "right" Sections= "Open,R,L"></Columns>
+        <Columns Title = "Norm" Field="normalisedScore" Align = "right" Sections= "Open,R,L,MS"></Columns>
         <Columns Title = "Mults" Field="mults" Align = "right" Sections= "FSO,FSR" ></Columns>
         <Columns Title = "Total" Field="totalScore" Align = "right" Sections= "FSO,FSR" ></Columns>
+        <Columns Title = "Centenary Points" Field="total2" Align = "center" ></Columns>
         <Columns Title = "ODX" Field="ODXCall" Align = "center" ></Columns>
         <Columns Title = "Kms" Field="ODXKms" Align = "center" ></Columns>
         <Columns Title = "Power" Field="power" Align = "center" ></Columns>
         <Columns Title = "Ant" Field="ant" Align = "center" img="tower.gif" ></Columns>
         <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
         <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
-        <Columns Title = "Operators" Field="Operators" Align = "left" Sections= "Open,R,L"  ></Columns>
+        <Columns Title = "Operators" Field="Operators" Align = "left" Sections= "Open,R,L,MS"  ></Columns>
 </ColumnFormat>
 <ColumnFormat>
         <name>vhfmults</name>
@@ -326,11 +348,30 @@ UK QTH Locators plus non-UK countries. The multiplier is the sum of the number o
         <Columns Title = "Equipment" Field="equipment" Align = "center" img="tx.gif" ></Columns>
         <Columns Title = "Comments" Field="SoapBox" Align = "left" img="soapbox.gif" ></Columns>
 </ColumnFormat>
+<statsFormat>
+<name>afs</name>
+<section_list>SF</section_list>
+<section_list>O</section_list>
+<columns Title = "Qs" Field="RealAnyQs" ></columns>
+<columns Title = "Points" Field="RealAnyDx"></columns>
+</statsFormat>
+<statsFormat>
+<name>ukac</name>
+<section_list>Totals</section_list>
+<columns Title = "Qs" Field="RealAnyQs" ></columns>
+<columns Title = "Mults" Field="AnyMults"></columns>
+</statsFormat>
+<statsFormat>
+<name>dummy</name>
+<section_list>ALL</section_list>
+<columns Title = "Qs" Field="RealAnyQs" ></columns>
+</statsFormat>
 <resultsFormatType>
         <name>vhfnfdres</name>
         <ColumnFormatUsed>vhfnfd</ColumnFormatUsed>
         <cumulativeField>Norm</cumulativeField>
         <normType>1000UK</normType>
+		<special>centenary</special>
         <ScoresCount>4</ScoresCount>
 </resultsFormatType>
 <resultsFormatType>
@@ -356,6 +397,7 @@ UK QTH Locators plus non-UK countries. The multiplier is the sum of the number o
         <cumulativeField>Norm</cumulativeField>
         <normType>Pos</normType>
         <ScoresCount>8</ScoresCount>
+        <StatsFormatUsed>ukac</StatsFormatUsed>
 </resultsFormatType>
 <resultsFormatType>
         <name>shfukac</name>
@@ -394,6 +436,7 @@ UK QTH Locators plus non-UK countries. The multiplier is the sum of the number o
         <TeamSize>4</TeamSize>
         <cumulativeField>vhfafs</cumulativeField>
         <normType>vhfafs</normType>
+        <StatsFormatUsed>afs</StatsFormatUsed>
 </resultsFormatType>
 <special_rule>
 <name>S1</name>
@@ -472,7 +515,8 @@ Please submit an entry after each session in which you are active. In order to s
 
 Scores will be normalised for each section in each session as follows. 
 Score for each section/session = ((number of entrants+1)-(position of entrant))*1000/(number of entrants)
-At the end of the year, on each band an overall score will be calculated after the worst THREE scores have been dropped on 6m and SHF, the worst FOUR on 2m, 70cm and 23cm, and the ONE worst dropped on 4m.
+The maximum number of sessions that will count towards the final individual scores will be FOUR less than the number of sessions held during the year on 2m, 70cm and 23cm, THREE less on 6m and SHF, and ONE less on 4m. Only the lowest scoring entries are discarded.
+Note that ALL sessions count towards you club score.
 
 It is impossible for you to determine your best sessions without knowing everyone else's scores, so please submit your logs and scores from all sessions in which you were active and allow the adjudicator to calculate your best sessions.
 
@@ -539,9 +583,14 @@ http://www.rsgbcc.org/vhf/rules/13rules/BACKPACK.shtml
 <long_description>http://www.rsgbcc.org/vhf/rules/13rules/VHFNFD.shtml</long_description>
 </special_rule>
 <special_rule>
-<name>VHF CHAMPIONSHIP</name>
-<description>Special Rules for VHF Championship</description>
+<name>VHF Championship</name>
+<description>VHF Championship</description>
 <long_description>http://www.rsgbcc.org/vhf/rules/13rules/championship.shtml</long_description>
+</special_rule>
+<special_rule>
+<name>VHF CW Championship</name>
+<description>VHF CW Championship</description>
+<long_description>http://www.rsgbcc.org/vhf/rules/13rules/vhfcwrules.shtml</long_description>
 </special_rule>
 <special_rule>
 <name>Low Power Contest</name>
@@ -552,13 +601,13 @@ Maximum output Power 25W at the TX.
 </special_rule>
 <special_rule>
 <name>AFS Super League 2013-14</name>
-<description>Special Rules for AFS Super League</description>
+<description>AFS Super League</description>
 <long_description>http://www.rsgbcc.org/hf/rules/2013/AFS-SuperLeague2013-2014.shtml
 </long_description>
 </special_rule>
 <special_rule>
 <name>AFS Super League 2012-13</name>
-<description>Special Rules for AFS Super League</description>
+<description>AFS Super League</description>
 <long_description>http://www.rsgbcc.org/hf/rules/2012/AFS-SuperLeague2012-2013.shtml
 </long_description>
 </special_rule>
@@ -576,6 +625,7 @@ Scores in this section will not count towards a club score (S9)</long_descriptio
 <section>
 <name>AO</name>
 <description>UKAC Open </description>
+<resdescription>Open</resdescription>
 <long_description> 
 The power output must be greater than 100W PEP (40W on 4m) and not more than 400W PEP (160W on 4m) at the output of the transmitter
 No antenna restrictions.
@@ -642,6 +692,14 @@ Only one antenna may be used at any one time. If you do not use a rotatable ante
 <certfields>call</certfields>
 </section>
 <section>
+<name>Sweeper</name>
+<description>VHF NFD Overall Sweeper Results</description>
+<resdescription>Sweeper</resdescription>
+<long_description>VHF NFD Sweepers </long_description>
+<collate>callsign</collate>
+<certfields>call</certfields>
+</section>
+<section>
 <name>SO</name>
 <description>Single Op Others</description>
 <resdescription>Single Operator Open</resdescription>
@@ -668,6 +726,7 @@ Entrants may omit the suffix if using a Special Contest Callsign (e.g. G8P) wher
 <long_description> Overseas entrants 
 </long_description>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>ALL</name>
@@ -724,6 +783,7 @@ i) Stations entering in this section must use the /P callsign suffix
 <power>3</power>
 <height>4</height>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>10H</name>
@@ -742,6 +802,7 @@ h) Stations entering in this section must use the /P callsign suffix.
 <power>10</power>
 <height>6</height>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>Open</name>
@@ -800,6 +861,7 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 (vi) An award will be made to the leading Sweeper on each band and additionally bronze, silver and gold awards for contacting 50, 75 and 90% of registered NFD stations.
 
 </long_description>
+<collate>xvhfnfd</collate>
 <certfields>call</certfields>
 </section>
 <section>
@@ -835,6 +897,7 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 </long_description>
 <power>100</power>
 <singleantenna>1</singleantenna>
+<collate>xvhfnfd</collate>
 <certfields>call</certfields>
 </section>
 <section>
@@ -843,7 +906,6 @@ The list of registered stations can be found at http://www.rsgbcc.org/cgi-bin/vh
 <resdescription>Restricted</resdescription>
 <long_description>
 (i) The power output of any band must not exceed 100W PEP at the transmitter, except on 4m where output power is restrcited to 40W
-
 
 (ii) The height of any part of the antenna's driven element must not exceed 10 metres above ground level.
 
@@ -898,6 +960,41 @@ Stations entering in this section must use the /P callsign suffix.
 </long_description>
 <power>25</power>
 <height>10</height>
+<singleantenna>1</singleantenna>
+<collate>vhfnfd</collate>
+<certfields>clubName,call</certfields>
+</section>
+<section>
+<name>MS</name>
+<description>Single Transmitter Section of VHF NFD</description>
+<resdescription>Multi Single</resdescription>
+<long_description>
+(i) Open to Portable Stations Only
+
+(ii) All antennas must be installed on a single mast and only one antenna for each band may be installed on that mast.  Backfire or parabolic dish type antennas must not exceed 2 metres in diameter. No stacked or bayed arrays are permitted. The maximum height for any part of the driven element of any antenna is 12 metres above ground level. Note: a mast of greater than 12 metres in height is permitted as long as the antenna height restriction is complied with.
+
+(iii) Operate on up to 3 bands, however simultaneous transmision on more than one band at a time is not allowed. The chosen bands must be selected during registration and operation on any other bands is not allowed. Indicated output powers are PEP measured at the transmitter. All 3 normalised scores will count towards the final total:
+
+50MHz (6m) 1400 to 2200 Saturday (all modes 100W maximum output power)
+
+70MHz (4m) 0800 to 1400 Sunday (all modes 40W maximum output power)
+
+144MHz (2m) 1400 Saturday to 1400 Sunday (all modes 100W maximum output power)
+
+432MHz (70cm) 1400 Saturday to 1400 Sunday (all modes 50W maximum output power)
+
+1.3GHz (23cm) 1400 Saturday to 1400 Sunday (all modes 10W maximum output power)
+
+NOTE: Single band entries are not valid for this section and other than the selected entry bands, operation on any other band or bands is not permitted, even for the purposes of talk-back.
+
+(iv) Operation for no more than 16 hours out of the 24 hours on 2m, 70cm and 23cm.  Any break must last for at least 1 hour.
+
+Stations entering in this section must use the /P callsign suffix. 
+Entries in this Section cannot form part of an entry in the Mix and Match Section. 
+See FAQ list http://www.rsgbcc.org/vhf/rules/13rules/multisinglefaq.shtml
+</long_description>
+<power>100</power>
+<height>12</height>
 <singleantenna>1</singleantenna>
 <collate>vhfnfd</collate>
 <certfields>clubName,call</certfields>
@@ -963,6 +1060,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <name>50</name>
 <reg1band>50 MHz</reg1band>
 <wavelength>6</wavelength>
+  <centenarypoints>3</centenarypoints>
 </band>
 <band>
 <name>70NFD</name>
@@ -981,21 +1079,25 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <name>70</name>
 <reg1band>70 MHz</reg1band>
 <wavelength>4</wavelength>
+  <centenarypoints>3</centenarypoints>
 </band>
 <band>
 <name>144</name>
 <reg1band>145 MHz</reg1band>
 <wavelength>2</wavelength>
+<centenarypoints>2</centenarypoints>
 </band>
 <band>
 <name>432</name>
 <reg1band>435 MHz</reg1band>
 <wavelength>70cms</wavelength>
+ <centenarypoints>4</centenarypoints>
 </band>
 <band>
 <name>1296</name>
 <reg1band>1,3 GHz</reg1band>
 <wavelength>23cms</wavelength>
+ <centenarypoints>5</centenarypoints>
 </band>
 <band>
 <name>2320</name>
@@ -1056,6 +1158,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <contest_series>
 <name>AFSsuperleague1314</name>
 <description>AFS Super League 2013-14</description>
+<highlight>#CCFF66</highlight>
 <contest_list>afs432MHz</contest_list>
 <contest_list>afs144MHz</contest_list>
 <contest_list>2nd50MHz</contest_list>
@@ -1070,8 +1173,19 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <special_rules_list>AFS Super League 2012-13</special_rules_list>
 </contest_series>
 <contest_series>
+<name>cwchamp</name>
+<description>VHF CW Championship</description>
+<highlight>#FFcccc</highlight>
+<contest_list>144marconi</contest_list>
+<contest_list>cw50MHz</contest_list>
+<contest_list>cw70MHz</contest_list>
+<special_rules_list>VHF CW Championship</special_rules_list>
+<award_list>Certificates will be awarded to the overall Winner and Runer-up</award_list>
+</contest_series>
+<contest_series>
 <name>vhfchampionship</name>
 <description>VHF Championship</description>
+<highlight>#9ff66</highlight>
 <contest_list>mar144432</contest_list>
 <contest_list>70cmstrophy</contest_list>
 <contest_list>may144</contest_list>
@@ -1084,7 +1198,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <section_list>SF</section_list>
 <section_list>O</section_list>
 <section_list>LP</section_list>
-<special_rules_list>VHF CHAMPIONSHIP</special_rules_list>
+<special_rules_list>VHF Championship</special_rules_list>
 <award_list>Racal Radio Cup is awarded to the overall winner of the Open Section</award_list>
 <award_list>John Pilags Memorial Trophy is awarded to the Leading Single Operator Fixed Station</award_list>
 <award_list>Low Power VHF Championship Trophy is awarded to the 25W or less Single antenna, Single Operator, Fixed Station </award_list>
@@ -1121,6 +1235,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <filter>date!=0 and (Section="O" or Section="6O" or Section="SO")</filter>
                         <scorefield>totalScore</scorefield>
                         <table>Entries</table>
+                        <collateby>clubName</collateby>
                 </collate_list>
                 <collate_list>
                         <name>Section SF</name>
@@ -1183,7 +1298,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section O</name>
                         <field>clubName</field>
                         <display>Club</display>
-                        <filter>date!=0 and (Section="O" or Section="SO")</filter>
+                        <filter>date!=0 and (Section="O" or Section="SO") and (`call` like "M%" or `call` like "2%" or `call` like "G%")</filter>
                         <scorefield>totalScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1191,7 +1306,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SF</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and Section="SF" </filter>
+                        <filter>date!=0 and Section="SF"  and (`call` like "M%" or `call` like "2%" or `call` like "G%")</filter>
                         <scorefield>totalScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1199,7 +1314,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section LP</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and Section="SF" and VHFLP=1</filter>
+                        <filter>date!=0 and Section="SF" and VHFLP=1 and (`call` like "M%" or `call` like "2%" or `call` like "G%")</filter>
                         <scorefield>totalScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1215,14 +1330,82 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <table>ClubScores</table>
                 </collate_list>
 </seriesCollate>
+<seriesCollate>
+<name>cwchamp</name>
+               <collate_list>
+                        <name>Overall Scores</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date!=0 and (callstub like "M%" or callStub like "2%" or callStub like "G%")</filter>
+                        <scorefield>totalScore</scorefield>
+                        <table>Entries</table>
+                        <collateby>callsign</collateby>
+                </collate_list>
+</seriesCollate>
+<seriesResult>
+        <name>VHF CW Championship</name>
+        <ctl>cwchamp</ctl>
+        <id_list>
+                <name>50MHz</name>
+                <id>cw50MHz</id>
+                <resultName>50MHz Contest CW</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+                <collate_type>cwchamp</collate_type>
+        </id_list>
+        <id_list>
+                <name>70MHz</name>
+                <id>cw70MHz</id>
+                <resultName>70MHz Contest CW</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+                <collate_type>cwchamp</collate_type>
+        </id_list>
+        <id_list>
+                <name>144MHz</name>
+                <id>144marconi</id>
+                <resultName>144MHz CW Marconi</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+                <collate_type>cwchamp</collate_type>
+        </id_list>
+</seriesResult>
 <seriesResult>
         <name>AFS Superleague 12/13</name>
 		<ctl>AFSsuperleague1213</ctl>
+		<year>-1</year>
+        <id_list>
+                <name>80m CW</name>
+                <id>afscw</id>
+                <resultName>AFS Contest CW</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>HF</spectrum>
+        </id_list>
+        <id_list>
+                <name>80m SSB</name>
+                <id>afsssb</id>
+                <resultName>AFS Contest PHONE</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>HF</spectrum>
+        </id_list>
+        <id_list>
+                <name>432MHz</name>
+                <id>afs432MHz</id>
+				<resultName>432MHz AFS</resultName>
+                <year>0</year>
+                <normaliseby></normaliseby>
+				<collate_type>superleague</collate_type>
+                <spectrum>VHF</spectrum>
+        </id_list>
         <id_list>
                 <name>144MHz</name>
                 <id>afs144MHz</id>
 				<resultName>144MHz AFS</resultName>
-                <year>0</year>
+                <year>-1</year>
                 <normaliseby></normaliseby>
 				<collate_type>superleague</collate_type>
                 <spectrum>VHF</spectrum>
@@ -1231,16 +1414,16 @@ When applied to the VHF Championship, if a station enters some contests with hig
                 <name>50MHz</name>
                 <id>2nd50MHz</id>
 				<resultName>50MHz AFS Contest</resultName>
-                <year>0</year>
+                <year>-1</year>
                 <normaliseby></normaliseby>
 				<collate_type>superleague</collate_type>
                 <spectrum>VHF</spectrum>
         </id_list>
        <id_list>
-                <name>Club Calls</name>
+                <name>160m</name>
                 <id>clubcalls</id>
                 <resultName>Club Calls</resultName>
-                <year>0</year>
+                <year>-1</year>
                 <normaliseby></normaliseby>
                 <collate_type>superleague</collate_type>
                 <spectrum>HF</spectrum>
@@ -1479,7 +1662,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAO</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="2.3 GHz" and Section="SAO" </filter>
+                        <filter>date=0 and band="2.3 GHz" and Section="SAO" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1487,7 +1670,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAR</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="2.3 GHz" and Section="SAR" </filter>
+                        <filter>date=0 and band="2.3 GHz" and Section="SAR" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1501,7 +1684,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAO</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="3.4 GHz" and Section="SAO" </filter>
+                        <filter>date=0 and band="3.4 GHz" and Section="SAO" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1509,7 +1692,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAR</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="3.4 GHz" and Section="SAR" </filter>
+                        <filter>date=0 and band="3.4 GHz" and Section="SAR" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1539,7 +1722,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAO</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="5.7 GHz" and Section="SAO" </filter>
+                        <filter>date=0 and band="5.7 GHz" and Section="SAO" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1547,7 +1730,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAR</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="5.7 GHz" and Section="SAR" </filter>
+                        <filter>date=0 and band="5.7 GHz" and Section="SAR" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1569,7 +1752,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAO</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="10 GHz" and Section="SAO" </filter>
+                        <filter>date=0 and band="10 GHz" and Section="SAO" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1577,7 +1760,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <name>Section SAR</name>
                         <field>call</field>
                         <display>Call</display>
-                        <filter>date!=0 and band="10 GHz" and Section="SAR" </filter>
+                        <filter>date=0 and band="10 GHz" and Section="SAR" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
                 </collate_list>
@@ -1706,13 +1889,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <special_rules_list>S5</special_rules_list>
   <band_list>70</band_list>
   <entry_date>16 days after each activity period</entry_date>
+  <resultsFormatUsed>4mcum</resultsFormatUsed>
 <club_contest>no</club_contest>
-<resultsFormatUsed>4mcum</resultsFormatUsed>
 <autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>afs432MHz</name>
-  <description>432MHz Affiliated Societies Contest</description>
+  <description>432MHz AFS</description>
   <short_description>432MHz AFS</short_description>
   <time_list>
     <month_list>Feb</month_list>
@@ -1804,8 +1987,8 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <description>Second 70MHz Contest</description>
   <time_list>
     <month_list>Sep</month_list>
-    <start_day>7</start_day>
-    <start_week>2</start_week>
+    <start_day>7+14</start_day>
+    <start_week>1</start_week>
     <start_time>0900</start_time>
     <time_type>GMT</time_type>
     <duration>3</duration>
@@ -1873,6 +2056,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>multiband2</resultsFormatUsed>
 <autocerts>yes</autocerts>
+<club_contest>yes</club_contest>
 </contest>
 <contest>
   <name>octuhf</name>
@@ -1908,6 +2092,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>multiband2</resultsFormatUsed>
 <autocerts>yes</autocerts>
+<club_contest>yes</club_contest>
 </contest>
 <contest>
   <name>70cmstrophy</name>
@@ -1990,7 +2175,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <start_week>3</start_week>
     <start_time>0900</start_time>
     <time_type>GMT</time_type>
-    <duration>3</duration>
+    <duration>4</duration>
   </time_list>
   <section_list>O</section_list>
   <section_list>SF</section_list>
@@ -2083,6 +2268,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>uhfukac</name>
@@ -2119,6 +2305,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>shfukac</name> 
@@ -2156,6 +2343,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <entry_date>7 days after each activity period</entry_date>
 <club_contest>afs</club_contest>
 <resultsFormatUsed>shfukac</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>6mukac</name>
@@ -2208,7 +2396,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
     <month_list>Sep</month_list>
     <month_list>Oct</month_list>
     <month_list>Nov</month_list>
-    <month_list>Dec</month_list>
     <start_day>2</start_day>
     <start_week>5</start_week>
     <start_time>2000</start_time>
@@ -2246,11 +2433,13 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <section_list>R</section_list>
 <section_list>L</section_list>
 <section_list>M</section_list>
+<section_list>MS</section_list>
 <section_list>FSO</section_list>
 <section_list>FSR</section_list>
 <scoring>
 <perkms>1</perkms>
 </scoring>
+<web_rules>http://www.rsgbcc.org/vhf/rules/13rules/VHFNFD.shtml</web_rules>
 <special_rules_list>VHFNFD</special_rules_list>
 <band_list>50NFD</band_list>
 <band_list>70NFD</band_list>
@@ -2266,7 +2455,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 (All operators to have been resident in GM for at least six months prior to the contest)</award_list>
 <award_list> Cockenzie Quaich Leading resident GM station in the Restricted section 
 (All operators to have been resident in GM for at least six months prior to the contest)</award_list>
-<entry_date>22 days</entry_date>
+<entry_date>24 days</entry_date>
 <club_contest>nfd</club_contest>
 <resultsFormatUsed>vhfnfdres</resultsFormatUsed>
 <autocerts>yes</autocerts>
@@ -2343,6 +2532,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack2</name>
@@ -2367,6 +2557,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack3</name>
@@ -2391,6 +2582,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack4</name>
@@ -2415,6 +2607,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack5</name>
@@ -2439,6 +2632,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>lp144</name>
@@ -2605,7 +2799,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </contest>
 <contest>
   <name>afs144MHz</name>
-  <description>144MHz Affiliated Societies Contest</description>
+  <description>144MHz AFS</description>
   <short_description>144MHz AFS</short_description>
   <time_list>
     <month_list>Dec</month_list>
@@ -2627,6 +2821,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <club_contest>afs</club_contest>
 <resultsFormatUsed>vhfafs</resultsFormatUsed>
 <clubdistance>50m</clubdistance>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>xmasfun</name>
@@ -2656,7 +2851,6 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <mult>M4</mult>
 <entry_date>16 days after the last activity period</entry_date>
 <override>0</override>
-<club_contest>no</club_contest>
 <resultsFormatUsed>xmasfun</resultsFormatUsed>
 <autocerts>yes</autocerts>
 </contest>

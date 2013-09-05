@@ -148,8 +148,12 @@
 <!-- 12.059 13/12/12 G4CLA - added 23cms and 13cms trophy results format -->
 <!-- 12.060 13/12/12 G4CLA - added individual results for the overall UKACs, certfields for SAO SAR-->
 <!-- 12.060 21/12/12 G4CLA - added 2m afs to superleague and low pwer results description for section LP-->
+<!-- 12.061 02/01/13 G4CLA - Added VHF CW series results-->
+<!-- 12.062 04/01/13 G4CLA - certs for backpackers contests-->
+<!-- 12.063 10/01/13 G4CLA - add VHF CW Champ to calendar-->
+<!-- 12.064 21/01/13 G4CLA - 80m AFS contets to superlauge results-->
 <calendar>
-<version>12.060 15/12/2012</version>
+<version>12.064 21/01/2013</version>
 <icalurl>http://www.rsgbcc.org/icals/rsgb_vhf_2012.ics</icalurl>
 <googleurl>https://www.google.com/calendar/embed?src=o01j2pl414brlps13a3da29rjo%40group.calendar.google.com&amp;ctz=Europe/London</googleurl>
 <notes_list>07/12/11: Changed sections in SHF UKAC</notes_list>
@@ -569,6 +573,11 @@ http://www.rsgbcc.org/vhf/rules/12rules/BACKPACK.htm
 <long_description>http://www.rsgbcc.org/vhf/rules/12rules/championship.htm</long_description>
 </special_rule>
 <special_rule>
+<name>VHF CW Championship</name>
+<description>VHF CW Championship</description>
+<long_description>http://www.rsgbcc.org/vhf/rules/12rules/vhfcwrules.shtml</long_description>
+</special_rule>
+<special_rule>
 <name>Low Power Contest</name>
 <description>25W max. transmit o/p power,</description>
 <long_description>
@@ -750,6 +759,7 @@ i) Stations entering in this section must use the /P callsign suffix
 <power>3</power>
 <height>4</height>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>10H</name>
@@ -768,6 +778,7 @@ h) Stations entering in this section must use the /P callsign suffix.
 <power>10</power>
 <height>6</height>
 <collate>callsign</collate>
+<certfields>call</certfields>
 </section>
 <section>
 <name>Open</name>
@@ -1096,6 +1107,15 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <special_rules_list>AFS Super League 2012-13</special_rules_list>
 </contest_series>
 <contest_series>
+<name>cwchamp</name>
+<description>VHF CW Championship</description>
+<contest_list>144marconi</contest_list>
+<contest_list>cw50MHz</contest_list>
+<contest_list>cw70MHz</contest_list>
+<special_rules_list>VHF CW Championship</special_rules_list>
+<award_list>Certificates will be awarded to the overall Winner and Runer-up</award_list>
+</contest_series>
+<contest_series>
 <name>vhfchampionship</name>
 <description>VHF Championship</description>
 <contest_list>mar144432</contest_list>
@@ -1241,9 +1261,67 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <table>ClubScores</table>
                 </collate_list>
 </seriesCollate>
+<seriesCollate>
+<name>cwchamp</name>
+               <collate_list>
+                        <name>Overall Scores</name>
+                        <field>call</field>
+                        <display>Call</display>
+                        <filter>date!=0 and (callstub like "M%" or callStub like "2%" or callStub like "G%")</filter>
+                        <scorefield>totalScore</scorefield>
+                        <table>Entries</table>
+						<collateby>callsign</collateby>
+                </collate_list>
+</seriesCollate>
+<seriesResult>
+        <name>VHF CW Championship</name>
+        <ctl>cwchamp</ctl>
+        <id_list>
+                <name>50MHz</name>
+                <id>cw50MHz</id>
+				<resultName>50MHz Contest CW</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+				<collate_type>cwchamp</collate_type>
+        </id_list>
+        <id_list>
+                <name>70MHz</name>
+                <id>cw70MHz</id>
+				<resultName>70MHz Contest CW</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+				<collate_type>cwchamp</collate_type>
+        </id_list>
+        <id_list>
+                <name>144MHz</name>
+                <id>144marconi</id>
+				<resultName>144MHz CW Marconi</resultName>
+                <year>0</year>
+                <normaliseby>position</normaliseby>
+				<collate_type>cwchamp</collate_type>
+        </id_list>
+</seriesResult>
 <seriesResult>
         <name>AFS Superleague 12/13</name>
 		<ctl>AFSsuperleague1213</ctl>
+        <id_list>
+                <name>80m CW</name>
+                <id>afscw</id>
+                <resultName>AFS Contest CW</resultName>
+                <year>1</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>HF</spectrum>
+        </id_list>
+        <id_list>
+                <name>80m SSB</name>
+                <id>afsssb</id>
+                <resultName>AFS Contest PHONE</resultName>
+                <year>1</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>HF</spectrum>
+        </id_list>
         <id_list>
                 <name>144MHz</name>
                 <id>afs144MHz</id>
@@ -1263,13 +1341,22 @@ When applied to the VHF Championship, if a station enters some contests with hig
                 <spectrum>VHF</spectrum>
         </id_list>
        <id_list>
-                <name>Club Calls</name>
+                <name>160m</name>
                 <id>clubcalls</id>
                 <resultName>Club Calls</resultName>
                 <year>0</year>
                 <normaliseby></normaliseby>
                 <collate_type>superleague</collate_type>
                 <spectrum>HF</spectrum>
+        </id_list>
+		<id_list>
+                <name>432MHz</name>
+                <id>afs432MHz</id>
+                <resultName>432MHz AFS</resultName>
+                <year>1</year>
+                <normaliseby></normaliseby>
+                <collate_type>superleague</collate_type>
+                <spectrum>VHF</spectrum>
         </id_list>
 </seriesResult>
 <seriesResult>
@@ -1393,7 +1480,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <seriesResult>
         <name>Christmas Cumulatives Overall Results</name>
         <ctl>overallxmas</ctl>
-		<order>O,SF</order>
+		<order>Section O,Section SF</order>
         <ScoresCount>4</ScoresCount>
         <id_list>
                 <name>50MHz</name>
@@ -1407,6 +1494,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <filter>date=0 and band="50 MHz" and Section="O" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
+						<collateby>callsign</collateby>
                 </collate_list>
                 <collate_list>
                         <name>Section SF</name>
@@ -1429,6 +1517,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <filter>date=0 and band="70 MHz" and Section="O" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
+						<collateby>callsign</collateby>
                 </collate_list>
                 <collate_list>
                         <name>Section SF</name>
@@ -1451,6 +1540,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <filter>date=0 and band="144 MHz" and Section="O" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
+						<collateby>callsign</collateby>
                 </collate_list>
                 <collate_list>
                         <name>Section SF</name>
@@ -1473,6 +1563,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
                         <filter>date=0 and band="432 MHz" and Section="O" </filter>
                         <scorefield>normalisedScore</scorefield>
                         <table>Entries</table>
+						<collateby>callsign</collateby>
                 </collate_list>
                 <collate_list>
                         <name>Section SF</name>
@@ -1797,6 +1888,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <scoring>
     <perkms>1</perkms>
   </scoring>
+  <special_rules_list>VHF CW Championship</special_rules_list>
   <band_list>50</band_list>
 <award_list>A certificate will be awarded each year to the station achieving the best overall score in the three RSGB VHF CW contests -- 4m, 6m and 2m</award_list>
 <entry_date>16 days</entry_date>
@@ -1818,6 +1910,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
   <scoring>
     <perkms>1</perkms>
   </scoring>
+  <special_rules_list>VHF CW Championship</special_rules_list>
   <band_list>70</band_list>
   <mult>M1</mult>
 <award_list>The Bill Capstick, G3JYP, Memorial Award is made to the highest-scoring station, regardless of section.</award_list>
@@ -2373,6 +2466,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack2</name>
@@ -2397,6 +2491,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack3</name>
@@ -2421,6 +2516,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack4</name>
@@ -2445,6 +2541,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
   <name>144backpack5</name>
@@ -2469,6 +2566,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <award_list>Backpackers Trophy will be awarded to the overall winner of the 3B Section</award_list>
 <entry_date>16 days</entry_date>
 <resultsFormatUsed>vhfmults</resultsFormatUsed>
+<autocerts>yes</autocerts>
 </contest>
 <contest>
 <name>lp144</name>
@@ -2625,6 +2723,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 <perkms>1</perkms>
 </scoring>
 <special_rules_list>S7</special_rules_list>
+<special_rules_list>VHF CW Championship</special_rules_list>
 <band_list>144</band_list>
 <mode>CW</mode>
 <iaru>1</iaru>
