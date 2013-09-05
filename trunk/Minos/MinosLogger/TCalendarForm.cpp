@@ -3,7 +3,7 @@
 //
 // PROJECT NAME 		Minos Amateur Radio Control and Logging System
 //
-// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2008
+// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2013
 //
 /////////////////////////////////////////////////////////////////////////////
 #include "logger_pch.h"
@@ -14,6 +14,117 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
+//---------------------------------------------------------------------------
+#define LOWYEAR -2
+#define LOWURLYEAR -1
+#define HIGHYEAR 1
+
+int curYear = 0;
+
+enum CalType {ectVHF, ectHF, ectMwave, ectVHFOther, ectHFOther};
+String calString[] =
+{
+   "vhfcontests",
+   "hfcontests",
+   "microcontests",
+   "VHFContestsOther",
+   "HFContestsOther"
+};
+class CalendarYear
+{
+      virtual String getSite() = 0;
+      String yearString()
+      {
+         String y = String(curYear + yearOffset);
+         y = y.SubString(3, 2);
+         return y;
+      }
+   public:
+      CalendarYear(CalType t, int y): type(t), yearOffset(y)
+      {
+         if (curYear == 0)
+         {
+            SYSTEMTIME st;
+            GetLocalTime( &st );
+            curYear = st.wYear;
+         }
+
+      }
+      virtual bool downloadFile(TIdHTTP *IdHTTP1, bool showError);
+
+      bool loaded;
+      int yearOffset;
+      CalType type;
+      virtual String getPath();
+      virtual String getURL();
+      virtual String getProvisionalURL();
+};
+class VHFCalendarYear : public CalendarYear
+{
+      virtual String getSite();
+   public:
+      VHFCalendarYear(int year): CalendarYear(ectVHF, year)
+      {
+
+      }
+};
+//---------------------------------------------------------------------------
+String CalendarYear::getPath()
+{
+   char appFName[ 255 ];
+   int nLen = 0;
+   nLen = ::GetModuleFileName( HInstance, appFName, 255 );
+   appFName[ nLen ] = '\0';
+
+   String fpath = ExtractFilePath( appFName );
+
+   String path = fpath +  "configuration\\" + calString[type] + yearString() + ".xml";
+   return path;
+}
+String CalendarYear::getURL()
+{
+   String url = getSite() + calString[type] + yearString() + ".xml";
+   return url;
+
+}
+String CalendarYear::getProvisionalURL()
+{
+   String url = getSite() + calString[type] + yearString() + "-prov.xml";
+   return url;
+
+}
+//---------------------------------------------------------------------------
+String VHFCalendarYear::getSite()
+{
+   return "http://www.rsgbcc.org/vhf/";
+}
+bool CalendarYear::downloadFile(TIdHTTP *IdHTTP1, bool showError)
+{
+   TWaitCursor fred;
+   String calendarURL = getURL();
+   try
+   {
+      String cal = IdHTTP1->Get( calendarURL );
+      // and write it out
+
+      TStringList *sl = new TStringList();
+      sl->Text = cal;
+      sl->SaveToFile( getPath() );
+      trace(("HTPP Get of " + calendarURL + " OK").c_str());
+      delete sl;
+      return true;
+   }
+   catch ( Exception & e )
+   {
+      trace(("HTPP Get of " + calendarURL + " failed: " + e.Message).c_str());
+      if (showError)
+      {
+         ShowMessage( "HTPP Get of " + calendarURL + " failed: " + e.Message );
+      }
+   }
+   return false;
+}
+//---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 __fastcall TCalendarForm::TCalendarForm( TComponent* Owner )
       : TForm( Owner ), vhf(2011)
@@ -28,43 +139,44 @@ void __fastcall TCalendarForm::CloseButtonClick( TObject * /*Sender*/ )
    ModalResult = mrCancel;
 }
 //---------------------------------------------------------------------------
+bool TCalendarForm::loadYear(Calendar &cal, int year)
+{
+   bool loaded = false;
+
+
+   for (int i = yearList.size() - 1; i >= 0; i--)
+   {
+      if (!loaded && FileExists(yearList[i]->getPath()) && year >= curYear + yearList[i]->yearOffset)
+      {
+         loaded = cal.parseFile( (yearList[i]->getPath()).c_str() );
+      }
+   }
+   return loaded;
+}
+//---------------------------------------------------------------------------
 void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
 {
    int year = YearEdit->Text.ToIntDef(2011);
-   vhf = Calendar(year);
    bool loaded = false;
 
-   #warning can we automate calendar years depending on configured and present files/URLs?
-   if (year > 2012)
+   vhf = Calendar(year);
+
+   yearList.clear();
+   for (int i = LOWYEAR; i <= HIGHYEAR; i++)
    {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests13.xml" );
+      yearList.push_back(boost::shared_ptr<CalendarYear>(new VHFCalendarYear(i)));
    }
-   else if (year == 2012)
-   {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests12.xml" );
-   }
-   else if (year == 2011)
-   {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests11.xml" );
-   }
-   else if (year == 2010)
-   {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests10.xml" );
-   }
-   else if (year == 2009)
-   {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests09.xml" );
-   }
-   else
-   {
-      loaded = vhf.parseFile( ".\\configuration\\vhfContests.xml" );
-   }
+
+   loaded = loadYear(vhf, year);
+
    if ( !loaded )
    {
-      ShowMessage( "Failed to load the calendar file" );
+      ShowMessage( "Failed to load the VHF calendar file" );
       CalendarVersionLabel->Caption = "No file loaded";
+      CalendarGrid->RowCount = 0;
       return ; // don't close - they need a chance to download
    }
+
    CalendarVersionLabel->Caption = ("File Version " + vhf.version).c_str();
    CalendarGrid->RowCount = vhf.calendar.size() + 1;
    CalendarGrid->ColCount = 8;
@@ -120,42 +232,16 @@ void __fastcall TCalendarForm::FormShow( TObject * /*Sender*/ )
    }
 }
 //---------------------------------------------------------------------------
-bool TCalendarForm::downloadCalendar(String calendarURL, String dest, bool showError)
-{
-   try
-   {
-      String cal = IdHTTP1->Get( calendarURL );
-      // and write it out
-
-      TStringList *sl = new TStringList();
-      sl->Text = cal;
-      sl->SaveToFile( dest );
-      delete sl;
-      return true;
-   }
-   catch ( Exception & e )
-   {
-      if (showError)
-      {
-         ShowMessage( "Download of calendar " + calendarURL + " failed: " + e.Message );
-      }
-   }
-   return false;
-}
 void __fastcall TCalendarForm::GetCalendarButtonClick( TObject *Sender )
 {
    TWaitCursor fred;
 
-   char appFName[ 255 ];
-   int nLen = 0;
-   nLen = ::GetModuleFileName( HInstance, appFName, 255 );
-   appFName[ nLen ] = '\0';
+   for (int i = LOWURLYEAR; i <= HIGHYEAR; i++)
+   {
+      VHFCalendarYear y(i);
+      y.downloadFile(IdHTTP1, false);
+   }
 
-   String fpath = ExtractFilePath( appFName );
-
-   #warning we want these URLs to be configurable
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests12.xml", fpath + "Configuration\\vhfcontests12.xml", false);
-   downloadCalendar("http://www.rsgbcc.org/vhf/vhfcontests13.xml", fpath + "Configuration\\vhfcontests13.xml", false);
    FormShow( Sender );
 }
 //---------------------------------------------------------------------------
@@ -176,11 +262,11 @@ void __fastcall TCalendarForm::CalendarGridDblClick( TObject * /*Sender*/ )
 
 void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 {
-   int year = YearEdit->Text.ToIntDef(2011);
+   int year = YearEdit->Text.ToIntDef(curYear);
    year -= 1;
-   if (year < 2008)
+   if (year < curYear + LOWYEAR)
    {
-      year = 2013;
+      year = curYear + HIGHYEAR;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );
@@ -189,11 +275,11 @@ void __fastcall TCalendarForm::YearDownButtonClick(TObject *Sender)
 
 void __fastcall TCalendarForm::YearUpButtonClick(TObject *Sender)
 {
-   int year = YearEdit->Text.ToIntDef(2012);
+   int year = YearEdit->Text.ToIntDef(curYear);
    year += 1;
-   if (year > 2013)
+   if (year > curYear + HIGHYEAR)
    {
-      year = 2008;
+      year = curYear + LOWYEAR;
    }
    YearEdit->Text = String(year);
    FormShow( Sender );

@@ -3,7 +3,7 @@
 //
 // PROJECT NAME 		Minos Amateur Radio Control and Logging System
 //
-// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2008
+// COPYRIGHT         (c) M. J. Goodey G0GJV 2005 - 2013
 //
 /////////////////////////////////////////////////////////////////////////////
 
@@ -22,6 +22,9 @@
 #include <IdTCPClient.hpp>
 #include <IdTCPConnection.hpp>
 //---------------------------------------------------------------------------
+
+class CalendarYear;
+
 class TCalendarForm : public TForm
 {
    __published: 	// IDE-managed Components
@@ -43,7 +46,8 @@ class TCalendarForm : public TForm
    void __fastcall YearDownButtonClick(TObject *Sender);
    void __fastcall YearUpButtonClick(TObject *Sender);
    private: 	// User declarations
-      bool downloadCalendar(String URL, String dest, bool showError);
+      bool loadYear(Calendar &hf, int year);
+      std::vector<boost::shared_ptr<CalendarYear> > yearList;
    public: 		// User declarations
       __fastcall TCalendarForm( TComponent* Owner );
       Calendar vhf;
