@@ -1,3 +1,7 @@
+1.5.8
+Windows closedown closes full system
+Refactor of calendar to stop need for annual update
+Add exit button to about fialog
 ==================================================================
 1.5.7      - bug fix release
 Fix bug that meant we couldn't add operators
