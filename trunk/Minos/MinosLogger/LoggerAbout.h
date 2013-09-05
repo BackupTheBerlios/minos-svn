@@ -42,6 +42,7 @@ class TAboutBox : public TForm
       TButton *LoggerOnlyButton;
       TTabSheet *TabSheet1;
       TMemo *MinosMemo;
+   TButton *ExitButton;
       void __fastcall FormShow( TObject *Sender );
       void __fastcall WebLabelClick( TObject *Sender );
       void __fastcall TConfigFrame1StartButtonClick( TObject *Sender );
@@ -49,6 +50,7 @@ class TAboutBox : public TForm
       void __fastcall TConfigFrame1StopButtonClick( TObject *Sender );
       void __fastcall LoggerOnlyButtonClick( TObject *Sender );
       void __fastcall TConfigFrame1CancelButtonClick( TObject *Sender );
+   void __fastcall ExitButtonClick(TObject *Sender);
    private:
       bool doStartup;
    public:

@@ -27,10 +27,6 @@ object AboutBox: TAboutBox
     TabOrder = 0
     object AboutTabSheet: TTabSheet
       Caption = 'About'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -134,10 +130,6 @@ object AboutBox: TAboutBox
     object AutoStartTabSheet: TTabSheet
       Caption = 'Auto Start Configuration'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       inline TConfigFrame1: TTConfigFrame
         Left = 0
         Top = 0
@@ -179,10 +171,6 @@ object AboutBox: TAboutBox
     object TabSheet1: TTabSheet
       Caption = 'Why Minos?'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object MinosMemo: TMemo
         Left = 0
         Top = 0
@@ -225,13 +213,22 @@ object AboutBox: TAboutBox
     end
     object LoggerOnlyButton: TButton
       Left = 338
-      Top = 6
+      Top = 9
       Width = 80
       Height = 33
       Caption = 'Logger Only'
       TabOrder = 1
       OnClick = LoggerOnlyButtonClick
       IsControl = True
+    end
+    object ExitButton: TButton
+      Left = 55
+      Top = 13
+      Width = 75
+      Height = 25
+      Caption = 'Exit'
+      TabOrder = 2
+      OnClick = ExitButtonClick
     end
   end
 end
