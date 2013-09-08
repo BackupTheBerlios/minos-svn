@@ -177,21 +177,34 @@ void TLogContainer::preloadFiles( const std::string &conarg )
 void __fastcall TLogContainer::FormClose( TObject */*Sender*/,
       TCloseAction &/*Action*/ )
 {
-   trace( "Logger close initiated" );
-   saveResize = false;
-   delete TMConfigDM::getConfigDM( 0 );
-   delete SendDM;
-   SendDM = 0;
-   closeContestApp();
+   try
+   {
+      trace( "Logger close initiated" );
+      saveResize = false;
+      delete TMConfigDM::getConfigDM( 0 );
+      delete SendDM;
+      SendDM = 0;
+      closeContestApp();
+      trace( "Logger close complete" );
+   }
+   catch (Exception &e)
+   {
+      trace( ("Logger close exception " + e.Message).c_str() );
+   }
+   catch (...)
+   {
+      trace( "Logger close unknown exception" );
+   }
 
 }
+//---------------------------------------------------------------------------
 void __fastcall TLogContainer::WmEndSession( TMessage & Msg )
 {
-   bool WindowsClosing = Msg.LParam == 0;
+   bool WindowsClosing = Msg.WParam != 0;
 
 	Msg.Result = 0;
 
-//   if ( WindowsClosing )
+   if ( WindowsClosing )
    {
       trace( "********************* Windows is Closing ***********************************" );
       TCloseAction temp;
