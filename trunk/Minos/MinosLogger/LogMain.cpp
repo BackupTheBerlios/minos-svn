@@ -8,6 +8,8 @@
 /////////////////////////////////////////////////////////////////////////////
 #include "logger_pch.h"
 #pragma hdrstop
+#include <tlhelp32.h>
+
 #include "LogEvents.h"
 #include "LoggerContest.h"
 
@@ -173,19 +175,55 @@ void TLogContainer::preloadFiles( const std::string &conarg )
    }
 }
 //---------------------------------------------------------------------------
+int GetThreadCount()
+{
+ HANDLE h = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0);
+
+ int tc = 0;
+
+ unsigned int me = GetCurrentProcessId();
+
+ if (h != INVALID_HANDLE_VALUE)
+ {
+  THREADENTRY32 te;
+  te.dwSize = sizeof(te);
+  if (Thread32First(h, &te))
+  {
+   do
+   {
+     if (te.dwSize >= FIELD_OFFSET(THREADENTRY32, th32OwnerProcessID) +
+                      sizeof(te.th32OwnerProcessID))
+     {
+         if (te.th32OwnerProcessID == me)
+         {
+            tc++;
+         }
+     }
+      te.dwSize = sizeof(te);
+   } while (Thread32Next(h, &te));
+  }
+  CloseHandle(h);
+ }
+ return tc;
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TLogContainer::FormClose( TObject */*Sender*/,
       TCloseAction &/*Action*/ )
 {
    try
    {
-      trace( "Logger close initiated" );
+      int tc = GetThreadCount();
+      trace( "Logger close initiated " + makeStr(tc) );
       saveResize = false;
       delete TMConfigDM::getConfigDM( 0 );
+      trace( "TMConfigDM close complete" );
       delete SendDM;
       SendDM = 0;
+      trace( "SendDM close complete" );
       closeContestApp();
-      trace( "Logger close complete" );
+      tc = GetThreadCount();
+      trace( "Logger close complete " + makeStr(tc) );
    }
    catch (Exception &e)
    {
@@ -207,8 +245,12 @@ void __fastcall TLogContainer::WmEndSession( TMessage & Msg )
    if ( WindowsClosing )
    {
       trace( "********************* Windows is Closing ***********************************" );
+      // Close() will call FormClose, but the system won't then close down properly
+      // So do it for ourselves
       TCloseAction temp;
       FormClose(0, temp);
+      // and force the issue
+      exit(0);
    }
 }
 //---------------------------------------------------------------------------

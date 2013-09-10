@@ -47,8 +47,10 @@ void TMatchThread::FinishMatchThread()
    if ( matchThread )
    {
       matchThread->Terminate();
+      trace( "WaitFor TMatchThread" );
       matchThread->WaitFor();
    }
+   trace( "TMatchThread close complete" );
 }
 void TMatchThread::InitialiseMatchThread()
 {

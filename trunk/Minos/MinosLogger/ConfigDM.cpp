@@ -160,6 +160,7 @@ void TMConfigDM::stop()
          delete ( *i );
       }
    }
+   logMessage( "All guardian threads finished", "" );
    guardv.clear();
 
 }
