@@ -103,7 +103,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     Style = csDropDownList
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 5
   end
   object CallsignEdit: TLabeledEdit
@@ -368,12 +368,6 @@ object ContestEntryDetails: TContestEntryDetails
         Width = 89
         Height = 18
         Caption = 'VHF Calendar'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
-        ParentFont = False
         TabOrder = 0
         OnClick = VHFCalendarButtonClick
       end
@@ -395,7 +389,7 @@ object ContestEntryDetails: TContestEntryDetails
     Height = 21
     Style = csDropDownList
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 6
   end
   object PowerEdit: TLabeledEdit
@@ -413,7 +407,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 11
   end
   object EndTimeCombo: TComboBox
@@ -421,7 +415,7 @@ object ContestEntryDetails: TContestEntryDetails
     Top = 262
     Width = 74
     Height = 21
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 12
   end
   object LocatorGroupBox: TGroupBox
@@ -494,7 +488,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 13
   end
   object SecondOpComboBox: TComboBox
@@ -503,7 +497,7 @@ object ContestEntryDetails: TContestEntryDetails
     Width = 145
     Height = 21
     CharCase = ecUpperCase
-    ItemHeight = 0
+    ItemHeight = 13
     TabOrder = 14
   end
   object AntOffsetEdit: TLabeledEdit
