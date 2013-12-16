@@ -1303,6 +1303,7 @@ When applied to the VHF Championship, if a station enters some contests with hig
 </seriesResult>
 <seriesResult>
         <name>AFS Superleague 12/13</name>
+        <description>AFS Super League 2012-13</description>
 		<ctl>AFSsuperleague1213</ctl>
         <id_list>
                 <name>80m CW</name>
