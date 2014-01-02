@@ -21,6 +21,7 @@ std::map <char, std::string> MORSECODE;    // . is 0x40, - is 0x80
 std::map <int, MORSEMSG> MORSEMSGS;
 
 CRITICAL_SECTION disableInterrupts::intCriticalSection;
+bool disableInterrupts::terminated = true;
 //==============================================================================
 
 // some of these might not belong here, but they were in sbdvp or tlkeyer

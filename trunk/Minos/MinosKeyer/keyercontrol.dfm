@@ -25,7 +25,7 @@ object KeyControlForm: TKeyControlForm
     Top = 0
     Width = 256
     Height = 336
-    ActivePage = VoiceTab
+    ActivePage = Mixer
     Align = alClient
     TabOrder = 0
     object VoiceTab: TTabSheet
@@ -236,6 +236,7 @@ object KeyControlForm: TKeyControlForm
           Width = 49
           Height = 21
           TabOrder = 15
+          Text = '0'
           OnChange = DelayEditChange
         end
         object DelayUpDown: TUpDown
@@ -434,9 +435,6 @@ object KeyControlForm: TKeyControlForm
         Width = 169
         Height = 17
         Caption = 'Lock input and output mixers'
-        Checked = True
-        Enabled = False
-        State = cbChecked
         TabOrder = 4
         OnClick = LockMixersCBClick
       end
@@ -650,7 +648,7 @@ object KeyControlForm: TKeyControlForm
     Left = 240
     Top = 40
     Bitmap = {
-      494C010106000A00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000A00080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF

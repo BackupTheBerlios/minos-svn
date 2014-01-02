@@ -37,6 +37,7 @@
 #pragma resource "*.dfm"
 TMinosControlForm *MinosControlForm = 0;
 CRITICAL_SECTION disableInterrupts::intCriticalSection;
+bool disableInterrupts::terminated = true;
 //---------------------------------------------------------------------------
 /*static*/
 void TMinosControlForm::makeRPCObjects()

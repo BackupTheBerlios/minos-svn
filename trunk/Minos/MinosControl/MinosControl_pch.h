@@ -47,22 +47,37 @@ void setLines( bool PTTOut, bool PTTIn, bool L1, bool L2 );
 class disableInterrupts
 {
       static CRITICAL_SECTION intCriticalSection;
+      static bool terminated;
    public:
       static void initialise()
       {
-         InitializeCriticalSection( &intCriticalSection );
+         if (terminated)
+         {
+            InitializeCriticalSection( &intCriticalSection );
+            terminated = false;
+         }
       }
       static void terminate()
       {
-         DeleteCriticalSection( &intCriticalSection );
+         if (!terminated)
+         {
+            terminated = true;
+            DeleteCriticalSection( &intCriticalSection );
+         }
       }
       disableInterrupts()
       {
-         EnterCriticalSection( &intCriticalSection );
+         if (!terminated)
+         {
+            EnterCriticalSection( &intCriticalSection );
+         }
       }
       ~disableInterrupts()
       {
-         LeaveCriticalSection( &intCriticalSection );
+         if (!terminated)
+         {
+            LeaveCriticalSection( &intCriticalSection );
+         }
       }
 };
 
