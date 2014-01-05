@@ -363,35 +363,45 @@ object KeyControlForm: TKeyControlForm
       ImageIndex = 2
       object Label18: TLabel
         Left = 16
-        Top = 74
+        Top = 41
         Width = 52
         Height = 13
         Caption = 'Input Mixer'
       end
       object Label19: TLabel
         Left = 16
-        Top = 173
+        Top = 140
         Width = 60
         Height = 13
         Caption = 'Output Mixer'
       end
       object Label20: TLabel
         Left = 16
-        Top = 117
+        Top = 84
         Width = 34
         Height = 13
         Caption = 'Source'
       end
       object Label21: TLabel
-        Left = 16
-        Top = 218
+        Left = 14
+        Top = 186
         Width = 53
         Height = 13
         Caption = 'Destination'
       end
+      object Label22: TLabel
+        Left = 16
+        Top = 237
+        Width = 211
+        Height = 44
+        Caption = 
+          'Changing mixers or lines will cause the keyer to close and be re' +
+          'started.'
+        WordWrap = True
+      end
       object InputMixerComboBox: TComboBox
         Left = 14
-        Top = 92
+        Top = 59
         Width = 213
         Height = 21
         Style = csDropDownList
@@ -401,7 +411,7 @@ object KeyControlForm: TKeyControlForm
       end
       object OutputMixerComboBox: TComboBox
         Left = 14
-        Top = 192
+        Top = 159
         Width = 213
         Height = 21
         Style = csDropDownList
@@ -411,7 +421,7 @@ object KeyControlForm: TKeyControlForm
       end
       object SourceComboBox: TComboBox
         Left = 14
-        Top = 136
+        Top = 103
         Width = 213
         Height = 21
         Style = csDropDownList
@@ -421,7 +431,7 @@ object KeyControlForm: TKeyControlForm
       end
       object DestinationComboBox: TComboBox
         Left = 14
-        Top = 235
+        Top = 202
         Width = 213
         Height = 21
         Style = csDropDownList
@@ -431,7 +441,7 @@ object KeyControlForm: TKeyControlForm
       end
       object LockMixersCB: TCheckBox
         Left = 16
-        Top = 24
+        Top = 16
         Width = 169
         Height = 17
         Caption = 'Lock input and output mixers'
@@ -648,7 +658,7 @@ object KeyControlForm: TKeyControlForm
     Left = 240
     Top = 40
     Bitmap = {
-      494C010106000A00080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000A000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF

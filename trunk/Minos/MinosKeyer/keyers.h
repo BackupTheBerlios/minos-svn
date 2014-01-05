@@ -101,6 +101,8 @@ class commonKeyer: public lineMonitor, public timerTicker
       virtual bool getPTT( void );
       virtual void getActionState( std::string & );
       virtual bool getStatus( std::string &a );
+      virtual bool startMicPassThrough() = 0;
+      virtual bool stopMicPassThrough() = 0;
       virtual bool sendCW( const char *message, int speed, int tone ) = 0;
 
       virtual void initTone1( int ) = 0;
@@ -169,6 +171,8 @@ class voiceKeyer: public commonKeyer, public sbKeyer
       virtual bool initialise( const KeyerConfig &keyer, const PortConfig &port );
       virtual void select( bool );
       virtual bool sendCW( const char *message, int speed, int tone );
+      virtual bool startMicPassThrough();
+      virtual bool stopMicPassThrough();
       void tickEvent();       // this will often be an interrupt routine
       virtual void initTone1( int );
       virtual void initTone2( int, int );

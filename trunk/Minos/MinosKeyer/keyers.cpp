@@ -903,6 +903,14 @@ bool voiceKeyer::sendCW( const char *message, int speed, int tone )
    }
    return false;
 }
+bool voiceKeyer::startMicPassThrough()
+{
+   return false;
+}
+bool voiceKeyer::stopMicPassThrough()
+{
+   return false;
+}
 //==============================================================================
 //==============================================================================
 sbKeyer::sbKeyer()
@@ -1219,9 +1227,14 @@ void InitialPTTAction::timeOut()
    {
       case einitPTTInitial:
          if ( currentKeyer )
+         {
             currentKeyer->ptt( 1 );
-         SetCurrentMixerSet( emsPassThroughPTT );
+            SetCurrentMixerSet( emsPassThroughPTT );
+            currentKeyer->startMicPassThrough();
+         }
          actionState = einitPTTStart;
+         // This is where a real PTT initiated voice from microphone to rig commences
+         // It won't time out.
          break;
 
       case einitPTTStart:
@@ -1339,9 +1352,11 @@ void InterruptingPTTAction::timeOut()
             // PTT releasing play, don't start for a bit!
             if ( currentKeyer->pttState )
             {
-               if ( currentKeyer )
-                  currentKeyer->ptt( 1 );
+               currentKeyer->ptt( 1 );
                SetCurrentMixerSet( emsPassThroughPTT );
+               // This is where we tail end a file play with a normal transmission
+               currentKeyer->startMicPassThrough();
+
                actionState = einterPTTDoPip;   	// do a pip
             }
             else

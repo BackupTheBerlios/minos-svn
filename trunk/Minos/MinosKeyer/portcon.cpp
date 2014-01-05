@@ -227,7 +227,7 @@ void WindowsMonitorPort::checkControls( void )
       lastPttState = PTTInState;
       if ( sblog )
       {
-         trace( "PTT changed to " + makeStr( !lastPttState ) );
+         trace( "PTT changed to " + makeStr( PTTInState ) );
       }
       pttChanged( lastPttState );
    }

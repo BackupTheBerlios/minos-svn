@@ -105,6 +105,7 @@ class TKeyControlForm : public TForm
       TCheckBox *LockMixersCB;
    TUpDown *DelayUpDown;
    TUpDown *SpeedUpDown;
+   TLabel *Label22;
       void __fastcall RecordButtonClick( TObject *Sender );
       void __fastcall StopButtonClick( TObject *Sender );
       void __fastcall PlayButtonClick( TObject *Sender );
