@@ -19,7 +19,7 @@
 #include "keyers.h"
 #include "keyerlog.h"
 #ifndef _INC_MMSYSTEM
-#error this should already be included... 
+#error this should already be included...
 // but it is useful to be able to open it easily
 #include <mmsystem.h>
 #endif
@@ -28,32 +28,7 @@ extern int curBlockLength;
 // hope this is the one just output...
 #define pttype INT16
 // VU meter takes 65536 as 100%
-#define shortmult 2 
-//==============================================================================
-/*
-char * lastError( void )
-{
-   static char ebuf[ 1024 ];
-   LPVOID lpMsgBuf;
- 
-   FormatMessage(
-      FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-      NULL,
-      GetLastError(),
-      MAKELANGID( LANG_NEUTRAL, SUBLANG_DEFAULT ),   // Default language
-      ( LPTSTR ) & lpMsgBuf,
-      0,
-      NULL
-   );
- 
-   // Display the string.
-   strcpy( ebuf, ( char * ) lpMsgBuf );
- 
-   // Free the buffer.
-   LocalFree( lpMsgBuf );
-   return ebuf;
-}
-*/ 
+#define shortmult 2
 //==============================================================================
 static CRITICAL_SECTION waveCriticalSection;
 //==============================================================================
@@ -203,8 +178,6 @@ void WindowsSoundSystem::stopDMA()
    {
       waveOutActive = false;
       waveOutReset( hWaveOut );
-      //      waveOutClose(hWaveOut);
-      //      hWaveOut = 0;
    }
    if ( hWaveIn && waveInActive )
    {
@@ -219,8 +192,6 @@ void WindowsSoundSystem::stopDMA()
          wt->Terminate();
          wt = 0;
       }
-      //      waveInClose(hWaveIn);
-      //      hWaveIn = 0;
       if ( sblog )
       {
          trace( "waveInReset in stopDMA finished" );
@@ -462,13 +433,7 @@ bool WindowsSoundSystem::startInput( std::string fname )
    wt = new WriterThread( true );
    wt->openFile( fname );
    wt->Resume();
-   /*
-      if (hWaveOut)
-      {
-         waveOutClose(hWaveOut);
-         hWaveOut = 0;
-      }
-   */
+
    if ( !hWaveIn )
    {
       // warning WAVEFORMATEX settings imply the audio quality
@@ -519,16 +484,8 @@ bool WindowsSoundSystem::startInput( std::string fname )
 }
 bool WindowsSoundSystem::startOutput()
 {
-   /*
-      if (hWaveIn)
-      {
-         waveInClose(hWaveIn);
-         hWaveIn = 0;
-      }
-   */
    if ( !hWaveOut )
    {
-#
       // warning WAVEFORMATEX settings imply the audio quality
       WAVEFORMATEX wfx;
       /*
