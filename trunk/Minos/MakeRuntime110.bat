@@ -12,12 +12,7 @@ REM files required for logger
 
 copy ..\MinosLogger\MinosLogger.exe .
 
-copy ..\MinosLogger\Configuration\vhfcontests.xml Configuration
-copy ..\MinosLogger\Configuration\vhfcontests09.xml Configuration
-copy ..\MinosLogger\Configuration\vhfcontests10.xml Configuration
-copy ..\MinosLogger\Configuration\vhfcontests11.xml Configuration
-copy ..\MinosLogger\Configuration\vhfcontests12.xml Configuration
-copy ..\MinosLogger\Configuration\vhfcontests13.xml Configuration
+copy ..\MinosLogger\Configuration\vhfcontests*.xml Configuration
 copy ..\MinosLogger\Configuration\cty.dat Configuration
 copy ..\MinosLogger\Configuration\cty.syn Configuration
 copy ..\MinosLogger\Configuration\district.ctl Configuration
