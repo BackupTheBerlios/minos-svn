@@ -1,0 +1,17 @@
+Keyer
+soundsystem is already nicely split between wavein and waveout, each loaded from
+the correct mixer.
+At present it starts up either in input (to a file) or output(from a file or a 
+prebuilt set of samples such as tone/twotone/pip/CW)
+We need to add a new "mode" to be used in idle/passthrough state
+
+I need to find the state diagram and work out how to extend it...
+==================================================================
+Keyer
+Split sound into 2 - mic in/record and mic out/playback sbDriver is a singleton
+and contains a pointer to soundsystem
+This currently limits it to a single soundcard, and Vista and up split cards into 2
+Could do with changing to smart pointers everywhere
+If we use a shared_ptr for soundsystem from sbdriver we may be able to use very
+similar code? 
+
