@@ -451,10 +451,11 @@ bool WindowsSoundSystem::startInput( std::string fname )
 
       wfx.cbSize = 0; /* size of _extra_ info */
 
-      MMRESULT res;
+	  MMRESULT res;
+	  int vin = VKMixer::getInputVKMixerID();
       if ( ( res = waveInOpen(
-                      &hWaveIn,
-                      /*WAVE_MAPPER*/VKMixer::getInputVKMixerID(),
+					  &hWaveIn,
+					  /*WAVE_MAPPER*/vin,
                       &wfx,
                       ( DWORD_PTR ) waveInProc,
                       ( DWORD_PTR ) this,              // user instance data
