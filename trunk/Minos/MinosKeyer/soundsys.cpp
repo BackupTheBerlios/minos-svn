@@ -13,10 +13,10 @@
 #include "keyctrl.h"
 #include "keyconf.h"
 #include "vkmixer.h"
-#include "writerthread.h"
 #include "sbdriver.h"
 #include "soundsys.h"
 #include "keyers.h"
+#include "writerthread.h"
 #include "keyerlog.h"
 #ifndef _INC_MMSYSTEM
 #error this should already be included...

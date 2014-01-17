@@ -20,6 +20,7 @@
 */
 #define BLOCK_COUNT 20
 
+class WriterThread;
 class SoundSystem
 {
    protected:

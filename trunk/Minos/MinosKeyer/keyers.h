@@ -18,6 +18,26 @@ class sbDriver;
 class commonPort;
 class commonKeyer;
 
+class RecBuffer
+{
+   public:
+      int RecBlock;
+      int WriteBlock;
+
+      char buff[ 40000 ]; // should be same size as sound buffers
+      int Size;
+      bool filled;
+      RecBuffer() : Size( 0 ), filled( false ), RecBlock( -1 ), WriteBlock( -1 )
+      {}
+      void reset()
+      {
+         RecBlock = -1;
+         WriteBlock = -1;
+         Size = 0;
+         filled = false;
+      }
+};
+
 class lineMonitor
 {
    private:
@@ -232,6 +252,9 @@ class KeyerAction
       virtual bool playingFile( const std::string & );
       virtual void activateVox( void );
       virtual void interruptOK( void ) = 0;
+
+      virtual RecBuffer *getSourceBuffer(){return 0;}
+      virtual void doSinkBuffer(RecBuffer *){}
 
       long getActionTime()
       {

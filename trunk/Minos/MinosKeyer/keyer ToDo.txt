@@ -15,3 +15,25 @@ Could do with changing to smart pointers everywhere
 If we use a shared_ptr for soundsystem from sbdriver we may be able to use very
 similar code? 
 
+==================================================================
+
+Record: we build a collection of wave buffers, as they are filled and handed back 
+we copy them to the (disc) writer thread ring of buffers, and release the thread to write the blocks
+away to disc.
+
+Replay: we suck the whole file into memory (or generate the memory for pip or 1 or 2 tone)
+and as buffers become free we copy from memory into the buffer and (re) insert into the 
+replay queue
+
+PassThrough: as record blocks become available to need to copy to a passthrough ring of buffers,
+and then load up the replay buffers and feed to replay as they are filled; first to become filled
+should start the replay sequence
+
+Can we define wav sources and sinks, and connect them up as required? Sources would be file, generated tones,
+microphone, and sinks would be files, speakers. Also want NUL sources and sinks, so we can always define a 
+source and a sink.
+
+Can we/should we have multiple simultaneous sources/sinks to allow for QSO recording? Better done on an SDR,
+but not everyone has one (yet). 
+
+Do we connect these up by hand, or are they made part of the keyer states? 

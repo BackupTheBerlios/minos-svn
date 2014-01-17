@@ -13,25 +13,6 @@
 #include <Classes.hpp>
 #include "riff.h" 
 //----------------------------------------------------------------------------
-class RecBuffer
-{
-   public:
-      int RecBlock;
-      int WriteBlock;
-
-      char buff[ 40000 ]; // should be same size as sound buffers
-      int Size;
-      bool filled;
-      RecBuffer() : Size( 0 ), filled( false ), RecBlock( -1 ), WriteBlock( -1 )
-      {}
-      void reset()
-      {
-         RecBlock = -1;
-         WriteBlock = -1;
-         Size = 0;
-         filled = false;
-      }
-};
 #define NBUFFS 20 
 //---------------------------------------------------------------------------
 class WriterThread : public TThread

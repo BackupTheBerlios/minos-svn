@@ -9,6 +9,7 @@
 #include "MinosVK_pch.h"
 #pragma hdrstop
 
+#include "keyers.h"
 #include "WriterThread.h"
 #include "soundsys.h"
 
