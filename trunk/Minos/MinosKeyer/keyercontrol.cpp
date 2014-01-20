@@ -88,9 +88,8 @@ __fastcall TKeyControlForm::TKeyControlForm( TComponent* Owner )
    enableTrace( ".\\TraceLog\\MinosKeyer" );
    SetPriorityClass( GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS );  // Win2K and Above only!
 
-   std::vector<boost::shared_ptr<VKMixer> > mixers = VKMixer::getMixers( Handle );   // initialisae the VKMixer system
-
-   OutputMixerComboBox->Enabled = !LockMixersCB->Checked;
+   /*std::vector<boost::shared_ptr<VKMixer> > inputMixers =*/ VKMixer::getInputMixers(Handle );   // initialisae the VKMixer system
+   /*std::vector<boost::shared_ptr<VKMixer> > outputMixers =*/ VKMixer::getOutputMixers( Handle);   // initialisae the VKMixer system
 
    populateMixerList();
 
@@ -750,25 +749,23 @@ void TKeyControlForm::populateMixerList()
    SourceComboBox->Items->Clear();
    DestinationComboBox->Items->Clear();
 
-   std::vector<boost::shared_ptr<VKMixer> > mixers = VKMixer::getMixers( Handle );
-   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = mixers.begin(); i != mixers.end(); i++ )
+   std::vector<boost::shared_ptr<VKMixer> > inputMixers = VKMixer::getInputMixers(Handle );
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = inputMixers.begin(); i != inputMixers.end(); i++ )
    {
-      std::string name = ( *i ) ->getMixerName();
-      InputMixerComboBox->Items->Add( name.c_str() );
-      OutputMixerComboBox->Items->Add( name.c_str() );
+	  std::string name = ( *i ) ->getMixerName();
+	  InputMixerComboBox->Items->Add( name.c_str() );
+   }
+   std::vector<boost::shared_ptr<VKMixer> > outputMixers = VKMixer::getOutputMixers(Handle );
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = outputMixers.begin(); i != outputMixers.end(); i++ )
+   {
+	  std::string name = ( *i ) ->getMixerName();
+	  OutputMixerComboBox->Items->Add( name.c_str() );
    }
    InputMixerComboBox->ItemIndex = 0;
    OutputMixerComboBox->ItemIndex = 0;
    std::auto_ptr<TIniFile> iniFile( new TIniFile( "Configuration\\MinosKeyer.ini" ) );
    String inputMixer = iniFile->ReadString( "Mixers", "InputId", InputMixerComboBox->Text );
-   String outputMixer;
-
-   if ( LockMixersCB->Checked )
-   {
-      outputMixer = inputMixer;
-   }
-   else
-      outputMixer = iniFile->ReadString( "Mixers", "OutputId", OutputMixerComboBox->Text );
+   String outputMixer = iniFile->ReadString( "Mixers", "OutputId", OutputMixerComboBox->Text );
 
    InputMixerComboBox->ItemIndex = InputMixerComboBox->Items->IndexOf( inputMixer );
    OutputMixerComboBox->ItemIndex = OutputMixerComboBox->Items->IndexOf( outputMixer );
@@ -858,11 +855,4 @@ void TKeyControlForm::populateOutputMixer()
    }
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TKeyControlForm::LockMixersCBClick( TObject * /*Sender*/ )
-{
-   OutputMixerComboBox->Enabled = !LockMixersCB->Checked;
-}
-//---------------------------------------------------------------------------
-
 

@@ -19,8 +19,8 @@
 #include <mmsystem.h>
 #endif
 
-std::vector<boost::shared_ptr<VKMixer> > VKMixer::mixers;
-int VKMixer::mixerGetCount = 0;
+std::vector<boost::shared_ptr<VKMixer> > VKMixer::inputMixers;
+std::vector<boost::shared_ptr<VKMixer> > VKMixer::outputMixers;
 VKMixer * VKMixer::inputMixer = 0;
 std::string VKMixer::inputLine;
 VKMixer * VKMixer::outputMixer = 0;
@@ -234,7 +234,7 @@ int doMsgBox( HWND hwnd, UINT fuStyle, LPCTSTR pszFormat, ... )
    return ( MessageBox( hwnd, &buffer[ 0 ], "doMsgBox", fuStyle ) );
 }
 //---------------------------------------------------------------------------
-VKMixer::VKMixer() : mixerID( -1 ), hMixer( 0 )
+VKMixer::VKMixer() : inputWaveInID( -1 ), outputWaveOutID( -1 ), mixerID(-1), hMixer( 0 )
 {
    memset( &mixercaps, 0, sizeof( MIXERCAPS ) );
 }
@@ -254,29 +254,34 @@ VKMixer::~VKMixer()
 {
    return inputMixer;
 }
-/*static*/ int VKMixer::getInputVKMixerID()
+/*static*/ int VKMixer::getWaveInID()
 {
-   return inputMixer->mixerID;
+   return inputMixer->inputWaveInID;
 }
 /*static*/ VKMixer *VKMixer::GetOutputVKMixer()
 {
    return outputMixer;
 }
-/*static*/ int VKMixer::getOutputVKMixerID()
+/*static*/ int VKMixer::getWaveOutID()
 {
-   return outputMixer->mixerID;
+   return outputMixer->outputWaveOutID;
 }
 /*static*/ void VKMixer::closeMixer()
 {
    outputMixer = 0;
    inputMixer = 0;
-   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = mixers.begin(); i != mixers.end(); i++ )
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = inputMixers.begin(); i != inputMixers.end(); i++ )
    {
-      ( *i ) ->Close();
-      //      delete(*i).get();  // shared pointers - DO NOT delete them!
+	  ( *i ) ->Close();
+	  //      delete(*i).get();  // shared pointers - DO NOT delete them!
    }
-   mixerGetCount = 0;
-   mixers.clear();
+   inputMixers.clear();
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = outputMixers.begin(); i != outputMixers.end(); i++ )
+   {
+	  ( *i ) ->Close();
+	  //      delete(*i).get();  // shared pointers - DO NOT delete them!
+   }
+   outputMixers.clear();
 
 }
 std::string VKMixer::getMixerName()
@@ -387,9 +392,20 @@ void VKDestinationLine::initialise( HMIXEROBJ hMixer, unsigned int u )
    }
 }
 //---------------------------------------------------------------------------
-bool VKMixer::Open( unsigned int mId, HWND notWnd )
+bool VKMixer::inputOpen( unsigned int mId, unsigned int waveinid, HWND callbackWnd )
 {
    mixerID = mId;
+   inputWaveInID = waveinid;
+   return Open(callbackWnd);
+}
+bool VKMixer::outputOpen( unsigned int mId, unsigned int waveoutid, HWND callbackWnd )
+{
+   mixerID = mId;
+   outputWaveOutID = waveoutid;
+   return Open(callbackWnd);
+}
+bool VKMixer::Open( HWND callbackWnd )
+{
 
    // Get info about requested mixer device
    MMRESULT	err = mixerGetDevCaps( mixerID, &mixercaps, sizeof( MIXERCAPS ) );
@@ -402,7 +418,7 @@ bool VKMixer::Open( unsigned int mId, HWND notWnd )
       return false;
    }
 
-   err = mixerOpen( &hMixer, mixerID, ( DWORD ) notWnd, 0L, notWnd ? CALLBACK_WINDOW : 0 );
+   err = mixerOpen( &hMixer, mixerID, ( DWORD ) callbackWnd, 0L, callbackWnd ? CALLBACK_WINDOW : 0 );
    if ( err != MMSYSERR_NOERROR )
    {
       // Can't open the new mixer device
@@ -1674,7 +1690,7 @@ bool VKMixer::LoadMixerSettings( TiXmlDocument &doc, std::string &err )
    TiXmlElement *root = doc.RootElement();
    if ( !root )
    {
-      err = "No XML root element (does file exist?)";
+	  err = "No XML root element (does file exist?)";
       return false;
    }
    if ( !checkElementName( root, "MixerSettings" ) )
@@ -1712,7 +1728,7 @@ bool VKMixer::LoadMixerSettings( TiXmlDocument &doc, std::string &err )
             {
                int cChannels = -1;
                if ( GetIntAttribute( f, "dwSource", sourceid ) != TIXML_SUCCESS )
-                  continue;
+				  continue;
                if ( GetIntAttribute( f, "cChannels", cChannels ) != TIXML_SUCCESS )
                   continue;
                for ( TiXmlElement * g = f->FirstChildElement(); g; g = g->NextSiblingElement() )
@@ -1810,30 +1826,67 @@ bool _DLL_FUNCTION LoadMixerSettings( const char *fname, std::string &/*err*/ )
 }
 
 //---------------------------------------------------------------------------
-std::vector<boost::shared_ptr<VKMixer> > VKMixer::getMixers( HWND notWnd )
+std::vector<boost::shared_ptr<VKMixer> > VKMixer::getInputMixers(HWND callbackHwnd )
 {
-   if ( mixers.size() == 0 )
+   if ( inputMixers.size() == 0 )
    {
-      int numMixers = ::mixerGetNumDevs();
+	  int numMixers = ::waveInGetNumDevs();
 
-      for ( int mixerID = 0; mixerID < numMixers; mixerID++ )
-      {
-         VKMixer *mixer = new VKMixer();
-         mixer->Open( mixerID, notWnd );
-         boost::shared_ptr<VKMixer> mix = boost::shared_ptr<VKMixer>( mixer );
-         mixers.push_back( mix );
-      }
+	  for ( int i = 0; i < numMixers; i++ )
+	  {
+		 UINT mixerID;
+		 MMRESULT res = mixerGetID((HMIXEROBJ)i, &mixerID, MIXER_OBJECTF_WAVEIN);
+		 if (res == MMSYSERR_NOERROR)
+		 {
+			 VKMixer *mixer = new VKMixer();
+			 mixer->inputOpen( mixerID, i, callbackHwnd );
+			 boost::shared_ptr<VKMixer> mix = boost::shared_ptr<VKMixer>( mixer );
+			 inputMixers.push_back( mix );
+		 }
+	  }
    }
-   return mixers;
+   return inputMixers;
 }
-/*static*/ VKMixer *VKMixer::getMixer( const std::string &name )
+std::vector<boost::shared_ptr<VKMixer> > VKMixer::getOutputMixers(HWND callbackHwnd )
 {
-   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = mixers.begin(); i != mixers.end(); i++ )
+   if ( outputMixers.size() == 0 )
    {
-      if ( ( *i ) ->getMixerName() == name )
-      {
-         return ( *i ).get();
-      }
+	  int numMixers = ::waveOutGetNumDevs();
+
+	  for ( int i = 0; i < numMixers; i++ )
+	  {
+		 UINT mixerID;
+		 MMRESULT res = mixerGetID((HMIXEROBJ)i, &mixerID, MIXER_OBJECTF_WAVEOUT);
+		 if (res == MMSYSERR_NOERROR)
+		 {
+			 VKMixer *mixer = new VKMixer();
+			 mixer->outputOpen( mixerID, i, callbackHwnd );
+			 boost::shared_ptr<VKMixer> mix = boost::shared_ptr<VKMixer>( mixer );
+			 outputMixers.push_back( mix );
+		 }
+	  }
+   }
+   return outputMixers;
+}
+/*static*/ VKMixer *VKMixer::getInputMixer( const std::string &name )
+{
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = inputMixers.begin(); i != inputMixers.end(); i++ )
+   {
+	  if ( ( *i ) ->getMixerName() == name )
+	  {
+		 return ( *i ).get();
+	  }
+   }
+   return 0;
+}
+/*static*/ VKMixer *VKMixer::getOutputMixer( const std::string &name )
+{
+   for ( std::vector<boost::shared_ptr<VKMixer> >::iterator i = outputMixers.begin(); i != outputMixers.end(); i++ )
+   {
+	  if ( ( *i ) ->getMixerName() == name )
+	  {
+		 return ( *i ).get();
+	  }
    }
    return 0;
 }
@@ -1842,7 +1895,7 @@ std::vector<boost::shared_ptr<VKMixer> > VKMixer::getMixers( HWND notWnd )
 {
    if ( name.size() > 0 )
    {
-      inputMixer = getMixer( name );
+	  inputMixer = getInputMixer( name );
    }
    return inputMixer;
 }
@@ -1850,7 +1903,7 @@ std::vector<boost::shared_ptr<VKMixer> > VKMixer::getMixers( HWND notWnd )
 {
    if ( name.size() > 0 )
    {
-      outputMixer = getMixer( name );
+	  outputMixer = getOutputMixer( name );
    }
    return outputMixer;
 }

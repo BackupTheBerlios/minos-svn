@@ -452,7 +452,7 @@ bool WindowsSoundSystem::startInput( std::string fname )
       wfx.cbSize = 0; /* size of _extra_ info */
 
 	  MMRESULT res;
-	  int vin = VKMixer::getInputVKMixerID();
+	  int vin = VKMixer::getWaveInID();
       if ( ( res = waveInOpen(
 					  &hWaveIn,
 					  /*WAVE_MAPPER*/vin,
@@ -502,10 +502,11 @@ bool WindowsSoundSystem::startOutput()
 
       wfx.cbSize = 0; /* size of _extra_ info */
 
-      MMRESULT res;
+	  MMRESULT res;
+	  int vout = VKMixer::getWaveOutID();
       if ( ( res = waveOutOpen(
                       &hWaveOut,
-                      /*WAVE_MAPPER*/VKMixer::getOutputVKMixerID(),
+					  /*WAVE_MAPPER*/vout,
                       &wfx,
                       ( DWORD_PTR ) waveOutProc,
                       ( DWORD_PTR ) this,              // user instance data

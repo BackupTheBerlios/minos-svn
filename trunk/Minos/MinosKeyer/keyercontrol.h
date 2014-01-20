@@ -102,7 +102,6 @@ class TKeyControlForm : public TForm
       TLabel *Label20;
       TLabel *Label21;
       TLabel *MUXSelection;
-      TCheckBox *LockMixersCB;
    TUpDown *DelayUpDown;
    TUpDown *SpeedUpDown;
    TLabel *Label22;
@@ -144,7 +143,6 @@ class TKeyControlForm : public TForm
       void __fastcall SourceLineComboBoxChange( TObject *Sender );
       void __fastcall OutputMixerComboBoxChange( TObject *Sender );
       void __fastcall DestinationComboBoxChange( TObject *Sender );
-      void __fastcall LockMixersCBClick( TObject *Sender );
 
    private:    	// User declarations
 

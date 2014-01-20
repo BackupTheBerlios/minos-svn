@@ -30,6 +30,10 @@ object KeyControlForm: TKeyControlForm
     TabOrder = 0
     object VoiceTab: TTabSheet
       Caption = 'Voice'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object SPanel1: TSPanel
         Left = 0
         Top = 0
@@ -252,6 +256,10 @@ object KeyControlForm: TKeyControlForm
     object CWTab: TTabSheet
       Caption = 'CW'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label13: TLabel
         Left = 8
         Top = 8
@@ -361,6 +369,10 @@ object KeyControlForm: TKeyControlForm
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label18: TLabel
         Left = 16
         Top = 41
@@ -392,8 +404,8 @@ object KeyControlForm: TKeyControlForm
       object Label22: TLabel
         Left = 16
         Top = 237
-        Width = 211
-        Height = 44
+        Width = 209
+        Height = 26
         Caption = 
           'Changing mixers or lines will cause the keyer to close and be re' +
           'started.'
@@ -405,7 +417,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -415,7 +427,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -425,7 +437,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -435,18 +447,9 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 13
+        ItemHeight = 0
         TabOrder = 3
         OnChange = DestinationComboBoxChange
-      end
-      object LockMixersCB: TCheckBox
-        Left = 16
-        Top = 16
-        Width = 169
-        Height = 17
-        Caption = 'Lock input and output mixers'
-        TabOrder = 4
-        OnClick = LockMixersCBClick
       end
     end
   end
@@ -658,7 +661,7 @@ object KeyControlForm: TKeyControlForm
     Left = 240
     Top = 40
     Bitmap = {
-      494C010106000A000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000A00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF

@@ -103,7 +103,7 @@ class MixerControlDetails
       void SetSignedDetails( int ndets, TiXmlElement *e );
       void SetUnsignedDetails( int ndets, TiXmlElement *e );
    public:
-      MixerControlDetails( HMIXEROBJ hMixer, MIXERCONTROL *m, int cChannels );
+	  MixerControlDetails( HMIXEROBJ hMixer, MIXERCONTROL *m, int cChannels );
       ~MixerControlDetails();
       void SetControlDetails( TiXmlElement *e );
       void GetControlDetails( TiXmlElement *e );
@@ -141,7 +141,7 @@ class _DLL_CLASS VKSourceLine : public VKMixerLine
 {
    public:
       VKSourceLine();
-      ~VKSourceLine();
+	  ~VKSourceLine();
       void initialise( VKDestinationLine *d, HMIXEROBJ hMixer, unsigned int u );
       virtual void SaveMixerSettings( TiXmlElement & );
 };
@@ -159,9 +159,11 @@ class _DLL_CLASS VKDestinationLine : public VKMixerLine
 };
 class _DLL_CLASS VKMixer
 {
-      unsigned int mixerID;
-      HMIXER	hMixer;
-      MIXERCAPS	mixercaps;
+	  unsigned int inputWaveInID;
+	  unsigned int outputWaveOutID;
+	  unsigned int mixerID;
+	  HMIXER	hMixer;
+	  MIXERCAPS	mixercaps;
 
       bool GetVolume( unsigned int, DWORD & );
       void SetVolume( unsigned int, DWORD );
@@ -172,20 +174,22 @@ class _DLL_CLASS VKMixer
       bool FindLineControl( unsigned int destlinetype, DWORD srclineid, unsigned int controltype, DWORD &id );
       bool Find( unsigned int destlinetype, unsigned int srclinetype, unsigned int controltype, DWORD & );
 
-      static std::vector<boost::shared_ptr<VKMixer> > mixers;
-      static VKMixer *inputMixer;
+	  static std::vector<boost::shared_ptr<VKMixer> > inputMixers;
+	  static std::vector<boost::shared_ptr<VKMixer> > outputMixers;
+	  static VKMixer *inputMixer;
       static VKMixer *outputMixer;
       static std::string inputLine;
-      static std::string outputLine;
-      static int mixerGetCount;
+	  static std::string outputLine;
 
    public:
       std::vector < VKDestinationLine *> destlines;
-      std::string getMixerName();
-      static std::vector<boost::shared_ptr<VKMixer> > VKMixer::getMixers( HWND notWnd );
-      static VKMixer *VKMixer::getMixer( const std::string &name );
+	  std::string getMixerName();
+	  static std::vector<boost::shared_ptr<VKMixer> > VKMixer::getInputMixers(  HWND callbackWnd);
+	  static std::vector<boost::shared_ptr<VKMixer> > VKMixer::getOutputMixers( HWND callbackWnd);
+	  static VKMixer *VKMixer::getInputMixer( const std::string &name );
+	  static VKMixer *VKMixer::getOutputMixer( const std::string &name );
 
-      //static void GetPreferredMixers(std::string &recMixer, std::string &s, std::string &pbMixer, std::string &d);
+	  //static void GetPreferredMixers(std::string &recMixer, std::string &s, std::string &pbMixer, std::string &d);
       //static void SetPreferredMixers(std::string recMixer, std::string s, std::string pbMixer, std::string d);
 
       static VKMixer * setInputMixer( const std::string &name );
@@ -199,7 +203,9 @@ class _DLL_CLASS VKMixer
 
 
       VKMixer();
-      bool Open( unsigned int, HWND );
+	  bool inputOpen( unsigned int mid, unsigned int wavinid, HWND callbackWnd );
+	  bool outputOpen( unsigned int mid, unsigned int waveoutid, HWND callbackWnd );
+	  bool Open( HWND callbackWnd );
       void Close();
       const char * getComponentType();
 
@@ -211,7 +217,7 @@ class _DLL_CLASS VKMixer
       void SetRecVolume( DWORD );
 
       bool GetMicOutVolume( DWORD & );
-      void SetMicOutVolume( DWORD );
+	  void SetMicOutVolume( DWORD );
       bool GetMicOutMute( bool & );
       void SetMicOutMute( bool );
 
@@ -236,9 +242,9 @@ class _DLL_CLASS VKMixer
       virtual bool LoadMixerSettings( const std::string &fname, std::string &err );
 
       static VKMixer *GetInputVKMixer();
-      static int getInputVKMixerID();
+	  static int getWaveInID();
       static VKMixer *GetOutputVKMixer();
-      static int getOutputVKMixerID();
+      static int getWaveOutID();
       static void closeMixer();
 };
 //---------------------------------------------------------------------------
