@@ -75,7 +75,6 @@ class _DLL_CLASS MixerSet
 extern MixerSet * _DLL_FUNCTION GetMixerSets();
 extern eMixerSets _DLL_FUNCTION GetCurrentMixerSet();
 extern void _DLL_FUNCTION SetCurrentMixerSet( eMixerSets cms );
-extern void _DLL_FUNCTION SetBaseMixerLevels();
 
 //==============================================================================
 class _DLL_CLASS MixerLineSetting
@@ -213,26 +212,11 @@ class _DLL_CLASS VKMixer
       bool GetMicRecVolume( DWORD & );
       void SetMicRecVolume( DWORD );  // use zero to drive mute if present?
 
-      bool GetRecVolume( DWORD & );
-      void SetRecVolume( DWORD );
-
-      bool GetMicOutVolume( DWORD & );
-	  void SetMicOutVolume( DWORD );
-      bool GetMicOutMute( bool & );
-      void SetMicOutMute( bool );
-
       int SetMuxInput( std::string sInputName );
       bool GetMuxInput( DWORD &, std::string &sInputName );
 
       bool GetMasterVolume( DWORD & );
       void SetMasterVolume( DWORD );
-      bool GetMasterMute( bool & );
-      void SetMasterMute( bool );
-
-      bool GetWaveOutVolume( DWORD & );
-      void SetWaveOutVolume( DWORD );
-      bool GetWaveOutMute( bool & );
-      void SetWaveOutMute( bool );
 
       ~VKMixer();
       virtual void SaveMixerSettings( TiXmlDocument & );

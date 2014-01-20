@@ -3,7 +3,7 @@ object KeyControlForm: TKeyControlForm
   Top = 238
   Caption = 'G0GJV Contest Keyer Control'
   ClientHeight = 336
-  ClientWidth = 603
+  ClientWidth = 512
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,26 +23,25 @@ object KeyControlForm: TKeyControlForm
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 256
+    Width = 301
     Height = 336
     ActivePage = Mixer
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 256
     object VoiceTab: TTabSheet
       Caption = 'Voice'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 248
       object SPanel1: TSPanel
         Left = 0
         Top = 0
-        Width = 248
+        Width = 293
         Height = 308
         Align = alClient
         BevelOuter = bvNone
         BevelWidth = 0
         TabOrder = 0
+        ExplicitWidth = 248
         object Label1: TLabel
           Left = 16
           Top = 50
@@ -256,10 +255,7 @@ object KeyControlForm: TKeyControlForm
     object CWTab: TTabSheet
       Caption = 'CW'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 248
       object Label13: TLabel
         Left = 8
         Top = 8
@@ -369,10 +365,7 @@ object KeyControlForm: TKeyControlForm
     object Mixer: TTabSheet
       Caption = 'Mixer'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 264
       object Label18: TLabel
         Left = 16
         Top = 41
@@ -417,7 +410,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 0
         OnChange = InputMixerComboBoxChange
       end
@@ -427,7 +420,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 1
         OnChange = OutputMixerComboBoxChange
       end
@@ -437,7 +430,7 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 2
         OnChange = SourceLineComboBoxChange
       end
@@ -447,29 +440,31 @@ object KeyControlForm: TKeyControlForm
         Width = 213
         Height = 21
         Style = csDropDownList
-        ItemHeight = 0
+        ItemHeight = 13
         TabOrder = 3
         OnChange = DestinationComboBoxChange
       end
     end
   end
   object SPanel2: TSPanel
-    Left = 256
+    Left = 301
     Top = 0
-    Width = 347
+    Width = 211
     Height = 336
     Align = alRight
     BevelInner = bvRaised
     TabOrder = 1
+    ExplicitLeft = 408
     object SPanel3: TSPanel
       Left = 2
       Top = 2
-      Width = 343
+      Width = 207
       Height = 332
       Align = alClient
       BevelOuter = bvSpace
       BevelWidth = 0
       TabOrder = 0
+      ExplicitWidth = 343
       object Label5: TLabel
         Left = 59
         Top = 9
@@ -477,77 +472,12 @@ object KeyControlForm: TKeyControlForm
         Height = 13
         Caption = 'Mic Vol'
       end
-      object Label6: TLabel
-        Left = 116
-        Top = 9
-        Width = 49
-        Height = 13
-        Caption = 'Rec Level'
-      end
       object Label8: TLabel
-        Left = 287
+        Left = 128
         Top = 9
         Width = 50
         Height = 13
         Caption = 'Master Vol'
-      end
-      object Label9: TLabel
-        Left = 63
-        Top = 259
-        Width = 32
-        Height = 13
-        Caption = 'Label9'
-      end
-      object Label10: TLabel
-        Left = 120
-        Top = 259
-        Width = 38
-        Height = 13
-        Caption = 'Label10'
-      end
-      object Label12: TLabel
-        Left = 291
-        Top = 259
-        Width = 38
-        Height = 13
-        Caption = 'Label12'
-      end
-      object Label7: TLabel
-        Left = 173
-        Top = 9
-        Width = 53
-        Height = 13
-        Caption = 'Mic out Vol'
-      end
-      object Label11: TLabel
-        Left = 177
-        Top = 259
-        Width = 38
-        Height = 13
-        Caption = 'Label11'
-      end
-      object Label15: TLabel
-        Left = 230
-        Top = 9
-        Width = 49
-        Height = 13
-        Caption = 'Wave Out'
-      end
-      object Label16: TLabel
-        Left = 234
-        Top = 259
-        Width = 38
-        Height = 13
-        Caption = 'Label16'
-      end
-      object MUXSelection: TLabel
-        Left = 64
-        Top = 304
-        Width = 249
-        Height = 13
-        AutoSize = False
-        Caption = 'MUXSelection'
-        Visible = False
       end
       object CommonFBVUMeter: TFBVUMeter
         Left = 15
@@ -570,8 +500,8 @@ object KeyControlForm: TKeyControlForm
         TabOrder = 1
         OnChange = MicRecTrackBarChange
       end
-      object RecordTrackBar: TxTrackBar
-        Left = 120
+      object OutputTrackBar: TxTrackBar
+        Left = 132
         Top = 30
         Width = 33
         Height = 227
@@ -581,73 +511,7 @@ object KeyControlForm: TKeyControlForm
         PageSize = 100
         Frequency = 3320
         TabOrder = 2
-        OnChange = RecordTrackBarChange
-      end
-      object OutputTrackBar: TxTrackBar
-        Left = 291
-        Top = 30
-        Width = 33
-        Height = 227
-        LineSize = 100
-        Max = 65535
-        Orientation = trVertical
-        PageSize = 100
-        Frequency = 3320
-        TabOrder = 7
         OnChange = OutputTrackBarChange
-      end
-      object MicOutTrackBar: TxTrackBar
-        Left = 177
-        Top = 30
-        Width = 33
-        Height = 227
-        LineSize = 100
-        Max = 65535
-        Orientation = trVertical
-        PageSize = 100
-        Frequency = 3320
-        TabOrder = 3
-        OnChange = MicOutTrackBarChange
-      end
-      object MicOutMute: TCheckBox
-        Left = 176
-        Top = 280
-        Width = 49
-        Height = 17
-        Caption = 'Mute'
-        Enabled = False
-        TabOrder = 4
-      end
-      object MasterMute: TCheckBox
-        Left = 288
-        Top = 280
-        Width = 49
-        Height = 17
-        Caption = 'Mute'
-        Enabled = False
-        TabOrder = 8
-      end
-      object WaveOutTrackBar: TxTrackBar
-        Left = 234
-        Top = 30
-        Width = 33
-        Height = 227
-        LineSize = 100
-        Max = 65535
-        Orientation = trVertical
-        PageSize = 100
-        Frequency = 3320
-        TabOrder = 5
-        OnChange = WaveOutTrackBarChange
-      end
-      object WaveOutMute: TCheckBox
-        Left = 232
-        Top = 281
-        Width = 49
-        Height = 17
-        Caption = 'Mute'
-        Enabled = False
-        TabOrder = 6
       end
     end
   end
@@ -661,7 +525,7 @@ object KeyControlForm: TKeyControlForm
     Left = 240
     Top = 40
     Bitmap = {
-      494C010106000A00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000A001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -962,5 +826,11 @@ object KeyControlForm: TKeyControlForm
     OnTimer = CaptionTimerTimer
     Left = 240
     Top = 192
+  end
+  object LevelTimer: TTimer
+    Interval = 100
+    OnTimer = LevelTimerTimer
+    Left = 368
+    Top = 288
   end
 end

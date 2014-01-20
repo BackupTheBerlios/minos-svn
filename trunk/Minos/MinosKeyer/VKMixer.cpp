@@ -131,41 +131,10 @@ eMixerSets _DLL_FUNCTION GetCurrentMixerSet()
 
 void _DLL_FUNCTION SetCurrentMixerSet( eMixerSets cms )
 {
-#warning if the mixers are different, and we need to pass through we have a problem
 
    CurrMixerSet = cms;
-   // and now we need to apply the settings...
-   VKMixer *m = VKMixer::GetInputVKMixer();
-   if ( m )
-   {
-#warning and we need to mute or drive to zero if no mute.
-      // BUT we need to get the correct level to reset it to...
-      // and hope it doesn't change while we are busy?
-      m->SetMicOutMute( MixerSets[ CurrMixerSet ].MicOutMute );
-   }
-   m = VKMixer::GetOutputVKMixer();
-   if ( m )
-   {
-      m->SetMasterMute( MixerSets[ CurrMixerSet ].MasterMute );
-   }
 }
 
-void _DLL_FUNCTION SetBaseMixerLevels()
-{
-   VKMixer * m = VKMixer::GetInputVKMixer();
-   if ( m )
-   {
-      m->GetMicRecVolume( baseMicRec );
-      m->GetRecVolume( baseRec );
-   }
-   m = VKMixer::GetOutputVKMixer();
-   if ( m )
-   {
-      m->GetMicOutVolume( baseMicOut );
-      m->GetWaveOutVolume( baseWaveOut );
-      m->GetMasterVolume( baseMaster );
-   }
-}
 //---------------------------------------------------------------------------
 
 // Code to be removed...
@@ -676,7 +645,7 @@ bool VKMixer::GetBool( unsigned int controlID )
    return false;
 }
 //---------------------------------------------------------------------------
-#ifndef MUXEXAMPLE 
+#ifndef MUXEXAMPLE
 // return the current mux input number and the name string
 bool VKMixer::GetMuxInput( DWORD &muxId, std::string &sInputName )
 {
@@ -920,50 +889,6 @@ void VKMixer::SetMicRecVolume( DWORD vol )      // use zero to drive mute if pre
 }
 
 //---------------------------------------------------------------------------
-
-bool VKMixer::GetMicOutVolume( DWORD &micVol )
-{
-   DWORD mic;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              MIXERLINE_COMPONENTTYPE_SRC_MICROPHONE,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, mic ) )
-   {
-      return GetVolume( mic, micVol );
-   }
-   return false;
-}
-void VKMixer::SetMicOutVolume( DWORD vol )      // use zero to drive mute if present
-{
-   DWORD mic;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              MIXERLINE_COMPONENTTYPE_SRC_MICROPHONE,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, mic ) )
-   {
-      SetVolume( mic, vol );
-   }
-}
-void VKMixer::SetMicOutMute( bool setting )
-{
-   DWORD mic;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              MIXERLINE_COMPONENTTYPE_SRC_MICROPHONE,
-              MIXERCONTROL_CONTROLTYPE_MUTE, mic ) )
-   {
-      SetBool( mic, setting );
-   }
-}
-bool VKMixer::GetMicOutMute( bool &mute )
-{
-   DWORD mic;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              MIXERLINE_COMPONENTTYPE_SRC_MICROPHONE,
-              MIXERCONTROL_CONTROLTYPE_MUTE, mic ) )
-   {
-      mute = GetBool( mic );
-      return true;
-   }
-   return false;
-}
 //---------------------------------------------------------------------------
 
 bool VKMixer::GetMasterVolume( DWORD &vol )
@@ -987,96 +912,8 @@ void VKMixer::SetMasterVolume( DWORD vol )
       SetVolume( mv, vol );
    }
 }
-void VKMixer::SetMasterMute( bool setting )
-{
-   DWORD master;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              0,
-              MIXERCONTROL_CONTROLTYPE_MUTE, master ) )
-   {
-      SetBool( master, setting );
-   }
-}
-bool VKMixer::GetMasterMute( bool &mute )
-{
-   DWORD master;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS,
-              0,
-              MIXERCONTROL_CONTROLTYPE_MUTE, master ) )
-   {
-      mute = GetBool( master );
-      return true;
-   }
-   return false;
-}
 
 //---------------------------------------------------------------------------
-bool VKMixer::GetRecVolume( DWORD &vol )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_WAVEIN,
-              0,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, rv ) )
-   {
-      return GetVolume( rv, vol );
-   }
-   return false;
-}
-void VKMixer::SetRecVolume( DWORD vol )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_WAVEIN,
-              0,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, rv ) )
-   {
-      SetVolume( rv, vol );
-   }
-}
-
-//---------------------------------------------------------------------------
-bool VKMixer::GetWaveOutVolume( DWORD &vol )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS ,
-              MIXERLINE_COMPONENTTYPE_SRC_WAVEOUT,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, rv ) )
-   {
-      return GetVolume( rv, vol );
-   }
-   return 0;
-}
-void VKMixer::SetWaveOutVolume( DWORD vol )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS ,
-              MIXERLINE_COMPONENTTYPE_SRC_WAVEOUT,
-              MIXERCONTROL_CONTROLTYPE_VOLUME, rv ) )
-   {
-      SetVolume( rv, vol );
-   }
-}
-void VKMixer::SetWaveOutMute( bool setting )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS ,
-              MIXERLINE_COMPONENTTYPE_SRC_WAVEOUT,
-              MIXERCONTROL_CONTROLTYPE_MUTE, rv ) )
-   {
-      SetBool( rv, setting );
-   }
-}
-bool VKMixer::GetWaveOutMute( bool &mute )
-{
-   DWORD rv;
-   if ( Find( MIXERLINE_COMPONENTTYPE_DST_SPEAKERS ,
-              MIXERLINE_COMPONENTTYPE_SRC_WAVEOUT,
-              MIXERCONTROL_CONTROLTYPE_MUTE, rv ) )
-   {
-      mute = GetBool( rv );
-      return true;
-   }
-   return false;
-}
 
 //==============================================================================
 /*
@@ -1084,7 +921,7 @@ The MIXERCONTROLDETAILS structure refers to control-detail structures,
 retrieving or setting state information of an audio mixer control.
 All members of this structure must be initialized before calling the
 mixerGetControlDetails and mixerSetControlDetails functions.
- 
+
 typedef struct {
     DWORD cbStruct;
     DWORD dwControlID;

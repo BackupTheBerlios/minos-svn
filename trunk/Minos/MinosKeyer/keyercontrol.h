@@ -44,14 +44,9 @@ class TKeyControlForm : public TForm
       TTimer *LineTimer;
       TFBVUMeter *CommonFBVUMeter;
       TxTrackBar *MicRecTrackBar;
-      TxTrackBar *RecordTrackBar;
       TxTrackBar *OutputTrackBar;
       TLabel *Label5;
-      TLabel *Label6;
       TLabel *Label8;
-      TLabel *Label9;
-      TLabel *Label10;
-      TLabel *Label12;
       TTabSheet *Mixer;
       TImageList *TreeImageList;
       TSPanel *SPanel1;
@@ -60,11 +55,6 @@ class TKeyControlForm : public TForm
       TCheckBox *PTTReflectCheckBox;
       TCheckBox *L1ReflectCheckBox;
       TCheckBox *L2ReflectCheckBox;
-      TLabel *Label7;
-      TLabel *Label11;
-      TxTrackBar *MicOutTrackBar;
-      TCheckBox *MicOutMute;
-      TCheckBox *MasterMute;
       TCheckBox *PipCheckBox;
       TMemo *Memo1;
       TButton *SendButton;
@@ -74,10 +64,6 @@ class TKeyControlForm : public TForm
       TLabel *Label13;
       TEdit *ToneEdit;
       TLabel *Label14;
-      TLabel *Label15;
-      TxTrackBar *WaveOutTrackBar;
-      TCheckBox *WaveOutMute;
-      TLabel *Label16;
       TButton *Tone1Button;
       TButton *Tone2Button;
       TButton *AboutButton;
@@ -101,26 +87,23 @@ class TKeyControlForm : public TForm
       TComboBox *DestinationComboBox;
       TLabel *Label20;
       TLabel *Label21;
-      TLabel *MUXSelection;
    TUpDown *DelayUpDown;
    TUpDown *SpeedUpDown;
    TLabel *Label22;
+   TTimer *LevelTimer;
       void __fastcall RecordButtonClick( TObject *Sender );
       void __fastcall StopButtonClick( TObject *Sender );
       void __fastcall PlayButtonClick( TObject *Sender );
       void __fastcall FormClose( TObject *Sender, TCloseAction &Action );
       void __fastcall LineTimerTimer( TObject *Sender );
       void __fastcall MicRecTrackBarChange( TObject *Sender );
-      void __fastcall RecordTrackBarChange( TObject *Sender );
       void __fastcall OutputTrackBarChange( TObject *Sender );
       void __fastcall MonitorButtonClick( TObject *Sender );
       void __fastcall FormShow( TObject *Sender );
-      void __fastcall MicOutTrackBarChange( TObject *Sender );
       void __fastcall PipCheckBoxClick( TObject *Sender );
       void __fastcall SendButtonClick( TObject *Sender );
       void __fastcall ClearButtonClick( TObject *Sender );
       void __fastcall ToneEditKeyPress( TObject *Sender, char &Key );
-      void __fastcall WaveOutTrackBarChange( TObject *Sender );
       void __fastcall Tone1ButtonClick( TObject *Sender );
       void __fastcall Tone2ButtonClick( TObject *Sender );
       void __fastcall AboutButtonClick( TObject *Sender );
@@ -143,8 +126,10 @@ class TKeyControlForm : public TForm
       void __fastcall SourceLineComboBoxChange( TObject *Sender );
       void __fastcall OutputMixerComboBoxChange( TObject *Sender );
       void __fastcall DestinationComboBoxChange( TObject *Sender );
+   void __fastcall LevelTimerTimer(TObject *Sender);
 
    private:    	// User declarations
+      bool inTrackChange;
 
       bool recordWait;
       bool recording;
