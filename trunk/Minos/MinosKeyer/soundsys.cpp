@@ -134,7 +134,8 @@ static void CALLBACK waveInProc(
 //==============================================================================
 WindowsSoundSystem::WindowsSoundSystem() : SoundSystem(),
       sampleRate( 0 ), hWaveIn( 0 ), hInputThread( 0 ), hWaveOut( 0 ), hOutputThread( 0 ),
-      waveInActive( false ), waveOutActive( false ), wt( 0 )
+      waveInActive( false ), waveOutActive( false ), wt( 0 ),
+      passthroughin(false), passthroughout(false)
 {
    InitializeCriticalSection( &waveCriticalSection );
 
@@ -361,6 +362,13 @@ void WindowsSoundSystem::OutputThread()
       {
          // here we have to fill buffers, etc
          disableInterrupts guard;
+         if (passthroughout)
+         {
+            EnterCriticalSection( &waveCriticalSection );
+            waveOutFreeBlockCount++;
+            LeaveCriticalSection( &waveCriticalSection );
+            continue;
+         }
 
          KeyerAction * sba = KeyerAction::getCurrentAction();
          if ( sba && ( samplesOutput <= samples || sba->pipStartDelaySamples || sba->tailWithPip ) )
@@ -430,10 +438,12 @@ void WindowsSoundSystem::OutputThread()
 }
 bool WindowsSoundSystem::startInput( std::string fname )
 {
-   wt = new WriterThread( true );
-   wt->openFile( fname );
-   wt->Resume();
-
+   if (!passthroughin)
+   {
+      wt = new WriterThread( true );
+      wt->openFile( fname );
+      wt->Resume();
+   }
    if ( !hWaveIn )
    {
       // warning WAVEFORMATEX settings imply the audio quality
@@ -629,6 +639,18 @@ void WindowsSoundSystem::readAudio()
                wt->RecordBlock++;
                SetEvent( wt->ReleaseWriteEvent );
             }
+            else if (passthroughin)
+            {
+               // copy to output buffer; kick off output (we can copy straight to
+               // the real buffers, I think)
+               // and set
+               passthroughout = true;
+               // subsequently keep copying and don't kick off
+               // need to coordinate with writeAudio to correct the number of buffers
+               // We might need to always have one "up the spout" to stop glitching
+               writePassthrough(current);
+            }
+
 
             pttype *q = ( pttype * ) ( current->lpData );
 
@@ -664,6 +686,48 @@ void WindowsSoundSystem::readAudio()
    sbDriver::getSbDriver() ->WinVUInCallback( maxvol * shortmult );
 }
 //=============================================================================
+int WindowsSoundSystem::writePassthrough( WAVEHDR * inhdr )
+{
+   WAVEHDR * current = &waveOutBlocks[ waveOutCurrentBlock ];
+   /*
+   * first make sure the header we're going to use is unprepared
+   */
+   if ( current->dwFlags & WHDR_PREPARED )
+   {
+      pttype * q = ( pttype * ) ( current->lpData );
+      pttype maxvol = 0;
+
+      // determine max for VU meter
+      for ( unsigned int i = 0; i < current->dwBufferLength / 2; i++ )
+      {
+         int sample = abs( *q++ );
+         if ( sample > maxvol )
+            maxvol = sample;
+      }
+
+      if ( !done )
+         sbDriver::getSbDriver() ->WinVUOutCallback( maxvol * shortmult );
+
+      waveOutUnprepareHeader( hWaveOut, current, sizeof( WAVEHDR ) );
+   }
+   else
+   {
+      sbDriver::getSbDriver() ->WinVUOutCallback( 0 );
+   }
+   current->dwBufferLength = inhdr->dwBufferLength;
+   memcpy( current->lpData, inhdr->lpData, current->dwBufferLength );
+
+   waveOutPrepareHeader( hWaveOut, current, sizeof( WAVEHDR ) );
+   waveOutWrite( hWaveOut, current, sizeof( WAVEHDR ) );
+
+   EnterCriticalSection( &waveCriticalSection );
+   waveOutFreeBlockCount--;
+   waveOutCurrentBlock++;
+   waveOutCurrentBlock %= BLOCK_COUNT;
+   LeaveCriticalSection( &waveCriticalSection );
+
+   return 1;
+}
 int WindowsSoundSystem::writeAudio( int deadSamples )
 {
    int samplesWritten = 0;
@@ -802,6 +866,39 @@ bool WindowsSoundSystem::startDMA( bool play, const std::string &fname )
          return false;
       }
    }
+   return true;
+}
+bool WindowsSoundSystem::startMicPassThrough()
+{
+   passthroughin = true;
+   passthroughout = false;
+
+
+   done = false;
+   sbactive = true;
+
+  if ( !startInput( "" ) )
+         return false;
+
+   for ( int i = 0; i < BLOCK_COUNT; i++ )
+      addNextInBuffer();
+
+   waveInActive = true;
+   if ( waveInStart( hWaveIn ) != MMSYSERR_NOERROR )
+   {
+      waveInActive = false;
+      if ( sblog )
+      {
+         trace( "waveInStart failed " );
+      }
+      return false;
+   }
+   return true;
+}
+bool WindowsSoundSystem::stopMicPassThrough()
+{
+   passthroughin = false;
+   passthroughout = false;
    return true;
 }
 

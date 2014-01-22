@@ -905,11 +905,11 @@ bool voiceKeyer::sendCW( const char *message, int speed, int tone )
 }
 bool voiceKeyer::startMicPassThrough()
 {
-   return false;
+   return sbDriver::getSbDriver() ->startMicPassThrough();
 }
 bool voiceKeyer::stopMicPassThrough()
 {
-   return false;
+   return sbDriver::getSbDriver() ->stopMicPassThrough();
 }
 //==============================================================================
 //==============================================================================

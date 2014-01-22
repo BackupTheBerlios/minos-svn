@@ -76,6 +76,9 @@ class sbDriver //:public timerTicker
       VUCallBack WinVUInCallback;
       VUCallBack WinVUOutCallback;
 
+      virtual bool startMicPassThrough();
+      virtual bool stopMicPassThrough();
+
       bool dofile( int i, int clipRecord = 0 );
       void stoprec();
       void record_file( const std::string &filename );

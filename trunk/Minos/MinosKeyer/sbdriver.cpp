@@ -109,6 +109,18 @@ class dvkFile
 #define MAXFILES 10
 std::vector <dvkFile *> recfil;
 //==============================================================================
+bool sbDriver::startMicPassThrough()
+{
+   // stop the DMA before we start it again
+   stopDMA();
+   return soundSystem->startMicPassThrough();
+}
+bool sbDriver::stopMicPassThrough()
+{
+   // stop the DMA before we start it again
+   stopDMA();
+   return soundSystem->stopMicPassThrough();
+}
 
 bool sbDriver::dofile( int i, int clipRecord )
 {
