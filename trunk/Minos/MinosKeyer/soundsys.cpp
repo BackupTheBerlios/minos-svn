@@ -692,7 +692,7 @@ void WindowsSoundSystem::readAudio()
 				  passthroughout = true;
 				 if ( sblog )
 				 {
-					trace("outputDone = true in readAudio");
+					trace("outputDone = false in readAudio");
 				 }
 				  outputDone = false;
 				  if ( !startOutput() )
