@@ -111,14 +111,25 @@ std::vector <dvkFile *> recfil;
 //==============================================================================
 bool sbDriver::startMicPassThrough()
 {
+   trace( "startMicPassThrough" );
    // stop the DMA before we start it again
-   stopDMA();
+   stopDMAin();
+   stopDMAout();
+   soundSystem->now = 0;
+   soundSystem->samplesremaining = 1;
+   soundSystem->samples = 1;
+   soundSystem->dataptr = 0;
+   curBlockLength = MIN_BLOCK_LENGTH;
+
+   soundSystem->inputDone = false;
+   soundSystem->sbactive = true;
    return soundSystem->startMicPassThrough();
 }
 bool sbDriver::stopMicPassThrough()
 {
+   trace( "stopMicPassThrough" );
    // stop the DMA before we start it again
-   stopDMA();
+   stopDMAin();
    return soundSystem->stopMicPassThrough();
 }
 
@@ -129,64 +140,73 @@ bool sbDriver::dofile( int i, int clipRecord )
    ptr = 0;
    if ( sblog )
    {
-      trace( "dofile(" + makeStr( i ) + ")" + "play = " + makeStr( play ) );
+	  trace( "dofile(" + makeStr( i ) + ")" + "play = " + makeStr( play ) );
    }
    ihand = i;
 
    // stop the DMA before we start it again
-   stopDMA();
+   stopDMAout();
 
    curBlockLength = MAX_BLOCK_LENGTH;
 
    if ( ihand >= 0 )
    {
-      if ( !recording && !recfil[ ihand ] ->loaded )
-      {
-         return false;
-      }
-      samples = recfil[ ihand ] ->fsample - clipRecord * ( rate / 1000.0 );
-      ptr = recfil[ ihand ] ->fptr;
+	  if ( !recording && !recfil[ ihand ] ->loaded )
+	  {
+		 return false;
+	  }
+	  samples = recfil[ ihand ] ->fsample - clipRecord * ( rate / 1000.0 );
+	  ptr = recfil[ ihand ] ->fptr;
 
-      if ( sblog )
-      {
-         trace( "samples = " + makeStr( samples ) );
-      }
+	  if ( sblog )
+	  {
+		 trace( "samples = " + makeStr( samples ) );
+	  }
    }
    else
-      if ( play && ihand == DOFILE_PIP )
-      {
-         // set mic off, wave out on
-         ptr = pipptr;
-         samples = pipSamples;
-         if ( sblog )
-         {
-            trace( "pipSamples = " + makeStr( samples ) );
-         }
-      }
-      else
-         if ( play && ihand == DOFILE_T1 )
-         {
-            ptr = t1ptr;
-            samples = toneSamples;
-         }
-         else
-            if ( play && ihand == DOFILE_T2 )
-            {
-               ptr = t2ptr;
-               samples = toneSamples;
-            }
-            else
-               if ( play && ihand == DOFILE_CW )
-               {
-                  ptr = cwptr;
-                  samples = cwSamples;
-               }
+	  if ( play && ihand == DOFILE_PIP )
+	  {
+		 // set mic off, wave out on
+		 ptr = pipptr;
+		 samples = pipSamples;
+		 if ( sblog )
+		 {
+			trace( "pipSamples = " + makeStr( samples ) );
+		 }
+	  }
+	  else
+		 if ( play && ihand == DOFILE_T1 )
+		 {
+			ptr = t1ptr;
+			samples = toneSamples;
+		 }
+		 else
+			if ( play && ihand == DOFILE_T2 )
+			{
+			   ptr = t2ptr;
+			   samples = toneSamples;
+			}
+			else
+			   if ( play && ihand == DOFILE_CW )
+			   {
+				  ptr = cwptr;
+				  samples = cwSamples;
+			   }
    soundSystem->now = 0;
    soundSystem->samplesremaining = samples;
    soundSystem->samples = samples;
    soundSystem->dataptr = ptr;
 
-   soundSystem->done = false;
+   if (play)
+   {
+	   soundSystem->outputDone = false;
+	   trace("outputDone = false in doFile");
+   }
+   else
+   {
+	   soundSystem->inputDone = false;
+	   trace("inputDone = false in doFile");
+   }
    soundSystem->sbactive = true;
    /*
     start record/playback!
@@ -206,7 +226,7 @@ void sbDriver::stoprec()
    {
       if ( currentKeyer )
          currentKeyer->ptt( 0 );
-      stopDMA();  // stop - eventually
+	  stopDMAin();  // stop - eventually
       CW_ACTIVE = false;
       samples = ( soundSystem->now / 2 < samples ) ? soundSystem->now / 2 : samples;
       ihand = isave;
@@ -225,7 +245,7 @@ void sbDriver::record_file( const std::string &filename )
       trace( "record_file(" + filename + ")" );
    }
    stoprec();
-   stopDMA();  // stop - eventually
+   stopDMAin();  // stop - eventually
    CW_ACTIVE = false;
    if ( currentKeyer )
       currentKeyer->ptt( 0 );
@@ -265,7 +285,7 @@ long sbDriver::play_file( const std::string &filename, bool xmit )
       trace( "play_file(" + filename + ", " + makeStr( xmit ) + ")" );
    }
    stoprec();
-   stopDMA();  // stop - eventually
+   stopDMAout();  // stop - eventually
    CW_ACTIVE = false;
    if ( !xmit && currentKeyer )
       currentKeyer->ptt( 0 );
@@ -310,7 +330,8 @@ void sbDriver::stopall()
 {
    ptr = 0;
    stoprec();
-   stopDMA();  // stop - eventually
+   stopDMAin();  // stop - eventually
+   stopDMAout();  // stop - eventually
    CW_ACTIVE = false;
    if ( currentKeyer )
       currentKeyer->ptt( 0 );
@@ -355,13 +376,17 @@ bool sbDriver::sbdvp_init( std::string &errmess, int pipTone, int pipVolume, int
       if ( currentKeyer )
          currentKeyer->ptt( 0 );
 
-      soundSystem->done = true;
-      soundSystem->sbactive = false;
-      play = true;
+	   trace("inputDone = false in sbdvp_init");
+	   trace("outputDone = false in sbdvp_init");
+	  soundSystem->inputDone = true;
+	  soundSystem->outputDone = true;
+	  soundSystem->sbactive = false;
+	  play = true;
       recording = false;
 
-      stopDMA();  // stop - eventually
-      CW_ACTIVE = false;
+	  stopDMAin();  // stop - eventually
+	  stopDMAout();  // stop - eventually
+	  CW_ACTIVE = false;
 
       // clear the recfil structure
 
@@ -703,9 +728,14 @@ void sbDriver::createCWBuffer( const char *message, int speed, int tone )
    }
 }
 //==============================================================================
-void sbDriver::stopDMA()
+void sbDriver::stopDMAin()
 {
-   soundSystem->stopDMA();
+   soundSystem->stopDMAin();
+}
+//==============================================================================
+void sbDriver::stopDMAout()
+{
+   soundSystem->stopDMAout();
 }
 //==============================================================================
 

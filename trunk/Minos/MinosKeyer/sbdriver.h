@@ -84,8 +84,9 @@ class sbDriver //:public timerTicker
       void record_file( const std::string &filename );
       long play_file( const std::string &filename, bool xmit );
       void stopall();
-      void stopDMA();
-      bool rdenv( std::string &errmess, std::string &in );
+	  void stopDMAin();
+	  void stopDMAout();
+	  bool rdenv( std::string &errmess, std::string &in );
 
       void genTone( INT16 *tptr, bool add
                        , int tone, int samples, int ramptime, double vmult );
