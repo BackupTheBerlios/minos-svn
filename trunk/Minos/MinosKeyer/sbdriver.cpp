@@ -116,8 +116,8 @@ bool sbDriver::startMicPassThrough()
    stopDMAin();
    stopDMAout();
    soundSystem->now = 0;
-   soundSystem->samplesremaining = 1;
-   soundSystem->samples = 1;
+   soundSystem->samplesremaining = 0;
+   soundSystem->samples = 0;
    soundSystem->dataptr = 0;
    curBlockLength = MIN_BLOCK_LENGTH;
 

@@ -1624,7 +1624,7 @@ void PipAction::timeOut()
    actionTime = -1;
    switch ( actionState )
    {
-      case epipasInitial:
+      case epipasInitial: //-1
          // start up the pip tone
          actionTime = ( currentKeyer->kconf.pipStartDelay / TIMER_INTERVAL );	// 55ms/tick, 18.4ticks/sec
          if ( actionTime < 1 )
@@ -1632,8 +1632,8 @@ void PipAction::timeOut()
          actionState = epipasPip;
          break;
 
-      case epipasPip:
-		 currentKeyer->stopMicPassThrough();
+      case epipasPip:  //0
+		   currentKeyer->stopMicPassThrough();
          SetCurrentMixerSet( emsReplayPip );
          sbDriver::getSbDriver() ->play = true;
          sbDriver::getSbDriver() ->recording = false;
@@ -1642,7 +1642,7 @@ void PipAction::timeOut()
          actionTime = 1000 / TIMER_INTERVAL;	// safety net! 1 sec to first interrupt
          break;
 
-      case epipasEndPip:
+      case epipasEndPip:  //1
          deleteAtTick = true;
          sbDriver::getSbDriver() ->stopDMAout();
          sbDriver::getSbDriver() ->CW_ACTIVE = false;

@@ -384,7 +384,13 @@ void WindowsSoundSystem::OutputThread()
       {
 		 // here we have to fill buffers, etc
 		 disableInterrupts guard;
-         KeyerAction * sba = KeyerAction::getCurrentAction();
+      KeyerAction * sba = KeyerAction::getCurrentAction();
+         std::string act;
+         if (sba)
+         {
+            sba->getActionState(act);
+         }
+         
 		 if (passthroughout)
 		 {
 			EnterCriticalSection( &waveCriticalSection );
