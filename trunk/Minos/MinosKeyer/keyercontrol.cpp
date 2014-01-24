@@ -202,7 +202,7 @@ void __fastcall TKeyControlForm::LineTimerTimer( TObject */*Sender*/ )
          recording = false;
       }
    KeyerServer::publishCommand( recind->Caption.c_str() );
-   eMixerSets m = GetCurrentMixerSet();
+   //eMixerSets m = GetCurrentMixerSet();
 
    std::string astate;
    getActionState( astate );
@@ -211,9 +211,9 @@ void __fastcall TKeyControlForm::LineTimerTimer( TObject */*Sender*/ )
 
    std::string kstatus;
    if ( getKeyerStatus( kstatus ) )
-      Caption = String( msets[ m ] ) + " : " + astate.c_str() + " : " + kstatus.c_str();
+	  Caption = ( /*msets[ m ] ) + " : " +*/ astate + " : " + kstatus).c_str();
    else
-      Caption = String( msets[ m ] ) + " : " + astate.c_str();
+	  Caption = /*String( msets[ m ] ) + " : " +*/ astate.c_str();
 
    static String old;
 

@@ -1189,7 +1189,7 @@ InitialPTTAction::~InitialPTTAction()
 }
 void InitialPTTAction::getActionState( std::string &s )
 {
-   s = "Initial PTT";
+   s = "PTT";
 }
 void InitialPTTAction::LxChanged( int /*line*/, bool /*state*/ )
 {}
@@ -1266,8 +1266,11 @@ void InitialPTTAction::timeOut()
       case einitPTTRelease:
          if ( currentKeyer->kconf.enablePip )
          {
-            if ( !getNextAction() )
-               new PipAction();
+			if ( !getNextAction() )
+			{
+			   currentKeyer->stopMicPassThrough();
+			   new PipAction();
+			}
             deleteAtTick = true;
          }
          actionState = einitPTTEnd;
@@ -1628,13 +1631,12 @@ void PipAction::timeOut()
          // start up the pip tone
          actionTime = ( currentKeyer->kconf.pipStartDelay / TIMER_INTERVAL );	// 55ms/tick, 18.4ticks/sec
          if ( actionTime < 1 )
-            actionTime = 1;
-         actionState = epipasPip;
-         break;
+			actionTime = 1;
+		 actionState = epipasPip;
+		 break;
 
-      case epipasPip:  //0
-		   currentKeyer->stopMicPassThrough();
-         SetCurrentMixerSet( emsReplayPip );
+	  case epipasPip:  //0
+		 SetCurrentMixerSet( emsReplayPip );
          sbDriver::getSbDriver() ->play = true;
          sbDriver::getSbDriver() ->recording = false;
          sbDriver::getSbDriver() ->dofile( DOFILE_PIP );
