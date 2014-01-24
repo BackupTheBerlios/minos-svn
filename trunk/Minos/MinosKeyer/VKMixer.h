@@ -50,33 +50,6 @@ Although allowing complicated setups is what allows funny things,
 like sidetone recording?
 */ 
 //==============================================================================
-// Volume settings required in different situations.
-// To be applied to the relevant MixerSet for the current
-// situation
-
-enum eMixerSets {emsUnloaded, emsPassThroughNoPTT, emsPassThroughPTT,
-                 emsReplay, emsReplayPip, emsReplayT1, emsReplayT2,
-                 emsVoiceRecord,
-                 emsCWTransmit, emsCWPassThrough,
-                 emsMaxMixerSet};
-class _DLL_CLASS MixerSet
-{
-   public:
-      MixerSet( bool MicOutMute, bool MasterMute )
-            : MicOutMute( MicOutMute ), MasterMute( MasterMute )
-      {}
-      // we need a line setting, stereo volume + mute
-      bool MicOutMute;
-      bool MasterMute;
-};
-
-// All the line setting/type stuff should be in a differnt module.
-// Mapping from VK functionality to mixer lines and controls
-extern MixerSet * _DLL_FUNCTION GetMixerSets();
-extern eMixerSets _DLL_FUNCTION GetCurrentMixerSet();
-extern void _DLL_FUNCTION SetCurrentMixerSet( eMixerSets cms );
-
-//==============================================================================
 class _DLL_CLASS MixerLineSetting
 {
       // Control IDs for the various controls, and the route to them

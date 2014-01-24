@@ -66,74 +66,18 @@ static int GetIntAttribute( TiXmlElement *e, const char *name, int &i )
    i = l;
 
    if ( endpt == a )
-      return TIXML_NO_ATTRIBUTE;
+	  return TIXML_NO_ATTRIBUTE;
 
    return TIXML_SUCCESS;
 }
 //---------------------------------------------------------------------------
-// Volume settings required in different situations.
-// To be applied to the relevant MixerSet for the current
-// situation
-/*
-Tabs:
- 
-Unloaded
-PassThrough No PTT
-Replay
-Replay Pip
-PassThrough PTT
-PTT Release Pip
-Mic Monitor
-Replay Monitor
- 
-enum eMixerSets {emsUnloaded, emsPassThroughNoPTT, emsPassThroughPTT,
-                emsReplay, emsReplayPip, emsReplayT1, emsReplayT2,
-                emsVoiceRecord,
-                emsCWTransmit, emsCWPassThrough,
-                emsMaxMixerSet};
-*/
-eMixerSets CurrMixerSet = emsUnloaded;
-
+ /*
 DWORD baseMicRec = 0;
 DWORD baseMicOut = 0;
 DWORD baseWaveOut = 0;
 DWORD baseRec = 0;
 DWORD baseMaster = 0;
-
-MixerSet MixerSets[ emsMaxMixerSet ] =
-   {
-      // revise to MicOut mute, Speaker mute as only ones we need to drive
-      // and we need to mute or drive to zero if no mute.
-      // MixerSet(MicRec, MicOut,  Rec,   Master)
-      // MixerSet(bool MicOutMute, bool MasterMute)
-
-      MixerSet( false, false ),         //emsUnloaded
-      MixerSet( false, false ),         //emsPassThroughNoPTT
-      MixerSet( false, false ),         //emsPassThroughPTT
-      MixerSet( true , false ),         //emsReplay
-      MixerSet( true , false ),         //emsReplayPip
-      MixerSet( true , false ),         //emsReplayT1
-      MixerSet( true , false ),         //emsReplayT2
-      MixerSet( false, true ),         //emsVoiceRecord
-      MixerSet( true , false ),         //emsCWTransmit
-      MixerSet( true , false )         //emsCWPassThrough
-   };
-MixerSet * _DLL_FUNCTION GetMixerSets()
-{
-   return MixerSets;
-}
-eMixerSets _DLL_FUNCTION GetCurrentMixerSet()
-{
-   return CurrMixerSet;
-}
-
-//enum controltype {ecSetUsed, ecSetNotUsed, ecNoSet};
-
-void _DLL_FUNCTION SetCurrentMixerSet( eMixerSets cms )
-{
-
-   CurrMixerSet = cms;
-}
+ */
 
 //---------------------------------------------------------------------------
 
