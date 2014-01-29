@@ -28,7 +28,7 @@ void __fastcall TMinosShowMessage::Button1Click( TObject * /*Sender*/ )
    Close();
 }
 //---------------------------------------------------------------------------
-void __fastcall TMinosShowMessage::FormShow(TObject *Sender)
+void __fastcall TMinosShowMessage::FormShow(TObject */*Sender*/)
 {
    MinosParameters::getMinosParameters() ->applyFontChange(this);
 }

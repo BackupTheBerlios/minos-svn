@@ -1375,7 +1375,7 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeEnter( TObject */*Sender*/ )
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TSingleLogFrame::LogMonitorQSOTreeExit(TObject *Sender)
+void __fastcall TSingleLogFrame::LogMonitorQSOTreeExit(TObject */*Sender*/)
 {
    LogContainer->Edit1->Enabled = true;
 }
@@ -1682,6 +1682,9 @@ void __fastcall TSingleLogFrame::LogMonitorQSOTreeGetHint(
    {
       HintText = "";
    }
+#else
+Node;
+HintText;
 #endif
 }
 //---------------------------------------------------------------------------

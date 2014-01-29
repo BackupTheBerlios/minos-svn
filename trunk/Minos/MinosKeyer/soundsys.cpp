@@ -193,7 +193,7 @@ void WindowsSoundSystem::stopDMAin()
 		 wt = 0;
 	  }
    }
-
+   passthroughin = false;
    if ( sbDriver::getSbDriver() ->WinVUInCallback )
 	  sbDriver::getSbDriver() ->WinVUInCallback( 0 );
 }
@@ -211,6 +211,7 @@ void WindowsSoundSystem::stopDMAout()
 	  waveOutActive = false;
 	  waveOutReset( hWaveOut );
    }
+   passthroughout = false;
    if ( sbDriver::getSbDriver() ->WinVUOutCallback )
 	  sbDriver::getSbDriver() ->WinVUOutCallback( 0 );
 }
@@ -686,37 +687,33 @@ void WindowsSoundSystem::readAudio()
             }
             else if (passthroughin)
             {
-               // copy to output buffer; kick off output (we can copy straight to
-               // the real buffers, I think)
-			   // and set
-			   if (!passthroughout)
-			   {
-				  waveOutActive = true;
-				  waveOutFreeBlockCount = BLOCK_COUNT;
-				  waveOutCurrentBlock = 0;
-				  samplesOutput = 0;
-				  passthroughout = true;
-				 if ( sblog )
-				 {
-					trace("outputDone = false in readAudio");
-				 }
-				  outputDone = false;
-				  if ( !startOutput() )
-				  {
-					 if ( sblog )
-					 {
-						trace( "Start output failed" );
-					 }
-					 return;
-				  }
-				  if ( sblog )
-				  {
-					 trace( "Start output OK" );
-				  }
-			   }
-			   // subsequently keep copying and don't kick off
-               // need to coordinate with writeAudio to correct the number of buffers
-               // We might need to always have one "up the spout" to stop glitching
+               // kick off output if required
+               if (!passthroughout)
+               {
+                 waveOutActive = true;
+                 waveOutFreeBlockCount = BLOCK_COUNT;
+                 waveOutCurrentBlock = 0;
+                 samplesOutput = 0;
+                 passthroughout = true;
+                if ( sblog )
+                {
+                  trace("outputDone = false in readAudio");
+                }
+                 outputDone = false;
+                 if ( !startOutput() )
+                 {
+                   if ( sblog )
+                   {
+                     trace( "Start output failed" );
+                   }
+                   return;
+                 }
+                 if ( sblog )
+                 {
+                   trace( "Start output OK" );
+                 }
+               }
+               // And write to output
                writePassthrough(current);
             }
 

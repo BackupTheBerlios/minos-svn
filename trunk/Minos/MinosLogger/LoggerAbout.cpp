@@ -162,7 +162,7 @@ void __fastcall TAboutBox::TConfigFrame1CancelButtonClick( TObject */*Sender*/ )
 
 
 
-void __fastcall TAboutBox::ExitButtonClick(TObject *Sender)
+void __fastcall TAboutBox::ExitButtonClick(TObject */*Sender*/)
 {
    // cancel the start up
    doStartup = false;
