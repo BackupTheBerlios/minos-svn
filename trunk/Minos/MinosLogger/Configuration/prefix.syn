@@ -1,12 +1,9 @@
-# These Only Valid 6/5/99 To 31/7/99
-# For New Scottish And Welsh Parliaments
-# If you still need them then uncomment these lines
-# 2S,G
-# 2A,M
-# 2T,2E
-# 2C,G
-# 2X,M
-# 2Y,2E
+# Scotland Homecoming
+# Burns Night, 25th January, to St Andrews Day, 30th November 2014.
+#
+2A,G
+GA,G
+MA,G
 # These mappings are used for duplicate checking
 GR,G
 GX,G
